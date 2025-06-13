@@ -98,6 +98,7 @@ function updateNavbar() {
 }
 
 // Populate the table with project data
+
 //function fillTable() {
     //const data = [
        // ["Day 1", "To-Do List", "/public/Day-1_TodoList/index.html"],
@@ -130,6 +131,25 @@ function updateNavbar() {
         //["Day 29", "Snake And Ladder Game", "public/Snake-and-Ladder-Game/index.html"],
         //["Day 30", "Note Taker", "public/Day-42_NoteTaker/index.html"],
 
+function fillTable() {
+    const data = [
+        ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
+        ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
+        ["Day 3", " ",],
+        ["Day 4", " ",],
+        ["Day 5", " ",],
+        ["Day 6", " ",],
+        ["Day 7", " ",],
+        ["Day 8", " ",],
+        ["Day 9", " ",],
+        ["Day 10", " ",],
+        ["Day 11", " ",],
+        ["Day 12", " ",],
+        ["Day 13", " ",],
+        ["Day 14", " ",],
+        ["Day 100", " ",],
+ 
+
         //["Day 31", "👾Alien Hunt", "public/Day-31/index.html"],
         //["Day 32","Rock Paper Scissor Game" ,"public/Day-23_RockPaperScissor/index.html" ],
         //["Day 34", "Colour Picker", "public/Day-34-Colour_picker/index.html"],
@@ -159,7 +179,7 @@ function updateNavbar() {
         //["Day 70", "Memory Game App", "./public/Memory Game App/index.html"],
   
         // ["Day 75", "MyPaint", "public/day75-mypaint/index.html"],
-
+    ]
   
 // See in Script Folder in app.js (where you can add your poject)];
 
@@ -190,7 +210,7 @@ function updateNavbar() {
 
         tbody.appendChild(row);
     });
-
+}
 document.addEventListener('DOMContentLoaded', () => {
     updateNavbar();
     fillTable();
@@ -222,6 +242,4 @@ themeToggle.addEventListener('click', () => {
         localStorage.setItem('theme', 'dark');
     }
 });
-
-
 
