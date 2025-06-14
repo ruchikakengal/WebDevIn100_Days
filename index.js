@@ -149,6 +149,7 @@ function fillTable() {
         ["Day 14", " ",],
         ["Day 100", " ",],
  
+        ["Day 2", "Candy Crush"," public/candycrush/candy_crush.html"],
 
         //["Day 31", "👾Alien Hunt", "public/Day-31/index.html"],
         //["Day 32","Rock Paper Scissor Game" ,"public/Day-23_RockPaperScissor/index.html" ],
