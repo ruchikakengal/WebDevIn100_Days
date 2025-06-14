@@ -1,0 +1,144 @@
+/* Candy Base Styles */
+.candy {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    user-select: none;
+}
+
+/* Candy Colors with Patterns */
+.candy.red {
+    background-color: #ef4444;
+    background-image: radial-gradient(circle at 30% 30%, #ff6b6b 0%, transparent 50%),
+                      radial-gradient(circle at 70% 70%, #ff6b6b 0%, transparent 50%);
+}
+
+.candy.blue {
+    background-color: #3b82f6;
+    background-image: radial-gradient(circle at 30% 30%, #60a5fa 0%, transparent 50%),
+                      radial-gradient(circle at 70% 70%, #60a5fa 0%, transparent 50%);
+}
+
+.candy.green {
+    background-color: #22c55e;
+    background-image: radial-gradient(circle at 30% 30%, #4ade80 0%, transparent 50%),
+                      radial-gradient(circle at 70% 70%, #4ade80 0%, transparent 50%);
+}
+
+.candy.yellow {
+    background-color: #eab308;
+    background-image: radial-gradient(circle at 30% 30%, #facc15 0%, transparent 50%),
+                      radial-gradient(circle at 70% 70%, #facc15 0%, transparent 50%);
+}
+
+.candy.purple {
+    background-color: #a855f7;
+    background-image: radial-gradient(circle at 30% 30%, #c084fc 0%, transparent 50%),
+                      radial-gradient(circle at 70% 70%, #c084fc 0%, transparent 50%);
+}
+
+.candy.orange {
+    background-color: #f97316;
+    background-image: radial-gradient(circle at 30% 30%, #fb923c 0%, transparent 50%),
+                      radial-gradient(circle at 70% 70%, #fb923c 0%, transparent 50%);
+}
+
+/* Special Candy Types */
+.candy.striped {
+    background-image: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.2) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        rgba(255, 255, 255, 0.2) 75%, 
+        transparent 75%, 
+        transparent);
+    background-size: 20px 20px;
+    animation: striped-animation 1s linear infinite;
+}
+
+.candy.wrapped {
+    background-image: 
+        radial-gradient(circle at center, 
+            rgba(255, 255, 255, 0.8) 0%, 
+            rgba(255, 255, 255, 0.4) 30%, 
+            transparent 70%),
+        radial-gradient(circle at center, 
+            rgba(255, 255, 255, 0.8) 0%, 
+            rgba(255, 255, 255, 0.4) 30%, 
+            transparent 70%);
+    background-size: 60% 60%, 100% 100%;
+    animation: wrapped-animation 2s ease-in-out infinite;
+}
+
+/* Candy States */
+.candy:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.candy.selected {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(255, 255, 255, 0.4);
+    z-index: 10;
+}
+
+.candy.matched {
+    animation: pop 0.5s ease-out;
+}
+
+/* Animations */
+@keyframes pop {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+@keyframes striped-animation {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 20px; }
+}
+
+@keyframes wrapped-animation {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.05) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Game Board */
+#gameBoard {
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: 
+        linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .candy {
+        border-radius: 8px;
+    }
+    
+    #gameBoard {
+        gap: 2px;
+        padding: 2px;
+    }
+} 
