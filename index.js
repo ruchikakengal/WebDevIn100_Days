@@ -10,21 +10,20 @@ function filterProjects() {
         if (projectName && projectName.includes(filter)) {
             row.style.display = '';
             hasResults = true;
-        } else if (row.id !== 'table-subheader') {
+        } else {
             row.style.display = 'none';
         }
     });
 
-    const subheader = document.querySelector('.subheader');
+    const linksContainer = document.querySelector('.links'); // Get the container for the table
     const noProjectsMessage = document.getElementById('no-projects');
 
     if (hasResults) {
-        subheader.style.display = 'block';
-        noProjectsMessage.style.display = 'none';
+        linksContainer.style.display = 'block'; // Show the table container
+        noProjectsMessage.style.display = 'none'; // Hide the no projects message
     } else {
-        document.getElementById('table-subheader').style.display = 'none';
-        subheader.style.display = 'none';
-        noProjectsMessage.style.display = 'block';
+        linksContainer.style.display = 'none'; // Hide the table container
+        noProjectsMessage.style.display = 'block'; // Show the no projects message
     }
 }
 
@@ -33,15 +32,37 @@ const buttons = document.getElementsByClassName('buttons')[0]; // Refers to the 
 
 function updateNavbar() {
     const username = localStorage.getItem('username');
+    const currentPage = window.location.pathname;
+
+    let contactButton = '';
+    if (currentPage.includes('contact.html')) {
+        contactButton = `
+        <a href="index.html" class="button is-light">
+            <span class="icon">
+                <i class="fas fa-home"></i>
+            </span>
+            <span>Home</span>
+        </a>`;
+    } else {
+        contactButton = `
+        <a href="contact.html" class="button is-light">
+            <span class="icon">
+                <i class="fas fa-envelope"></i>
+            </span>
+            <span>Contact Us</span>
+        </a>`;
+    }
+
     if (username) {
         buttons.innerHTML = `
+        ${contactButton}
         <button class="button is-success is-dark has-text-weight-bold">
             Welcome ${username}
         </button>
         <button class="button is-danger is-dark" id='logout'>
             Logout
         </button>
-        <a class="button is-primary is-dark" href="https://github.com/ruchikakengal">
+        <a class="button is-primary is-dark" href="https://github.com/ruchikakengal" target="_blank">
             <strong>GitHub</strong>  
         </a>
         <a class="button is-primary is-dark" href="contributors/contributor.html">
@@ -54,10 +75,11 @@ function updateNavbar() {
         });
     } else {
         buttons.innerHTML = `
+        ${contactButton}
         <a class="button is-primary is-dark" href="contributors/contributor.html">
             <strong>Contributors</strong>
         </a>
-        <a class="button is-primary is-dark" href="https://github.com/ruchikakengal">
+        <a class="button is-primary is-dark" href="https://github.com/ruchikakengal" target="_blank">
             <strong>GitHub</strong>
         </a>
         <a class="button is-success is-light" href="/public/Login.html">
@@ -118,6 +140,40 @@ function fillTable() {
 document.addEventListener('DOMContentLoaded', () => {
     updateNavbar();
     fillTable();
+
+    // Form submission handling
+    const contactForm = document.getElementById('contactForm');
+    const contributeForm = document.getElementById('contributeForm');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Add your form submission logic here
+        alert('Contact form submitted! (Add your backend logic)');
+    });
+
+    contributeForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Add your form submission logic here
+        alert('Contribution form submitted! (Add your backend logic)');
+    });
+
+    // Navbar burger menu toggle
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+    if ($navbarBurgers.length > 0) {
+        $navbarBurgers.forEach(el => {
+            el.addEventListener('click', () => {
+                console.log('Hamburger menu clicked!');
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+                console.log('Target element:', $target);
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+                console.log('is-active class toggled on burger:', el.classList.contains('is-active'));
+                console.log('is-active class toggled on target:', $target.classList.contains('is-active'));
+            });
+        });
+    }
 });
 
 const themeToggle = document.getElementById('theme-toggle');

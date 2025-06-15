@@ -111,6 +111,48 @@
           margin-bottom: 3rem;
         }
       }
+
+      .tab-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .tabs ul {
+        border-bottom-color: #1abc9c;
+      }
+
+      .tabs a {
+        color: #666;
+        transition: color 0.3s ease;
+      }
+
+      .tabs a:hover {
+        color: #1abc9c;
+      }
+
+      .tabs li.is-active a {
+        color: #1abc9c;
+        border-bottom-color: #1abc9c;
+      }
+
+      .box {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .box:hover {
+        transform: translateY(-5px);
+      }
+
+      @media screen and (max-width: 768px) {
+        .tab-content {
+          padding: 0 1rem;
+        }
+        
+        .field {
+          margin-bottom: 1rem;
+        }
+      }
     
   </style>
 
@@ -130,7 +172,7 @@
        
         <a
           role="button"
-          class="navbar-burger"
+          class="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -142,11 +184,34 @@
         </a>
       </div>
 
-      <div class="navbar-menu is-active" id="navbar-menu">
+      <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              
+              <a href="contact.html" class="button is-light">
+                <span class="icon">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <span>Contact Us</span>
+              </a>
+              <a href="contributors/contributor.html" class="button is-info">
+                <span class="icon">
+                  <i class="fas fa-users"></i>
+                </span>
+                <span>Contributors</span>
+              </a>
+              <a href="https://github.com/ruchikakengal/100_Days_100_webprojects" class="button is-dark" target="_blank">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>GitHub</span>
+              </a>
+              <a href="#" class="button is-primary">
+                <span class="icon">
+                  <i class="fas fa-sign-in-alt"></i>
+                </span>
+                <span>Login</span>
+              </a>
             </div>
           </div>
         </div>
@@ -154,10 +219,10 @@
     </nav><br><br>
 <!-- Main Page Starts Here -->
     <div class="content" id="projects">
-      <div class="title is-2 has-text-centered" id="title-heading">
+      <div class="title is-2 has-text-centered" id="title-heading" style="color: white;">
        Web_Dev_In_100_Days
       </div>
-      <p class="subtitle has-text-centered" style="color: black">
+      <p class="subtitle has-text-centered" style="color: white;">
         here are live demos of all the projects
       </p>
 
@@ -166,7 +231,7 @@
           <input
             class="input"
             type="text"
-            id="searchInput"
+            id="searchInput" style="color: white;"
             placeholder="Search for projects..."
             onkeyup="filterProjects()"
           />
@@ -183,108 +248,81 @@
       </div>
 
       <div class="links">
-        <table class="table is-fullwidth is-bordered is-striped is-hoverable">
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>Project Name</th>
-              <th>Demo Link</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            
-          </tbody>
+        <div class="table-container">
+          <table class="table is-fullwidth is-bordered is-striped is-hoverable">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Project Name</th>
+                <th>Demo Link</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              
+            </tbody>
 
-        </table>
-      </div>
-
-      <div id="no-projects" style="display: none">No Projects Found</div>
-    </div>
-
-    <footer class="footer">
-      <div class="content">
-        <div class="columns is-vcentered">
-          <!-- Left Side -->
-          <div class="column has-text-left">
-            <div class="heading">
-              <h2 class="is-size-4">About</h2>
-              <p>
-                This repository contains 100 web projects from basic to
-                intermediate using HTML, CSS, and JS.
-              </p>
-              <p>
-                <strong>
-                  ©
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  WebDev100_Days
-                </strong>
-                by <a href="#">Ruchika Kengal</a> and <a href="#">Contributors</a>.
-              </p>
-            </div>
-          </div>
-
-          <!-- Right Side -->
-          <div class="column ms-4">
-            <div class="heading">
-              <h2 class="is-size-4">Important Links</h2>
-              <!-- Social Media Icons -->
-              <div class="buttons">
-                <a
-                  class="button is-dark is-rounded"
-                  href="https://www.instagram.com/"
-                  target="_blank"
-                  aria-label="Instagram"
-                >
-                  <span class="icon">
-                    <i class="fab fa-instagram"></i>
-                  </span>
-                </a>
-                <a
-                  class="button is-dark is-rounded"
-                  href="https://github.com/ruchikakengal/100_Days_100_webprojects"
-                  target="_blank"
-                  aria-label="GitHub"
-                >
-                  <span class="icon">
-                    <i class="fab fa-github"></i>
-                  </span>
-                </a>
-                <a
-                  class="button is-dark is-rounded"
-                  href="www.linkedin.com/in/ruchika-kengal-8085092b7"
-                  target="_blank"
-                  aria-label="LinkedIn"
-                >
-                  <span class="icon">
-                    <i class="fab fa-linkedin"></i>
-                  </span>
-                </a>
-              </div>
-              <!-- Navigation Links -->
-              <div class="buttons ms-5">
-                <a class="button is-primary is-rounded" href="#">
-                  <span class="icon">
-                    <i class="fas fa-home"></i>
-                  </span>
-                  <span>Home</span>
-                </a>
-                <a
-                  class="button is-link is-rounded"
-                  href="contributors/contributor.html"
-                >
-                  <span class="icon">
-                    <i class="fas fa-users"></i>
-                  </span>
-                  <span>Contributors</span>
-                </a>
-              </div>
-            </div>
-          </div>
+          </table>
         </div>
       </div>
-    </footer>
+
+      <div id="no-projects" class="has-text-centered" style="display: none;">
+        <img src="images/no_data.png" alt="No projects found illustration" style="max-width: 300px; margin-bottom: 1rem;">
+        <p class="subtitle is-5 has-text-grey">No Projects Found</p>
+      </div>
+    </div>
+
+  <footer class="footer has-background-dark has-text-white-ter">
+  <div class="container">
+    <div class="columns is-variable is-8 is-multiline">
+      
+      <!-- Left Side -->
+      <div class="column is-12-mobile is-6-tablet">
+        <h2 class="title is-5 has-text-white">About</h2>
+        <p>
+          This repository contains 100 web projects from basic to intermediate using HTML, CSS, and JS.
+        </p>
+        <p class="mt-3">
+          <strong>© <span id="year"></span> WebDev100_Days</strong>
+          by <a href="#" class="has-text-white">Ruchika Kengal</a> and 
+          <a href="#" class="has-text-white">Contributors</a>.
+        </p>
+      </div>
+
+      <!-- Right Side -->
+      <div class="column is-12-mobile is-6-tablet">
+        <h2 class="title is-5 has-text-white">Important Links</h2>
+
+        <!-- Social Icons and Navigation Links Combined -->
+        <div class="buttons is-grouped is-flex-tablet is-flex-wrap-wrap is-centered">
+          <a class="button is-dark is-rounded" href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+            <span class="icon"><i class="fab fa-instagram"></i></span>
+          </a>
+          <a class="button is-dark is-rounded" href="https://github.com/ruchikakengal/100_Days_100_webprojects" target="_blank" aria-label="GitHub">
+            <span class="icon"><i class="fab fa-github"></i></span>
+          </a>
+          <a class="button is-dark is-rounded" href="https://www.linkedin.com/in/ruchika-kengal-8085092b7" target="_blank" aria-label="LinkedIn">
+            <span class="icon"><i class="fab fa-linkedin"></i></span>
+          </a>
+
+          <a class="button is-primary is-rounded" href="#">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+          <a class="button is-link is-rounded" href="contributors/contributor.html">
+            <span class="icon"><i class="fas fa-users"></i></span>
+            <span>Contributors</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 
     <!-- Top scroll button -->
     <button id="scrollBtn" title="Go to top">
@@ -318,6 +356,42 @@
           behavior: "smooth",
         });
       };
+
+      // Add this to your existing scripts
+      document.addEventListener('DOMContentLoaded', () => {
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tabs li');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            // Remove active class from all tabs and contents
+            tabs.forEach(t => t.classList.remove('is-active'));
+            tabContents.forEach(content => content.classList.add('is-hidden'));
+
+            // Add active class to clicked tab and corresponding content
+            tab.classList.add('is-active');
+            const tabId = tab.getAttribute('data-tab');
+            document.getElementById(tabId).classList.remove('is-hidden');
+          });
+        });
+
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        const contributeForm = document.getElementById('contributeForm');
+
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          // Add your form submission logic here
+          alert('Contact form submitted! (Add your backend logic)');
+        });
+
+        contributeForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          // Add your form submission logic here
+          alert('Contribution form submitted! (Add your backend logic)');
+        });
+      });
     </script>
   </body>
 </html>

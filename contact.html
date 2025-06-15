@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - WebDev100_Days</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="icon" href="public/favv.png" type="image/x-icon" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- Add EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+        // Initialize EmailJS with your public key
+        emailjs.init("coX058H-tLSLknh51");
+      })();
+    </script>
+    <style>
+      nav.navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #1abc9c;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      #scrollBtn {
+        position: fixed;
+        bottom: 20px; /* Place closer to the bottom */
+        right: 20px; /* Place closer to the right */
+        display: none; /* Initially hidden */
+        background-color: #1abc9c;
+        color: rgb(247, 242, 242);
+        border: none;
+        border-radius: 50%;
+        padding: 15px;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000; /* Ensure visibility above other elements */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      #scrollBtn:hover {
+        background-color: #000; /* Change color on hover */
+        transform: scale(1.2); /* Slightly enlarge */
+      }
+
+      .tab-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .tabs ul {
+        border-bottom-color: #1abc9c;
+      }
+
+      .tabs a {
+        color: #666;
+        transition: color 0.3s ease;
+      }
+
+      .tabs a:hover {
+        color: #1abc9c;
+      }
+
+      .tabs li.is-active a {
+        color: #1abc9c;
+        border-bottom-color: #1abc9c;
+      }
+
+      .box {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .box:hover {
+        transform: translateY(-5px);
+      }
+
+      @media screen and (max-width: 768px) {
+        .tab-content {
+          padding: 0 1rem;
+        }
+        
+        .field {
+          margin-bottom: 1rem;
+        }
+      }
+
+      #contact-section {
+        margin-top: 80px;
+        padding: 2rem 0;
+      }
+
+      /* Form validation styles */
+      .error-message {
+        color: #ff3860;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+      }
+
+      .input.is-danger {
+        border-color: #ff3860;
+      }
+
+      .textarea.is-danger {
+        border-color: #ff3860;
+      }
+
+      .notification {
+        display: none;
+        margin-top: 1rem;
+      }
+
+      .notification.is-success {
+        background-color: #48c774;
+        color: white;
+      }
+
+      .notification.is-danger {
+        background-color: #f14668;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar is-primary"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item has-text-weight-bold" href="index.html">
+          <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg"/>
+          WebDev100_Days
+        </a>
+       
+        <a
+          role="button"
+          class="navbar-burger burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <!-- This button will be dynamically changed by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact-section">
+      <div class="container">
+        <h2 class="title is-2 has-text-centered mb-6">Contact Us</h2>
+        
+        <!-- Form Tabs -->
+        <div class="tabs is-centered mb-6">
+          <ul>
+            <li class="is-active" data-tab="contact-form"><a>Contact Us</a></li>
+            <li data-tab="contribute-form"><a>Contribute</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="tab-content" id="contact-form">
+          <form class="box" id="contactForm" novalidate>
+            <div class="field">
+              <label class="label">Name <span class="has-text-danger">*</span></label>
+              <div class="control">
+                <input class="input" type="text" name="name" required placeholder="Your name">
+                <p class="error-message" id="contact-name-error"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Email <span class="has-text-danger">*</span></label>
+              <div class="control">
+                <input class="input" type="email" name="email" required placeholder="Your email">
+                <p class="error-message" id="contact-email-error"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Contact Number <span class="has-text-danger">*</span></label>
+              <div class="control">
+                <input class="input" type="tel" name="phone" required placeholder="Your contact number">
+                <p class="error-message" id="contact-phone-error"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Subject <span class="has-text-danger">*</span></label>
+              <div class="control">
+                <input class="input" type="text" name="subject" required placeholder="Subject of your message">
+                <p class="error-message" id="contact-subject-error"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Description <span class="has-text-danger">*</span></label>
+              <div class="control">
+                <textarea class="textarea" name="description" required placeholder="Your message"></textarea>
+                <p class="error-message" id="contact-description-error"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-primary is-fullwidth" id="contact-submit">
+                  <span class="icon">
+                    <i class="fas fa-paper-plane"></i>
+                  </span>
+                  <span>Send Message</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="notification is-success" id="contact-success">
+              Your message has been sent successfully! We'll get back to you soon.
+            </div>
+            <div class="notification is-danger" id="contact-error">
+              There was an error sending your message. Please try again.
+            </div>
+          </form>
+        </div>
+
+        <!-- Contribute Form -->
+        <div class="tab-content is-hidden" id="contribute-form">
+          <form class="box" id="contributeForm" novalidate>
+            <div class="field">
+              <label class="label">Name <span class="has-text-danger">*</span></label>
+              <div class="control">
+                <input class="input" type="text" name="name" required placeholder="Your name">
+                <p class="error-message" id="contribute-name-error"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Email <span class="has-text-danger">*</span></label>
+              <div class="control">
+                <input class="input" type="email" name="email" required placeholder="Your email">
+                <p class="error-message" id="contribute-email-error"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Contact Number <span class="has-text-danger">*</span></label>
+              <div class="control">
+                <input class="input" type="tel" name="phone" required placeholder="Your contact number">
+                <p class="error-message" id="contribute-phone-error"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Description <span class="has-text-danger">*</span></label>
+              <div class="control">
+                <textarea class="textarea" name="description" required placeholder="Tell us about your contribution"></textarea>
+                <p class="error-message" id="contribute-description-error"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">GitHub Profile <span class="has-text-danger">*</span></label>
+              <div class="control">
+                <input class="input" type="url" name="github" required placeholder="Your GitHub profile URL">
+                <p class="error-message" id="contribute-github-error"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Portfolio/Work Links</label>
+              <div class="control">
+                <textarea class="textarea" name="links" placeholder="Add links to your work (one per line)"></textarea>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-primary is-fullwidth" id="contribute-submit">
+                  <span class="icon">
+                    <i class="fas fa-code-branch"></i>
+                  </span>
+                  <span>Submit Contribution</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="notification is-success" id="contribute-success">
+              Your contribution request has been sent successfully! We'll review it and get back to you soon.
+            </div>
+            <div class="notification is-danger" id="contribute-error">
+              There was an error sending your contribution request. Please try again.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer has-background-dark has-text-white-ter">
+  <div class="container">
+    <div class="columns is-variable is-8 is-multiline">
+      
+      <!-- Left Side -->
+      <div class="column is-12-mobile is-6-tablet">
+        <h2 class="title is-5 has-text-white">About</h2>
+        <p>
+          This repository contains 100 web projects from basic to intermediate using HTML, CSS, and JS.
+        </p>
+        <p class="mt-3">
+          <strong>© <span id="year"></span> WebDev100_Days</strong>
+          by <a href="#" class="has-text-white">Ruchika Kengal</a> and 
+          <a href="#" class="has-text-white">Contributors</a>.
+        </p>
+      </div>
+
+      <!-- Right Side -->
+      <div class="column is-12-mobile is-6-tablet">
+        <h2 class="title is-5 has-text-white">Important Links</h2>
+
+        <!-- Social Icons and Navigation Links Combined -->
+        <div class="buttons is-grouped is-flex-tablet is-flex-wrap-wrap is-centered">
+          <a class="button is-dark is-rounded" href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+            <span class="icon"><i class="fab fa-instagram"></i></span>
+          </a>
+          <a class="button is-dark is-rounded" href="https://github.com/ruchikakengal/100_Days_100_webprojects" target="_blank" aria-label="GitHub">
+            <span class="icon"><i class="fab fa-github"></i></span>
+          </a>
+          <a class="button is-dark is-rounded" href="https://www.linkedin.com/in/ruchika-kengal-8085092b7" target="_blank" aria-label="LinkedIn">
+            <span class="icon"><i class="fab fa-linkedin"></i></span>
+          </a>
+
+          <a class="button is-primary is-rounded" href="#">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+          <a class="button is-link is-rounded" href="contributors/contributor.html">
+            <span class="icon"><i class="fas fa-users"></i></span>
+            <span>Contributors</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+    <!-- Top scroll button -->
+    <button id="scrollBtn" title="Go to top">
+      <i class="fa-solid fa-arrow-up fa-lg"></i>
+    </button>
+
+    <!-- Pushed JavaScript Code To Here -->
+    <script src="index.js"></script>
+    <script src="bulma.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tabs li');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            // Remove active class from all tabs and contents
+            tabs.forEach(t => t.classList.remove('is-active'));
+            tabContents.forEach(content => content.classList.add('is-hidden'));
+
+            // Add active class to clicked tab and corresponding content
+            tab.classList.add('is-active');
+            const tabId = tab.getAttribute('data-tab');
+            document.getElementById(tabId).classList.remove('is-hidden');
+          });
+        });
+
+        // Form validation and submission handling
+        const contactForm = document.getElementById('contactForm');
+        const contributeForm = document.getElementById('contributeForm');
+
+        // Helper function to validate email
+        function isValidEmail(email) {
+          const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return re.test(email);
+        }
+
+        // Helper function to validate phone number (basic validation)
+        function isValidPhone(phone) {
+          const re = /^[\d\s-+()]{10,}$/;
+          return re.test(phone);
+        }
+
+        // Helper function to validate URL
+        function isValidUrl(url) {
+          try {
+            new URL(url);
+            return true;
+          } catch {
+            return false;
+          }
+        }
+
+        // Helper function to show error message
+        function showError(elementId, message) {
+          const errorElement = document.getElementById(elementId);
+          errorElement.textContent = message;
+          errorElement.previousElementSibling.classList.add('is-danger');
+        }
+
+        // Helper function to clear error message
+        function clearError(elementId) {
+          const errorElement = document.getElementById(elementId);
+          errorElement.textContent = '';
+          errorElement.previousElementSibling.classList.remove('is-danger');
+        }
+
+        // Contact Form Validation and Submission
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          let isValid = true;
+
+          // Clear previous errors
+          ['name', 'email', 'phone', 'subject', 'description'].forEach(field => {
+            clearError(`contact-${field}-error`);
+          });
+
+          // Validate name
+          const name = contactForm.name.value.trim();
+          if (!name) {
+            showError('contact-name-error', 'Name is required');
+            isValid = false;
+          }
+
+          // Validate email
+          const email = contactForm.email.value.trim();
+          if (!email) {
+            showError('contact-email-error', 'Email is required');
+            isValid = false;
+          } else if (!isValidEmail(email)) {
+            showError('contact-email-error', 'Please enter a valid email address');
+            isValid = false;
+          }
+
+          // Validate phone
+          const phone = contactForm.phone.value.trim();
+          if (!phone) {
+            showError('contact-phone-error', 'Phone number is required');
+            isValid = false;
+          } else if (!isValidPhone(phone)) {
+            showError('contact-phone-error', 'Please enter a valid phone number');
+            isValid = false;
+          }
+
+          // Validate subject
+          const subject = contactForm.subject.value.trim();
+          if (!subject) {
+            showError('contact-subject-error', 'Subject is required');
+            isValid = false;
+          }
+
+          // Validate description
+          const description = contactForm.description.value.trim();
+          if (!description) {
+            showError('contact-description-error', 'Description is required');
+            isValid = false;
+          }
+
+          if (!isValid) return;
+
+          // Show loading state
+          const submitButton = document.getElementById('contact-submit');
+          const originalButtonText = submitButton.innerHTML;
+          submitButton.disabled = true;
+          submitButton.innerHTML = '<span class="icon"><i class="fas fa-spinner fa-spin"></i></span><span>Sending...</span>';
+
+          try {
+            // Send email to admin for contact form
+            await emailjs.send('service_slnp4ml', 'template_nez5iih', {
+              to_email: 'bunnygupta578@gmail.com',
+              from_name: name,
+              from_email: email,
+              subject: 'New Contact Query Received',
+              message: `
+                Name: ${name}
+                Email: ${email}
+                Phone: ${phone}
+                Subject: ${subject}
+                Message: ${description}
+              `,
+              reply_to: email
+            });
+
+            // Send confirmation email to user
+            await emailjs.send('service_slnp4ml', 'template_nez5iih', {
+              to_email: email,
+              from_name: 'WebDev100_Days Team',
+              from_email: 'bunnygupta578@gmail.com',
+              subject: 'Thank you for contacting us',
+              message: `
+                Dear ${name},
+
+                Thank you for reaching out to us. We have received your message and will get back to you soon.
+
+                Your message details:
+                Subject: ${subject}
+                Message: ${description}
+
+                Best regards,
+                WebDev100_Days Team
+              `,
+              reply_to: 'bunnygupta578@gmail.com'
+            });
+
+            // Show success message
+            document.getElementById('contact-success').style.display = 'block';
+            document.getElementById('contact-error').style.display = 'none';
+            contactForm.reset();
+          } catch (error) {
+            console.error('Error sending email:', error);
+            document.getElementById('contact-error').style.display = 'block';
+            document.getElementById('contact-success').style.display = 'none';
+          } finally {
+            // Reset button state
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+          }
+        });
+
+        // Contribute Form Validation and Submission
+        contributeForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          let isValid = true;
+
+          // Clear previous errors
+          ['name', 'email', 'phone', 'description', 'github'].forEach(field => {
+            clearError(`contribute-${field}-error`);
+          });
+
+          // Validate name
+          const name = contributeForm.name.value.trim();
+          if (!name) {
+            showError('contribute-name-error', 'Name is required');
+            isValid = false;
+          }
+
+          // Validate email
+          const email = contributeForm.email.value.trim();
+          if (!email) {
+            showError('contribute-email-error', 'Email is required');
+            isValid = false;
+          } else if (!isValidEmail(email)) {
+            showError('contribute-email-error', 'Please enter a valid email address');
+            isValid = false;
+          }
+
+          // Validate phone
+          const phone = contributeForm.phone.value.trim();
+          if (!phone) {
+            showError('contribute-phone-error', 'Phone number is required');
+            isValid = false;
+          } else if (!isValidPhone(phone)) {
+            showError('contribute-phone-error', 'Please enter a valid phone number');
+            isValid = false;
+          }
+
+          // Validate description
+          const description = contributeForm.description.value.trim();
+          if (!description) {
+            showError('contribute-description-error', 'Description is required');
+            isValid = false;
+          }
+
+          // Validate GitHub profile
+          const github = contributeForm.github.value.trim();
+          if (!github) {
+            showError('contribute-github-error', 'GitHub profile is required');
+            isValid = false;
+          } else if (!isValidUrl(github)) {
+            showError('contribute-github-error', 'Please enter a valid GitHub profile URL');
+            isValid = false;
+          }
+
+          if (!isValid) return;
+
+          // Show loading state
+          const submitButton = document.getElementById('contribute-submit');
+          const originalButtonText = submitButton.innerHTML;
+          submitButton.disabled = true;
+          submitButton.innerHTML = '<span class="icon"><i class="fas fa-spinner fa-spin"></i></span><span>Submitting...</span>';
+
+          try {
+            // Send email to admin for contribution
+            await emailjs.send('service_slnp4ml', 'template_nez5iih', {
+              to_email: 'bunnygupta578@gmail.com',
+              from_name: name,
+              from_email: email,
+              subject: 'New Contribution Request Received',
+              message: `
+                Name: ${name}
+                Email: ${email}
+                Phone: ${phone}
+                GitHub Profile: ${github}
+                Description: ${description}
+                Portfolio Links: ${contributeForm.links.value.trim() || 'No links provided'}
+              `,
+              reply_to: email
+            });
+
+            // Send confirmation email to user
+            await emailjs.send('service_slnp4ml', 'template_nez5iih', {
+              to_email: email,
+              from_name: 'WebDev100_Days Team',
+              from_email: 'bunnygupta578@gmail.com',
+              subject: 'Thank you for your contribution request',
+              message: `
+                Dear ${name},
+
+                Thank you for your interest in contributing to WebDev100_Days. We have received your contribution request and will review it shortly.
+
+                Your contribution details:
+                GitHub Profile: ${github}
+                Description: ${description}
+
+                We will contact you soon regarding your contribution.
+
+                Best regards,
+                WebDev100_Days Team
+              `,
+              reply_to: 'bunnygupta578@gmail.com'
+            });
+
+            // Show success message
+            document.getElementById('contribute-success').style.display = 'block';
+            document.getElementById('contribute-error').style.display = 'none';
+            contributeForm.reset();
+          } catch (error) {
+            console.error('Error sending email:', error);
+            document.getElementById('contribute-error').style.display = 'block';
+            document.getElementById('contribute-success').style.display = 'none';
+          } finally {
+            // Reset button state
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+          }
+        });
+
+        // Navbar burger menu toggle (keep this here for contact.html specific burger)
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        if ($navbarBurgers.length > 0) {
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+                });
+            });
+        }
+
+        // Get the button element
+        const scrollBtn = document.getElementById("scrollBtn");
+
+        // Show the button when the user scrolls down 100px from the top
+        window.onscroll = function () {
+          if (
+            document.body.scrollTop > 100 ||
+            document.documentElement.scrollTop > 100
+          ) {
+            scrollBtn.style.display = "block";
+          } else {
+            scrollBtn.style.display = "none";
+          }
+        };
+
+        // Scroll to the top of the page when the button is clicked
+        scrollBtn.onclick = function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        };
+      });
+    </script>
+  </body>
+</html> 

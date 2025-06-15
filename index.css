@@ -100,7 +100,7 @@
   }
 
   .footer .button.is-dark.is-rounded:hover {
-    background-color: #1abc9c; /* Teal on hover */
+    background-color: #2c3e50; /* Teal on hover */
     transform: scale(1.2);
   }
 
@@ -236,60 +236,70 @@
       text-decoration: underline;
     }
     #title-heading {
-      margin-bottom: 20px;
-      background-color: #222222;
-      padding: 1rem;
-      text-align: center;
-      color: #000000; /* Light gray footer text */
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      color: white;
+      white-space: nowrap; /* Prevent text from wrapping */
+    }
+
+    @media (max-width: 600px) {
+      #title-heading {
+        font-size: 1.8rem; /* Shrink font size on small screens */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    @media (max-width: 426px) {
+      #title-heading {
+        margin-top: 5rem;
+        margin-bottom: 3rem;
+      }
     }
   }
 }
 
 /* Dark theme styles */
 body.dark-theme {
-  background: linear-gradient(
-    to right,
-    #000000,
-    /* Pure black */ #101010,
-    /* Very dark shade of black */ #1a1a1a,
-    /* Slightly lighter black */ #000000
-      /* Keep it consistent with pure black on the ends */
-  );
-  color: #ffffff; /* Light text color */
+  background-color: #1a1a1a !important; /* Force solid dark background */
+  background-image: none !important; /* Explicitly remove any gradient */
+  background: none !important; /* Comprehensive background reset */
+  color: #f3eeee; /* Keep light text color */
   transition: background 0.5s ease, color 0.5s ease; /* Smooth transition */
 }
 
 /* Navbar */
 body.dark-theme .navbar {
-  background-color: #2c3e50; /* Elegant deep blue-gray */
+  background-color: #1a1a1a !important; /* Force solid dark navbar background */
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow for depth */
 }
 
 body.dark-theme .navbar-item {
-  color: #ffffff; /* Lighter navbar text */
+  color: #ecf0f1 !important; /* Force lighter navbar text */
   font-family: "Orbitron", sans-serif; /* Tech-inspired font */
 }
 
 body.dark-theme .navbar-item:hover {
-  color: #f39c12; /* Gold accent on hover */
+  background-color: #333333 !important; /* Force hover background */
+  color: #f39c12 !important; /* Force hover text color */
 }
 
 /* Footer */
 body.dark-theme .footer {
-  color: rgb(255, 255, 255);
-  background: linear-gradient(
-    145deg,
-    #000000,
-    #2f2f2f
-  ); /* Dark gradient effect */
-  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3); /* More prominent shadow */ /* Very dark footer with a bluish tint */
-  text-align: center;
-  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3);
+  background-color: #000000 !important; /* Force black background */
+  background-image: none !important; /* Absolutely no gradient/image */
+  background: none !important; /* General background reset */
+  color: #ffffff !important; /* Force white text */
+  padding: 2rem 0;
+  margin-top: 2rem;
+  font-family: "Orbitron", sans-serif;
+  text-align: center; /* Ensure alignment */
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3) !important; /* Maintain shadow */
 }
 
 body.dark-theme #footer_title {
-  color: white;
+  color: #ffffff !important; /* Force white text */
 }
 
 /* Title */
@@ -416,43 +426,45 @@ body.dark-theme #scrollBtn:hover {
 
 /* Light theme styles */
 body.light-theme {
-  background: linear-gradient(
-    145deg,
-    #f0f9ff,
-    #5cff33
-  ); /* Subtle dark grey to dark charcoal gradient */
-  color: #ffffff; /* Soft white text */
+  background-color: #ffffff !important; /* Force solid white background */
+  background-image: none !important; /* Explicitly remove any gradient */
+  background: none !important; /* Comprehensive background reset */
+  color: #333333; /* Keep dark text color */
   transition: background 0.5s ease, color 0.5s ease; /* Smooth transition */
 }
 
 /* Navbar */
 body.light-theme .navbar {
-  background: rgb(0, 157, 219);
-  color: #ffffff;
+  background-color: #f2f2f2 !important; /* Force solid light navbar background */
+  color: #333333;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow for depth */
 }
 
 body.light-theme .navbar-item {
-  color: #ffffff; /* Lighter navbar text */
+  color: #333333 !important; /* Force dark navbar text */
   font-family: "Orbitron", sans-serif; /* Tech-inspired font */
 }
 
 body.light-theme .navbar-item:hover {
-  color: #f39c12; /* Gold accent on hover */
+  background-color: #e6e6e6 !important; /* Force hover background */
+  color: #f39c12 !important; /* Force hover text color */
 }
 
 /* Footer */
 body.light-theme .footer {
-  color: rgb(0, 0, 0);
-  background: linear-gradient(145deg, #f0f9ff, #dfffd7);
-  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3);
+  background-color: #000000 !important; /* Force black background */
+  background-image: none !important; /* Absolutely no gradient/image */
+  background: none !important; /* General background reset */
+  color: #ffffff !important; /* Force white text */
+  padding: 2rem 0;
+  margin-top: 2rem;
+  font-family: "Orbitron", sans-serif;
+  text-align: center; /* Ensure alignment */
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3) !important; /* Maintain shadow */
 }
 
 body.light-theme #footer_title {
-  color: rgb(0, 0, 0);
-  font-family: "Montserrat", sans-serif;
+  color: #ffffff !important; /* Force white text */
 }
 
 /* Title */
@@ -644,4 +656,138 @@ body {
 /* Optional: Add more space in the content area if the search bar is large */
 .content {
   flex: 1; /* This will make sure the content area takes up the remaining space */
+}
+
+/* Table responsiveness */
+.table-container {
+  overflow-x: auto; /* Horizontal scrolling for small screens */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for .table-container */
+.table-container::-webkit-scrollbar {
+  display: none !important;
+}
+
+.table-container table {
+  display: flex; /* Make the table a flex container */
+  flex-direction: column; /* Stack thead and tbody vertically */
+  width: 100%; /* Ensure it takes full width */
+}
+
+.table-container thead {
+  display: block; /* Make thead behave as a block element */
+  flex-shrink: 0; /* Prevent thead from shrinking */
+  width: 100%; /* Ensure thead takes full width */
+}
+
+.table-container tbody {
+  display: block; /* Make tbody behave as a block element */
+  max-height: 350px; /* Fixed height for ~10 rows */
+  overflow-y: auto; /* Enable vertical scrolling for tbody */
+  width: 100%; /* Ensure tbody takes full width */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for tbody (for vertical scrolling) */
+.table-container tbody::-webkit-scrollbar {
+  display: none !important;
+}
+
+.table-container tr {
+  display: table; /* Treat rows as table for width calculation */
+  width: 100%; /* Ensure row takes full width */
+  table-layout: fixed; /* Fix table layout to respect column widths */
+}
+
+.table-container th,
+.table-container td {
+  display: table-cell; /* Treat th and td as table cells */
+  width: 33.33%; /* Distribute width equally for 3 columns */
+  box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* OVERRIDING AND CONSOLIDATING FOOTER STYLES (Place at very end for precedence) */
+.footer {
+  background-color: #000000 !important; /* Force black background */
+  background-image: none !important; /* Absolutely no gradient/image */
+  background: none !important; /* General background reset */
+  color: #ffffff !important; /* Force white text for all direct children */
+  padding: 2rem 0;
+  margin-top: 2rem;
+  font-family: "Orbitron", sans-serif;
+  text-align: center; /* Center footer content */
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3) !important; /* Maintain shadow */
+}
+
+.footer .content,
+.footer .content p,
+.footer .content strong,
+.footer .content a,
+.footer .heading h2,
+.footer .heading p {
+  color: #ffffff !important; /* Ensure all text inside footer is white */
+}
+
+/* Override specific button styles within footer to match black background */
+.footer .button.is-dark.is-rounded {
+  background-color: #333333 !important; /* Darker gray for social media buttons */
+  color: #ffffff !important;
+}
+
+.footer .button.is-dark.is-rounded:hover {
+  background-color: #1abc9c !important; /* Teal on hover */
+}
+
+.footer .button.is-primary.is-rounded,
+.footer .button.is-link.is-rounded {
+  background-color: #1abc9c !important;
+  color: #ffffff !important;
+}
+
+.footer .button.is-primary.is-rounded:hover,
+.footer .button.is-link.is-rounded:hover {
+  background-color: #16a085 !important;
+}
+
+/* Ensure theme-specific footer styles are also explicitly black and white */
+body.dark-theme .footer,
+body.light-theme .footer {
+  background-color: #000000 !important;
+  background-image: none !important;
+  background: none !important;
+  color: #ffffff !important;
+}
+
+body.dark-theme .footer .content,
+body.dark-theme .footer .content p,
+body.dark-theme .footer .content strong,
+body.dark-theme .footer .content a,
+body.dark-theme .footer .heading h2,
+body.dark-theme .footer .heading p,
+body.light-theme .footer .content,
+body.light-theme .footer .content p,
+body.light-theme .footer .content strong,
+body.light-theme .footer .content a,
+body.light-theme .footer .heading h2,
+body.light-theme .footer .heading p {
+  color: #ffffff !important;
+}
+
+/* --- GLOBAL SCROLLBAR HIDING (VERY AGGRESSIVE - place at very end of CSS) --- */
+html,
+body {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.table-container::-webkit-scrollbar,
+.table-container tbody::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important; /* Ensure width is zero for WebKit browsers */
+  height: 0 !important; /* Ensure height is zero for WebKit browsers */
 }
