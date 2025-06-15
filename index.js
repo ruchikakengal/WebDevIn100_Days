@@ -71,7 +71,7 @@ function fillTable() {
     const data = [
         ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
         ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
-        ["Day 3", "Dark/Light Theme","public/dark-light-theme/index.html"],
+        ["Day 3", "Dark/Light Theme","public/dark-light-theme/theme.html"],
         ["Day 4", " ",],
         ["Day 5", " ",],
         ["Day 6", " ",],
