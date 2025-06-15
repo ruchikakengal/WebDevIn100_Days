@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced BMI Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>BMI Calculator</h1>
+
+    <!-- Toggle Unit -->
+    <div class="toggle">
+      <label>
+        <input type="checkbox" id="unitToggle" onchange="toggleUnits()">
+        Use Imperial (ft, lbs)
+      </label>
+    </div>
+
+    <!-- Input Fields -->
+    <div id="metricInputs">
+      <input type="number" id="heightCm" placeholder="Height (cm)">
+      <input type="number" id="weightKg" placeholder="Weight (kg)">
+    </div>
+
+    <div id="imperialInputs" style="display: none;">
+      <input type="number" id="heightFt" placeholder="Height (feet)">
+      <input type="number" id="heightIn" placeholder="Height (inches)">
+      <input type="number" id="weightLb" placeholder="Weight (lbs)">
+    </div>
+
+    <!-- Action Buttons -->
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <button onclick="clearFields()">Clear</button>
+
+    <!-- Results -->
+    <div class="result" id="result"></div>
+
+    <!-- BMI Chart -->
+    <div class="bmi-chart">
+      <h3>BMI Categories</h3>
+      <ul>
+        <li><span>Underweight:</span> BMI &lt; 18.5</li>
+        <li><span>Normal weight:</span> 18.5–24.9</li>
+        <li><span>Overweight:</span> 25–29.9</li>
+        <li><span>Obese:</span> 30+</li>
+      </ul>
+    </div>
+
+    <!-- History -->
+    <h3>History</h3>
+    <ul id="historyList"></ul>
+
+    <!-- Dark Mode -->
+    <div class="toggle">
+      <label>
+        <input type="checkbox" id="darkToggle" onchange="toggleDarkMode()">
+        Dark Mode
+      </label>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

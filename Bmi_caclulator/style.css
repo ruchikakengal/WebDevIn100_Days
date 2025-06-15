@@ -1,0 +1,102 @@
+:root {
+  --bg-color: #f4f6f9;
+  --text-color: #333;
+  --card-color: #fff;
+}
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --card-color: #1e1e1e;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 40px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: var(--card-color);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 350px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  margin: 10px 5px 0 0;
+  padding: 10px 15px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #004999;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.bmi-chart {
+  margin-top: 20px;
+}
+
+.bmi-chart ul {
+  list-style: none;
+  padding: 0;
+}
+
+.bmi-chart li span {
+  font-weight: bold;
+}
+
+
+.toggle {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  font-size: 14px;
+  gap: 10px;
+}
+
+.toggle input[type="checkbox"] {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+}
+
+#historyList {
+  padding: 0;
+  list-style: none;
+}
+
+#historyList li {
+  padding: 4px 0;
+  font-size: 14px;
+  color: var(--text-color);
+}
