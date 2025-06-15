@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", "sans-sarif";
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 10px;
+  z-index: 1000;
+  background-color: white;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.left-section{
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.theme-button {
+  margin-right: 10px;
+  font-family: "Open Sans", "sans-sarif";
+  font-size: 18px;
+  background-color: transparent;
+  border: 1px solid;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.theme-button::hover {
+  box-shadow: 5px 5px 10px;
+}
+.dark {
+  background-color: rgb(31, 30, 31);
+  color: white;
+}
+
+.dark .navbar {
+  background-color: rgb(31, 30, 31);
+}
+
+.dark .theme-button {
+  color: white;
+  border-color: white;
+}
+
+.content {
+  position: absolute;
+  top: 56px;
+  margin: 0 10px;
+}
+
+.card {
+  border: 1px solid hsla(0, 0%, 80%);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  max-width: 250px;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card .profile-pic {
+  height: 150px;
+  width: 200px;
+  max-width: 60%;
+  border-radius: 650px;
+  margin-bottom: 10px;
+}
+
+.card .card-title {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  color: hsl(0, 0%, 20%);
+}
+
+.card .card-content {
+  font-family: Arial, sans-serif;
+  color:hsl(0, 0%, 30%)
+}
+
+.dark .card {
+  box-shadow: 5px 5px 5px hsla(0, 0%, 80%, 0.1);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 80%, 0.2);
+}
+
+.dark .card .card-title{
+  color: hsl(0, 0%, 70%);
+}
+
+.dark .card .card-content {
+  color: hsl(0, 0%, 80%);
+}
+
+.action-area {
+  margin-left: 70px;
+  padding-bottom: 10px;
+}
