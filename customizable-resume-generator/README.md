@@ -61,17 +61,31 @@ customizable-resume-generator/
 
 ---
 
-## 🚧 How to Use
+### 🚀 How to Use
 
-1. Clone the repository:
+Follow these steps to run the project locally:
+
+```bash
+# 1. Clone the repository
 git clone https://github.com/<your-username>/customizable-resume-generator.git
+
+# 2. Navigate into the project directory
 cd customizable-resume-generator
 
-2. Install dependencies:
+# 3. Install dependencies
 npm install
 
-3. Start the development server:
-npm start
+# 4. Start the development server
+npm run dev
+```
+
+Once the development server starts, open your browser and visit:
+
+```
+http://localhost:5173
+```
+
+You’ll see the customizable resume generator live in action.
 
 ---
 
