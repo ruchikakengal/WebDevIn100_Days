@@ -23,31 +23,32 @@ A dynamic and responsive web application that allows users to generate personali
 
 ---
 
-## 📁 Folder Structure
+### 📁 Folder Structure
 
+```
 customizable-resume-generator/
 ├── public/
 │   ├── index.html
 │   └── favicon.ico
 ├── src/
-│   ├── assets/               # Images, icons, fonts, etc.
+│   ├── assets/                # Images, icons, fonts, etc.
 │   ├── components/
-│   │   ├── Form.jsx              # Form for user input
-│   │   ├── ResumePreview.jsx    # Live resume preview
-│   │   ├── ThemeSwitcher.jsx    # Light/dark theme switch
-│   │   └── DownloadButton.jsx   # Trigger PDF download
+│   │   ├── Form.jsx           # Form for user input
+│   │   ├── ResumePreview.jsx  # Real-time preview of resume
+│   │   ├── ThemeSwitcher.jsx  # Switch between light/dark themes
+│   │   └── DownloadButton.jsx # Trigger resume PDF download
 │   ├── styles/
 │   │   ├── App.css
 │   │   └── Resume.css
 │   ├── utils/
-│   │   └── generatePDF.js       # Utility to convert to PDF
+│   │   └── generatePDF.js     # Utility to convert resume to PDF
 │   ├── App.js
 │   └── index.js
 ├── .gitignore
 ├── README.md
 ├── package.json
-├── vite.config.js              # or webpack.config.js if applicable
-
+├── vite.config.js             # or webpack.config.js if applicable
+```
 
 ---
 
