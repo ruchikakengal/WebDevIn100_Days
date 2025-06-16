@@ -74,7 +74,7 @@ function fillTable() {
         ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html",],
         ["Day 4", "Physics Simulation (by Vishisht Dwivedi)", "./public/physics_simulation/index.html"],
         ["Day 5", " ",],
-        ["Day 6", " ",],
+        ["Day 6", " BMI caclulator","Bmi_caclulator\index.html"],
         ["Day 7", " ",],
         ["Day 8", " ",],
         ["Day 9", " ",],

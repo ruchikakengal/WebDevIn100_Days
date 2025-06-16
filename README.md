@@ -22,7 +22,8 @@ Welcome to **100_days_100_web_project** – a challenge-based repository to **le
 | DAY-1 | TODOLIST | [TODOLIST]() | Task manager app |
 | DAY-2 | DIGITAL CLOCK | [DIGITAL CLOCK]() | Real-time digital clock |
 | Day 3  | **Calculator**      | [Link]()       | Basic calculator functionality|
-| ...    | ...                 | ...            | ...                         |
+| Day 4  | BMI caclulator       | [🔗 BMI Calculator](./Bmi_caclulator)
+       | ...                         |
 | Day 100+ | **Coming Soon**  | 🚧             | 🚧                           |
 
 > 📌 Projects will be updated daily. Bookmark this repo and check back often!
