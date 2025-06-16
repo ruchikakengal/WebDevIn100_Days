@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    font-size: 14px;
+}
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 10px;
+    }
+}
+canvas {
+    border: 1px solid black;
+}
+div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    text-align: end;
+}
+div label {
+    font-size: 1rem;
+}
+div input {
+    width: 40%;
+}
+h3 {
+    font-size: 1.5em;
+    margin: 0 0;
+}
+.scores {
+    text-align: start;
+    padding-left: 2%;
+}

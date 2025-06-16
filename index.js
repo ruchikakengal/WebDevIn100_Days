@@ -71,8 +71,15 @@ function fillTable() {
     const data = [
         ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
         ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
-        ["Day 3", "Candy-Crush Game", "/public/candy_crush_game/candycrush.html"],
-        ["Day 4", " ",],
+-<<<<<<< feature/Candy-Crush-Game
+-        ["Day 3", "Candy-Crush Game", "/public/candy_crush_game/candycrush.html"],
+-=======
+-        ["Day 3", "ASCII Art Generator (by Amaan Syed)", " /public/AsciiArtGenerator/index.html",],
+->>>>>>> main
++        ["Day 3", "Candy‑Crush Game", "/public/candy_crush_game/candycrush.html"],
++        ["Day 4", "ASCII Art Generator (by Amaan Syed)", "/public/AsciiArtGenerator/index.html"],
+
+    
         ["Day 5", " ",],
         ["Day 6", " ",],
         ["Day 7", " ",],
@@ -84,7 +91,6 @@ function fillTable() {
         ["Day 13", " ",],
         ["Day 14", " ",],
         ["Day 100", " ",],
-
     ];
 
 
