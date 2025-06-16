@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Name Entry Screen -->
+    <div id="name-screen" class="screen active">
+      <h1>Snake Game</h1>
+      <div class="form-group">
+        <label for="username">Enter Your Name</label>
+        <input type="text" id="username" placeholder="Your name"/>
+        <button id="start-btn">Start Game</button>
+      </div>
+    </div>
+
+    <!-- Countdown Screen -->
+    <div id="countdown-screen" class="screen hidden">
+      <div id="countdown">3</div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+      <div class="game-header">
+        <div id="player-name">Player: Guest</div>
+        <div id="snake-name">Snake: Guest's ex</div>
+        <div id="score">Score: 0</div>
+      </div>
+      <canvas id="game-canvas"></canvas>
+      <div class="game-controls">
+        <div class="controls-row"><button id="up-btn">↑</button></div>
+        <div class="controls-row">
+          <button id="left-btn">←</button>
+          <button id="down-btn">↓</button>
+          <button id="right-btn">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="game-over-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Game Over!</h2>
+        <p id="final-score">Your score: 0</p>
+        <p id="final-message">Better luck next time!</p>
+        <button id="play-again-btn">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
