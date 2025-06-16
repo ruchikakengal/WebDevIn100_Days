@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Badge Generator</title>
+    <link rel="stylesheet" href="badge.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-pattern"></div>
+    <div class="bg-gradient"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Back to Home Button -->
+        <div class="back-to-home">
+            <a href="index.html" class="back-btn" id="backToHome">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
+                </svg>
+            </div>
+            <h1>Dynamic Badge Generator</h1>
+            <p>Create personalized achievement badges instantly with live preview</p>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Form Section -->
+            <div class="form-section">
+                <div class="form-card">
+                    <h2>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        Badge Details
+                    </h2>
+                    
+                    <div class="input-group">
+                        <label for="userName">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Name *
+                        </label>
+                        <input type="text" id="userName" placeholder="Enter your name" value="" maxlength="30" required>
+                        <div class="error-message" id="userNameError"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="achievement">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
+                            </svg>
+                            Achievement *
+                        </label>
+                        <input type="text" id="achievement" placeholder="Enter achievement" value="" maxlength="50" required>
+                        <div class="error-message" id="achievementError"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="badgeDate">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                                <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                                <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Date *
+                        </label>
+                        <input type="date" id="badgeDate" required>
+                        <div class="error-message" id="badgeDateError"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="badgeType">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
+                            </svg>
+                            Badge Type
+                        </label>
+                        <select id="badgeType">
+                            <option value="Achievement">Achievement</option>
+                            <option value="Excellence">Excellence</option>
+                            <option value="Participation">Participation</option>
+                            <option value="Leadership">Leadership</option>
+                            <option value="Innovation">Innovation</option>
+                            <option value="Teamwork">Teamwork</option>
+                            <option value="Recognition">Recognition</option>
+                        </select>
+                        <div class="error-message" id="badgeTypeError"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 1V3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 21V23" stroke="currentColor" stroke-width="2"/>
+                                <path d="M4.22 4.22L5.64 5.64" stroke="currentColor" stroke-width="2"/>
+                                <path d="M18.36 18.36L19.78 19.78" stroke="currentColor" stroke-width="2"/>
+                                <path d="M1 12H3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M21 12H23" stroke="currentColor" stroke-width="2"/>
+                                <path d="M4.22 19.78L5.64 18.36" stroke="currentColor" stroke-width="2"/>
+                                <path d="M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Color Theme
+                        </label>
+                        <div class="color-options">
+                            <input type="radio" id="emerald" name="color" value="emerald" checked>
+                            <label for="emerald" class="color-option emerald"></label>
+                            
+                            <input type="radio" id="blue" name="color" value="blue">
+                            <label for="blue" class="color-option blue"></label>
+                            
+                            <input type="radio" id="purple" name="color" value="purple">
+                            <label for="purple" class="color-option purple"></label>
+                            
+                            <input type="radio" id="orange" name="color" value="orange">
+                            <label for="orange" class="color-option orange"></label>
+                            
+                            <input type="radio" id="pink" name="color" value="pink">
+                            <label for="pink" class="color-option pink"></label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="generate-btn" id="generateBadge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        Generate Badge
+                    </button>
+                </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview-section">
+                <div class="preview-card">
+                    <h2>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 12S4 4 12 4S23 12 23 12S20 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Live Preview
+                    </h2>
+
+                    <!-- Badge Preview Container -->
+                    <div class="badge-container">
+                        <div class="badge emerald" id="badgePreview">
+                            <div class="badge-decoration">
+                                <div class="badge-shine"></div>
+                                <div class="badge-pattern"></div>
+                            </div>
+                            
+                            <div class="badge-content">
+                                <div class="badge-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                                
+                                <div class="badge-name" id="previewName">Your Name</div>
+                                <div class="badge-achievement" id="previewAchievement">Your Achievement</div>
+                                <div class="badge-date" id="previewDate">Select Date</div>
+                                <div class="badge-type" id="previewType">Achievement</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Download Section -->
+                    <div class="download-section">
+                        <button type="button" class="download-btn" id="downloadBadge" disabled>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Download Badge
+                        </button>
+                        <p class="download-info">Generate your badge first to enable download</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span id="toastMessage">Badge generated successfully!</span>
+    </div>
+
+    <!-- Confetti Container -->
+    <div id="confettiContainer"></div>
+
+    <script src="badge.js"></script>
+</body>
+</html>
