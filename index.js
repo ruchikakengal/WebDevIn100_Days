@@ -35,18 +35,19 @@ function updateNavbar() {
     const username = localStorage.getItem('username');
     if (username) {
         buttons.innerHTML = `
-        <button class="button is-success is-dark has-text-weight-bold">
-            Welcome ${username}
-        </button>
-        <button class="button is-danger is-dark" id='logout'>
-            Logout
-        </button>
-        <a class="button is-primary is-dark" href="https://github.com/ruchikakengal">
-            <strong>GitHub</strong>  
-        </a>
-        <a class="button is-primary is-dark" href="contributors/contributor.html">
-            <strong>Contributors</strong>
-        </a>`;
+            <button class="button is-success is-dark has-text-weight-bold">
+                Welcome ${username}
+            </button>
+            <button class="button is-danger is-dark" id='logout'>
+                Logout
+            </button>
+            <a class="button is-primary is-dark" href="https://github.com/ruchikakengal">
+                <strong>GitHub</strong>  
+            </a>
+            <a class="button is-primary is-dark" href="contributors/contributor.html">
+                <strong>Contributors</strong>
+            </a>
+        `;
 
         document.getElementById('logout').addEventListener('click', () => {
             localStorage.removeItem('username');
@@ -54,15 +55,19 @@ function updateNavbar() {
         });
     } else {
         buttons.innerHTML = `
-        <a class="button is-primary is-dark" href="contributors/contributor.html">
-            <strong>Contributors</strong>
-        </a>
-        <a class="button is-primary is-dark" href="https://github.com/ruchikakengal">
-            <strong>GitHub</strong>
-        </a>
-        <a class="button is-success is-light" href="/public/Login.html">
-            <strong>Log in</strong>
-        </a>`;
+            <a class="button is-primary is-dark" href="contributors/contributor.html">
+                <strong>Contributors</strong>
+            </a>
+            <a class="button is-primary is-dark" href="https://github.com/ruchikakengal">
+                <strong>GitHub</strong>
+            </a>
+            <a class="button is-success is-light" href="/public/Login.html">
+                <strong>Log in</strong>
+            </a>
+            <button class='theme-toggle'>🌙</button>
+        `;
+
+        setupThemeToggle(); // Call this after inserting the button
     }
 }
 
@@ -119,29 +124,35 @@ document.addEventListener('DOMContentLoaded', () => {
     fillTable();
 });
 
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-// Check if the user has a saved theme preference
+// Apply theme ASAP
 if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-theme');
-    themeToggle.textContent = '☀️';
+    document.body.classList.add('dark-theme');
 } else {
-    body.classList.add('light-theme');  // Explicitly set light theme
-    themeToggle.textContent = '🌙';
+    document.body.classList.add('light-theme');
 }
 
-// Toggle theme on button click
-themeToggle.addEventListener('click', () => {
-    if (body.classList.contains('dark-theme')) {
-        body.classList.remove('dark-theme');
-        body.classList.add('light-theme');
-        themeToggle.textContent = '🌙';
-        localStorage.setItem('theme', 'light');
-    } else {
-        body.classList.remove('light-theme');
+
+function setupThemeToggle() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+
+    if (!themeToggle) return;
+
+    // Set initial theme
+    if (localStorage.getItem('theme') === 'dark') {
         body.classList.add('dark-theme');
         themeToggle.textContent = '☀️';
-        localStorage.setItem('theme', 'dark');
+    } else {
+        body.classList.add('light-theme');
+        themeToggle.textContent = '🌙';
     }
-});
+
+    // Handle toggle
+    themeToggle.addEventListener('click', () => {
+        const isDark = body.classList.contains('dark-theme');
+        body.classList.toggle('dark-theme', !isDark);
+        body.classList.toggle('light-theme', isDark);
+        themeToggle.textContent = isDark ? '🌙' : '☀️';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+}
