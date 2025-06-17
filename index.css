@@ -245,6 +245,15 @@
   }
 }
 
+.copyright-element {
+  color: black;
+}
+
+.theme-toggle {
+  padding: 5px;
+  border-radius: 20px;
+}
+
 /* Dark theme styles */
 body.dark-theme {
   background: linear-gradient(
@@ -273,6 +282,10 @@ body.dark-theme .navbar-item {
 
 body.dark-theme .navbar-item:hover {
   color: #f39c12; /* Gold accent on hover */
+}
+
+body.dark-theme .has-test-centered{
+  color: #ffffff;
 }
 
 /* Footer */
@@ -373,6 +386,10 @@ body.dark-theme table td a:hover {
   text-decoration: underline; /* Underline effect on hover */
 }
 
+body.dark-theme .copyright-element {
+  color: #ffffff;
+}
+
 /* Buttons */
 body.dark-theme .button {
   background-color: #16a085; /* Soft teal buttons */
@@ -439,6 +456,14 @@ body.light-theme .navbar-item {
 
 body.light-theme .navbar-item:hover {
   color: #f39c12; /* Gold accent on hover */
+}
+
+body.light-theme .subtitle{
+  color: black;
+}
+
+body.light-theme .theme-toggle:hover {
+  background-color: black;
 }
 
 /* Footer */
@@ -563,6 +588,10 @@ body,
 .footer,
 table {
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme .footer-sub-heading {
+  color: black;
 }
 
 /* Scroll to Top Button */
