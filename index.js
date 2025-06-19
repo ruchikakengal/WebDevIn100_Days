@@ -32,36 +32,67 @@ function filterProjects() {
 const buttons = document.getElementsByClassName('buttons')[0]; // Refers to the section on NavBar where buttons will get appended based on login status
 
 function updateNavbar() {
-    const username = localStorage.getItem('username');
-    if (username) {
+    let currentUser = null;
+    try {
+        const raw = localStorage.getItem('currentUser');
+        if (raw && /^[\x20-\x7E]+$/.test(raw)) {
+            currentUser = JSON.parse(raw);
+        }
+    } catch (e) {
+        currentUser = null;
+    }
+    if (currentUser) {
         buttons.innerHTML = `
         <button class="button is-success is-dark has-text-weight-bold">
-            Welcome ${username}
+            <span class="icon">
+                <i class="fas fa-user"></i>
+            </span>
+            <span>Welcome ${currentUser.fullName}</span>
         </button>
         <button class="button is-danger is-dark" id='logout'>
-            Logout
+            <span class="icon">
+                <i class="fas fa-sign-out-alt"></i>
+            </span>
+            <span>Logout</span>
         </button>
         <a class="button is-primary is-dark" href="https://github.com/ruchikakengal">
-            <strong>GitHub</strong>  
+            <span class="icon">
+                <i class="fab fa-github"></i>
+            </span>
+            <span>GitHub</span>
         </a>
         <a class="button is-primary is-dark" href="contributors/contributor.html">
-            <strong>Contributors</strong>
+            <span class="icon">
+                <i class="fas fa-users"></i>
+            </span>
+            <span>Contributors</span>
         </a>`;
 
         document.getElementById('logout').addEventListener('click', () => {
-            localStorage.removeItem('username');
+            localStorage.removeItem('currentUser');
             updateNavbar();
+            // Optional: Redirect to home page after logout
+            window.location.reload();
         });
     } else {
         buttons.innerHTML = `
         <a class="button is-primary is-dark" href="contributors/contributor.html">
-            <strong>Contributors</strong>
+            <span class="icon">
+                <i class="fas fa-users"></i>
+            </span>
+            <span>Contributors</span>
         </a>
         <a class="button is-primary is-dark" href="https://github.com/ruchikakengal">
-            <strong>GitHub</strong>
+            <span class="icon">
+                <i class="fab fa-github"></i>
+            </span>
+            <span>GitHub</span>
         </a>
         <a class="button is-success is-light" href="/public/Login.html">
-            <strong>Log in</strong>
+            <span class="icon">
+                <i class="fas fa-sign-in-alt"></i>
+            </span>
+            <span>Log in</span>
         </a>`;
     }
 }
