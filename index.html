@@ -300,6 +300,59 @@
       </div>
     </footer>
 
+    <!-- FAQ Section -->
+    <section class="faq-section section">
+      <div class="container">
+        <h2 class="title is-3 has-text-centered" id="faq-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              What is "WebDev100_Days"?
+              <span class="faq-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                "WebDev100_Days" is a challenge to build 100 web projects in 100 days, helping you learn HTML, CSS, and JavaScript by building real projects.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Who can participate?
+              <span class="faq-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Anyone interested in web development, from beginners to intermediate learners, can participate and follow along!
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Are the projects open source?
+              <span class="faq-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes! All projects are open source and available on our GitHub repository for you to use, modify, and contribute to.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              How can I contribute?
+              <span class="faq-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                You can contribute by submitting pull requests, reporting issues, or suggesting new project ideas on GitHub.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Top scroll button -->
     <button id="scrollBtn" title="Go to top">
       <i class="fa-solid fa-arrow-up fa-lg"></i>
@@ -332,6 +385,14 @@
           behavior: "smooth",
         });
       };
+
+      // FAQ toggle logic
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const item = this.closest('.faq-item');
+          item.classList.toggle('active');
+        });
+      });
     </script>
   </body>
 </html>
