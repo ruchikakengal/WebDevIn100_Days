@@ -125,6 +125,61 @@
           margin-bottom: 3rem;
         }
       }
+
+      #streak-counter {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
+  border-radius: 25px;
+  padding: 6px 16px 6px 10px;
+  margin-left: 18px;
+  box-shadow: 0 2px 8px rgba(255, 140, 0, 0.15);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  animation: streak-pop 0.7s;
+  transition: box-shadow 0.2s;
+}
+#streak-counter:hover {
+  box-shadow: 0 4px 16px rgba(255, 140, 0, 0.25);
+}
+.streak-fire {
+  color: #ff5722;
+  font-size: 1.5rem;
+  margin-right: 7px;
+  animation: fire-glow 1.2s infinite alternate;
+}
+.streak-days {
+  color: #d35400;
+  font-size: 1.2rem;
+  margin-right: 5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.streak-label {
+  color: #444;
+  font-size: 0.95rem;
+  margin-left: 2px;
+  font-weight: 500;
+}
+@keyframes fire-glow {
+  0% { text-shadow: 0 0 8px #ff9800, 0 0 2px #fff; }
+  100% { text-shadow: 0 0 18px #ff9800, 0 0 8px #fff; }
+}
+@keyframes streak-pop {
+  0% { transform: scale(0.7); opacity: 0; }
+  80% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@media (max-width: 600px) {
+  #streak-counter {
+    font-size: 0.9rem;
+    padding: 4px 10px 4px 6px;
+    margin-left: 8px;
+  }
+  .streak-fire { font-size: 1.1rem; }
+  .streak-days { font-size: 1rem; }
+}
     
   </style>
 
@@ -141,7 +196,15 @@
           <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg" alt="WebDev100_Days logo"/>
           WebDev100_Days
         </a>
-       
+        <!-- Daily Streak Counter Start -->
+        <div id="streak-counter" class="navbar-item">
+          <span class="streak-fire">
+            <i class="fas fa-fire"></i>
+          </span>
+          <span class="streak-days" id="streakDays">0</span>
+          <span class="streak-label">Day Streak</span>
+        </div>
+        <!-- Daily Streak Counter End -->
         <a
           role="button"
           class="navbar-burger"
@@ -333,6 +396,42 @@
         });
       };
     </script>
+    <script>
+  // --- Dynamic Daily Streak Counter ---
+  // Uses localStorage to persist streak across sessions
+
+  function getTodayDateStr() {
+    const now = new Date();
+    return now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+  }
+
+  function updateStreak() {
+    const streakKey = 'webdev100_streak';
+    const lastDateKey = 'webdev100_streak_last';
+    const today = getTodayDateStr();
+    let streak = parseInt(localStorage.getItem(streakKey)) || 0;
+    let lastDate = localStorage.getItem(lastDateKey);
+
+    if (lastDate !== today) {
+      // If lastDate is yesterday, increment streak; else reset
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      const ymd = yesterday.getFullYear() + '-' + (yesterday.getMonth() + 1) + '-' + yesterday.getDate();
+
+      if (lastDate === ymd) {
+        streak += 1;
+      } else {
+        streak = 1;
+      }
+      localStorage.setItem(streakKey, streak);
+      localStorage.setItem(lastDateKey, today);
+    }
+    document.getElementById('streakDays').textContent = streak;
+  }
+
+  // Run on page load
+  updateStreak();
+</script>
   </body>
 </html>
 
