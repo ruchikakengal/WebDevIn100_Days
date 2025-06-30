@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess</title>
+    <meta
+      name="description"
+      content="A beautiful, feature-rich chess game with AI, timer, and scoring system"
+    />
+    <link rel="stylesheet" href="chess.css" />
+  </head>
+  <body>
+    <header>
+      <h1>♛ Chess Game ♛</h1>
+    </header>
+
+    <main class="game-container">
+      <div class="game-controls">
+        <div class="game-info">
+          <div id="current-player" class="current-player">White's Turn</div>
+          <div id="game-status" class="game-status"></div>
+        </div>
+
+        <div class="mode-selector">
+          <h3>Game Mode</h3>
+          <button id="pvp-mode" class="active">Player vs Player</button>
+          <button id="pvc-mode">Player vs Computer</button>
+        </div>
+
+        <div class="score-display">
+          <h3>Score</h3>
+          <div class="score-row">
+            <span>White:</span>
+            <span id="white-score">0</span>
+          </div>
+          <div class="score-row">
+            <span>Black:</span>
+            <span id="black-score">0</span>
+          </div>
+        </div>
+
+        <div class="timer-controls">
+          <h3>Timer Settings</h3>
+          <button id="timer-toggle" class="timer-toggle">Enable Timer</button>
+          <div id="timer-settings" class="timer-settings">
+            <label>Minutes per move: </label>
+            <input
+              type="number"
+              id="timer-minutes"
+              class="timer-input"
+              value="5"
+              min="1"
+              max="60"
+            />
+            <label>Seconds: </label>
+            <input
+              type="number"
+              id="timer-seconds"
+              class="timer-input"
+              value="0"
+              min="0"
+              max="59"
+            />
+          </div>
+        </div>
+
+        <div id="player-timers" class="player-timers">
+          <div id="white-timer" class="timer-display active">
+            <div>White</div>
+            <div id="white-time">5:00</div>
+          </div>
+          <div id="black-timer" class="timer-display">
+            <div>Black</div>
+            <div id="black-time">5:00</div>
+          </div>
+        </div>
+
+        <button id="new-game" class="new-game-btn">New Game</button>
+      </div>
+
+      <div class="board-container">
+        <div class="board-with-coordinates">
+          <div id="chess-board" class="board"></div>
+          <!-- Rank coordinates (1-8) -->
+          <div
+            class="coordinates rank-coords"
+            style="top: calc(30px + 0 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            8
+          </div>
+          <div
+            class="coordinates rank-coords"
+            style="top: calc(30px + 1 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            7
+          </div>
+          <div
+            class="coordinates rank-coords"
+            style="top: calc(30px + 2 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            6
+          </div>
+          <div
+            class="coordinates rank-coords"
+            style="top: calc(30px + 3 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            5
+          </div>
+          <div
+            class="coordinates rank-coords"
+            style="top: calc(30px + 4 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            4
+          </div>
+          <div
+            class="coordinates rank-coords"
+            style="top: calc(30px + 5 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            3
+          </div>
+          <div
+            class="coordinates rank-coords"
+            style="top: calc(30px + 6 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            2
+          </div>
+          <div
+            class="coordinates rank-coords"
+            style="top: calc(30px + 7 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            1
+          </div>
+
+          <!-- File coordinates (a-h) -->
+          <div
+            class="coordinates file-coords"
+            style="left: calc(30px + 0 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            a
+          </div>
+          <div
+            class="coordinates file-coords"
+            style="left: calc(30px + 1 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            b
+          </div>
+          <div
+            class="coordinates file-coords"
+            style="left: calc(30px + 2 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            c
+          </div>
+          <div
+            class="coordinates file-coords"
+            style="left: calc(30px + 3 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            d
+          </div>
+          <div
+            class="coordinates file-coords"
+            style="left: calc(30px + 4 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            e
+          </div>
+          <div
+            class="coordinates file-coords"
+            style="left: calc(30px + 5 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            f
+          </div>
+          <div
+            class="coordinates file-coords"
+            style="left: calc(30px + 6 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            g
+          </div>
+          <div
+            class="coordinates file-coords"
+            style="left: calc(30px + 7 * (min(calc(100vh - 160px), 480px) / 8))"
+          >
+            h
+          </div>
+        </div>
+      </div>
+
+      <div class="captured-pieces-right">
+        <div class="captured-pieces">
+          <h3>Captured Pieces</h3>
+          <div>
+            <h4>White Captured:</h4>
+            <div id="white-captured" class="captured"></div>
+          </div>
+          <div>
+            <h4>Black Captured:</h4>
+            <div id="black-captured" class="captured"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="chess.js"></script>
+  </body>
+</html>
