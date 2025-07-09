@@ -83,6 +83,7 @@ function fillTable() {
         ["Day 12", " ",],
         ["Day 13", " ",],
         ["Day 14", " ",],
+        ["Day 64", " URL Shortner (by Antik Mondal)","https://antik-007.github.io/URL-Shortener/"],
         ["Day 100", " ",],
     ];
 
