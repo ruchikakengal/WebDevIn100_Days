@@ -71,9 +71,9 @@ function fillTable() {
     const data = [
         ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
         ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
-        ["Day 3", "ASCII Art Generator (by Amaan Syed)", " /public/AsciiArtGenerator/index.html",],
-        ["Day 4", "Simon Says(by Abhirup Nandi)","https://abhirup-261004.github.io/Simon-Says/"],
-        ["Day 5", " ",],
+        ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html",],
+        ["Day 4", "Physics Simulation (by Vishisht Dwivedi)", "./public/physics_simulation/index.html"],
+        ["Day 5","Quote Generator (by Sania Rajput)", "./public/QuoteGenerator/index.html"]
         ["Day 6", " ",],
         ["Day 7", " ",],
         ["Day 8", " ",],
@@ -83,6 +83,7 @@ function fillTable() {
         ["Day 12", " ",],
         ["Day 13", " ",],
         ["Day 14", " ",],
+        ["Day 15", "Simon Says(by Abhirup Nandi)","https://abhirup-261004.github.io/Simon-Says/"],
         ["Day 100", " ",],
     ];
 
