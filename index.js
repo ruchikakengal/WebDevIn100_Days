@@ -110,7 +110,7 @@ function fillTable() {
         ["Day 7", " ",],
         ["Day 8", " ",],
         ["Day 9", " ",],
-        ["Day 10", " ",],
+        ["Day 10", "Candy Crush","public/candycrush/candy_crush.html"],
         ["Day 11", " ",],
         ["Day 12", " ",],
         ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain) ","./public/Coin_Flip/index.html"],
