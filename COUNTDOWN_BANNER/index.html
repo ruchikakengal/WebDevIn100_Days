@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown Banner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <!-- Input and button -->
+    <div class="input-wrapper">
+      <label for="dateInput">🗓️ Choose your event date and time:</label>
+      <input type="datetime-local" id="dateInput" />
+      <button id="setTimerBtn">Set Timer</button>
+    </div>
+
+    <!-- Countdown banner -->
+    <div class="banner">
+      <h1>🚀 Launching Soon!</h1>
+      <p class="countdown" id="countdown">0 Days, 0 Hours, 0 Minutes, 0 Seconds</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
