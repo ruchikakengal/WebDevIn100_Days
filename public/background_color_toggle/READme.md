@@ -102,6 +102,8 @@ Special thanks to Ruchika Kengal for the 100 Days of Web Projects initiative
 
 Made with ❤️ by Rajveer Bishnoi | #100DaysOfCode | SSOC'25 Contributor
 
+---
+
 ![Rainbow Color Swirl](https://gifdb.com/images/high/rainbow-color-splash-trippy-animation-qf3s3v04tsnwxh1z.gif)
 
 
