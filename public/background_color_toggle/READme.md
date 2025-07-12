@@ -68,6 +68,12 @@ open index.html
 
 ---
 
+## 📸 Screenshot
+
+![Color Flipper Screenshot](image.png)
+
+---
+
 🧪 Example Output
 
 background color : #F1F5F8
@@ -105,6 +111,8 @@ Made with ❤️ by Rajveer Bishnoi | #100DaysOfCode | SSOC'25 Contributor
 ---
 
 ![Rainbow Color Swirl](https://gifdb.com/images/high/rainbow-color-splash-trippy-animation-qf3s3v04tsnwxh1z.gif)
+
+
 
 
 
