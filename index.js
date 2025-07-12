@@ -113,9 +113,11 @@ function fillTable() {
         ["Day 10", " ",],
         ["Day 11", " ",],
         ["Day 12", " ",],
-        ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain) ","./public/Coin_Flip/index.html"],
+        ["Day 13", ""],
         ["Day 14", " ",],
         ["Day 100", " ",],
+        ["Day 191","Digital-Resume-Builder(by Annesha Bhakta)","https://github.com/Anneshabhakta2005/Resume-Builder"],
+
 
     ];
 
