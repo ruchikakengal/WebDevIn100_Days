@@ -125,6 +125,21 @@
           margin-bottom: 3rem;
         }
       }
+
+      #streak-counter {
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+        background: #fff3e0;
+        border-radius: 20px;
+        padding: 4px 10px;
+        margin-left: 10px;
+        box-shadow: 0 2px 4px rgba(255,140,0,0.08);
+      }
+      #streak-counter i {
+        margin-right: 4px;
+        color: orange;
+      }
     
   </style>
 
@@ -141,7 +156,11 @@
           <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg" alt="WebDev100_Days logo"/>
           WebDev100_Days
         </a>
-       
+        <!-- Streak Counter Icon -->
+        <span id="streak-counter" class="navbar-item" title="Your Streak" style="margin-left:10px;">
+          <i class="fas fa-fire" style="color:orange;"></i>
+          <span id="streak-count" style="font-weight:bold; margin-left:4px;">0</span>
+        </span>
         <a
           role="button"
           class="navbar-burger"
@@ -331,6 +350,50 @@
           top: 0,
           behavior: "smooth",
         });
+      };
+
+      // Example: Call this after user logs in
+      function updateStreakCounter() {
+        // Get today's date as YYYY-MM-DD
+        const today = new Date().toISOString().slice(0, 10);
+        let visitedDays = JSON.parse(localStorage.getItem('visitedDays') || '[]');
+        // Add today if not already present
+        if (!visitedDays.includes(today)) {
+          visitedDays.push(today);
+          localStorage.setItem('visitedDays', JSON.stringify(visitedDays));
+        }
+        // Sort and check for streak
+        visitedDays.sort();
+        let streak = 1;
+        for (let i = visitedDays.length - 2; i >= 0; i--) {
+          const prev = new Date(visitedDays[i]);
+          const next = new Date(visitedDays[i + 1]);
+          // Check if consecutive days
+          if ((next - prev) === 86400000) {
+            streak++;
+          } else {
+            streak = 1; // Reset streak if gap
+          }
+        }
+        // If today is not consecutive, streak is 1
+        if (visitedDays.length > 1) {
+          const last = new Date(visitedDays[visitedDays.length - 1]);
+          const secondLast = new Date(visitedDays[visitedDays.length - 2]);
+          if ((last - secondLast) !== 86400000) streak = 1;
+        }
+        document.getElementById('streak-count').textContent = streak;
+      }
+
+      // Example login simulation
+      function onLogin() {
+        updateStreakCounter();
+        // ...other login logic...
+      }
+
+      // For demo: call onLogin when page loads (replace with real login event)
+      window.onload = function() {
+        // Only update streak after login
+        // onLogin(); // Uncomment this after integrating with your login system
       };
     </script>
   </body>
