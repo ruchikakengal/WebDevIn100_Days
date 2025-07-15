@@ -1,0 +1,479 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  background-color: rgb(62, 126, 126);
+  padding: clamp(10px, 2vw, 20px);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+/* Left - Logo */
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  white-space: nowrap;
+   font-family: "Segoe UI", "Roboto", "Inter", sans-serif;
+}
+
+/* Center - Navlinks */
+.navlinks {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: center;
+}
+
+.navlinks li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;           /* Slightly bolder */
+  font-size: 1.1rem;          /* Make text a bit larger */
+  letter-spacing: 0.5px;      /* Slight spacing between letters */
+  transition: color 0.3s ease;
+   font-family: "Segoe UI", "Roboto", "Inter", sans-serif;
+}
+
+.navlinks li a:hover {
+  color: #ffd700;
+}
+
+/* Right - Theme Toggle */
+.nav-actions {
+  margin-left: auto;
+}
+
+#theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navlinks {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .nav-actions {
+    align-self: flex-end;
+  }
+}
+.editable-text {
+  min-height: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  overflow-y: auto;
+}
+.editable-text:empty:before {
+  content: attr(placeholder);
+  color: #aaa;
+}
+
+.main-section {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  min-height: 80vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.text-input-area h2,
+.text-summary h3,
+.text-preview h3 {
+  color: #3e7e7e;
+  margin-bottom: 1rem;
+}
+
+#text-input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: 'Courier New', monospace;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.button-group {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.button-group button {
+  background-color: #3e7e7e;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.button-group button:hover {
+  background-color: #295f5f;
+}
+
+.text-summary,
+.text-preview {
+  margin-top: 2rem;
+  background-color: #fff;
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.text-summary p,
+.text-preview p {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+.search-section {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.search-section input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.search-section button {
+  padding: 10px;
+  background-color: #3e7e7e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Smooth transitions */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Default Light Theme */
+body {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+  background-color: #3e7e7e;
+  color: white;
+}
+
+.editable-text {
+  min-height: 200px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background: white;
+  color: #000;
+}
+.bold-text {
+  font-weight: bold;
+}
+.italic-text {
+  font-style: italic;
+}
+.underline-text{
+  text-decoration: underline;
+}
+
+button{
+  background-color: #5d9b9b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #417c7c;
+}
+
+.text-summary,
+.text-preview,
+.search-section {
+  background-color: #f2f2f2;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* DARK MODE THEME */
+body.dark-mode {
+  background-color: #11185d;
+  color: #e0e0e0;
+}
+.navbar.dark-mode {
+  background: linear-gradient(to right, #2c0c47, #4a00e0, #2c0c47);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background 0.5s ease;
+}
+body.dark-mode .main-section {
+  background-color: #121022; /* deep bluish black */
+  color: #e0e0e0;            /* soft white for text */
+}
+body.dark-mode .editable-text {
+  background-color: #111010;
+  color: #000000;
+}
+
+body.dark-mode button
+ {
+  background: linear-gradient(to right, #2c0c47, #4f21a9, #2c0c47);
+  color: #ffffff;
+}
+body.dark-mode input{
+    background: linear-gradient(to right, #333334, #343439, #1d1e1e);
+  
+}
+body.dark-mode .text-summary,
+body.dark-mode .text-preview,
+body.dark-mode .search-section {
+  background-color: #121022;
+  box-shadow: 0 0 8px rgba(152, 162, 160, 0.3);
+}
+body.dark-mode .text-summary,
+body.dark-mode .text-preview 
+{
+  /* background-color: #36425b;  */
+  background: linear-gradient(to right, #333334, #242425, #1d1e1e);
+  color: #d1ecf1;            /* soft blue text */
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(152, 162, 160, 0.3);
+  transition: all 0.3s ease;
+  
+  border-radius: 6px;
+}
+
+/* Headings inside summary & preview */
+body.dark-mode .text-summary h3,
+body.dark-mode .text-preview h3 {
+  color: #ffffff; /* minty green-blue */
+}
+
+/* For better contrast in details inside them */
+body.dark-mode .text-summary p,
+body.dark-mode .text-preview p {
+  color: #ffffff;
+}
+body.dark-mode #text-input {
+  background: linear-gradient(to right, #333334, #242425, #282929);  /* Deep dark bluish */
+  color: #e0f7fa;             /* Light teal/white text */
+  /* border: 1px solid #00ffc8;  Bright minty border */
+  box-shadow: 0 0 8px rgba(124, 130, 128, 0.3);
+  border-radius: 6px;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+body.dark-mode .text-input-area h2 {
+  color: #ffffff; /* Light teal-ish color */
+}
+body.dark-mode .search-section{
+    background-color: #121022;
+}
+body.dark-mode #search-word {
+  background-color: #36425b;
+  color: #ffffff;
+  
+}
+
+/* Placeholder text color in dark mode */
+body.dark-mode #search-word::placeholder {
+  color: #ffffff;
+  opacity: 0.8;
+}
+body.dark-mode button:hover {
+  background-color: #230f39; /* dark purple shade on hover */
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(95, 45, 130, 0.4); /* optional glow effect */
+}
+body.dark-mode .navlinks li a:hover {
+  color: #929191; 
+  border-radius: 5px;
+}
+.footer {
+ background-color:  #3e7e7e;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-content p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+
+.footer .social-links {
+  margin: 10px 0;
+}
+
+.footer .social-links a {
+  margin: 0 10px;
+  font-size: 1.4rem;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.footer .social-links a:hover {
+  color: #ffd700; /* golden on hover */
+}
+/* DARK MODE Footer */
+body.dark-mode .footer {
+  background: linear-gradient(to right, #2c0c47, #4a00e0, #2c0c47);
+  color: #ffffff;
+}
+
+body.dark-mode .footer .social-links a {
+  color: #ffffff;
+}
+
+body.dark-mode .footer .social-links a:hover {
+  color: #514e56; 
+}
+#about h2 {
+  color:#3e7e7e;
+}
+
+.about-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(to right, #a8c4c3, #c8e3dc); /* soft gradient */
+  color: #222;
+  border-radius: 16px;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
+
+.dark-mode .about-section {
+  background: linear-gradient(to right, #2d1b3a, #1e253f); /* dark purple/blue shade */
+  color: #fff;
+}
+.dark-mode .about-section{
+   background-color: #121022;
+}
+/* ===== LIGHT MODE ===== */
+.feedback-section {
+   background: linear-gradient(to right, #a8c4c3, #c8e3dc); /* soft gradient */
+ 
+  color: #3e7e7e;
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feedback-section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+#feedback-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  border: none;
+  resize: vertical;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  color: #000;
+  transition: background 0.3s, color 0.3s;
+}
+
+#feedback-form textarea::placeholder {
+  color: #666;
+}
+
+#feedback-form button {
+  padding: 0.6rem 1.2rem;
+background-color: #5d9b9b;  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#feedback-form button:hover {
+  background-color: #4b0082;
+}
+
+/* ===== DARK MODE ===== */
+body.dark-mode .feedback-section {
+  background: linear-gradient(135deg, #1f0036, #190042); /* deep purple gradient */
+  color: #eee;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode #feedback-form textarea {
+  background-color: #222;
+  color: #eee;
+  border: 1px solid #444;
+}
+
+body.dark-mode #feedback-form textarea::placeholder {
+  color: #aaa;
+}
+
+body.dark-mode #feedback-form button {
+  background-color: #9c27b0;
+}
+
+body.dark-mode #feedback-form button:hover {
+  background-color: #6a1b9a;
+}
