@@ -115,6 +115,7 @@ function fillTable() {
         ["Day 12", " ",],
         ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain) ","./public/Coin_Flip/index.html"],
         ["Day 14", " ",],
+        ["Day 19", "Currency Converter (by Maulik Gupta)", "./Currency_Converter/index.html"],
         ["Day 100", " ",],
 
     ];
