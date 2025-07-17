@@ -100,7 +100,6 @@ function updateNavbar() {
 // Populate the table with project data
 function fillTable() {
     const data = [
-
         ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
         ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
         ["Day 3", "ASCII Art Generator (by Amaan Syed)", " /public/AsciiArtGenerator/index.html"],
@@ -115,6 +114,8 @@ function fillTable() {
         ["Day 12", " ",],
         ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain) ","./public/Coin_Flip/index.html"],
         ["Day 14", " ",],
+        ["Day 19", "Currency Converter (by Maulik Gupta)", "./Currency_Converter/index.html"],
+        ["Day 20", "Random User Generator (by Maulik Gupta)", "./Random_User_Generator/index.html"],
         ["Day 100", " ",],
 
     ];
