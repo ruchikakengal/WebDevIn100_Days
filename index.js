@@ -108,7 +108,7 @@ function fillTable() {
         ["Day 5", "Physics Simulation (by Vishisht Dwivedi)", " /public/physics_simulation/index.html"],
         ["Day 6", "Quote Generator (by Sania Rajput)", " /public/QuoteGenerator/index.html"],
         ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", " /public/CharacterWordCounter/index.html"],
-        ["Day 8", " ",],
+        ["Day 8", "Dice Roll Simulator"," /public/DICEROLLSIMULATOR/index.html"],
         ["Day 9", " ",],
         ["Day 10", " ",],
         ["Day 11", " ",],
