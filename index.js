@@ -104,10 +104,10 @@ function fillTable() {
         ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
         ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
         ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html",],
-        ["Day 4", "Physics Simulation (by Vishisht Dwivedi)", "./public/physics_simulation/index.html"],
-        ["Day 5","Quote Generator (by Sania Rajput)", "./public/QuoteGenerator/index.html"],
-        ["Day 6", " ",],
-        ["Day 7", " ",],
+        ["Day 4", "Password Strength Visualizer (by Adwitya)", " /public/password_visualizer/index.html"],
+        ["Day 5", "Physics Simulation (by Vishisht Dwivedi)", " /public/physics_simulation/index.html"],
+        ["Day 6", "Quote Generator (by Sania Rajput)", " /public/QuoteGenerator/index.html"],
+        ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", " /public/CharacterWordCounter/index.html"],
         ["Day 8", " ",],
         ["Day 9", " ",],
         ["Day 10", " ",],
@@ -115,6 +115,7 @@ function fillTable() {
         ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",],
         ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain) ","./public/Coin_Flip/index.html"],
         ["Day 14", " ",],
+        ["Day 17", "E- waste Management Hub(by Abhirup Nandi)","https://e-waste-management-hub.netlify.app/"],
         ["Day 100", " ",],
 
     ];

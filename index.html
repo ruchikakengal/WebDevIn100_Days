@@ -141,22 +141,22 @@
           <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg" alt="WebDev100_Days logo"/>
           WebDev100_Days
         </a>
-       
+        <!-- Bulma burger toggler -->
         <a
           role="button"
           class="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
-          data-target="navbarBasicExample"
+          data-target="navbar-menu"
+          id="navbarBurger"
         >
-          <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
 
-      <div class="navbar-menu is-active" id="navbar-menu">
+      <div class="navbar-menu" id="navbar-menu">
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
@@ -332,6 +332,16 @@
           behavior: "smooth",
         });
       };
+
+      // Bulma navbar burger toggler logic
+      document.addEventListener('DOMContentLoaded', function () {
+        var burger = document.getElementById('navbarBurger');
+        var menu = document.getElementById('navbar-menu');
+        burger.addEventListener('click', function () {
+          burger.classList.toggle('is-active');
+          menu.classList.toggle('is-active');
+        });
+      });
     </script>
   </body>
 </html>
