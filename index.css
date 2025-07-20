@@ -245,6 +245,22 @@
   }
 }
 
+/* Bulma navbar mobile menu fix */
+@media (max-width: 1024px) {
+  .navbar-menu {
+    display: none;
+  }
+  .navbar-menu.is-active {
+    display: block;
+    background: #1abc9c;
+    position: absolute;
+    top: 56px; /* height of navbar */
+    left: 0;
+    width: 100%;
+    z-index: 999;
+  }
+}
+
 /* Dark theme styles */
 body.dark-theme {
   background: linear-gradient(
@@ -645,3 +661,5 @@ body {
 .content {
   flex: 1; /* This will make sure the content area takes up the remaining space */
 }
+
+
