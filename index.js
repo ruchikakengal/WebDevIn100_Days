@@ -100,31 +100,32 @@ function updateNavbar() {
 // Populate the table with project data
 function fillTable() {
     const data = [
-function fillTable() {
-  const data = [
-    ["Day 1", "To-Do List", "/public/TO_DO_LIST/todolist.html"],
-    ["Day 2", "Digital Clock", "/public/digital_clock/digitalclock.html"],
-    ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html"],
-    ["Day 4", "Password Strength Visualizer (by Adwitya)", "/public/password_visualizer/index.html"],
-    ["Day 5", "Physics Simulation (by Vishisht Dwivedi)", "/public/physics_simulation/index.html"],
-    ["Day 6", "Quote Generator (by Sania Rajput)", "/public/QuoteGenerator/index.html"],
-    ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", "/public/CharacterWordCounter/index.html"],
-    ["Day 8", "Dice Roll Simulator", "/public/DICEROLLSIMULATOR/index.html"],
-    ["Day 9", "Guess My Number (by Pahima R Uchil)", "./public/Guess_My_Number/index.html"],
-    ["Day 10", " ",],
-    ["Day 11", " ",],
-    ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/"],
-    ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain)", "./public/Coin_Flip/index.html"],
-    ["Day 14", " ",],
-    ["Day 17", "E- waste Management Hub(by Abhirup Nandi)", "https://e-waste-management-hub.netlify.app/"],
-    ["Day 64", "URL Shortner", "https://github.com/ANTIK-007/URL-Shortener"],
-    ["Day 72", "Interactive Portfolio (by Priya Katariya)", "/public/portfolio/index.html"],
-    ["Day 100", " ",],
-    ["Day 88", "Digital-Resume-Builder(by Annesha Bhakta)", "https://github.com/Anneshabhakta2005/Resume-Builder"]
-  ];
 
-  
-}
+        ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
+        ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
+        ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html",],
+        ["Day 4", "Password Strength Visualizer (by Adwitya)", " /public/password_visualizer/index.html"],
+        ["Day 5", "Physics Simulation (by Vishisht Dwivedi)", " /public/physics_simulation/index.html"],
+        ["Day 6", "Quote Generator (by Sania Rajput)", " /public/QuoteGenerator/index.html"],
+        ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", " /public/CharacterWordCounter/index.html"],
+        ["Day 8", "Dice Roll Simulator"," /public/DICEROLLSIMULATOR/index.html"],
+        ["Day 9", "Guess My Number (by Pahima R Uchil)", "./public/Guess_My_Number/index.html"],
+        ["Day 10", " ",],
+        ["Day 11", " ",],
+        ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
+        ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain) ","./public/Coin_Flip/index.html"],
+        ["Day 14", " ",],
+
+        ["Day 64", "URL Shortner","https://github.com/ANTIK-007/URL-Shortener"],
+
+
+        ["Day 17", "E- waste Management Hub(by Abhirup Nandi)","https://e-waste-management-hub.netlify.app/"],
+["Day 72","Interactive Portfolio (by Priya Katariya)","/public/portfolio/index.html"],
+
+       ["Day 100", "Digital-Resume-Builder(by Annesha Bhakta)", "https://github.com/Anneshabhakta2005/Resume-Builder"]
+    ];
+
+
 
 
 
