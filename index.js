@@ -107,15 +107,7 @@ function fillTable() {
         ["Day 4", "Password Strength Visualizer (by Adwitya)", " /public/password_visualizer/index.html"],
         ["Day 5", "Physics Simulation (by Vishisht Dwivedi)", " /public/physics_simulation/index.html"],
         ["Day 6", "Quote Generator (by Sania Rajput)", " /public/QuoteGenerator/index.html"],
-        ["Day 7", " ",],
-        ["Day 8", " ",],
-        ["Day 9", " ",],
-        ["Day 10", " ",],
-        ["Day 11", " ",],
-        ["Day 12", " ",],
-        ["Day 13", ""],
-        ["Day 14", " ",],
-        ["Day 100", " ",],
+     
         ["Day 191","Digital-Resume-Builder(by Annesha Bhakta)","https://github.com/Anneshabhakta2005/Resume-Builder"],
 
 
