@@ -122,6 +122,7 @@ function fillTable() {
         ["Day 20", "Random User Generator (by Maulik Gupta)", "./Random_User_Generator/index.html"],
         ["Day 21", "Image Search App (by Maulik Gupta)", "./Image_Search_App/index.html"],
         ["Day 72","Interactive Portfolio (by Priya Katariya)","/public/portfolio/index.html"],
+        ["Day 89", "Etch-a-Sketch (by Ashutosh Vishwakarma)","./Etch-a-Sketch/index.html"],
         ["Day 100", "Candy Crush","public/candycrush/candy_crush.html"],
 
     ];
