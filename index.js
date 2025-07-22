@@ -100,7 +100,6 @@ function updateNavbar() {
 // Populate the table with project data
 function fillTable() {
     const data = [
-
         ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
         ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
         ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html",],
@@ -114,7 +113,7 @@ function fillTable() {
         ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", " /public/CharacterWordCounter/index.html"],
         ["Day 8", "Dice Roll Simulator"," /public/DICEROLLSIMULATOR/index.html"],
         ["Day 9", "Guess My Number (by Pahima R Uchil)", "./public/Guess_My_Number/index.html"],
-        ["Day 10", " ",],
+        ["Day 10", "Neon Brick Breaker (by Sejal Kamble) ", "./public/Neon_Brick_Breaker/index.html" ],
         ["Day 11", " ",],
         ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
         ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
@@ -124,6 +123,7 @@ function fillTable() {
         ["Day 64", "URL Shortner","https://github.com/ANTIK-007/URL-Shortener"],
         ["Day 17", "E- waste Management Hub(by Abhirup Nandi)","https://e-waste-management-hub.netlify.app/"],
         ["Day 19", "Currency Converter (by Maulik Gupta)", "./Currency_Converter/index.html"],
+        ["Day 20", "Random User Generator (by Maulik Gupta)", "./Random_User_Generator/index.html"],
         ["Day 72","Interactive Portfolio (by Priya Katariya)","/public/portfolio/index.html"],
         ["Day 100", "Candy Crush","public/candycrush/candy_crush.html"],
 

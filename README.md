@@ -2,6 +2,8 @@
 
 Welcome to **100_days_100_web_project** – a challenge-based repository to **learn** and **practice** web development by building **100+ mini projects** using **HTML, CSS, and JavaScript**. This journey goes from **basic** to **intermediate** level with fun and interactive web applications!
 
+This Project Under in SSOC2025 , GSSOC2025 
+
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&pause=1000&color=6AE3F9&center=true&vCenter=true&width=1000&lines=Learn+By+Building!+💻;100+Web+Projects+Challenge🔥;HTML+CSS+JS+and+More!)
 
 ---
