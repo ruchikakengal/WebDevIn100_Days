@@ -114,7 +114,7 @@ function fillTable() {
         ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", " /public/CharacterWordCounter/index.html"],
         ["Day 8", "Dice Roll Simulator"," /public/DICEROLLSIMULATOR/index.html"],
         ["Day 9", "Guess My Number (by Pahima R Uchil)", "./public/Guess_My_Number/index.html"],
-        ["Day 10", " ",],
+        ["Day 10", "Textutils- Atext  Analyser Tool ","https://textutils-liard-nu.vercel.app/"],
         ["Day 11", " ",],
         ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
         ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
