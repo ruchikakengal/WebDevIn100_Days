@@ -5,13 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebDev100_Days</title>
     <link rel="stylesheet" href="home.css" />
-    <link rel="icon" href="public/favv.png" type="image/x-icon" />
+    <!-- Favicon Setup -->
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+<link rel="manifest" href="./site.webmanifest">
+
     <meta content="100 Days, 100 Web Projects" property="og:title" />
     <meta
       content="A collection of 100 web projects from basic to intermediate using html css and js."
       property="og:description"
     />
     <meta content="/" property="og:url" />
+    <meta name="description" content="This is Day 01 of 100 Days Web Dev: a beautiful button hover animation using HTML and CSS.">
+
+    <meta name="description" content="100 Days of Web Development — A journey through 100 fun and interactive HTML, CSS, and JS projects.">
+    <meta property="og:title" content="100 Days Web Projects | Learn Web Dev By Building">
+    <meta property="og:description" content="Build 100 unique frontend projects while learning HTML, CSS, and JavaScript. Ideal for beginners to intermediate developers.">
+    <meta property="og:image" content="https://your-site.com/images/banner.png">
+    <meta property="og:url" content="https://your-site.com">
+
+
     <meta content="https://i.imgur.com/3cztaa9.png" property="og:image" />
     <meta content="#c2a3d6" data-react-helmet="true" name="theme-color" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -124,25 +138,25 @@
     >
       <div class="navbar-brand">
         <a class="navbar-item has-text-weight-bold" href="index.html">
-          <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg"/>
+          <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg" alt="WebDev100_Days logo"/>
           WebDev100_Days
         </a>
-       
+        <!-- Bulma burger toggler -->
         <a
           role="button"
           class="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
-          data-target="navbarBasicExample"
+          data-target="navbar-menu"
+          id="navbarBurger"
         >
-          <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
 
-      <div class="navbar-menu is-active" id="navbar-menu">
+      <div class="navbar-menu" id="navbar-menu">
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
@@ -206,29 +220,29 @@
         <div class="columns is-vcentered">
           <!-- Left Side -->
           <div class="column has-text-left">
-            <div class="heading">
-              <h2 class="is-size-4">About</h2>
-              <p>
+            <div class="heading" style="color: black;">
+              <h2 class="is-size-4" style="color: black;">About</h2>
+              <p style="color: black;">
                 This repository contains 100 web projects from basic to
                 intermediate using HTML, CSS, and JS.
               </p>
-              <p>
-                <strong>
+              <p style="color: black;">
+                <strong style="color: black;">
                   ©
                   <script>
                     document.write(new Date().getFullYear());
                   </script>
                   WebDev100_Days
                 </strong>
-                by <a href="#">Ruchika Kengal</a> and <a href="#">Contributors</a>.
+                by <a href="#" style="color: #1abc9c;">Ruchika Kengal</a> and <a href="#" style="color: #1abc9c;">Contributors</a>.
               </p>
             </div>
           </div>
 
           <!-- Right Side -->
           <div class="column ms-4">
-            <div class="heading">
-              <h2 class="is-size-4">Important Links</h2>
+            <div class="heading" style="color: black;">
+              <h2 class="is-size-4" style="color: black;">Important Links</h2>
               <!-- Social Media Icons -->
               <div class="buttons">
                 <a
@@ -253,7 +267,7 @@
                 </a>
                 <a
                   class="button is-dark is-rounded"
-                  href="www.linkedin.com/in/ruchika-kengal-8085092b7"
+                  href="https://www.linkedin.com/in/ruchika-kengal-8085092b7"
                   target="_blank"
                   aria-label="LinkedIn"
                 >
@@ -318,6 +332,16 @@
           behavior: "smooth",
         });
       };
+
+      // Bulma navbar burger toggler logic
+      document.addEventListener('DOMContentLoaded', function () {
+        var burger = document.getElementById('navbarBurger');
+        var menu = document.getElementById('navbar-menu');
+        burger.addEventListener('click', function () {
+          burger.classList.toggle('is-active');
+          menu.classList.toggle('is-active');
+        });
+      });
     </script>
   </body>
 </html>
