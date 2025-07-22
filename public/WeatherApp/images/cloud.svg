@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background sun (partially visible) -->
+  <circle cx="70" cy="70" r="35" fill="#FFD700" opacity="0.5" />
+  
+  <!-- Main cloud -->
+  <path d="M45,110 C45,85 65,65 90,65 C110,65 125,75 135,90 C140,85 150,80 160,80 C180,80 195,95 195,115 C195,135 180,150 160,150 L65,150 C55,150 45,140 45,130 Z" 
+        fill="#FFFFFF" stroke="#E6E6E6" stroke-width="2" />
+  
+  <!-- Small cloud -->
+  <path d="M25,130 C25,115 35,105 50,105 C55,105 60,107 65,110 C65,105 70,100 75,100 C85,100 90,105 90,115 C90,125 85,130 75,130 L35,130 C30,130 25,125 25,120 Z" 
+        fill="#F8F8F8" stroke="#E6E6E6" stroke-width="2" />
+  
+  <!-- Cloud details/shadows -->
+  <path d="M90,65 C100,65 110,70 120,80 C125,75 135,70 145,70 C155,70 165,75 170,85" 
+        fill="none" stroke="#E6E6E6" stroke-width="3" opacity="0.5" />
+</svg>
