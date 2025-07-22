@@ -100,7 +100,6 @@ function updateNavbar() {
 // Populate the table with project data
 function fillTable() {
     const data = [
-
         ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
         ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
         ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html",],
@@ -111,11 +110,15 @@ function fillTable() {
         ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", " /public/CharacterWordCounter/index.html"],
         ["Day 8", "Dice Roll Simulator"," /public/DICEROLLSIMULATOR/index.html"],
         ["Day 9", "Guess My Number (by Pahima R Uchil)", "./public/Guess_My_Number/index.html"],
+
         ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", " /public/CharacterWordCounter/index.html"],
         ["Day 8", "Dice Roll Simulator"," /public/DICEROLLSIMULATOR/index.html"],
         ["Day 9", "Guess My Number (by Pahima R Uchil)", "./public/Guess_My_Number/index.html"],
         ["Day 10", "Textutils- Atext  Analyser Tool ","https://textutils-liard-nu.vercel.app/"],
         ["Day 11", " ",],
+=======
+        ["Day 11", "WeatherApp (by Kushagra Chavel)", "./public/WeatherApp/index.html"],
+
         ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
         ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
         ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain) ","./public/Coin_Flip/index.html"],
@@ -123,8 +126,10 @@ function fillTable() {
         ["Day 63", "WaterMedic (By Dee) ","https://github.com/dipmanmajumdar/WaterMedic"],
         ["Day 64", "URL Shortner","https://github.com/ANTIK-007/URL-Shortener"],
         ["Day 17", "E- waste Management Hub(by Abhirup Nandi)","https://e-waste-management-hub.netlify.app/"],
-["Day 72","Interactive Portfolio (by Priya Katariya)","/public/portfolio/index.html"],
-
+        ["Day 19", "Currency Converter (by Maulik Gupta)", "./Currency_Converter/index.html"],
+        ["Day 20", "Random User Generator (by Maulik Gupta)", "./Random_User_Generator/index.html"],
+        ["Day 21", "Image Search App (by Maulik Gupta)", "./Image_Search_App/index.html"],
+        ["Day 72","Interactive Portfolio (by Priya Katariya)","/public/portfolio/index.html"],
         ["Day 100", "Candy Crush","public/candycrush/candy_crush.html"],
 
     ];
