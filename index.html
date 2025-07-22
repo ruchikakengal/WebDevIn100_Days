@@ -50,13 +50,16 @@
     
   </head>
   <style type="text/css">
-     nav.navbar {
+      nav.navbar {
         position: fixed;
         top: 0;
         width: 100%;
         z-index: 1000;
-        background-color: #1abc9c;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.1); 
+        backdrop-filter: blur(10px); 
+        -webkit-backdrop-filter: blur(10px); 
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
       }
 
       #scrollBtn {
@@ -141,22 +144,22 @@
           <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg" alt="WebDev100_Days logo"/>
           WebDev100_Days
         </a>
-       
+        <!-- Bulma burger toggler -->
         <a
           role="button"
           class="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
-          data-target="navbarBasicExample"
+          data-target="navbar-menu"
+          id="navbarBurger"
         >
-          <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
 
-      <div class="navbar-menu is-active" id="navbar-menu">
+      <div class="navbar-menu" id="navbar-menu">
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
@@ -220,29 +223,29 @@
         <div class="columns is-vcentered">
           <!-- Left Side -->
           <div class="column has-text-left">
-            <div class="heading">
-              <h2 class="is-size-4">About</h2>
-              <p>
+            <div class="heading" style="color: black;">
+              <h2 class="is-size-4" style="color: black;">About</h2>
+              <p style="color: black;">
                 This repository contains 100 web projects from basic to
                 intermediate using HTML, CSS, and JS.
               </p>
-              <p>
-                <strong>
+              <p style="color: black;">
+                <strong style="color: black;">
                   ©
                   <script>
                     document.write(new Date().getFullYear());
                   </script>
                   WebDev100_Days
                 </strong>
-                by <a href="#">Ruchika Kengal</a> and <a href="#">Contributors</a>.
+                by <a href="#" style="color: #1abc9c;">Ruchika Kengal</a> and <a href="#" style="color: #1abc9c;">Contributors</a>.
               </p>
             </div>
           </div>
 
           <!-- Right Side -->
           <div class="column ms-4">
-            <div class="heading">
-              <h2 class="is-size-4">Important Links</h2>
+            <div class="heading" style="color: black;">
+              <h2 class="is-size-4" style="color: black;">Important Links</h2>
               <!-- Social Media Icons -->
               <div class="buttons">
                 <a
@@ -267,7 +270,7 @@
                 </a>
                 <a
                   class="button is-dark is-rounded"
-                  href="www.linkedin.com/in/ruchika-kengal-8085092b7"
+                  href="https://www.linkedin.com/in/ruchika-kengal-8085092b7"
                   target="_blank"
                   aria-label="LinkedIn"
                 >
@@ -332,6 +335,16 @@
           behavior: "smooth",
         });
       };
+
+      // Bulma navbar burger toggler logic
+      document.addEventListener('DOMContentLoaded', function () {
+        var burger = document.getElementById('navbarBurger');
+        var menu = document.getElementById('navbar-menu');
+        burger.addEventListener('click', function () {
+          burger.classList.toggle('is-active');
+          menu.classList.toggle('is-active');
+        });
+      });
     </script>
   </body>
 </html>
