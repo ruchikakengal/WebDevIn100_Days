@@ -110,7 +110,6 @@ function fillTable() {
         ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", " /public/CharacterWordCounter/index.html"],
         ["Day 8", "Dice Roll Simulator"," /public/DICEROLLSIMULATOR/index.html"],
         ["Day 9", "Guess My Number (by Pahima R Uchil)", "./public/Guess_My_Number/index.html"],
-        ["Day 10", "TypeRush - Typing Speed Test (by Pavan Mali)", "./public/TypeMaster/index.html"],
         ["Day 11", "WeatherApp (by Kushagra Chavel)", "./public/WeatherApp/index.html"],
         ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
         ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
@@ -122,6 +121,7 @@ function fillTable() {
         ["Day 19", "Currency Converter (by Maulik Gupta)", "./Currency_Converter/index.html"],
         ["Day 20", "Random User Generator (by Maulik Gupta)", "./Random_User_Generator/index.html"],
         ["Day 21", "Image Search App (by Maulik Gupta)", "./Image_Search_App/index.html"],
+        ["Day 22", "TypeRush - Typing Speed Test (by Pavan Mali)", "./public/TypeMaster/index.html"],
         ["Day 72","Interactive Portfolio (by Priya Katariya)","/public/portfolio/index.html"],
         ["Day 100", "Candy Crush","public/candycrush/candy_crush.html"],
 

@@ -3,8 +3,8 @@
 ## Overview
 This pull request adds a new TypeRush typing speed test application to the WebDevIn100_Days project. TypeRush is an interactive web-based tool that helps users practice and improve their typing speed and accuracy. This project is submitted as part of the GSSoC (GirlScript Summer of Code) program.
 
-- **Issue Number**: #45
-- **Day Number**: Day 10
+- **Issue Number**: #250
+- **Day Number**: Day 22
 - **Program**: GSSoC (GirlScript Summer of Code)
 - **Author**: @PAVAN2627
 
@@ -31,6 +31,9 @@ This pull request adds a new TypeRush typing speed test application to the WebDe
 - `public/TypeMaster/screenshots/` - Application screenshots (typemaster1.png, typemaster2.png, typemaster3.png)
 
 ## Index.js Update
+- Added TypeRush project entry to the projects list for Day 22 with demo link (typemaster1.png, typemaster2.png, typemaster3.png)
+
+## Index.js Update
 - Added TypeRush project entry to the projects list for Day 10
 
 ## Screenshots
@@ -49,7 +52,7 @@ Open `public/TypeMaster/index.html` in any modern browser and start typing to te
 
 ## Changes Made
 1. Added complete TypeRush application in the public/TypeMaster directory
-2. Updated index.js to include TypeRush in the projects list for Day 10
+2. Updated index.js to include TypeRush in the projects list for Day 22
 3. Added comprehensive README with screenshots for the project
 
 ---
