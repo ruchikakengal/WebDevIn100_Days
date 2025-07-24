@@ -121,7 +121,7 @@ function fillTable() {
         ["Day 19", "URL Shortener", "https://github.com/ANTIK-007/URL-Shortener"],
         ["Day 20", "Interactive Portfolio", "/public/portfolio/index.html"],
         ["Day 21", "Candy Crush", "public/candycrush/candy_crush.html"],
-        ["Day 22", "", ""],
+        ["Day 22", "QR Code Generator", "./public/QRCodeGenerator/index.html"],
     ];
 
 
