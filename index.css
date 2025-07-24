@@ -4,7 +4,6 @@
 .navbar-item {
   font-family: "Poppins", sans-serif;
   transition: color 0.3s ease, background-color 0.3s ease;
-
   #bgCanvas {
     position: fixed;
     top: 0;
