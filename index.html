@@ -2,303 +2,346 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebDev100_Days</title>
-  <link rel="stylesheet" href="home.css" />
-  <!-- Favicon Setup -->
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
-  <link rel="manifest" href="./site.webmanifest">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebDev100_Days</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
 
-  <meta content="100 Days, 100 Web Projects" property="og:title" />
-  <meta content="A collection of 100 web projects from basic to intermediate using html css and js."
-    property="og:description" />
-  <meta content="/" property="og:url" />
-  <meta name="description"
-    content="This is Day 01 of 100 Days Web Dev: a beautiful button hover animation using HTML and CSS.">
+    <meta content="100 Days, 100 Web Projects" property="og:title" />
+    <meta content="A collection of 100 web projects from basic to intermediate using html css and js."
+        property="og:description" />
+    <meta content="/" property="og:url" />
+    <meta name="description"
+        content="This is Day 01 of 100 Days Web Dev: a beautiful button hover animation using HTML and CSS.">
 
-  <meta name="description"
-    content="100 Days of Web Development — A journey through 100 fun and interactive HTML, CSS, and JS projects.">
-  <meta property="og:title" content="100 Days Web Projects | Learn Web Dev By Building">
-  <meta property="og:description"
-    content="Build 100 unique frontend projects while learning HTML, CSS, and JavaScript. Ideal for beginners to intermediate developers.">
-  <meta property="og:image" content="https://your-site.com/images/banner.png">
-  <meta property="og:url" content="https://your-site.com">
+    <meta name="description"
+        content="100 Days of Web Development — A journey through 100 fun and interactive HTML, CSS, and JS projects.">
+    <meta property="og:title" content="100 Days Web Projects | Learn Web Dev By Building">
+    <meta property="og:description"
+        content="Build 100 unique frontend projects while learning HTML, CSS, and JavaScript. Ideal for beginners to intermediate developers.">
+    <meta property="og:image" content="https://your-site.com/images/banner.png">
+    <meta property="og:url" content="https://your-site.com">
 
 
-  <meta content="https://i.imgur.com/3cztaa9.png" property="og:image" />
-  <meta content="#c2a3d6" data-react-helmet="true" name="theme-color" />
-  <meta name="twitter:card" content="summary_large_image" />
+    <meta content="https://i.imgur.com/3cztaa9.png" property="og:image" />
+    <meta content="#c2a3d6" data-react-helmet="true" name="theme-color" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Pushed CSS Code Here and Imported Bulma StyleSheet as well -->
-  <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
 </head>
 <style type="text/css">
-  nav.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #1abc9c;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  #scrollBtn {
-    position: fixed;
-    bottom: 20px;
-    /* Place closer to the bottom */
-    right: 20px;
-    /* Place closer to the right */
-    display: none;
-    /* Initially hidden */
-    background-color: #1abc9c;
-    color: rgb(247, 242, 242);
-    border: none;
-    border-radius: 50%;
-    padding: 15px;
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    /* Ensure visibility above other elements */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-
-  #scrollBtn:hover {
-    background-color: #000;
-    /* Change color on hover */
-    transform: scale(1.2);
-    /* Slightly enlarge */
-  }
-
-  .contributors-btn {
-    background: linear-gradient(45deg, #10866f, );
-    color: white;
-    padding: 10px 20px;
-    /* Adjust padding to make the button rectangular */
-    font-size: 0.8rem;
-    /* Font size */
-    font-weight: bold;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    /* Optional: Rounded corners */
-    position: absolute;
-    top: 60px;
-    /* Shifted slightly upwards */
-    right: 6px;
-    transition: background 0.3s ease, transform 0.2s ease,
-      box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    text-align: center;
-    display: inline-block;
-    z-index: 10;
-    /* Ensures the button stays on top */
-    font-family: "Circular Std", "Arial", sans-serif;
-    /* Circular font */
-  }
-
-  .contributors-btn:hover {
-    background: linear-gradient(45deg, #16a085, #1abc9c);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  .contributors-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  #title-heading {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    color: white;
-  }
-
-  @media (max-width: 426px) {
-    #title-heading {
-      margin-top: 5rem;
-      margin-bottom: 3rem;
+    nav.navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #1abc9c;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-  }
+
+    #scrollBtn {
+        position: fixed;
+        bottom: 20px;
+        /* Place closer to the bottom */
+        right: 20px;
+        /* Place closer to the right */
+        display: none;
+        /* Initially hidden */
+        background-color: #1abc9c;
+        color: rgb(247, 242, 242);
+        border: none;
+        border-radius: 50%;
+        padding: 15px;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        /* Ensure visibility above other elements */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    #scrollBtn:hover {
+        background-color: #000;
+        /* Change color on hover */
+        transform: scale(1.2);
+        /* Slightly enlarge */
+    }
+
+    .contributors-btn {
+        background: linear-gradient(45deg, #10866f, );
+        color: white;
+        padding: 10px 20px;
+        /* Adjust padding to make the button rectangular */
+        font-size: 0.8rem;
+        /* Font size */
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        /* Optional: Rounded corners */
+        position: absolute;
+        top: 60px;
+        /* Shifted slightly upwards */
+        right: 6px;
+        transition: background 0.3s ease, transform 0.2s ease,
+            box-shadow 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        text-align: center;
+        display: inline-block;
+        z-index: 10;
+        /* Ensures the button stays on top */
+        font-family: "Circular Std", "Arial", sans-serif;
+        /* Circular font */
+    }
+
+    .contributors-btn:hover {
+        background: linear-gradient(45deg, #16a085, #1abc9c);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .contributors-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #title-heading {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        color: white;
+    }
+
+    @media (max-width: 426px) {
+        #title-heading {
+            margin-top: 5rem;
+            margin-bottom: 3rem;
+        }
+    }
+
+    /* New CSS for the contact button at the end of the page */
+    .contact-page-button {
+        display: block; /* Makes the button take full width */
+        width: fit-content; /* Adjusts width to content */
+        margin: 20px auto; /* Centers the button and adds vertical space */
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        background-color: #3273dc; /* Bulma's info blue */
+        color: white;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-page-button:hover {
+        background-color: #276cda; /* Darker shade on hover */
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-page-button:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 </style>
 
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item has-text-weight-bold" href="index.html">
-        <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg" alt="WebDev100_Days logo" />
-        WebDev100_Days
-      </a>
-      <!-- Bulma burger toggler -->
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu"
-        id="navbarBurger">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div class="navbar-menu" id="navbar-menu">
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-
-          </div>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item has-text-weight-bold" href="index.html">
+                <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg"
+                    alt="WebDev100_Days logo" />
+                WebDev100_Days
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu"
+                id="navbarBurger">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
-      </div>
-    </div>
-  </nav><br><br>
-  <!-- Main Page Starts Here -->
-  <div class="content" id="projects">
-    <div class="title is-2 has-text-centered" id="title-heading">
-      Web_Dev_In_100_Days
-    </div>
-    <p class="subtitle has-text-centered" style="color: black">
-      here are live demos of all the projects
-    </p>
 
-    <div id="search-bar">
-      <div class="control">
-        <input class="input" type="text" id="searchInput" placeholder="Search for projects..."
-          onkeyup="filterProjects()" />
-      </div>
-      <div class="control">
-        <button id="searchButton" class="mx-4 button is-primary" onclick="filterProjects()">
-          Go
-        </button>
-      </div>
-    </div>
+        <div class="navbar-menu" id="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-light" href="contact.html">
+                            <i class="fas fa-envelope"></i>&nbsp; Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav><br><br>
+    <div class="content" id="projects">
+        <div class="title is-2 has-text-centered" id="title-heading">
+            Web_Dev_In_100_Days
+        </div>
+        <p class="subtitle has-text-centered" style="color: black">
+            here are live demos of all the projects
+        </p>
 
-    <div class="links">
-      <table class="table is-fullwidth is-bordered is-striped is-hoverable">
-        <thead>
-          <tr>
-            <th>Day</th>
-            <th>Project Name</th>
-            <th>Demo Link</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody">
+        <div id="search-bar">
+            <div class="control">
+                <input class="input" type="text" id="searchInput" placeholder="Search for projects..."
+                    onkeyup="filterProjects()" />
+            </div>
+            <div class="control">
+                <button id="searchButton" class="mx-4 button is-primary" onclick="filterProjects()">
+                    Go
+                </button>
+            </div>
+        </div>
 
-        </tbody>
+        <div class="links">
+            <table class="table is-fullwidth is-bordered is-striped is-hoverable">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Project Name</th>
+                        <th>Demo Link</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
 
-      </table>
-    </div>
+                </tbody>
 
-    <div id="no-projects" style="display: none">No Projects Found</div>
-  </div>
+            </table>
+        </div>
 
-  <footer class="custom-footer">
-  <div class="footer-wrapper">
-    <!-- About Section -->
-    <div class="footer-section about-info">
-      <h2 class="footer-title">About</h2>
-      <p class="footer-text">
-        This repository contains 100 web projects from basic to intermediate using HTML, CSS, and JS.
-      </p>
-      <p class="footer-text">
-        <strong>© <span id="copyYear"></span> WebDev100_Days</strong> by
-        <a href="#" class="footer-link">Ruchika Kengal</a> and
-        <a href="#" class="footer-link">Contributors</a>.
-      </p>
+        <div id="no-projects" style="display: none">No Projects Found</div>
     </div>
 
-    <!-- Links Section -->
-    <div class="footer-section footer-links">
-      <h2 class="footer-title">Important Links</h2>
+    <footer class="custom-footer">
+        <div class="footer-wrapper">
+            <div class="footer-section about-info">
+                <h2 class="footer-title">About</h2>
+                <p class="footer-text">
+                    This repository contains 100 web projects from basic to intermediate using HTML, CSS, and JS.
+                </p>
+                <p class="footer-text">
+                    <strong>© <span id="copyYear"></span> WebDev100_Days</strong> by
+                    <a href="#" class="footer-link">Ruchika Kengal</a> and
+                    <a href="#" class="footer-link">Contributors</a>.
+                </p>
+            </div>
 
-      <!-- Social Media SVG Icons -->
-      <div class="social-icons">
-        <a href="https://www.instagram.com/" class="icon-link" target="_blank" aria-label="Instagram">
-          <svg class="size-6" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"></path></svg>
-        </a>
-        <a href="https://github.com/ruchikakengal/100_Days_100_webprojects" class="icon-link" target="_blank" aria-label="GitHub">
-          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a>
-        <a href="https://www.linkedin.com/in/ruchika-kengal-8085092b7" class="icon-link" target="_blank" aria-label="LinkedIn">
-          <svg class="size-6" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"></path></svg>
-        </a>
-      </div>
+            <div class="footer-section footer-links">
+                <h2 class="footer-title">Important Links</h2>
 
-      <!-- Navigation Buttons -->
-      <div class="nav-links">
-        <a href="#" class="nav-btn home-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="nav-icon"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-          Home
-        </a>
-        <a href="contributors/contributor.html" class="nav-btn contributors-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="nav-icon"><path d="M16 11c1.7 0 3-1.3 3-3S17.7 5 16 5s-3 1.3-3 3 1.3 3 3 3zm-8 0c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zm0 2c-2.3 0-7 1.2-7 3.5V20h14v-3.5c0-2.3-4.7-3.5-7-3.5zm8 0c-.3 0-.6 0-.9.1 1.1.8 1.9 1.8 1.9 3.4V20h6v-3.5c0-2.3-4.7-3.5-7-3.5z"/></svg>
-          Contributors
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/" class="icon-link" target="_blank" aria-label="Instagram">
+                        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                            viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"></path>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/ruchikakengal/100_Days_100_webprojects" class="icon-link"
+                        target="_blank" aria-label="GitHub">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
+                            height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+                            </path>
+                        </svg></a>
+                    <a href="https://www.linkedin.com/in/ruchika-kengal-8085092b7" class="icon-link" target="_blank"
+                        aria-label="LinkedIn">
+                        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                            viewBox="0 0 24 24">
+                            <path
+                                fill="currentColor"
+                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
 
-<script>
-  document.getElementById("copyYear").textContent = new Date().getFullYear();
-</script>
+                <div class="nav-links">
+                    <a href="#" class="nav-btn home-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="nav-icon">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                        </svg>
+                        Home
+                    </a>
+                    <a href="contributors/contributor.html" class="nav-btn contributors-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="nav-icon">
+                            <path
+                                d="M16 11c1.7 0 3-1.3 3-3S17.7 5 16 5s-3 1.3-3 3 1.3 3 3 3zm-8 0c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zm0 2c-2.3 0-7 1.2-7 3.5V20h14v-3.5c0-2.3-4.7-3.5-7-3.5zm8 0c-.3 0-.6 0-.9.1 1.1.8 1.9 1.8 1.9 3.4V20h6v-3.5c0-2.3-4.7-3.5-7-3.5z" />
+                        </svg>
+                        Contributors
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("copyYear").textContent = new Date().getFullYear();
+    </script>
 
 
 
-  <!-- Top scroll button -->
-  <button class="scroll-to-top-btn" title="Go to top" id="scrollBtn">
-  <svg xmlns="http://www.w3.org/2000/svg" class="arrow-up-icon" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M4.71 15.29a1 1 0 0 0 1.42 1.42L12 10.83l5.88 5.88a1 1 0 0 0 1.42-1.42l-6.59-6.58a1 1 0 0 0-1.42 0z"/>
-  </svg>
-</button>
+    <button class="scroll-to-top-btn" title="Go to top" id="scrollBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="arrow-up-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M4.71 15.29a1 1 0 0 0 1.42 1.42L12 10.83l5.88 5.88a1 1 0 0 0 1.42-1.42l-6.59-6.58a1 1 0 0 0-1.42 0z" />
+        </svg>
+    </button>
 
+    <a href="contact.html" class="button is-link is-medium">Contact Us</a>
+    
+    <script src="index.js"></script>
+    <script src="bulma.js"></script>
 
-  <!-- Pushed JavaScript Code To Here -->
-  <script src="index.js"></script>
-  <script src="bulma.js"></script>
+    <script>
+        // Get the button element
+        const scrollBtn = document.getElementById("scrollBtn");
 
-  <script>
-    // Get the button element
-    const scrollBtn = document.getElementById("scrollBtn");
+        // Show the button when the user scrolls down 100px from the top
+        window.onscroll = function () {
+            if (
+                document.body.scrollTop > 100 ||
+                document.documentElement.scrollTop > 100
+            ) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        };
 
-    // Show the button when the user scrolls down 100px from the top
-    window.onscroll = function () {
-      if (
-        document.body.scrollTop > 100 ||
-        document.documentElement.scrollTop > 100
-      ) {
-        scrollBtn.style.display = "block";
-      } else {
-        scrollBtn.style.display = "none";
-      }
-    };
+        // Scroll to the top of the page when the button is clicked
+        scrollBtn.onclick = function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        };
 
-    // Scroll to the top of the page when the button is clicked
-    scrollBtn.onclick = function () {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    };
+        // Bulma navbar burger toggler logic
+        document.addEventListener('DOMContentLoaded', function () {
+            var burger = document.getElementById('navbarBurger');
+            var menu = document.getElementById('navbar-menu');
+            burger.addEventListener('click', function () {
+                burger.classList.toggle('is-active');
+                menu.classList.toggle('is-active');
+            });
+        });
+    </script>
 
-    // Bulma navbar burger toggler logic
-    document.addEventListener('DOMContentLoaded', function () {
-      var burger = document.getElementById('navbarBurger');
-      var menu = document.getElementById('navbar-menu');
-      burger.addEventListener('click', function () {
-        burger.classList.toggle('is-active');
-        menu.classList.toggle('is-active');
-      });
-    });
-  </script>
-  
 
 </body>
 

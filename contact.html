@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Me</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f2f5; /* Light grey background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px; /* Limit form width */
+            margin-top: 50px; /* Space from top */
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 2.5rem; /* Larger heading */
+        }
+        .field:not(:last-child) {
+            margin-bottom: 15px;
+        }
+        .control .input,
+        .control .textarea {
+            border-radius: 4px;
+            border: 1px solid #dbdbdb;
+            box-shadow: none;
+            transition: all 0.3s ease;
+        }
+        .control .input:focus,
+        .control .textarea:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 0.125em rgba(74, 144, 226, 0.25);
+        }
+        .button.is-primary {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            background-color: #1abc9c; /* Your theme color */
+            border-color: #1abc9c;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .button.is-primary:hover {
+            background-color: #16a085; /* Darker on hover */
+            border-color: #16a085;
+            transform: translateY(-1px);
+        }
+        #response {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .is-success-message {
+            color: #28a745; /* Green for success */
+        }
+        .is-error-message {
+            color: #dc3545; /* Red for error */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Contact Me</h1>
+
+        <form id="contactForm">
+            <div class="field">
+                <label class="label" for="name">Name</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="text" id="name" name="name" placeholder="Your Name" required />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="email">Email</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="email" id="email" name="email" placeholder="Your Email" required />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="message">Message</label>
+                <div class="control">
+                    <textarea class="textarea" id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="button is-primary">Send Message</button>
+                </div>
+            </div>
+        </form>
+
+        <p id="response"></p>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const responseMsg = document.getElementById('response');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Clear previous response message
+            responseMsg.innerText = "";
+            responseMsg.classList.remove('is-success-message', 'is-error-message');
+
+            // Show a temporary loading message (optional)
+            responseMsg.innerText = "Sending message...";
+            responseMsg.style.color = "#4a90e2"; // Blue for loading
+
+            // Create a FormData object from the form
+            // This is the recommended way to send data to Google Apps Script Web Apps
+            const formData = new FormData(form);
+
+            // Replace with YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
+            // Ensure it's deployed as a Web App and "Who has access" is "Anyone"
+            const scriptURL = "https://script.google.com/macros/s/AKfycbyhtHdso_40lFMuNiuzYxfXFRkmndkAp1u18fKfMEF8g3waSwRt4jbMCdGei0LtUkSP/exec";
+
+            fetch(scriptURL, {
+                method: "POST",
+                body: formData // Send the FormData object directly
+            })
+            .then(res => {
+                if (!res.ok) {
+                    // If the server responded with an error status (e.g., 400, 500)
+                    // Try to parse error message if available, otherwise throw generic
+                    return res.text().then(text => { 
+                        try {
+                            const errorData = JSON.parse(text);
+                            throw new Error(errorData.error || errorData.message || 'Server responded with an error.');
+                        } catch (parseError) {
+                            throw new Error('Server responded with status ' + res.status + ': ' + text);
+                        }
+                    });
+                }
+                return res.json(); // Parse the JSON response from Apps Script
+            })
+            .then(data => {
+                if (data.result === "success") {
+                    responseMsg.innerText = "Thank you! Your message has been received.";
+                    responseMsg.classList.add('is-success-message');
+                    form.reset(); // Clear the form fields
+                } else {
+                    // Handle specific errors from Apps Script if 'data.error' is present
+                    responseMsg.innerText = "Oops! Something went wrong: " + (data.error || "Unknown error from server.");
+                    responseMsg.classList.add('is-error-message');
+                }
+            })
+            .catch(err => {
+                // This catches network errors or errors thrown in the .then blocks
+                responseMsg.innerText = "Error: Failed to send message. " + err.message + " Please try again.";
+                responseMsg.classList.add('is-error-message');
+                console.error("Fetch error:", err); // Log error to console for debugging
+            });
+        });
+    </script>
+</body>
+</html>
