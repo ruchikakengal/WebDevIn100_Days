@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Hangman Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Word Guessing Game</h1>
+    <div class="scoreboard">
+      <span>Score: <span id="score">0</span></span>
+      <span>Wins: <span id="wins">0</span></span>
+      <span>Losses: <span id="losses">0</span></span>
+    </div>
+    <div class="hangman-container">
+      <canvas id="hangman" width="180" height="220"></canvas>
+    </div>
+    <div class="content">
+      <input type="text" class="typing-input" maxlength="1" autofocus autocomplete="off" />
+      <div class="inputs"></div>
+      <div class="details">
+        <p class="hint">Hint: <span></span></p>
+        <p class="guess-left">Remaining guesses: <span></span></p>
+        <p class="wrong-letter">Wrong letters: <span></span></p>
+      </div>
+      <button class="reset-btn">Next Word</button>
+    </div>
+  </div>
+  <script src="words.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

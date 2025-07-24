@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #b1e1fa 0%, #f1f1f1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 430px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.16);
+  padding: 34px 30px 24px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: #22223b;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.scoreboard {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 1.08rem;
+  color: #22223b;
+  background: #eaf6fb;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-weight: 600;
+}
+
+.hangman-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+#hangman {
+  background: #f3f8fd;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+}
+
+.content {
+  width: 100%;
+}
+
+.inputs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  gap: 7px;
+}
+
+.inputs input {
+  width: 48px;
+  height: 54px;
+  text-align: center;
+  font-size: 2rem;
+  border-radius: 8px;
+  border: 2px solid #b1e1fa;
+  background: #f9f9f9;
+  color: #22223b;
+  font-weight: 600;
+  pointer-events: none;
+  transition: border-color 0.2s;
+}
+
+.typing-input {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.details {
+  margin-bottom: 22px;
+}
+
+.details p {
+  font-size: 1.13rem;
+  margin-bottom: 7px;
+  color: #4a4e69;
+}
+
+.details span {
+  font-weight: 600;
+  color: #22223b;
+}
+
+.reset-btn {
+  width: 100%;
+  padding: 14px 0;
+  background: #38b6ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 6px;
+}
+
+.reset-btn:hover {
+  background: #22223b;
+}
+
+@media (max-width: 500px) {
+  .wrapper {
+    width: 98vw;
+    padding: 18px 6px;
+  }
+  .inputs input {
+    width: 36px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+}
