@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+
+	<style type="text/css">
+
+button{
+	padding: 10px;
+	
+	border:2px solid black;
+	border-top:2px solid black;
+	background-color:black;
+	color:white;
+	border-radius: 8px;
+	height: 50px;
+	margin:10px;	
+	width:60px;
+	text-align: center;
+	justify-content: center;
+	font-size: 18px;
+	font-weight: bold;
+}
+.buttons{
+
+	display: grid;
+	grid-template-rows: repeat(4,1);
+	grid-column: repeat(4,1);
+	padding: 10px;
+	text-align: center;
+	border:0;
+	
+}
+#screen1{
+	padding: 10px;
+	color:black;
+	background-color:#bccd95;
+	width:350px;
+	height:20px;
+	border:1px solid black;
+	font-size: 32px;
+	text-align: right;
+}
+.container{
+	border:1px solid transparent;
+	width:360px;
+	height: 380px;
+	background-color:#3d4543;
+	padding: 30px;
+	box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
+	border-radius: 10px;
+}
+button:hover{
+	
+	cursor: pointer;
+}
+.gray    
+{   
+text-decoration: none;
+outline: none; 
+color:white;  
+font-color: white;    
+background-color: #6f6f6f;    
+border-bottom: black 2px solid;    
+border-top: 3px #6f6f6f solid;    
+}  
+
+.pink    
+{    
+color: white;    
+background-color: #ff4561;    
+border-bottom: black 2px solid;    
+}    
+.black    
+{    
+color: black;    
+background-color:white;    
+border-bottom: black 2px solid;    
+border-top: 2px 303030 solid;    
+font-weight: bold;  
+} 
+.orange    
+{    
+color: black;    
+background-color: white;    
+border-bottom: black 2px solid;    
+border-top: 2px FF9933 solid;    
+}    
+.gray{
+	border-top: 2px solid black;
+	outline: none;
+	text-decoration: none;
+}
+
+button:focus,button:active{
+	text-decoration: none;
+	outline: none;
+}
+.container:hover,.container:focus{
+	outline: none;
+}
+	</style>
+
+</head>
+<body>
+	<center>
+		<header style="color: purple;font-size: 40px;padding: 20px"><b>Calculator</b></header>
+
+<div class="container">
+<div class="input" id="screen1"></div>
+	<div class="buttons">
+		<center>
+	<button class="gray" onclick='c("")'>mrc</button>
+	<button class="gray" onclick='c("")'>m-</button>
+	<button class="gray" onclick='c("")'>m+</button>
+	<button class="pink" onclick='display("/")'>&divide;</button>
+
+
+		<button class="black" onclick='display("7")'>7</button>
+		<button class="black" onclick='display("8")'>8</button>
+		<button class="black" onclick='display("9")'>9</button>
+		<button class="pink" onclick='display("*")'>&times;</button>
+		<button class="black" onclick='display("4")'>4</button>
+		<button class="black" onclick='display("5")'>5</button>
+		<button class="black" onclick='display("6")'>6</button>
+		
+		<button class="pink" onclick="display('-')">-</button>
+
+	
+		<button class="black" onclick="display('1')">1</button>
+		<button class="black" onclick="display('2')">2</button>
+		<button class="black" onclick="display('3')">3</button>
+	
+		<button class="pink" onclick="display('+')">+</button>
+	
+	
+
+
+	<button class="black" onclick="display('0')">0</button>
+	<button class="black" onclick="display('.')">.</button>
+	<button class="black" onclick='c("")'>C</button>
+	<button class="orange" onclick='e()'>=</button>
+
+
+
+
+</center>
+
+</div>
+</div>
+</center>
+<script type="text/javascript">
+	function c(val){
+	document.getElementById("screen1").innerHTML=val;
+}
+function display(val){
+	document.getElementById("screen1").innerHTML+=val;
+}
+function e(){
+try{
+	c(eval(document.getElementById("screen1").innerHTML))
+}
+catch(e){
+	c("Error")
+}
+}
+</script>
+</body>
+
+</html>
