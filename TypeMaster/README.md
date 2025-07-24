@@ -35,22 +35,19 @@ An interactive and feature-rich typing speed test application built with **HTML*
 - Characters typed count
 - Real-time progress updates
 
-## 🚀 Live Demo
-
-[Try TypeRush Live](link-to-your-deployment) *(Replace with actual link when deployed)*
 
 ## 📸 Screenshots
 
 ### Application Interface
-![TypeRush Interface](screenshots/typemaster-interface.png)
+![TypeRush Interface](screenshots/typemaster1.png)
 *Main interface of the TypeRush application*
 
 ### Test in Progress
-![Test in Progress](screenshots/typing-test-progress.png)
+![TypeRush Test](screenshots/typemaster2.png)
 *Screenshot of a typing test in progress showing character highlighting*
 
 ### Results Screen
-![Results Screen](screenshots/results-screen.png)
+![TypeRush Results](screenshots/typemaster3.png)
 *Final results display after completing a typing test*
 
 ## 🛠️ Technologies Used
