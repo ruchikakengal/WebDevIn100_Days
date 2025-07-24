@@ -117,6 +117,8 @@ function fillTable() {
         ["Day 10", "Textutils- Atext  Analyser Tool ","https://textutils-liard-nu.vercel.app/"],
         ["Day 11", " ",],
 =======
+=======
+        ["Day 10", "Stopwatch (by Angel Agarwal)", " /public/Stopwatch/index.html"],
         ["Day 11", "WeatherApp (by Kushagra Chavel)", "./public/WeatherApp/index.html"],
 
         ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
