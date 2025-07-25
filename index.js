@@ -100,36 +100,35 @@ function updateNavbar() {
 // Populate the table with project data
 function fillTable() {
     const data = [
-
-        ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
-        ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
-        ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html",],
-        ["Day 4", "Password Strength Visualizer (by Adwitya)", " /public/password_visualizer/index.html"],
-        ["Day 5", "Physics Simulation (by Vishisht Dwivedi)", " /public/physics_simulation/index.html"],
-        ["Day 6", "Quote Generator (by Sania Rajput)", " /public/QuoteGenerator/index.html"],
-        ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", " /public/CharacterWordCounter/index.html"],
-        ["Day 8", "Dice Roll Simulator"," /public/DICEROLLSIMULATOR/index.html"],
-        ["Day 9", "Guess My Number (by Pahima R Uchil)", "./public/Guess_My_Number/index.html"],
-        ["Day 10", " ",],
-        ["Day 11", " ",],
-        ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
-        ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain) ","./public/Coin_Flip/index.html"],
-        ["Day 14", " ",],
-
-        ["Day 64", "URL Shortner","https://github.com/ANTIK-007/URL-Shortener"],
-
-
-        ["Day 17", "E- waste Management Hub(by Abhirup Nandi)","https://e-waste-management-hub.netlify.app/"],
-["Day 72","Interactive Portfolio (by Priya Katariya)","/public/portfolio/index.html"],
-
-        ["Day 100", " ",],
-
+        ["Day 1", "To-Do List", "/public/Day-1_TodoList/index.html"],
+        ["Day 2", "Digital Clock", "/public/Day-2_digital_clock/digitalclock.html"],
+        ["Day 3", "ASCII Art Generator", "/public/Day-3_AsciiArtGenerator/index.html"],
+        ["Day 4", "Password Strength Visualizer", "/public/Day-4_password_visualizer/index.html"],
+        ["Day 5", "Physics Simulation", "/public/Day-5_physics_simulation/index.html"],
+        ["Day 6", "Quote Generator", "/public/Day-6_QuoteGenerator/index.html"],
+        ["Day 7", "Character Word Counter", "/public/Day-7_CharacterWordCounter/index.html"],
+        ["Day 8", "Dice Roll Simulator", "/public/Day-8_DiceRollSimulator/index.html"],
+        ["Day 9", "Guess My Number", "/public/Day-9_Guess_My_Number/index.html"],
+        ["Day 10", "Brick Breaker", "/public/Day-10_Neon_Brick_Breaker/index.html"],
+        ["Day 11", "WeatherApp", "/public/Day-11_WeatherApp/index.html"],
+        ["Day 12", "Countdown Banner", "https://countdown-banner.vercel.app/"], /* folder Not there */
+        ["Day 13", "Coin Flip Heads/Tails", "/public/Day-13_Coin_Flip/index.html"],
+        ["Day 14", "E-waste Management Hub", "https://e-waste-management-hub.netlify.app/"],
+        ["Day 15", "Currency Converter", "/public/Day-15_Currency_Converter/index.html"],
+        ["Day 16", "Random User Generator", "/public/Day-16_Random_User_Generator/index.html"],
+        ["Day 17", "Image Search App", "/public/Day-17_Image_Search_App/index.html"],
+        ["Day 18", "WaterMedic", "https://github.com/dipmanmajumdar/WaterMedic"], /* folder Not there */
+        ["Day 19", "URL Shortener", "https://github.com/ANTIK-007/URL-Shortener"], /* folder Not there */
+        ["Day 20", "TicTacToe Game", "/public/Day-20_tictactoe/index.html"],
+        ["Day 21", "Candy Crush", "public/Day-21_candycrush/candy_crush.html"],
+        ["Day 22", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
     ];
 
 
 
 
     const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
 
     data.forEach(e => {
         const row = document.createElement('tr');

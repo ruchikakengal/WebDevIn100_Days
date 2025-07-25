@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #df5688, #d08da0);
+    position: relative;
+    overflow: hidden;
+}
+
+h1 span {
+    font-weight: 800;
+    font-size: 2rem;
+    color: #2c3e50;
+    letter-spacing: 1px;
+}
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.color-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e74c3c;
+    background: #ffeaea;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#colorPicker {
+    height: 40px;
+    width: 60px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#generateBtn {
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#generateBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+}
+
+.palette {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.color-box {
+    width: 110px;
+    height: 110px;
+    border-radius: 14px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.color-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.color-code {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 0 0 14px 14px;
+    padding: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}

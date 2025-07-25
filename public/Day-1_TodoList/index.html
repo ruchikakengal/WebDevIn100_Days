@@ -19,6 +19,8 @@
       align-items: flex-start;
       min-height: 100vh;
       padding: 40px 20px;
+      flex-direction: column;
+      align-items: center;
     }
 
     .todo-container {
@@ -29,6 +31,7 @@
       width: 100%;
       max-width: 400px;
       animation: fadeIn 0.5s ease;
+      margin-bottom: 40px;
     }
 
     @keyframes fadeIn {
@@ -39,6 +42,7 @@
     h2 {
       background: linear-gradient(90deg, #4f46e5, #06b6d4);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       font-size: 26px;
       text-align: center;
@@ -133,6 +137,29 @@
       color: white;
     }
 
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      max-width: 800px;
+      background: white;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px 12px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    th {
+      background: #4f46e5;
+      color: white;
+    }
+
     @media (max-width: 480px) {
       .todo-container {
         padding: 20px;
@@ -140,6 +167,10 @@
 
       h2 {
         font-size: 22px;
+      }
+
+      table, th, td {
+        font-size: 12px;
       }
     }
   </style>
@@ -153,8 +184,26 @@
   <ul id="taskList"></ul>
 </div>
 
+<h2>📊 Task Analysis</h2>
+<table id="taskAnalysis">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Task #</th>
+      <th>Task</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
 <script>
-  // Load tasks from localStorage
+  let taskCount = 0;
+  const taskList = document.getElementById("taskList");
+  const taskAnalysis = document.getElementById("taskAnalysis").querySelector("tbody");
+
   window.onload = () => {
     const saved = localStorage.getItem("tasks");
     if (saved) {
@@ -162,18 +211,18 @@
     }
   };
 
-  const taskList = document.getElementById("taskList");
-
   function addTask() {
     const input = document.getElementById("taskInput");
     const taskText = input.value.trim();
     if (!taskText) return alert("Please enter a task!");
 
     const li = document.createElement("li");
+    const taskId = ++taskCount;
+    const startTime = new Date();
 
     li.innerHTML = `
       <div style="display: flex; align-items: center;">
-        <input type="checkbox" class="checkbox" onchange="toggleComplete(this)">
+        <input type="checkbox" class="checkbox" onchange="toggleComplete(this, ${taskId})">
         <span>${taskText}</span>
       </div>
       <div class="actions">
@@ -182,8 +231,12 @@
       </div>
     `;
 
+    li.setAttribute("data-id", taskId);
+    li.setAttribute("data-start", startTime);
+    li.setAttribute("data-text", taskText);
+
     taskList.appendChild(li);
-    document.getElementById("taskInput").value = "";
+    input.value = "";
     saveTasks();
   }
 
@@ -198,13 +251,30 @@
     const newText = prompt("Edit task:", span.textContent);
     if (newText !== null && newText.trim() !== "") {
       span.textContent = newText.trim();
+      li.setAttribute("data-text", newText.trim());
       saveTasks();
     }
   }
 
-  function toggleComplete(checkbox) {
+  function toggleComplete(checkbox, taskId) {
     const li = checkbox.closest("li");
     li.classList.toggle("completed", checkbox.checked);
+    if (checkbox.checked) {
+      const endTime = new Date();
+      const startTime = new Date(li.getAttribute("data-start"));
+      const duration = Math.round((endTime - startTime) / 60000); // minutes
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${startTime.toLocaleDateString()}</td>
+        <td>${taskId}</td>
+        <td>${li.getAttribute("data-text")}</td>
+        <td>${startTime.toLocaleTimeString()}</td>
+        <td>${endTime.toLocaleTimeString()}</td>
+        <td>${duration} mins</td>
+      `;
+      taskAnalysis.appendChild(row);
+    }
     saveTasks();
   }
 
