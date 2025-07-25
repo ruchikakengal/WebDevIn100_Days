@@ -122,6 +122,7 @@ function fillTable() {
         ["Day 20", "TicTacToe Game", "/public/Day-20_tictactoe/index.html"],
         ["Day 21", "Candy Crush", "public/Day-21_candycrush/candy_crush.html"],
         ["Day 22", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
+        ["Day 23", "Etch-a-Sketch (by Ashutosh Vishwakarma)","./Etch-a-Sketch/index.html"],
     ];
 
 
