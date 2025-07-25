@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Typing Speed Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Typing Speed Calculator</h1>
+    <p id="quote">Loading...</p>
+
+    <textarea id="typed-text" placeholder="Start typing here..." disabled></textarea>
+
+    <div class="stats">
+      <p>Time: <span id="timer">0</span>s</p>
+      <p>WPM: <span id="wpm">0</span></p>
+      <p>Accuracy: <span id="accuracy">100</span>%</p>
+    </div>
+
+    <button id="start-btn">Start</button>
+    <button id="restart-btn" disabled>Restart</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
