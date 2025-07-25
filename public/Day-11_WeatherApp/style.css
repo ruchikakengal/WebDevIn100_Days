@@ -219,3 +219,111 @@ body {
         font-size: 3rem;
     }
 }
+
+
+.navbar {
+    width: 100%;
+    padding: 15px 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    color: #06283D;
+    font-weight: 600;
+}
+
+body {
+    padding-top: 80px; /* Push content below fixed navbar */
+}
+
+/* Toggle switch styles */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.switch-label {
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 30px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    transition: background 0.3s ease;
+}
+
+.switch-label i {
+    font-size: 14px;
+    color: #fff;
+    z-index: 2;
+}
+
+.switch-label .toggle-slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background-color: #06283D;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+#theme-switch {
+    display: none;
+}
+
+#theme-switch:checked + .switch-label .toggle-slider {
+    transform: translateX(30px);
+}
+
+#theme-switch:checked + .switch-label {
+    background-color: #1E90FF;
+}
+
+body.dark-mode {
+    background: linear-gradient(to bottom, #1E1E2F, #2A2A40);
+    color: #fff;
+}
+
+body.dark-mode .container {
+    background-color: #2E2E3E;
+}
+
+body.dark-mode .navbar {
+    background-color: #1E1E2F;
+}
+
+body.dark-mode .navbar h1,
+body.dark-mode .search-box input,
+body.dark-mode .weather-details p,
+body.dark-mode .weather-details span,
+body.dark-mode .description,
+body.dark-mode .temperature,
+body.dark-mode .city-name {
+    color: #fff;
+}
+
+body.dark-mode .search-box button {
+    background-color: #555;
+    color: #fff;
+}
+
+body.dark-mode .search-box button:hover {
+    background-color: #fff;
+    color: #1E1E2F;
+}

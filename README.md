@@ -21,7 +21,7 @@ We are proud to be contributing as part of these amazing communities!
 
 ## 🌐 Live Website
 👉 Explore all the projects here:  
-🔗 [Visit Live Demo](https://ruchikakengal.github.io/WebDevIn100_Days/)
+🔗 [Visit Live Demo](https://webdevin100days.netlify.app)
 
 
 

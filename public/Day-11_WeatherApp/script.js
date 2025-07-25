@@ -152,3 +152,21 @@ search.addEventListener('click', () => {
             search.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
         });
 });
+const themeToggle = document.getElementById('theme-switch');
+
+// Load saved theme
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeToggle.checked = true;
+    }
+});
+
+// Toggle theme on switch change
+themeToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
