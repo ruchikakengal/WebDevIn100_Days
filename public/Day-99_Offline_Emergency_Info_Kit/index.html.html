@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Info Kit</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffeded;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #b30000;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: #b30000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .saved-info {
+      background: #fff3f3;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      border: 1px dashed #b30000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Offline Emergency Info Kit</h1>
+    <p>Fill and save important details for offline access.</p>
+
+    <label for="name">Your Full Name:</label>
+    <input type="text" id="name" />
+
+    <label for="blood">Blood Group:</label>
+    <input type="text" id="blood" placeholder="e.g. B+" />
+
+    <label for="allergies">Allergies / Medical Conditions:</label>
+    <textarea id="allergies"></textarea>
+
+    <label for="meds">Ongoing Medications:</label>
+    <textarea id="meds"></textarea>
+
+    <label for="contact">Emergency Contact (Name & Phone):</label>
+    <textarea id="contact"></textarea>
+
+    <button onclick="saveInfo()">Save Info Offline</button>
+    <button onclick="clearInfo()" style="background:#888;margin-left:10px;">Clear</button>
+
+    <div id="output" class="saved-info" style="display: none;"></div>
+  </div>
+
+  <script>
+    function saveInfo() {
+      const data = {
+        name: document.getElementById('name').value,
+        blood: document.getElementById('blood').value,
+        allergies: document.getElementById('allergies').value,
+        meds: document.getElementById('meds').value,
+        contact: document.getElementById('contact').value,
+      };
+      localStorage.setItem('emergencyInfo', JSON.stringify(data));
+      displayInfo();
+    }
+
+    function displayInfo() {
+      const data = JSON.parse(localStorage.getItem('emergencyInfo'));
+      if (data) {
+        const out = `
+          <h2>Stored Emergency Info</h2>
+          <p><strong>Name:</strong> ${data.name}</p>
+          <p><strong>Blood Group:</strong> ${data.blood}</p>
+          <p><strong>Allergies:</strong> ${data.allergies}</p>
+          <p><strong>Medications:</strong> ${data.meds}</p>
+          <p><strong>Emergency Contact:</strong> ${data.contact}</p>
+        `;
+        document.getElementById('output').innerHTML = out;
+        document.getElementById('output').style.display = 'block';
+      }
+    }
+
+    function clearInfo() {
+      localStorage.removeItem('emergencyInfo');
+      document.getElementById('output').style.display = 'none';
+      alert('Emergency Info Cleared');
+    }
+
+    // Auto-load if exists
+    window.onload = displayInfo;
+  </script>
+</body>
+</html>
