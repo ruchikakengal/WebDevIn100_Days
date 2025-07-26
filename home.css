@@ -147,12 +147,13 @@ body::-webkit-scrollbar-thumb {
 
 
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap'); /* Added Montserrat */
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: IBM Plex Sans;
+  font-family: 'Montserrat', sans-serif; /* Changed font to Montserrat */
 }
 
 /* Responsive padding */
@@ -182,27 +183,34 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  margin: 30px 0; /* Increased margin */
 }
 
 #searchInput {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  width: 300px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s;
+  padding: 12px 15px; /* Increased padding */
+  font-size: 17px; /* Slightly larger font */
+  border: 1px solid #ccc; /* Lighter border */
+  border-radius: 8px; /* More rounded corners */
+  width: 350px; /* Slightly wider */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+#searchInput:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.3); /* Blue glow on focus */
+  outline: none; /* Remove default outline */
 }
 
 #no-projects {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px; /* Increased margin */
   font-family: "Noto Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 600; /* Slightly bolder */
   font-style: normal;
-  font-size: 20px;
-  color: white;
+  font-size: 22px; /* Slightly larger font */
+  color: #333; /* Darker color for better contrast in light mode */
 }
 
 /* Custom scrollbar */
@@ -212,18 +220,17 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  box-shadow: inset 0px 0px 5px 3px #2356c3;
+  box-shadow: inset 0px 0px 5px 3px #a7d9ff; /* Lighter blue shadow */
   border-radius: 30px;
 }
 
 body::-webkit-scrollbar-thumb {
   border-radius: 30px;
-  background: rgb(2, 0, 36);
   background: linear-gradient(
     188deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(51, 51, 131, 1) 18%,
-    rgba(9, 9, 121, 1) 55%,
+    rgba(0, 123, 255, 1) 0%, /* Brighter blue */
+    rgba(51, 153, 255, 1) 18%,
+    rgba(9, 180, 255, 1) 55%,
     rgba(0, 212, 255, 1) 100%
   );
 }
@@ -231,23 +238,22 @@ body::-webkit-scrollbar-thumb {
 /* Responsive scrollbar adjustments */
 @media screen and (max-width: 600px) {
   body::-webkit-scrollbar {
-    width: 1em;
-    height: 1em;
+    width: 0.8em; /* Slightly thinner scrollbar */
+    height: 0.8em;
   }
 
   body::-webkit-scrollbar-track {
-    box-shadow: inset 0px 0px 5px 3px #2356c3;
+    box-shadow: inset 0px 0px 4px 2px #a7d9ff;
     border-radius: 30px;
   }
 
   body::-webkit-scrollbar-thumb {
     border-radius: 30px;
-    background: rgb(2, 0, 36);
     background: linear-gradient(
       188deg,
-      rgba(2, 0, 36, 1) 0%,
-      rgba(51, 51, 131, 1) 18%,
-      rgba(9, 9, 121, 1) 55%,
+      rgba(0, 123, 255, 1) 0%,
+      rgba(51, 153, 255, 1) 18%,
+      rgba(9, 180, 255, 1) 55%,
       rgba(0, 212, 255, 1) 100%
     );
   }
@@ -256,8 +262,8 @@ body::-webkit-scrollbar-thumb {
 /* Small screen adjustments */
 @media(max-width: 430px) {
   #searchInput {
-    width: 250px;
-    margin-left: 17px;
+    width: 280px; /* Adjusted width */
+    margin-left: 0; /* Centered */
   }
 }
 
@@ -269,15 +275,17 @@ body::-webkit-scrollbar-thumb {
 
 @media(max-width: 330px) {
   #searchInput {
-    width: 195px;
+    width: 220px; /* Adjusted width */
     margin-left: 0px;
   }
 
   #projects {
-    padding: 9px;
+    padding: 15px; /* Increased padding */
   }
 
   .links table tbody tr td {
-    margin-left: 100px;
+    margin-left: 0; /* Removed margin */
+    padding: 8px; /* Adjusted padding */
   }
 }
+
