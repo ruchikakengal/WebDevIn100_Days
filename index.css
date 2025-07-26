@@ -443,7 +443,7 @@ body.light-theme {
 
 /* Navbar */
 body.light-theme .navbar {
-  background: rgb(0, 157, 219);
+  background: #04eecb;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow for depth */
 }
