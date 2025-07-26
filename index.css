@@ -838,3 +838,54 @@ body {
   width: 20px;
   height: 20px;
 }
+
+
+
+
+.logo-container {
+  position: relative;
+  width: 240px;  /* Increased width */
+  height: 30px;  /* Increased height */
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05); /* Optional: subtle zoom on hover */
+}
+
+.logo-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 30px;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.logo-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-content img {
+  height: 100%;
+  object-fit: contain;
+  max-width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover .logo-video {
+  opacity: 1;
+}
