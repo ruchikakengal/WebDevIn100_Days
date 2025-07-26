@@ -126,7 +126,9 @@ function fillTable() {
 
         ["Day 23", "QR Code Generator", "/public/Day-22_QRCodeGenerator/index.html"],
         ["Day 24", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
+        
       ["Day25"," Portfolio", " https://priyacodesarts.netlify.app/"],
+      ["Day 26" ,"Simple Drawing App" , "public/Day-26_Drawing/index.html"   ]
 
     ];
 
