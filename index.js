@@ -61,7 +61,7 @@ function updateNavbar() {
             </span>
             <span>GitHub</span>
         </a>
-        <a class="button is-primary is-dark" href="contributors/contributor.html">
+        <a class="button is-primary is-dark" href="contributors.html">
             <span class="icon">
                 <i class="fas fa-users"></i>
             </span>
@@ -76,7 +76,7 @@ function updateNavbar() {
         });
     } else {
         buttons.innerHTML = `
-        <a class="button is-primary is-dark" href="contributors/contributor.html">
+        <a class="button is-primary is-dark" href="contributors.html">
             <span class="icon">
                 <i class="fas fa-users"></i>
             </span>
