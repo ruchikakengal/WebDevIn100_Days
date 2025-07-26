@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contributors - WebDev100_Days</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700;800&display=swap');
+        @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap");
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: linear-gradient(145deg, #f0f9ff, #5cff33);
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 4rem;
+            position: relative;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #1abc9c !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand .navbar-item {
+            color: white !important;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #000000;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: #000000;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .contributors-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contributors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding: 0;
+        }
+
+        .contributor-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contributor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            border-color: #1abc9c;
+        }
+
+        .contributor-card[data-rank="1"] {
+            border-color: #f1c40f;
+            background: linear-gradient(135deg, #fff 0%, #fef9e7 100%);
+        }
+
+        .contributor-card[data-rank="1"]:hover {
+            border-color: #f39c12;
+            box-shadow: 0 8px 30px rgba(241, 196, 15, 0.3);
+        }
+
+        .contributor-card[data-rank="2"] {
+            border-color: #95a5a6;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        }
+
+        .contributor-card[data-rank="2"]:hover {
+            border-color: #7f8c8d;
+            box-shadow: 0 8px 30px rgba(149, 165, 166, 0.3);
+        }
+
+        .contributor-card[data-rank="3"] {
+            border-color: #cd7f32;
+            background: linear-gradient(135deg, #fff 0%, #fdf2e9 100%);
+        }
+
+        .contributor-card[data-rank="3"]:hover {
+            border-color: #b8860b;
+            box-shadow: 0 8px 30px rgba(205, 127, 50, 0.3);
+        }
+
+        .rank-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            border: 2px solid white;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .rank-badge.gold {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            box-shadow: 0 3px 10px rgba(241, 196, 15, 0.4);
+        }
+
+        .rank-badge.silver {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            box-shadow: 0 3px 10px rgba(149, 165, 166, 0.4);
+        }
+
+        .rank-badge.bronze {
+            background: linear-gradient(135deg, #cd7f32, #b8860b);
+            box-shadow: 0 3px 10px rgba(205, 127, 50, 0.4);
+        }
+
+        .contributor-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid #1abc9c;
+            margin: 0 auto 1rem;
+            display: block;
+            transition: all 0.3s ease;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contributor-card:hover .contributor-avatar {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .contributor-card[data-rank="1"] .contributor-avatar {
+            border-color: #f1c40f;
+            box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3);
+        }
+
+        .contributor-card[data-rank="2"] .contributor-avatar {
+            border-color: #95a5a6;
+            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+        }
+
+        .contributor-card[data-rank="3"] .contributor-avatar {
+            border-color: #cd7f32;
+            box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
+        }
+
+        .contributor-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contributor-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            word-wrap: break-word;
+            max-width: 100%;
+            line-height: 1.3;
+        }
+
+        .contributor-contributions {
+            color: #1abc9c;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .contributor-card[data-rank="1"] .contributor-contributions {
+            color: #f39c12;
+            font-weight: 700;
+        }
+
+        .contributor-card[data-rank="2"] .contributor-contributions {
+            color: #7f8c8d;
+            font-weight: 650;
+        }
+
+        .contributor-card[data-rank="3"] .contributor-contributions {
+            color: #b8860b;
+            font-weight: 600;
+        }
+
+        .contributor-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            box-shadow: 0 3px 10px rgba(26, 188, 156, 0.3);
+        }
+
+        .contributor-link:hover {
+            background: linear-gradient(135deg, #16a085, #1abc9c);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.4);
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            min-width: 150px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #000000;
+            display: block;
+            margin-bottom: 0.3rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .stat-label {
+            color: #000000;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #000000;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(0, 0, 0, 0.3);
+            border-top: 3px solid #1abc9c;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading p {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .error-message {
+            background: rgba(231, 76, 60, 0.1);
+            backdrop-filter: blur(10px);
+            color: #e74c3c;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 75px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 999;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .contributors-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.2rem;
+            }
+            
+            .contributor-card {
+                min-height: 240px;
+                padding: 1.3rem;
+            }
+            
+            .stats-row {
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .stat-item {
+                padding: 1.2rem 1.5rem;
+                min-width: 130px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .back-button {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 1rem;
+            }
+
+            .rank-badge {
+                top: -6px;
+                right: -6px;
+                padding: 5px 10px;
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .contributors-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 1.5rem auto 0;
+            }
+            
+            .contributor-card {
+                padding: 1.5rem;
+                min-height: 250px;
+            }
+            
+            .contributor-avatar {
+                width: 65px;
+                height: 65px;
+            }
+            
+            .contributor-name {
+                font-size: 1rem;
+            }
+            
+            .contributor-link {
+                font-size: 0.85rem;
+                padding: 8px 14px;
+            }
+
+            .stat-item {
+                padding: 1rem 1.2rem;
+                min-width: 110px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar is-primary" role="navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item has-text-weight-bold" href="../index.html">
+                <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg" alt="WebDev100_Days logo" />
+                WebDev100_Days
+            </a>
+        </div>
+    </nav>
+
+    <a href="../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+
+    <div class="container">
+        <h1 class="page-title">Our Contributors</h1>
+        <p class="page-subtitle">Thank you to everyone who has contributed to this project!</p>
+        
+        <!-- Statistics -->
+        <div class="stats-row" id="statsContainer">
+            <div class="stat-item">
+                <span class="stat-number" id="totalContributors">-</span>
+                <span class="stat-label">Contributors</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="totalContributions">-</span>
+                <span class="stat-label">Contributions</span>
+            </div>
+        </div>
+
+        <!-- Contributors List -->
+        <div class="contributors-container">
+            <div id="contributorsGrid">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading contributors...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="simple-contributors.js"></script>
+</body>
+</html>
