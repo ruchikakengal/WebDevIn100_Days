@@ -427,7 +427,9 @@ body.dark-theme #scrollBtn:hover {
   background-color: #34495e;
   transform: scale(1.1);
 }
-
+body.dark-theme .subtitle has-text-centered{
+  color: #fff;
+}
 /*........................................................................................................................*/
 
 /* Light theme styles */
@@ -865,7 +867,9 @@ body {
   width: 20px;
   height: 20px;
 }
-
+body.light-theme .subtitle has-text-centered{
+  color: black;
+}
 .vertical-links {
   flex-direction: column !important;
   align-items: flex-start !important;

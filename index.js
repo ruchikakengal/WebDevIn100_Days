@@ -121,18 +121,13 @@ function fillTable() {
         ["Day 19", "URL Shortener", "https://github.com/ANTIK-007/URL-Shortener"], /* folder Not there */
         ["Day 20", "TicTacToe Game", "/public/Day-20_tictactoe/index.html"],
         ["Day 21", "Candy Crush", "public/Day-21_candycrush/candy_crush.html"],
-
         ["Day 22", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
-
         ["Day 23", "QR Code Generator", "/public/Day-22_QRCodeGenerator/index.html"],
-        ["Day 24", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
-      ["Day25"," Portfolio", " https://priyacodesarts.netlify.app/"],
-      ["Day 26", "Offline Emergency Info Kit", "public/Day-26_Offline_Emergency_Info_Kit/index.html"],
-        ["Day 27", "Mood-Based Scheduler", "public/Day-27_Mood-Based Scheduler/index.html"],
-
+        ["Day 24", "Mood-Based Scheduler", "public/Day-27_Mood-Based Scheduler/index.html"],
+        ["Day25"," Portfolio", " https://priyacodesarts.netlify.app/"],
+        ["Day 26", "Offline Emergency Info Kit", "public/Day-26_Offline_Emergency_Info_Kit/index.html"],
+        ["Day 28", "Target Reflex Test", "public/Day-28_Target_Reflex_Test/index.html"],
     ];
-
-
 
 
     const tbody = document.getElementById('tableBody');
