@@ -875,3 +875,19 @@ body.light-theme .subtitle has-text-centered{
   align-items: flex-start !important;
   gap: 0.5rem;
 }
+
+/* === Custom color update by Shreya === */
+td:first-child {
+  color: black !important;
+  font-weight: bold;
+}
+
+td:nth-child(2) {
+  color: blue !important;
+  font-weight: bold;
+}
+
+td:nth-child(3) a {
+  color: red !important;
+  font-weight: bold;
+}
