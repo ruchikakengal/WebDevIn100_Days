@@ -135,8 +135,7 @@ function fillTable() {
         ["Day 28", "Target Reflex Test", "public/Day-28_Target_Reflex_Test/index.html"],
         ["Day 29", "Snake And Ladder Game", "public/Snake-and-Ladder-Game/index.html"],
         ["Day 30", "Note Taker", "public/Day-42_NoteTaker/index.html"],
-         ["Day 31","Rock Paper Scissor Game" ,"public/Day-23_RockPaperScissor/index.html" ],
-           ["Day26"," Gradient Generator", " public/Day-23_Gradient_Generator/main.html"],
+         ["Day 31","Rock Paper Scissor Game" ,"public/Day-23_RockPaperScissor/index.html" ]
 
     ];
 
