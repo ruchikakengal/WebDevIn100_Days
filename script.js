@@ -19,14 +19,15 @@ const addEventOnElements = function (elements, eventType, callback) {
  */
 
 const navbar = document.querySelector("[data-navbar]");
-const navTogglers = document.querySelectorAll("[data-nav-toggler]");
+const navToggler = document.querySelector("[data-nav-toggler]");
 
 const toggleNav = () => {
-  navbar.classList.toggle("active");
+  navbar.classList.toggle("is-active");
+  navToggler.classList.toggle("is-active");
   document.body.classList.toggle("nav-active");
 }
 
-addEventOnElements(navTogglers, "click", toggleNav);
+navToggler.addEventListener("click", toggleNav);
 
 
 

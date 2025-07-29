@@ -2,13 +2,26 @@
 
 Welcome to **100_days_100_web_project** – a challenge-based repository to **learn** and **practice** web development by building **100+ mini projects** using **HTML, CSS, and JavaScript**. This journey goes from **basic** to **intermediate** level with fun and interactive web applications!
 
+## 🚀 Open Source Programs
+
+[![GSSoC](https://img.shields.io/badge/GSSoC-2025-orange?style=for-the-badge)](https://gssoc.girlscript.tech/)
+[![SSoC](https://img.shields.io/badge/Social%20Summer%20of%20Code-2025-blue?style=for-the-badge)](https://www.sosc.org.in/ssoc)
+
+This project is submitted under the following open source programs:
+
+- 🌟 **GirlScript Summer of Code (GSSoC)**
+- 🌐 **Social Summer of Code (SSoC)**
+
+We are proud to be contributing as part of these amazing communities!
+
+
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&pause=1000&color=6AE3F9&center=true&vCenter=true&width=1000&lines=Learn+By+Building!+💻;100+Web+Projects+Challenge🔥;HTML+CSS+JS+and+More!)
 
 ---
 
 ## 🌐 Live Website
 👉 Explore all the projects here:  
-🔗 [Visit Live Demo](https://ruchikakengal.github.io/WebDevIn100_Days/)
+🔗 [Visit Live Demo](https://webdevin100days.netlify.app)
 
 
 

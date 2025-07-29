@@ -61,7 +61,7 @@ function updateNavbar() {
             </span>
             <span>GitHub</span>
         </a>
-        <a class="button is-primary is-dark" href="contributors/contributor.html">
+        <a class="button is-primary is-dark" href="contributors.html">
             <span class="icon">
                 <i class="fas fa-users"></i>
             </span>
@@ -76,7 +76,7 @@ function updateNavbar() {
         });
     } else {
         buttons.innerHTML = `
-        <a class="button is-primary is-dark" href="contributors/contributor.html">
+        <a class="button is-primary is-dark" href="contributors.html">
             <span class="icon">
                 <i class="fas fa-users"></i>
             </span>
@@ -100,30 +100,52 @@ function updateNavbar() {
 // Populate the table with project data
 function fillTable() {
     const data = [
-    ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
-    ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
-    ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html"],
-    ["Day 4", "Physics Simulation (by Vishisht Dwivedi)", "./public/physics_simulation/index.html"],
-    ["Day 5", "Quote Generator (by Sania Rajput)", "./public/QuoteGenerator/index.html"],
-    ["Day 6", " ",],
-    ["Day 7", " ",],
-    ["Day 8", " ",],
-    ["Day 9", " ",],
-    ["Day 10", " ",],
-    ["Day 11", " ",],
-    ["Day 12", " ",],
-    ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain)", "./public/Coin_Flip/index.html"],
-    ["Day 14", " ",],
-    ["Day 15", " ",],
+    ["Day 1", "To-Do List", "/public/Day-1_TodoList/index.html"],
+    ["Day 2", "Digital Clock", "/public/Day-2_digital_clock/digitalclock.html"],
+    ["Day 3", "ASCII Art Generator", "/public/Day-3_AsciiArtGenerator/index.html"],
+    ["Day 4", "Password Strength Visualizer", "/public/Day-4_password_visualizer/index.html"],
+    ["Day 5", "Physics Simulation", "/public/Day-5_physics_simulation/index.html"],
+    ["Day 6", "Quote Generator", "/public/Day-6_QuoteGenerator/index.html"],
+    ["Day 7", "Character Word Counter", "/public/Day-7_CharacterWordCounter/index.html"],
+    ["Day 8", "Dice Roll Simulator", "/public/Day-8_DiceRollSimulator/index.html"],
+    ["Day 9", "Guess My Number", "/public/Day-9_Guess_My_Number/index.html"],
+    ["Day 10", "Brick Breaker", "/public/Day-10_Neon_Brick_Breaker/index.html"],
+    ["Day 11", "WeatherApp", "/public/Day-11_WeatherApp/index.html"],
+    ["Day 12", "Countdown Banner", "https://countdown-banner.vercel.app/"],
+    ["Day 13", "Coin Flip Heads/Tails", "/public/Day-13_Coin_Flip/index.html"],
+    ["Day 14", "E-waste Management Hub", "https://e-waste-management-hub.netlify.app/"],
+    ["Day 15", "Currency Converter", "/public/Day-15_Currency_Converter/index.html"],
+    ["Day 16", "Random User Generator", "/public/Day-16_Random_User_Generator/index.html"],
+    ["Day 17", "Image Search App", "/public/Day-17_Image_Search_App/index.html"],
+    ["Day 18", "WaterMedic", "https://github.com/dipmanmajumdar/WaterMedic"],
+    ["Day 19", "URL Shortener", "https://github.com/ANTIK-007/URL-Shortener"],
+    ["Day 20", "TicTacToe Game", "/public/Day-20_tictactoe/index.html"],
+    ["Day 21", "Candy Crush", "public/Day-21_candycrush/candy_crush.html"],
+    ["Day 22", "QR Code Generator", "/public/Day-22_QRCodeGenerator/index.html"],
+    ["Day 23", "Rock Paper Scissor Game", "public/Day-23_RockPaperScissor/index.html"],
+    ["Day 24", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
+    ["Day 25", "Portfolio", "https://priyacodesarts.netlify.app/"],
+    ["Day 26", "GiggleBits", "public/GiggleBits/index.html"],
+    ["Day 28", "Target Reflex Test", "public/Day-28_Target_Reflex_Test/index.html"],
+    ["Day 29", "Snake And Ladder Game", "public/Snake-and-Ladder-Game/index.html"],
+    ["Day 30", "Note Taker", "public/Day-42_NoteTaker/index.html"],
+    ["Day 31", "👾Alien Hunt", "public/Day-31/index.html"],
+    ["Day 32", "Drawing", "public/Day-35-Drawing/index.html"],
+    ["Day 33", "Etch-a-Sketch", "./public/Etch-a-Sketch/index.html"],
+    ["Day 34", "Colour Picker", "public/Day-34-Colour_picker/index.html"],
+    ["Day 34", "Periodic Table", "https://learn-periodic-table.netlify.app/"],
+    ["Day 35", "Book Recommendation", "https://book-recomendation.netlify.app/"],
+    ["Day 36", "World Clock", "public/World_Clock/index.html"],
+    ["Day 40", "Space War Game", "./public/Space-War-Game/index.html"],
+    ["Day 44", "Notes App", "./public/Day-36_Notes_App/index.html"],
     ["Day 45", "myPaint Canvas App (by Shreya BURRA)", "./public/Day_45/myPaint/index.html"],
-    ["Day 100", " ",],
+    ["Day 100", " ", ""]
 ];
-
-
-
+}
 
 
     const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
 
     data.forEach(e => {
         const row = document.createElement('tr');

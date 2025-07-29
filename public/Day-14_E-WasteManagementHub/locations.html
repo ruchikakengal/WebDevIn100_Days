@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>E-Waste Drop-off Locations | E-Waste Management</title>
+  <link href="locations.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>E-Waste Management Hub</h1>
+      <ul>
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a href="index.html#history">History</a>
+        </li>
+        <li>
+          <a href="index.html#solutions">Solutions</a>
+        </li>
+        <li>
+          <a href="index.html#issues">Management Issues</a>
+        </li>
+        <li>
+          <a href="index.html#getInvolved">Collaborate</a>
+        </li>
+      </ul>  
+    </nav>
+  </header>
+
+  <section id="hero" class="location-hero">
+    <h2>Find E-Waste Drop-off Locations Near You</h2>
+    <p>Responsibly dispose of your electronic waste at certified collection centers</p>
+  </section>
+
+  <section id="find-location">
+    <h2>Locate E-Waste Drop-off Centers</h2>
+    <div class="location-finder">
+      <p>Use your current location or enter your address to find the nearest e-waste collection centers.</p>
+      <div class="location-form">
+        <input type="text" id="addressInput" placeholder="Enter your address or postal code">
+        <button id="findLocationBtn">Find Locations</button>
+        <button id="useCurrentLocationBtn">Use Current Location</button>
+      </div>
+      <div id="locationStatus"></div>
+    </div>
+    <div id="map"></div>
+    <div id="locationResults">
+      <h3>Nearby E-Waste Drop-off Locations</h3>
+      <div id="locationList"></div>
+    </div>
+  </section>
+
+  <section id="location-info">
+    <h2>What to Expect When Recycling E-Waste</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Accepted Items</h3>
+        <ul>
+          <li>Computers and laptops</li>
+          <li>Mobile phones and tablets</li>
+          <li>Televisions and monitors</li>
+          <li>Printers and scanners</li>
+          <li>Batteries and chargers</li>
+          <li>Home appliances</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Before You Drop Off</h3>
+        <ul>
+          <li>Back up your important data</li>
+          <li>Factory reset devices when possible</li>
+          <li>Remove batteries if they're easily removable</li>
+          <li>Bring ID (some centers require it)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Benefits of Proper Disposal</h3>
+        <ul>
+          <li>Prevents toxic materials from entering landfills</li>
+          <li>Recovers valuable materials</li>
+          <li>Reduces environmental impact</li>
+          <li>Some centers offer incentives or rebates</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 E-Waste Management Hub - Promoting Responsible Electronic Recycling</p>
+  </footer>
+  
+  <script src="locations.js"></script>
+</body>
+</html>
