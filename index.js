@@ -100,24 +100,25 @@ function updateNavbar() {
 // Populate the table with project data
 function fillTable() {
     const data = [
+    ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
+    ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
+    ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html"],
+    ["Day 4", "Physics Simulation (by Vishisht Dwivedi)", "./public/physics_simulation/index.html"],
+    ["Day 5", "Quote Generator (by Sania Rajput)", "./public/QuoteGenerator/index.html"],
+    ["Day 6", " ",],
+    ["Day 7", " ",],
+    ["Day 8", " ",],
+    ["Day 9", " ",],
+    ["Day 10", " ",],
+    ["Day 11", " ",],
+    ["Day 12", " ",],
+    ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain)", "./public/Coin_Flip/index.html"],
+    ["Day 14", " ",],
+    ["Day 15", " ",],
+    ["Day 45", "myPaint Canvas App (by Shreya BURRA)", "./public/Day_45/myPaint/index.html"],
+    ["Day 100", " ",],
+];
 
-        ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
-        ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
-        ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html",],
-        ["Day 4", "Physics Simulation (by Vishisht Dwivedi)", "./public/physics_simulation/index.html"],
-        ["Day 5","Quote Generator (by Sania Rajput)", "./public/QuoteGenerator/index.html"]
-        ["Day 6", " ",],
-        ["Day 7", " ",],
-        ["Day 8", " ",],
-        ["Day 9", " ",],
-        ["Day 10", " ",],
-        ["Day 11", " ",],
-        ["Day 12", " ",],
-        ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain) ","./public/Coin_Flip/index.html"],
-        ["Day 14", " ",],
-        ["Day 100", " ",],
-
-    ];
 
 
 
