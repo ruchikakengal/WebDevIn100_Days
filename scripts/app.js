@@ -438,6 +438,15 @@ class WebDev100Days {
         features: ["Timer Sessions", "Task Management", "Dark Mode", "Custom Themes", "Statistics"]
       },
       {
+        day: 51,
+        name: "Chess Game",
+        description: "Interactive chess game with move validation, piece animations, and game state tracking.",
+        demoLink: "./public/Day-51/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript", "SVG"],
+        features: ["Move Validation", "Piece Animation", "Game Logic", "Interactive Board"]
+      },
+      {
         day: 72,
         name: "Portfolio Website",
         description: "Modern portfolio website template with responsive design and animations.",
