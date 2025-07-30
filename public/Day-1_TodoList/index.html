@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> To-Do List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #fff3e0);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .todo-container {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 400px;
+      animation: fadeIn 0.5s ease;
+      margin-bottom: 40px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      background: linear-gradient(90deg, #4f46e5, #06b6d4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border 0.2s ease;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #4f46e5;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #4f46e5, #06b6d4);
+      color: white;
+      border: none;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+
+    li {
+      background: #f8fafc;
+      padding: 12px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      transition: transform 0.2s;
+    }
+
+    li:hover {
+      transform: translateX(3px);
+    }
+
+    li.completed span {
+      text-decoration: line-through;
+      color: #9ca3af;
+      transition: color 0.3s ease;
+    }
+
+    .checkbox {
+      margin-right: 10px;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    .actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .edit-btn, .delete-btn {
+      border: none;
+      padding: 6px 8px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .edit-btn {
+      background-color: #fde68a;
+    }
+
+    .delete-btn {
+      background-color: #f87171;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      max-width: 800px;
+      background: white;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px 12px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    th {
+      background: #4f46e5;
+      color: white;
+    }
+
+    @media (max-width: 480px) {
+      .todo-container {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+
+      table, th, td {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="todo-container">
+  <h2>✨ My To-Do List</h2>
+  <input type="text" id="taskInput" placeholder="Add a new task..." />
+  <button onclick="addTask()">Add Task</button>
+  <ul id="taskList"></ul>
+</div>
+
+<h2>📊 Task Analysis</h2>
+<table id="taskAnalysis">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Task #</th>
+      <th>Task</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+  let taskCount = 0;
+  const taskList = document.getElementById("taskList");
+  const taskAnalysis = document.getElementById("taskAnalysis").querySelector("tbody");
+
+  window.onload = () => {
+    const saved = localStorage.getItem("tasks");
+    if (saved) {
+      taskList.innerHTML = saved;
+    }
+  };
+
+  function addTask() {
+    const input = document.getElementById("taskInput");
+    const taskText = input.value.trim();
+    if (!taskText) return alert("Please enter a task!");
+
+    const li = document.createElement("li");
+    const taskId = ++taskCount;
+    const startTime = new Date();
+
+    li.innerHTML = `
+      <div style="display: flex; align-items: center;">
+        <input type="checkbox" class="checkbox" onchange="toggleComplete(this, ${taskId})">
+        <span>${taskText}</span>
+      </div>
+      <div class="actions">
+        <button class="edit-btn" onclick="editTask(this)">✏️</button>
+        <button class="delete-btn" onclick="deleteTask(this)">🗑️</button>
+      </div>
+    `;
+
+    li.setAttribute("data-id", taskId);
+    li.setAttribute("data-start", startTime);
+    li.setAttribute("data-text", taskText);
+
+    taskList.appendChild(li);
+    input.value = "";
+    saveTasks();
+  }
+
+  function deleteTask(button) {
+    button.closest("li").remove();
+    saveTasks();
+  }
+
+  function editTask(button) {
+    const li = button.closest("li");
+    const span = li.querySelector("span");
+    const newText = prompt("Edit task:", span.textContent);
+    if (newText !== null && newText.trim() !== "") {
+      span.textContent = newText.trim();
+      li.setAttribute("data-text", newText.trim());
+      saveTasks();
+    }
+  }
+
+  function toggleComplete(checkbox, taskId) {
+    const li = checkbox.closest("li");
+    li.classList.toggle("completed", checkbox.checked);
+    if (checkbox.checked) {
+      const endTime = new Date();
+      const startTime = new Date(li.getAttribute("data-start"));
+      const duration = Math.round((endTime - startTime) / 60000); // minutes
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${startTime.toLocaleDateString()}</td>
+        <td>${taskId}</td>
+        <td>${li.getAttribute("data-text")}</td>
+        <td>${startTime.toLocaleTimeString()}</td>
+        <td>${endTime.toLocaleTimeString()}</td>
+        <td>${duration} mins</td>
+      `;
+      taskAnalysis.appendChild(row);
+    }
+    saveTasks();
+  }
+
+  function saveTasks() {
+    localStorage.setItem("tasks", taskList.innerHTML);
+  }
+</script>
+
+</body>
+</html>
