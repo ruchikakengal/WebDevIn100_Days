@@ -1,11 +1,12 @@
 function filterProjects() {
     const input = document.getElementById('searchInput');
     const filter = input.value.toLowerCase();
-    const rows = document.querySelector('tbody').querySelectorAll('tr');
+    const rows = document.querySelector('tbody').querySelectorAll('tr'); // Choose all rows in the table body
     let hasResults = false;
 
     rows.forEach(row => {
         const projectName = row.querySelector('.project-name')?.innerText.toLowerCase();
+
         if (projectName && projectName.includes(filter)) {
             row.style.display = '';
             hasResults = true;
@@ -27,7 +28,8 @@ function filterProjects() {
     }
 }
 
-const buttons = document.getElementsByClassName('buttons')[0];
+// Update Navbar for Login Status
+const buttons = document.getElementsByClassName('buttons')[0]; // Refers to the section on NavBar where buttons will get appended based on login status
 
 function updateNavbar() {
     let currentUser = null;
@@ -39,7 +41,6 @@ function updateNavbar() {
     } catch (e) {
         currentUser = null;
     }
-
     if (currentUser) {
         buttons.innerHTML = `
         <button class="button is-success is-dark has-text-weight-bold">
@@ -60,7 +61,7 @@ function updateNavbar() {
             </span>
             <span>GitHub</span>
         </a>
-        <a class="button is-primary is-dark" href="contributors.html">
+        <a class="button is-primary is-dark" href="contributors/contributor.html">
             <span class="icon">
                 <i class="fas fa-users"></i>
             </span>
@@ -70,11 +71,12 @@ function updateNavbar() {
         document.getElementById('logout').addEventListener('click', () => {
             localStorage.removeItem('currentUser');
             updateNavbar();
+            // Optional: Redirect to home page after logout
             window.location.reload();
         });
     } else {
         buttons.innerHTML = `
-        <a class="button is-primary is-dark" href="contributors.html">
+        <a class="button is-primary is-dark" href="contributors/contributor.html">
             <span class="icon">
                 <i class="fas fa-users"></i>
             </span>
@@ -95,49 +97,43 @@ function updateNavbar() {
     }
 }
 
+// Populate the table with project data
 function fillTable() {
     const data = [
-        ["Day 1", "To-Do List", "/public/Day-1_TodoList/index.html"],
-        ["Day 2", "Digital Clock", "/public/Day-2_digital_clock/digitalclock.html"],
-        ["Day 3", "ASCII Art Generator", "/public/Day-3_AsciiArtGenerator/index.html"],
-        ["Day 4", "Password Strength Visualizer", "/public/Day-4_password_visualizer/index.html"],
-        ["Day 5", "Physics Simulation", "/public/Day-5_physics_simulation/index.html"],
-        ["Day 6", "Quote Generator", "/public/Day-6_QuoteGenerator/index.html"],
-        ["Day 7", "Character Word Counter", "/public/Day-7_CharacterWordCounter/index.html"],
-        ["Day 8", "Dice Roll Simulator", "/public/Day-8_DiceRollSimulator/index.html"],
-        ["Day 9", "Guess My Number", "/public/Day-9_Guess_My_Number/index.html"],
-        ["Day 10", "Brick Breaker", "/public/Day-10_Neon_Brick_Breaker/index.html"],
-        ["Day 11", "WeatherApp", "/public/Day-11_WeatherApp/index.html"],
-        ["Day 12", "Countdown Banner", "https://countdown-banner.vercel.app/"],
-        ["Day 13", "Coin Flip Heads/Tails", "/public/Day-13_Coin_Flip/index.html"],
-        ["Day 14", "E-waste Management Hub", "https://e-waste-management-hub.netlify.app/"],
-        ["Day 15", "Currency Converter", "/public/Day-15_Currency_Converter/index.html"],
-        ["Day 16", "Random User Generator", "/public/Day-16_Random_User_Generator/index.html"],
-        ["Day 17", "Image Search App", "/public/Day-17_Image_Search_App/index.html"],
-        ["Day 18", "WaterMedic", "https://github.com/dipmanmajumdar/WaterMedic"],
-        ["Day 19", "URL Shortener", "https://github.com/ANTIK-007/URL-Shortener"],
-        ["Day 20", "TicTacToe Game", "/public/Day-20_tictactoe/index.html"],
-        ["Day 21", "Candy Crush", "/public/Day-21_candycrush/candy_crush.html"],
-        ["Day 22", "QR Code Generator", "/public/Day-22_QRCodeGenerator/index.html"],
-        ["Day 23", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
-        ["Day 25", "Portfolio", "https://priyacodesarts.netlify.app/"],
-        ["Day 26", "GiggleBits", "public/GiggleBits/index.html"],
-        ["Day 28", "Target Reflex Test", "public/Day-28_Target_Reflex_Test/index.html"],
-        ["Day 29", "Snake And Ladder Game", "public/Snake-and-Ladder-Game/index.html"],
-        ["Day 30", "Note Taker", "public/Day-42_NoteTaker/index.html"],
-        ["Day 31", "👾Alien Hunt", "public/Day-31/index.html"],
-        ["Day 32", "Rock Paper Scissor Game", "public/Day-23_RockPaperScissor/index.html"],
-        ["Day 33", "Drawing", "public/Day-35-Drawing/index.html"],
-        ["Day 34", "Colour Picker", "public/Day-34-Colour_picker/index.html"],
-        ["Day 35", "Etch-a-Sketch", "./public/Etch-a-Sketch/index.html"],
-        ["Day 36", "World Clock", "public/World_Clock/index.html"],
-        ["Day 40", "Space War Game", "./public/Space-War-Game/index.html"],
-        ["Day 44", "Notes App", "./public/Day-36_Notes_App/index.html"],
-        ["Day 73", "Typing Speed Calculator", "./public/Day-73_TypingSpeedCalculator/index.html"]
+
+        ["Day 1", "To-Do List", " /public/TO_DO_LIST/todolist.html"],
+        ["Day 2", "Digital Clock", " /public/digital_clock/digitalclock.html"],
+        ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html",],
+        ["Day 3", "ASCII Art Generator (by Amaan Syed)", "./public/AsciiArtGenerator/index.html",],
+        ["Day 4", "Password Strength Visualizer (by Adwitya)", " /public/password_visualizer/index.html"],
+        ["Day 5", "Physics Simulation (by Vishisht Dwivedi)", " /public/physics_simulation/index.html"],
+        ["Day 6", "Quote Generator (by Sania Rajput)", " /public/QuoteGenerator/index.html"],
+        ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", " /public/CharacterWordCounter/index.html"],
+        ["Day 8", "Dice Roll Simulator"," /public/DICEROLLSIMULATOR/index.html"],
+        ["Day 9", "Guess My Number (by Pahima R Uchil)", "./public/Guess_My_Number/index.html"],
+        ["Day 7", "Character Word Counter (by Anchal Chaturvedi)", " /public/CharacterWordCounter/index.html"],
+        ["Day 8", "Dice Roll Simulator"," /public/DICEROLLSIMULATOR/index.html"],
+        ["Day 9", "Guess My Number (by Pahima R Uchil)", "./public/Guess_My_Number/index.html"],
+        ["Day 10", " ",],
+        ["Day 11", " ",],
+        ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
+        ["Day 12", "Countdown Banner (by Priyanshi)", "https://countdown-banner.vercel.app/",], 
+        ["Day 13", "Coin Flip Heads/Tails (by Radhika Dodain) ","./public/Coin_Flip/index.html"],
+        ["Day 14", " ",],
+        ["Day 63", "WaterMedic (By Dee) ","https://github.com/dipmanmajumdar/WaterMedic"],
+        ["Day 64", "URL Shortner","https://github.com/ANTIK-007/URL-Shortener"],
+        ["Day 17", "E- waste Management Hub(by Abhirup Nandi)","https://e-waste-management-hub.netlify.app/"],
+["Day 72","Interactive Portfolio (by Priya Katariya)","/public/portfolio/index.html"],
+
+        ["Day 100", "Candy Crush","public/candycrush/candy_crush.html"],
+        ["Day 73","Typing Speed Calculator"],
+
     ];
 
+
+
+
     const tbody = document.getElementById('tableBody');
-    tbody.innerHTML = '';
 
     data.forEach(e => {
         const row = document.createElement('tr');
@@ -150,7 +146,7 @@ function fillTable() {
         nameP.innerText = e[1];
         a.href = e[2];
         a.innerText = 'Here';
-        a.target = '_blank';
+        a.target = '_blank'; // Open link in a new tab
         nameP.classList.add('project-name');
 
         link.appendChild(a);
@@ -170,14 +166,16 @@ document.addEventListener('DOMContentLoaded', () => {
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
+// Check if the user has a saved theme preference
 if (localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark-theme');
     themeToggle.textContent = '☀️';
 } else {
-    body.classList.add('light-theme');
+    body.classList.add('light-theme');  // Explicitly set light theme
     themeToggle.textContent = '🌙';
 }
 
+// Toggle theme on button click
 themeToggle.addEventListener('click', () => {
     if (body.classList.contains('dark-theme')) {
         body.classList.remove('dark-theme');
