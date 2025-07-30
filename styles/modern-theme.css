@@ -1,19 +1,19 @@
-/* WebDevIn_100Days - Main Styles */
+/* Modern Design System for WebDevIn_100Days */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* Color scheme and variables */
+/* CSS Variables for consistent theming */
 :root {
-  /* Brand colors */
+  /* Primary Colors */
   --primary-color: #6366f1;
   --primary-hover: #4f46e5;
   --primary-light: #e0e7ff;
   
-  /* Accent colors */
+  /* Secondary Colors */
   --secondary-color: #10b981;
   --secondary-hover: #059669;
   --secondary-light: #d1fae5;
   
-  /* Grays */
+  /* Neutral Colors */
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
@@ -87,7 +87,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Dark theme support */
+/* Dark Mode Support */
 [data-theme="dark"] {
   --bg-primary: var(--dark-bg-primary);
   --bg-secondary: var(--dark-bg-secondary);
@@ -96,7 +96,7 @@ body {
   --text-secondary: var(--dark-text-secondary);
 }
 
-/* Container styles */
+/* Modern Container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -109,7 +109,7 @@ body {
   }
 }
 
-/* Button styles */
+/* Modern Button System */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -167,7 +167,7 @@ body {
   color: white;
 }
 
-/* Card components */
+/* Modern Card System */
 .card {
   background: var(--bg-primary);
   border-radius: var(--radius-lg);
@@ -234,7 +234,7 @@ body {
   color: var(--text-secondary);
 }
 
-/* Grid layout system */
+/* Modern Grid System */
 .grid {
   display: grid;
   gap: var(--space-lg);
@@ -299,7 +299,7 @@ body {
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 
-/* Form elements */
+/* Modern Form Elements */
 .input {
   width: 100%;
   padding: var(--space-sm) var(--space-md);

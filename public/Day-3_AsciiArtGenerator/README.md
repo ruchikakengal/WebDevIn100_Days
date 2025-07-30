@@ -103,4 +103,4 @@ This project is part of the [100_Days_100_webprojects](https://github.com/ruchik
 
 ---
 
-Made with ❤️ by Amaan Syed | Part of WebDev100_Days
+Made with ❤️ by Amaan Syed | Part of WebDevIn_100Days

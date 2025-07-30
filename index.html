@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebDev100_Days - 100 Days of Web Development Projects</title>
+  <title>WebDevIn_100Days - 100 Days of Web Development Projects</title>
   
   <!-- Favicon Setup -->
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
@@ -15,18 +15,18 @@
   <!-- SEO Meta Tags -->
   <meta name="description" content="100 Days of Web Development — A journey through 100 fun and interactive HTML, CSS, and JS projects. Perfect for beginners to intermediate developers.">
   <meta name="keywords" content="web development, HTML, CSS, JavaScript, projects, learning, coding, frontend">
-  <meta name="author" content="WebDev100_Days Team">
+  <meta name="author" content="WebDevIn_100Days Team">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WebDev100_Days - 100 Days of Web Development Projects">
+  <meta property="og:title" content="WebDevIn_100Days - 100 Days of Web Development Projects">
   <meta property="og:description" content="Build 100 unique frontend projects while learning HTML, CSS, and JavaScript. Ideal for beginners to intermediate developers.">
   <meta property="og:image" content="https://i.imgur.com/3cztaa9.png">
   <meta property="og:url" content="https://your-site.com">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WebDev100_Days - 100 Days of Web Development Projects">
+  <meta name="twitter:title" content="WebDevIn_100Days - 100 Days of Web Development Projects">
   <meta name="twitter:description" content="Build 100 unique frontend projects while learning HTML, CSS, and JavaScript.">
   <meta name="twitter:image" content="https://i.imgur.com/3cztaa9.png">
 
@@ -54,8 +54,8 @@
   <nav class="modern-nav">
     <div class="nav-container">
       <a href="index.html" class="nav-brand">
-        <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg" alt="WebDev100_Days logo" class="nav-logo" />
-        WebDev100_Days
+        <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg" alt="WebDevIn_100Days logo" class="nav-logo" />
+        WebDevIn_100Days
       </a>
       
       <ul class="nav-links">
@@ -179,14 +179,40 @@
       <div class="filter-tabs">
         <button class="filter-tab active" data-filter="all">All Projects</button>
         <button class="filter-tab" data-filter="basic">Basic</button>
-        <button class="filter-tab" data-filter="intermediate">Intermediate</button>
         <button class="filter-tab" data-filter="games">Games</button>
         <button class="filter-tab" data-filter="utilities">Utilities</button>
+        <button class="filter-tab" data-filter="advanced">Advanced</button>
+      </div>
+
+      <!-- View Toggle -->
+      <div class="view-controls">
+        <div class="view-toggle">
+          <button class="view-toggle-btn active" data-view="cards">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            Cards
+          </button>
+          <button class="view-toggle-btn" data-view="table">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"></path>
+            </svg>
+            Table
+          </button>
+        </div>
       </div>
 
       <!-- Projects Grid -->
       <div class="projects-grid">
         <!-- Projects will be dynamically generated here -->
+      </div>
+
+      <!-- Projects Table -->
+      <div class="projects-table-container" style="display: none;">
+        <!-- Table will be dynamically generated here -->
       </div>
 
       <!-- Empty State -->
@@ -265,7 +291,7 @@
             <span class="tech-badge responsive">Responsive</span>
           </div>
           <div class="footer-copyright">
-            <p>&copy; <span id="copyYear">2025</span> 100DAYS_WEBPROJECTS by Rutika Kengal & Contributors</p>
+            <p>&copy; <span id="copyYear">2025</span> WebDevIn_100Days by Ruchika Kengal & Contributors</p>
           </div>
         </div>
     </div>
