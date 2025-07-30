@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Typing Speed Calculator</title>
+  <title>🔥 Typing Speed Calculator</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <h1>Typing Speed Calculator</h1>
-    <p id="quote">Loading...</p>
+    <h1>🚀 Typing Speed Calculator</h1>
+    <div class="quote-box">
+      <p id="quote">Loading quote...</p>
+    </div>
 
     <textarea id="typed-text" placeholder="Start typing here..." disabled></textarea>
 
     <div class="stats">
-      <p>Time: <span id="timer">0</span>s</p>
-      <p>WPM: <span id="wpm">0</span></p>
-      <p>Accuracy: <span id="accuracy">100</span>%</p>
+      <div><strong>⏱️ Time:</strong> <span id="timer">0</span>s</div>
+      <div><strong>📈 WPM:</strong> <span id="wpm">0</span></div>
+      <div><strong>🎯 Accuracy:</strong> <span id="accuracy">100</span>%</div>
     </div>
 
-    <button id="start-btn">Start</button>
-    <button id="restart-btn" disabled>Restart</button>
+    <div class="btns">
+      <button id="start-btn">Start</button>
+      <button id="restart-btn" disabled>Restart</button>
+    </div>
   </div>
 
   <script src="script.js"></script>

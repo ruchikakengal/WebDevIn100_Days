@@ -1,6 +1,7 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(120deg, #1e1e2f, #2d2d44);
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,59 +10,81 @@ body {
 }
 
 .container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  padding: 2.5rem;
+  border-radius: 20px;
+  max-width: 700px;
   width: 90%;
-  max-width: 600px;
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
 h1 {
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00ffe5;
 }
 
-#quote {
-  font-size: 16px;
-  margin-bottom: 1rem;
-  color: #333;
+.quote-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  color: #f0f0f0;
 }
 
 textarea {
   width: 100%;
-  padding: 1rem;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  resize: none;
-  margin-bottom: 1rem;
   height: 120px;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  resize: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+textarea::placeholder {
+  color: #ccc;
 }
 
 .stats {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  font-size: 1rem;
   margin-bottom: 1rem;
-  font-size: 16px;
 }
 
-button {
-  margin: 5px;
+.btns button {
   padding: 10px 20px;
-  font-size: 15px;
+  margin: 0 10px;
   border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-button:hover {
-  background-color: #0056b3;
+#start-btn {
+  background-color: #00c9a7;
+  color: white;
 }
 
-button:disabled {
-  background-color: #cccccc;
+#restart-btn {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.btns button:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
+}
+
+.btns button:hover:enabled {
+  transform: scale(1.05);
 }

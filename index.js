@@ -1,12 +1,11 @@
 function filterProjects() {
     const input = document.getElementById('searchInput');
     const filter = input.value.toLowerCase();
-    const rows = document.querySelector('tbody').querySelectorAll('tr'); // Choose all rows in the table body
+    const rows = document.querySelector('tbody').querySelectorAll('tr');
     let hasResults = false;
 
     rows.forEach(row => {
         const projectName = row.querySelector('.project-name')?.innerText.toLowerCase();
-
         if (projectName && projectName.includes(filter)) {
             row.style.display = '';
             hasResults = true;
@@ -28,8 +27,7 @@ function filterProjects() {
     }
 }
 
-// Update Navbar for Login Status
-const buttons = document.getElementsByClassName('buttons')[0]; // Refers to the section on NavBar where buttons will get appended based on login status
+const buttons = document.getElementsByClassName('buttons')[0];
 
 function updateNavbar() {
     let currentUser = null;
@@ -41,6 +39,7 @@ function updateNavbar() {
     } catch (e) {
         currentUser = null;
     }
+
     if (currentUser) {
         buttons.innerHTML = `
         <button class="button is-success is-dark has-text-weight-bold">
@@ -71,7 +70,6 @@ function updateNavbar() {
         document.getElementById('logout').addEventListener('click', () => {
             localStorage.removeItem('currentUser');
             updateNavbar();
-            // Optional: Redirect to home page after logout
             window.location.reload();
         });
     } else {
@@ -97,7 +95,6 @@ function updateNavbar() {
     }
 }
 
-// Populate the table with project data
 function fillTable() {
     const data = [
         ["Day 1", "To-Do List", "/public/Day-1_TodoList/index.html"],
@@ -111,37 +108,33 @@ function fillTable() {
         ["Day 9", "Guess My Number", "/public/Day-9_Guess_My_Number/index.html"],
         ["Day 10", "Brick Breaker", "/public/Day-10_Neon_Brick_Breaker/index.html"],
         ["Day 11", "WeatherApp", "/public/Day-11_WeatherApp/index.html"],
-        ["Day 12", "Countdown Banner", "https://countdown-banner.vercel.app/"], /* folder Not there */
+        ["Day 12", "Countdown Banner", "https://countdown-banner.vercel.app/"],
         ["Day 13", "Coin Flip Heads/Tails", "/public/Day-13_Coin_Flip/index.html"],
         ["Day 14", "E-waste Management Hub", "https://e-waste-management-hub.netlify.app/"],
         ["Day 15", "Currency Converter", "/public/Day-15_Currency_Converter/index.html"],
         ["Day 16", "Random User Generator", "/public/Day-16_Random_User_Generator/index.html"],
         ["Day 17", "Image Search App", "/public/Day-17_Image_Search_App/index.html"],
-        ["Day 18", "WaterMedic", "https://github.com/dipmanmajumdar/WaterMedic"], /* folder Not there */
-        ["Day 19", "URL Shortener", "https://github.com/ANTIK-007/URL-Shortener"], /* folder Not there */
+        ["Day 18", "WaterMedic", "https://github.com/dipmanmajumdar/WaterMedic"],
+        ["Day 19", "URL Shortener", "https://github.com/ANTIK-007/URL-Shortener"],
         ["Day 20", "TicTacToe Game", "/public/Day-20_tictactoe/index.html"],
-        ["Day 21", "Candy Crush", "public/Day-21_candycrush/candy_crush.html"],
+        ["Day 21", "Candy Crush", "/public/Day-21_candycrush/candy_crush.html"],
         ["Day 22", "QR Code Generator", "/public/Day-22_QRCodeGenerator/index.html"],
         ["Day 23", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
-        ["Day 24", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
-        ["Day 25", " Portfolio", " https://priyacodesarts.netlify.app/"],
+        ["Day 25", "Portfolio", "https://priyacodesarts.netlify.app/"],
         ["Day 26", "GiggleBits", "public/GiggleBits/index.html"],
         ["Day 28", "Target Reflex Test", "public/Day-28_Target_Reflex_Test/index.html"],
         ["Day 29", "Snake And Ladder Game", "public/Snake-and-Ladder-Game/index.html"],
         ["Day 30", "Note Taker", "public/Day-42_NoteTaker/index.html"],
         ["Day 31", "👾Alien Hunt", "public/Day-31/index.html"],
-        ["Day 32","Rock Paper Scissor Game" ,"public/Day-23_RockPaperScissor/index.html" ],
+        ["Day 32", "Rock Paper Scissor Game", "public/Day-23_RockPaperScissor/index.html"],
+        ["Day 33", "Drawing", "public/Day-35-Drawing/index.html"],
         ["Day 34", "Colour Picker", "public/Day-34-Colour_picker/index.html"],
-        ["Day 32","Drawing" ,"public/Day-35-Drawing/index.html" ],
-        ["Day 33", "Etch-a-Sketch" ,"./public/Etch-a-Sketch/index.html"],
-        ["Day 34"," Periodic Table", "https://learn-periodic-table.netlify.app/"],
-        ["Day 35"," Book Recommendation", "https://book-recomendation.netlify.app/"],
-        ["Day 36","World Clock","public/World_Clock/index.html"],
-        ["Day36","World Clock","public/World_Clock/index.html"],
-        ["Day 40", "Space War Game" ,"./public/Space-War-Game/index.html"],
-        ["Day 44", "Notes App" ,"./public/Day-36_Notes_App/index.html"],
-        ["Day-73","TypingSpeedCalculator","./public/Day-73_TypingSpeedCalculator/index.html"]];
-
+        ["Day 35", "Etch-a-Sketch", "./public/Etch-a-Sketch/index.html"],
+        ["Day 36", "World Clock", "public/World_Clock/index.html"],
+        ["Day 40", "Space War Game", "./public/Space-War-Game/index.html"],
+        ["Day 44", "Notes App", "./public/Day-36_Notes_App/index.html"],
+        ["Day 73", "Typing Speed Calculator", "./public/Day-73_TypingSpeedCalculator/index.html"]
+    ];
 
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = '';
@@ -157,7 +150,7 @@ function fillTable() {
         nameP.innerText = e[1];
         a.href = e[2];
         a.innerText = 'Here';
-        a.target = '_blank'; // Open link in a new tab
+        a.target = '_blank';
         nameP.classList.add('project-name');
 
         link.appendChild(a);
@@ -177,16 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-// Check if the user has a saved theme preference
 if (localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark-theme');
     themeToggle.textContent = '☀️';
 } else {
-    body.classList.add('light-theme');  // Explicitly set light theme
+    body.classList.add('light-theme');
     themeToggle.textContent = '🌙';
 }
 
-// Toggle theme on button click
 themeToggle.addEventListener('click', () => {
     if (body.classList.contains('dark-theme')) {
         body.classList.remove('dark-theme');

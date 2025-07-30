@@ -3,7 +3,8 @@ const quotes = [
   "Typing speed is calculated in words per minute.",
   "Practice makes perfect, especially in coding.",
   "JavaScript powers the dynamic behavior of websites.",
-  "Fast typing helps you become a more productive developer."
+  "Fast typing helps you become a more productive developer.",
+  "Debugging is like being the detective in a crime movie where you are also the murderer."
 ];
 
 const quoteEl = document.getElementById("quote");
@@ -20,8 +21,8 @@ let interval = null;
 let isTypingStarted = false;
 
 function loadRandomQuote() {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  quote = quotes[randomIndex];
+  const index = Math.floor(Math.random() * quotes.length);
+  quote = quotes[index];
   quoteEl.textContent = quote;
 }
 
@@ -32,30 +33,28 @@ function startTest() {
   typedEl.focus();
   startBtn.disabled = true;
   restartBtn.disabled = false;
+  timerEl.textContent = "0";
+  wpmEl.textContent = "0";
+  accuracyEl.textContent = "100";
   isTypingStarted = false;
-  timerEl.innerText = 0;
-  wpmEl.innerText = 0;
-  accuracyEl.innerText = 100;
 }
 
 function updateStats() {
   const typed = typedEl.value;
-  const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-  timerEl.innerText = elapsedSeconds;
+  const elapsed = Math.floor((Date.now() - startTime) / 1000);
+  timerEl.textContent = elapsed;
 
   const wordsTyped = typed.trim().split(/\s+/).filter(Boolean).length;
-  const minutes = elapsedSeconds / 60;
-  const wpm = Math.round(wordsTyped / minutes);
-  wpmEl.innerText = isFinite(wpm) ? wpm : 0;
+  const wpm = Math.round((wordsTyped / elapsed) * 60);
+  wpmEl.textContent = isFinite(wpm) ? wpm : "0";
 
   let correctChars = 0;
-  for (let i = 0; i < typed.length && i < quote.length; i++) {
+  for (let i = 0; i < typed.length; i++) {
     if (typed[i] === quote[i]) correctChars++;
   }
   const accuracy = Math.round((correctChars / quote.length) * 100);
-  accuracyEl.innerText = isFinite(accuracy) ? accuracy : 100;
+  accuracyEl.textContent = isFinite(accuracy) ? accuracy : "100";
 
-  // Stop if quote is completely typed
   if (typed.trim() === quote.trim()) {
     clearInterval(interval);
     typedEl.disabled = true;
