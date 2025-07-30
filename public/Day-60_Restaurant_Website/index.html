@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savory Bites - Best Restaurant In The City</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#home" class="logo">Savory Bites</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reservations">Reservations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Savory Bites</h1>
+                <p>"Best In The City"</p>
+                <a href="#reservations" class="btn">Book a Table</a>
+            </div>
+        </section>
+
+        <section id="about" class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Savory Bites is a place for simplicity. Good food, good beer, and good service. Simple is the name of the game, and we're good at finding it in all the right places, even in your dining experience. We're a small group from Delhi who make simple food possible. Come join us and see what simplicity tastes like.</p>
+                </div>
+                <div class="about-gallery">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1887" alt="Grilled steak dish">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1981" alt="Pizza slice">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=1980" alt="Pancakes with syrup">
+                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1887" alt="Fresh salad bowl">
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="container">
+            <h2>Our Special Menu</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2070" alt="Dish 1">
+                    <h3>Athenian Quinoa Salad</h3>
+                    <p>Crisp romaine, quinoa, feta cheese, olives, and a zesty lemon-dill vinaigrette.</p>
+                    <span class="price">₹450</span>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=2070" alt="Dish 2">
+                    <h3>Tuscan Sun Pasta</h3>
+                    <p>Handmade tagliatelle with sun-dried tomatoes, spinach, and a creamy garlic sauce.</p>
+                    <span class="price">₹620</span>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=1950" alt="Dish 3">
+                    <h3>Velvet Chocolate Lava Cake</h3>
+                    <p>Rich dark chocolate cake with a molten core, served with vanilla bean ice cream.</p>
+                    <span class="price">₹350</span>
+                </div>
+                 <div class="menu-item">
+                    <img src="https://img.delicious.com.au/uC8qWW9G/w1200/del/2017/07/indian-spiced-lamb-with-tomatoes-49004-2.jpg" alt="Dish 4">
+                    <h3>Himalayan Spiced Lamb</h3>
+                    <p>Slow-cooked lamb shank infused with mountain herbs, served with saffron rice.</p>
+                    <span class="price">₹850</span>
+                </div>
+                <div class="menu-item">
+                    <img src="https://c.ndtvimg.com/2023-08/3s3puhhg_prawn-curry_625x300_18_August_23.jpg" alt="Dish 5">
+                    <h3>Coastal Prawn Curry</h3>
+                    <p>Juicy prawns simmered in a coconut milk and tamarind gravy, a taste of the coast.</p>
+                    <span class="price">₹710</span>
+                </div>
+                <div class="menu-item">
+                    <img src="https://bing.com/th?id=OSK.d19ec591462bb16a167141fd6c9000d5" alt="Dish 6">
+                    <h3>Mango & Passionfruit Mousse</h3>
+                    <p>A light and airy tropical dessert to cleanse your palate, topped with fresh mint.</p>
+                    <span class="price">₹380</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="reservations" class="container">
+            <h2>Make a Reservation</h2>
+            <form class="reservation-form">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                    <input type="number" name="guests" placeholder="Number of Guests" min="1" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" name="date" required value="2025-07-27">
+                    <input type="time" name="time" required>
+                </div>
+                <div class="form-group-full">
+                     <textarea name="requests" placeholder="Special Requests (optional)"></textarea>
+                </div>
+                <button type="submit" class="btn">Confirm Reservation</button>
+            </form>
+        </section>
+
+        <section id="contact" class="container">
+             <h2>Contact Us</h2>
+             <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group-full">
+                    <textarea name="message" placeholder="Your Message" rows="7" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h4>About Savory Bites</h4>
+                <p>A place for simplicity. We believe in good food, good drinks, and great company. Come join us and see what simplicity tastes like.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Get In Touch</h4>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Culinary Lane, Connaught Place, New Delhi, 110001</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> contact@savorybites.in</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Opening Hours</h4>
+                <p>Mon - Fri: 12:00 PM - 11:00 PM</p>
+                <p>Sat - Sun: 11:00 AM - 11:30 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 Savory Bites. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
