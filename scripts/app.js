@@ -6,9 +6,8 @@ class WebDev100Days {
     this.filteredProjects = [];
     this.currentFilter = 'all';
     this.currentPage = 1;
-    this.projectsPerPage = 12;
+    this.projectsPerPage = 20; // Increased for table view
     this.searchTerm = '';
-    this.viewMode = 'cards'; // 'cards' or 'table'
     
     this.init();
   }
@@ -20,7 +19,7 @@ class WebDev100Days {
     this.setupScrollToTop();
     this.setupMobileMenu();
     await this.loadProjects();
-    this.renderProjects();
+    this.renderTable();
     this.updateStats();
   }
 
@@ -50,33 +49,25 @@ class WebDev100Days {
       }
     });
 
-    // View toggle
-    document.addEventListener('click', (e) => {
-      if (e.target.matches('.view-toggle-btn') || e.target.closest('.view-toggle-btn')) {
-        const btn = e.target.closest('.view-toggle-btn');
-        const mode = btn.dataset.view;
-        this.setViewMode(mode);
-      }
-    });
-
+    // View toggle - removed since we only have table view now
     // Pagination
     document.addEventListener('click', (e) => {
       if (e.target.matches('.pagination-btn')) {
         const page = parseInt(e.target.dataset.page);
         if (page && page !== this.currentPage) {
           this.currentPage = page;
-          this.renderProjects();
+          this.renderTable();
         }
       }
     });
 
-    // Project card clicks
+    // Project row clicks - open demo in new tab
     document.addEventListener('click', (e) => {
-      if (e.target.matches('.project-card') || e.target.closest('.project-card')) {
-        const card = e.target.closest('.project-card');
-        const demoLink = card.querySelector('.project-btn-primary');
-        if (demoLink && demoLink.href) {
-          window.open(demoLink.href, '_blank');
+      if (e.target.matches('.demo-btn') || e.target.closest('.demo-btn')) {
+        e.preventDefault();
+        const demoBtn = e.target.closest('.demo-btn');
+        if (demoBtn && demoBtn.href) {
+          window.open(demoBtn.href, '_blank');
         }
       }
     });
@@ -546,65 +537,19 @@ class WebDev100Days {
     this.filterProjects();
   }
 
-  setViewMode(mode) {
-    this.viewMode = mode;
-    
-    // Update active toggle button
-    document.querySelectorAll('.view-toggle-btn').forEach(btn => {
-      btn.classList.remove('active');
-    });
-    document.querySelector(`[data-view="${mode}"]`).classList.add('active');
-    
-    // Show/hide appropriate containers
-    const cardsContainer = document.querySelector('.projects-grid');
+  renderTable() {
     const tableContainer = document.querySelector('.projects-table-container');
-    
-    if (mode === 'table') {
-      if (cardsContainer) cardsContainer.style.display = 'none';
-      if (tableContainer) tableContainer.style.display = 'block';
-      this.renderTable();
-    } else {
-      if (cardsContainer) cardsContainer.style.display = 'grid';
-      if (tableContainer) tableContainer.style.display = 'none';
-      this.renderProjects();
-    }
-  }
-
-  filterProjects() {
-    let filtered = [...this.projects];
-
-    // Apply category filter
-    if (this.currentFilter !== 'all') {
-      filtered = filtered.filter(project => project.category === this.currentFilter);
-    }
-
-    // Apply search filter
-    if (this.searchTerm) {
-      filtered = filtered.filter(project => 
-        project.name.toLowerCase().includes(this.searchTerm) ||
-        project.description.toLowerCase().includes(this.searchTerm) ||
-        project.technologies.some(tech => tech.toLowerCase().includes(this.searchTerm))
-      );
-    }
-
-    this.filteredProjects = filtered;
-    this.currentPage = 1;
-    this.renderProjects();
-  }
-
-  renderProjects() {
-    const container = document.querySelector('.projects-grid');
     const emptyState = document.querySelector('.empty-state');
     
-    if (!container) return;
+    if (!tableContainer) return;
 
-    // Calculate pagination
+    // Calculate pagination for table
     const startIndex = (this.currentPage - 1) * this.projectsPerPage;
     const endIndex = startIndex + this.projectsPerPage;
     const projectsToShow = this.filteredProjects.slice(startIndex, endIndex);
 
     // Clear container
-    container.innerHTML = '';
+    tableContainer.innerHTML = '';
 
     if (projectsToShow.length === 0) {
       if (emptyState) {
@@ -616,74 +561,6 @@ class WebDev100Days {
     if (emptyState) {
       emptyState.classList.remove('show');
     }
-
-    // Render projects
-    projectsToShow.forEach((project, index) => {
-      const projectCard = this.createProjectCard(project);
-      projectCard.style.animationDelay = `${index * 0.1}s`;
-      container.appendChild(projectCard);
-    });
-
-    this.renderPagination();
-  }
-
-  createProjectCard(project) {
-    const card = document.createElement('div');
-    card.className = 'project-card animate-fade-in';
-    card.setAttribute('data-category', project.category);
-
-    card.innerHTML = `
-      <div class="project-header">
-        <div class="project-day">Day ${project.day}</div>
-        <h3 class="project-title">${project.name}</h3>
-        <p class="project-description">${project.description}</p>
-      </div>
-      <div class="project-content">
-        <div class="project-tech-stack">
-          ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-        </div>
-        <div class="project-features">
-          <h4 class="features-title">Features:</h4>
-          <ul class="features-list">
-            ${project.features.map(feature => `<li class="feature-item">${feature}</li>`).join('')}
-          </ul>
-        </div>
-      </div>
-      <div class="project-footer">
-        <div class="project-actions">
-          <a href="${project.demoLink}" target="_blank" class="project-btn project-btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15,3 21,3 21,9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-            View Demo
-          </a>
-          <button class="project-btn project-btn-secondary" onclick="this.closest('.project-card').classList.toggle('bookmarked')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path>
-            </svg>
-            Save
-          </button>
-        </div>
-        <div class="project-status">
-          <div class="status-dot"></div>
-          Live
-        </div>
-      </div>
-    `;
-
-    return card;
-  }
-
-  renderTable() {
-    const tableContainer = document.querySelector('.projects-table-container');
-    if (!tableContainer) return;
-
-    // Calculate pagination for table
-    const startIndex = (this.currentPage - 1) * this.projectsPerPage;
-    const endIndex = startIndex + this.projectsPerPage;
-    const projectsToShow = this.filteredProjects.slice(startIndex, endIndex);
 
     // Create table
     const table = document.createElement('table');
@@ -738,8 +615,7 @@ class WebDev100Days {
       </tbody>
     `;
 
-    // Clear and append
-    tableContainer.innerHTML = '';
+    // Append table to container
     tableContainer.appendChild(table);
 
     this.renderPagination();
