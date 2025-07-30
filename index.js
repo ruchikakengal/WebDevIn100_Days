@@ -147,6 +147,7 @@ function fillTable() {
         ["Day 44", "Notes App" ,"./public/Day-36_Notes_App/index.html"],
         ["Day 47", "Pomodoro App", "/public/Day-47_Pomodoro-app/index.html"],
         ["Day 48", "Space Jumper Game" ,"./public/Space-Jumper-Game/index.html"],
+        ["Day 73","typing speed calculator"],
     ];
 
 
