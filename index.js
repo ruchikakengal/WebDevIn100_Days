@@ -122,60 +122,60 @@ function fillTable() {
         ["Day 20", "TicTacToe Game", "/public/Day-20_tictactoe/index.html"],
         ["Day 21", "Candy Crush", "public/Day-21_candycrush/candy_crush.html"],
         ["Day 22", "QR Code Generator", "/public/Day-22_QRCodeGenerator/index.html"],
-        ["Day 23", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
-        
-        ["Day 25", " Portfolio", " https://priyacodesarts.netlify.app/"],
-        ["Day 26", "GiggleBits", "public/GiggleBits/index.html"],
-        ["Day 28", "Target Reflex Test", "public/Day-28_Target_Reflex_Test/index.html"],
-        ["Day 29", "Snake And Ladder Game", "public/Snake-and-Ladder-Game/index.html"],
-        ["Day 30", "Note Taker", "public/Day-42_NoteTaker/index.html"],
-
-        ["Day 31", "👾Alien Hunt", "public/Day-31/index.html"],
-        ["Day 32","Rock Paper Scissor Game" ,"public/Day-23_RockPaperScissor/index.html" ],
-        ["Day 34", "Colour Picker", "public/Day-34-Colour_picker/index.html"],
+        ["Day 23", "Palette Generator", "public/Day-22_Palette_generator/index.html"]
+        ["Day 24", " Portfolio", " https://priyacodesarts.netlify.app/"],
+        ["Day 25", "GiggleBits", "public/GiggleBits/index.html"],
+        ["Day 26", "Target Reflex Test", "public/Day-28_Target_Reflex_Test/index.html"],
+        ["Day 27", "Snake And Ladder Game", "public/Snake-and-Ladder-Game/index.html"],
+        ["Day 28", "Note Taker", "public/Day-42_NoteTaker/index.html"],
+        ["Day 29", "👾Alien Hunt", "public/Day-31/index.html"],
+        ["Day 30","Rock Paper Scissor Game" ,"public/Day-23_RockPaperScissor/index.html" ],
+        ["Day 31", "Colour Picker", "public/Day-34-Colour_picker/index.html"],
         ["Day 32","Drawing" ,"public/Day-35-Drawing/index.html" ],
         ["Day 33", "Etch-a-Sketch" ,"./public/Etch-a-Sketch/index.html"],
-
+<<<<<<< patch-1
         ["Day 34"," Periodic Table", "https://learn-periodic-table.netlify.app/"],
         ["Day 35"," Book Recommendation", "https://book-recomendation.netlify.app/"],
         ["Day 36","World Clock","public/World_Clock/index.html"],
-
-        ["Day 38", "Gradient Generator", "public/Gradient_Generator/index.html"],
-        ["Day 40", "Space War Game" ,"./public/Space-War-Game/index.html"],
-
-        ["Day 49", "CalRace" ,"./public/Day-45/index.html"],
-
-        ["Day 44", "Notes App" ,"./public/Day-36_Notes_App/index.html"],
-        ["Day 47", "Pomodoro App", "/public/Day-47_Pomodoro-app/index.html"]
+        ["Day 37", "Gradient Generator", "public/Gradient_Generator/index.html"],
+        ["Day 38", "Space War Game" ,"./public/Space-War-Game/index.html"],
+        ["Day 39", "CalRace" ,"./public/Day-45/index.html"],
+        ["Day 40", "Notes App" ,"./public/Day-36_Notes_App/index.html"],
+        ["Day 41", "Pomodoro App", "/public/Day-47_Pomodoro-app/index.html"]
     ];
+=======
+          ["Day 42", "Space Jumper Game", "./public/Space-Jumper-Game/index.html"],
+          ["Day 43", "BMI Calculator", "./public/Day-50_BMI_Calculator_Tanu/index.html"],
+          ["Day 44", "Chess", "/public/Day-51/index.html"]
+        ];
 
 
 
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = '';
 
-    data.forEach(e => {
-        const row = document.createElement('tr');
-        const days = document.createElement('td');
-        const nameP = document.createElement('td');
-        const link = document.createElement('td');
-        const a = document.createElement('a');
+   data.forEach((e, index) => {
+    const row = document.createElement('tr');
+    const days = document.createElement('td');
+    const nameP = document.createElement('td');
+    const link = document.createElement('td');
+    const a = document.createElement('a');
 
-        days.innerText = e[0];
-        nameP.innerText = e[1];
-        a.href = e[2];
-        a.innerText = 'Here';
-        a.target = '_blank'; // Open link in a new tab
-        nameP.classList.add('project-name');
+    // Auto-generate Day number
+    days.innerText = `Day ${index + 1}`;
+    nameP.innerText = e[1];
+    a.href = e[2];
+    a.innerText = 'Here';
+    a.target = '_blank'; // Open link in a new tab
+    nameP.classList.add('project-name');
 
-        link.appendChild(a);
-        row.appendChild(days);
-        row.appendChild(nameP);
-        row.appendChild(link);
+    link.appendChild(a);
+    row.appendChild(days);
+    row.appendChild(nameP);
+    row.appendChild(link);
 
-        tbody.appendChild(row);
-    });
-}
+    tbody.appendChild(row);
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     updateNavbar();
