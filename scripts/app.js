@@ -20,7 +20,6 @@ class WebDev100Days {
     this.setupMobileMenu();
     await this.loadProjects();
     this.renderTable();
-    this.updateStats();
   }
 
   setupEventListeners() {
@@ -686,44 +685,6 @@ class WebDev100Days {
     pageInfo.className = 'pagination-info';
     pageInfo.textContent = `${this.currentPage} of ${totalPages}`;
     paginationContainer.appendChild(pageInfo);
-  }
-
-  updateStats() {
-    const stats = {
-      total: this.projects.length,
-      basic: this.projects.filter(p => p.category === 'basic').length,
-      games: this.projects.filter(p => p.category === 'games').length,
-      utilities: this.projects.filter(p => p.category === 'utilities').length,
-      advanced: this.projects.filter(p => p.category === 'advanced').length
-    };
-
-    // Update stat cards if they exist
-    document.querySelectorAll('.stat-number').forEach(el => {
-      const type = el.dataset.stat;
-      if (stats[type] !== undefined) {
-        this.animateNumber(el, stats[type]);
-      }
-    });
-  }
-
-  animateNumber(element, target) {
-    const start = 0;
-    const duration = 2000;
-    const startTime = performance.now();
-
-    const animate = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const current = Math.floor(start + (target - start) * progress);
-      
-      element.textContent = current;
-      
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
   }
 
   debounce(func, wait) {
