@@ -247,6 +247,42 @@ class WebDev100Days {
         category: "utilities",
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Multiple Data Types", "Customizable Size", "Download Option"]
+      },
+      {
+        day: 45,
+        name: "Audio Visualizer",
+        description: "Interactive audio visualizer with particle effects and real-time frequency analysis.",
+        demoLink: "./public/Day-45/index.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "JavaScript", "Web Audio API"],
+        features: ["Audio Analysis", "Particle Effects", "Real-time Visualization", "Multiple Themes"]
+      },
+      {
+        day: 47,
+        name: "Pomodoro Timer",
+        description: "Productivity timer with task management, customizable themes, and session tracking.",
+        demoLink: "./public/Day-47_Pomodoro-app/index.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Timer Sessions", "Task Management", "Dark Mode", "Custom Themes", "Statistics"]
+      },
+      {
+        day: 48,
+        name: "Gradient Generator",
+        description: "Create beautiful CSS gradients with live preview and export functionality.",
+        demoLink: "./public/Gradient_Generator/index.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Live Preview", "CSS Export", "Color Picker", "Multiple Gradient Types"]
+      },
+      {
+        day: 49,
+        name: "Space Jumper Game",
+        description: "Exciting space-themed jumping game with physics engine and score system.",
+        demoLink: "./public/Space-Jumper-Game/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript", "Canvas"],
+        features: ["Physics Engine", "Score System", "Responsive Controls", "Space Theme"]
       }
     ];
 
