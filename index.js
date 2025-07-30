@@ -123,7 +123,7 @@ function fillTable() {
         ["Day 21", "Candy Crush", "public/Day-21_candycrush/candy_crush.html"],
         ["Day 22", "QR Code Generator", "/public/Day-22_QRCodeGenerator/index.html"],
         ["Day 23", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
-        ["Day 24", "Palette Generator", "public/Day-22_Palette_generator/index.html"],
+        
         ["Day 25", " Portfolio", " https://priyacodesarts.netlify.app/"],
         ["Day 26", "GiggleBits", "public/GiggleBits/index.html"],
         ["Day 28", "Target Reflex Test", "public/Day-28_Target_Reflex_Test/index.html"],
@@ -139,7 +139,7 @@ function fillTable() {
         ["Day 34"," Periodic Table", "https://learn-periodic-table.netlify.app/"],
         ["Day 35"," Book Recommendation", "https://book-recomendation.netlify.app/"],
         ["Day 36","World Clock","public/World_Clock/index.html"],
-        ["Day36","World Clock","public/World_Clock/index.html"],
+
         ["Day 38", "Gradient Generator", "public/Gradient_Generator/index.html"],
         ["Day 40", "Space War Game" ,"./public/Space-War-Game/index.html"],
 
