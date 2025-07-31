@@ -129,41 +129,33 @@ function fillTable() {
         ["Day 28", "Target Reflex Test", "public/Day-28_Target_Reflex_Test/index.html"],
         ["Day 29", "Snake And Ladder Game", "public/Snake-and-Ladder-Game/index.html"],
         ["Day 30", "Note Taker", "public/Day-42_NoteTaker/index.html"],
-
         ["Day 31", "👾Alien Hunt", "public/Day-31/index.html"],
         ["Day 32","Rock Paper Scissor Game" ,"public/Day-23_RockPaperScissor/index.html" ],
         ["Day 34", "Colour Picker", "public/Day-34-Colour_picker/index.html"],
         ["Day 32","Drawing" ,"public/Day-35-Drawing/index.html" ],
         ["Day 33", "Etch-a-Sketch" ,"./public/Etch-a-Sketch/index.html"],
-          ["Day 34"," Periodic Table", "https://learn-periodic-table.netlify.app/"],
-          ["Day 35", "Book Recommendation", "https://book-recomendation.netlify.app/"],
-          ["Day 36", "World Clock", "public/World_Clock/index.html"],
-          ["Day36", "World Clock", "public/World_Clock/index.html"],
-          ["Day 38", "Gradient Generator", "public/Gradient_Generator/index.html"],
-          ["Day 40", "Space War Game", "./public/Space-War-Game/index.html"],
-          ["Day 42", "Student Grade Analyzer", "./public/Student_Grade_Analyzer/index.html"],
-          ["Day 44", "Notes App", "./public/Day-36_Notes_App/index.html"],
-          ["Day 46", "Mood Based Music Suggester", "./public/Mood_Music_Suggester/index.html"],
-          ["Day 47", "Pomodoro App", "/public/Day-47_Pomodoro-app/index.html"],
-          ["Day 48", "Space Jumper Game", "./public/Space-Jumper-Game/index.html"],
-          ["Day 49", "CalRace", "./public/Day-45/index.html"],
-          ["Day 50", "BMI Calculator", "./public/Day-50_BMI_Calculator_Tanu/index.html"],
-          ["Day 51", "Chess", "/public/Day-51/index.html"],
-          ["Day 52", "E-Commerce_UI", "public/Day52_E-Commerce_UI/index.html"],
-          ["Day 53", "Word Guess Game"," public/Day53-Word-Guess-Game/index.html"],
-
-          ["Day 57", "4 in a Row", "public/Day-57_4_in_a_row/index.html"],
-
-          ["Day 58", "Budget Tracker", "public/Budget-Tracker/index.html"],
-
-      ["Day70","Memory Game App","./public/Memory Game App/index.html"]
-        
-
-
-
-
-          
-
+        ["Day 34"," Periodic Table", "https://learn-periodic-table.netlify.app/"],
+        ["Day 35", "Book Recommendation", "https://book-recomendation.netlify.app/"],
+        ["Day 36", "World Clock", "public/World_Clock/index.html"],
+        ["Day36", "World Clock", "public/World_Clock/index.html"],
+        ["Day 38", "Gradient Generator", "public/Gradient_Generator/index.html"],
+        ["Day 40", "Space War Game", "./public/Space-War-Game/index.html"],
+        ["Day 42", "Student Grade Analyzer", "./public/Student_Grade_Analyzer/index.html"],
+        ["Day 44", "Notes App", "./public/Day-36_Notes_App/index.html"],
+        ["Day 46", "Mood Based Music Suggester", "./public/Mood_Music_Suggester/index.html"],
+        ["Day 47", "Pomodoro App", "/public/Day-47_Pomodoro-app/index.html"],
+        ["Day 48", "Space Jumper Game", "./public/Space-Jumper-Game/index.html"],
+        ["Day 49", "CalRace", "./public/Day-45/index.html"],
+        ["Day 50", "BMI Calculator", "./public/Day-50_BMI_Calculator_Tanu/index.html"],
+        ["Day 51", "Chess", "/public/Day-51/index.html"],
+        ["Day 52", "E-Commerce_UI", "public/Day52_E-Commerce_UI/index.html"],
+        ["Day 53", "Word Guess Game"," public/Day53-Word-Guess-Game/index.html"],
+        //add days 54-56
+        ["Day 57", "4 in a Row", "public/Day-57_4_in_a_row/index.html"],
+        ["Day 58", "Budget Tracker", "public/Budget-Tracker/index.html"],
+        ["Day 59", "Quiz Program", "public/quizProgram/index.html"],
+        //add days 60-69
+        ["Day70","Memory Game App","./public/Memory Game App/index.html"]
     ];
 
 
