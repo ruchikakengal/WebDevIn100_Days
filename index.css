@@ -147,7 +147,7 @@
     body {
       font-family: sans-serif;
       background-color: #181818; /* Dark gray background */
-      color: #000000;
+      color: #fff;
       margin: 0;
       display: flex;
       flex-direction: column;
@@ -271,7 +271,7 @@ body.dark-theme {
     /* Slightly lighter black */ #000000
       /* Keep it consistent with pure black on the ends */
   );
-  color: #ffffff; /* Light text color */
+  color: #ffff; /* Light text color */
   transition: background 0.5s ease, color 0.5s ease; /* Smooth transition */
 }
 
@@ -537,7 +537,7 @@ body.light-theme #title-two {
 
 body.light-theme table td {
   background-color: linear-gradient(145deg, #f0f9ff, #5cff33);
-  color: white;
+  color: rgb(5, 5, 5);
   padding: 12px;
 }
 

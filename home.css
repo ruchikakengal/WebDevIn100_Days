@@ -226,6 +226,7 @@ body::-webkit-scrollbar-thumb {
     rgba(9, 9, 121, 1) 55%,
     rgba(0, 212, 255, 1) 100%
   );
+  color: white;
 }
 
 /* Responsive scrollbar adjustments */
@@ -250,6 +251,7 @@ body::-webkit-scrollbar-thumb {
       rgba(9, 9, 121, 1) 55%,
       rgba(0, 212, 255, 1) 100%
     );
+    color: white;
   }
 }
 
