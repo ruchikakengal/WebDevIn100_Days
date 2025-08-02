@@ -156,6 +156,8 @@ function fillTable() {
 
           ["Day 58", "Budget Tracker", "public/Budget-Tracker/index.html"],
 
+          ["Day 60", "Text-to-PDF Convertor", "public/Day60_Text_to_PDF_Convertor/index.html"],
+
         ["Day 70", "Memory Game App", "./public/Memory Game App/index.html"],
   
          ["Day 75", "MyPaint", "public/day75-mypaint/index.html"],
