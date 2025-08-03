@@ -157,9 +157,6 @@ function fillTable() {
         //add days 60-69
         ["Day70","Memory Game App","./public/Memory Game App/index.html"]
     ];
-
-
-
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = '';
 
