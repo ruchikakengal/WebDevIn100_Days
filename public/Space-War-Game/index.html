@@ -2,507 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space War</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a0033 50%, #000000 100%);
-            font-family: 'Courier New', monospace;
-            overflow: hidden;
-            height: 100vh;
-        }
-        
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
-                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
-                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
-                radial-gradient(2px 2px at 160px 30px, #fff, transparent);
-            background-repeat: repeat;
-            background-size: 200px 100px;
-            animation: twinkle 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes twinkle {
-            0% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
-        
-        #gameCanvas {
-            border: 2px solid #00ffff;
-            display: block;
-            margin: 20px auto;
-            background: rgba(0, 0, 0, 0.3);
-            box-shadow: 0 0 20px #00ffff;
-        }
-        
-        .ui {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: #00ffff;
-            font-size: 18px;
-            text-shadow: 0 0 10px #00ffff;
-        }
-        
-        .game-over {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #ff0040;
-            font-size: 32px;
-            text-shadow: 0 0 20px #ff0040;
-            display: none;
-        }
-        
-        .start-screen {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #00ffff;
-            font-size: 24px;
-            text-shadow: 0 0 20px #00ffff;
-            z-index: 10;
-        }
-        
-        .start-screen h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 30px #00ffff;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .play-button {
-            background: linear-gradient(45deg, #00ffff, #0080ff);
-            border: 2px solid #00ffff;
-            color: #000;
-            padding: 15px 30px;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px #00ffff;
-            transition: all 0.3s ease;
-        }
-        
-        .play-button:hover {
-            background: linear-gradient(45deg, #ffffff, #00ffff);
-            box-shadow: 0 0 30px #00ffff;
-            transform: scale(1.05);
-        }
-        
-        .instructions {
-            margin-top: 30px;
-            font-size: 16px;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-        
-        .controls {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            color: #00ffff;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Space Shooter - An immersive browser-based space combat game">
+    <meta name="theme-color" content="#0a2e4a">
+    <title>Space Shooter - Epic Space Combat</title>
+    <link rel="shortcut icon" href="/fav.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-    <div class="stars"></div>
-    
-    <div class="start-screen" id="startScreen">
-        <h1>SPACE WAR</h1>
-        <button class="play-button" onclick="startGame()">PLAY GAME</button>
-        <div class="instructions">
-            <p>🚀 Use arrow keys to move your ship</p>
-            <p>⚡ Press SPACEBAR to fire bullets</p>
-            <p>💥 Destroy all enemies to advance levels</p>
-            <p>❤️ You have 3 lives - don't get hit!</p>
+    <div class="game-container">
+        <canvas id="gameCanvas" aria-label="Game Canvas"></canvas>
+        
+        <div class="ui-overlay" role="presentation">
+            <header class="top-ui" role="banner">
+                <div class="ui-stat score" aria-label="Current Score">
+                    <span aria-hidden="true">⭐</span> Score: <span id="score" aria-live="polite">0</span>
+                </div>
+                <div class="ui-stat lives" aria-label="Lives Remaining">
+                    <span aria-hidden="true">❤️</span> Lives: <span id="lives" aria-live="polite">3</span>
+                </div>
+                <div class="ui-stat level" aria-label="Current Level">
+                    <span aria-hidden="true">🚀</span> Level: <span id="level" aria-live="polite">1</span>
+                </div>
+                <div class="ui-stat streak" aria-label="Kill Streak">
+                    <span aria-hidden="true">⚡</span> Streak: <span id="streak" aria-live="polite">0</span>
+                </div>
+            </header>
+
+            <aside class="player-stats" role="complementary">
+                <div class="ui-stat level-progress" aria-label="Player Level Progress">
+                    <div>
+                        <span aria-hidden="true">🎯</span> Level <span id="player-level">1</span>
+                    </div>
+                    <div class="xp-bar" role="progressbar" aria-label="Experience Progress">
+                        <div class="xp-fill" id="xp-fill" aria-hidden="true"></div>
+                    </div>
+                </div>
+                <div class="ui-stat weapon-level" aria-label="Weapon Level">
+                    <span aria-hidden="true">🔫</span> Weapon: <span id="weapon-level">1</span>
+                </div>
+            </aside>
+            
+            <div class="health-bar" role="progressbar" aria-label="Player Health" aria-valuemin="0" aria-valuemax="100">
+                <div class="health-fill" id="health-fill" aria-hidden="true"></div>
+            </div>
+            
+            <div class="weapon-display" id="weapon-display" role="status" aria-label="Current Weapon">
+                <span aria-hidden="true">⚔️</span> Standard Laser
+            </div>
+            
+            <div class="minimap" id="minimap" role="img" aria-label="Game Minimap"></div>
+            
+            <div class="combo-counter hidden" id="combo-counter" role="status" aria-label="Combo Counter">
+                <span aria-hidden="true">🔥</span> COMBO x<span id="combo-value">0</span>
+            </div>
+            
+            <main class="game-messages" role="main">
+                <div id="start-message" class="message" role="dialog" aria-labelledby="start-title">
+                    <h2 id="start-title">SPACE SHOOTER</h2>
+                    <p>🎮 Use WASD or Arrow Keys to move</p>
+                    <p>🔫 Press SPACEBAR to shoot</p>
+                    <p>⚡ Press X for special weapons</p>
+                    <p>🚀 Press ENTER to start your mission</p>
+                </div>
+                
+                <div id="pause-message" class="message hidden" role="dialog" aria-labelledby="pause-title">
+                    <h2 id="pause-title">MISSION PAUSED</h2>
+                    <p>⏸️ Press P to resume combat</p>
+                    <p>📊 Check your stats and prepare for battle</p>
+                </div>
+                
+                <div id="game-over-message" class="message hidden" role="dialog" aria-labelledby="gameover-title">
+                    <h2 id="gameover-title">MISSION FAILED</h2>
+                    <p>💥 Final Score: <span id="final-score">0</span></p>
+                    <p>🏆 You fought valiantly, pilot!</p>
+                    <p>🔄 Press R to restart mission</p>
+                </div>
+            </main>
+            
+            <div class="mobile-controls" role="region" aria-label="Mobile Game Controls">
+                <div class="control-stick" role="button" aria-label="Movement Joystick">
+                    <div class="stick-outer">
+                        <div class="stick-inner" id="joystick"></div>
+                    </div>
+                </div>
+                
+                <div class="mobile-action-buttons">
+                    <button class="action-button shoot-button" id="shoot-btn" 
+                            type="button" aria-label="Shoot Button">
+                        FIRE
+                    </button>
+                    <button class="action-button special-button" id="special-btn" 
+                            type="button" aria-label="Special Weapon Button">
+                        SPECIAL
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <div class="ui" id="gameUI" style="display: none;">
-        <div>Score: <span id="score">0</span></div>
-        <div>Lives: <span id="lives">3</span></div>
-        <div>Level: <span id="level">1</span></div>
-    </div>
-    
-    <div class="game-over" id="gameOver">
-        <h2>GAME OVER</h2>
-        <p>Final Score: <span id="finalScore">0</span></p>
-        <p>Press R to Restart</p>
-    </div>
-    
-    <div class="controls" id="gameControls" style="display: none;">
-        <p>↑↓←→ Move | SPACE Fire | R Restart</p>
-    </div>
-    
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
-    
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        // Game state
-        let gameStarted = false;
-        let gameRunning = false;
-        let score = 0;
-        let lives = 3;
-        let level = 1;
-        let enemySpeed = 1;
-        
-        // Player object
-        const player = {
-            x: canvas.width / 2,
-            y: canvas.height - 60,
-            width: 40,
-            height: 40,
-            speed: 5,
-            color: '#00ffff'
-        };
-        
-        // Game arrays
-        let bullets = [];
-        let enemies = [];
-        let enemyBullets = [];
-        let particles = [];
-        
-        // Input handling
-        const keys = {};
-        
-        document.addEventListener('keydown', (e) => {
-            if (!gameStarted) return;
-            
-            keys[e.code] = true;
-            
-            if (e.code === 'Space') {
-                e.preventDefault();
-                if (gameRunning) {
-                    shootBullet();
-                }
-            }
-            
-            if (e.code === 'KeyR') {
-                restartGame();
-            }
-        });
-        
-        document.addEventListener('keyup', (e) => {
-            if (!gameStarted) return;
-            keys[e.code] = false;
-        });
-        
-        // Shooting mechanics
-        function shootBullet() {
-            bullets.push({
-                x: player.x + player.width / 2,
-                y: player.y,
-                width: 4,
-                height: 10,
-                speed: 8,
-                color: '#ffff00'
-            });
-        }
-        
-        function shootEnemyBullet(enemy) {
-            enemyBullets.push({
-                x: enemy.x + enemy.width / 2,
-                y: enemy.y + enemy.height,
-                width: 3,
-                height: 8,
-                speed: 3,
-                color: '#ff0040'
-            });
-        }
-        
-        // Enemy spawning
-        function spawnEnemies() {
-            enemies = [];
-            const rows = 4 + Math.floor(level / 3);
-            const cols = 8 + Math.floor(level / 2);
-            
-            for (let row = 0; row < rows; row++) {
-                for (let col = 0; col < cols; col++) {
-                    enemies.push({
-                        x: col * 60 + 100,
-                        y: row * 50 + 50,
-                        width: 30,
-                        height: 30,
-                        speed: enemySpeed,
-                        direction: 1,
-                        color: `hsl(${row * 60}, 70%, 60%)`,
-                        shootTimer: Math.random() * 180
-                    });
-                }
-            }
-        }
-        
-        // Particle effects
-        function createExplosion(x, y, color) {
-            for (let i = 0; i < 8; i++) {
-                particles.push({
-                    x: x,
-                    y: y,
-                    vx: (Math.random() - 0.5) * 8,
-                    vy: (Math.random() - 0.5) * 8,
-                    life: 30,
-                    color: color
-                });
-            }
-        }
-        
-        // Game logic
-        function update() {
-            if (!gameRunning || !gameStarted) return;
-            
-            // Player movement
-            if (keys['ArrowLeft'] && player.x > 0) {
-                player.x -= player.speed;
-            }
-            if (keys['ArrowRight'] && player.x < canvas.width - player.width) {
-                player.x += player.speed;
-            }
-            if (keys['ArrowUp'] && player.y > canvas.height / 2) {
-                player.y -= player.speed;
-            }
-            if (keys['ArrowDown'] && player.y < canvas.height - player.height) {
-                player.y += player.speed;
-            }
-            
-            // Update bullets
-            bullets.forEach((bullet, index) => {
-                bullet.y -= bullet.speed;
-                if (bullet.y < 0) {
-                    bullets.splice(index, 1);
-                }
-            });
-            
-            // Update enemy bullets
-            enemyBullets.forEach((bullet, index) => {
-                bullet.y += bullet.speed;
-                if (bullet.y > canvas.height) {
-                    enemyBullets.splice(index, 1);
-                }
-            });
-            
-            // Update enemies
-            let moveDown = false;
-            enemies.forEach(enemy => {
-                enemy.x += enemy.speed * enemy.direction;
-                
-                if (enemy.x <= 0 || enemy.x >= canvas.width - enemy.width) {
-                    moveDown = true;
-                }
-                
-                // Enemy shooting
-                enemy.shootTimer--;
-                if (enemy.shootTimer <= 0 && Math.random() < 0.002) {
-                    shootEnemyBullet(enemy);
-                    enemy.shootTimer = 120 + Math.random() * 120;
-                }
-            });
-            
-            if (moveDown) {
-                enemies.forEach(enemy => {
-                    enemy.direction *= -1;
-                    enemy.y += 20;
-                });
-            }
-            
-            // Collision detection - bullets vs enemies
-            bullets.forEach((bullet, bulletIndex) => {
-                enemies.forEach((enemy, enemyIndex) => {
-                    if (bullet.x < enemy.x + enemy.width &&
-                        bullet.x + bullet.width > enemy.x &&
-                        bullet.y < enemy.y + enemy.height &&
-                        bullet.y + bullet.height > enemy.y) {
-                        
-                        createExplosion(enemy.x + enemy.width/2, enemy.y + enemy.height/2, enemy.color);
-                        bullets.splice(bulletIndex, 1);
-                        enemies.splice(enemyIndex, 1);
-                        score += 100;
-                        document.getElementById('score').textContent = score;
-                    }
-                });
-            });
-            
-            // Collision detection - enemy bullets vs player
-            enemyBullets.forEach((bullet, index) => {
-                if (bullet.x < player.x + player.width &&
-                    bullet.x + bullet.width > player.x &&
-                    bullet.y < player.y + player.height &&
-                    bullet.y + bullet.height > player.y) {
-                    
-                    createExplosion(player.x + player.width/2, player.y + player.height/2, '#00ffff');
-                    enemyBullets.splice(index, 1);
-                    lives--;
-                    document.getElementById('lives').textContent = lives;
-                    
-                    if (lives <= 0) {
-                        gameOver();
-                    }
-                }
-            });
-            
-            // Collision detection - enemies vs player
-            enemies.forEach(enemy => {
-                if (enemy.x < player.x + player.width &&
-                    enemy.x + enemy.width > player.x &&
-                    enemy.y < player.y + player.height &&
-                    enemy.y + enemy.height > player.y) {
-                    gameOver();
-                }
-                
-                if (enemy.y > canvas.height - 100) {
-                    gameOver();
-                }
-            });
-            
-            // Update particles
-            particles.forEach((particle, index) => {
-                particle.x += particle.vx;
-                particle.y += particle.vy;
-                particle.life--;
-                
-                if (particle.life <= 0) {
-                    particles.splice(index, 1);
-                }
-            });
-            
-            // Level progression
-            if (enemies.length === 0) {
-                level++;
-                enemySpeed += 0.3;
-                document.getElementById('level').textContent = level;
-                spawnEnemies();
-            }
-        }
-        
-        function render() {
-            if (!gameStarted) return;
-            
-            // Clear canvas
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw player
-            ctx.fillStyle = player.color;
-            ctx.fillRect(player.x, player.y, player.width, player.height);
-            
-            // Draw player details
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(player.x + 10, player.y - 5, 20, 8);
-            ctx.fillStyle = '#ff0040';
-            ctx.fillRect(player.x + 15, player.y + 35, 4, 10);
-            ctx.fillRect(player.x + 21, player.y + 35, 4, 10);
-            
-            // Draw bullets
-            bullets.forEach(bullet => {
-                ctx.fillStyle = bullet.color;
-                ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-                
-                // Bullet glow
-                ctx.shadowColor = bullet.color;
-                ctx.shadowBlur = 10;
-                ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-                ctx.shadowBlur = 0;
-            });
-            
-            // Draw enemy bullets
-            enemyBullets.forEach(bullet => {
-                ctx.fillStyle = bullet.color;
-                ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-            });
-            
-            // Draw enemies
-            enemies.forEach(enemy => {
-                ctx.fillStyle = enemy.color;
-                ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
-                
-                // Enemy details
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(enemy.x + 5, enemy.y + 5, 20, 8);
-                ctx.fillStyle = '#ff0040';
-                ctx.fillRect(enemy.x + 10, enemy.y + 20, 3, 8);
-                ctx.fillRect(enemy.x + 17, enemy.y + 20, 3, 8);
-            });
-            
-            // Draw particles
-            particles.forEach(particle => {
-                ctx.fillStyle = particle.color;
-                ctx.globalAlpha = particle.life / 30;
-                ctx.fillRect(particle.x, particle.y, 3, 3);
-                ctx.globalAlpha = 1;
-            });
-        }
-        
-        function startGame() {
-            gameStarted = true;
-            gameRunning = true;
-            document.getElementById('startScreen').style.display = 'none';
-            document.getElementById('gameUI').style.display = 'block';
-            document.getElementById('gameControls').style.display = 'block';
-            spawnEnemies();
-        }
-        
-        function gameOver() {
-            gameRunning = false;
-            document.getElementById('finalScore').textContent = score;
-            document.getElementById('gameOver').style.display = 'block';
-        }
-        
-        function restartGame() {
-            gameRunning = true;
-            score = 0;
-            lives = 3;
-            level = 1;
-            enemySpeed = 1;
-            bullets = [];
-            enemies = [];
-            enemyBullets = [];
-            particles = [];
-            
-            player.x = canvas.width / 2;
-            player.y = canvas.height - 60;
-            
-            document.getElementById('score').textContent = score;
-            document.getElementById('lives').textContent = lives;
-            document.getElementById('level').textContent = level;
-            document.getElementById('gameOver').style.display = 'none';
-            
-            spawnEnemies();
-        }
-        
-        function gameLoop() {
-            update();
-            render();
-            requestAnimationFrame(gameLoop);
-        }
-        
-        // Initialize game
-        spawnEnemies();
-        gameLoop();
-    </script>
+
+    <script src="audio.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>
