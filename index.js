@@ -151,9 +151,9 @@ function fillTable() {
           ["Day 51", "Chess", "/public/Day-51/index.html"],
           ["Day 52", "E-Commerce_UI", "public/Day52_E-Commerce_UI/index.html"],
           ["Day 53", "Word Guess Game"," public/Day53-Word-Guess-Game/index.html"],
-
+        ["Day 56", "CareerAI: ATS Checker and Job Finder", "https://webdev-100.netlify.app/"],
           ["Day 57", "4 in a Row", "public/Day-57_4_in_a_row/index.html"],
-
+        
           ["Day 58", "Budget Tracker", "public/Budget-Tracker/index.html"],
 
         ["Day 70", "Memory Game App", "./public/Memory Game App/index.html"],
