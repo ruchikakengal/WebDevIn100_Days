@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎯 Reaction Time Tester</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Landing -->
+  <div class="start-screen" id="start-screen">
+    <div class="glass-card">
+      <h1><span class="logo">🎯</span> Reaction Time Tester</h1>
+      <p class="lead">Test how fast your reflexes are!</p>
+      <p>Click on the red circles as fast as you can. Each level gets harder!</p>
+      <button class="btn-glass" onclick="startGame()">Start Game</button>
+    </div>
+  </div>
+
+  <!-- Game -->
+  <div id="game-container" class="hidden">
+    <div id="game-area"></div>
+    <div class="info-panel glass">
+      <div id="score-board">
+        Level: <span id="level">1</span> |
+        Hits: <span id="hits">0</span> |
+        Time Left: <span id="time-left">30</span>s |
+        Avg Reaction Time: <span id="avg-time">0</span>ms
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Over -->
+  <div id="game-over-screen" class="game-over-screen hidden">
+    <div class="glass-card">
+      <h2>🕹 Game Over!</h2>
+      <p>You reached Level <span id="final-level"></span></p>
+      <p>Total Hits: <span id="final-hits"></span></p>
+      <p>Avg Reaction Time: <span id="final-avg"></span>ms</p>
+      <button class="btn-glass" onclick="restartGame()">Play Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

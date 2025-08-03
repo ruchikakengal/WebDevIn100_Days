@@ -1,0 +1,206 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  overflow-x: hidden;
+}
+
+/* Glass Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Logo Shadow */
+.logo {
+  filter: drop-shadow(0 0 6px #f72585);
+}
+
+/* Target */
+.target {
+  background: radial-gradient(circle, #f72585, #b5179e);
+  box-shadow: 0 0 15px #f72585;
+}
+
+/* Button */
+.btn-glass {
+  background: linear-gradient(135deg, #3a0ca3, #4361ee);
+  color: white;
+  border: none;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.btn-glass:hover {
+  background: linear-gradient(135deg, #560bad, #4895ef);
+  transform: scale(1.05);
+}
+
+/* Scoreboard Glass Panel */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  color: #ffffff;
+}
+
+/* Game Area */
+#game-area {
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(to bottom right, #1b1b2f, #162447);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Glass Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem 2.5rem;
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.glass-card h1, h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.logo {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 0 6px #ff6b81);
+  margin-right: 0.4rem;
+}
+
+.lead {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+  color: #ddd;
+}
+
+p {
+  font-size: 1.05rem;
+  opacity: 0.9;
+}
+
+.btn-glass {
+  margin-top: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 0.9rem 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Game Area */
+#game-area {
+  position: relative;
+  width: 90vw;
+  max-width: 800px;
+  height: 60vh;
+  margin: 2rem auto 1rem;
+  border-radius: 18px;
+  border: 2px solid rgba(255,255,255,0.15);
+  background: linear-gradient(to bottom right, #2c3e50, #4ca1af);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+/* Target */
+.target {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff4757, #e84118);
+  box-shadow: 0 0 15px #ff4757;
+  cursor: pointer;
+  animation: pop 0.25s ease-out;
+  transition: transform 0.2s ease;
+}
+
+.target:hover {
+  transform: scale(1.2);
+}
+
+/* Score Info */
+.info-panel {
+  margin-top: 1rem;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  padding: 1rem 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Game States */
+.hidden {
+  display: none;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  #game-area {
+    height: 50vh;
+  }
+
+  .glass-card {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .btn-glass {
+    font-size: 0.95rem;
+    padding: 0.7rem 1.4rem;
+  }
+}
