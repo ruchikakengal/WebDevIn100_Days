@@ -517,6 +517,16 @@ class WebDev100Days {
         category: "utilities",
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Multiple Time Zones", "Real-time Updates", "Custom Locations", "12/24 Hour Format"]
+      },
+      {
+
+         originalDay: 109,
+        name: "University Visitor Management System",
+        description: "Manage visitor information and appointments for university campuses.",
+        demoLink: "./public/University_Visitor_Management_System/index.html",
+        category: "management",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: [" Visitor Registration", "Appointment Scheduling", "Check-in/Check-out", "Visitor History"]
       }
     ];
 

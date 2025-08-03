@@ -1,0 +1,140 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+  align-items: center;
+  height:100vh;
+}
+
+
+  
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: auto;
+}
+
+.login-box {
+    background-color: white;
+    border-radius: 8px;
+    padding: 40px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #7d3cff;
+}
+
+.login-btn {
+    width: 100%;
+    background-color: #7d3cff;
+    /* Purple Button */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.login-btn:hover {
+    background-color: #6b2edc;
+    /* Darker purple on hover */
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-link a {
+    color: #7d3cff;
+    /* Purple link */
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .login-box {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 20px 15px;
+    }
+}
+.header {
+    width: 100%;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .header .container-fluid {
+    padding: 0;
+  }
+  
+  .header .navbar {
+    padding: 0;
+  }
+  
+  .header .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .header .navbar-nav {
+    margin-left: auto;
+  }
+  
+  .header .navbar-nav .nav-link {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .header .navbar-nav .nav-link:hover {
+    color: #666;
+  }
