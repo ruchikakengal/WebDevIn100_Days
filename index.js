@@ -141,7 +141,9 @@ function fillTable() {
           ["Day36", "World Clock", "public/World_Clock/index.html"],
           ["Day 38", "Gradient Generator", "public/Gradient_Generator/index.html"],
           ["Day 40", "Space War Game", "./public/Space-War-Game/index.html"],
-          ["Day 41", "Text-to-PDF Converter", "https://text-to-pdf-srushtidev.netlify.app/"]
+          ["Day 41", "Text-to-PDF-Converter", "./public/Day41_Text_to_PDF_Convertor/index.html"],
+
+          
 
 
           ["Day 42", "Student Grade Analyzer", "./public/Student_Grade_Analyzer/index.html"],
