@@ -617,6 +617,17 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Canvas Drawing", "Color Picker", "Brush Size Control", "Clear Canvas Button"]
       },
+      {
+        originalDay: 120, 
+        name: "Email Validator",
+        description: "A tool to check the validity of email addresses using the EmailValidation.io API.",
+        demoLink: "./public/Email Validator/index.html",
+        category: "utility",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Real-time Email Validation", "API Integration", "User-friendly UI"]
+      },
+
+      
     ];
   
   // Assign sequential day numbers (1, 2, 3, 4...) regardless of original day numbers
