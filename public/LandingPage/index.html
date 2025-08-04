@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link href="src/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+</head>
+<body class="bg-gradient-to-r from-rose-100 to-teal-100, text-teal-500">
+    <div class="min-h-screen px-6 py-3 flex flex-col gap-10 md:px-10 lg:py-7 lg:px-16">
+        <header class="flex justify-between">
+            <a href="" class="flex-items-center">
+                <h1 class="text-4xl font-bold">WFA.</h1>
+            </a>
+           <ul class="hidden lg:flex lg:items-center lg:gap-10 lg:text-lg lg:font-semibold">
+            <li><a href="">Workspaces</a></li>
+            <li><a href="#">Offering</a></li>
+            <li><a href="#">Contact </a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+           </ul> 
+           <div class="hidden lg:flex lg:items-center lg:gap-7 lg:text-lg lg:font-bold">
+            <a href="">Login</a>
+            <button class="bg-rose-400 px-2 py-1 font-medium rounded-md text-white ">Register</button>
+          </div>
+            <div class="lg:hidden">
+                <i class=" fa-solid fa-bars fa-2x"></i>
+            </div>
+            
+        </header>
+
+        <main class="lg:flex">
+            <div class="flex items-center justify-center lg:flex-1 lg:order-2 lg:justify-end img-transform">
+                <img src="wfa.jpeg" alt="work from anywhere" class="outline outline-white shadow-2xl shadow-black lg:h-[600px] lg:w-[600px] lg:rounded-full">
+            </div>
+            <div class="space-y-6 mt-16 lg:flex-1 lg:order-1 lg:mt-32 text-transform">
+                <div class="text-6xl font-bold leading-tight">
+                    <h1>Work From </h1>
+                    <h1>Anywhere, Anytime.</h1>
+                </div>
+                <p>Discover beautiful, flexible workspaces near you. Remote work made simple and productive.</p>
+                <form action="" class="flex flex-col gap-2 md:flex-row md:gap-0">
+                    <input type="text" placeholder="Search by City or Workspace Type" class="max-md:rounded-md md:rounded-r-md px-4 py-3 text-rose-300 md:w-80 bg-white">
+                    <button class="bg-rose-300 px-4 py-3 rounded-md font-medium text-white whitespace-nowrap">Find Your Office</button>
+                </form>
+                <div class="flex flex-col gap-4 py-7 ">
+                    <p class="font-semibold">Used by these companies</p>
+                    <ul class="flex gap-6 ">
+                        <li><i class="fa-brands fa-square-x-twitter fa-2x"></i></li>
+                        <li><i class="fa-brands fa-square-instagram fa-2x"></i></li>
+                        <li><i class="fa-brands fa-square-linkedin fa-2x"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="text-center mt-10 text-sm text-gray-600">
+        © 
+        <span id="year"></span>
+         WFA. All Rights Reserved.
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuIcon = document.querySelector('.fa-bars');
+    const navMenu = document.createElement('div');
+
+   // Create a simple dropdown menu for mobile
+   navMenu.innerHTML = `
+    <ul class="flex flex-col gap-4 bg-white text-teal-500 absolute top-20 right-6 p-4 shadow-md rounded-md">
+      <li><a href="#">Workspaces</a></li>
+      <li><a href="#">Offering</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Blog</a></li>
+    </ul>`;
+   navMenu.classList.add('hidden');
+   document.body.appendChild(navMenu);
+
+   menuIcon.addEventListener('click', () => {
+    navMenu.classList.toggle('hidden');
+   });
+
+</script>
+</body>
+</html>
