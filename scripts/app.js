@@ -517,10 +517,109 @@ class WebDev100Days {
         category: "utilities",
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Multiple Time Zones", "Real-time Updates", "Custom Locations", "12/24 Hour Format"]
-      }
+      },
+      {
+        originalDay: 109,
+        name: "Notes Tracker",
+        description: "A simple and organized digital notebook to create, update, and manage notes efficiently.",
+        demoLink: "./public/Day-42_NoteTaker/index.html",
+        category: "productivity",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Add/Edit/Delete Notes", "Persistent Local Storage", "Search Functionality", "Dark Mode"]
+      },
+      {
+        originalDay: 110,
+        name: "Alien Hunt",
+        description: "A fun and fast-paced shooting game where players hunt down aliens and score points.",
+        demoLink: "./public/Day-31/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Alien Spawning", "Score Counter", "Sound Effects", "Game Over Logic"]
+      },
+      {
+        originalDay: 111,
+        name: "Book Recommendation",
+        description: "Suggests books based on user-selected genres, moods, or interests with a clean UI.",
+        demoLink: "https://book-recomendation.netlify.app/",
+        category: "education",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Genre-Based Suggestions", "Book Covers & Descriptions", "Responsive Design", "Interactive Filters"]
+      },
+      {
+         originalDay: 112,
+         name: "Student Grade Analyzer",
+         description: "Analyzes student marks and provides insights like total, average, grade, and performance level.",
+         demoLink: "./public/Student_Grade_Analyzer/index.html",
+         category: "education",
+         technologies: ["HTML", "CSS", "JavaScript"],
+         features: ["Marks Input", "Total & Average Calculation", "Grade Assignment", "Performance Feedback"]
+      },
+      {
+         originalDay: 113,
+         name: "Mood Based Music Suggester",
+         description: "Recommends music tracks based on the user's selected mood for a personalized listening experience.",
+         demoLink: "./public/Mood_Music_Suggester/index.html",
+         category: "entertainment",
+         technologies: ["HTML", "CSS", "JavaScript"],
+         features: ["Mood Selection", "Curated Song List", "Audio Player Integration", "Responsive UI"]
+      },
+      {
+         originalDay: 114,
+         name: "CalRace",
+         description: "A fast-paced calculator racing game where players solve math problems under time pressure to advance.",
+         demoLink: "./public/Day-45/index.html",
+         category: "games",
+         technologies: ["HTML", "CSS", "JavaScript"],
+         features: ["Math Problem Challenges", "Timer-Based Gameplay", "Score Tracking", "Level Progression"]
+      },
+      {
+         originalDay: 115,
+         name: "Word Guess Game",
+         description: "An interactive word guessing game where players try to reveal the hidden word within limited attempts.",
+         demoLink: " ./public/Day53-Word-Guess-Game/index.html",
+         category: "games",
+         technologies: ["HTML", "CSS", "JavaScript"],
+         features: ["Random Word Generation", "Limited Attempts", "Letter Hints", "Win/Loss Feedback"]
+      },
+      {
+         originalDay: 116,
+         name: "4 in a Row",
+         description: "A strategic two-player game where the goal is to connect four discs in a row vertically, horizontally, or diagonally.",
+         demoLink: "./public/Day-57_4_in_a_row/index.html",
+         category: "games",
+         technologies: ["HTML", "CSS", "JavaScript"],
+         features: ["Two Player Mode", "Win Detection", "Interactive Grid", "Game Reset"]
+      },
+      {
+         originalDay: 117,
+         name: "Budget Tracker",
+         description: "A simple financial tracking tool to manage income, expenses, and visualize spending habits.",
+         demoLink: "./public/Budget-Tracker/index.html",
+         category: "productivity",
+         technologies: ["HTML", "CSS", "JavaScript"],
+         features: ["Add Income & Expenses", "Balance Calculation", "Expense Categories", "Persistent Local Storage"]
+      },
+      {
+         originalDay: 118,
+         name: "Memory Game App",
+         description: "A classic card-flipping memory game where players match pairs to win with the fewest moves.",
+         demoLink: "./public/Memory Game App/index.html",
+         category: "games",
+         technologies: ["HTML", "CSS", "JavaScript"],
+         features: ["Card Matching Logic", "Move Counter", "Timer", "Game Reset Functionality"]
+      },
+      {
+        originalDay: 119,
+        name: "MyPaint",
+        description: "A simple and fun digital drawing app that allows users to sketch, doodle, and paint freely on a canvas.",
+        demoLink: "./public/day75-mypaint/index.html",
+        category: "creativity",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Canvas Drawing", "Color Picker", "Brush Size Control", "Clear Canvas Button"]
+      },
     ];
-
-    // Assign sequential day numbers (1, 2, 3, 4...) regardless of original day numbers
+  
+  // Assign sequential day numbers (1, 2, 3, 4...) regardless of original day numbers
     this.projects = projectsData.map((project, index) => ({
       ...project,
       day: index + 1
@@ -739,3 +838,5 @@ document.addEventListener('DOMContentLoaded', () => {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = WebDev100Days;
 }
+
+
