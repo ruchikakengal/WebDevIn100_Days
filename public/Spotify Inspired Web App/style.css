@@ -1,0 +1,399 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.main {
+    display: flex;
+    height: 100vh;
+    padding: 0.5rem;
+}
+
+.sidebar {
+    background-color: black;
+    width: 20.5rem;
+    border-radius: 0.5rem;
+    /*16px*/
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    background-color: #121212;
+    flex: 1;
+    height: 100%;
+    border-radius: 0.5rem;
+    overflow: auto;
+    /*scroll bar will only be shown when needed*/
+    margin-left: 0.5rem;
+    padding: 0 1.5rem;
+}
+
+.music-player {
+    background-color: black;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 72px;
+    padding: 0.5rem 2.5rem;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav {
+    background-color: #121212;
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    line-height: 2.5rem;
+
+}
+
+.nav-option {
+    padding: 0.25rem 0.75rem;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.nav-option:hover {
+    opacity: 1;
+}
+
+.nav-option i {
+    font-size: 1.25rem;
+}
+
+.nav-option a {
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.library {
+    background-color: #121212;
+    height: 26.5rem;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    height: 100%;
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.lib-option img {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons i {
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.icons i:hover {
+    opacity: 1;
+}
+
+.box {
+    background-color: #232323;
+    border-radius: 0.5rem;
+    /* height: 9rem; */
+    margin: 0.75rem 0 1.5rem 0;
+    padding: 1rem 1.25rem;
+}
+
+.box-p1 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    /* margin-bottom: 1rem; */
+    line-height: 1.6rem;
+}
+
+.box-p2 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin: 0.75rem 0 1.25rem 0;
+    line-height: 1.25rem;
+    opacity: 0.9;
+}
+
+.badge {
+    height: 2.25rem;
+    width: fit-content;
+    padding: 0.25rem 1rem;
+    font-size: 0.79rem;
+    font-weight: 700;
+    border-radius: 100px;
+    border: none;
+}
+
+.darkbadge {
+    background-color: black;
+    color: white;
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    background-color: #121212;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+
+}
+
+.sticky-nav-icons {
+    margin-left: 0.75rem;
+}
+
+.sticky-nav-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navitem {
+    margin-right: 1rem;
+}
+
+@media (max-width:1000px) {
+    .hide {
+        display: none;
+    }
+}
+
+
+.content h2 {
+    margin: 1.5rem 0;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #232323;
+    height: 15rem;
+    width: 10rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    margin: 0.5rem 1rem 0 0;
+}
+
+.card-img {
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.card-title {
+    font-weight: 700;
+}
+
+.card-info {
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+.footer {
+    height: 12rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line {
+    height: 50%;
+    width: 95%;
+    border-top: 2px solid white;
+    opacity: 0.5;
+}
+
+.player {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.music-control {
+    height: 2rem;
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.music-icons {
+    height: 0.8rem;
+    width: 0.8rem;
+    opacity: 0.7;
+}
+
+.music-icons:hover {
+    opacity: 1;
+}
+
+.play {
+    height: 2rem;
+    width: 2rem;
+    opacity: 1;
+}
+
+.playback {
+    width: 100%;
+    height: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time {
+    font-size: 0.6rem;
+    opacity: 0.7;
+    margin: 0 0.5rem;
+}
+
+.playback-bar {
+    width: 70%;
+}
+
+.bar {
+    appearance: none;
+    background-color: transparent;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.bar::-webkit-slider-runnable-track {
+    background-color: #ddd;
+    height: 0.25rem;
+    border-radius: 100px;
+}
+
+.bar::-webkit-slider-thumb {
+    appearance: none;
+    height: 0.8rem;
+    width: 0.8rem;
+    background-color: #1DB954;
+    border-radius: 50%;
+    margin-top: -5px;
+}
+
+.album {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.album-pic{
+    height: 3.5rem;
+    width: 3.5rem;
+}
+
+.abt-1 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 700;
+}
+
+.abt-1:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.abt-2 {
+    font-size: 0.55rem;
+    line-height: 1rem;
+    opacity: 0.8;
+}
+
+.abt-2:hover {
+    opacity: 1;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.album-icon1 {
+    height: 1.25rem;
+    opacity: 0.8;
+}
+
+.album-icon1:hover {
+    opacity: 1;
+}
+
+.album-icon2 {
+    height: 1.75rem;
+    opacity: 0.8;
+}
+
+.album-icon2:hover {
+    opacity: 1;
+}
+
+.controls {
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ctrl-icon {
+    height: 2.25rem;
+    opacity: 0.8;
+}
+
+.ctrl-iconx {
+    height: 1.25rem;
+    opacity: 0.8;
+}
+
+.ctrl-icony {
+    height: 1rem;
+    opacity: 0.8;
+}
+
+.volumn-bar {
+    width: 6rem;
+}
+
+.control:hover {
+    opacity: 1;
+    cursor: pointer;
+}
