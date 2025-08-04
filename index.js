@@ -141,6 +141,7 @@ function fillTable() {
           ["Day36", "World Clock", "public/World_Clock/index.html"],
           ["Day 38", "Gradient Generator", "public/Gradient_Generator/index.html"],
           ["Day 40", "Space War Game", "./public/Space-War-Game/index.html"],
+           ["Day 41", "TypeMaster", "./public/TypeMaster/index.html"],
           ["Day 42", "Student Grade Analyzer", "./public/Student_Grade_Analyzer/index.html"],
           ["Day 44", "Notes App", "./public/Day-36_Notes_App/index.html"],
           ["Day 46", "Mood Based Music Suggester", "./public/Mood_Music_Suggester/index.html"],

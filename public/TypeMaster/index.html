@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeRush - Typing Speed Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏃‍♂️ TypeRush</h1>
+            <p>Test your typing speed and accuracy!</p>
+        </header>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-value" id="wpm">0</div>
+                <div class="stat-label">WPM</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="accuracy">100</div>
+                <div class="stat-label">Accuracy %</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="time">0</div>
+                <div class="stat-label">Time (s)</div>
+            </div>
+        </div>
+
+        <div class="test-area">
+            <div class="options-container">
+                <div class="option-group">
+                    <label class="option-label">Test Type:</label>
+                    <div class="option-buttons">
+                        <button class="option-btn active" data-type="words">Words</button>
+                        <button class="option-btn" data-type="sentences">Sentences</button>
+                        <button class="option-btn" data-type="paragraphs">Paragraphs</button>
+                    </div>
+                </div>
+                
+                <div class="option-group">
+                    <label class="option-label">Difficulty:</label>
+                    <div class="option-buttons">
+                        <button class="option-btn" data-difficulty="easy">Easy</button>
+                        <button class="option-btn active" data-difficulty="medium">Medium</button>
+                        <button class="option-btn" data-difficulty="difficult">Difficult</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sentence-container">
+                <div id="sentence" class="sentence"></div>
+            </div>
+            
+            <div class="input-container">
+                <textarea 
+                    id="userInput" 
+                    placeholder="Click here and start typing when you're ready..."
+                    disabled
+                ></textarea>
+            </div>
+
+            <div class="controls">
+                <button id="startBtn" class="btn primary">Start Test</button>
+                <button id="resetBtn" class="btn secondary">Reset</button>
+                <button id="newSentenceBtn" class="btn secondary">New Text</button>
+            </div>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <h3>🎉 Test Complete!</h3>
+            <div class="result-stats">
+                <div class="result-item">
+                    <span class="result-label">Words Per Minute:</span>
+                    <span class="result-value" id="finalWpm">0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Accuracy:</span>
+                    <span class="result-value" id="finalAccuracy">100%</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Total Time:</span>
+                    <span class="result-value" id="finalTime">0s</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Characters Typed:</span>
+                    <span class="result-value" id="finalChars">0</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>💡 Tip: Focus on accuracy first, speed will follow naturally!</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
