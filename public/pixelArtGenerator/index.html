@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Generator</title>
+    <meta name="description" content="Create stunning pixel art with modern tools" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">Pixel Art Generator</h1>
+            <p class="subtitle">Create stunning pixel art with modern tools and intuitive controls</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Tools Panel -->
+            <div class="panel">
+                <div class="panel-card">
+                    <h3 class="panel-title">Tools & Settings</h3>
+                    
+                    <!-- Tools -->
+                    <div class="section">
+                        <label class="section-label">Tools</label>
+                        <div class="tools-grid">
+                            <button class="tool-btn active" data-tool="draw">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
+                                    <path d="m7.07 14.94-1.13 1.13a3 3 0 0 1-4.24 0l-1.06-1.06a3 3 0 0 1 0-4.24l1.13-1.13"/>
+                                </svg>
+                                <span>Draw</span>
+                            </button>
+                            <button class="tool-btn" data-tool="erase">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/>
+                                    <path d="M22 21H7"/>
+                                    <path d="m5 11 9 9"/>
+                                </svg>
+                                <span>Erase</span>
+                            </button>
+                            <button class="tool-btn" data-tool="fill">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M10 2v20"/>
+                                    <path d="M12 2v20"/>
+                                    <path d="M14 2v20"/>
+                                    <path d="M4 7h16"/>
+                                    <path d="M4 17h16"/>
+                                </svg>
+                                <span>Fill</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Grid Size -->
+                    <div class="section">
+                        <label class="section-label">Canvas Size</label>
+                        <div class="size-grid">
+                            <button class="size-btn" data-size="16">16×16</button>
+                            <button class="size-btn active" data-size="32">32×32</button>
+                            <button class="size-btn" data-size="48">48×48</button>
+                            <button class="size-btn" data-size="64">64×64</button>
+                        </div>
+                    </div>
+
+                    <!-- File Operations -->
+                    <div class="section">
+                        <label class="section-label">File Operations</label>
+                        <button class="file-btn save-btn" id="saveBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7,10 12,15 17,10"/>
+                                <line x1="12" x2="12" y1="15" y2="3"/>
+                            </svg>
+                            Save as PNG
+                        </button>
+                        <label class="file-btn load-btn" for="loadInput">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17,8 12,3 7,8"/>
+                                <line x1="12" x2="12" y1="3" y2="15"/>
+                            </svg>
+                            Load Image
+                        </label>
+                        <input type="file" id="loadInput" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canvas -->
+            <div class="canvas-container">
+                <div id="pixelGrid" class="pixel-grid"></div>
+                <button id="clearBtn" class="clear-btn">Clear Canvas</button>
+            </div>
+
+            <!-- Color Palette -->
+            <div class="panel">
+                <div class="panel-card">
+                    <h3 class="panel-title">Color Palette</h3>
+                    
+                    <!-- Current Color -->
+                    <div class="current-color">
+                        <div id="currentColorDisplay" class="color-display"></div>
+                        <span id="currentColorText" class="color-text">#000000</span>
+                    </div>
+
+                    <!-- Custom Color -->
+                    <div class="section">
+                        <label class="section-label">Custom Color</label>
+                        <div class="custom-color">
+                            <input type="color" id="colorPicker" value="#000000">
+                            <input type="text" id="colorInput" value="#000000" placeholder="#000000">
+                        </div>
+                    </div>
+
+                    <!-- Preset Colors -->
+                    <div class="section">
+                        <label class="section-label">Preset Colors</label>
+                        <div class="color-grid" id="colorGrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3 class="instructions-title">How to Use</h3>
+            <div class="instructions-grid">
+                <div class="instructions-column">
+                    <p><span class="instruction-label">Draw:</span> Click and drag to paint pixels</p>
+                    <p><span class="instruction-label">Erase:</span> Remove pixels by clicking/dragging</p>
+                    <p><span class="instruction-label">Fill:</span> Click to fill connected areas</p>
+                </div>
+                <div class="instructions-column">
+                    <p><span class="instruction-label">Colors:</span> Use presets or create custom colors</p>
+                    <p><span class="instruction-label">Canvas:</span> Choose from 16×16 to 64×64 grids</p>
+                    <p><span class="instruction-label">Save/Load:</span> Export as PNG or import images</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script>
+        class PixelArtGenerator {
+    constructor() {
+        this.currentColor = '#000000';
+        this.currentTool = 'draw';
+        this.gridSize = 32;
+        this.pixelSize = 20;
+        this.pixels = [];
+        this.isDrawing = false;
+        
+        this.defaultColors = [
+            '#000000', '#FFFFFF', '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF',
+            '#800000', '#008000', '#000080', '#808000', '#800080', '#008080', '#C0C0C0', '#808080',
+            '#FF8080', '#80FF80', '#8080FF', '#FFFF80', '#FF80FF', '#80FFFF', '#FFC080', '#C080FF',
+            '#FF4040', '#40FF40', '#4040FF', '#FFFF40', '#FF40FF', '#40FFFF', '#FF8040', '#8040FF'
+        ];
+        
+        this.init();
+    }
+
+    init() {
+        this.setupEventListeners();
+        this.createColorPalette();
+        this.createPixelGrid();
+        this.updateCurrentColorDisplay();
+    }
+
+    setupEventListeners() {
+        // Tool selection
+        document.querySelectorAll('.tool-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                this.setTool(e.currentTarget.dataset.tool);
+            });
+        });
+
+        // Grid size selection
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                this.setGridSize(parseInt(e.currentTarget.dataset.size));
+            });
+        });
+
+        // Color picker
+        document.getElementById('colorPicker').addEventListener('input', (e) => {
+            this.setColor(e.target.value);
+        });
+
+        document.getElementById('colorInput').addEventListener('input', (e) => {
+            if (this.isValidHex(e.target.value)) {
+                this.setColor(e.target.value);
+            }
+        });
+
+        // File operations
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            this.saveAsImage();
+        });
+
+        document.getElementById('loadInput').addEventListener('change', (e) => {
+            this.loadImage(e);
+        });
+
+        // Clear button
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            this.clearCanvas();
+        });
+    }
+
+    createColorPalette() {
+        const colorGrid = document.getElementById('colorGrid');
+        colorGrid.innerHTML = '';
+        
+        this.defaultColors.forEach(color => {
+            const colorBtn = document.createElement('button');
+            colorBtn.className = 'color-btn';
+            colorBtn.style.backgroundColor = color;
+            colorBtn.title = color;
+            colorBtn.addEventListener('click', () => {
+                this.setColor(color);
+            });
+            colorGrid.appendChild(colorBtn);
+        });
+    }
+
+    createPixelGrid() {
+        this.pixels = Array(this.gridSize).fill(null).map(() => Array(this.gridSize).fill('#ffffff'));
+        this.pixelSize = Math.min(600 / this.gridSize, 20);
+        
+        const grid = document.getElementById('pixelGrid');
+        grid.innerHTML = '';
+        grid.style.width = `${this.gridSize * this.pixelSize}px`;
+        grid.style.height = `${this.gridSize * this.pixelSize}px`;
+        grid.style.display = 'grid';
+        grid.style.gridTemplateColumns = `repeat(${this.gridSize}, ${this.pixelSize}px)`;
+        grid.style.gridTemplateRows = `repeat(${this.gridSize}, ${this.pixelSize}px)`;
+
+        for (let y = 0; y < this.gridSize; y++) {
+            for (let x = 0; x < this.gridSize; x++) {
+                const pixel = document.createElement('div');
+                pixel.className = 'pixel';
+                pixel.style.width = `${this.pixelSize}px`;
+                pixel.style.height = `${this.pixelSize}px`;
+                pixel.style.backgroundColor = '#ffffff';
+                pixel.dataset.x = x;
+                pixel.dataset.y = y;
+                
+                pixel.addEventListener('mousedown', (e) => {
+                    this.startDrawing(e);
+                });
+                
+                pixel.addEventListener('mouseenter', (e) => {
+                    this.continueDrawing(e);
+                });
+                
+                pixel.addEventListener('mouseup', () => {
+                    this.stopDrawing();
+                });
+                
+                grid.appendChild(pixel);
+            }
+        }
+
+        // Prevent context menu and handle mouse leave
+        grid.addEventListener('contextmenu', (e) => e.preventDefault());
+        grid.addEventListener('mouseleave', () => {
+            this.stopDrawing();
+        });
+    }
+
+    getPixelPosition(e) {
+        const x = parseInt(e.target.dataset.x);
+        const y = parseInt(e.target.dataset.y);
+        return { x, y };
+    }
+
+    startDrawing(e) {
+        this.isDrawing = true;
+        const pos = this.getPixelPosition(e);
+        if (pos.x !== undefined && pos.y !== undefined) {
+            this.updatePixel(pos.x, pos.y, e.target);
+        }
+    }
+
+    continueDrawing(e) {
+        if (!this.isDrawing || this.currentTool === 'fill') return;
+        
+        const pos = this.getPixelPosition(e);
+        if (pos.x !== undefined && pos.y !== undefined) {
+            this.updatePixel(pos.x, pos.y, e.target);
+        }
+    }
+
+    stopDrawing() {
+        this.isDrawing = false;
+    }
+
+    updatePixel(x, y, element) {
+        if (this.currentTool === 'draw') {
+            this.pixels[y][x] = this.currentColor;
+            element.style.backgroundColor = this.currentColor;
+        } else if (this.currentTool === 'erase') {
+            this.pixels[y][x] = '#ffffff';
+            element.style.backgroundColor = '#ffffff';
+        } else if (this.currentTool === 'fill') {
+            this.floodFill(x, y);
+        }
+    }
+
+    floodFill(startX, startY) {
+        const targetColor = this.pixels[startY][startX];
+        const fillColor = this.currentColor;
+        
+        if (targetColor === fillColor) return;
+
+        const newPixels = this.pixels.map(row => [...row]);
+        const stack = [[startX, startY]];
+
+        while (stack.length > 0) {
+            const [x, y] = stack.pop();
+            
+            if (x < 0 || x >= this.gridSize || y < 0 || y >= this.gridSize) continue;
+            if (newPixels[y][x] !== targetColor) continue;
+
+            newPixels[y][x] = fillColor;
+
+            stack.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
+        }
+
+        this.pixels = newPixels;
+        this.updateGridDisplay();
+    }
+
+    updateGridDisplay() {
+        const grid = document.getElementById('pixelGrid');
+        const pixelElements = grid.children;
+        
+        for (let y = 0; y < this.gridSize; y++) {
+            for (let x = 0; x < this.gridSize; x++) {
+                const index = y * this.gridSize + x;
+                pixelElements[index].style.backgroundColor = this.pixels[y][x];
+            }
+        }
+    }
+
+    setTool(tool) {
+        this.currentTool = tool;
+        
+        // Update UI
+        document.querySelectorAll('.tool-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[data-tool="${tool}"]`).classList.add('active');
+    }
+
+    setGridSize(size) {
+        this.gridSize = size;
+        
+        // Update UI
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[data-size="${size}"]`).classList.add('active');
+        
+        this.createPixelGrid();
+        this.showToast(`Canvas size changed to ${size}×${size}`, 'info');
+    }
+
+    setColor(color) {
+        this.currentColor = color;
+        
+        // Update color picker and input
+        document.getElementById('colorPicker').value = color;
+        document.getElementById('colorInput').value = color;
+        
+        this.updateCurrentColorDisplay();
+        this.updateColorPaletteSelection();
+    }
+
+    updateCurrentColorDisplay() {
+        document.getElementById('currentColorDisplay').style.backgroundColor = this.currentColor;
+        document.getElementById('currentColorText').textContent = this.currentColor;
+    }
+
+    updateColorPaletteSelection() {
+        document.querySelectorAll('.color-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.style.backgroundColor === this.rgbToHex(this.currentColor) || 
+                btn.title === this.currentColor) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    clearCanvas() {
+        this.pixels = Array(this.gridSize).fill(null).map(() => Array(this.gridSize).fill('#ffffff'));
+        this.updateGridDisplay();
+        this.showToast('Canvas cleared!', 'success');
+    }
+
+    saveAsImage() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        if (this.pixels.length === 0) {
+            this.showToast('No pixel art to save!', 'error');
+            return;
+        }
+
+        canvas.width = this.gridSize;
+        canvas.height = this.gridSize;
+        
+        // Draw pixels
+        this.pixels.forEach((row, y) => {
+            row.forEach((color, x) => {
+                ctx.fillStyle = color;
+                ctx.fillRect(x, y, 1, 1);
+            });
+        });
+
+        // Create download link
+        const link = document.createElement('a');
+        link.download = `pixel-art-${Date.now()}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+        
+        this.showToast('Pixel art saved successfully!', 'success');
+    }
+
+    loadImage(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const img = new Image();
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        img.onload = () => {
+            canvas.width = this.gridSize;
+            canvas.height = this.gridSize;
+            
+            // Draw and scale image to grid size
+            ctx.drawImage(img, 0, 0, this.gridSize, this.gridSize);
+            const imageData = ctx.getImageData(0, 0, this.gridSize, this.gridSize);
+            
+            const newPixels = [];
+            for (let y = 0; y < this.gridSize; y++) {
+                const row = [];
+                for (let x = 0; x < this.gridSize; x++) {
+                    const index = (y * this.gridSize + x) * 4;
+                    const r = imageData.data[index];
+                    const g = imageData.data[index + 1];
+                    const b = imageData.data[index + 2];
+                    const hex = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+                    row.push(hex);
+                }
+                newPixels.push(row);
+            }
+            
+            this.pixels = newPixels;
+            this.updateGridDisplay();
+            this.showToast('Image loaded successfully!', 'success');
+        };
+
+        img.src = URL.createObjectURL(file);
+        event.target.value = ''; // Reset input
+    }
+
+    showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.textContent = message;
+        
+        document.getElementById('toastContainer').appendChild(toast);
+        
+        // Trigger animation
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 100);
+        
+        // Remove toast after delay
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+            }, 300);
+        }, 3000);
+    }
+
+    isValidHex(hex) {
+        return /^#[0-9A-F]{6}$/i.test(hex);
+    }
+
+    rgbToHex(rgb) {
+        // Handle both hex and rgb formats
+        if (rgb.startsWith('#')) return rgb;
+        
+        const result = rgb.match(/\d+/g);
+        if (!result || result.length < 3) return rgb;
+        
+        const r = parseInt(result[0]);
+        const g = parseInt(result[1]);
+        const b = parseInt(result[2]);
+        
+        return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+    }
+}
+
+// Initialize the application when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new PixelArtGenerator();
+});
+    </script>
+</body>
+</html>
