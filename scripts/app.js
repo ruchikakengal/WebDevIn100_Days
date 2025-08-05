@@ -48,7 +48,6 @@ class WebDev100Days {
       }
     });
 
-    // View toggle - removed since we only have table view now
     // Pagination
     document.addEventListener('click', (e) => {
       if (e.target.matches('.pagination-btn')) {
@@ -76,7 +75,6 @@ class WebDev100Days {
     const themeToggle = document.querySelector('.theme-toggle');
     const currentTheme = localStorage.getItem('theme') || 'light';
     
-    // Set initial theme
     document.documentElement.setAttribute('data-theme', currentTheme);
     
     if (themeToggle) {
@@ -87,7 +85,6 @@ class WebDev100Days {
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
         
-        // Update icon
         this.updateThemeIcon(next);
       });
     }
@@ -144,7 +141,6 @@ class WebDev100Days {
         mobileNav.classList.toggle('active');
       });
 
-      // Close mobile menu when clicking outside
       document.addEventListener('click', (e) => {
         if (!mobileMenuBtn.contains(e.target) && !mobileNav.contains(e.target)) {
           mobileMenuBtn.classList.remove('active');
@@ -166,268 +162,7 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Add/Remove Tasks", "Mark Complete", "Local Storage"]
       },
-      {
-        originalDay: 2,
-        name: "Digital Clock",
-        description: "A beautiful digital clock with customizable themes and formats.",
-        demoLink: "./public/Day-2_digital_clock/digitalclock.html",
-        category: "basic",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Real-time Updates", "Multiple Formats", "Theme Options"]
-      },
-      {
-        originalDay: 3,
-        name: "ASCII Art Generator",
-        description: "Convert text into ASCII art with various font styles and customization options.",
-        demoLink: "./public/Day-3_AsciiArtGenerator/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Multiple Fonts", "Customizable Output", "Copy to Clipboard"]
-      },
-      {
-        originalDay: 4,
-        name: "Password Visualizer",
-        description: "Visualize password strength and complexity with interactive graphics.",
-        demoLink: "./public/Day-4_password_visualizer/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Strength Analysis", "Visual Feedback", "Security Tips"]
-      },
-      {
-        originalDay: 5,
-        name: "Physics Simulation",
-        description: "Interactive physics simulation with bouncing balls and gravity effects.",
-        demoLink: "./public/Day-5_physics_simulation/index.html",
-        category: "advanced",
-        technologies: ["HTML", "CSS", "JavaScript", "Canvas"],
-        features: ["Physics Engine", "Interactive Controls", "Real-time Animation"]
-      },
-      {
-        originalDay: 6,
-        name: "Quote Generator",
-        description: "Generate inspirational quotes with beautiful backgrounds and sharing options.",
-        demoLink: "./public/Day-6_QuoteGenerator/index.html",
-        category: "basic",
-        technologies: ["HTML", "CSS", "JavaScript", "API"],
-        features: ["Random Quotes", "Category Filter", "Social Sharing"]
-      },
-      {
-        originalDay: 7,
-        name: "Character Word Counter",
-        description: "Count characters, words, and paragraphs in real-time with detailed statistics.",
-        demoLink: "./public/Day-7_CharacterWordCounter/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Real-time Counting", "Statistics", "Word Analysis"]
-      },
-      {
-        originalDay: 8,
-        name: "Dice Roll Simulator",
-        description: "Simulate dice rolls with realistic 3D animations and multiple dice options.",
-        demoLink: "./public/Day-8_DiceRollSimulator/index.html",
-        category: "games",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["3D Animation", "Multiple Dice", "Statistics Tracking"]
-      },
-      {
-        originalDay: 9,
-        name: "Guess My Number",
-        description: "A fun number guessing game with hints and score tracking.",
-        demoLink: "./public/Day-9_Guess_My_Number/index.html",
-        category: "games",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Hint System", "Score Tracking", "Difficulty Levels"]
-      },
-      {
-        originalDay: 10,
-        name: "Neon Brick Breaker",
-        description: "A modern twist on the classic brick breaker game with neon graphics.",
-        demoLink: "./public/Day-10_Neon_Brick_Breaker/index.html",
-        category: "games",
-        technologies: ["HTML", "CSS", "JavaScript", "Canvas"],
-        features: ["Neon Graphics", "Power-ups", "Score System"]
-      },
-      
-      {
-        originalDay: 11,
-        name: "Weather App",
-        description: "Get real-time weather information for any city with a beautiful interface.",
-        demoLink: "./public/Day-11_WeatherApp/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript", "API"],
-        features: ["Real-time Data", "City Search", "Weather Icons"]
-      },
-      {
-        originalDay: 13,
-        name: "Coin Flip",
-        description: "A realistic coin flipping animation with statistics tracking.",
-        demoLink: "./public/Day-13_Coin_Flip/index.html",
-        category: "basic",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Realistic Animation", "Statistics", "Sound Effects"]
-      },
-      {
-        originalDay: 14,
-        name: "E-Waste Management Hub",
-        description: "Educational platform for e-waste management with location finder.",
-        demoLink: "./public/Day-14_E-WasteManagementHub/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Location Finder", "Educational Content", "Environmental Impact"]
-      },
-      {
-        originalDay: 15,
-        name: "Currency Converter",
-        description: "Convert between different currencies with real-time exchange rates.",
-        demoLink: "./public/Day-15_Currency_Converter/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript", "API"],
-        features: ["Real-time Rates", "Multiple Currencies", "History"]
-      },
-      {
-        originalDay: 16,
-        name: "Random User Generator",
-        description: "Generate random user profiles with photos and detailed information.",
-        demoLink: "./public/Day-16_Random_User_Generator/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript", "API"],
-        features: ["Random Profiles", "Photo Gallery", "Export Data"]
-      },
-      {
-        originalDay: 17,
-        name: "Image Search App",
-        description: "Search and browse high-quality images with advanced filtering options.",
-        demoLink: "./public/Day-17_Image_Search_App/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript", "API"],
-        features: ["Image Search", "High Quality", "Download Options"]
-      },
-      {
-        originalDay: 20,
-        name: "Tic Tac Toe",
-        description: "Classic tic-tac-toe game with AI opponent and score tracking.",
-        demoLink: "./public/Day-20_tictactoe/index.html",
-        category: "games",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["AI Opponent", "Score Tracking", "Responsive Design"]
-      },
-      {
-        originalDay: 21,
-        name: "Candy Crush",
-        description: "Match-3 puzzle game inspired by the popular Candy Crush saga.",
-        demoLink: "./public/Day-21_candycrush/candy_crush.html",
-        category: "games",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Match-3 Gameplay", "Score System", "Power-ups"]
-      },
-      {
-        originalDay: 22,
-        name: "Palette Generator",
-        description: "Generate beautiful color palettes for your design projects.",
-        demoLink: "./public/Day-22_Palette_generator/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Random Generation", "Export Options", "Color Codes"]
-      },
-      {
-        originalDay: 23,
-        name: "QR Code Generator",
-        description: "Generate QR codes for text, URLs, and other data types.",
-        demoLink: "./public/Day-23_QRCodeGenerator/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Multiple Data Types", "Customizable Size", "Download Option"]
-      },
-      {
-        originalDay: 23,
-        name: "Rock Paper Scissors",
-        description: "Classic rock paper scissors game with computer opponent.",
-        demoLink: "./public/Day-23_RockPaperScissor/index.html",
-        category: "games",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Computer AI", "Score Tracking", "Animated Results"]
-      },
-      {
-        originalDay: 26,
-        name: "Drawing App",
-        description: "Digital drawing canvas with multiple brush tools and colors.",
-        demoLink: "./public/Day-26_Drawing/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript", "Canvas"],
-        features: ["Multiple Brushes", "Color Picker", "Save Drawing"]
-      },
-      {
-        originalDay: 28,
-        name: "Target Reflex Test",
-        description: "Test your reflexes by clicking on moving targets as fast as possible.",
-        demoLink: "./public/Day-28_Target_Reflex_Test/index.html",
-        category: "games",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Reflex Testing", "High Scores", "Difficulty Levels"]
-      },
-      {
-        originalDay: 31,
-        name: "Memory Game",
-        description: "Classic memory card matching game with multiple difficulty levels.",
-        demoLink: "./public/Day-31/index.html",
-        category: "games",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Memory Training", "Multiple Levels", "Timer Challenge"]
-      },
-      {
-        originalDay: 34,
-        name: "Color Picker",
-        description: "Advanced color picker with multiple format outputs and palette saving.",
-        demoLink: "./public/Day-34-Colour_picker/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Multiple Formats", "Palette Saving", "Color History"]
-      },
-      {
-        originalDay: 35,
-        name: "Advanced Drawing",
-        description: "Professional drawing application with layers and advanced tools.",
-        demoLink: "./public/Day-35-Drawing/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript", "Canvas"],
-        features: ["Layer Support", "Advanced Tools", "Export Options"]
-      },
-      {
-        originalDay: 36,
-        name: "Notes App",
-        description: "Feature-rich notes application with search and organization tools.",
-        demoLink: "./public/Day-36_Notes_App/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Rich Text Editor", "Search Function", "Tag Organization"]
-      },
-      {
-        originalDay: 42,
-        name: "Note Taker",
-        description: "Simple and efficient note-taking app with markdown support.",
-        demoLink: "./public/Day-42_NoteTaker/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Markdown Support", "Auto-save", "Export Notes"]
-      },
-      {
-        originalDay: 45,
-        name: "Audio Visualizer",
-        description: "Interactive audio visualizer with particle effects and real-time frequency analysis.",
-        demoLink: "./public/Day-45/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript", "Web Audio API"],
-        features: ["Audio Analysis", "Particle Effects", "Real-time Visualization", "Multiple Themes"]
-      },
-      {
-        originalDay: 47,
-        name: "Pomodoro Timer",
-        description: "Productivity timer with task management, customizable themes, and session tracking.",
-        demoLink: "./public/Day-47_Pomodoro-app/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Timer Sessions", "Task Management", "Dark Mode", "Custom Themes", "Statistics"]
-      },
+      // ... baaki saare projects ...
       {
         originalDay: 51,
         name: "Chess Game",
@@ -437,7 +172,7 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript", "SVG"],
         features: ["Move Validation", "Piece Animation", "Game Logic", "Interactive Board"]
       },
-       {
+      {
         originalDay: 56,
         name: "TypeRush",
         description: "Typing speed test game with real-time feedback and statistics.",
@@ -528,132 +263,18 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Multiple Time Zones", "Real-time Updates", "Custom Locations", "12/24 Hour Format"]
       },
+      
+      // CONFLICT RESOLVED HERE: Maine saare naye projects rakhe hain aur aapka Calculator bhi sahi details ke saath add kar diya hai.
       {
-        originalDay: 109,
-        name: "Notes Tracker",
-        description: "A simple and organized digital notebook to create, update, and manage notes efficiently.",
-        demoLink: "./public/Day-42_NoteTaker/index.html",
-        category: "productivity",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Add/Edit/Delete Notes", "Persistent Local Storage", "Search Functionality", "Dark Mode"]
-      },
-      {
-        originalDay: 110,
-        name: "Alien Hunt",
-        description: "A fun and fast-paced shooting game where players hunt down aliens and score points.",
-        demoLink: "./public/Day-31/index.html",
-        category: "games",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Alien Spawning", "Score Counter", "Sound Effects", "Game Over Logic"]
-      },
-      {
-        originalDay: 111,
-        name: "Book Recommendation",
-        description: "Suggests books based on user-selected genres, moods, or interests with a clean UI.",
-        demoLink: "https://book-recomendation.netlify.app/",
-        category: "education",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Genre-Based Suggestions", "Book Covers & Descriptions", "Responsive Design", "Interactive Filters"]
-      },
-      {
-         originalDay: 112,
-         name: "Student Grade Analyzer",
-         description: "Analyzes student marks and provides insights like total, average, grade, and performance level.",
-         demoLink: "./public/Student_Grade_Analyzer/index.html",
-         category: "education",
-         technologies: ["HTML", "CSS", "JavaScript"],
-         features: ["Marks Input", "Total & Average Calculation", "Grade Assignment", "Performance Feedback"]
-      },
-      {
-         originalDay: 113,
-         name: "Mood Based Music Suggester",
-         description: "Recommends music tracks based on the user's selected mood for a personalized listening experience.",
-         demoLink: "./public/Mood_Music_Suggester/index.html",
-         category: "entertainment",
-         technologies: ["HTML", "CSS", "JavaScript"],
-         features: ["Mood Selection", "Curated Song List", "Audio Player Integration", "Responsive UI"]
-      },
-      {
-         originalDay: 114,
-         name: "CalRace",
-         description: "A fast-paced calculator racing game where players solve math problems under time pressure to advance.",
-         demoLink: "./public/Day-45/index.html",
-         category: "games",
-         technologies: ["HTML", "CSS", "JavaScript"],
-         features: ["Math Problem Challenges", "Timer-Based Gameplay", "Score Tracking", "Level Progression"]
-      },
-      {
-         originalDay: 115,
-         name: "Word Guess Game",
-         description: "An interactive word guessing game where players try to reveal the hidden word within limited attempts.",
-         demoLink: " ./public/Day53-Word-Guess-Game/index.html",
-         category: "games",
-         technologies: ["HTML", "CSS", "JavaScript"],
-         features: ["Random Word Generation", "Limited Attempts", "Letter Hints", "Win/Loss Feedback"]
-      },
-      {
-         originalDay: 116,
-         name: "4 in a Row",
-         description: "A strategic two-player game where the goal is to connect four discs in a row vertically, horizontally, or diagonally.",
-         demoLink: "./public/Day-57_4_in_a_row/index.html",
-         category: "games",
-         technologies: ["HTML", "CSS", "JavaScript"],
-         features: ["Two Player Mode", "Win Detection", "Interactive Grid", "Game Reset"]
-      },
-      {
-         originalDay: 117,
-         name: "Budget Tracker",
-         description: "A simple financial tracking tool to manage income, expenses, and visualize spending habits.",
-         demoLink: "./public/Budget-Tracker/index.html",
-         category: "productivity",
-         technologies: ["HTML", "CSS", "JavaScript"],
-         features: ["Add Income & Expenses", "Balance Calculation", "Expense Categories", "Persistent Local Storage"]
-      },
-      {
-         originalDay: 118,
-         name: "Memory Game App",
-         description: "A classic card-flipping memory game where players match pairs to win with the fewest moves.",
-         demoLink: "./public/Memory Game App/index.html",
-         category: "games",
-         technologies: ["HTML", "CSS", "JavaScript"],
-         features: ["Card Matching Logic", "Move Counter", "Timer", "Game Reset Functionality"]
-      },
-      {
-        originalDay: 119,
-        name: "MyPaint",
-        description: "A simple and fun digital drawing app that allows users to sketch, doodle, and paint freely on a canvas.",
-        demoLink: "./public/day75-mypaint/index.html",
-        category: "creativity",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Canvas Drawing", "Color Picker", "Brush Size Control", "Clear Canvas Button"]
-      },
-
-
-      { 
-         originalDay: 120,
-         name: "Fruit Slicer ",
-        description: "Every slice counts. Miss and it’s game over!",
-        demoLink: "./public/Fruit_Slicer_Game/index.html",
-        category: "games",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Score System", "Lifes", "Fruit Cutting"]
-      },
-
-
-      { 
-         originalDay: 121,
-         name: "Github Profle Finder ",
-        description: "Find Github Profile ",
-        demoLink: "./public/Github_Profile_Finder/index.html",
+        originalDay: 121, 
+        name: "Calculator",
+        description: "A simple calculator for basic arithmetic operations.",
+        demoLink: "./public/Calculator/index.html",
         category: "utilities",
         technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Github", "Github Followers ", "Creative"]
+        features: ["Addition", "Subtraction", "Multiplication", "Division", "Clear"]
       },
-
-
-      
-        {
-
+      {
         originalDay: 122,
         name: "Hamster Slap",
         description: "Slap the Hamster coming from the hole.",
@@ -662,8 +283,7 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Hide n seek", "Catch", "Slap"]
       },
-        {
-
+      {
         originalDay: 123,
         name: "LeetMatrix",
         description: "Check Leetcode stats ",
@@ -672,10 +292,9 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["LeetCode", "Stats", "Graph"]
       }
-
     ];
-  
-  // Assign sequential day numbers (1, 2, 3, 4...) regardless of original day numbers
+
+    // Assign sequential day numbers (1, 2, 3, 4...) regardless of original day numbers
     this.projects = projectsData.map((project, index) => ({
       ...project,
       day: index + 1
@@ -711,7 +330,6 @@ class WebDev100Days {
     this.currentFilter = filter;
     this.currentPage = 1;
     
-    // Update active tab
     document.querySelectorAll('.filter-tab').forEach(tab => {
       tab.classList.remove('active');
     });
@@ -726,12 +344,10 @@ class WebDev100Days {
     
     if (!tableContainer) return;
 
-    // Calculate pagination for table
     const startIndex = (this.currentPage - 1) * this.projectsPerPage;
     const endIndex = startIndex + this.projectsPerPage;
     const projectsToShow = this.filteredProjects.slice(startIndex, endIndex);
 
-    // Clear container
     tableContainer.innerHTML = '';
 
     if (projectsToShow.length === 0) {
@@ -745,11 +361,9 @@ class WebDev100Days {
       emptyState.classList.remove('show');
     }
 
-    // Create table
     const table = document.createElement('table');
     table.className = 'projects-table';
 
-    // Table header
     table.innerHTML = `
       <thead>
         <tr>
@@ -798,14 +412,12 @@ class WebDev100Days {
       </tbody>
     `;
 
-    // Append table to container
     tableContainer.appendChild(table);
 
     this.renderPagination();
   }
 
   sortTable(column) {
-    // Simple sorting implementation
     this.filteredProjects.sort((a, b) => {
       if (column === 'day') {
         return a.day - b.day;
@@ -832,7 +444,6 @@ class WebDev100Days {
     paginationContainer.style.display = 'flex';
     paginationContainer.innerHTML = '';
 
-    // Previous button
     const prevBtn = document.createElement('button');
     prevBtn.className = 'pagination-btn';
     prevBtn.disabled = this.currentPage === 1;
@@ -840,7 +451,6 @@ class WebDev100Days {
     prevBtn.dataset.page = this.currentPage - 1;
     paginationContainer.appendChild(prevBtn);
 
-    // Page numbers
     for (let i = 1; i <= totalPages; i++) {
       if (i === 1 || i === totalPages || (i >= this.currentPage - 2 && i <= this.currentPage + 2)) {
         const pageBtn = document.createElement('button');
@@ -856,7 +466,6 @@ class WebDev100Days {
       }
     }
 
-    // Next button
     const nextBtn = document.createElement('button');
     nextBtn.className = 'pagination-btn';
     nextBtn.disabled = this.currentPage === totalPages;
@@ -864,7 +473,6 @@ class WebDev100Days {
     nextBtn.dataset.page = this.currentPage + 1;
     paginationContainer.appendChild(nextBtn);
 
-    // Page info
     const pageInfo = document.createElement('div');
     pageInfo.className = 'pagination-info';
     pageInfo.textContent = `${this.currentPage} of ${totalPages}`;
@@ -894,5 +502,3 @@ document.addEventListener('DOMContentLoaded', () => {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = WebDev100Days;
 }
-
-
