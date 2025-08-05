@@ -401,6 +401,15 @@ class WebDev100Days {
         features: ["Rich Text Editor", "Search Function", "Tag Organization"]
       },
       {
+        originalDay: 37,
+        name: "TypeRush",
+        description: "Typing speed test game with real-time feedback and statistics.",
+        demoLink: "./public/Day-37_TypeRush/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Typing Challenge", "Real-time Feedback", "Statistics Tracking"]
+      },
+      {
         originalDay: 42,
         name: "Note Taker",
         description: "Simple and efficient note-taking app with markdown support.",
