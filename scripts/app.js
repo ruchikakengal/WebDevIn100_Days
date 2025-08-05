@@ -401,6 +401,16 @@ class WebDev100Days {
         features: ["Rich Text Editor", "Search Function", "Tag Organization"]
       },
       {
+        originalDay: 41,
+        name: "Text to PDF Converter",
+        description: "Convert your typed text into downloadable PDF files instantly.",
+        demoLink: "./public/Day-41_Text_to_PDF_Convertor/index.html",
+        category:  "utilities",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Text Input", "PDF Generation", "Download Button"]
+
+      },
+      {
         originalDay: 42,
         name: "Note Taker",
         description: "Simple and efficient note-taking app with markdown support.",
