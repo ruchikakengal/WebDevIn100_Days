@@ -679,8 +679,16 @@ class WebDev100Days {
         category: "utilities",
         technologies: ["HTML", "CSS", "JavaScript", "API"],
         features: ["Visitor Management", "History Tracking", "Search Functionality"]
+      },{
+        originalDay: 166,
+        name: "Gaurav",
+        description: "Cryptocurrency price tracker",
+        demoLink: "./public/Gaurav775-Git/index.html",
+        category: "Utilities",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Live-cryptoprice", "Stats", "Data" ,"Search Feature","Responsive"]
       }
-
+      
 
     ];
   

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoTracker - Real-time Cryptocurrency Prices</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <i class="fas fa-coins"></i>
+                    CryptoTracker
+                </h1>
+                <div class="header-info">
+                    <span class="last-updated">Last updated: <span id="lastUpdated">Loading...</span></span>
+                    <button class="refresh-btn" id="refreshBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search and Filter Section -->
+        <div class="search-section">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search cryptocurrencies..." class="search-input">
+                <button class="clear-search" id="clearSearch">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="market-summary" id="marketSummary">
+                <div class="summary-item">
+                    <span class="summary-label">Total Market Cap:</span>
+                    <span class="summary-value" id="totalMarketCap">Loading...</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">24h Volume:</span>
+                    <span class="summary-value" id="total24hVolume">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading" id="loadingState">
+            <div class="loading-spinner"></div>
+            <p>Loading cryptocurrency data...</p>
+        </div>
+
+        <!-- Error State -->
+        <div class="error" id="errorState" style="display: none;">
+            <div class="error-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Failed to load data</h3>
+                <p id="errorMessage">Unable to fetch cryptocurrency data. Please check your connection and try again.</p>
+                <button class="retry-btn" id="retryBtn">
+                    <i class="fas fa-redo"></i>
+                    Retry
+                </button>
+            </div>
+        </div>
+
+        <!-- Crypto List -->
+        <div class="crypto-list" id="cryptoList" style="display: none;">
+            <!-- Table Header -->
+            <div class="crypto-header">
+                <div class="header-rank">#</div>
+                <div class="header-name">Name</div>
+                <div class="header-price">Price</div>
+                <div class="header-change">24h Change</div>
+                <div class="header-market-cap">Market Cap</div>
+                <div class="header-volume">24h Volume</div>
+            </div>
+
+            <!-- Crypto Items Container -->
+            <div class="crypto-items" id="cryptoItems">
+                <!-- Items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- No Results -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No cryptocurrencies found</h3>
+            <p>Try adjusting your search terms or clear the search to see all coins.</p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Data provided by <a href="https://www.coingecko.com/" target="_blank">CoinGecko API</a></p>
+            <p>Auto-refresh every 60 seconds</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
