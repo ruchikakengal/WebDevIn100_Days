@@ -661,6 +661,7 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Hide n seek", "Catch", "Slap"]
       },
+      
         {
 
         originalDay: 123,
@@ -671,15 +672,17 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["LeetCode", "Stats", "Graph"]
       },
-       {
-        originalDay: 150,
-          name: "University Management System",
-        description: "Manage university operations including courses, students, and faculty.",
-        demoLink: "./public/University_managment_system/index.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript", "API"],
-        features: ["Visitor Management", "History Tracking", "Search Functionality"]
-      }
+      
+      {
+        originalDay: 124,
+        name: "Enhanced Stop Watch Application",
+        description: "Record Time Gets The Reset Option ",
+        demoLink: "./public/Enhanced Stopwatch Application",
+        category: "basic",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Get proper time recorded", "Reset", "Lap function"]
+
+      },
 
 
     ];
