@@ -679,6 +679,16 @@ class WebDev100Days {
         category: "utilities",
         technologies: ["HTML", "CSS", "JavaScript", "API"],
         features: ["Visitor Management", "History Tracking", "Search Functionality"]
+      },
+      {
+        originalDay: 151,
+        name: "CareerAI",
+        description: "An ATS Checker and Job Finder App",
+        demoLink: "https://webdev-100.netlify.app/",
+        category: "Career Tools",
+        technologies: ["HTML", "CSS", "JavaScript", "API"],
+        features: ["ATS Resume Scoring","Job Recommendations","Keyword Matching"]
+        
       }
 
 
