@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+body{
+    width: 100%;
+    background-color: #F5ECD5;
+}
+.heading{
+    margin-top: 150px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 3.3vw;
+    font-weight: 500;
+}
+.main{
+    width: 40%;
+    padding: 20px;
+    padding-block: 25px;
+    border-radius: 15px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 20px;
+}
+.displayarea{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.captchadisplay{
+    width: 80%;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-image: url(bg.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+    color: rgb(202, 202, 202);
+    font-weight: 600;
+}
+.reload{
+    width: 15%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(167, 167, 167);
+    border: none;
+    outline: none;
+    font-size: 1.4vw;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.reload i{
+    color: white;
+}
+.inparea{
+    width: 100%;
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    padding-inline: 10px;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.inp{
+    width: 70%;
+    height: 50px;
+    border: none;
+    outline: none;
+    font-size: 1.5vw;
+    letter-spacing: 1px;
+    font-weight: 520;
+}
+.submit{
+    width: 25%;
+    height: 45px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1.4vw;
+    background-color: rgb(167, 167, 167);
+    color: white;
+    cursor: pointer;
+}
+.msgarea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3vw;
+    margin-block: 5px;
+    font-weight: 520;
+}
+.foothead{
+    text-align: center;
+    margin-block: 50px;
+    font-weight:500;
+    font-size: 1.3vw;
+}
+.foothead a {
+    text-decoration: none;
+    color: black;
+  }
+@media (max-width:425px) {
+    .heading{
+        font-size: 8vw;
+    }
+    .main{
+        width: 90%;
+        padding: 10px;
+        padding-block: 20px;
+    }
+    .captchadisplay{
+        font-size: 7vw;
+        width: 75%;
+    }
+    .reload{
+        width: 20%;
+        font-size: 4vw;
+    }
+    .inp{
+        font-size: 5vw;
+        letter-spacing: 1px;
+    }
+    .submit{
+        font-size: 4vw;
+        font-weight: 550;
+    }
+    .msgarea{
+        font-size: 4vw;
+    }
+    .foothead a{
+        font-size: 4vw;
+    }
+}
