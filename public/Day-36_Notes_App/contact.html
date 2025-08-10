@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - Notes App</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f1f4f9;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    body.dark {
+      background-color: #1e1e1e;
+      color: #f9f9f9;
+    }
+
+    .navbar {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+      margin-left: 40px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      display: inline;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .theme-toggle {
+      color: gold;
+      font-size: 18px;
+      cursor: pointer;
+      margin-right: 40px;
+    }
+
+    .contact-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      padding: 30px;
+    }
+
+    .contact-card {
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 700px;
+      text-align: center;
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: all 1s ease;
+    }
+
+    .contact-card.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    body.dark .contact-card {
+      background-color: #333;
+      color: #f1f1f1;
+    }
+
+    .contact-card h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .contact-card p {
+      margin-bottom: 10px;
+    }
+
+    .contact-info p {
+      margin: 8px 0;
+    }
+
+    .contact-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2c3e50;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-button:hover {
+      background-color: #34495e;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Notes App</div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="notes.html">Notes</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="theme-toggle" id="themeToggle" title="Theme Toggle">🌙</div>
+  </nav>
+
+  <main class="contact-container">
+    <div class="contact-card" id="contactCard">
+      <h1>📞 Contact Us</h1>
+      <p>We’d love to hear from you! Reach out to us through any of the methods below.</p>
+
+      <div class="contact-info">
+        <p><strong>Email:</strong> support@notesapp.com</p>
+        <p><strong>Phone:</strong> +91 9876543210</p>
+        <p><strong>Address:</strong> 123, Notes Street, Learning City, India</p>
+      </div>
+
+      <a href="mailto:support@notesapp.com" class="contact-button">Send Email</a>
+    </div>
+  </main>
+
+  <script>
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const contactCard = document.getElementById('contactCard');
+
+    // Theme Toggle Setup
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark");
+      themeToggle.textContent = "☀️";
+    }
+
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      const isDark = body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      themeToggle.textContent = isDark ? "☀️" : "🌙";
+    });
+
+    // Trigger slide-in animation
+    window.addEventListener("DOMContentLoaded", () => {
+      contactCard.classList.add("show");
+    });
+  </script>
+
+</body>
+</html>
