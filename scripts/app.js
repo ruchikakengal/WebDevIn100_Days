@@ -443,8 +443,10 @@ class WebDev100Days {
         demoLink: "./public/Day-72_Portfolio/index.html",
         category: "advanced",
         technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Responsive Design", "Smooth Animations", "Contact Form"]
+        features: ["Responsive Design", "Dark mode", "Smooth"]
       },
+      // Non-numbered projects (using 100+ for consistency)
+
       {
         originalDay: 101,
         name: "Etch-a-Sketch",
@@ -746,8 +748,21 @@ class WebDev100Days {
         category: "utilities",
         technologies: ["HTML", "CSS", "JavaScript", "API"],
         features: ["Visitor Management", "History Tracking", "Search Functionality"]
+
+      
+
+
       },
       {
+
+        originalDay: 151,
+        name: "Textutils",
+        description: "Powerful text analysis tool with multiple features.",
+        demoLink: "./public/Textutil-Text_Analyser/index.html",
+        category: "Text Analyser",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Responsive Design", "Text-Preview", "Dark Mode"]
+      },
         originalDay: 126,
         name: " Pixel Art Maker",
         description: "Create pixel art with a simple grid interface.",
@@ -756,6 +771,7 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Grid Creation", "Color Selection", "Download Art", "Reset Canvas"]
       }
+
 
 
 
@@ -855,12 +871,14 @@ class WebDev100Days {
 
       
 
+>>>>>>> 90afc7d9158e8a8d83d9da529832b7615958ffa1
     ];
-
-this.projects = projectsData.map((project, index) => ({
-  ...project,
-  day: index + 1
-}));
+  
+  // Assign sequential day numbers (1, 2, 3, 4...) regardless of original day numbers
+    this.projects = projectsData.map((project, index) => ({
+      ...project,
+      day: index + 1
+    }));
 
 this.filteredProjects = [...this.projects];
   }

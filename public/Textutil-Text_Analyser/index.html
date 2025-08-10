@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Description for SEO -->
+<meta name="description" content="TextUtils is a smart and lightweight tool to transform, style, analyze, and beautify your text with features like uppercase, lowercase, palindrome checker, and more." />
+
+<!-- Keywords -->
+<meta name="keywords" content="TextUtils, Text Tool, Text Converter, Online Text Editor, Uppercase, Lowercase, Palindrome, Aesthetic Text, Text Analysis" />
+
+<!-- Author Info -->
+<meta name="author" content="Samridhi Prakash" />
+
+<!-- Open Graph for Social Media Sharing -->
+<meta property="og:title" content="TextUtils | Smart Text Transformer & Analyzer" />
+<meta property="og:description" content="Transform, style, and analyze your text easily with TextUtils." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://yourdomain.com" />
+
+    <title>TextUtils-Text Analyser</title>
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="icon" type="image/png" href="favicon.png" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="container">
+    <h1 class="logo"> TextUtils</h1>
+    <ul class="navlinks">
+      <li><a href="#home">Home</a></li>
+<li><a href="#feedback">Feedback</a></li>      <li><a href="#about">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="theme-toggle">🌙</button>
+    </div>
+  </div>
+</nav>
+<main class="main-section">
+  <section class="text-input-area">
+    <h2>Enter Your Text Below</h2>
+
+<div id="text-input" contenteditable="true" class="editable-text" placeholder="Type or paste your text here..."></div>
+    
+    <div class="button-group">
+      <button onclick="convertToUpper()">UPPERCASE</button>
+      <button onclick="convertToLower()">lowercase</button>
+      <button onclick="removeSpaces()">Remove Spaces</button>
+      <button onclick="copyText()">Copy</button>
+      <button onclick="clearText()">Clear</button>
+      <button onclick="SpeakText()">🔊Speak</button>
+  <button onclick="makeBold()">Bold</button>
+  <button onclick="makeItalic()">Italic</button>
+  <button onclick="makeUnderline()">Underline</button>
+  <button onclick="aestheticifyText()">Text Aestheticify ✨</button>
+<button onclick="extractDates()">📅 Date Extractor</button>
+<button onclick="capitalizeFirstLetters()">Aa Capitalize</button>
+<button onclick="checkPalindrome()">🔁 Check Palindrome</button>
+
+  <button onclick="undoAction()">↩️ Undo</button>
+  <button onclick="redoAction()">↪️ Redo</button>
+    </div>
+  </section>
+<div class="search-section">
+  <input type="text" id="search-word" placeholder="Search a word..." />
+  <button onclick="searchAndHighlight()">Search 🔍</button>
+</div>
+  <section class="text-summary">
+    <h3>Text Summary</h3>
+    <p id="word-count">Words: 0</p>
+    <p id="char-count">Characters: 0</p>
+    <p id="reading-time">Reading Time: 0 mins</p>
+  </section>
+
+  <section class="text-preview">
+    <h3>Preview</h3>
+    <p id="preview-text">Nothing to preview</p>
+  </section>
+</main>
+<section id="about" class="about-section">
+  <h2>About TextUtils</h2>
+  <p>
+    TextUtils is a smart and modern text utility app built by <strong>Samridhi Prakash</strong>.
+    It helps you analyze, manipulate, and transform your text with powerful features like:
+  </p>
+  <ul>
+    <li>Convert to UPPERCASE/lowercase</li>
+    <li>Bold, Italic, Underline formatting</li>
+    <li>Text Aestheticify ✨</li>
+    <li>Palindrome Checker</li>
+    <li>Live word/character counter and reading time</li>
+    <li>Dark mode with purple gradient </li>
+  </ul>
+  <p>
+    Whether you’re a student, content creator, or just love clean UI — TextUtils makes your text smarter!
+  </p>
+</section>
+<section id="feedback" class="feedback-section">
+  <h2>We value your feedback 💬</h2>
+  <form id="feedback-form">
+    <textarea id="feedback-text" placeholder="Write your feedback here..." required></textarea>
+    <button type="submit">Submit Feedback</button>
+  </form>
+</section>
+
+
+
+<footer class="footer">
+  <div class="footer-content">
+    <p>❤️ Made with love by <strong>Samridhi Prakash</strong></p>
+    <div class="social-links">
+      <a href="https://github.com/Samridhi-2007" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/samridhi-prakash-a5a4a52bb" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://www.instagram.com/_samridhi_0720/" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <p>&copy; 2025 TextUtils. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
