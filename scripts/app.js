@@ -747,6 +747,7 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript", "API"],
         features: ["Visitor Management", "History Tracking", "Search Functionality"]
       },
+
       {
         originalDay: 126,
         name: " Pixel Art Maker",
@@ -755,12 +756,16 @@ class WebDev100Days {
         category: "creativity",
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Grid Creation", "Color Selection", "Download Art", "Reset Canvas"]
-      }
-
-
-
-
-      ,
+      },
+      {
+        originalDay: 127,
+          name: "Mood Based Scheduler",
+        description: "A simple, creative to-do list web app where users can assign tasks based on their current mood.",
+        demoLink: "./public/Mood-Based Scheduler/index.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Select Moods", "Add tasks", "Easy add/delete tasks", "Colour mood filter"]
+      },
       {
 
   originalDay: 131,

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood-Based Scheduler</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      transition: background 0.5s, color 0.5s;
+    }
+    h1, h2 {
+      margin-bottom: 10px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+    }
+    select, input, button {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #333;
+      color: #fff;
+      cursor: pointer;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background: #f0f0f0;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .happy { background-color: #e0ffe0; color: #2b662e; }
+    .sad { background-color: #e0e8ff; color: #2b3f66; }
+    .angry { background-color: #ffe0e0; color: #661e1e; }
+    .bored { background-color: #fffbe0; color: #665c1e; }
+    .neutral { background-color: #f5f5f5; color: #333; }
+    .delete-btn {
+      background: none;
+      border: none;
+      color: red;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 20px;
+      align-self: flex-end;
+    }
+    .task-text {
+      flex-grow: 1;
+      padding-right: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mood-Based Scheduler</h1>
+
+    <label for="mood">Select Your Mood:</label>
+    <select id="mood" onchange="changeTheme()">
+      <option value="neutral">Neutral</option>
+      <option value="happy">Happy</option>
+      <option value="sad">Sad</option>
+      <option value="angry">Angry</option>
+      <option value="bored">Bored</option>
+    </select>
+
+    <label for="task">Add a Task:</label>
+    <input type="text" id="task" placeholder="Enter your task...">
+    <button onclick="addTask()">Add Task</button>
+
+    <h2>Tasks</h2>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    function changeTheme() {
+      const mood = document.getElementById('mood').value;
+      document.body.className = '';
+      document.body.classList.add(mood);
+    }
+
+    function addTask() {
+      const taskInput = document.getElementById('task');
+      const mood = document.getElementById('mood').value;
+      const task = taskInput.value.trim();
+      if (task) {
+        const taskObj = { text: task, mood: mood };
+        let tasks = JSON.parse(localStorage.getItem('moodTasks')) || [];
+        tasks.push(taskObj);
+        localStorage.setItem('moodTasks', JSON.stringify(tasks));
+        renderTasks();
+        taskInput.value = '';
+      }
+    }
+
+    function deleteTask(index) {
+      let tasks = JSON.parse(localStorage.getItem('moodTasks')) || [];
+      tasks.splice(index, 1);
+      localStorage.setItem('moodTasks', JSON.stringify(tasks));
+      renderTasks();
+    }
+
+    function renderTasks() {
+      const tasks = JSON.parse(localStorage.getItem('moodTasks')) || [];
+      const list = document.getElementById('taskList');
+      list.innerHTML = '';
+      tasks.forEach((t, index) => {
+        const li = document.createElement('li');
+        li.classList.add(t.mood);
+        li.innerHTML = `
+          <span class="task-text">${t.text}</span>
+          <button class="delete-btn" onclick="deleteTask(${index})">&times;</button>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    window.onload = () => {
+      renderTasks();
+      changeTheme();
+    };
+  </script>
+</body>
+</html>
