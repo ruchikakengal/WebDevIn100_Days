@@ -1,0 +1,137 @@
+:root {
+            --bg-color: #0d1117; /* Very Dark Background */
+            --glow-color: #00f5d4; /* Bright Cyan Glow */
+            --glow-shadow: 0 0 15px rgba(0, 245, 212, 0.4);
+            --border-color: rgba(0, 245, 212, 0.3);
+            --text-color: #e6f1ff; 
+            --secondary-text-color: #8d99ae;
+        }
+
+        /* --- CSS Reset & Basic Setup --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+        }
+
+        /* --- Main container for heading and calculator --- */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* --- Calculator Heading --- */
+        h1 {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--glow-color);
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: var(--glow-shadow);
+        }
+
+        /* --- Calculator Container --- */
+        .calculator {
+            width: 90vw;
+            max-width: 340px;
+            padding: 25px;
+            border-radius: 20px;
+            /* The glowing outline effect */
+            border: 1px solid var(--border-color);
+            box-shadow: var(--glow-shadow);
+        }
+        
+        /* --- Display Screen --- */
+        .display {
+            margin-bottom: 25px;
+            /* The separator line */
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 25px;
+        }
+
+        .display input {
+            width: 100%;
+            height: 80px;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 56px;
+            font-weight: 500;
+            text-align: right;
+            padding: 0 10px;
+            pointer-events: none;
+        }
+
+        .display input::placeholder {
+            color: var(--secondary-text-color);
+        }
+
+        /* --- Button Grid --- */
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* --- General Button Styling --- */
+        .buttons button {
+            height: 55px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+        }
+        
+        .buttons button:hover {
+            background-color: rgba(0, 245, 212, 0.1);
+            box-shadow: 0 0 10px rgba(0, 245, 212, 0.3);
+        }
+
+        .buttons button:active {
+            transform: scale(0.97);
+            background-color: rgba(0, 245, 212, 0.2);
+        }
+
+        /* --- Specific Button Styling --- */
+        .btn-equal {
+            grid-column: span 2;
+        }
+        
+        /* All buttons share the same glow color for a cohesive look */
+        .btn-operator,
+        .btn-function,
+        .btn-equal {
+            color: var(--glow-color);
+            font-weight: 500;
+        }
+        
+        .btn-equal {
+            background-color: var(--glow-color);
+            color: var(--bg-color);
+            border: none;
+        }
+        .btn-equal:hover {
+            background-color: #00f5d4;
+            box-shadow: var(--glow-shadow);
+        }
