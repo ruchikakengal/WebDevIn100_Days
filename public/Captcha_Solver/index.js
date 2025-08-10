@@ -1,3 +1,4 @@
+// your code goes here
 // Select DOM elements for captcha display, reload button, input field, submit button, and message area
 let captchadisplay = document.querySelector(".captchadisplay");
 let reload = document.querySelector(".reload");
@@ -42,7 +43,7 @@ submit.addEventListener("click", () => {
     validate(inp.value);
   } else {
     // Show error message if input is empty
-    msgarea.innerHTML = `<span style="color: red;">Fill the captcha.</span>`;
+    msgarea.innerHTML = `<span>Fill the captcha.</span>`;
   }
 });
 
@@ -51,10 +52,10 @@ function validate(c) {
   if (c == captcha) {
     // If captcha matches, display success message
     inp.disabled = true; // Disable the input field after successful validation
-    msgarea.innerHTML = `<span style="color: green;">Nice! You are not a robot.</span>`;
+    msgarea.innerHTML = `<span >Nice! You are not a robot ✅</span>`;
   } else {
     // If captcha does not match, display error message
-    msgarea.innerHTML = `<span style="color: red;">Captcha not matched. Please try again!</span>`;
+    msgarea.innerHTML = `<span>Captcha not matched. Please try again ❗️</span>`;
   }
 }
 
@@ -62,4 +63,3 @@ function validate(c) {
 reload.addEventListener("click", () => {
   getcaptcha(); // Generate a new captcha
 });
-

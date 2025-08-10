@@ -1,145 +1,187 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
 }
-body{
-    width: 100%;
-    background-color: #F5ECD5;
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4b6cb7, #182848); /* Blue to Purple */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(5px);
 }
-.heading{
-    margin-top: 150px;
-    margin-bottom: 50px;
-    text-align: center;
-    font-size: 3.3vw;
-    font-weight: 500;
+
+.heading {
+  margin-top: 80px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 3vw;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
 }
-.main{
-    width: 40%;
-    padding: 20px;
-    padding-block: 25px;
-    border-radius: 15px;
-    margin-inline: auto;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    gap: 20px;
+
+.main {
+  width: 40%;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 0.2s ease-in-out;
 }
-.displayarea{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+
+.main:hover {
+  transform: translateY(-5px);
 }
-.captchadisplay{
-    width: 80%;
-    height: 60px;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-image: url(bg.jpg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2vw;
-    color: rgb(202, 202, 202);
-    font-weight: 600;
+
+.displayarea {
+  display: flex;
+  gap: 10px;
 }
-.reload{
-    width: 15%;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(167, 167, 167);
-    border: none;
-    outline: none;
-    font-size: 1.4vw;
-    border-radius: 5px;
-    cursor: pointer;
+
+.captchadisplay {
+  flex: 1;
+  height: 60px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vw;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0px 1px 2px rgba(0,0,0,0.3);
 }
-.reload i{
-    color: white;
+
+.reload {
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 153, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  font-size: 1.4vw;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
-.inparea{
-    width: 100%;
-    display: flex;
-    height: 60px;
-    justify-content: space-between;
-    padding-inline: 10px;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 5px;
+
+.reload i {
+  color: #fff;
 }
-.inp{
-    width: 70%;
-    height: 50px;
-    border: none;
-    outline: none;
-    font-size: 1.5vw;
-    letter-spacing: 1px;
-    font-weight: 520;
+
+.reload:hover {
+  background: rgba(0, 153, 255, 0.5);
+  transform: rotate(10deg);
 }
-.submit{
-    width: 25%;
-    height: 45px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    font-size: 1.4vw;
-    background-color: rgb(167, 167, 167);
-    color: white;
-    cursor: pointer;
+
+.inparea {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
 }
-.msgarea{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.3vw;
-    margin-block: 5px;
-    font-weight: 520;
+
+.inp {
+  flex: 1;
+  padding: 0 10px;
+  height: 50px;
+  border: none;
+  outline: none;
+  font-size: 1.2vw;
+  background: transparent;
+  color: #fff;
 }
-.foothead{
-    text-align: center;
-    margin-block: 50px;
-    font-weight:500;
-    font-size: 1.3vw;
+
+.inp::placeholder {
+  color: rgba(255,255,255,0.7);
 }
+
+.submit {
+  width: 30%;
+  height: 50px;
+  background: rgba(0, 123, 255, 0.7);
+  color: white;
+  font-size: 1.1vw;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.submit:hover {
+  background: rgba(0, 123, 255, 0.9);
+}
+
+.msgarea {
+  text-align: center;
+  font-size: 1.2vw;
+  font-weight: 500;
+  min-height: 24px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Success and error message styles */
+.msgarea.success {
+  background: rgba(0, 255, 136, 0.15);
+  color: #00ff88;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.msgarea.error {
+  background: rgba(255, 68, 68, 0.15);
+  color: #ff4444;
+  border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+.foothead {
+  margin-top: 40px;
+  font-size: 1vw;
+  color: #fff;
+}
+
 .foothead a {
-    text-decoration: none;
-    color: black;
-  }
-@media (max-width:425px) {
-    .heading{
-        font-size: 8vw;
-    }
-    .main{
-        width: 90%;
-        padding: 10px;
-        padding-block: 20px;
-    }
-    .captchadisplay{
-        font-size: 7vw;
-        width: 75%;
-    }
-    .reload{
-        width: 20%;
-        font-size: 4vw;
-    }
-    .inp{
-        font-size: 5vw;
-        letter-spacing: 1px;
-    }
-    .submit{
-        font-size: 4vw;
-        font-weight: 550;
-    }
-    .msgarea{
-        font-size: 4vw;
-    }
-    .foothead a{
-        font-size: 4vw;
-    }
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
 }
+
+.foothead a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .main {
+    width: 90%;
+  }
+  .heading {
+    font-size: 6vw;
+  }
+  .captchadisplay {
+    font-size: 5vw;
+  }
+  .inp {
+    font-size: 4vw;
+  }
+  .submit {
+    font-size: 4vw;
+  }
+}
+
