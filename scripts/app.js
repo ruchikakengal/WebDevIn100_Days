@@ -437,6 +437,16 @@ class WebDev100Days {
       },
 
       {
+        originalDay: 71,
+        name: "Birthday Greeting Card Generator",
+        description: "A fun and interactive birthday card creator with customizable messages and animated effects.",
+        demoLink: "https://birthday-greetingcard-generator.netlify.app/",
+        category: "fun",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Custom Messages", "Animations", "Interactive Design"]
+      },
+
+      {
         originalDay: 72,
         name: "Portfolio Website",
         description: "Modern portfolio website template with responsive design and animations.",
