@@ -437,6 +437,15 @@ class WebDev100Days {
       },
 
       {
+        originalDay: 33,
+        name: "Sorting visualiser",
+        description: "Interactive sorting visualiser with real-time feedback and statistics tracking. Visualise how different sorting algorithms work step-by-step, compare swap counts and animation speed, and experiment with array sizes and colors.",
+        demoLink: "./public/Day58-Sorting_visualiser/Sorting_visualiser.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Multiple sorting algorithms (Bubble, Selection, Insertion, Merge, Quick)", "Real-time animation controls (speed, color, dark mode)", "Swap/count statistics and live feedback", "Generate random arrays and custom sizes"]
+      },
+      {
         originalDay: 72,
         name: "Portfolio Website",
         description: "Modern portfolio website template with responsive design and animations.",

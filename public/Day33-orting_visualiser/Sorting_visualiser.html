@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualization</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            text-align: center;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        .header {
+            padding: 20px;
+            background-color: #fd0081;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            text-align: center;
+        }
+
+        .dark-mode .header {
+            background-color: #00bcd4;
+        }
+
+        .toggle-container {
+            position: absolute;
+            right: 20px;
+        }
+
+        .controls {
+            margin: 20px;
+        }
+
+        .bar-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 400px;
+            margin: 20px auto;
+            width: 80%;
+            border: 1px solid black;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .bar-container {
+            background: #222;
+            border-color: #444;
+        }
+
+        .bar {
+            width: 10px;
+            background-color: #fd0081;
+            margin: 1px;
+            border-radius: 5px;
+        }
+
+        .dark-mode .bar {
+            background-color: #00bcd4;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            color: #fd0081;
+            font-weight: bold;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #fd0081;
+            color: white;
+        }
+
+        .dark-mode button {
+            background-color: #444;
+            color: white;
+        }
+
+        .dark-mode button:hover {
+            background-color: #00bcd4;
+        }
+
+        input[type="range"] {
+            accent-color: #fd0081;
+        }
+
+        .dark-mode input[type="range"] {
+            accent-color: #00bcd4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Sorting Visualizer</h1>
+        <div class="toggle-container">
+            <button onclick="toggleDarkMode()">Dark Mode</button>
+        </div>
+    </div>
+    <div class="controls">
+        <input type="color" id="barColor" name="barColor" value="#fd0081" onchange="changeBarColor()">
+        <label for="speed">Animation Speed:</label>
+        <input type="range" id="speed" name="speed" min="10" max="1000" value="100" oninput="updateSpeed()">
+        <button onclick="generateArray()">Generate New Array</button>
+        <button onclick="bubbleSort()">Bubble Sort</button>
+        <button onclick="selectionSort()">Selection Sort</button>
+        <button onclick="insertionSort()">Insertion Sort</button>
+        <button onclick="mergeSort()">Merge Sort</button>
+        <button onclick="quickSort()">Quick Sort</button>
+    </div>
+    <div class="bar-container" id="bar-container"></div>
+    <p id="swap-count">Swaps: 0</p>
+    <script>
+        let bars = [];
+        let swapCount = 0;
+        let speed = 100;
+
+        function updateSpeed() {
+            speed = document.getElementById("speed").value;
+        }
+
+        function generateArray() {
+            const container = document.getElementById("bar-container");
+            container.innerHTML = "";
+            bars = [];
+            swapCount = 0;
+            updateSwapCount();
+            for (let i = 0; i < 50; i++) {
+                let value = Math.floor(Math.random() * 350) + 10;
+                let bar = document.createElement("div");
+                bar.style.height = `${value}px`;
+                bar.classList.add("bar");
+                bars.push(bar);
+                container.appendChild(bar);
+            }
+        }
+
+        function changeBarColor() {
+            let color = document.getElementById("barColor").value;
+            document.querySelectorAll(".bar").forEach(bar => {
+                bar.style.backgroundColor = color;
+            });
+        }
+        function updateSwapCount() {
+            document.getElementById("swap-count").innerText = `Swaps: ${swapCount}`;
+        }
+        async function swap(i, j) {
+            let temp = bars[i].style.height;
+            bars[i].style.height = bars[j].style.height;
+            bars[j].style.height = temp;
+            swapCount++;
+            updateSwapCount();
+            await new Promise(resolve => setTimeout(resolve, 50));
+        }
+        async function bubbleSort() {
+            swapCount = 0;
+            updateSwapCount();
+            for (let i = 0; i < bars.length; i++) {
+                for (let j = 0; j < bars.length - i - 1; j++) {
+                    if (bars[j].offsetHeight > bars[j + 1].offsetHeight) {
+                        await swap(j, j + 1);
+                    }
+                }
+            }
+        }
+        async function selectionSort() {
+            for (let i = 0; i < bars.length; i++) {
+                let minIndex = i;
+                for (let j = i + 1; j < bars.length; j++) {
+                    if (bars[j].offsetHeight < bars[minIndex].offsetHeight) {
+                        minIndex = j;
+                    }
+                }
+                await swap(i, minIndex);
+            }
+        }
+        async function insertionSort() {
+            for (let i = 1; i < bars.length; i++) {
+                let j = i;
+                while (j > 0 && bars[j].offsetHeight < bars[j - 1].offsetHeight) {
+                    await swap(j, j - 1);
+                    j--;
+                }
+            }
+        }
+        async function mergeSortHelper(left, right) {
+            if (left >= right) return;
+            let mid = Math.floor((left + right) / 2);
+            await mergeSortHelper(left, mid);
+            await mergeSortHelper(mid + 1, right);
+            let temp = [];
+            let i = left, j = mid + 1;
+            while (i <= mid && j <= right) {
+                temp.push(bars[i].offsetHeight <= bars[j].offsetHeight ? bars[i++].offsetHeight : bars[j++].offsetHeight);
+            }
+            while (i <= mid) temp.push(bars[i++].offsetHeight);
+            while (j <= right) temp.push(bars[j++].offsetHeight);
+            for (let k = left; k <= right; k++) {
+                bars[k].style.height = `${temp[k - left]}px`;
+                swapCount++;
+                updateSwapCount();
+                await new Promise(resolve => setTimeout(resolve, 50));
+            }
+        }
+        async function mergeSort() {
+            swapCount = 0;
+            updateSwapCount();
+            await mergeSortHelper(0, bars.length - 1);
+        }
+        async function quickSort(start = 0, end = bars.length - 1) {
+            if (start < end) {
+                const pivotIndex = await partition(start, end);
+                await quickSort(start, pivotIndex - 1);
+                await quickSort(pivotIndex + 1, end);
+            }
+        }
+        async function partition(start, end) {
+            const pivot = bars[end].offsetHeight;
+            let pivotIndex = start;
+            for (let i = start; i < end; i++) {
+                if (bars[i].offsetHeight < pivot) {
+                    await swap(i, pivotIndex);
+                    pivotIndex++;
+                }
+            }
+            await swap(pivotIndex, end);
+            return pivotIndex;
+        }
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+        generateArray();
+    </script>
+</body>
+
+</html>
