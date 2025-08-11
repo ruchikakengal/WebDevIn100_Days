@@ -446,6 +446,15 @@ class WebDev100Days {
         features: ["Responsive Design", "Smooth Animations", "Contact Form"]
       },
       {
+        originalDay: 81,
+        name: "Maze Solver",
+        description: "Solve mazes interactively with difficulty levels.",
+        demoLink: "./public/Day-81_MazeSolver/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Interactive Gameplay", "Difficulty Levels", "Maze Generation", "Keyboard Controls"]
+       },
+      {
         originalDay: 101,
         name: "Etch-a-Sketch",
         description: "Digital Etch-a-Sketch with customizable grid and drawing modes.",

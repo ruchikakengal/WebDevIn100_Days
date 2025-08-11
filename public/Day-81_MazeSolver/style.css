@@ -1,0 +1,48 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  background: #626060;
+}
+
+h1 {
+  margin: 20px 0 10px;
+}
+
+#status {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+#controls {
+  margin-bottom: 20px;
+}
+
+#grid {
+  display: grid;
+  justify-content: center;
+  gap: 1px;
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ddd;
+  background: white;
+  transition: background 0.2s ease;
+}
+
+.wall {
+  background: rgb(75, 74, 74);
+}
+
+.start {
+  background: #4caf50;
+}
+
+.end {
+  background: #e91e63;
+}
+
+.player {
+  background: rgb(0, 8, 255);
+}

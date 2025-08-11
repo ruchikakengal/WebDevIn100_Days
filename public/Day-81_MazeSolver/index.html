@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maze Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🧩 Maze Game</h1>
+
+  <div id="status">
+    ⏱️ Time: <span id="timer">0</span>s |
+    🎮 Moves: <span id="moves">0</span>
+  </div>
+
+  <div id="controls">
+    <label for="difficulty">Difficulty:</label>
+    <select id="difficulty" onchange="generateMaze()">
+      <option value="easy">Easy</option>
+      <option value="medium" selected>Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+
+    <button onclick="generateMaze()">Generate Maze</button>
+    <button onclick="resetMaze()">Reset</button>
+  </div>
+
+  <div id="grid"></div>
+
+  <audio id="win-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7b326571fa.mp3?filename=game-win-sound-1-183061.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
