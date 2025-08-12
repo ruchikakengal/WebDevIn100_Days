@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman Game</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Quicksand:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container glass-card">
+      <header class="hangman-header">
+        <h1 class="title">Hangman <span class="emoji">🕹️</span></h1>
+        <p class="subtitle">Guess the word and save the hangman!</p>
+      </header>
+      <div class="hangman-area">
+        <svg id="hangman-svg" width="200" height="250"></svg>
+      </div>
+      <div class="hint-row">
+        <button id="hint-btn" class="hint-btn">Show Hint</button>
+        <span id="hint-text" class="hint-text"></span>
+      </div>
+      <div class="word-area">
+        <!-- Underscores and letters will appear here -->
+      </div>
+      <div class="wrong-guesses">
+        <span>Wrong guesses:</span>
+        <div id="wrong-letters"></div>
+      </div>
+      <div class="keyboard">
+        <!-- On-screen keyboard will be generated here -->
+      </div>
+      <button id="restart-btn" class="restart-btn">Restart</button>
+      <div id="game-message" class="game-message"></div>
+      <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

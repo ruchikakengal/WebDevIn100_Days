@@ -1,0 +1,311 @@
+body {
+  background: linear-gradient(120deg, #e0c3fc 0%, #f7d9e3 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(160, 160, 255, 0.18), 0 0 0 8px #f7d9e3;
+  backdrop-filter: blur(8px);
+  padding: 40px 24px 32px 24px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  margin: 32px auto;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+.hangman-header {
+  margin-bottom: 10px;
+}
+.title {
+  font-family: "Baloo 2", cursive;
+  font-size: 2.6rem;
+  color: #a084e8;
+  margin-bottom: 0px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.emoji {
+  font-size: 2rem;
+  vertical-align: middle;
+}
+.subtitle {
+  font-size: 1.1rem;
+  color: #6f61c0;
+  margin-bottom: 8px;
+  font-family: "Quicksand", cursive;
+}
+.hint-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.hint-btn {
+  background: linear-gradient(135deg, #f7d9e3 0%, #c1e1c1 100%);
+  border: none;
+  border-radius: 16px;
+  font-size: 1rem;
+  color: #6f61c0;
+  padding: 8px 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(160, 160, 255, 0.08);
+  transition: transform 0.15s, background 0.2s;
+}
+.hint-btn:hover {
+  background: linear-gradient(135deg, #e0c3fc 0%, #f7d9e3 100%);
+  transform: scale(1.08);
+}
+.hint-btn:active {
+  background: #b6b6f7;
+  transform: scale(0.95);
+}
+.hint-text {
+  font-size: 1.1rem;
+  color: #ff6f91;
+  font-family: "Quicksand", cursive;
+  opacity: 0;
+  transition: opacity 0.4s;
+  margin-left: 6px;
+}
+.hint-text.visible {
+  opacity: 1;
+  animation: fadeInHint 0.5s;
+}
+@keyframes fadeInHint {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Hangman Game CSS - Modern, playful, pastel theme */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", "Baloo 2", cursive, sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0c3fc 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .container replaced by .glass-card */
+.title {
+  font-family: "Baloo 2", cursive;
+  font-size: 2.8rem;
+  color: #a084e8;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  animation: bounceTitle 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) 1;
+}
+@keyframes bounceTitle {
+  0% {
+    transform: scale(0.7) translateY(-60px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2) translateY(10px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+.hangman-area {
+  margin: 16px 0 24px 0;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.word-area {
+  font-size: 2rem;
+  letter-spacing: 12px;
+  margin-bottom: 18px;
+  min-height: 48px;
+  color: #6f61c0;
+  display: flex;
+  justify-content: center;
+}
+/* Improved underline and interactivity for word letters */
+.word-area .letter {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  font-weight: bold;
+  border-bottom: 3px solid #a084e8;
+  margin: 0 8px;
+  min-width: 32px;
+  text-align: center;
+  font-size: 2.2rem;
+  background: linear-gradient(90deg, #f7d9e3 0%, #e0c3fc 100%);
+  border-radius: 8px 8px 24px 24px;
+  box-shadow: 0 2px 8px rgba(160, 160, 255, 0.08);
+  position: relative;
+}
+.word-area .letter.visible {
+  opacity: 1;
+  animation: fadeInLetter 0.5s;
+  color: #6f61c0;
+}
+.word-area .letter.space {
+  border-bottom: none;
+  background: none;
+  min-width: 18px;
+  box-shadow: none;
+}
+@keyframes fadeInLetter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.wrong-guesses {
+  margin-bottom: 16px;
+  color: #ff6f91;
+  font-size: 1.1rem;
+}
+#wrong-letters {
+  margin-top: 6px;
+  min-height: 24px;
+}
+.wrong-letter {
+  display: inline-block;
+  margin: 0 6px;
+  position: relative;
+  color: #ff6f91;
+  font-weight: bold;
+  font-size: 1.2rem;
+  opacity: 0;
+  animation: fadeInWrong 0.5s forwards;
+}
+.wrong-letter.strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+  text-decoration-color: #ff1744;
+  animation: strikeWrong 0.5s;
+}
+@keyframes fadeInWrong {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes strikeWrong {
+  0% {
+    text-decoration-thickness: 0;
+  }
+  100% {
+    text-decoration-thickness: 3px;
+  }
+}
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.key-btn {
+  background: linear-gradient(135deg, #f7d9e3 0%, #c1e1c1 100%);
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: #6f61c0;
+  padding: 10px 16px;
+  margin: 2px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(160, 160, 255, 0.08);
+  transition: transform 0.15s, background 0.2s;
+}
+.key-btn:hover {
+  background: linear-gradient(135deg, #e0c3fc 0%, #f7d9e3 100%);
+  transform: scale(1.08);
+}
+.key-btn:active {
+  background: #b6b6f7;
+  transform: scale(0.95);
+}
+.key-btn:disabled {
+  background: #e0e0e0;
+  color: #b6b6b6;
+  cursor: not-allowed;
+}
+/* Improved restart button style */
+.restart-btn {
+  background: linear-gradient(135deg, #a084e8 0%, #f7d9e3 100%);
+  color: #fff;
+  border: none;
+  border-radius: 32px;
+  font-size: 1.2rem;
+  padding: 14px 36px;
+  margin-top: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(160, 160, 255, 0.12);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: pulseRestart 1.2s infinite alternate;
+}
+@keyframes pulseRestart {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  60% {
+    transform: scale(1.08) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(-10deg);
+  }
+}
+.game-message {
+  font-size: 1.5rem;
+  margin-top: 18px;
+  min-height: 32px;
+  color: #6f61c0;
+  font-family: "Baloo 2", cursive;
+}
+.confetti-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+}
+@media (max-width: 600px) {
+  .container {
+    max-width: 98vw;
+    padding: 16px 4px;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .word-area {
+    font-size: 1.3rem;
+    letter-spacing: 6px;
+  }
+  .hangman-area {
+    height: 180px;
+  }
+  .restart-btn {
+    font-size: 1rem;
+    padding: 10px 18px;
+  }
+}
