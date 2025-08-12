@@ -1,0 +1,186 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #000000, #090864);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background: rgb(255, 255, 255);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+.coin {
+  width: 120px;
+  height: 120px;
+  margin: 20px auto;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 2s ease-in-out;
+  transform: rotateY(0deg);
+}
+
+.side {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  border: 4px solid #999;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.heads {
+  background: #ffea00;
+  color: #010101;
+}
+
+.tails {
+  background: #00e5fe;
+  color: #222;
+  transform: rotateY(180deg);
+}
+
+button {
+  margin-top: 20px;
+  padding: 15px 69px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #00b894;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #31ff9f;
+}
+
+#result {
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #2d3436;
+}
+#history {
+  margin-top: 10px;
+  text-align: left;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2px;
+}
+
+#history h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: aqua;
+}
+
+#historyList {
+  list-style-type: decimal;
+  padding-left: 20px;
+  margin: 0;
+}
+
+#historyList li {
+  font-size: 16px;
+  color: greenyellow;
+  margin-bottom: 5px;
+}
+.m2 {
+  position: relative;
+  width: 23vw; /* Reduced size */
+  height: 88vh; /* Reduced size */
+  background: linear-gradient(135deg, #1e1e24 10%, #050505 60%);
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  animation: gradient-shift 5s ease-in-out infinite; /* Faster animation */
+  background-size: 200% 200%; /* Gradient shift */
+}
+
+.m2 .logo {
+  display: inline-block;
+  vertical-align: baseline;
+  user-select: none;
+  font-size: 5vmin; /* Smaller font size */
+  color: white;
+  background-image: linear-gradient(to right, #626262, #fff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+}
+
+.m2 .logo svg {
+  margin-right: -1vmin;
+  width: 5vmin; /* Smaller SVG size */
+  height: 5vmin; /* Smaller SVG size */
+}
+
+.m2::before,
+.m2::after {
+  --size: 5px; /* Reduced glow size */
+  content: "";
+  position: absolute;
+  top: calc(var(--size) / -2);
+  left: calc(var(--size) / -2);
+  width: calc(100% + var(--size));
+  height: calc(100% + var(--size));
+  background: radial-gradient(circle at 0 0, hsl(27deg 93% 60%), transparent),
+    radial-gradient(circle at 100% 0, #00a6ff, transparent),
+    radial-gradient(circle at 0 100%, #ff0056, transparent),
+    radial-gradient(circle at 100% 100%, #6500ff, transparent);
+}
+
+.m2::after {
+  --size: 2px; /* Reduced inner glow size */
+  z-index: -1;
+}
+
+.m2::before {
+  --size: 10px; /* Reduced outer glow size */
+  z-index: -2;
+  filter: blur(2vmin); /* Reduced blur */
+  animation: blur-animation 3s ease-in-out alternate infinite; /* Faster blur animation */
+}
+
+/* Faster blur animation */
+@keyframes blur-animation {
+  to {
+    filter: blur(3vmin);
+    transform: scale(1.05);
+  }
+}
+
+/* Faster gradient animation */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
