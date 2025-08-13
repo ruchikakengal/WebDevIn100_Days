@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="shortcut icon" href="fav.svg" type="image/x-icon">
+  <title>PuckMan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/app.js"></script>
+</head>
+
+<body>
+  <header class="container">
+    <div id="player">
+      <h2 id="player-name"></h2>
+      <h3 id="current-score-display"></h3>
+    </div>
+    <div id="highscore">
+      <h2>HIGHSCORE</h2>
+      <h3 id="high-score-display"></h3>
+    </div>
+  </header>
+  <main class="container">
+    <section id="splash" class="container">
+      <h2 class="beige">CLICK TO START</h2>
+      <h2 class="blue">1 PLAYER ONLY</h2>
+      <h2 class="peach">BONUS PUCKMAN FOR 10000 <span class="small">PTS</span></h2>
+    </section>
+    <div id="grid-wrapper" class="wrapper"></div>
+  </main>
+  <h2 id="ready">READY!</h2>
+  <footer class="container">
+    <div id="lives"></div>
+    <div id="bonus"></div>
+  </footer>
+</body>
+
+</html>

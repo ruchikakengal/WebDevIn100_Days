@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="fav.svg" type="image/x-icon">
+    <title> Sudoku Solver</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-title">Sudoku Solver</div>
+        <div class="header-buttons">
+            <button id="newGameBtn">New Game</button>
+            <button id="settingsBtn"><i class="fas fa-cog"></i></button>
+            <button id="helpBtn"><i class="fas fa-question-circle"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <div class="sudoku-board" id="sudokuBoard"></div>
+
+        <aside class="sidebar">
+            <h3>Game Options</h3>
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+                <option value="expert">Expert</option>
+            </select>
+            <h3>Theme:</h3>
+            <div class="themes">
+                <button class="theme-button" id="themeClassic">Classic</button>
+                <button class="theme-button" id="themeGalaxy">Galaxy</button>
+                <button class="theme-button" id="themeModern">Modern</button>
+            </div>
+            <button id="hintBtn">Get Hint</button>
+            <div class="game-info">
+                <p>Score: <span id="score">0</span></p>
+                <p>Time: <span id="time">00:00</span></p>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <a href="#" id="instructions">Instructions</a>
+        <a href="#" id="about">About</a>
+        <button id="darkModeToggle">Dark Mode</button>
+    </footer>
+
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Settings</h2>
+            <label>
+                <input type="checkbox" id="soundEffects"> Sound Effects
+            </label>
+            <label>
+                <input type="checkbox" id="visualEffects"> Visual Effects
+            </label>
+        </div>
+    </div>
+
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>How to Play Sudoku</h2>
+            <p>Sudoku is a logic-based, combinatorial number-placement puzzle. The objective is to fill a 9x9 grid with
+                digits so that each column, each row, and each of the nine 3x3 subgrids contain all of the digits from 1
+                to 9. Use logic to determine which numbers go where, and enjoy the challenge!</p>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

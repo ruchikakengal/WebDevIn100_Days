@@ -1,0 +1,460 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Martel Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: black;
+}
+
+.main {
+    background-image: url(assets/images/mainbg1.jpg);
+    height: 90vh;
+    position: relative;
+    background-size: max(1550px, 100vw);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.main .box {
+    height: 90vh;
+    width: 100%;
+    background-color: black;
+    opacity: 0.77;
+    position: absolute;
+    top: 0;
+}
+
+nav {
+    display: flex;
+    max-width: 80vw;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+}
+
+nav img {
+    width: 184px;
+    position: relative;
+    z-index: 3;
+}
+
+nav button {
+    position: relative;
+    z-index: 3;
+}
+
+.btn {
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    margin: 0 5px;
+    padding: 7px 25px;
+    border: 1px solid rgb(112, 112, 112);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(82, 82, 82);
+}
+
+.btn-red {
+    background-color: #e50914;
+    font-weight: 700;
+}
+
+.btn-red:hover {
+    background-color: #c2050f;
+}
+
+nav .btn-red:hover {
+    cursor: pointer;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 69vw;
+    height: 60vh;
+    color: white;
+    z-index: 5;
+}
+
+.cont h2 {
+    font-weight: 900;
+    font-size: 48px;
+    padding: 10px;
+}
+
+.cont h4 {
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.herotbns {
+    margin-top: 1%;
+}
+
+.herotbns button {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.herotbns input {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.herotbns input::placeholder {
+    font-size: 24px;
+    color: white;
+}
+
+.sg {
+    padding-top: 2px;
+}
+
+.separation {
+    z-index: 5;
+    height: 10px;
+    width: 100%;
+    background-color: #232323;
+}
+
+.sec1 {
+    width: 84vw;
+    margin: auto;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec1ct {
+    font-size: 48px;
+    font-weight: 900;
+}
+
+.sec1 .sec2ct {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.sec1img {
+    position: relative;
+}
+
+
+.fourth .sec1img img {
+    width: 100%;
+}
+
+.sec1img img {
+    position: relative;
+    z-index: 3;
+}
+
+.sec1img video {
+    position: absolute;
+    top: 96px;
+    left: 83px;
+}
+
+.third .sec1img video {
+    width: 400px;
+    left: 120px;
+    top: 47px;
+}
+
+.sec1 .first .sec1img img {
+    width: 300px;
+}
+
+.second .sec1img .sec2im {
+    position: absolute;
+    width: 340px;
+    height: 97px;
+    border: 2px solid #575757;
+    left: 148px;
+    top: 337px;
+    z-index: 5;
+    border-radius: 10px;
+    background-color: black;
+    display: flex;
+}
+
+.stgr img {
+    height: 70px;
+    padding: 15px 10px 0 10px;
+    border-radius: 10px;
+}
+
+.sec2con {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 5px;
+    font-size: 10px;
+}
+
+.sec2con>div:nth-child(2) {
+    color: #006de4;
+}
+
+.dnld {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.dnld img {
+    width: 70px;
+}
+
+.sec2con {
+    margin: 32px 0 30px 0;
+}
+
+.faqs {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.faqs .q1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75vw;
+    height: 84px;
+    background-color: #2d2d2d;
+}
+
+.q1 {
+    padding-left: 40px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.q1 svg {
+    padding-right: 30px;
+}
+
+.q1:hover {
+    transition: all 0.5s ease-out;
+    background-color: rgb(58, 58, 58);
+    cursor: pointer;
+}
+
+.faqs .q1:last-child {
+    margin-bottom: 80px;
+}
+
+.watch2 {
+    display: flex;
+    width: 45vw;
+    margin: auto;
+    height: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.watch2 .w2c {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.watch2 .herotbns {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.ftr {
+    padding: 90px 0;
+}
+
+.ftr .ftr1 {
+    padding: 10px;
+    width: 70vw;
+    margin: auto;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ftr1 a {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ftr .ftr1 .tbs {
+    margin-top: 25px;
+    font-weight: 400;
+    font-size: 6px;
+}
+
+.ftr .ftr1 .tbs a {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.tbs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    color: white;
+}
+
+.tbs a:hover {
+    text-decoration: none;
+}
+
+.lbn .btn {
+    color: rgba(255, 255, 255, 0.842);
+    font-weight: 700;
+    padding: 5px 25px;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-left: 0;
+}
+
+.Ind {
+    margin-top: 20px;
+    margin-left: 0;
+    font-size: 14px;
+}
+
+.lbn {
+    margin-top: 35px;
+}
+
+@media screen and (max-width: 1450px) {
+    nav {
+        max-width: 90vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav img {
+        width: 90px;
+    }
+
+    .btn {
+        font-size: 7px;
+    }
+
+    .hero .cont h2 {
+        font-size: 23px;
+    }
+
+    .hero .cont h4 {
+        font-size: 15px;
+        padding: 4px 0;
+        line-height: 22px;
+    }
+
+    .herotbns {
+        margin-top: 20px;
+    }
+
+    .herotbns input {
+        font-size: 18px;
+        font-weight: 100;
+        padding: 5px;
+    }
+
+    .herotbns input::placeholder {
+        font-size: 12px;
+        padding: 22px 5px;
+    }
+
+    .herotbns .btn-red {
+        font-size: 18px;
+        padding: 1px 10px;
+    }
+
+    .sec1 {
+        flex-wrap: wrap;
+        padding: 42px;
+    }
+
+    .sec1ct {
+        font-size: 23px;
+    }
+
+    .sec1 .sec2ct {
+        font-size: 15px;
+    }
+
+    .sec1img img {
+        width: 300px;
+    }
+
+    .sec1img video {
+        width: 221px;
+        top: 46px;
+        left: 41px;
+    }
+
+    .third .sec1img video {
+        width: 190px;
+        left: 58px;
+        top: 18px;
+    }
+
+    .faqs {
+        padding: 30px;
+    }
+
+    .fq {
+        text-align: center;
+    }
+
+    .q1 {
+        font-size: 18px;
+        padding: 0 15px;
+    }
+
+    .q1 svg {
+        width: 25px;
+        padding: 0 10px;
+    }
+
+    .watch2 {
+        width: 83vw;
+    }
+
+    .watch2 .w2c {
+        font-size: 15px;
+    }
+
+    .tbs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+
+    .second .sec1img .sec2im {
+        display: none;
+    }
+}

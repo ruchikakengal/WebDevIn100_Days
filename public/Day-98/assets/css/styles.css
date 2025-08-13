@@ -1,0 +1,21 @@
+body {
+    background-color: #56baed;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+#app {
+    background-color: #fff;
+    display: block;
+    width: min(100%, 420px);
+    margin: 10vh auto;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+#wheel {
+    width: 100%;
+}
