@@ -1040,7 +1040,16 @@ class WebDev100Days {
           category: "games",
           technologies: ["HTML", "CSS", "JavaScript"],
           features: ["Bird", "Score", "Hard"]
-  }
+  },
+  {
+  originalDay: 157, 
+  name: "Email Validator",
+  description: "Check if an email is valid",
+  demoLink: "./public/Day100_Email_Validator/index.html",
+  category: "tools",
+  technologies: ["HTML", "CSS", "JavaScript"],
+  features: ["Validation", "Form"]
+}
 
 
 
