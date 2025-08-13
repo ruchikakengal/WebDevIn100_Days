@@ -849,8 +849,16 @@ class WebDev100Days {
         category: "productivity",
         technologies: ["HTML", "CSS", "JavaScript", "Chart.js"],
         features: ["Daily Steps & Water Input", "Dark/Light Mode", "Chart.js Visualizations", "Responsive Design", "Duplicate Prevention", "Tooltips on Charts"]
+       },
+{
+        originalDay: 145,
+        name: "Email Validator",
+        description: "Real time email validation",
+        demoLink: "./public/Day100_Email-Validator/index.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Real time Email Validation","Fetch information for any Email","Simple UI"]
        }
-
 
 
       
