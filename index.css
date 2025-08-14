@@ -26,18 +26,23 @@
   }
 
   /* Buttons */
-  button,
-  .button {
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
+.feedback-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  background-color: #1abc9c; /* Match button color */
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-  button:hover,
-  .button:hover {
-    transform: scale(1.1);
-    background-color: #27ae60; /* Darker green for hover */
-  }
+.feedback-btn:hover {
+  background-color: #16a085; /* Darker shade on hover */
+  transform: translateY(-2px);
+}
+
 
   /* Links */
   a {
