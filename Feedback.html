@@ -4,69 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WebDevIn_100Days Feedback</title>
-  <link rel="stylesheet" href="https://github.com/ruchikakengal/WebDevIn100_Days/pull/458/commits/13683fa4a483b945076d1b81b27d94cf4ae332e4">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="Feedback_Form.css">
 </head>
 <body>
   <section class="section">
-    <div class="container">
-      <h1 class="title has-text-centered">WebDevIn_100Days Feedback Form</h1>
+    <div class="container feedback-container">
+      <h2 class="form-title">WebDevIn_100Days Feedback Form</h2>
       <form action="https://formsubmit.co/your-email@example.com" method="POST">
-          <link rel = "stylesheet" href = "form.css">
         
-        <div class="field">
-          <label class="label">Your Name</label>
-          <div class="control">
-            <input class="input" type="text" name="name" placeholder="Enter your name" required>
-          </div>
-        </div>
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
 
-        <div class="field">
-          <label class="label">How has this series improved your Web Dev skills?</label>
-          <div class="control">
-            <textarea class="textarea" name="skill_feedback" placeholder="Your experience..." required></textarea>
-          </div>
-        </div>
+        <label>How has this series improved your Web Dev skills?</label>
+        <textarea name="skill_feedback" placeholder="Your experience..." required></textarea>
 
-        <div class="field">
-          <label class="label">What did you feel about completing 100+ mini projects?</label>
-          <div class="control">
-            <textarea class="textarea" name="project_feedback" placeholder="Was it helpful, overwhelming, exciting?" required></textarea>
-          </div>
-        </div>
+        <label>What did you feel about completing 100+ mini projects?</label>
+        <textarea name="project_feedback" placeholder="Was it helpful, overwhelming, exciting?" required></textarea>
 
-        <div class="field">
-          <label class="label">Rate your overall experience (1–5)</label>
-          <div class="control">
-            <div class="select">
-              <select name="rating" required>
-                <option value="" disabled selected>Select rating</option>
-                <option>1 - Poor</option>
-                <option>2 - Fair</option>
-                <option>3 - Good</option>
-                <option>4 - Very Good</option>
-                <option>5 - Excellent</option>
-              </select>
-            </div>
-          </div>
-        </div>
+        <label>Rate your overall experience (1–5)</label>
+        <select name="rating" required>
+          <option value="" disabled selected>Select rating</option>
+          <option>1 - Poor</option>
+          <option>2 - Fair</option>
+          <option>3 - Good</option>
+          <option>4 - Very Good</option>
+          <option>5 - Excellent</option>
+        </select>
 
-        <div class="field">
-          <label class="label">Any suggestions or improvements?</label>
-          <div class="control">
-            <textarea class="textarea" name="suggestions" placeholder="We value your suggestions..."></textarea>
-          </div>
-        </div>
+        <label>Any suggestions or improvements?</label>
+        <textarea name="suggestions" placeholder="We value your suggestions..."></textarea>
 
-        <div class="field is-grouped is-justify-content-center">
-          <div class="control">
-            <button class="button is-link">Submit Feedback</button>
-          </div>
-        </div>
+        <button type="submit">Submit Feedback</button>
 
-        <!-- Optional: Redirect to thank you page -->
-        <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html">
+        <!-- Redirect to thank you page -->
+        <input type="hidden" name="_next" value="thankyou.html">
         <input type="hidden" name="_captcha" value="false">
-
       </form>
     </div>
   </section>
