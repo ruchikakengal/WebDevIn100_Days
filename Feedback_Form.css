@@ -35,9 +35,10 @@ body {
   font-weight: 600;
 }
 
-/* Input and textarea */
+/* Input, select, textarea */
 .feedback-container input,
-.feedback-container textarea {
+.feedback-container textarea,
+.feedback-container select {
   width: 100%;
   padding: 12px;
   margin-bottom: 20px;
@@ -48,7 +49,8 @@ body {
 }
 
 .feedback-container input:focus,
-.feedback-container textarea:focus {
+.feedback-container textarea:focus,
+.feedback-container select:focus {
   border-color: #1abc9c;
   outline: none;
 }
