@@ -20,6 +20,25 @@ body {
   max-width: 600px;
 }
 
+/* Feedback button*/
+.feedback-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #1abc9c;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.feedback-btn:hover {
+  background-color: #16a085;
+  transform: translateY(-2px);
+}
+
 /* Heading */
 .feedback-container h2 {
   text-align: center;
