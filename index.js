@@ -26,6 +26,7 @@ function filterProjects() {
         subheader.style.display = 'none';
         noProjectsMessage.style.display = 'block';
     }
+
 }
 
 // Update Navbar for Login Status
