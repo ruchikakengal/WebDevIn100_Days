@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+    <div class="theme-switcher">
+        <button id="theme-toggle" title="Toggle Theme">🌙</button>
+    </div>
+    <canvas id="three-canvas"></canvas>
+    <div class="invoice-container">
+        <header>
+            <h1>Invoice Builder</h1>
+            <div class="invoice-details">
+                <label>Invoice Number: <input type="text" id="invoice-number" placeholder="Enter invoice number" required></label>
+                <div class="error" id="invoice-number-error">Invoice number is required</div>
+                <label>Invoice Date: <input type="date" id="invoice-date" required></label>
+                <div class="error" id="invoice-date-error">Invoice date is required</div>
+            </div>
+        </header>
+
+        <section class="customer-info">
+            <h2>Customer Information</h2>
+            <label>Name: <input type="text" id="customer-name" placeholder="Enter customer name" required></label>
+            <div class="error" id="customer-name-error">Customer name is required</div>
+            <label>Address: <input type="text" id="customer-address" placeholder="Enter customer address"></label>
+        </section>
+
+        <section class="items">
+            <h2>Items</h2>
+            <table id="item-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button id="add-item">Add Item</button>
+        </section>
+
+        <section class="totals">
+            <label>Subtotal: <span id="subtotal">0.00</span></label>
+            <label>Tax Rate (%): <input type="number" id="tax-rate" min="0" step="0.01" value="0"></label>
+            <div class="error" id="tax-rate-error">Tax rate must be non-negative</div>
+            <label>Tax: <span id="tax">0.00</span></label>
+            <label>Discount (%): <input type="number" id="discount-rate" min="0" step="0.01" value="0"></label>
+            <div class="error" id="discount-rate-error">Discount rate must be non-negative</div>
+            <label>Discount: <span id="discount">0.00</span></label>
+            <label>Grand Total: <span id="grand-total">0.00</span></label>
+        </section>
+
+        <button id="export-preview">Export Preview</button>
+        <button id="download-pdf">Download PDF</button>
+
+        <footer>
+            <p>Terms and Conditions: Payment due within 30 days.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

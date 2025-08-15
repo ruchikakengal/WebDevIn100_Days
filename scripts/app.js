@@ -859,9 +859,10 @@ class WebDev100Days {
         category: "productivity",
         technologies: ["HTML", "CSS", "JavaScript", "Chart.js"],
         features: ["Daily Steps & Water Input", "Dark/Light Mode", "Chart.js Visualizations", "Responsive Design", "Duplicate Prevention", "Tooltips on Charts"]
-      }
-
        },
+
+
+
        {
 
   originalDay: 140,
@@ -1023,6 +1024,7 @@ class WebDev100Days {
             technologies: ["HTML", "CSS", "JavaScript"],
               features: ["Slide", "Solve"]
 },
+
    
       {
          originalDay:156, 
@@ -1032,6 +1034,7 @@ class WebDev100Days {
           category: "games",
           technologies: ["HTML", "CSS", "JavaScript"],
           features: ["Bird", "Score", "Hard"]
+
   }
 
       ,
@@ -1044,6 +1047,38 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "Responsive Design"],
         features: ["3D effects", "Responsive Design", "Animation Cards"]
       }
+
+
+        originalDay: 157,
+        name: "Invoice Builder",
+        description: "Generate Product Invoice",
+        demoLink: "./public/Invoice-Builder/index.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Invoice", "Product Invoice ",  "Invoice Generator"]
+       },
+  {
+
+         originalDay:158, 
+         name: "Fanta Website Clone",
+          description: "Enjoy your first Drink ",
+          demoLink: "./public/Fanta-Website/index.html",
+          category: "creativity",
+          technologies: ["HTML", "CSS", "JavaScript"],
+          features: ["Fanta", "Coldrink", "Animation"]
+  },
+
+ {
+  originalDay: 165,
+  name: "Memory Grid Rush",
+  description: "Fast-paced memory game where players repeat flashing grid patterns that get progressively harder with each level.",
+  demoLink: "./public/Memory_Grid_Rush/index.html",
+  category: "games",
+  technologies: ["HTML", "CSS", "JavaScript"],
+  features: [
+  "Dynamic grid scaling, pattern generation & replay, dark/light mode, score & level tracking, keyboard accessibility, animated feedback, and replay option."
+  ]
+}
 
 
     ];

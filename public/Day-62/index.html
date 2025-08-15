@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Mario</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+        <div id="hud">
+            <div id="score">Score: <span id="scoreValue">0</span></div>
+            <div id="lives">Lives: <span id="livesValue">3</span></div>
+            <div id="timer">Time: <span id="timerValue">300</span></div>
+        </div>
+
+        <div id="startScreen" class="screen">
+            <div class="mario-logo">🍄</div>
+            <h1>Super Mario Platformer</h1>
+            <div class="feature-list">
+                <div class="feature">🎮 Arrow Keys / WASD to Move</div>
+                <div class="feature">🚀 Spacebar to Jump HIGH!</div>
+                <div class="feature">💰 Collect Coins & Power-ups</div>
+                <div class="feature">👾 Defeat Goombas by Jumping</div>
+            </div>
+            <button id="startButton" class="epic-button" style="display: flex; align-items: center;">START
+                ADVENTURE</button>
+            <div class="version-info">v2.0 - Enhanced Edition</div>
+        </div>
+
+        <div id="gameOverScreen" class="screen hidden">
+            <div class="screen-icon">💀</div>
+            <h1>Game Over</h1>
+            <div class="score-display">
+                <div class="score-label">Final Score</div>
+                <div class="score-value"><span id="finalScore">0</span></div>
+            </div>
+            <button id="restartButton" class="epic-button">🔄 TRY AGAIN 🔄</button>
+            <div class="encouragement">Don't give up! Mario never does! 🍄</div>
+        </div>
+
+        <div id="levelCompleteScreen" class="screen hidden">
+            <div class="screen-icon">🏆</div>
+            <h1>Level Complete!</h1>
+            <div class="score-display">
+                <div class="score-label">Level Score</div>
+                <div class="score-value"><span id="levelScore">0</span></div>
+            </div>
+            <button id="nextLevelButton" class="epic-button">🚀 NEXT LEVEL 🚀</button>
+            <div class="celebration">Awesome job, Mario! 🌟</div>
+        </div>
+
+        <div id="mobileControls" class="mobile-only">
+            <div class="control-pad">
+                <button id="leftBtn" class="control-btn">←</button>
+                <button id="rightBtn" class="control-btn">→</button>
+                <button id="jumpBtn" class="control-btn jump">Jump</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/physics.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/enemy.js"></script>
+    <script src="js/collectibles.js"></script>
+    <script src="js/level.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/game.js"></script>
+</body>
+
+</html>
