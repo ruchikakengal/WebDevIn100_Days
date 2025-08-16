@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="fav.svg" type="image/x-icon">
+    <title>Robo Builder - Advanced Robot Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1><i class="fas fa-cog"></i> Robo Builder</h1>
+            <p class="instructions">Assemble advanced combat mech by placing components in the correct positions</p>
+            <div class="status-bar">
+                <div class="status-left">
+                    <span class="assembly-progress">Assembly Progress: <span id="progress-percent">0%</span></span>
+                    <span class="time-display">Time: <span id="timer">00:00</span></span>
+                    <span class="score-display">Score: <span id="score">0</span></span>
+                </div>
+                <div class="status-center">
+                    <span class="difficulty-level">Difficulty: <span id="current-difficulty">Advanced</span></span>
+                    <span class="mission-type">Mission: <span id="mission-name">Standard Assembly</span></span>
+                </div>
+                <div class="status-right">
+                    <span class="streak-counter">Streak: <span id="streak">0</span></span>
+                    <span class="energy-level">Energy: <span id="energy">100%</span></span>
+                </div>
+            </div>
+            
+            <div class="control-panel">
+                <button class="control-btn" data-action="scan"><i class="fas fa-radar-chart"></i> Scanner</button>
+                <button class="control-btn" data-action="hints"><i class="fas fa-lightbulb"></i> Hints</button>
+                <button class="control-btn" data-action="inspect"><i class="fas fa-search"></i> Inspector</button>
+                <button class="control-btn" data-action="leaderboard"><i class="fas fa-trophy"></i> Leaderboard</button>
+                <button class="control-btn" data-action="settings"><i class="fas fa-cog"></i> Settings</button>
+                <button class="control-btn" data-action="combat"><i class="fas fa-rocket"></i> Combat Sim</button>
+                <button class="control-btn" data-action="blueprint"><i class="fas fa-drafting-compass"></i> Blueprint</button>
+                <button class="control-btn" data-action="analyze"><i class="fas fa-chart-line"></i> Analyze</button>
+            </div>
+        </header>
+
+        <div class="game-area">
+            <div class="parts-container">
+                <div class="container-header">
+                    <h3><i class="fas fa-tools"></i> Mech Components</h3>
+                    <div class="component-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="core">Core</button>
+                        <button class="filter-btn" data-filter="weapon">Weapon</button>
+                        <button class="filter-btn" data-filter="support">Support</button>
+                        <button class="filter-btn" data-filter="rare">Rare</button>
+                    </div>
+                </div>
+                <div class="inventory-stats">
+                    <span class="stat">Available: <span id="available-parts">6</span></span>
+                    <span class="stat">Used: <span id="used-parts">0</span></span>
+                    <span class="stat">Compatibility: <span id="compatibility">100%</span></span>
+                </div>
+                <div class="parts-grid">
+                    <div class="robot-part" draggable="true" data-part="head" data-rarity="legendary" data-category="core" id="head-part">
+                        <svg width="80" height="80" viewBox="0 0 80 80">
+                            <defs>
+                                <linearGradient id="headGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#2C3E50;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#34495E;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="visorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00D4FF;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#0080FF;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="8" y="15" width="64" height="55" rx="8" fill="url(#headGrad)" stroke="#1A252F" stroke-width="2"/>
+                            <rect x="15" y="25" width="50" height="25" rx="5" fill="url(#visorGrad)" stroke="#0066CC" stroke-width="1"/>
+                            <rect x="20" y="30" width="8" height="8" rx="2" fill="#00FF88" opacity="0.8"/>
+                            <rect x="52" y="30" width="8" height="8" rx="2" fill="#FF4444" opacity="0.8"/>
+                            <rect x="35" y="38" width="10" height="4" rx="2" fill="#FFD700"/>
+                            <rect x="15" y="8" width="50" height="12" rx="6" fill="#E74C3C" stroke="#C0392B" stroke-width="1"/>
+                            <circle cx="25" cy="14" r="2" fill="#FFD700"/>
+                            <circle cx="55" cy="14" r="2" fill="#FFD700"/>
+                        </svg>
+                        <div class="part-info">
+                            <span class="part-name">Neural Core MK-VII</span>
+                            <div class="part-stats">
+                                <span class="stat-item">INT: 95</span>
+                                <span class="stat-item">PWR: 85</span>
+                                <span class="rarity legendary">Legendary</span>
+                            </div>
+                            <div class="part-description">Advanced AI processing unit with quantum computing capabilities</div>
+                        </div>
+                    </div>
+
+                    <div class="robot-part" draggable="true" data-part="torso" data-rarity="epic" data-category="core" id="torso-part">
+                        <svg width="80" height="100" viewBox="0 0 80 100">
+                            <defs>
+                                <linearGradient id="torsoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#34495E;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#2C3E50;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#1A252F;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="reactorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00FF88;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#00CC66;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="12" y="8" width="56" height="80" rx="10" fill="url(#torsoGrad)" stroke="#1A252F" stroke-width="2"/>
+                            <rect x="18" y="15" width="44" height="25" rx="5" fill="#2C3E50" stroke="#34495E" stroke-width="1"/>
+                            <circle cx="30" cy="27" r="8" fill="#3498DB" stroke="#2980B9" stroke-width="2"/>
+                            <circle cx="50" cy="27" r="8" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+                            <rect x="22" y="50" width="36" height="25" rx="8" fill="url(#reactorGrad)" stroke="#00AA55" stroke-width="2"/>
+                            <circle cx="40" cy="62" r="6" fill="#FFD700" stroke="#F39C12" stroke-width="1"/>
+                            <rect x="35" y="57" width="10" height="10" rx="2" fill="#2C3E50"/>
+                            <rect x="20" y="20" width="4" height="8" rx="1" fill="#FFD700"/>
+                            <rect x="56" y="20" width="4" height="8" rx="1" fill="#FFD700"/>
+                        </svg>
+                        <div class="part-info">
+                            <span class="part-name">Fusion Core X1</span>
+                            <div class="part-stats">
+                                <span class="stat-item">PWR: 100</span>
+                                <span class="stat-item">DEF: 75</span>
+                                <span class="rarity epic">Epic</span>
+                            </div>
+                            <div class="part-description">Self-sustaining fusion reactor with emergency backup systems</div>
+                        </div>
+                    </div>
+
+                    <div class="robot-part" draggable="true" data-part="left-arm" data-rarity="rare" data-category="weapon" id="left-arm-part">
+                        <svg width="60" height="80" viewBox="0 0 60 80">
+                            <defs>
+                                <linearGradient id="armGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#7F8C8D;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#95A5A6;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="18" y="8" width="20" height="45" rx="10" fill="url(#armGrad)" stroke="#5D6D6E" stroke-width="2"/>
+                            <rect x="15" y="48" width="26" height="18" rx="9" fill="#34495E" stroke="#2C3E50" stroke-width="2"/>
+                            <circle cx="28" cy="72" r="10" fill="#E67E22" stroke="#D35400" stroke-width="2"/>
+                            <rect x="23" y="67" width="10" height="10" rx="2" fill="#2C3E50"/>
+                            <rect x="20" y="15" width="3" height="12" rx="1" fill="#3498DB"/>
+                            <rect x="33" y="15" width="3" height="12" rx="1" fill="#E74C3C"/>
+                            <rect x="25" y="30" width="6" height="15" rx="3" fill="#F39C12"/>
+                        </svg>
+                        <div class="part-info">
+                            <span class="part-name">Plasma Cannon L</span>
+                            <div class="part-stats">
+                                <span class="stat-item">ATK: 88</span>
+                                <span class="stat-item">SPD: 72</span>
+                                <span class="rarity rare">Rare</span>
+                            </div>
+                            <div class="part-description">High-energy plasma projectile system with targeting assist</div>
+                        </div>
+                    </div>
+
+                    <div class="robot-part" draggable="true" data-part="right-arm" data-rarity="rare" data-category="weapon" id="right-arm-part">
+                        <svg width="60" height="80" viewBox="0 0 60 80">
+                            <defs>
+                                <linearGradient id="armGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#7F8C8D;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#95A5A6;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="22" y="8" width="20" height="45" rx="10" fill="url(#armGrad2)" stroke="#5D6D6E" stroke-width="2"/>
+                            <rect x="19" y="48" width="26" height="18" rx="9" fill="#34495E" stroke="#2C3E50" stroke-width="2"/>
+                            <circle cx="32" cy="72" r="10" fill="#E67E22" stroke="#D35400" stroke-width="2"/>
+                            <rect x="27" y="67" width="10" height="10" rx="2" fill="#2C3E50"/>
+                            <rect x="24" y="15" width="3" height="12" rx="1" fill="#3498DB"/>
+                            <rect x="37" y="15" width="3" height="12" rx="1" fill="#E74C3C"/>
+                            <rect x="29" y="30" width="6" height="15" rx="3" fill="#F39C12"/>
+                        </svg>
+                        <div class="part-info">
+                            <span class="part-name">Laser Cannon R</span>
+                            <div class="part-stats">
+                                <span class="stat-item">ATK: 92</span>
+                                <span class="stat-item">ACC: 95</span>
+                                <span class="rarity rare">Rare</span>
+                            </div>
+                            <div class="part-description">Precision laser system with adaptive targeting matrix</div>
+                        </div>
+                    </div>
+
+                    <div class="robot-part" draggable="true" data-part="left-leg" data-rarity="uncommon" data-category="support" id="left-leg-part">
+                        <svg width="50" height="90" viewBox="0 0 50 90">
+                            <defs>
+                                <linearGradient id="legGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#5D6D6E;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#7F8C8D;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="13" y="8" width="22" height="50" rx="11" fill="url(#legGrad)" stroke="#34495E" stroke-width="2"/>
+                            <rect x="8" y="53" width="32" height="22" rx="8" fill="#2C3E50" stroke="#1A252F" stroke-width="2"/>
+                            <ellipse cx="24" cy="82" rx="18" ry="10" fill="#1A252F" stroke="#0F1419" stroke-width="2"/>
+                            <rect x="16" y="15" width="3" height="20" rx="1" fill="#3498DB"/>
+                            <rect x="29" y="15" width="3" height="20" rx="1" fill="#E74C3C"/>
+                            <rect x="20" y="40" width="8" height="8" rx="2" fill="#F39C12"/>
+                            <rect x="15" y="78" width="18" height="4" rx="2" fill="#34495E"/>
+                        </svg>
+                        <div class="part-info">
+                            <span class="part-name">Stabilizer L-9</span>
+                            <div class="part-stats">
+                                <span class="stat-item">MOB: 78</span>
+                                <span class="stat-item">BAL: 90</span>
+                                <span class="rarity uncommon">Uncommon</span>
+                            </div>
+                            <div class="part-description">Advanced gyroscopic stabilization with shock absorption</div>
+                        </div>
+                    </div>
+
+                    <div class="robot-part" draggable="true" data-part="right-leg" data-rarity="uncommon" data-category="support" id="right-leg-part">
+                        <svg width="50" height="90" viewBox="0 0 50 90">
+                            <defs>
+                                <linearGradient id="legGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#5D6D6E;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#7F8C8D;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="15" y="8" width="22" height="50" rx="11" fill="url(#legGrad2)" stroke="#34495E" stroke-width="2"/>
+                            <rect x="10" y="53" width="32" height="22" rx="8" fill="#2C3E50" stroke="#1A252F" stroke-width="2"/>
+                            <ellipse cx="26" cy="82" rx="18" ry="10" fill="#1A252F" stroke="#0F1419" stroke-width="2"/>
+                            <rect x="18" y="15" width="3" height="20" rx="1" fill="#3498DB"/>
+                            <rect x="31" y="15" width="3" height="20" rx="1" fill="#E74C3C"/>
+                            <rect x="22" y="40" width="8" height="8" rx="2" fill="#F39C12"/>
+                            <rect x="17" y="78" width="18" height="4" rx="2" fill="#34495E"/>
+                        </svg>
+                        <div class="part-info">
+                            <span class="part-name">Booster R-9</span>
+                            <div class="part-stats">
+                                <span class="stat-item">SPD: 85</span>
+                                <span class="stat-item">AGI: 82</span>
+                                <span class="rarity uncommon">Uncommon</span>
+                            </div>
+                            <div class="part-description">Jet-assisted mobility unit with enhanced maneuverability</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bonus-components" style="display: none;">
+                    <div class="robot-part" draggable="true" data-part="shield" data-rarity="legendary" data-category="defense">
+                        <div class="part-info">
+                            <span class="part-name">Energy Shield</span>
+                            <span class="rarity legendary">Legendary</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mission-panel">
+                <h4><i class="fas fa-crosshairs"></i> Active Mission</h4>
+                <div class="mission-details">
+                    <div class="mission-objective">
+                        <span class="objective-text">Assemble Combat Mech Unit</span>
+                        <div class="objective-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="mission-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mission-rewards">
+                        <span><i class="fas fa-coins"></i> +500 Credits</span>
+                        <span><i class="fas fa-trophy"></i> +100 XP</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="robot-frame">
+                <h3><i class="fas fa-drafting-compass"></i> Assembly Platform</h3>
+                <div class="frame-container">
+                    <div class="drop-zone head-zone" data-accepts="head" id="head-zone">
+                        <div class="zone-placeholder">
+                            <i class="fas fa-microchip"></i>
+                            <span>Neural Core</span>
+                        </div>
+                    </div>
+
+                    <div class="middle-row">
+                        <div class="drop-zone arm-zone left-arm-zone" data-accepts="left-arm" id="left-arm-zone">
+                            <div class="zone-placeholder">
+                                <i class="fas fa-rocket"></i>
+                                <span>Left Weapon Arm</span>
+                            </div>
+                        </div>
+
+                        <div class="drop-zone torso-zone" data-accepts="torso" id="torso-zone">
+                            <div class="zone-placeholder">
+                                <i class="fas fa-battery-full"></i>
+                                <span>Power Core</span>
+                            </div>
+                        </div>
+
+                        <div class="drop-zone arm-zone right-arm-zone" data-accepts="right-arm" id="right-arm-zone">
+                            <div class="zone-placeholder">
+                                <i class="fas fa-rocket"></i>
+                                <span>Right Weapon Arm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="legs-row">
+                        <div class="drop-zone leg-zone left-leg-zone" data-accepts="left-leg" id="left-leg-zone">
+                            <div class="zone-placeholder">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Left Support Unit</span>
+                            </div>
+                        </div>
+
+                        <div class="drop-zone leg-zone right-leg-zone" data-accepts="right-leg" id="right-leg-zone">
+                            <div class="zone-placeholder">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Right Support Unit</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-message" id="success-message">
+            <div class="success-content">
+                <i class="fas fa-medal"></i>
+                <h2>Mech Assembly Complete!</h2>
+                <p>Combat unit successfully assembled and ready for deployment</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Power Level: 100%</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-crosshairs"></i>
+                        <span>Combat Ready</span>
+                    </div>
+                </div>
+                <button class="reset-button" onclick="resetGame()">
+                    <i class="fas fa-sync-alt"></i> Assemble New Mech
+                </button>
+            </div>
+        </div>
+
+        <div class="overlay-systems">
+            <div class="scan-overlay" id="scan-overlay">
+                <div class="scan-grid"></div>
+                <div class="scan-info">Component Analysis Active</div>
+            </div>
+            
+            <div class="hint-overlay" id="hint-overlay">
+                <div class="hint-arrow"></div>
+                <div class="hint-text">Place Neural Core here</div>
+            </div>
+            
+            <div class="settings-panel" id="settings-panel">
+                <h3>Game Settings</h3>
+                <div class="setting-group">
+                    <label>Difficulty:</label>
+                    <select id="difficulty-select">
+                        <option value="easy">Recruit</option>
+                        <option value="normal">Veteran</option>
+                        <option value="hard" selected>Elite</option>
+                        <option value="nightmare">Nightmare</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>Sound Effects:</label>
+                    <input type="range" id="sfx-volume" min="0" max="100" value="75">
+                </div>
+                <div class="setting-group">
+                    <label>Animation Speed:</label>
+                    <input type="range" id="anim-speed" min="50" max="200" value="100">
+                </div>
+                <div class="setting-group">
+                    <label>Auto-Save:</label>
+                    <input type="checkbox" id="auto-save" checked>
+                </div>
+                <button class="close-settings">Close</button>
+            </div>
+            
+            <div class="achievement-popup" id="achievement-popup">
+                <div class="achievement-content">
+                    <i class="fas fa-medal"></i>
+                    <span class="achievement-title">Achievement Unlocked!</span>
+                    <span class="achievement-desc"></span>
+                </div>
+            </div>
+            
+            <div class="component-inspector" id="component-inspector">
+                <h4>Component Analysis</h4>
+                <div class="inspector-content">
+                    <div class="component-3d-view"></div>
+                    <div class="component-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Type:</span>
+                            <span class="spec-value" id="inspect-type"></span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Rarity:</span>
+                            <span class="spec-value" id="inspect-rarity"></span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Compatibility:</span>
+                            <span class="spec-value" id="inspect-compat"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="leaderboard-panel" id="leaderboard">
+                <h3>Global Leaderboard</h3>
+                <div class="leaderboard-list">
+                    <div class="leaderboard-entry">
+                        <span class="rank">1</span>
+                        <span class="player">MechMaster</span>
+                        <span class="score">15,420</span>
+                    </div>
+                    <div class="leaderboard-entry">
+                        <span class="rank">2</span>
+                        <span class="player">CyberNinja</span>
+                        <span class="score">12,890</span>
+                    </div>
+                    <div class="leaderboard-entry current-player">
+                        <span class="rank">47</span>
+                        <span class="player">You</span>
+                        <span class="score" id="player-score">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feedback-message" id="feedback-message"></div>
+        
+        <div class="particle-container" id="particle-container"></div>
+        
+        <audio id="place-sound" preload="auto">
+            <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTSP2PBWQEH" type="audio/wav">
+        </audio>
+        <audio id="error-sound" preload="auto">
+            <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTSP2PBWQ" type="audio/wav">
+        </audio>
+        <audio id="success-sound" preload="auto">
+            <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTSP2PBWR" type="audio/wav">
+        </audio>
+    </div>
+
+    <div id="scan-overlay" class="scan-overlay">
+        <div class="scan-line"></div>
+    </div>
+
+    <div id="hint-overlay" class="hint-overlay">
+        <div class="hint-arrow"></div>
+        <div class="hint-text">Place component here</div>
+    </div>
+
+    <div id="component-inspector" class="inspector-panel">
+        <div class="inspector-header">
+            <h3><i class="fas fa-search"></i> Component Inspector</h3>
+            <button class="close-btn" onclick="window.mechGame.toggleInspector()">×</button>
+        </div>
+        <div class="inspector-content">
+            <div class="component-3d-view">
+                <div class="component-placeholder">Select a component to inspect</div>
+            </div>
+            <div class="component-details">
+                <div class="detail-row">
+                    <span class="detail-label">Type:</span>
+                    <span class="detail-value" id="inspect-type">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Rarity:</span>
+                    <span class="detail-value" id="inspect-rarity">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Compatibility:</span>
+                    <span class="detail-value" id="inspect-compat">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="settings-panel" class="settings-panel">
+        <div class="panel-header">
+            <h3><i class="fas fa-cog"></i> Advanced Settings</h3>
+            <button class="close-settings" onclick="window.mechGame.toggleSettings()">×</button>
+        </div>
+        <div class="panel-content">
+            <div class="setting-group">
+                <label for="difficulty-select">Difficulty Level:</label>
+                <select id="difficulty-select">
+                    <option value="easy">Easy</option>
+                    <option value="normal">Normal</option>
+                    <option value="hard" selected>Hard</option>
+                    <option value="nightmare">Nightmare</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label for="sfx-volume">Sound Volume:</label>
+                <input type="range" id="sfx-volume" min="0" max="100" value="75">
+                <span class="volume-display">75%</span>
+            </div>
+            <div class="setting-group">
+                <label for="anim-speed">Animation Speed:</label>
+                <input type="range" id="anim-speed" min="50" max="200" value="100">
+                <span class="speed-display">100%</span>
+            </div>
+            <div class="setting-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="auto-save" checked>
+                    Auto-save Progress
+                </label>
+            </div>
+            <div class="setting-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="particles" checked>
+                    Particle Effects
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div id="leaderboard" class="leaderboard-panel">
+        <div class="panel-header">
+            <h3><i class="fas fa-trophy"></i> Leaderboard</h3>
+            <button class="close-btn" onclick="window.mechGame.toggleLeaderboard()">×</button>
+        </div>
+        <div class="panel-content">
+            <div class="player-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Your Score:</span>
+                    <span class="stat-value" id="player-score">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Best Streak:</span>
+                    <span class="stat-value" id="best-streak">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total Assemblies:</span>
+                    <span class="stat-value" id="total-assemblies">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Perfect Assemblies:</span>
+                    <span class="stat-value" id="perfect-assemblies">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="achievement-popup" class="achievement-popup">
+        <div class="achievement-icon">🏆</div>
+        <div class="achievement-title">Achievement Unlocked!</div>
+        <div class="achievement-desc">Description</div>
+    </div>
+
+    <div id="particle-container" class="particle-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

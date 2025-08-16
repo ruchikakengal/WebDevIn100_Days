@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏃‍♀️ Fitness Tracker – Steps + Water</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🏃‍♀️ Fitness Tracker</h1>
+    <p>Track your daily steps and water intake</p>
+    <button id="toggleMode">🌗 Toggle Mode</button>
+  </header>
+
+  <main class="tracker-container">
+    <section class="input-section">
+      <h2>Enter Today’s Data</h2>
+      <form id="trackerForm">
+        <div class="input-box">
+          <label for="steps">Steps Walked:</label>
+          <input type="number" id="steps" min="0" max="50000" required />
+        </div>
+        <div class="input-box">
+          <label for="water">Water Intake (ml):</label>
+          <input type="number" id="water" min="0" max="5000" required />
+        </div>
+        <button type="submit">➕ Add Entry</button>
+      </form>
+    </section>
+
+    <section class="chart-section">
+      <h2>📊 Your Progress</h2>
+      <div class="charts">
+        <div class="chart-box">
+          <canvas id="stepsChart"></canvas>
+        </div>
+        <div class="chart-box">
+          <canvas id="waterChart"></canvas>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Developed with 💪 by Tanu Chandravanshi – SSOC'25</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoveVerse - Romantic Gaming Experience</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="shortcut icon" href="fav.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+    <div class="audio-controls">
+        <button id="musicToggle" class="audio-btn">
+            <i class="fas fa-music"></i>
+        </button>
+        <button id="soundToggle" class="audio-btn">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-heart"></i>
+                <span>LoveVerse</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#compatibility" class="nav-link" data-section="compatibility">Compatibility</a>
+                <a href="#date-spinner" class="nav-link" data-section="date-spinner">Date Night</a>
+                <a href="#confession" class="nav-link" data-section="confession">Confession</a>
+                <a href="#card-maker" class="nav-link" data-section="card-maker">Card Maker</a>
+                <a href="#memory-game" class="nav-link" data-section="memory-game">Memory Game</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section id="home" class="section active">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Welcome to <span class="gradient-text">LoveVerse</span>
+                    </h1>
+                    <p class="hero-subtitle">Experience love through playful games and romantic adventures</p>
+                    <div class="hero-games">
+                        <div class="game-card" data-game="compatibility">
+                            <div class="game-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Love Compatibility</h3>
+                            <p>Discover your romantic compatibility</p>
+                        </div>
+                        <div class="game-card" data-game="date-spinner">
+                            <div class="game-icon">
+                                <i class="fas fa-spinner"></i>
+                            </div>
+                            <h3>Date Night Spinner</h3>
+                            <p>Spin for the perfect date idea</p>
+                        </div>
+                        <div class="game-card" data-game="confession">
+                            <div class="game-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Confession Simulator</h3>
+                            <p>Practice your romantic confessions</p>
+                        </div>
+                        <div class="game-card" data-game="card-maker">
+                            <div class="game-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <h3>Valentine Card Maker</h3>
+                            <p>Create personalized love cards</p>
+                        </div>
+                        <div class="game-card" data-game="memory-game">
+                            <div class="game-icon">
+                                <i class="fas fa-puzzle-piece"></i>
+                            </div>
+                            <h3>Memory Match</h3>
+                            <p>Match hearts and couples</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="compatibility" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Love Compatibility Calculator</h2>
+                    <p class="section-subtitle">Discover the magic between two hearts</p>
+                </div>
+                
+                <div class="compatibility-container">
+                    <div class="input-group">
+                        <div class="name-input">
+                            <label for="name1">Your Name</label>
+                            <input type="text" id="name1" placeholder="Enter your name">
+                        </div>
+                        <div class="heart-divider">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="name-input">
+                            <label for="name2">Partner's Name</label>
+                            <input type="text" id="name2" placeholder="Enter partner's name">
+                        </div>
+                    </div>
+                    
+                    <button class="glow-btn" id="calculateBtn">
+                        <i class="fas fa-magic"></i>
+                        Calculate Compatibility
+                    </button>
+                    
+                    <div class="result-container" id="compatibilityResult">
+                        <div class="percentage-display">
+                            <div class="percentage-circle">
+                                <span class="percentage-text">0%</span>
+                            </div>
+                        </div>
+                        <div class="result-text">
+                            <h3 class="result-title"></h3>
+                            <p class="result-description"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="date-spinner" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Date Night Spinner</h2>
+                    <p class="section-subtitle">Let fate decide your perfect date</p>
+                </div>
+                
+                <div class="spinner-container">
+                    <div class="spinner-wheel" id="spinnerWheel">
+                        <div class="spinner-sections"></div>
+                        <div class="spinner-pointer">
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                    </div>
+                    
+                    <button class="glow-btn" id="spinBtn">
+                        <i class="fas fa-play"></i>
+                        Spin the Wheel
+                    </button>
+                    
+                    <div class="result-display" id="spinResult">
+                        <div class="result-card">
+                            <h3 class="result-title"></h3>
+                            <p class="result-description"></p>
+                            <div class="result-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="confession" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Confession Simulator</h2>
+                    <p class="section-subtitle">Practice your perfect love confession</p>
+                </div>
+                
+                <div class="confession-container">
+                    <div class="story-creator" id="storyCreator" style="display: none;">
+                        <div class="creator-header">
+                            <h3>Create Your Own Confession Story</h3>
+                            <p>Write a personalized confession scenario with your own characters and choices</p>
+                        </div>
+                        
+                        <div class="creator-form">
+                            <div class="form-group">
+                                <label for="customCharacterName">Character Name</label>
+                                <input type="text" id="customCharacterName" placeholder="e.g., Rohit, Ankit, Rahul" maxlength="20">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customScenario">Setting & Scenario</label>
+                                <textarea id="customScenario" placeholder="Describe the setting and situation. Where are you? What's the atmosphere like?" maxlength="300"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customOpening">Opening Story</label>
+                                <textarea id="customOpening" placeholder="Write the opening scene that sets up the confession moment..." maxlength="400"></textarea>
+                            </div>
+                            
+                            <div class="choices-creator">
+                                <label>Your Response Options</label>
+                                <div class="choice-inputs">
+                                    <input type="text" class="choice-input" placeholder="Option 1: What you could say..." maxlength="100">
+                                    <input type="text" class="choice-input" placeholder="Option 2: Alternative response..." maxlength="100">
+                                    <input type="text" class="choice-input" placeholder="Option 3: Different approach..." maxlength="100">
+                                </div>
+                            </div>
+                            
+                            <div class="character-responses">
+                                <label>Character's Possible Reactions</label>
+                                <div class="response-inputs">
+                                    <textarea class="response-input" placeholder="How might they respond to option 1?" maxlength="200"></textarea>
+                                    <textarea class="response-input" placeholder="How might they respond to option 2?" maxlength="200"></textarea>
+                                    <textarea class="response-input" placeholder="How might they respond to option 3?" maxlength="200"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="creator-actions">
+                                <button class="glow-btn" id="previewStory">
+                                    <i class="fas fa-eye"></i>
+                                    Preview Story
+                                </button>
+                                <button class="glow-btn secondary" id="cancelCreator">
+                                    <i class="fas fa-times"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="story-display" id="storyDisplay">
+                        <div class="story-mode-toggle">
+                            <button class="mode-btn active" id="playMode">
+                                <i class="fas fa-play"></i>
+                                Play Stories
+                            </button>
+                            <button class="mode-btn" id="createMode">
+                                <i class="fas fa-edit"></i>
+                                Create Story
+                            </button>
+                        </div>
+                        
+                        <div class="character-info">
+                            <div class="character-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <span class="character-name" id="characterName">Rohit</span>
+                        </div>
+                        
+                        <div class="story-text" id="storyText">
+                            You've been friends with Rohit for years, and tonight feels like the perfect moment to share your feelings. The moonlight creates a romantic atmosphere as you both sit on the park bench. What do you say?
+                        </div>
+                        
+                        <div class="choices-container" id="choicesContainer">
+                        </div>
+                        
+                        <button class="glow-btn restart-btn" id="restartStory" style="display: none;">
+                            <i class="fas fa-redo"></i>
+                            Start New Story
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="card-maker" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Valentine Card Maker</h2>
+                    <p class="section-subtitle">Create beautiful personalized love cards</p>
+                </div>
+                
+                <div class="card-maker-container">
+                    <div class="card-editor">
+                        <div class="editor-controls">
+                            <div class="control-group">
+                                <label for="cardTitle">Card Title</label>
+                                <input type="text" id="cardTitle" placeholder="Happy Valentine's Day" maxlength="30">
+                            </div>
+                            
+                            <div class="control-group">
+                                <label for="cardMessage">Your Message</label>
+                                <textarea id="cardMessage" placeholder="Write your heartfelt message here..." maxlength="150"></textarea>
+                            </div>
+                            
+                            <div class="control-group">
+                                <label for="senderName">From</label>
+                                <input type="text" id="senderName" placeholder="Your name" maxlength="20">
+                            </div>
+                            
+                            <div class="control-group">
+                                <label for="recipientName">To</label>
+                                <input type="text" id="recipientName" placeholder="Recipient's name" maxlength="20">
+                            </div>
+                            
+                            <div class="color-selector">
+                                <label>Card Theme</label>
+                                <div class="color-options">
+                                    <button class="color-btn active" data-theme="pink"><span style="background: linear-gradient(135deg, #ff9a9e, #fecfef)"></span></button>
+                                    <button class="color-btn" data-theme="red"><span style="background: linear-gradient(135deg, #ff416c, #ff4b2b)"></span></button>
+                                    <button class="color-btn" data-theme="purple"><span style="background: linear-gradient(135deg, #667eea, #764ba2)"></span></button>
+                                    <button class="color-btn" data-theme="gold"><span style="background: linear-gradient(135deg, #ffd89b, #19547b)"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="glow-btn" id="generateCard">
+                            <i class="fas fa-magic"></i>
+                            Generate Card
+                        </button>
+                    </div>
+                    
+                    <div class="card-preview">
+                        <canvas id="cardCanvas" width="400" height="300"></canvas>
+                        <button class="download-btn" id="downloadCard" style="display: none;">
+                            <i class="fas fa-download"></i>
+                            Download Card
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="memory-game" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Memory Match Game</h2>
+                    <p class="section-subtitle">Match hearts and couples to win</p>
+                </div>
+                
+                <div class="memory-game-container">
+                    <div class="game-stats">
+                        <div class="stat">
+                            <span class="stat-label">Moves</span>
+                            <span class="stat-value" id="moveCount">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Time</span>
+                            <span class="stat-value" id="timeCount">00:00</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Matches</span>
+                            <span class="stat-value" id="matchCount">0/8</span>
+                        </div>
+                    </div>
+                    
+                    <div class="memory-board" id="memoryBoard">
+                    </div>
+                    
+                    <div class="game-actions">
+                        <button class="glow-btn" id="startMemoryGame">
+                            <i class="fas fa-play"></i>
+                            Start Game
+                        </button>
+                        <button class="glow-btn secondary" id="restartMemoryGame" style="display: none;">
+                            <i class="fas fa-redo"></i>
+                            Restart
+                        </button>
+                    </div>
+                    
+                    <div class="victory-modal" id="victoryModal" style="display: none;">
+                        <div class="modal-content">
+                            <h3>Congratulations!</h3>
+                            <p>You won in <span id="finalMoves"></span> moves and <span id="finalTime"></span>!</p>
+                            <button class="glow-btn" id="playAgain">Play Again</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/audio.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/compatibility.js"></script>
+    <script src="js/dateSpinner.js"></script>
+    <script src="js/confession.js"></script>
+    <script src="js/cardMaker.js"></script>
+    <script src="js/memoryGame.js"></script>
+</body>
+</html>

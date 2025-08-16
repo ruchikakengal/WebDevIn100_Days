@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Grid Rush</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Theme Toggle (always visible) -->
+  <button id="toggleTheme" class="theme-toggle">🌙</button>
+
+  <!-- Instructions -->
+  <div id="instructions-screen" class="screen active">
+    <h1>Memory Grid Rush</h1>
+    <p>🧠 Memorize the lit tiles and repeat them in order!</p>
+    <ul class="instructions-list">
+      <li>1️⃣ Watch the pattern</li>
+      <li>2️⃣ Repeat the sequence</li>
+      <li>3️⃣ Levels get harder!</li>
+    </ul>
+    <button class="btn-3d" id="nextToLevel">Next ➡</button>
+  </div>
+
+  <!-- Level select -->
+  <div id="level-screen" class="screen">
+    <h2>Select Difficulty</h2>
+    <div class="level-cards">
+      <button class="btn-3d level-card" data-diff="easy">Easy</button>
+      <button class="btn-3d level-card" data-diff="medium">Medium</button>
+      <button class="btn-3d level-card" data-diff="hard">Hard</button>
+    </div>
+  </div>
+
+  <!-- Game -->
+  <div id="game-screen" class="screen">
+    <div class="info-panel">
+      <div>Level: <span id="level">1</span></div>
+      <div>Score: <span id="score">0</span></div>
+      <button class="btn-3d" id="replayBtn">Replay</button>
+    </div>
+    <div id="grid" class="memory-grid"></div>
+    <div class="message" id="message"></div>
+  </div>
+
+  <!-- End -->
+  <div id="end-screen" class="screen">
+    <h2>Game Over!</h2>
+    <p id="finalScore"></p>
+    <button class="btn-3d" id="playAgain">Play Again 🔄</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

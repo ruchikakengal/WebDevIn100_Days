@@ -1,0 +1,165 @@
+:root {
+  --bg-color: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  --text-color: #333;
+  --primary-color: #6c63ff;
+  --card-color: #ffffffee; /* slight transparency for soft glow */
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.dark {
+  --bg-color: #1e1e2f;
+  --primary-color: #bb86fc;
+  --card-color: #2c2c3e;
+  --shadow: rgba(255, 255, 255, 0.05);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  max-width: 450px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border: 5px solid transparent; /* Important: creates space for border */
+  border-radius: 20px;
+  background: 
+    linear-gradient(white, white) padding-box, 
+    linear-gradient(135deg, #ff6ec4, #7873f5, #4ADEDE) border-box; 
+  box-shadow: 0 0 20px var(--shadow);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.input-group {
+  margin: 1rem 0;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.7rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.calculate-btn {
+  width: 100%;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.calculate-btn:hover {
+  background: #5a54d1;
+}
+
+.result {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  border-radius: 16px;
+  background:
+    linear-gradient(var(--card-color), var(--card-color)) padding-box,
+    linear-gradient(135deg, #ff6ec4, #7873f5, #4ADEDE) border-box;
+  color: var(--text-color);
+  border: 2px solid transparent;
+  text-align: center;
+  animation: fadeIn 0.6s ease;
+}
+
+
+
+body.dark .result {
+  background:
+    linear-gradient(var(--card-color), var(--card-color)) padding-box,
+    linear-gradient(135deg, #ff6ec4, #7873f5, #4ADEDE) border-box;
+  color: #fff; 
+}
+
+
+.hidden {
+  display: none;
+}
+
+footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0.7;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  input, .calculate-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .result {
+    font-size: 1rem;
+  }
+}
+body.dark .container {
+  background: 
+    linear-gradient(white, white) padding-box, 
+    linear-gradient(135deg, #ff6ec4, #7873f5, #4ADEDE) border-box;
+  box-shadow: 0 0 20px var(--shadow);
+}

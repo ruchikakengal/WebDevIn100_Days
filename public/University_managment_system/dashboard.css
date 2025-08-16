@@ -1,0 +1,184 @@
+ body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font stack */
+    line-height: 1.6;
+    
+    padding: 0;
+    background-color: #f8f9fa; /* Light background color */
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 9px;
+  }
+  
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logo h1 {
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+  
+  .logo span {
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav li {
+    margin-right: 20px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  nav a:hover {
+    color: #ccc;
+  }
+  
+  nav a.active {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+  }
+  
+  .header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn:hover {
+    background-color: #444;
+  }
+  
+  .btn-primary {
+    background-color: #337ab7;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #23527c;
+  }
+  
+  .btn-secondary {
+    background-color: #5cb85c;
+    color: #fff;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #3e8e41;
+  }
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.stat-box {
+    background-color: #fff; /* White background for stat boxes */
+    border-radius: 8px; /* Softer border radius */
+    padding: 1.5rem;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    transition: transform 0.2s ease; /* Smooth transform on hover */
+}
+
+.stat-box:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px; /* Adjust form width as needed */
+    margin: 2rem auto; /* Center the form */
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form input, form button {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #ced4da; /* Light gray border */
+    border-radius: 4px;
+}
+
+form input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Focus ring */
+}
+
+button {
+    background-color: #28a745; /* Success color for buttons */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease; /* Smooth background transition on hover */
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+#visitor-list {
+    margin-top: 2rem;
+}
+
+.visitor-item {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #343a40; /* Dark gray footer */
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+.search-bar {
+    /* background-color: #4654e1; */
+    width: 300px;
+    height: 44px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+     /* align-items: right; */
+   
+ }  

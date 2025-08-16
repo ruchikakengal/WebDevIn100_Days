@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Doors - Choose Your Fate</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="game-header">
+            <h1 class="game-title">
+                <i class="fas fa-door-open"></i>
+                Three Doors of Fate
+            </h1>
+            <p class="game-subtitle">Choose wisely... your destiny awaits!</p>
+
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <div class="score-section">
+            <div class="score-card wins-card">
+                <i class="fas fa-trophy"></i>
+                <span class="score-label">Wins</span>
+                <span class="score-value" id="winsCount">0</span>
+            </div>
+            <div class="score-card losses-card">
+                <i class="fas fa-skull"></i>
+                <span class="score-label">Losses</span>
+                <span class="score-value" id="lossesCount">0</span>
+            </div>
+            <div class="score-card rate-card">
+                <i class="fas fa-percentage"></i>
+                <span class="score-label">Win Rate</span>
+                <span class="score-value" id="winRate">0%</span>
+            </div>
+            <div class="score-card streak-card">
+                <i class="fas fa-fire"></i>
+                <span class="score-label">Best Streak</span>
+                <span class="score-value" id="bestStreak">0</span>
+            </div>
+        </div>
+
+        <div class="instructions" id="instructions">
+            <p>🏆 Behind one door lies treasure, behind the others... misfortune!</p>
+            <p>Click on a door to reveal your fate!</p>
+            <div class="hint-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="hintsToggle">
+                    <span class="slider">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </label>
+                <span>Enable Hints</span>
+            </div>
+        </div>
+
+        <div class="doors-container">
+            <div class="door" id="door1" data-door="1" role="button" tabindex="0" aria-label="Door 1">
+                <div class="door-frame">
+                    <div class="door-panel">
+                        <div class="door-handle"></div>
+                        <div class="door-number">1</div>
+                        <div class="door-hint" id="hint1"></div>
+                    </div>
+                    <div class="door-content" id="content1">
+                        <div class="door-result"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="door" id="door2" data-door="2" role="button" tabindex="0" aria-label="Door 2">
+                <div class="door-frame">
+                    <div class="door-panel">
+                        <div class="door-handle"></div>
+                        <div class="door-number">2</div>
+                        <div class="door-hint" id="hint2"></div>
+                    </div>
+                    <div class="door-content" id="content2">
+                        <div class="door-result"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="door" id="door3" data-door="3" role="button" tabindex="0" aria-label="Door 3">
+                <div class="door-frame">
+                    <div class="door-panel">
+                        <div class="door-handle"></div>
+                        <div class="door-number">3</div>
+                        <div class="door-hint" id="hint3"></div>
+                    </div>
+                    <div class="door-content" id="content3">
+                        <div class="door-result"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-status" id="gameStatus">
+            <p class="status-message" id="statusMessage">Choose your door!</p>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-primary" id="restartBtn" disabled>
+                <i class="fas fa-redo"></i>
+                Play Again
+            </button>
+            <button class="btn btn-secondary" id="resetScoreBtn">
+                <i class="fas fa-trash"></i>
+                Reset Score
+            </button>
+            <button class="btn btn-accent" id="helpBtn">
+                <i class="fas fa-question-circle"></i>
+                How to Play
+            </button>
+            <button class="btn btn-info" id="difficultyBtn">
+                <i class="fas fa-cog"></i>
+                <span id="difficultyText">Easy Mode</span>
+            </button>
+        </div>
+
+        <div class="modal" id="helpModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-question-circle"></i> How to Play</h2>
+                    <button class="close-btn" id="closeHelp">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="help-section">
+                        <h3>🎯 Objective</h3>
+                        <p>Choose the correct door to find the treasure and avoid the monsters!</p>
+                    </div>
+                    <div class="help-section">
+                        <h3>🎮 Controls</h3>
+                        <ul>
+                            <li>Click on any door to make your choice</li>
+                            <li>Use keyboard numbers 1, 2, 3 to select doors</li>
+                            <li>Press 'R' to restart the game</li>
+                        </ul>
+                    </div>
+                    <div class="help-section">
+                        <h3>✨ Features</h3>
+                        <ul>
+                            <li><strong>Hints:</strong> Enable subtle clues to help find the treasure</li>
+                            <li><strong>Themes:</strong> Switch between light and dark modes</li>
+                            <li><strong>Difficulty:</strong> Try hard mode for an extra challenge</li>
+                            <li><strong>Easter Eggs:</strong> Discover hidden patterns and rewards</li>
+                        </ul>
+                    </div>
+                    <div class="help-section">
+                        <h3>🏆 Scoring</h3>
+                        <p>Track your wins, losses, win rate, and best winning streak. Try to beat your personal
+                            records!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="easter-egg" id="easterEgg">
+            <p>🎉 Congratulations! You've discovered the secret pattern!</p>
+        </div>
+    </div>
+
+    <audio id="successSound" preload="auto">
+        <source
+            src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmAcBkCY4OzEbCUFLYXO8tiJNgcan6b40ZhBDhBerujTmCsOE2GV1fKSTiUFOou/8eJwHAQ4oNz56JdFCRtlvO3WURUL0gRoiMnv4Y9SCRVjk9PzxYIYOgY0ldbzcNk+CCKMvO/Qzl8lIXE+E9JKRY3XWMpqVjbP+SIgP9NRLnggLHI0zRPNzz8m3lE6LB3HZlT2SQMwfcJPSNnxOzIGKLm7cTZ4LWSZ1sZiZCpYKh0yN3WozgVEoG+3gJ8V+SElr/d8mIlIU0AJnlhbqzGl0UJQ5fOJDtWTpE5EW6Nf+4+S5HGnHb2ks3rFJoKLdH6c5Y1CrzwL7FKl4Q4SgH+3Sj8vOp0cD0hIZY1iGZ2Vr4RnoO5Fw7PEStOy4aMi7zwg9Q3KMJqNKrB+4CHOGVXDmYH4MH2kaTVz4C4WdTMSdNVB3FqUMQKC6L4DaWJk1I/WDJa+N/FqrD2TfI7FdHfKTDg8v3eFM8rImz7I6Lk9w7VJKHy9SyYcHjE4d3K3/MKHTh5mONF6kQ/vW8kBJsZdJh7r3F9PZHR3OmjbF/MjT1zOr6o3Q9kkG4K3hQhkC5mTZA0L3vKQVzrh8fxPwN1F8zQf5OBTP9H2fFPnP9DnOqg="
+            type="audio/wav">
+    </audio>
+    <audio id="failureSound" preload="auto">
+        <source
+            src="data:audio/wav;base64,UklGRlgGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YTQGAACBqZuhbIGHdZeSa5GVVJKhUY6haYqPaINiblyFZE5sdWVXaWBJWltCV1xJOUUXJhEoIRANEi4wNyYdJyYeFRwFBQAABQIBAQEBAQECAgICAgMDAwQEBAUFBQYGBgcHBwgICAkJCQoKCgsLCwwMDA0NDQ4ODg8PDxAQEBERERISEhMTExQUFBUVFRYWFhcXFxgYGBkZGRoaGhsbGxwcHB0dHR4eHh8fHyAgICEhISIiIiMjIyQkJCUlJSYmJicnJygoKCkpKSoqKisrKywsLC0tLS4uLi8vLzAwMDExMTIyMjMzMzQ0NDU1NTY2Njc3Nzg4ODk5OTo6Ojs7Ozw8PD09PT4+Pj8/P0BAQEFBQUJCQkNDQ0REREVFRUZGRkdHR0hISElJSUpKSktLS0xMTE1NTU5OTk9PT1BQUFFRUVJSUlNTU1RUVFVVVVZWVldXV1hYWFlZWVpaWltbW1xcXF1dXV5eXl9fX2BgYGFhYWJiYmNjY2RkZGVlZWZmZmdnZ2hoaGlpaWpqamtra2xsbG1tbW5ubm9vb3BwcHFxcXJycnNzc3R0dHV1dXZ2dnd3d3h4eHl5eXp6ent7e3x8fH19fX5+fn9/f4CAgIGBgYKCgoODg4SEhIWFhYaGhoeCOIQAgA=="
+            type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

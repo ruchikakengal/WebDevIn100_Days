@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliment Generator - Spread Joy & Positivity</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fredoka:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: background 1.5s ease;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 35px;
+            padding: 50px;
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            50% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+        }
+
+        @keyframes textGlow {
+            0% {
+                filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
+            }
+
+            100% {
+                filter: drop-shadow(0 0 20px rgba(240, 147, 251, 0.5));
+            }
+        }
+
+        h1 {
+            font-family: 'Fredoka', cursive;
+            font-size: 3.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            text-shadow: none;
+            position: relative;
+            z-index: 1;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #5a67d8;
+            margin-bottom: 40px;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        .name-input-section {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .name-input {
+            width: 100%;
+            max-width: 350px;
+            padding: 18px 25px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 8px 32px rgba(102, 126, 234, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .name-input:focus {
+            border-color: #667eea;
+            transform: scale(1.02);
+            box-shadow:
+                0 0 0 4px rgba(102, 126, 234, 0.15),
+                0 12px 40px rgba(102, 126, 234, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .name-input::placeholder {
+            color: #a0aec0;
+        }
+
+        .compliment-display {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 50%, #ede9fe 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(139, 92, 246, 0.1);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            box-shadow:
+                0 15px 50px rgba(139, 92, 246, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .compliment-text {
+            font-size: 1.3rem;
+            color: #2d3748;
+            font-weight: 400;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .compliment-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .compliment-text.fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .compliment-text.zoom-in {
+            animation: zoomIn 0.8s ease forwards;
+        }
+
+        .compliment-text.slide-up {
+            animation: slideUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 160px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            box-shadow:
+                0 15px 35px rgba(102, 126, 234, 0.4),
+                0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #4fd1c7 0%, #38b2ac 50%, #319795 100%);
+            color: white;
+            box-shadow:
+                0 15px 35px rgba(79, 209, 199, 0.4),
+                0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-tertiary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+            color: white;
+            box-shadow:
+                0 15px 35px rgba(240, 147, 251, 0.4),
+                0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.15),
+                0 10px 25px rgba(102, 126, 234, 0.3);
+            filter: brightness(1.1);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn.ripple::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .toggle-section {
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .toggle-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 2px solid rgba(102, 126, 234, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 10px 30px rgba(102, 126, 234, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .toggle-container:hover {
+            border-color: #667eea;
+            transform: scale(1.02);
+            box-shadow:
+                0 0 0 4px rgba(102, 126, 234, 0.1),
+                0 15px 40px rgba(102, 126, 234, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .toggle {
+            position: relative;
+            width: 50px;
+            height: 25px;
+            background: #cbd5e0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle.active {
+            background: #667eea;
+        }
+
+        .toggle::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 21px;
+            height: 21px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .toggle.active::before {
+            transform: translateX(25px);
+        }
+
+        .toggle-label {
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .daily-compliment {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 50%, #fbb6ce 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(244, 143, 177, 0.3);
+            position: relative;
+            z-index: 1;
+            box-shadow:
+                0 10px 30px rgba(244, 143, 177, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .daily-compliment h3 {
+            color: #be185d;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .daily-compliment p {
+            color: #be185d;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #667eea;
+            animation: confetti-fall 3s ease-out forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotateZ(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotateZ(720deg);
+                opacity: 0;
+            }
+        }
+
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #48bb78;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .copy-notification.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 30px;
+                margin: 5px;
+                border-radius: 30px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .compliment-display {
+                padding: 30px;
+                margin: 30px 0;
+            }
+
+            .compliment-text {
+                font-size: 1.15rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                padding: 20px 30px;
+                font-size: 1.05rem;
+            }
+
+            .name-input {
+                max-width: 100%;
+                font-size: 1.05rem;
+                padding: 20px 25px;
+            }
+
+            .toggle-container {
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 25px;
+                border-radius: 25px;
+            }
+
+            .compliment-display {
+                padding: 25px;
+                min-height: 120px;
+            }
+
+            .compliment-text {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 18px 25px;
+                font-size: 1rem;
+            }
+
+            .daily-compliment {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>✨ Compliment Generator ✨</h1>
+        <p class="subtitle">Spread joy and positivity, one compliment at a time!</p>
+
+        <div class="name-input-section">
+            <input type="text" class="name-input" placeholder="Enter your name (optional)" id="nameInput">
+        </div>
+
+        <div class="toggle-section">
+            <div class="toggle-container">
+                <span class="toggle-label">Emoji Mode</span>
+                <div class="toggle" id="emojiToggle"></div>
+            </div>
+        </div>
+
+        <div class="compliment-display">
+            <p class="compliment-text" id="complimentText">Click the button below to receive your personalized
+                compliment!</p>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-primary" id="generateBtn">Get Compliment</button>
+            <button class="btn btn-secondary" id="copyBtn" style="display: none;">Copy Compliment</button>
+        </div>
+
+        <div class="daily-compliment" id="dailyCompliment" style="display: none;">
+            <h3>🌅 Your Daily Compliment</h3>
+            <p id="dailyComplimentText"></p>
+        </div>
+    </div>
+
+    <div class="copy-notification" id="copyNotification">
+        Compliment copied to clipboard! 📋
+    </div>
+
+    <script>
+        // Compliment database with different categories
+        const compliments = [
+            // Wholesome
+            "You have the most beautiful smile that lights up any room!",
+            "Your kindness makes the world a better place.",
+            "You're the human version of sunshine.",
+            "Your positive energy is contagious in the best way.",
+            "You have an amazing ability to make others feel valued.",
+            "Your laugh is absolutely magical.",
+            "You're incredibly thoughtful and caring.",
+            "You have such a wonderful heart.",
+            "Your presence brings so much joy to others.",
+            "You're a true gem of a person.",
+
+            // Motivational
+            "You're stronger than you realize and braver than you believe.",
+            "You have the power to make amazing things happen.",
+            "Your potential is limitless and inspiring.",
+            "You're capable of achieving anything you set your mind to.",
+            "Your determination is absolutely admirable.",
+            "You turn obstacles into stepping stones.",
+            "You're a natural born leader.",
+            "Your resilience is truly remarkable.",
+            "You inspire others just by being yourself.",
+            "You have an incredible ability to overcome challenges.",
+
+            // Funny
+            "You're cooler than the other side of the pillow.",
+            "If you were a vegetable, you'd be a cute-cumber!",
+            "You're so awesome, even your haters secretly admire you.",
+            "You're like a human version of a puppy - impossible not to love!",
+            "You're the kind of person who makes Monday feel like Friday.",
+            "You're so sweet, you could put candy stores out of business.",
+            "You're more fun than bubble wrap!",
+            "You're the reason the gene pool needs a lifeguard.",
+            "You're so amazing, you make unicorns jealous.",
+            "You're like a ray of sunshine on a cloudy day, but funnier.",
+
+            // Romantic
+            "You're absolutely breathtaking in every way.",
+            "Your beauty radiates from the inside out.",
+            "You make my heart skip a beat every single time.",
+            "You're the most incredible person I've ever encountered.",
+            "Your eyes sparkle like the most precious diamonds.",
+            "You're poetry in motion.",
+            "You have the most enchanting personality.",
+            "You're absolutely perfect just the way you are.",
+            "Your voice is like music to my ears.",
+            "You're my favorite notification.",
+
+            // Confidence Boosting
+            "You're absolutely crushing it at life!",
+            "Your confidence is magnetic and inspiring.",
+            "You have impeccable taste and style.",
+            "You're a natural at everything you do.",
+            "Your intelligence is incredibly attractive.",
+            "You have such great instincts and judgment.",
+            "You're incredibly talented and gifted.",
+            "You have the most amazing personality.",
+            "You're fearless in the best possible way.",
+            "Your creativity knows no bounds.",
+
+            // Unique & Creative
+            "You're the protagonist of your own amazing story.",
+            "You're like a rare Pokemon - special and hard to find!",
+            "You're the perfect blend of silly and sophisticated.",
+            "You could be a part-time model for positivity.",
+            "You're proof that angels exist on Earth.",
+            "You're like a four-leaf clover - rare and lucky to find.",
+            "You're the secret ingredient that makes everything better.",
+            "You're like WiFi - invisible but absolutely essential.",
+            "You're the human equivalent of a warm hug.",
+            "You're like a shooting star - rare, beautiful, and magical."
+        ];
+
+        // Emoji arrays for different moods
+        const emojis = ["😊", "🌟", "💖", "🌈", "✨", "🎉", "🌺", "💫", "🦋", "🌸", "💕", "🎈", "🌻", "⭐", "🎊"];
+
+        // Background gradients
+        const backgroundGradients = [
+            "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+            "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+            "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+            "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+            "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+            "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+            "linear-gradient(135deg, #96fbc4 0%, #f9f586 100%)",
+            "linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%)",
+            "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)"
+        ];
+
+        // Animation classes
+        const animations = ['fade-in', 'zoom-in', 'slide-up'];
+
+        // DOM elements
+        const generateBtn = document.getElementById('generateBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const complimentText = document.getElementById('complimentText');
+        const nameInput = document.getElementById('nameInput');
+        const emojiToggle = document.getElementById('emojiToggle');
+        const copyNotification = document.getElementById('copyNotification');
+        const dailyCompliment = document.getElementById('dailyCompliment');
+        const dailyComplimentText = document.getElementById('dailyComplimentText');
+
+        let emojiMode = false;
+        let currentCompliment = '';
+
+        // Initialize the app
+        function init() {
+            checkDailyCompliment();
+            loadSettings();
+        }
+
+        // Check for daily compliment in localStorage
+        function checkDailyCompliment() {
+            const today = new Date().toDateString();
+            const storedDate = localStorage.getItem('complimentDate');
+            const storedCompliment = localStorage.getItem('dailyCompliment');
+
+            if (storedDate === today && storedCompliment) {
+                dailyComplimentText.textContent = storedCompliment;
+                dailyCompliment.style.display = 'block';
+            }
+        }
+
+        // Load user settings
+        function loadSettings() {
+            const savedName = localStorage.getItem('userName');
+            const savedEmojiMode = localStorage.getItem('emojiMode');
+
+            if (savedName) {
+                nameInput.value = savedName;
+            }
+
+            if (savedEmojiMode === 'true') {
+                emojiMode = true;
+                emojiToggle.classList.add('active');
+            }
+        }
+
+        // Generate random compliment
+        function generateCompliment() {
+            const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
+            const userName = nameInput.value.trim();
+            let finalCompliment = randomCompliment;
+
+            // Personalize with name if provided
+            if (userName) {
+                localStorage.setItem('userName', userName);
+                finalCompliment = `${userName}, ${randomCompliment.toLowerCase()}`;
+            }
+
+            // Add emoji if emoji mode is enabled
+            if (emojiMode) {
+                const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+                finalCompliment += ` ${randomEmoji}`;
+            }
+
+            currentCompliment = finalCompliment;
+            displayCompliment(finalCompliment);
+            changeBackground();
+            createConfetti();
+
+            // Store as daily compliment
+            const today = new Date().toDateString();
+            localStorage.setItem('complimentDate', today);
+            localStorage.setItem('dailyCompliment', finalCompliment);
+
+            // Show daily compliment section
+            dailyComplimentText.textContent = finalCompliment;
+            dailyCompliment.style.display = 'block';
+
+            // Show copy button
+            copyBtn.style.display = 'inline-block';
+        }
+
+        // Display compliment with random animation
+        function displayCompliment(compliment) {
+            // Remove existing animation classes
+            complimentText.className = 'compliment-text';
+
+            // Slight delay for smooth transition
+            setTimeout(() => {
+                complimentText.textContent = compliment;
+                const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+                complimentText.classList.add(randomAnimation);
+            }, 100);
+        }
+
+        // Change background gradient
+        function changeBackground() {
+            const randomGradient = backgroundGradients[Math.floor(Math.random() * backgroundGradients.length)];
+            document.body.style.background = randomGradient;
+            document.body.style.backgroundSize = '400% 400%';
+        }
+
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe', '#43e97b', '#38f9d7'];
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confettiPiece = document.createElement('div');
+                    confettiPiece.className = 'confetti-piece';
+                    confettiPiece.style.left = Math.random() * window.innerWidth + 'px';
+                    confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confettiPiece.style.animationDelay = Math.random() * 3 + 's';
+                    confettiPiece.style.animationDuration = (Math.random() * 3 + 2) + 's';
+
+                    // Random shapes
+                    if (Math.random() > 0.5) {
+                        confettiPiece.style.borderRadius = '50%';
+                    }
+
+                    document.body.appendChild(confettiPiece);
+
+                    // Remove after animation
+                    setTimeout(() => {
+                        confettiPiece.remove();
+                    }, 5000);
+                }, i * 20);
+            }
+        }
+
+        // Ripple effect for buttons
+        function createRipple(button, event) {
+            button.classList.add('ripple');
+            setTimeout(() => {
+                button.classList.remove('ripple');
+            }, 600);
+        }
+
+        // Copy to clipboard function
+        async function copyToClipboard() {
+            try {
+                await navigator.clipboard.writeText(currentCompliment);
+                showCopyNotification();
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = currentCompliment;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showCopyNotification();
+            }
+        }
+
+        // Show copy notification
+        function showCopyNotification() {
+            copyNotification.classList.add('show');
+            setTimeout(() => {
+                copyNotification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Toggle emoji mode
+        function toggleEmojiMode() {
+            emojiMode = !emojiMode;
+            emojiToggle.classList.toggle('active');
+            localStorage.setItem('emojiMode', emojiMode);
+        }
+
+        // Event listeners
+        generateBtn.addEventListener('click', (e) => {
+            createRipple(generateBtn, e);
+            generateCompliment();
+        });
+
+        copyBtn.addEventListener('click', (e) => {
+            createRipple(copyBtn, e);
+            copyToClipboard();
+        });
+
+        emojiToggle.addEventListener('click', toggleEmojiMode);
+
+        // Keyboard support
+        nameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                generateCompliment();
+            }
+        });
+
+        // Touch support for mobile
+        generateBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            createRipple(generateBtn, e);
+        });
+
+        copyBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            createRipple(copyBtn, e);
+        });
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Add some sparkle cursor effect on desktop
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                if (Math.random() > 0.98) {
+                    const sparkle = document.createElement('div');
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = e.clientX + 'px';
+                    sparkle.style.top = e.clientY + 'px';
+                    sparkle.style.width = '4px';
+                    sparkle.style.height = '4px';
+                    sparkle.style.background = '#667eea';
+                    sparkle.style.borderRadius = '50%';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.animation = 'sparkle 1s ease-out forwards';
+                    sparkle.style.zIndex = '1000';
+
+                    document.body.appendChild(sparkle);
+
+                    setTimeout(() => {
+                        sparkle.remove();
+                    }, 1000);
+                }
+            });
+        }
+
+        // Add sparkle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkle {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(1) rotate(180deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

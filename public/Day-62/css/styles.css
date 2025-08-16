@@ -1,0 +1,584 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298, #87CEEB);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    animation: backgroundShift 30s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { background: linear-gradient(135deg, #1e3c72, #2a5298, #87CEEB); }
+    50% { background: linear-gradient(135deg, #667eea, #764ba2, #98FB98); }
+}
+
+/* Game Container */
+#gameContainer {
+    position: relative;
+    width: 800px;
+    height: 400px;
+    border: 3px solid #FFD700;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.5),
+        inset 0 0 15px rgba(0,0,0,0.2);
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    animation: containerGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes containerGlow {
+    0% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.5), inset 0 0 15px rgba(0,0,0,0.2); }
+    100% { box-shadow: 0 0 50px rgba(255, 215, 0, 0.8), inset 0 0 25px rgba(0,0,0,0.1); }
+}
+
+/* Canvas */
+#gameCanvas {
+    display: block;
+    background: #5C94FC;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+/* HUD Overlay */
+#hud {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 
+        2px 2px 0px #000,
+        0 0 10px rgba(255, 215, 0, 0.8);
+    z-index: 10;
+    pointer-events: none;
+}
+
+#hud div {
+    background: linear-gradient(145deg, rgba(255, 215, 0, 0.9), rgba(255, 140, 0, 0.8));
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 4px 15px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+    animation: hudPulse 2s ease-in-out infinite;
+}
+
+@keyframes hudPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Game State Screens */
+.screen {
+    overflow: auto;
+        scrollbar-width: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(30, 60, 114, 0.95), 
+        rgba(102, 126, 234, 0.9),
+        rgba(118, 75, 162, 0.95));
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 30;
+    animation: screenSlideIn 0.5s ease-out;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+@keyframes screenSlideIn {
+    0% { 
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+    }
+    100% { 
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.screen.hidden {
+    display: none;
+}
+
+.screen h1 {
+    font-size: 3em;
+    margin-bottom: 30px;
+    text-shadow: 
+        3px 3px 0px #000,
+        0 0 20px rgba(255, 215, 0, 0.8),
+        0 0 40px rgba(255, 140, 0, 0.6);
+    background: linear-gradient(45deg, #FFD700, #FF8C00, #FF6B6B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleShine 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleShine {
+    0% { 
+        filter: brightness(1);
+        transform: scale(1);
+    }
+    100% { 
+        filter: brightness(1.2);
+        transform: scale(1.05);
+    }
+}
+
+.screen p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Mario Logo */
+.mario-logo {
+    font-size: 4em;
+    margin-bottom: 20px;
+    animation: marioFloat 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+}
+
+@keyframes marioFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* Feature List */
+.feature-list {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.feature {
+    font-size: 1.1em;
+    margin: 10px 0;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    border-left: 4px solid #FFD700;
+    backdrop-filter: blur(5px);
+    animation: featureSlideIn 0.5s ease-out;
+}
+
+.feature:nth-child(1) { animation-delay: 0.1s; }
+.feature:nth-child(2) { animation-delay: 0.2s; }
+.feature:nth-child(3) { animation-delay: 0.3s; }
+.feature:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes featureSlideIn {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Epic Button */
+.epic-button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background: linear-gradient(45deg, 
+        #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FFEAA7);
+    background-size: 200% 200%;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 8px 25px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+    animation: epicButtonGlow 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    z-index: 40;
+    margin: 15px auto;
+    display: block;
+    min-width: 200px;
+    max-width: 280px;
+    text-align: center;
+}
+
+.epic-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(45deg);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% { transform: rotate(45deg) translateX(-100%); }
+    50% { transform: rotate(45deg) translateX(100%); }
+    100% { transform: rotate(45deg) translateX(-100%); }
+}
+
+@keyframes epicButtonGlow {
+    0%, 100% { 
+        background-position: 0% 50%;
+        transform: scale(1);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+    50% { 
+        background-position: 100% 50%;
+        transform: scale(1.05);
+        box-shadow: 0 12px 35px rgba(255, 215, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.5);
+    }
+}
+
+.epic-button:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+}
+
+.epic-button:active {
+    transform: translateY(-1px) scale(1.05);
+}
+
+/* Version Info */
+.version-info {
+    margin-top: 20px;
+    font-size: 0.9em;
+    opacity: 0.7;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.screen button {
+    padding: 12px 25px;
+    font-size: 1em;
+    background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 40;
+    margin: 15px auto;
+    display: block;
+    min-width: 180px;
+    max-width: 250px;
+    text-align: center;
+    display: flex
+;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.screen button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.screen button:active {
+    transform: translateY(0);
+}
+
+/* Screen Icons and Score Display */
+.screen-icon {
+    font-size: 5em;
+    margin-bottom: 20px;
+    animation: iconBounce 1s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.score-display {
+    background: linear-gradient(145deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.1));
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    border-radius: 20px;
+    padding: 20px 30px;
+    margin: 20px auto;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    max-width: 300px;
+}
+
+.score-label {
+    font-size: 1.1em;
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.score-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.encouragement, .celebration {
+    margin-top: 20px;
+    font-size: 1.1em;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 25px;
+    backdrop-filter: blur(5px);
+    animation: messageGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes messageGlow {
+    0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+    100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+}
+
+/* Mobile Controls */
+.mobile-only {
+    display: none;
+}
+
+#mobileControls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 25;
+    width: 100%;
+    max-width: 400px;
+}
+
+.control-pad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.control-btn {
+    width: 70px;
+    height: 70px;
+    border: 3px solid #FFD700;
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(255, 215, 0, 0.9), rgba(255, 140, 0, 0.8));
+    color: #333;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    transition: all 0.1s;
+    box-shadow: 
+        0 6px 15px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.5);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+    background: rgba(255,255,255,0.6);
+}
+
+.control-btn.jump {
+    background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+    color: white;
+    width: 80px;
+    height: 80px;
+    margin-left: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    #gameContainer {
+        width: 95vw;
+        height: 50vh;
+        max-width: 800px;
+        max-height: 400px;
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .mobile-only {
+        display: block;
+    }
+    
+    #hud {
+        font-size: 14px;
+    }
+    
+    .screen h1 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    
+    .screen p {
+        font-size: 1em;
+    }
+    
+    .epic-button {
+        font-size: 1em;
+        padding: 12px 25px;
+        min-width: 180px;
+        max-width: 250px;
+    }
+    
+    .screen button {
+        font-size: 0.9em;
+        padding: 10px 20px;
+        min-width: 160px;
+        max-width: 220px;
+    }
+    
+    .feature-list {
+        margin-bottom: 20px;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    #hud {
+        font-size: 12px;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+    }
+    
+    #hud div {
+        padding: 3px 6px;
+    }
+    
+    .screen {
+        padding: 15px;
+    }
+    
+    .screen h1 {
+        font-size: 1.4em;
+        margin-bottom: 12px;
+    }
+    
+    .epic-button {
+        font-size: 0.9em;
+        padding: 10px 20px;
+        min-width: 160px;
+        max-width: 200px;
+    }
+    
+    .screen button {
+        font-size: 0.85em;
+        padding: 8px 16px;
+        min-width: 140px;
+        max-width: 180px;
+    }
+    
+    .feature-list {
+        padding: 0 10px;
+        margin-bottom: 15px;
+    }
+    
+    .feature {
+        font-size: 0.9em;
+        margin: 6px 0;
+        padding: 5px 10px;
+    }
+    
+    .score-display {
+        padding: 15px 20px;
+        margin: 15px auto;
+    }
+    
+    .control-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.2em;
+    }
+    
+    .control-btn.jump {
+        width: 70px;
+        height: 70px;
+        margin-left: 20px;
+    }
+    
+    .control-pad {
+        gap: 12px;
+        padding: 0 15px;
+    }
+}
+
+/* Pixel Art Sprites */
+.pixel-art {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+/* Animation Classes */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes collect {
+    0% { 
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    100% { 
+        transform: scale(1.5) translateY(-50px);
+        opacity: 0;
+    }
+}
+
+@keyframes defeated {
+    0% { 
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% { 
+        transform: rotate(180deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.bounce {
+    animation: bounce 0.6s ease-in-out;
+}
+
+.collect {
+    animation: collect 0.5s ease-out forwards;
+}
+
+.defeated {
+    animation: defeated 0.8s ease-out forwards;
+}

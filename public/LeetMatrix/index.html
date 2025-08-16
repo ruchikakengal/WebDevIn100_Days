@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leet Matrix</title>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.3.24/dist/framer-motion.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Leet Matrix</h1>
+
+        <div class="user-container">
+            <p>Enter your LeetCode username:</p>
+            <div class="user-input-container">
+                <input type="text" id="user-input" placeholder="Enter your username">
+                <button id="search-btn">Search</button>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="progress">
+                <div class="progress-item">
+                    <div class="easy-progress circle">
+                        <span id="easy-label"></span>
+                        <p>Easy</p>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="medium-progress circle">
+                        <span id="medium-label"></span>
+                        <p>Medium</p>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="hard-progress circle">
+                        <span id="hard-label"></span>
+                        <p>Hard</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-cards"></div>
+        </div>
+    </div>
+
+   <script src="script.js"></script>
+</body>
+</html>

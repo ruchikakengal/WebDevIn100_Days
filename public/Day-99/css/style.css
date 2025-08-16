@@ -1,0 +1,268 @@
+* {
+  font-family: "Press Start 2P", cursive;
+  font-weight: lighter;
+  user-select: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 672px;
+}
+
+/* ! Header */
+
+header {
+  height: 72px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* * Player */
+#player,
+#highscore {
+  text-align: center;
+}
+
+main {
+  background-image: url(../images/maze-background.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 744px;
+}
+
+body > h2 {
+  display: none;
+  position: absolute;
+  color: yellow;
+  margin-top: 120px;
+}
+
+#splash {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  /* ? Why cant I put 100% here */
+  height: inherit;
+  background-color: black;
+  text-align: center;
+  padding-top: 300px;
+}
+
+#splash h2 {
+  padding-bottom: 75px;
+}
+
+.peach > span {
+  font-size: 0.8rem;
+}
+
+.beige {
+  color: navajowhite;
+}
+
+.blue {
+  color: aqua;
+}
+
+.peach {
+  color: rgb(228, 206, 214);
+}
+
+/* * Grid Wrapper */
+
+#grid-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  height: 672px;
+}
+
+.gridItem {
+  background-size: contain;
+}
+
+/* ! Class images */
+
+.pellet {
+  background-image: url(../images/pellet.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.power-pellet {
+  /* background-image: url(/images/power-pellet.png); */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pacman {
+  background-image: url(../images/p-start.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pacman.left {
+  background-image: url(../images/p-left1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pacman.right {
+  background-image: url(../images/p-right1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pacman.up {
+  background-image: url(../images/p-up1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pacman.down {
+  background-image: url(../images/p-down1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.blinky {
+  background-image: url(../images/blinky-left1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.blinky.scared,
+.inky.scared,
+.pinky.scared,
+.clyde.scared {
+  background-image: url(../images/scared-blue1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.inky {
+  background-image: url(../images/inky-up1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pinky {
+  background-image: url(../images/pinky-down1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.clyde {
+  background-image: url(../images/clyde-up1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cherry {
+  background-image: url(../images/bonus/cherry.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 32px;
+  width: 32px;
+}
+
+.strawberry {
+  background-image: url(../images/bonus/strawberry.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 32px;
+  width: 32px;
+}
+
+.orange {
+  background-image: url(../images/bonus/orange.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 32px;
+  width: 32px;
+}
+
+.apple {
+  background-image: url(../images/bonus/apple.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 32px;
+  width: 32px;
+}
+
+.melon {
+  background-image: url(../images/bonus/melon.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 32px;
+  width: 32px;
+}
+
+.galaxian {
+  background-image: url(../images/bonus/galaxian.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 32px;
+  width: 32px;
+}
+
+.bell {
+  background-image: url(../images/bonus/bell.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 32px;
+  width: 32px;
+}
+
+.key {
+  background-image: url(../images/bonus/key.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 32px;
+  width: 32px;
+}
+
+/* ! Footer */
+
+footer {
+  height: 48px;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  color: white;
+  user-select: none;
+}
+
+/* * Lives */
+
+#lives {
+  display: flex;
+}
+
+.life {
+  background-image: url(../images/p-left1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 32px;
+  width: 32px;
+}
+
+/* * Bonus */

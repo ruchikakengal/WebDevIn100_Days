@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sudoku</h1>
+    <div class="choices">
+        <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+            <option value="expert">Expert</option>
+        </select>
+        <button id="generate">Generate Sudoku</button>
+        <button id="restart">Restart Puzzle</button>
+    </div>
+    <div id="status-label"></div>
+    <div class="board-wrapper">
+        <table id="sudoku-board"></table>
+    </div>
+    <div class="result-buttons">
+        <button id="giveUp">Give Up</button>
+        <button id="checkSolution">Check Solution</button>
+    </div>
+    <script src="human_solver.js"></script>
+</body>
+</html>

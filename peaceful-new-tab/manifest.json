@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Personalized New Tab & Pet Companion",
+  "version": "1.0",
+  "description": "A personalized new tab experience with greetings, quotes, dynamic backgrounds, and animated pets that appear on every website",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://api.pexels.com/*",
+    "<all_urls>"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "index.html"
+  }
+}

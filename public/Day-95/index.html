@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superhero Identity Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers:wght@400&family=Comic+Neue:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="cosmic-background">
+        <div class="stars"></div>
+        <div class="lightning"></div>
+    </div>
+
+    <div class="container">
+        <header class="hero-header">
+            <h1 class="main-title">
+                <i class="fas fa-mask"></i>
+                Superhero Identity Generator
+                <i class="fas fa-bolt"></i>
+            </h1>
+            <p class="subtitle">Discover your inner superhero! Enter your name and unleash your destiny.</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-container">
+                <input type="text" id="nameInput" placeholder="Enter your real name..." maxlength="50"
+                    autocomplete="off">
+                <button id="generateBtn" class="generate-btn">
+                    <i class="fas fa-magic"></i>
+                    <span>Transform Me!</span>
+                </button>
+            </div>
+            <div class="error-message" id="errorMessage"></div>
+        </div>
+
+        <div class="loading-section" id="loadingSection">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Generating your superhero identity...</p>
+            </div>
+        </div>
+
+        <div class="result-section" id="resultSection">
+            <div class="superhero-card" id="superheroCard">
+                <div class="card-header">
+                    <h2 class="superhero-name" id="superheroName"></h2>
+                    <div class="power-level" id="powerLevel"></div>
+                </div>
+
+                <div class="card-content">
+                    <div class="powers-section">
+                        <h3><i class="fas fa-fist-raised"></i> Superpowers</h3>
+                        <div class="powers-list" id="powersList"></div>
+                    </div>
+
+                    <div class="costume-section">
+                        <h3><i class="fas fa-tshirt"></i> Costume Style</h3>
+                        <div class="costume-preview" id="costumePreview">
+                            <div class="color-palette" id="colorPalette"></div>
+                            <div class="costume-description" id="costumeDescription"></div>
+                        </div>
+                    </div>
+
+                    <div class="origin-section">
+                        <h3><i class="fas fa-book-open"></i> Origin Story</h3>
+                        <p class="origin-story" id="originStory"></p>
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <button id="downloadBtn" class="action-btn download-btn">
+                        <i class="fas fa-download"></i>
+                        Download Card
+                    </button>
+                    <button id="saveBtn" class="action-btn save-btn">
+                        <i class="fas fa-heart"></i>
+                        Save Favorite
+                    </button>
+                    <button id="regenerateBtn" class="action-btn regenerate-btn">
+                        <i class="fas fa-redo"></i>
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="favorites-section" id="favoritesSection">
+            <h3><i class="fas fa-star"></i> Your Favorite Heroes</h3>
+            <div class="favorites-list" id="favoritesList"></div>
+        </div>
+    </div>
+
+    <canvas id="cardCanvas" style="display: none;"></canvas>
+
+    <script src="audio-effects.js"></script>
+    <script src="superhero-generator.js"></script>
+    <script src="card-generator.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

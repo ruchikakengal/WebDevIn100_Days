@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystical Fortune Teller</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Eater&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="stars-container">
+        <div class="star" style="--delay: 0s; --x: 10%; --y: 20%;"></div>
+        <div class="star" style="--delay: 1s; --x: 80%; --y: 10%;"></div>
+        <div class="star" style="--delay: 2s; --x: 20%; --y: 80%;"></div>
+        <div class="star" style="--delay: 3s; --x: 90%; --y: 60%;"></div>
+        <div class="star" style="--delay: 4s; --x: 50%; --y: 90%;"></div>
+        <div class="star" style="--delay: 5s; --x: 70%; --y: 30%;"></div>
+        <div class="star" style="--delay: 6s; --x: 30%; --y: 50%;"></div>
+        <div class="star" style="--delay: 7s; --x: 60%; --y: 70%;"></div>
+    </div>
+
+    <div class="particles-container">
+        <div class="particle" style="--delay: 0s; --x: 15%; --y: 25%;"></div>
+        <div class="particle" style="--delay: 2s; --x: 85%; --y: 15%;"></div>
+        <div class="particle" style="--delay: 4s; --x: 25%; --y: 85%;"></div>
+        <div class="particle" style="--delay: 6s; --x: 75%; --y: 45%;"></div>
+        <div class="particle" style="--delay: 8s; --x: 45%; --y: 75%;"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title glow-text">🔮 Mystical Fortune Teller 🔮</h1>
+            <p class="subtitle">Ask the crystal ball and discover your destiny...</p>
+        </header>
+
+        <div class="audio-controls">
+            <button id="audioToggle" class="audio-btn">
+                <i class="fas fa-music"></i>
+                <span id="audioStatus">Play Music</span>
+            </button>
+        </div>
+
+        <div class="daily-fortune-container">
+            <h3 class="daily-fortune-title">✨ Today's Fortune ✨</h3>
+            <div id="dailyFortune" class="daily-fortune"></div>
+        </div>
+
+        <div class="categories">
+            <h3 class="categories-title">Choose Your Path</h3>
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="general">
+                    <i class="fas fa-globe"></i>
+                    General
+                </button>
+                <button class="category-btn" data-category="love">
+                    <i class="fas fa-heart"></i>
+                    Love
+                </button>
+                <button class="category-btn" data-category="career">
+                    <i class="fas fa-briefcase"></i>
+                    Career
+                </button>
+                <button class="category-btn" data-category="money">
+                    <i class="fas fa-coins"></i>
+                    Money
+                </button>
+            </div>
+        </div>
+
+        <div class="crystal-ball-container">
+            <div class="crystal-ball" id="crystalBall">
+                <div class="crystal-inner">
+                    <div class="crystal-glow"></div>
+                    <div class="crystal-reflection"></div>
+                </div>
+            </div>
+            <div class="crystal-base"></div>
+        </div>
+
+        <div class="input-section">
+            <div class="question-container">
+                <label for="question" class="question-label">Ask your question to the mystical forces...</label>
+                <textarea id="question" class="question-input" placeholder="What does the future hold for me?" rows="3"
+                    maxlength="200"></textarea>
+                <div class="char-counter">
+                    <span id="charCount">0</span>/200
+                </div>
+            </div>
+
+            <button id="revealFortune" class="fortune-btn">
+                <span class="btn-text">🔮 Reveal My Fortune 🔮</span>
+                <div class="btn-glow"></div>
+            </button>
+        </div>
+
+        <div class="fortune-container" id="fortuneContainer">
+            <div class="fortune-frame">
+                <div class="fortune-text" id="fortuneText"></div>
+                <div class="fortune-type" id="fortuneType"></div>
+            </div>
+        </div>
+
+        <div class="loading-container" id="loadingContainer">
+            <div class="loading-text">The spirits are consulting...</div>
+            <div class="loading-dots">
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+            </div>
+        </div>
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source
+            src="data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/7kGQAAAADwAABpAAAACAAADSAAAAEAAAGkAAAAIAAANIAAAAQAAAaQAAAAgAAA0gAAABAAD/+5BkKAAAAZoAAAaQAAACAAADSAAAAGQAAAGkAAAAIAAANIAAAATtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt//uSZCgAAAGkAAABpAAAACAAADSAAAABmgAAAaQAAAgAAA0gAAABAAABpAAAACAAADSAAAAE="
+            type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

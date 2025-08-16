@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Page Not Found | WebDevIn_100Days</title>
+
+  <!-- Favicon Setup -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="manifest" href="./site.webmanifest">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="404 Page Not Found - WebDevIn_100Days. Explore our cosmic journey through 100 web development projects.">
+  <meta name="keywords" content="404, page not found, web development, HTML, CSS, JavaScript">
+  <meta name="author" content="WebDevIn_100Days Team">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="404 - Page Not Found | WebDevIn_100Days">
+  <meta property="og:description" content="Lost in the cosmic void? The page you're seeking doesn't exist. Navigate back to WebDevIn_100Days.">
+  <meta property="og:image" content="https://i.imgur.com/3cztaa9.png">
+  <meta property="og:url" content="https://your-site.com/404.html">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="404 - Page Not Found | WebDevIn_100Days">
+  <meta name="twitter:description" content="Lost in the cosmic void? The page you're seeking doesn't exist. Navigate back to WebDevIn_100Days.">
+  <meta name="twitter:image" content="https://i.imgur.com/3cztaa9.png">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Canvas for Particle Background */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Cosmic Overlay for Dark Theme */
+    body.dark-theme::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Crect x="0" y="0" width="100" height="100" fill="none"/%3E%3Ccircle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/%3E%3C/svg%3E');
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    /* Dark Theme */
+    body.dark-theme {
+      background: linear-gradient(135deg, #0a0a0a 0%, #2a1b3d 50%, #1c2526 100%),
+                  radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.2) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 70%, rgba(255, 46, 99, 0.2) 0%, transparent 50%);
+      color: #ecf0f1;
+    }
+
+    /* Light Theme */
+    body.light-theme {
+      background: linear-gradient(145deg, #e6f3fa, #a3e4d7);
+      color: #333333;
+    }
+
+    /* Error Container */
+    .error-container {
+      text-align: center;
+      padding: 2rem;
+      max-width: 900px;
+      width: 90%;
+      animation: fadeIn 1.5s ease-in-out;
+      z-index: 10;
+    }
+
+    /* Glitch Animation for 404 Text */
+    .error-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: 8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      position: relative;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      animation: glow 2s infinite ease-in-out;
+    }
+
+    body.light-theme .error-title {
+      color: #00a8cc;
+      text-shadow: 0 0 15px rgba(0, 168, 204, 0.7);
+    }
+
+    body.dark-theme .error-title {
+      color: #00d4ff;
+      text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 30px rgba(255, 46, 99, 0.5);
+    }
+
+    .error-title::before,
+    .error-title::after {
+      content: "404";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.5;
+      clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+    }
+
+    .error-title::before {
+      color: #ff2e63;
+      animation: glitch-top 2s infinite linear alternate;
+      transform: translate(-3px, -3px);
+    }
+
+    .error-title::after {
+      color: #f39c12;
+      animation: glitch-bottom 1.5s infinite linear alternate;
+      transform: translate(3px, 3px);
+    }
+
+    /* Error Message */
+    .error-message {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.5;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    body.light-theme .error-message {
+      color: #333333;
+    }
+
+    body.dark-theme .error-message {
+      color: #ecf0f1;
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+    }
+
+    /* 3D Cube Container */
+    .cube-container {
+      perspective: 1000px;
+      margin-bottom: 2rem;
+    }
+
+    .cube {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotateCube 12s infinite linear;
+      margin: 0 auto;
+    }
+
+    .cube:hover {
+      animation-play-state: paused;
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(45deg, rgba(0, 212, 255, 0.3), rgba(255, 46, 99, 0.3));
+      border: 2px solid #ff2e63;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.2rem;
+      color: #ecf0f1;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    }
+
+    body.light-theme .cube-face {
+      background: rgba(0, 168, 204, 0.3);
+      border: 2px solid #007a99;
+      color: #333333;
+      text-shadow: none;
+    }
+
+    .cube-face.front  { transform: rotateY(0deg) translateZ(75px); }
+    .cube-face.back   { transform: rotateY(180deg) translateZ(75px); }
+    .cube-face.right  { transform: rotateY(90deg) translateZ(75px); }
+    .cube-face.left   { transform: rotateY(-90deg) translateZ(75px); }
+    .cube-face.top    { transform: rotateX(90deg) translateZ(75px); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+    /* Back to Home Button */
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 12px 24px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse-dark 2s infinite ease-in-out;
+    }
+
+    body.light-theme .back-home-btn {
+      background-color: #00a8cc;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 168, 204, 0.4);
+    }
+
+    body.light-theme .back-home-btn:hover {
+      background-color: #007a99;
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 168, 204, 0.5);
+    }
+
+    body.dark-theme .back-home-btn {
+      background-color: #00d4ff;
+      color: #2a1b3d;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.7), 0 0 25px rgba(255, 46, 99, 0.5);
+    }
+
+    body.dark-theme .back-home-btn:hover {
+      background-color: #ff2e63;
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 46, 99, 0.8);
+    }
+
+    /* Theme Toggle Button */
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 2rem;
+      z-index: 20;
+    }
+
+    body.light-theme .theme-toggle {
+      color: #333333;
+    }
+
+    body.light-theme .theme-toggle:hover {
+      color: #f39c12;
+    }
+
+    body.dark-theme .theme-toggle {
+      color: #ecf0f1;
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    }
+
+    body.dark-theme .theme-toggle:hover {
+      color: #ff2e63;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateX(-20px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes glitch-top {
+      0% { transform: translate(-3px, -3px); clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%); }
+      50% { transform: translate(-5px, -5px); clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%); }
+      100% { transform: translate(-3px, -3px); clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%); }
+    }
+
+    @keyframes glitch-bottom {
+      0% { transform: translate(3px, 3px); clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%); }
+      50% { transform: translate(5px, 5px); clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); }
+      100% { transform: translate(3px, 3px); clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%); }
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 15px rgba(0, 212, 255, 0.7), 0 0 25px rgba(255, 46, 99, 0.5); }
+      50% { text-shadow: 0 0 25px rgba(0, 212, 255, 0.9), 0 0 35px rgba(255, 46, 99, 0.7); }
+      100% { text-shadow: 0 0 15px rgba(0, 212, 255, 0.7), 0 0 25px rgba(255, 46, 99, 0.5); }
+    }
+
+    @keyframes rotateCube {
+      0% { transform: rotateX(0deg) rotateY(0deg); }
+      100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    @keyframes pulse-dark {
+      0% { transform: scale(1); box-shadow: 0 0 15px rgba(0, 212, 255, 0.7); }
+      50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 212, 255, 0.9); }
+      100% { transform: scale(1); box-shadow: 0 0 15px rgba(0, 212, 255, 0.7); }
+    }
+
+    @keyframes shootingStar {
+      0% { transform: translate(0, 0); opacity: 1; }
+      100% { transform: translate(200px, 200px); opacity: 0; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .error-title {
+        font-size: 5rem;
+      }
+
+      .error-message {
+        font-size: 1.3rem;
+      }
+
+      .cube {
+        width: 100px;
+        height: 100px;
+      }
+
+      .cube-face {
+        width: 100px;
+        height: 100px;
+        font-size: 0.9rem;
+      }
+
+      .cube-face.front  { transform: rotateY(0deg) translateZ(50px); }
+      .cube-face.back   { transform: rotateY(180deg) translateZ(50px); }
+      .cube-face.right  { transform: rotateY(90deg) translateZ(50px); }
+      .cube-face.left   { transform: rotateY(-90deg) translateZ(50px); }
+      .cube-face.top    { transform: rotateX(90deg) translateZ(50px); }
+      .cube-face.bottom { transform: rotateX(-90deg) translateZ(50px); }
+    }
+
+    @media (max-width: 480px) {
+      .error-title {
+        font-size: 3.5rem;
+      }
+
+      .error-message {
+        font-size: 1rem;
+      }
+
+      .theme-toggle {
+        font-size: 1.5rem;
+      }
+
+      .back-home-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="dark-theme">
+  <!-- Canvas for Particle Background -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" title="Toggle theme">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+    </svg>
+  </button>
+
+  <!-- 404 Error Section -->
+  <div class="error-container">
+    <h1 class="error-title">404</h1>
+    <div class="cube-container">
+      <div class="cube">
+        <div class="cube-face front">Error</div>
+        <div class="cube-face back">Lost</div>
+        <div class="cube-face right">Code</div>
+        <div class="cube-face left">Void</div>
+        <div class="cube-face top">404</div>
+        <div class="cube-face bottom">Oops</div>
+      </div>
+    </div>
+    <p class="error-message">Lost in the cosmic void? The page you're seeking is adrift in the digital nebula. Navigate back to our galaxy of 100 web development projects!</p>
+    <a href="index.html" class="back-home-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      Back to Home
+    </a>
+  </div>
+
+  <!-- JavaScript for Theme Toggle and Particle Background -->
+  <script>
+    // Theme Toggle
+    const themeToggle = document.querySelector(".theme-toggle");
+    const body = document.body;
+
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("light-theme");
+      body.classList.toggle("dark-theme");
+      const theme = body.classList.contains("dark-theme") ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", theme);
+      initParticles(); // Reinitialize particles to update colors
+    });
+
+    // Particle Background
+    const canvas = document.getElementById("particle-canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 100;
+    const shootingStars = [];
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.color = body.classList.contains("dark-theme")
+          ? `rgba(${Math.random() * 50 + 200}, 46, 99, ${Math.random() * 0.5 + 0.3})`
+          : "rgba(0, 168, 204, 0.5)";
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.size > 0.2) this.size -= 0.01;
+
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    class ShootingStar {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height / 2;
+        this.size = Math.random() * 2 + 2;
+        this.speedX = Math.random() * 5 + 5;
+        this.speedY = Math.random() * 5 + 5;
+        this.opacity = 1;
+        this.color = body.classList.contains("dark-theme")
+          ? "rgba(0, 212, 255, 1)"
+          : "rgba(0, 168, 204, 1)";
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.opacity -= 0.02;
+      }
+
+      draw() {
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = this.size;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x - this.speedX * 2, this.y - this.speedY * 2);
+        ctx.stroke();
+      }
+    }
+
+    function initParticles() {
+      particles.length = 0;
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((particle, index) => {
+        particle.update();
+        particle.draw();
+        if (particle.size <= 0.2) {
+          particles.splice(index, 1);
+          particles.push(new Particle());
+        }
+      });
+
+      shootingStars.forEach((star, index) => {
+        star.update();
+        star.draw();
+        if (star.opacity <= 0) {
+          shootingStars.splice(index, 1);
+        }
+      });
+
+      if (Math.random() < 0.01 && body.classList.contains("dark-theme")) {
+        shootingStars.push(new ShootingStar());
+      }
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    initParticles();
+    animateParticles();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initParticles();
+    });
+
+    // Update particle colors on theme change
+    themeToggle.addEventListener("click", () => {
+      particles.forEach(particle => {
+        particle.color = body.classList.contains("dark-theme")
+          ? `rgba(${Math.random() * 50 + 200}, 46, 99, ${Math.random() * 0.5 + 0.3})`
+          : "rgba(0, 168, 204, 0.5)";
+      });
+      shootingStars.length = 0; // Clear shooting stars on theme change
+    });
+  </script>
+</body>
+</html>

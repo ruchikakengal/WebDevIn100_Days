@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPlay - Learning Games for Kids</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/games.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>EduPlay</h1>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn active" data-section="home">
+                    <i class="fas fa-home"></i> Home
+                </button>
+                <button class="nav-btn" data-section="games">
+                    <i class="fas fa-gamepad"></i> Games
+                </button>
+                <button class="nav-btn" data-section="progress">
+                    <i class="fas fa-chart-line"></i> Progress
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="welcome-banner">
+                    <h2>Welcome to EduPlay!</h2>
+                    <p>Fun learning games for Class 1-8 students</p>
+                    <div class="grade-selector">
+                        <label for="gradeSelect">Select your class:</label>
+                        <select id="gradeSelect">
+                            <option value="">Choose Grade</option>
+                            <option value="1">Class 1</option>
+                            <option value="2">Class 2</option>
+                            <option value="3">Class 3</option>
+                            <option value="4">Class 4</option>
+                            <option value="5">Class 5</option>
+                            <option value="6">Class 6</option>
+                            <option value="7">Class 7</option>
+                            <option value="8">Class 8</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="game-categories">
+                    <div class="category-card math-card" data-subject="math">
+                        <i class="fas fa-calculator"></i>
+                        <h3>Math Games</h3>
+                        <p>Addition, Subtraction, Multiplication</p>
+                    </div>
+                    <div class="category-card english-card" data-subject="english">
+                        <i class="fas fa-book"></i>
+                        <h3>English Games</h3>
+                        <p>Spelling, Vocabulary, Word Games</p>
+                    </div>
+                    <div class="category-card science-card" data-subject="science">
+                        <i class="fas fa-flask"></i>
+                        <h3>Science Games</h3>
+                        <p>Basic Facts, Quizzes, Experiments</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="games" class="section">
+            <div class="container">
+                <div class="games-header">
+                    <h2>Choose a Game</h2>
+                    <div class="filter-controls">
+                        <button class="filter-btn active" data-filter="all">All Games</button>
+                        <button class="filter-btn" data-filter="math">Math</button>
+                        <button class="filter-btn" data-filter="english">English</button>
+                        <button class="filter-btn" data-filter="science">Science</button>
+                    </div>
+                </div>
+
+                <div class="games-grid" id="gamesGrid">
+
+                </div>
+            </div>
+        </section>
+
+        <section id="progress" class="section">
+            <div class="container">
+                <h2>Your Progress</h2>
+                <div class="progress-stats" id="progressStats">
+                </div>
+                <div class="achievements" id="achievements">
+                </div>
+            </div>
+        </section>
+
+        <div id="gameModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="gameTitle"></h3>
+                    <button class="close-btn" id="closeGame">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="gameInstructions" class="game-instructions"></div>
+                    <div id="gameArea" class="game-area"></div>
+                    <div id="gameControls" class="game-controls"></div>
+                    <div id="gameScore" class="game-score">
+                        <span>Score: <span id="currentScore">0</span></span>
+                        <span>Time: <span id="gameTimer">0</span>s</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="successModal" class="modal success-modal">
+            <div class="modal-content">
+                <div class="success-content">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Congratulations!</h3>
+                    <p id="successMessage"></p>
+                    <div class="success-stats" id="successStats"></div>
+                    <button id="playAgain" class="btn btn-primary">Play Again</button>
+                    <button id="backToGames" class="btn btn-secondary">Back to Games</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/sounds.js"></script>
+    <script src="js/utils/storage.js"></script>
+    <script src="js/utils/audio.js"></script>
+    <script src="js/games/math.js"></script>
+    <script src="js/games/english.js"></script>
+    <script src="js/games/science.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

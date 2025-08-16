@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick-Up Line Machine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <div class="sparkles" id="sparkles"></div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">💘 Pick-Up Line Machine 💘</h1>
+            <p class="subtitle">Powered by Love, Laughter, and a Little Bit of Cheesy Charm</p>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="nameInput" class="input-label">✨ Enter a name or theme:</label>
+                    <input type="text" id="nameInput" class="name-input"
+                        placeholder="Type a name or keyword like 'stars', 'coffee'...">
+                </div>
+
+                <div class="mood-section">
+                    <h3 class="mood-title">Choose your vibe:</h3>
+                    <div class="mood-grid">
+                        <button class="mood-btn active" data-mood="sweet">
+                            <span class="mood-icon">❤️</span>
+                            <span class="mood-text">Sweet</span>
+                        </button>
+                        <button class="mood-btn" data-mood="cheesy">
+                            <span class="mood-icon">🧀</span>
+                            <span class="mood-text">Cheesy</span>
+                        </button>
+                        <button class="mood-btn" data-mood="funny">
+                            <span class="mood-icon">😂</span>
+                            <span class="mood-text">Funny</span>
+                        </button>
+                        <button class="mood-btn" data-mood="bold">
+                            <span class="mood-icon">🔥</span>
+                            <span class="mood-text">Bold</span>
+                        </button>
+                        <button class="mood-btn" data-mood="nerdy">
+                            <span class="mood-icon">🤓</span>
+                            <span class="mood-text">Nerdy</span>
+                        </button>
+                        <button class="mood-btn" data-mood="romantic">
+                            <span class="mood-icon">🌹</span>
+                            <span class="mood-text">Romantic</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="generate-btn" id="generateBtn">
+                    <i class="fas fa-heart"></i>
+                    Flirt Me Up!
+                </button>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="pickup-line-card">
+                    <div class="card-header">
+                        <h3>Your Perfect Line:</h3>
+                        <button class="favorite-btn" id="favoriteBtn" title="Add to favorites">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="pickup-line" id="pickupLine"></div>
+                    <div class="card-actions">
+                        <button class="action-btn try-another-btn" id="tryAnotherBtn">
+                            <i class="fas fa-sync-alt"></i>
+                            Try Another
+                        </button>
+                        <button class="action-btn copy-btn" id="copyBtn">
+                            <i class="fas fa-copy"></i>
+                            Copy
+                        </button>
+                        <button class="action-btn share-btn" id="shareBtn">
+                            <i class="fas fa-share-alt"></i>
+                            Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="favorites-section">
+                <button class="favorites-toggle" id="favoritesToggle">
+                    <i class="fas fa-heart"></i>
+                    My Favorites (<span id="favoritesCount">0</span>)
+                </button>
+                <div class="favorites-list" id="favoritesList" style="display: none;">
+                    <div class="favorites-empty" id="favoritesEmpty">
+                        <i class="far fa-heart"></i>
+                        <p>No favorites yet! Start collecting your favorite lines!</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="toast" id="copyToast">
+        <i class="fas fa-check"></i>
+        Copied to clipboard!
+    </div>
+
+    <div class="modal-overlay" id="shareModal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Share Your Line</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <button class="share-option" onclick="shareToWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </button>
+                <button class="share-option" onclick="shareToTwitter()">
+                    <i class="fab fa-twitter"></i>
+                    Twitter
+                </button>
+                <button class="share-option" onclick="shareGeneric()">
+                    <i class="fas fa-share"></i>
+                    More Options
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

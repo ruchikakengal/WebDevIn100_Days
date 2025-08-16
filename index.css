@@ -24,7 +24,12 @@
     background-color: #1abc9c; /* Teal hover for burger menu */
     color: #ffffff;
   }
-
+/* Styling for the animated cursor */
+/* Styling for the animated cursor */
+.hero-subtitle .typed-cursor {
+    color: #FFF; /* Or any color that looks good on your hero background */
+    font-size: 1.2rem;
+}
   /* Buttons */
   button,
   .button {
@@ -669,6 +674,8 @@ body {
   padding: 3rem 1rem;
   border-top: 2px solid #ddd;
   font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #c8f4c3, #88e988);
+
 }
 
 .footer-wrapper {
@@ -705,7 +712,7 @@ body {
 
 .footer-text {
   color: #555;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   margin-bottom: 0.75rem;
   line-height: 1.5;
 }
@@ -731,18 +738,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 50px;
+  aspect-ratio: 1;
+  font-size: 1.75rem;
   border-radius: 50%;
   color: #fff;
   transition: background-color 0.3s ease, transform 0.2s ease;
   text-decoration: none;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
 }
 
-.icon-link:hover {
+.icon-link:hover{
+  rotate: 360deg;
+}
+
+/* .icon-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+} */
 
 /* Instagram - gradient pink/orange */
 .icon-link[href*="instagram"] {
@@ -778,13 +795,16 @@ body {
 
 .nav-links {
   margin-top: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+}
+
+.nav-links .vertical-links{
+  display: inline-flex;
+  gap: 2rem;
 }
 
 .nav-btn {
   display: inline-flex;
+  margin: 0.4rem;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roast Master</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <meta name="description" content="Get hilariously roasted with personalized savage burns based on your info!">
+</head>
+
+<body>
+    <div class="fire-particles" id="fireParticles"></div>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="title">
+                <i class="fas fa-fire"></i>
+                Roast Master
+                <i class="fas fa-fire"></i>
+            </h1>
+            <p class="subtitle">Where egos come to die and feelings get crispy 🔥</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="form-section" id="formSection">
+                <div class="form-card">
+                    <h2>🎯 Tell Us About Yourself (So We Can Destroy You)</h2>
+                    <form id="roastForm" class="roast-form">
+                        <div class="form-group">
+                            <label for="name">
+                                <i class="fas fa-user"></i>
+                                Name (What should we call you while roasting?)
+                            </label>
+                            <input type="text" id="name" name="name" required
+                                placeholder="Your soon-to-be-roasted name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="age">
+                                <i class="fas fa-calendar-alt"></i>
+                                Age (How many years of poor decisions?)
+                            </label>
+                            <input type="number" id="age" name="age" min="13" max="100" required
+                                placeholder="Your age of wisdom (or lack thereof)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hobby">
+                                <i class="fas fa-gamepad"></i>
+                                Hobby (Your time-wasting specialty)
+                            </label>
+                            <input type="text" id="hobby" name="hobby" required
+                                placeholder="What you do instead of being productive">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="job">
+                                <i class="fas fa-briefcase"></i>
+                                Job/School (Your daily suffering)
+                            </label>
+                            <input type="text" id="job" name="job" required
+                                placeholder="Where you pretend to be important">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="food">
+                                <i class="fas fa-utensils"></i>
+                                Favorite Food (Your comfort addiction)
+                            </label>
+                            <input type="text" id="food" name="food" required
+                                placeholder="What you stuff your face with">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dream">
+                                <i class="fas fa-cloud"></i>
+                                Dream/Goal (Your impossible fantasy)
+                            </label>
+                            <input type="text" id="dream" name="dream" required placeholder="What you'll never achieve">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="habit">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Worst Habit (Your shameful secret)
+                            </label>
+                            <input type="text" id="habit" name="habit" required
+                                placeholder="What makes people avoid you">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="roast-level-label">
+                                <i class="fas fa-fire"></i>
+                                Choose Your Destruction Level
+                            </label>
+                            <div class="roast-levels">
+                                <label class="roast-level">
+                                    <input type="radio" name="roastLevel" value="light" checked>
+                                    <span class="level-indicator light">☕ Light Roast</span>
+                                    <small>Gentle burns for sensitive souls</small>
+                                </label>
+                                <label class="roast-level">
+                                    <input type="radio" name="roastLevel" value="medium">
+                                    <span class="level-indicator medium">🔥 Medium Roast</span>
+                                    <small>Some real heat, prepare for damage</small>
+                                </label>
+                                <label class="roast-level">
+                                    <input type="radio" name="roastLevel" value="nuclear">
+                                    <span class="level-indicator nuclear">☢️ Nuclear Roast</span>
+                                    <small>Absolute annihilation, no survivors</small>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="roast-mode-label">
+                                <i class="fas fa-bolt"></i>
+                                Select Roast Mode
+                            </label>
+                            <div class="roast-modes">
+                                <button type="button" class="roast-btn single-roast" data-mode="single">
+                                    <i class="fas fa-bullseye"></i>
+                                    Single Roast
+                                </button>
+                                <button type="button" class="roast-btn rapid-roast" data-mode="rapid">
+                                    <i class="fas fa-rocket"></i>
+                                    Rapid Roast (3-5x)
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="roast-section" id="roastSection" style="display: none;">
+                <div class="roast-card">
+                    <div class="roast-header">
+                        <h2 id="roastTitle">🔥 Time for Your Roasting! 🔥</h2>
+                        <div class="reaction-image">
+                            <img id="reactionImg" src="" alt="Reaction" class="reaction-gif">
+                        </div>
+                    </div>
+
+                    <div class="roast-content">
+                        <div id="roastDisplay" class="roast-text"></div>
+                    </div>
+
+                    <div class="roast-actions">
+                        <button id="roastAgain" class="action-btn">
+                            <i class="fas fa-redo"></i>
+                            Roast Me Again
+                        </button>
+                        <button id="saveRoast" class="action-btn">
+                            <i class="fas fa-heart"></i>
+                            Save This Roast
+                        </button>
+                        <button id="shareRoast" class="action-btn">
+                            <i class="fas fa-share"></i>
+                            Share the Burn
+                        </button>
+                        <button id="newVictim" class="action-btn secondary">
+                            <i class="fas fa-user-plus"></i>
+                            New Victim
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="saved-section" id="savedSection">
+                <div class="saved-card">
+                    <h3>
+                        <i class="fas fa-fire"></i>
+                        Your Collection of Burns
+                        <span id="savedCount" class="count-badge">0</span>
+                    </h3>
+                    <div id="savedRoasts" class="saved-roasts"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-fire fa-spin"></i>
+            <p>Preparing your destruction...</p>
+        </div>
+    </div>
+
+    <script src="roast-templates.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

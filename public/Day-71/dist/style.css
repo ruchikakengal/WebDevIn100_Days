@@ -1,0 +1,233 @@
+@import url(https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap);
+
+*,
+:after,
+:before {
+    box-sizing: border-box
+}
+
+* {
+    margin: 0
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden
+}
+
+canvas,
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    overflow-wrap: break-word
+}
+
+#__next,
+#root {
+    isolation: isolate
+}
+
+body {
+    color: #101820;
+    font-family: Orbitron, sans-serif;
+    font-size: 20px;
+    height: 100vh;
+    width: 100vw
+}
+
+main {
+    flex-direction: column;
+    height: 100%;
+    position: relative
+}
+
+header,
+main {
+    display: flex;
+    width: 100%
+}
+
+header {
+    font-size: 50px;
+    height: 15%;
+    justify-content: space-between;
+    padding: 15px 50px 0 30px
+}
+
+#grid-container {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    height: 85%;
+    justify-content: space-evenly;
+    padding: 0 30px 30px;
+    width: 100%
+}
+
+#computer-score-container,
+#human-score-container {
+    align-items: center;
+    border: solid dimgray;
+    border-width: 2px 2px 0;
+    display: flex;
+    font-size: 24px;
+    height: 45px;
+    justify-content: center;
+    width: 100.2%
+}
+
+#computer-grid-container,
+#human-grid-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center
+}
+
+.grid {
+    border: 1px solid dimgray;
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 40px);
+    height: 400px;
+    width: 400px
+}
+
+.computer-grid-cell,
+.human-grid-cell {
+    align-items: center;
+    border: 1px solid dimgray;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    user-select: none
+}
+
+.computer-grid-cell.clicked {
+    cursor: default
+}
+
+#ships-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    height: 100%;
+    justify-content: center;
+    width: 30%
+}
+
+#instructions {
+    font-family: Roboto, sans-serif
+}
+
+#ships {
+    border: 2px solid dimgray;
+    border-radius: 10px;
+    flex-direction: column;
+    height: 50%;
+    justify-content: space-evenly;
+    padding: 10px;
+    width: 80%
+}
+
+#ships,
+.ship {
+    align-items: center;
+    display: flex
+}
+
+.ship {
+    background-color: #3cb371;
+    border: 2px solid dimgray;
+    display: none;
+    height: 40px;
+    justify-content: flex-start
+}
+
+#ship-1 {
+    display: flex;
+    width: 40px
+}
+
+#ship-2 {
+    width: 80px
+}
+
+#ship-3 {
+    width: 120px
+}
+
+#ship-4 {
+    width: 160px
+}
+
+#ship-5 {
+    width: 200px
+}
+
+.drag {
+    color: dimgray;
+    cursor: grab;
+    user-select: none
+}
+
+.drag:hover {
+    color: #101820
+}
+
+#modal {
+    align-items: center;
+    background-color: hsla(0, 0%, 100%, .85);
+    border-radius: 10px;
+    flex-direction: column;
+    font-size: 22px;
+    height: 50%;
+    justify-content: space-evenly;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%
+}
+
+#replay-button {
+    background-color: #101820;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px 30px
+}
+
+#winner {
+    font-size: 30px
+}
+
+#game-over {
+    font-size: 40px;
+    line-height: 30px
+}
+
+/*# sourceMappingURL=style.css.map*/

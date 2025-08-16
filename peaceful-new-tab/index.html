@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Tab</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <header class="header glass-card">
+      <div class="greeting-section">
+        <h1 id="greeting" class="greeting-text">Loading...</h1>
+        <button id="resetNameBtn" class="btn">✨ Change Name</button>
+      </div>
+    </header>
+
+    <section class="quote-section glass-card">
+      <div class="quote-container">
+        <p id="quote" class="quote-text">Loading quote...</p>
+        <button id="refreshQuote" class="btn">🔄 New Quote</button>
+      </div>
+    </section>
+
+    <section class="sites-section glass-card">
+      <h2 class="section-title">🚀 Quick Sites</h2>
+      <div class="sites-container">
+        <ul id="top-sites-list" class="sites-grid"></ul>
+        <form id="add-site-form" class="add-site-form">
+          <input type="text" id="site-name" class="form-input" placeholder="Site name" required/>
+          <input type="url" id="site-url" class="form-input" placeholder="https://example.com" required/>
+          <button type="submit" class="btn">➕ Add Site</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="settings-section glass-card">
+      <h2 class="section-title">⚙️ Settings</h2>
+      <div class="settings-container">
+        <div class="setting-item">
+          <span><h3>Show pets on all websites</h3></span>
+          <div>
+            <input type="checkbox" id="petsToggle" checked/>
+          </div>
+        </div>
+        <button id="clearData" class="btn">🗑️ Clear All Data</button>
+      </div>
+    </section>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klondike Solitaire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cards.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <div id="game-header">
+            <div id="game-info">
+                <div class="info-group">
+                    <span class="label">Score:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="info-group">
+                    <span class="label">Moves:</span>
+                    <span id="moves">0</span>
+                </div>
+                <div class="info-group">
+                    <span class="label">Time:</span>
+                    <span id="timer">00:00</span>
+                </div>
+            </div>
+            <div id="game-controls">
+                <button id="restart-btn" class="control-btn">New Game</button>
+                <button id="undo-btn" class="control-btn" disabled>Undo</button>
+                <button id="hint-btn" class="control-btn">💡 Hint</button>
+                <button id="auto-complete-btn" class="control-btn" disabled>✨ Auto</button>
+                <button id="sound-toggle" class="control-btn">🔊</button>
+                <button id="music-toggle" class="control-btn">🎵</button>
+            </div>
+        </div>
+
+        <div id="game-board">
+            <div id="top-row">
+                <div class="card-area">
+                    <div id="stock-pile" class="pile"></div>
+                </div>
+                <div class="card-area">
+                    <div id="waste-pile" class="pile"></div>
+                </div>
+                <div class="spacer"></div>
+                <div class="card-area">
+                    <div id="foundation-hearts" class="foundation pile" data-suit="hearts"></div>
+                </div>
+                <div class="card-area">
+                    <div id="foundation-diamonds" class="foundation pile" data-suit="diamonds"></div>
+                </div>
+                <div class="card-area">
+                    <div id="foundation-clubs" class="foundation pile" data-suit="clubs"></div>
+                </div>
+                <div class="card-area">
+                    <div id="foundation-spades" class="foundation pile" data-suit="spades"></div>
+                </div>
+            </div>
+
+            <div id="tableau">
+                <div class="tableau-column" data-column="0"></div>
+                <div class="tableau-column" data-column="1"></div>
+                <div class="tableau-column" data-column="2"></div>
+                <div class="tableau-column" data-column="3"></div>
+                <div class="tableau-column" data-column="4"></div>
+                <div class="tableau-column" data-column="5"></div>
+                <div class="tableau-column" data-column="6"></div>
+            </div>
+        </div>
+
+        <div id="win-overlay" class="hidden">
+            <div id="win-message">
+                <h2>Congratulations!</h2>
+                <p>You won the game!</p>
+                <p>Final Score: <span id="final-score"></span></p>
+                <p>Time: <span id="final-time"></span></p>
+                <p>Moves: <span id="final-moves"></span></p>
+                <button id="new-game-btn" class="control-btn">Play Again</button>
+                <div class="win-stats">
+                    <p><strong>Congratulations!</strong></p>
+                    <p>You completed the game in <span id="win-moves"></span> moves!</p>
+                    <p>Your time was <span id="win-time"></span></p>
+                </div>
+            </div>
+            <div id="confetti-container"></div>
+            <div id="fireworks-container"></div>
+        </div>
+    </div>
+
+    <div id="loading-screen">
+        <div class="loading-content">
+            <h1>Klondike Solitaire</h1>
+            <div class="loading-spinner"></div>
+            <p>Shuffling cards...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

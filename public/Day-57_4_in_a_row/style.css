@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    font-weight: 300;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.current-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-label {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.player-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.score-board {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.score-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.player-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #34495e;
+}
+
+.player-red {
+    background: linear-gradient(135deg, #f8bbd9, #f48fb1);
+    box-shadow: 0 2px 4px rgba(248, 187, 217, 0.3);
+}
+
+.player-yellow {
+    background: linear-gradient(135deg, #2196f3, #1976d2);
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.3);
+}
+
+.game-board-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 8px;
+    background: #34495e;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    background: #ecf0f1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cell:hover {
+    background: #bdc3c7;
+    transform: scale(1.05);
+}
+
+.cell.red {
+    background: linear-gradient(135deg, #f8bbd9, #f48fb1);
+    animation: dropPiece 0.5s ease-out;
+}
+
+.cell.yellow {
+    background: linear-gradient(135deg, #2196f3, #1976d2);
+    animation: dropPiece 0.5s ease-out;
+}
+
+@keyframes dropPiece {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.cell.winning {
+    animation: winningPulse 1s ease-in-out infinite;
+}
+
+@keyframes winningPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+    }
+}
+
+.drop-indicator {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    pointer-events: none;
+}
+
+.drop-indicator .indicator {
+    width: 60px;
+    height: 10px;
+    background: rgba(46, 204, 113, 0.5);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.drop-indicator .indicator.show {
+    opacity: 1;
+}
+
+.game-status {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    min-height: 30px;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+    color: white;
+    box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    margin: 15% auto;
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.winner-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.winner-info .player-circle {
+    width: 30px;
+    height: 30px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .score-board {
+        justify-content: center;
+    }
+    
+    .cell {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .game-board {
+        padding: 15px;
+        gap: 6px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cell {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .game-board {
+        padding: 10px;
+        gap: 4px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .modal-content {
+        margin: 20% auto;
+        padding: 30px 20px;
+    }
+} 

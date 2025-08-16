@@ -1,0 +1,535 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    background: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Cosmic Background */
+.cosmic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="0.5" fill="white" opacity="0.8"/><circle cx="80" cy="30" r="0.3" fill="white" opacity="0.6"/><circle cx="40" cy="70" r="0.4" fill="white" opacity="0.7"/><circle cx="90" cy="80" r="0.2" fill="white" opacity="0.5"/><circle cx="10" cy="90" r="0.3" fill="white" opacity="0.6"/></svg>') repeat;
+    animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.lightning {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+    animation: pulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 0.4; transform: scale(1.1); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.1; }
+    100% { opacity: 0.3; }
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.hero-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+}
+
+.main-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2rem, 5vw, 4rem);
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 3s ease-in-out infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+}
+
+@keyframes rainbow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Input Section */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#nameInput {
+    padding: 15px 20px;
+    border: 2px solid #4ecdc4;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.1rem;
+    font-family: 'Comic Neue', cursive;
+    width: 300px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+#nameInput:focus {
+    outline: none;
+    border-color: #ff6b6b;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+}
+
+#nameInput::placeholder {
+    color: #b0b0b0;
+}
+
+.generate-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    font-size: 1.1rem;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.generate-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+}
+
+.generate-btn:active {
+    transform: scale(0.95);
+}
+
+.generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    text-align: center;
+    min-height: 20px;
+}
+
+/* Loading Section */
+.loading-section {
+    display: none;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.loading-section.active {
+    display: block;
+}
+
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #4ecdc4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Result Section */
+.result-section {
+    display: none;
+    margin: 40px 0;
+}
+
+.result-section.active {
+    display: block;
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.superhero-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 800px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.superhero-name {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.power-level {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.power-star {
+    font-size: 1.5rem;
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.card-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+@media (min-width: 768px) {
+    .card-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .origin-section {
+        grid-column: 1 / -1;
+    }
+}
+
+.powers-section h3,
+.costume-section h3,
+.origin-section h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    color: #4ecdc4;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.powers-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.power-tag {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.costume-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.color-palette {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.color-swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.costume-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+.origin-story {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    text-align: justify;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #4ecdc4;
+}
+
+/* Card Actions */
+.card-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.download-btn {
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    color: white;
+}
+
+.save-btn {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    color: white;
+}
+
+.regenerate-btn {
+    background: linear-gradient(45deg, #96ceb4, #85c7b3);
+    color: white;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn:active {
+    transform: translateY(0);
+}
+
+/* Favorites Section */
+.favorites-section {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    display: none;
+}
+
+.favorites-section.active {
+    display: block;
+}
+
+.favorites-section h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    color: #4ecdc4;
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.favorites-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.favorite-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.favorite-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.favorite-name {
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+    color: #ff6b6b;
+    margin-bottom: 10px;
+}
+
+.favorite-powers {
+    font-size: 0.9rem;
+    color: #b0b0b0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .input-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #nameInput {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+    }
+    
+    .superhero-card {
+        padding: 20px;
+    }
+    
+    .card-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .action-btn {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .superhero-name {
+        font-size: 2rem;
+    }
+    
+    .favorites-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation utilities */
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.bounce-in {
+    animation: bounceIn 0.8s ease-out;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

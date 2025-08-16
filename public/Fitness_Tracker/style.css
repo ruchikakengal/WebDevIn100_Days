@@ -1,0 +1,219 @@
+:root {
+  --bg-light: #fdfdff;
+  --bg-dark: #111;
+  --primary-light: #00bcd4;
+  --primary-dark: #26c6da;
+  --accent-light: #ff4081;
+  --accent-dark: #ff80ab;
+  --text-light: #222;
+  --text-dark: #eee;
+  --card-light: #ffffff;
+  --card-dark: #1e1e1e;
+  --border-light: #ccc;
+  --border-dark: #444;
+  --box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  transition: 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+header {
+  background: linear-gradient(90deg, var(--primary-light), var(--accent-light));
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: var(--box-shadow);
+}
+
+body.dark-mode header {
+  background: linear-gradient(90deg, var(--primary-dark), var(--accent-dark));
+}
+
+#toggleMode {
+  background: white;
+  color: var(--primary-light);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+body.dark-mode #toggleMode {
+  background: var(--accent-dark);
+  color: white;
+}
+
+#toggleMode:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--primary-light);
+}
+
+.tracker-container {
+  max-width: 1020px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Section Cards */
+.input-section, .chart-section {
+  background-color: var(--card-light);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid var(--border-light);
+  box-shadow: var(--box-shadow);
+  transition: 0.3s ease;
+}
+
+body.dark-mode .input-section,
+body.dark-mode .chart-section {
+  background-color: var(--card-dark);
+  border: 2px solid var(--border-dark);
+}
+
+h2 {
+  color: var(--primary-light);
+  margin-bottom: 1rem;
+}
+
+body.dark-mode h2 {
+  color: var(--primary-dark);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.input-box input {
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  font-size: 1rem;
+}
+
+body.dark-mode .input-box input {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid var(--border-dark);
+}
+
+button[type="submit"] {
+  padding: 0.8rem;
+  background: var(--primary-light);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--accent-light);
+  transform: scale(1.03);
+}
+
+.charts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.chart-box {
+  background-color: var(--card-light);
+  padding: 1rem;
+  border-radius: 14px;
+  border: 2px dashed var(--primary-light);
+  box-shadow: var(--box-shadow);
+}
+
+body.dark-mode .chart-box {
+  background-color: var(--card-dark);
+  border: 2px dashed var(--primary-dark);
+}
+
+canvas {
+  width: 100% !important;
+  max-height: 300px;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+body.dark-mode footer {
+  background-color: #181818;
+  color: #bbb;
+}
+/* Other styles above… */
+
+body {
+  background-color: #ffffff;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #eeeeee;
+}
+
+.dark-mode input,
+.dark-mode button,
+.dark-mode .container,
+.dark-mode .progress-box {
+  background-color: #1e1e1e;
+  color: #eee;
+  border: 1px solid #444;
+}
+
+#toggle-mode {
+  float: right;
+  margin-bottom: 15px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+
+@media (min-width: 768px) {
+  .charts {
+    flex-direction: row;
+  }
+
+  .chart-box {
+    flex: 1;
+  }
+}

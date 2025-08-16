@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="fav.svg" type="image/x-icon">
+    <title>Helicopter Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Helicopter Game</h1>
+            <div class="score-display">
+                <span>Score: <span id="score">0</span></span>
+                <span>Best: <span id="best-score">0</span></span>
+            </div>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            
+            <div id="game-over-screen" class="game-over-screen hidden">
+                <div class="game-over-content">
+                    <h2>Game Over!</h2>
+                    <p>Your Score: <span id="final-score">0</span></p>
+                    <p>Best Score: <span id="final-best-score">0</span></p>
+                    <button id="restart-btn" class="restart-btn">Play Again</button>
+                </div>
+            </div>
+            
+            <div id="start-screen" class="start-screen">
+                <div class="start-content">
+                    <h2>Helicopter Game</h2>
+                    <p>Press SPACEBAR or CLICK to fly up</p>
+                    <p>Avoid the walls and score points!</p>
+                    <button id="start-btn" class="start-btn">Start Game</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls-info">
+            <p>Controls: SPACEBAR or LEFT CLICK to fly up</p>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

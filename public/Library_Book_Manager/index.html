@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Library Book Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container" tabindex="0">
+    <header>
+      <h1>Library Book Manager 📚</h1>
+      <button id="toggleMode" aria-label="Toggle dark/light mode">🌙</button>
+    </header>
+    <main>
+      <section class="add-book-section">
+        <h2>Add New Book</h2>
+        <form id="bookForm" aria-label="Add or edit book form">
+          <input type="hidden" id="bookId" value="" />
+          <div class="form-row">
+            <label for="title">Title<span class="required">*</span>:</label>
+            <input type="text" id="title" name="title" placeholder="Book title" required autocomplete="off" />
+          </div>
+          <div class="form-row">
+            <label for="author">Author<span class="required">*</span>:</label>
+            <input type="text" id="author" name="author" placeholder="Book author" required autocomplete="off" />
+          </div>
+          <div class="form-row">
+            <label for="status">Status:</label>
+            <select id="status" name="status" aria-label="Book read status">
+              <option value="Unread">Unread</option>
+              <option value="Reading">Reading</option>
+              <option value="Read">Read</option>
+            </select>
+          </div>
+          <div class="form-row actions-row">
+            <button type="submit" id="submitBtn">Add Book</button>
+            <button type="button" id="cancelBtn" hidden>Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="books-list-section" aria-live="polite" aria-atomic="true">
+        <h2>My Books</h2>
+        <table id="booksTable" aria-label="List of books">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="booksTableBody">
+            <!-- Book rows here -->
+          </tbody>
+        </table>
+        <p id="emptyMessage" class="empty-message">Your library is empty. Add some books above!</p>
+      </section>
+    </main>
+    <footer>
+      <small>by Tanu Chandravanshi | SSOC'25</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

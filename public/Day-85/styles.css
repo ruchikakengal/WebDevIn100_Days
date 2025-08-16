@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background: #000;
+    color: #00ff41;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: auto;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to right, #004400, #001100);
+    color: #00ff41;
+    box-shadow: 0 0 15px #00ff41;
+}
+
+.header-title {
+    font-size: 2em;
+    text-shadow: 0 0 10px #00ff41;
+}
+
+.header-buttons button {
+    background: none;
+    border: 2px solid #00ff41;
+    color: #00ff41;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header-buttons button:hover {
+    background: #00ff41;
+    color: #000;
+    box-shadow: 0 0 15px #00ff41;
+}
+
+/* Main Game Area */
+main {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 2px;
+    border: 2px solid #00ff41;
+    padding: 10px;
+    background-color: #001100;
+    box-shadow: 0 0 20px #00ff41;
+}
+
+.sudoku-cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #00ff41;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    background: #000;
+    color: #00ff41;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sudoku-cell[data-given="true"] {
+    color: #00ff41; /* Green for given numbers */
+}
+
+.sudoku-cell[data-user="true"] {
+    color: #00bfff; /* Bright blue for user input */
+}
+
+.sudoku-cell:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #00ff41;
+}
+
+/* Grid Separations for 3x3 Subgrids */
+.sudoku-cell:nth-child(3n+1) {
+    border-left: 3px solid #00ff41;
+}
+
+.sudoku-cell:nth-child(-n+3), .sudoku-cell:nth-child(n+55) {
+    border-top: 3px solid #00ff41;
+}
+
+/* Sidebar */
+.sidebar {
+    margin-left: 30px;
+    padding: 15px;
+    background: #001100;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #00ff41;
+    color: #00ff41;
+}
+
+.sidebar h3 {
+    text-shadow: 0 0 10px #00ff41;
+    margin-bottom: 10px;
+}
+
+button, select {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 2px solid #00ff41;
+    background: none;
+    color: #00ff41;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover, select:hover {
+    background: #00ff41;
+    color: #000;
+    box-shadow: 0 0 15px #00ff41;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to right, #001100, #004400);
+    text-align: center;
+    color: #00ff41;
+    margin-top: 20px;
+    box-shadow: 0 0 15px #00ff41;
+}
+
+footer a {
+    color: #00ff41;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+/* Modal Windows */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #001100;
+    padding: 20px;
+    box-shadow: 0 0 30px #00ff41;
+    z-index: 1000;
+    border: 2px solid #00ff41;
+    color: #00ff41;
+}
+
+.modal-content {
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #00ff41;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ffffff;
+}
+
+.dark-mode {
+    background-color: #000000 !important;
+    color: #00ff41 !important;
+}
+/* Classic Theme */
+.classic-theme body {
+    background: #f5f5dc;
+    color: #000;
+}
+
+.classic-theme .sudoku-board {
+    border: 2px solid #000;
+    box-shadow: 0 0 20px #000;
+}
+
+.classic-theme .sudoku-cell {
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+}
+
+/* Galaxy Theme */
+.galaxy-theme body {
+    background: radial-gradient(circle, #000428, #004e92);
+    color: #ffffff;
+}
+
+.galaxy-theme .sudoku-board {
+    border: 2px solid #6a1b9a;
+    box-shadow: 0 0 20px #6a1b9a;
+    background-color: #1a237e;
+}
+.galaxy-theme .sudoku-cell {
+    border: 1px solid #6a1b9a;
+    background: #000428;
+    color: #ffffff;
+}
+
+/* Modern Theme */
+.modern-theme body {
+    background: #eceff1;
+    color: #37474f;
+}
+
+.modern-theme .sudoku-board {
+    border: 2px solid #37474f;
+    box-shadow: 0 0 20px #37474f;
+    background-color: #cfd8dc;
+}
+
+.modern-theme .sudoku-cell {
+    border: 1px solid #37474f;
+    background: #ffffff;
+    color: #37474f;
+}
