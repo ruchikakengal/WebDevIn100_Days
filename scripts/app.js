@@ -1069,15 +1069,33 @@ class WebDev100Days {
 
  {
   originalDay: 165,
-  name: "Memory Grid Rush",
-  description: "Fast-paced memory game where players repeat flashing grid patterns that get progressively harder with each level.",
-  demoLink: "./public/Memory_Grid_Rush/index.html",
-  category: "games",
-  technologies: ["HTML", "CSS", "JavaScript"],
+    name: "Memory Grid Rush",
+      description: "Fast-paced memory game where players repeat flashing grid patterns that get progressively harder with each level.",
+        demoLink: "./public/Memory_Grid_Rush/index.html",
+          category: "games",
+            technologies: ["HTML", "CSS", "JavaScript"],
+              features: [
+                "Dynamic grid scaling, pattern generation & replay, dark/light mode, score & level tracking, keyboard accessibility, animated feedback, and replay option."
+              ]
+
+},
+{
+  originalDay: 166,
+  name: "Responsive Landing Page",
+  description: "A modern, responsive landing page designed with clean UI/UX principles and optimized for all devices.",
+  demoLink: "./public/LandingPage/index.html",
+  category: "websites",
+  technologies: ["HTML", "CSS (Tailwind)", "JavaScript", "FontAwesome"],
   features: [
-  "Dynamic grid scaling, pattern generation & replay, dark/light mode, score & level tracking, keyboard accessibility, animated feedback, and replay option."
+    "Fully responsive design for desktop and mobile layout",
+    "ScrollReveal animations for smooth user experience",
+    "Company logos (Twitter, Instagram, LinkedIn) displayed for trust-building",
+    "Gradient background and modern UI with TailwindCSS"
   ]
 }
+
+
+
 
     ];
 
