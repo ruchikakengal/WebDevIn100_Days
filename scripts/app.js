@@ -1101,7 +1101,18 @@ class WebDev100Days {
   "Dynamic grid scaling, pattern generation & replay, dark/light mode, score & level tracking, keyboard accessibility, animated feedback, and replay option."
   ]
 }
-
+,
+ {
+  originalDay: 167,
+  name: "AI phone chatbot",
+  description: "An AI phone chatbot where they provide suggestion for user accoridng to there needs.",
+  demoLink: "./public/AI_Phone_Chatbot/index.html",
+  category: "Support",
+  technologies: ["HTML", "CSS", "JavaScript"],
+  features: [
+  "AI chatbot that provides personalized suggestions based on user needs."
+  ]
+}
     ];
 
 this.projects = projectsData.map((project, index) => ({

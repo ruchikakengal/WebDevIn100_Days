@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneGuru - Real AI Phone Recommendation Expert</title>
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- Marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* --- GLOBAL STYLES & CSS VARIABLES --- */
+        :root {
+            /* Default Dark Theme Variables */
+            --primary-bg: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            --secondary-bg: rgba(30, 30, 40, 0.95);
+            --chat-bg: #1e1e2a;
+            --text-color: #f0f0f0;
+            --input-bg: #2d2d3a;
+            --border-color: #444;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --bot-message-bg: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+            --user-message-bg: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --base-font-size: 14px;
+        }
+
+        body.light-theme {
+            --primary-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --secondary-bg: rgba(255, 255, 255, 0.95);
+            --chat-bg: #ffffff;
+            --text-color: #333;
+            --input-bg: #f5f5f5;
+            --border-color: #ddd;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --bot-message-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --user-message-bg: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary-bg);
+            min-height: 100vh;
+            font-size: var(--base-font-size);
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        /* --- ANIMATED BACKGROUND --- */
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .floating-phone {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: float 15s ease-in-out infinite;
+            user-select: none;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            50% { transform: translateY(-80vh) rotate(360deg); }
+            90% { opacity: 1; }
+        }
+
+        /* --- HEADER --- */
+        .header {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+            padding: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 1.5rem; font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .phone-icon {
+            font-size: 2rem; animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .stats { display: flex; gap: 1.5rem; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 1.4rem; font-weight: bold; color: #ffd700; }
+
+        /* --- CONTAINER & LAYOUT (Mobile First) --- */
+        .container {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .dashboard { order: -1; display: flex; flex-direction: column; gap: 1.5rem; }
+
+        /* --- CHAT SECTION --- */
+        .chat-section {
+            background: var(--secondary-bg);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 250px); /* Adjust based on header/footer height */
+            min-height: 500px;
+        }
+        .chat-header { text-align: center; margin-bottom: 1rem; }
+        .chat-title { font-size: 1.8rem; }
+        .chat-subtitle { opacity: 0.8; }
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--chat-bg);
+        }
+
+        /* --- MESSAGES --- */
+        .message {
+            margin-bottom: 1rem; padding: 0.8rem 1rem;
+            border-radius: 18px; position: relative;
+            max-width: 90%; word-wrap: break-word;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: messageSlide 0.5s ease-out;
+        }
+        .message:hover .message-actions { opacity: 1; }
+        .message-actions {
+            position: absolute; top: 5px; right: 8px;
+            display: flex; gap: 5px; opacity: 0; transition: opacity 0.3s ease;
+        }
+        .action-btn {
+            background: rgba(255, 255, 255, 0.2); border: none; border-radius: 50%;
+            width: 28px; height: 28px; cursor: pointer;
+            font-size: 0.8rem; color: var(--text-color); display: flex;
+            align-items: center; justify-content: center;
+        }
+        .action-btn:hover { background: rgba(255, 255, 255, 0.4); }
+        @keyframes messageSlide { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .user-message { background: var(--user-message-bg); color: white; margin-left: auto; border-bottom-right-radius: 5px; }
+        .bot-message { background: var(--bot-message-bg); color: white; margin-right: auto; border-bottom-left-radius: 5px; }
+        .bot-message ul { padding-left: 20px; margin-top: 10px; }
+        .bot-message li { margin-bottom: 8px; }
+        .message-time { font-size: 0.7rem; opacity: 0.8; margin-top: 8px; text-align: right; }
+        .message-header { display: flex; align-items: center; margin-bottom: 8px; }
+        .message-avatar { width: 30px; height: 30px; border-radius: 50%; margin-right: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; background: rgba(255, 255, 255, 0.2); }
+        .message-sender { font-weight: bold; }
+        .message-text { line-height: 1.6; }
+        .message-text p, .message-text ul, .message-text h3 { margin-bottom: 10px; }
+        .message-text > *:last-child { margin-bottom: 0; }
+
+        /* --- EDIT MODE --- */
+        .message.edit-mode { border: 2px dashed #ffd700 !important; animation: editPulse 1.5s infinite; }
+        @keyframes editPulse { 50% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.7); } }
+        .edit-input { width: 100%; background: transparent; border: 1px solid rgba(255, 255, 255, 0.3); color: inherit; font-size: inherit; font-family: inherit; resize: vertical; min-height: 50px; outline: none; padding: 10px; border-radius: 10px; }
+        .edit-actions { display: flex; gap: 10px; margin-top: 10px; justify-content: flex-end; }
+        .edit-btn { padding: 6px 14px; border: none; border-radius: 20px; cursor: pointer; font-weight: 600; }
+        .save-btn { background: #4CAF50; color: white; }
+        .cancel-btn { background: #f44336; color: white; }
+
+        /* --- INPUT SECTION --- */
+        .input-section { display: flex; gap: 0.5rem; align-items: center; }
+        .message-input {
+            flex-grow: 1; padding: 0.8rem 1rem; border: 1px solid var(--border-color);
+            border-radius: 30px; font-size: 1rem; background: var(--input-bg);
+            color: var(--text-color); transition: all 0.3s ease;
+        }
+        .message-input:focus { border-color: #667eea; box-shadow: 0 0 10px rgba(102, 126, 234, 0.4); }
+        .send-btn {
+            padding: 0.8rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; border: none; border-radius: 50%;
+            cursor: pointer; font-size: 1rem; display: flex;
+            align-items: center; justify-content: center;
+            width: 44px; height: 44px; flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        .send-btn:hover { transform: scale(1.1); }
+        .send-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* --- DASHBOARD & CHARTS --- */
+        .chart-card {
+            background: var(--secondary-bg); border-radius: 20px;
+            padding: 1.5rem; box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+        .chart-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; text-align: center; }
+        .chart-container { position: relative; height: 250px; }
+
+        /* --- TYPING INDICATOR & THEME SWITCHER --- */
+        .typing-indicator { display: flex; align-items: center; padding: 10px 15px; background: var(--bot-message-bg); border-radius: 20px; width: fit-content; margin-bottom: 1rem; opacity: 0; transition: opacity 0.3s ease; }
+        .typing-indicator.visible { opacity: 1; }
+        .typing-indicator span { margin-right: 10px; }
+        .typing-dot { width: 8px; height: 8px; background: white; border-radius: 50%; margin: 0 2px; animation: typingAnimation 1.4s infinite ease-in-out both; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typingAnimation { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
+        
+        .theme-switcher {
+            position: fixed; bottom: 20px; right: 20px; z-index: 1001;
+            background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);
+            border-radius: 50%; width: 50px; height: 50px; display: flex;
+            align-items: center; justify-content: center; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .theme-switcher:hover { transform: scale(1.1) rotate(20deg); }
+        .theme-icon { font-size: 1.5rem; }
+
+        #copy-success {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);
+            font-size: 5rem; color: #4CAF50; z-index: 2000; opacity: 0;
+            transition: all 0.5s ease-out; text-shadow: 0 0 15px rgba(76, 175, 80, 0.8);
+        }
+        #copy-success.show { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
+
+
+        /* --- RESPONSIVE DESIGN (TABLET) --- */
+        @media (min-width: 768px) {
+            :root {
+                --base-font-size: 15px;
+            }
+            .header {
+                padding: 1rem 2rem;
+            }
+            .header-content {
+                flex-direction: row;
+            }
+            .container {
+                padding: 2rem;
+            }
+            .dashboard {
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* Charts side-by-side */
+            }
+            .send-btn {
+                width: auto;
+                height: auto;
+                border-radius: 30px;
+                padding: 1rem 2rem;
+            }
+             .chat-section {
+                height: calc(100vh - 200px); /* Adjust height for tablet */
+            }
+        }
+        
+        /* --- RESPONSIVE DESIGN (LAPTOP) --- */
+        @media (min-width: 1024px) {
+            .container {
+                display: grid;
+                grid-template-columns: 1fr 400px; /* Two-column layout */
+                gap: 2rem;
+                align-items: flex-start;
+            }
+            .dashboard {
+                order: 1; /* Dashboard moves to the right */
+                grid-template-columns: 1fr; /* Stack charts again in the sidebar */
+                position: sticky;
+                top: 110px; /* Sticky below header */
+            }
+            .chat-section {
+                height: calc(100vh - 140px); /* Taller chat on desktop */
+                min-height: 600px;
+            }
+        }
+
+        /* --- RESPONSIVE DESIGN (LARGE DESKTOP) --- */
+        @media (min-width: 1440px) {
+             :root {
+                --base-font-size: 16px;
+            }
+             .container {
+                grid-template-columns: 1fr 450px;
+                max-width: 1600px;
+                margin: 2rem auto;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+            .phone-icon {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+
+    <div class="bg-animation" id="bg-animation"></div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="phone-icon">📱</span>
+                PhoneGuru
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div>Models in DB</div>
+                    <div class="stat-number" id="models-count">150+</div>
+                </div>
+                <div class="stat-item">
+                    <div>Queries Today</div>
+                    <div class="stat-number" id="queries-count">0</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="chat-section">
+            <div class="chat-header">
+                <h1 class="chat-title">PhoneGuru AI</h1>
+                <p class="chat-subtitle">Your Personal Phone Recommendation Expert</p>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be injected here -->
+            </div>
+            <div class="typing-indicator" id="typing-indicator">
+                <span>Guru is typing</span>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+            <form class="input-section" id="message-form">
+                <input type="text" id="message-input" class="message-input" placeholder="Ask me anything..." autocomplete="off">
+                <button type="submit" id="send-btn" class="send-btn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </main>
+
+        <aside class="dashboard">
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fa-solid fa-chart-pie"></i> Budget Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fa-solid fa-ranking-star"></i> Brand Popularity</h3>
+                <div class="chart-container">
+                    <canvas id="brandChart"></canvas>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <div class="theme-switcher" id="theme-switcher">
+        <i class="fas fa-sun theme-icon" id="theme-icon"></i>
+    </div>
+    
+    <div id="copy-success"><i class="fas fa-check-circle"></i></div>
+
+    <!-- SCRIPT SECTION -->
+    <script type="module">
+        import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+
+        // --- DOM Elements ---
+        const chatMessages = document.getElementById('chat-messages');
+        const messageForm = document.getElementById('message-form');
+        const messageInput = document.getElementById('message-input');
+        const sendBtn = document.getElementById('send-btn');
+        const typingIndicator = document.getElementById('typing-indicator');
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+        const queriesCountEl = document.getElementById('queries-count');
+        
+        let queriesCount = 0;
+        let budgetChart, brandChart;
+
+        // --- GOOGLE GEMINI API SETUP ---
+        // !!! IMPORTANT: Replace "YOUR_API_KEY_HERE" with your actual Google AI API key.
+        const API_KEY = "AIzaSyARrMderTTzQ7NCcV2kLMxWgRs7iNIx0VM";
+
+        const systemInstruction = `You are PhoneGuru, an expert mobile phone recommendation chatbot created to help users find their perfect smartphone. Your identity and behavior:
+
+WHO YOU ARE:
+- Name: PhoneGuru 📱
+- Role: Professional phone recommendation specialist
+- Personality: Friendly, knowledgeable, helpful, patient
+- Expertise: Mobile phones, specifications, features, comparisons, recommendations
+
+STRICT BEHAVIORAL RULES:
+
+1. TOPIC RESTRICTION (CRITICAL):
+   - ONLY respond to mobile phone related queries
+   - If user asks non-phone questions, politely redirect:
+   - "I can only help with mobile phone related questions. Please tell me about your phone requirements."
+   - Stay focused on phones only, no exceptions
+
+2. INFORMATION GATHERING PROCESS:
+   Step 1 - Purpose: "What do you need the phone for? (Gaming/Photography/Business/Basic use/Content creation/Music/Long battery/Fast charging/Multiple purposes)"
+   
+   Step 2 - Budget: "What's your budget range? (Under $150/₹10,000 | $150-300/₹10,000-₹20,000 | $300-600/₹20,000-₹40,000 | $600-1200/₹40,000-₹80,000 | Above $1200/₹80,000)"
+   
+   Step 3 - Specific needs: "Any specific requirements? (Brand preference/Storage needs/Camera megapixels/Battery life hours/Display size/Special features)"
+
+3. RECOMMENDATION FORMAT:
+   - Always provide TOP 10 phone suggestions
+   - Format each as: "🏆 #[Rank] [Phone Name] - $[Price]/₹[Price]
+   ⭐ Rating: X/5
+   🔥 Why it's special: [Unique selling point]
+   📱 Key Features: Processor, RAM/Storage, Camera, Battery, Display"
+
+4. FEATURE EXPLANATION STYLE:
+   - Use real-life examples for technical terms
+   - RAM Example: "RAM is like your phone's workspace. Think of it as a desk - 4GB = small desk (2-3 apps smoothly), 8GB = big desk (5-6 apps running smoothly), 12GB = huge desk (gaming + editing simultaneously)"
+   - Camera Example: "12MP means 12 million dots make your photo. But megapixels aren't everything - sensor size and software processing matter more. iPhone 12 (12MP) often beats many Android phones (64MP) because of better sensor and processing."
+   - Battery Example: "5000mAh battery is like a fuel tank. Real usage: 1-2 days normal use, 6-8 hours heavy gaming, 10-12 hours video streaming."
+   - Always ask "Want to know more about [feature]?"
+
+5. COMPARISON REQUESTS:
+   - Create detailed comparisons with pros/cons
+   - Use format: "📱 Build Quality: [Winner] wins / 📸 Camera: [Winner] wins / 🔋 Battery: [Winner] wins / 💰 Value: [Winner] wins"
+   - End with: "What's your main priority? I'll suggest accordingly."
+
+6. CONVERSATION TONE:
+   - Use emojis appropriately (📱🔥⭐🏆💪⚡📸🔋💾🎮)
+   - Be conversational but professional  
+   - Show enthusiasm for helping
+   - Ask follow-up questions to understand better
+   - Use phrases like "Great choice!", "Perfect!", "Excellent question!"
+
+7. PHONE DATABASE KNOWLEDGE:
+   - Budget: Redmi, Realme, Samsung Galaxy M series, Motorola
+   - Mid-range: Redmi Note series, Realme, Poco, Samsung Galaxy A series, OnePlus Nord
+   - Premium: OnePlus, iPhone SE, Samsung Galaxy A high-end, Google Pixel
+   - Flagship: iPhone Pro series, Samsung Galaxy S series, OnePlus Pro, Google Pixel Pro
+   - Consider latest 2024-2025 models and current market prices
+   - Include both international and Indian market pricing
+
+8. SPECIFIC PHONE RECOMMENDATIONS BY USE CASE:
+   - Gaming: Focus on processor (Snapdragon 8 series), RAM (8GB+), cooling, high refresh rate display
+   - Photography: Emphasize camera sensors, OIS, night mode, multiple lenses
+   - Business: Battery life, build quality, security features, productivity apps
+   - Content Creation: Video recording quality, storage, processing power
+   - Basic Use: Value for money, reliable performance, good battery
+
+9. CLOSING RESPONSES:
+   - Always end recommendations with: "Which phone caught your attention? I can provide more detailed information about it!"
+   - Offer next steps: "I recommend checking online reviews and trying hands-on experience at stores before buying."
+   - "Any other questions about features, comparisons, or specific models?"
+
+10. ERROR HANDLING:
+    - If unclear budget: "Please specify your budget range so I can give accurate suggestions"
+    - If vague requirements: "Could you tell me more details about what you need the phone for?"
+    - If asking about unavailable models: "That model might be discontinued. Let me suggest current alternatives."
+
+TECHNICAL SPECIFICATIONS KNOWLEDGE:
+
+PROCESSORS (Performance Levels):
+- Entry Level: Snapdragon 4xx series, MediaTek Helio G series
+- Mid Range: Snapdragon 6xx/7xx series, MediaTek Dimensity 700-900
+- High End: Snapdragon 8xx series, Apple A series, MediaTek Dimensity 1000+
+- Flagship: Latest Snapdragon 8 Gen series, Apple A17/A18, MediaTek Dimensity 9000+
+
+CAMERA CATEGORIES:
+- Basic: 8-12MP single camera setup
+- Good: 48-64MP main camera with additional lenses  
+- Excellent: 100MP+ or premium sensors (Sony IMX series)
+- Professional: Periscope zoom, OIS, advanced computational photography
+
+BATTERY & CHARGING:
+- Basic: 3000-4000mAh, 10-18W charging
+- Good: 4000-5000mAh, 25-33W charging
+- Excellent: 5000mAh+, 67W+ charging
+- Premium: 5000mAh+, 120W+ charging, wireless charging, reverse charging
+
+DISPLAY TYPES:
+- LCD: Budget-friendly, good outdoor visibility
+- AMOLED: Better colors, deeper blacks, battery efficient
+- 90Hz/120Hz: Smoother scrolling and gaming
+- 144Hz+: Premium gaming experience
+
+RAM & STORAGE:
+- 4GB RAM: Basic multitasking
+- 6-8GB RAM: Good performance for most users
+- 12GB+ RAM: Heavy multitasking and gaming
+- 128GB Storage: Adequate for most users
+- 256GB+ Storage: Heavy users, content creators
+
+REMEMBER: 
+- You are here to make phone buying easy and enjoyable
+- Be patient, thorough, and always prioritize user's specific needs
+- Your goal is to find the PERFECT phone match for each user
+- Provide value-based recommendations, not just expensive options
+- Consider both features and budget constraints
+- Never break character - you are PhoneGuru, the phone expert
+
+TARGET AUDIENCE: All users - students, professionals, gamers, elderly, youth - adapt your explanations to their technical knowledge level.
+
+GREETING: Start conversations with enthusiasm like "Hello! I'm PhoneGuru, your phone recommendation expert! 📱 Let's find you the perfect smartphone!"`;
+
+        let genAI;
+        let model;
+
+        try {
+            genAI = new GoogleGenerativeAI(API_KEY);
+            model = genAI.getGenerativeModel({
+                model: "gemini-1.5-flash",
+                systemInstruction: systemInstruction,
+            });
+        } catch (error) {
+            console.error("Failed to initialize GoogleGenerativeAI:", error);
+        }
+
+        // This array will store the conversation history
+        let history = [];
+
+        // --- Core Functions ---
+        async function handleUserMessage() {
+            const messageText = messageInput.value.trim();
+            if (messageText === '') return;
+
+            const messageId = `msg-user-${Date.now()}`;
+
+            addUserMessage(messageText, messageId);
+            messageInput.value = '';
+            sendBtn.disabled = true;
+            
+            queriesCount++;
+            queriesCountEl.textContent = queriesCount;
+
+            showTypingIndicator();
+
+            try {
+                if (!model) {
+                     throw new Error("AI Model not initialized. Check API Key and configuration.");
+                }
+                const botResponse = await getAIResponse(messageText, messageId);
+                const botMessageId = `msg-bot-${Date.now()}`;
+                addBotMessage(botResponse, botMessageId);
+
+                history.push({
+                    id: botMessageId,
+                    role: "model",
+                    parts: [{ text: botResponse }]
+                });
+
+            } catch(error) {
+                console.error("API Error:", error);
+                addBotMessage(`😥 Sorry, something went wrong. Please check if your API key is correct and try again. Error: ${error.message}`, `msg-error-${Date.now()}`);
+            } finally {
+                hideTypingIndicator();
+                sendBtn.disabled = false;
+                messageInput.focus();
+            }
+        }
+        
+        async function getAIResponse(prompt, messageId) {
+             history.push({
+                id: messageId,
+                role: "user",
+                parts: [{ text: prompt }]
+            });
+
+            // We filter out the 'id' field before sending to the API
+            const apiHistory = history.map(({ role, parts }) => ({ role, parts }));
+
+            const chat = model.startChat({ history: apiHistory });
+            const result = await chat.sendMessage(prompt);
+            const response = result.response;
+            const text = response.text();
+
+            return text;
+        }
+
+        function displayMessage(text, sender, messageId) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', `${sender}-message`);
+            messageElement.dataset.id = messageId;
+            
+            const senderName = sender === 'user' ? 'You' : 'PhoneGuru';
+            const avatarIcon = sender === 'user' ? '👤' : '🤖';
+
+            let actionsHtml = `<button class="action-btn copy-btn" title="Copy"><i class="fas fa-copy"></i></button>`;
+            if (sender === 'user') {
+                actionsHtml += `<button class="action-btn edit-btn" title="Edit"><i class="fas fa-pencil-alt"></i></button>`;
+            }
+
+            const messageTextHtml = sender === 'bot' ? marked.parse(text) : `<p>${text}</p>`;
+
+            messageElement.innerHTML = `
+                <div class="message-header">
+                    <div class="message-avatar">${avatarIcon}</div>
+                    <span class="message-sender">${senderName}</span>
+                </div>
+                <div class="message-content">
+                    <div class="message-text">${messageTextHtml}</div>
+                </div>
+                <div class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                <div class="message-actions">${actionsHtml}</div>
+            `;
+
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // --- Event Listeners and Helper Functions ---
+        
+        messageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            handleUserMessage();
+        });
+
+        themeSwitcher.addEventListener('click', toggleTheme);
+
+        chatMessages.addEventListener('click', (e) => {
+            const target = e.target;
+            const messageElement = target.closest('.message');
+            if (!messageElement) return;
+
+            // CORRECT ORDER: Check for specific save/cancel buttons BEFORE general edit button
+            if (target.closest('.save-btn')) {
+                handleSave(messageElement);
+            } else if (target.closest('.cancel-btn')) {
+                handleCancel(messageElement);
+            } else if (target.closest('.copy-btn')) {
+                handleCopy(messageElement);
+            } else if (target.closest('.edit-btn')) {
+                handleEdit(messageElement);
+            }
+        });
+
+        function addUserMessage(text, messageId) { displayMessage(text, 'user', messageId); }
+        function addBotMessage(text, messageId) { displayMessage(text, 'bot', messageId); }
+        function showTypingIndicator() { typingIndicator.classList.add('visible'); chatMessages.scrollTop = chatMessages.scrollHeight; }
+        function hideTypingIndicator() { typingIndicator.classList.remove('visible'); }
+
+        function handleCopy(messageElement) {
+            const textToCopy = messageElement.querySelector('.message-text').innerText;
+            navigator.clipboard.writeText(textToCopy).then(showCopySuccess);
+        }
+        
+        function showCopySuccess() {
+            const successIcon = document.getElementById('copy-success');
+            successIcon.classList.add('show');
+            setTimeout(() => successIcon.classList.remove('show'), 1500);
+        }
+
+        function handleEdit(messageElement) {
+            const currentlyEditing = document.querySelector('.edit-mode');
+            if (currentlyEditing && currentlyEditing !== messageElement) {
+                handleCancel(currentlyEditing);
+            }
+            messageElement.classList.add('edit-mode');
+            const messageContent = messageElement.querySelector('.message-content');
+            const currentText = messageElement.querySelector('.message-text').innerText;
+            messageElement.dataset.originalText = currentText;
+            messageContent.innerHTML = `
+                <textarea class="edit-input">${currentText}</textarea>
+                <div class="edit-actions">
+                    <button class="edit-btn cancel-btn">Cancel</button>
+                    <button class="edit-btn save-btn">Save</button>
+                </div>`;
+            const textarea = messageContent.querySelector('.edit-input');
+            textarea.focus();
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight) + 'px';
+        }
+        
+        function handleSave(messageElement) {
+            const messageId = messageElement.dataset.id;
+            const messageContent = messageElement.querySelector('.message-content');
+            const newText = messageContent.querySelector('.edit-input').value.trim();
+
+            if (newText) {
+                // Find and update the message in the conversation history
+                const historyEntry = history.find(entry => entry.id === messageId);
+                if (historyEntry) {
+                    historyEntry.parts[0].text = newText;
+                    console.log("✅ History updated:", messageId);
+                }
+                // Update the visual message text
+                messageContent.innerHTML = `<div class="message-text"><p>${newText}</p></div>`;
+                messageElement.classList.remove('edit-mode');
+                delete messageElement.dataset.originalText;
+            }
+        }
+        
+        function handleCancel(messageElement) {
+            const originalText = messageElement.dataset.originalText;
+            const messageContent = messageElement.querySelector('.message-content');
+            if (typeof originalText === 'string') {
+                 messageContent.innerHTML = `<div class="message-text"><p>${originalText}</p></div>`;
+            }
+            messageElement.classList.remove('edit-mode');
+            delete messageElement.dataset.originalText;
+        }
+
+        function toggleTheme() {
+            body.classList.toggle('light-theme');
+            const isLight = body.classList.contains('light-theme');
+            themeIcon.className = isLight ? 'fas fa-moon theme-icon' : 'fas fa-sun theme-icon';
+            updateChartColors();
+        }
+        
+        function initCharts() {
+            const getTextColor = () => body.classList.contains('light-theme') ? '#333' : '#f0f0f0';
+            
+            const budgetCtx = document.getElementById('budgetChart').getContext('2d');
+            budgetChart = new Chart(budgetCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Budget', 'Mid-range', 'Flagship'],
+                    datasets: [{
+                        data: [35, 45, 20],
+                        backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
+                        borderColor: () => (body.classList.contains('light-theme') ? '#fff' : '#1e1e2a'),
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { color: getTextColor() } } }
+                }
+            });
+
+            const brandCtx = document.getElementById('brandChart').getContext('2d');
+            brandChart = new Chart(brandCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Samsung', 'Apple', 'Google', 'OnePlus', 'Xiaomi'],
+                    datasets: [{
+                        label: 'Popularity',
+                        data: [85, 90, 78, 82, 75],
+                        backgroundColor: 'rgba(102, 126, 234, 0.3)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        pointBackgroundColor: 'rgba(102, 126, 234, 1)',
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: { r: {
+                           angleLines: { color: () => getTextColor() + '50' },
+                           grid: { color: () => getTextColor() + '50' },
+                           pointLabels: { color: getTextColor, font: { size: 12 } },
+                           ticks: { display: false }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+        
+        function updateChartColors() {
+            const textColor = body.classList.contains('light-theme') ? '#333' : '#f0f0f0';
+            if (budgetChart) {
+                budgetChart.options.plugins.legend.labels.color = textColor;
+                budgetChart.data.datasets[0].borderColor = body.classList.contains('light-theme') ? '#fff' : '#1e1e2a';
+                budgetChart.update();
+            }
+            if (brandChart) {
+                brandChart.options.scales.r.angleLines.color = textColor + '50';
+                brandChart.options.scales.r.grid.color = textColor + '50';
+                brandChart.options.scales.r.pointLabels.color = textColor;
+                brandChart.update();
+            }
+        }
+
+        function initAnimatedBackground() {
+            const bgContainer = document.getElementById('bg-animation');
+            const icons = ['📱', '📲', '📞', '⚙️', '🔋', '📸'];
+            if(bgContainer.children.length > 0) return; // Prevent re-creation
+            for (let i = 0; i < 20; i++) {
+                const icon = document.createElement('div');
+                icon.classList.add('floating-phone');
+                icon.innerText = icons[Math.floor(Math.random() * icons.length)];
+                icon.style.left = `${Math.random() * 100}vw`;
+                icon.style.top = `${Math.random() * 100}vh`;
+                icon.style.animationDuration = `${10 + Math.random() * 10}s`;
+                icon.style.animationDelay = `${Math.random() * 5}s`;
+                bgContainer.appendChild(icon);
+            }
+        }
+        
+        function initializeApp() {
+            if (API_KEY === "YOUR_API_KEY_HERE") {
+                addBotMessage("⚠️ **Configuration Error:** Please replace `'YOUR_API_KEY_HERE'` in the script with your actual Google Gemini API key for the chat to work.", `msg-error-apikey`);
+            }
+            initAnimatedBackground();
+            initCharts();
+            const initialGreeting = "Hello! I'm PhoneGuru, your phone recommendation expert! 📱 Let's find you the perfect smartphone!";
+            addBotMessage(initialGreeting, `msg-greeting-${Date.now()}`);
+        }
+
+        initializeApp();
+
+    </script>
+</body>
+</html>
