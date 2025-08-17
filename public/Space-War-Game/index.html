@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Space Shooter - An immersive browser-based space combat game">
+    <meta name="theme-color" content="#0a2e4a">
+    <title>Space Shooter - Epic Space Combat</title>
+    <link rel="shortcut icon" href="/fav.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas" aria-label="Game Canvas"></canvas>
+        
+        <div class="ui-overlay" role="presentation">
+            <header class="top-ui" role="banner">
+                <div class="ui-stat score" aria-label="Current Score">
+                    <span aria-hidden="true">⭐</span> Score: <span id="score" aria-live="polite">0</span>
+                </div>
+                <div class="ui-stat lives" aria-label="Lives Remaining">
+                    <span aria-hidden="true">❤️</span> Lives: <span id="lives" aria-live="polite">3</span>
+                </div>
+                <div class="ui-stat level" aria-label="Current Level">
+                    <span aria-hidden="true">🚀</span> Level: <span id="level" aria-live="polite">1</span>
+                </div>
+                <div class="ui-stat streak" aria-label="Kill Streak">
+                    <span aria-hidden="true">⚡</span> Streak: <span id="streak" aria-live="polite">0</span>
+                </div>
+            </header>
+
+            <aside class="player-stats" role="complementary">
+                <div class="ui-stat level-progress" aria-label="Player Level Progress">
+                    <div>
+                        <span aria-hidden="true">🎯</span> Level <span id="player-level">1</span>
+                    </div>
+                    <div class="xp-bar" role="progressbar" aria-label="Experience Progress">
+                        <div class="xp-fill" id="xp-fill" aria-hidden="true"></div>
+                    </div>
+                </div>
+                <div class="ui-stat weapon-level" aria-label="Weapon Level">
+                    <span aria-hidden="true">🔫</span> Weapon: <span id="weapon-level">1</span>
+                </div>
+            </aside>
+            
+            <div class="health-bar" role="progressbar" aria-label="Player Health" aria-valuemin="0" aria-valuemax="100">
+                <div class="health-fill" id="health-fill" aria-hidden="true"></div>
+            </div>
+            
+            <div class="weapon-display" id="weapon-display" role="status" aria-label="Current Weapon">
+                <span aria-hidden="true">⚔️</span> Standard Laser
+            </div>
+            
+            <div class="minimap" id="minimap" role="img" aria-label="Game Minimap"></div>
+            
+            <div class="combo-counter hidden" id="combo-counter" role="status" aria-label="Combo Counter">
+                <span aria-hidden="true">🔥</span> COMBO x<span id="combo-value">0</span>
+            </div>
+            
+            <main class="game-messages" role="main">
+                <div id="start-message" class="message" role="dialog" aria-labelledby="start-title">
+                    <h2 id="start-title">SPACE SHOOTER</h2>
+                    <p>🎮 Use WASD or Arrow Keys to move</p>
+                    <p>🔫 Press SPACEBAR to shoot</p>
+                    <p>⚡ Press X for special weapons</p>
+                    <p>🚀 Press ENTER to start your mission</p>
+                </div>
+                
+                <div id="pause-message" class="message hidden" role="dialog" aria-labelledby="pause-title">
+                    <h2 id="pause-title">MISSION PAUSED</h2>
+                    <p>⏸️ Press P to resume combat</p>
+                    <p>📊 Check your stats and prepare for battle</p>
+                </div>
+                
+                <div id="game-over-message" class="message hidden" role="dialog" aria-labelledby="gameover-title">
+                    <h2 id="gameover-title">MISSION FAILED</h2>
+                    <p>💥 Final Score: <span id="final-score">0</span></p>
+                    <p>🏆 You fought valiantly, pilot!</p>
+                    <p>🔄 Press R to restart mission</p>
+                </div>
+            </main>
+            
+            <div class="mobile-controls" role="region" aria-label="Mobile Game Controls">
+                <div class="control-stick" role="button" aria-label="Movement Joystick">
+                    <div class="stick-outer">
+                        <div class="stick-inner" id="joystick"></div>
+                    </div>
+                </div>
+                
+                <div class="mobile-action-buttons">
+                    <button class="action-button shoot-button" id="shoot-btn" 
+                            type="button" aria-label="Shoot Button">
+                        FIRE
+                    </button>
+                    <button class="action-button special-button" id="special-btn" 
+                            type="button" aria-label="Special Weapon Button">
+                        SPECIAL
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="audio.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

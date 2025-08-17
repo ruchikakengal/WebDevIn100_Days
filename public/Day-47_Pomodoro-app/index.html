@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h1 class="main-heading">Pomodoro Timer</h1>
+      <div class="subtitle accent-subtitle">POMODORO</div>
+    </div>
+    <div class="toggle-theme">
+      <span class="icon-sun">☀️</span>
+      <label class="switch">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider"></span>
+      </label>
+      <span class="icon-settings" id="open-settings">⚙️</span>
+    </div>
+  </header>
+  <section class="timer-controls">
+    <button class="tab active" data-mode="pomodoro">Pomodoro<br><span>Focus time</span></button>
+    <button class="tab" data-mode="short">Short Break<br><span>5 min break</span></button>
+    <button class="tab" data-mode="long">Long Break<br><span>15 min break</span></button>
+  </section>
+  <main>
+    <section class="timer-card">
+      <h2 id="timer-label">Focus Time</h2>
+      <div class="timer-circle">
+        <span id="timer">25:00</span>
+        <div class="timer-remaining">remaining</div>
+      </div>
+      <div id="quote" style="margin-top: 18px; font-size: 1.1rem; color: var(--accent); text-align: center;"></div>
+      <div id="break-tip" style="margin-top: 18px; font-size: 1.1rem; color: var(--accent); text-align: center;"></div>
+      <div class="timer-actions">
+        <button id="start-btn">▶ Start</button>
+        <button id="reset-btn">⟲ Reset</button>
+      </div>
+    </section>
+    <section class="tasks-card">
+      <h2>Add New Task</h2>
+      <input type="text" id="task-name" placeholder="Enter task name..."/>
+      <label>Estimated Pomodoros</label>
+      <input type="number" id="task-pomodoros" min="1" value="1"/>
+      <button id="add-task-btn">+ Add Task</button>
+      <ul id="tasks-list"></ul>
+      <div id="no-tasks">No tasks yet. Add one to get started!</div>
+    </section>
+  </main>
+  <div class="modal" id="settings-modal">
+    <div class="modal-content">
+      <span class="close" id="close-settings">&times;</span>
+      <h2>Settings</h2>
+      <div class="settings-section">
+        <label>Dark Mode</label>
+        <input type="checkbox" id="dark-mode-toggle"/>
+      </div>
+      <div class="settings-section">
+        <label>Font Family</label>
+        <select id="font-family">
+          <option value="Inter">Inter</option>
+          <option value="Arial">Arial</option>
+          <option value="Roboto">Roboto</option>
+        </select>
+      </div>
+      <div class="settings-section">
+        <label>Color Theme</label>
+        <div class="color-themes">
+          <button class="color-btn" data-color="#f66b6b" style="background:#f66b6b;">Tomato</button>
+          <button class="color-btn" data-color="#3b82f6" style="background:#3b82f6;">Ocean</button>
+          <button class="color-btn" data-color="#22c55e" style="background:#22c55e;">Forest</button>
+          <button class="color-btn" data-color="#fb923c" style="background:#fb923c;">Sunset</button>
+          <button class="color-btn" data-color="#a21caf" style="background:#a21caf;">Purple</button>
+          <button class="color-btn" data-color="custom" style="background:#f87171;">Custom</button>
+        </div>
+        <input type="color" id="custom-color" value="#f66b6b"/>
+      </div>
+      <div class="settings-section">
+        <label>Pomodoro (minutes)</label>
+        <input type="number" id="pomodoro-duration" min="1" value="25"/>
+        <label>Short Break (minutes)</label>
+        <input type="number" id="short-duration" min="1" value="5"/>
+        <label>Long Break (minutes)</label>
+        <input type="number" id="long-duration" min="1" value="15"/>
+      </div>
+      <button id="save-settings">Save Settings</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

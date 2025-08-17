@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood-based Music Suggester</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🎵 Mood-based Music Suggester</h1>
+    <p>Select your current mood and vibe to the perfect playlist 🎧</p>
+
+    <select id="mood-select">
+      <option value="">-- Select a mood --</option>
+      <option value="happy">😊 Happy</option>
+      <option value="sad">😢 Sad</option>
+      <option value="romantic">❤️ Romantic</option>
+      <option value="energetic">⚡ Energetic</option>
+      <option value="relaxed">🌿 Relaxed</option>
+    </select>
+
+
+
+
+    <button id="suggest-btn">Suggest Music</button>
+
+    <div class="video-container">
+      <iframe id="video-frame" width="560" height="315"
+              src="" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- JavaScript must be loaded AFTER HTML -->
+  <script src="script.js"></script>
+</body>
+</html>

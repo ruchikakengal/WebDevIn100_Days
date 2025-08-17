@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BMI Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>BMI Calculator</h1>
+      <button id="theme-toggle">🌙</button>
+    </header>
+    <main>
+      <form id="bmi-form">
+        <div class="input-group">
+          <label for="height">Height (cm)</label>
+          <input type="number" id="height" placeholder="Enter height in cm" required />
+        </div>
+        <div class="input-group">
+          <label for="weight">Weight (kg)</label>
+          <input type="number" id="weight" placeholder="Enter weight in kg" required />
+        </div>
+        <button type="submit" class="calculate-btn">Calculate BMI</button>
+      </form>
+
+      <div class="result hidden" id="result-box">
+        <p>Your BMI is: <span id="bmi-value"></span></p>
+        <p>Status: <span id="bmi-status"></span></p>
+      </div>
+    </main>
+    <footer>
+      <p>Made with ❤️ by Tanu Chandravanshi</p>
+    </footer>
+  </div>
+</body>
+</html>

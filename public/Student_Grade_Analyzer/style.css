@@ -1,0 +1,347 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global font and transition */
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+  color: #333;
+  padding: 2rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background: linear-gradient(to right, #1f1c2c, #928dab);
+  color: #eee;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 3px solid;
+  border-image: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%) 1;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+body.dark .container {
+  background: rgba(50, 50, 70, 0.5);
+  border-image: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%) 1;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+}
+
+/* Headings */
+.container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Input group */
+.input-group,
+.subject-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-group input,
+.subject-group input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:hover,
+.subject-group input:hover {
+  border-color: #2575fc;
+  box-shadow: 0 0 6px rgba(38, 132, 255, 0.5);
+}
+
+.input-group input:focus,
+.subject-group input:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 8px rgba(106, 17, 203, 0.7);
+}
+
+/* Buttons */
+button {
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Remove subject button */
+.removeSubject {
+  background: #ff4b2b;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+
+/* Results box */
+#results {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px dashed #00c6ff;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+body.dark #results {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #ffffff80;
+}
+
+/* Chart styling */
+#chart {
+  max-width: 100%;
+  margin-top: 2rem;
+  animation: fadeInChart 1s ease-in-out;
+}
+
+@keyframes fadeInChart {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Theme Toggle */
+#themeToggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(to right, #f7971e, #ffd200);
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'Roboto', sans-serif;
+}
+
+#themeToggle:hover {
+  background: linear-gradient(to right, #ff512f, #f09819);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .input-group,
+  .subject-group {
+    flex-direction: column;
+  }
+
+  button,
+  #themeToggle {
+    width: 100%;
+  }
+}
+
+/* Wrapper for inputs */
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between name and marks inputs */
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="number"] {
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: 0.3s;
+  min-width: 180px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #6c63ff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
+}
+
+/* Button spacing */
+button {
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 12px 18px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Aligns buttons in column when space is small */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.button-group button {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Animated Heading Gradient */
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.container h1 {
+  background-size: 200% 200%;
+  animation: gradientText 5s ease infinite;
+}
+
+/* Container Hover Glow */
+.container:hover {
+  box-shadow: 0 0 25px rgba(106, 17, 203, 0.5), 0 0 60px rgba(37, 117, 252, 0.3);
+}
+
+/* Glassmorphism Boost for Dark Mode Container */
+body.dark .container {
+  background: rgba(30, 30, 45, 0.6);
+  backdrop-filter: blur(20px) brightness(0.9);
+}
+
+/* Modern Button Neumorphism */
+button {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1), inset 0 -3px 6px rgba(255,255,255,0.2);
+  transition: all 0.25s ease;
+}
+button:active {
+  transform: scale(0.97);
+  box-shadow: inset 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Inputs with Glow Border on Hover */
+input[type="text"],
+input[type="number"] {
+  transition: all 0.3s ease-in-out;
+}
+input[type="text"]:hover,
+input[type="number"]:hover {
+  border-color: #00c6ff;
+  box-shadow: 0 0 10px rgba(0,198,255,0.4);
+}
+
+/* Enhanced Theme Toggle Button */
+#themeToggle {
+  position: fixed;
+  z-index: 999;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+body.dark #themeToggle {
+  background: linear-gradient(to right, #005bea, #00c6fb);
+  color: #fff;
+}
+
+/* Add emoji indicator on theme toggle */
+#themeToggle::after {
+  content: ' 🌙';
+}
+body.dark #themeToggle::after {
+  content: ' ☀️';
+}
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222;
+  --accent-color: #007bff;
+}
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #f2f2f2;
+  --accent-color: #bb86fc;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+canvas {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+}
+.subject-entry {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.subject-entry input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+#chart {
+  margin: 30px auto;
+  max-width: 600px;
+  height: auto;
+  display: block;
+}
+.input-group.full-width {
+  flex-basis: 100%;
+  margin-top: 10px;
+}
+

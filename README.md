@@ -47,13 +47,6 @@ We are proud to be contributing as part of these amazing communities!
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&pause=1000&color=6AE3F9&center=true&vCenter=true&width=1000&lines=Learn+By+Building!+💻;100+Web+Projects+Challenge🔥;HTML+CSS+JS+and+More!)
 
-## Note to Cotributors 
-👉 If you are willing to do changes in the project 
-👉The files are organized in a manner.
-👉If you want to contribute new things please save your file names with the format "projectname-type.extension"
-👉 This will be easy for navigation 
-
-
 ---
 
 ## 🌐 Live Website
