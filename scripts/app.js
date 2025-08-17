@@ -1134,7 +1134,29 @@ class WebDev100Days {
   features: [
     "Dynamic grid scaling, pattern generation & replay, dark/light mode, score & level tracking, keyboard accessibility, animated feedback, and replay option."
   ]
-}
+},
+ {
+  originalDay: 166,
+  name: "AI_Code_Generator",
+  description: "An AI-powered code generator that generates code based on a prompt",
+  demoLink: "./public/AI_Code_Generator/index.html",
+  category: "creativity",
+  technologies: ["HTML", "CSS", "JavaScript"],
+  features: [
+ " Code Genration , Live Preview , Explain code, One click deploy "
+  ]
+},
+{
+  originalDay: 167,
+  name: "AI Phone Chatbot",
+  description: "A AI-powered chatbot that provide you top 10 Phone According to your need",
+  demoLink: "./public/AI_Phone_Chatbot/index.html",
+  category: "creativity",
+  technologies: ["HTML", "CSS", "JavaScript"],
+  features: [
+  "Provide Suggestion for diff -2 Conditions"
+  ]
+},
 
 
     ];

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Website Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles" class="particles-container"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-magic"></i>
+                <span>AI Website Generator</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <div class="theme-toggle">
+                    <button id="theme-toggle-btn" class="theme-btn">
+                        <i class="fas fa-palette"></i>
+                    </button>
+                    <div id="theme-dropdown" class="theme-dropdown">
+                        <div class="theme-option" data-theme="dark">
+                            <i class="fas fa-moon"></i>
+                            <span>Dark</span>
+                        </div>
+                        <div class="theme-option" data-theme="light">
+                            <i class="fas fa-sun"></i>
+                            <span>Light</span>
+                        </div>
+                        <div class="theme-option" data-theme="neon">
+                            <i class="fas fa-bolt"></i>
+                            <span>Neon</span>
+                        </div>
+                        <div class="theme-option" data-theme="ocean">
+                            <i class="fas fa-water"></i>
+                            <span>Ocean</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="chat-btn" onclick="openChat()">
+                    <i class="fas fa-comments"></i>
+                    <span>Start Building</span>
+                </button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Build Amazing Websites with 
+                <span class="gradient-text">AI Power</span>
+            </h1>
+            <p class="hero-subtitle">
+                Create stunning, responsive websites in minutes using the power of artificial intelligence.
+                Just describe your vision, and watch it come to life.
+            </p>
+            <div class="hero-actions">
+                <button class="btn-primary" onclick="openChat()">
+                    <i class="fas fa-magic"></i>
+                    Create Website
+                </button>
+                <button class="btn-secondary" onclick="scrollToSection('features')">
+                    <i class="fas fa-play"></i>
+                    Learn More
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">10k+</span>
+                    <span class="stat-label">Websites Created</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">99%</span>
+                    <span class="stat-label">Satisfaction Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">AI Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <p class="section-subtitle">Everything you need to create professional websites</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Generation</h3>
+                    <p>Advanced AI understands your requirements and generates pixel-perfect websites</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3>Voice Input</h3>
+                    <p>Speak your ideas naturally and watch them transform into code instantly</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="feature-icon">
+                        <i class="fas fa-tablet-alt"></i>
+                    </div>
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Responsive Preview</h3>
+                    <p>See how your website looks on different devices with our interactive preview</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>One-Click Deploy</h3>
+                    <p>Deploy your website instantly to popular platforms like GitHub Pages, Netlify, and more</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Code Explanation</h3>
+                    <p>Learn how your website works with detailed, beginner-friendly explanations</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Export & Download</h3>
+                    <p>Export your projects in various formats and download complete source code</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About AI Website Generator</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Revolutionizing Web Development</h3>
+                    <p>Our AI-powered platform makes website creation accessible to everyone, regardless of technical expertise. 
+                    Using advanced machine learning algorithms, we transform your ideas into professional, responsive websites 
+                    in minutes, not hours.</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>No coding experience required</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Professional quality output</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Instant deployment options</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Learn while you build</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="about-card">
+                        <div class="card-header">
+                            <div class="card-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="code-line">
+                                <span class="code-comment">// AI generates clean, modern code</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-keyword">const</span> 
+                                <span class="code-variable">website</span> 
+                                <span class="code-operator">=</span> 
+                                <span class="code-function">generateWebsite</span>
+                                <span class="code-punctuation">(</span>
+                                <span class="code-string">"your idea"</span>
+                                <span class="code-punctuation">);</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-variable">website</span>
+                                <span class="code-punctuation">.</span>
+                                <span class="code-function">deploy</span>
+                                <span class="code-punctuation">();</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Have questions? We're here to help!</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>support@aiwebgen.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Live Chat</h4>
+                            <p>Available 24/7</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Documentation</h4>
+                            <p>Comprehensive guides</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-magic"></i>
+                    <span>AI Website Generator</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#support">Support</a>
+                </div>
+                <div class="footer-social">
+                    <!-- <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a> -->
+                    <a href="https://www.linkedin.com/feed/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy;2025 Ansh Rastogi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Modal -->
+    <div id="chat-modal" class="modal">
+        <div class="modal-content chat-modal-content">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Website Builder</span>
+                </div>
+                <div class="chat-actions">
+                    <button class="btn-icon" onclick="chatManager.createNewConversation()" title="New Chat">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button class="btn-icon" onclick="closeChat()" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="chat-body">
+                <div class="chat-sidebar">
+                    <div class="sidebar-section">
+                        <h4>Chat History</h4>
+                        <div class="chat-history-actions">
+                            <button class="btn-small" onclick="chatManager.clearAllHistory()">
+                                <i class="fas fa-trash"></i>
+                                Clear All
+                            </button>
+                        </div>
+                        <div id="chat-history" class="chat-history"></div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h4>Quick Prompts</h4>
+                        <div class="quick-prompts">
+                            <button class="quick-prompt" onclick="chatManager.usePrompt('Create a modern landing page for a tech startup')">
+                                <i class="fas fa-rocket"></i>
+                                Tech Startup
+                            </button>
+                            <button class="quick-prompt" onclick="chatManager.usePrompt('Build a portfolio website for a photographer')">
+                                <i class="fas fa-camera"></i>
+                                Photography Portfolio
+                            </button>
+                            <button class="quick-prompt" onclick="chatManager.usePrompt('Design a restaurant website with menu and contact info')">
+                                <i class="fas fa-utensils"></i>
+                                Restaurant Site
+                            </button>
+                            <button class="quick-prompt" onclick="chatManager.usePrompt('Create an e-commerce product page')">
+                                <i class="fas fa-shopping-cart"></i>
+                                E-commerce
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h4>Recent Deployments</h4>
+                        <div id="deployment-history-list" class="deployment-history-list"></div>
+                    </div>
+                </div>
+                
+                <div class="chat-main">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="welcome-message">
+                            <div class="ai-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <h3>Welcome to AI Website Builder!</h3>
+                                <p>I'm here to help you create amazing websites. You can:</p>
+                                <ul>
+                                    <li>🎤 Use voice input to describe your website</li>
+                                    <li>⚡ See instant previews on different devices</li>
+                                    <li>🚀 Deploy with one click to popular platforms</li>
+                                    <li>📚 Get detailed code explanations</li>
+                                    <li>💾 Export and download your projects</li>
+                                </ul>
+                                <p>What kind of website would you like to create today?</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <div class="voice-status" id="voice-status">
+                            <i class="fas fa-microphone"></i>
+                            <span>Click microphone to start voice input</span>
+                        </div>
+                        
+                        <div class="chat-input-wrapper">
+                            <div class="input-actions">
+                                <button class="btn-icon voice-btn" id="voice-btn" title="Voice Input">
+                                    <i class="fas fa-microphone"></i>
+                                </button>
+                            </div>
+                            <textarea 
+                                id="chat-input" 
+                                placeholder="Describe the website you want to create..." 
+                                rows="1"
+                            ></textarea>
+                            <button class="btn-icon send-btn" id="send-btn" title="Send Message">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="modal">
+        <div class="modal-content preview-modal-content">
+            <div class="preview-header">
+                <div class="preview-title">
+                    <i class="fas fa-eye"></i>
+                    <span>Website Preview</span>
+                </div>
+                <div class="preview-controls">
+                    <div class="device-controls">
+                        <button class="preview-size-btn active" data-size="desktop" title="Desktop View">
+                            <i class="fas fa-desktop"></i>
+                        </button>
+                        <button class="preview-size-btn" data-size="tablet" title="Tablet View">
+                            <i class="fas fa-tablet-alt"></i>
+                        </button>
+                        <button class="preview-size-btn" data-size="mobile" title="Mobile View">
+                            <i class="fas fa-mobile-alt"></i>
+                        </button>
+                    </div>
+                    <div class="preview-actions">
+                        <button class="btn-icon" onclick="previewManager.refreshPreview()" title="Refresh">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <button class="btn-icon" onclick="previewManager.openInNewTab()" title="Open in New Tab">
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
+                        <button class="btn-icon" onclick="closePreview()" title="Close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview-body">
+                <div class="preview-container" id="preview-container">
+                    <div class="preview-frame-wrapper">
+                        <iframe id="preview-frame" class="preview-frame desktop-frame"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Explanation Modal -->
+    <div id="explanation-modal" class="modal">
+        <div class="modal-content explanation-modal-content">
+            <div class="explanation-header">
+                <div class="explanation-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Code Explanation</span>
+                </div>
+                <div class="explanation-actions">
+                    <button class="btn-icon" onclick="explanationService.copyExplanation()" title="Copy">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="btn-icon" onclick="explanationService.exportExplanation()" title="Export">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="btn-icon" onclick="closeExplanation()" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="explanation-body">
+                <div class="explanation-tabs">
+                    <button class="tab-btn active" data-type="overview">
+                        <i class="fas fa-eye"></i>
+                        Overview
+                    </button>
+                    <button class="tab-btn" data-type="breakdown">
+                        <i class="fas fa-list"></i>
+                        Breakdown
+                    </button>
+                    <button class="tab-btn" data-type="concepts">
+                        <i class="fas fa-lightbulb"></i>
+                        Concepts
+                    </button>
+                    <button class="tab-btn" data-type="practices">
+                        <i class="fas fa-star"></i>
+                        Best Practices
+                    </button>
+                </div>
+                
+                <div class="explanation-content">
+                    <div id="explanation-loading" class="explanation-loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Generating explanation...</p>
+                    </div>
+                    <div id="explanation-text" class="explanation-text">
+                        <p>Select code from the chat to see detailed explanations here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deployment Modal -->
+    <div id="deployment-modal" class="modal">
+        <div class="modal-content deployment-modal-content">
+            <div class="deployment-header">
+                <div class="deployment-title">
+                    <i class="fas fa-rocket"></i>
+                    <span>Deploy Website</span>
+                </div>
+                <button class="btn-icon" onclick="closeDeployment()" title="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="deployment-body">
+                <div class="deployment-options">
+                    <!-- <div class="deployment-option" data-service="github">
+                        <div class="service-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="service-info">
+                            <h4>GitHub Pages</h4>
+                            <p>Free hosting with custom domain support</p>
+                        </div>
+                    </div>
+                    
+                    <div class="deployment-option" data-service="netlify">
+                        <div class="service-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="service-info">
+                            <h4>Netlify</h4>
+                            <p>Instant deployment with CDN</p>
+                        </div>
+                    </div> -->
+                    
+                    <div class="deployment-option" data-service="vercel">
+                        <div class="service-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="service-info">
+                            <h4>Vercel</h4>
+                            <p>Lightning-fast edge deployment</p>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="deployment-option" data-service="codepen">
+                        <div class="service-icon">
+                            <i class="fab fa-codepen"></i>
+                        </div>
+                        <div class="service-info">
+                            <h4>CodePen</h4>
+                            <p>Share and collaborate online</p>
+                        </div>
+                    </div> -->
+                </div>
+                
+                <form id="deployment-form" class="deployment-form">
+                    <div class="form-group">
+                        <label for="project-name">Project Name</label>
+                        <input type="text" id="project-name" placeholder="my-awesome-website" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="project-description">Description (Optional)</label>
+                        <textarea id="project-description" placeholder="Describe your website..." rows="3"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Deploy Now
+                    </button>
+                </form>
+                
+                <div id="deployment-progress" class="deployment-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    
+                    <div class="progress-steps">
+                        <div class="progress-step active">
+                            <div class="step-icon">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                            <span>Preparing...</span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-icon">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                            <span>Uploading...</span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <span>Building...</span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span>Done!</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="deployment-success" class="deployment-success">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Deployment Successful!</h3>
+                    <p>Your website is now live at:</p>
+                    <div class="url-container">
+                        <input type="text" id="live-url" readonly>
+                        <button class="btn-icon" onclick="copyToClipboard(document.getElementById('live-url').value)">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <button class="btn-icon" onclick="window.open(document.getElementById('live-url').value, '_blank')">
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>AI is working on your website...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./helper.js"></script>
+    <script src="./voice-service.js"></script>
+    <script src="./file-manger.js"></script>
+    <script src="./gemini-service.js"></script>
+    <script src="./preview-manger.js"></script>
+    <script src="./explanation-service.js"></script>
+    <script src="./deployment-service.js"></script>
+    <script src="./chat-manger.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
