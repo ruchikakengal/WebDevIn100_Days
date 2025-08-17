@@ -1,0 +1,79 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎓 Student Grade Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    header.header-space {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    h1.title {
+      margin: 0;
+    }
+
+    #themeToggle {
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header-space">
+      <h1 class="title">🎓 Student Grade Analyzer</h1>
+      <button id="themeToggle">🌓 Toggle Theme 🌞</button>
+    </header>
+
+   <form id="marksForm">
+  <div class="input-section">
+    <label for="studentName">👤 Student Name:</label>
+    <input type="text" id="studentName" placeholder="Enter student name" required />
+
+    <div style="margin-top: 15px;">
+      <label for="subjects">📚 Enter Subject Marks (out of 100):</label>
+    </div>
+
+    <div id="subjectsContainer">
+      <div class="subject-entry">
+        <input type="text" placeholder="Subject Name" class="subjectName" required />
+        <input type="number" placeholder="Marks" class="subjectMark" min="0" max="100" required />
+      </div>
+    </div>
+
+    <button type="button" id="addSubject">➕ Add Another Subject</button>
+  </div>
+
+  <button type="submit" class="analyze-btn">📊 Analyze Grades</button>
+</form>
+
+
+    <section id="results" class="hidden">
+  <h2>📈 Analysis for <span id="displayName"></span></h2>
+  <p>🎯 GPA: <strong id="gpa"></strong></p>
+  <p>🏅 Grade: <strong id="grade"></strong></p>
+  <canvas id="chart" width="400" height="200"></canvas>
+</section>
+
+
+    <footer>
+      <p>&copy; 2025 Student Grade Analyzer by <strong>Tanu Chandravanshi</strong> 💡 | 🎨 <a href="#" id="themeInfo">Light Mode</a></p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+    
+
+</body>
+
+</html>
