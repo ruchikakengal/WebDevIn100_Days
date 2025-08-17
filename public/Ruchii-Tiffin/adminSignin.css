@@ -1,0 +1,236 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 450px;
+  padding: 20px;
+}
+
+.auth-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  background: #ff4d4d;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.logo svg {
+  width: 40px;
+  height: 40px;
+  fill: white;
+}
+
+h2 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e1e1e1;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.input-group input:focus {
+  border-color: #ff4d4d;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.1);
+}
+
+#password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 45px;
+  cursor: pointer;
+  color: #666;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 15px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.auth-btn:hover {
+  background: #ff3333;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+}
+
+.auth-btn:active {
+  transform: translateY(0);
+}
+
+.alternate-auth {
+  text-align: center;
+  margin-top: 25px;
+  color: #666;
+}
+
+.alternate-auth a {
+  color: #ff4d4d;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.alternate-auth a:hover {
+  text-decoration: underline;
+}
+
+.social-auth {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.social-auth p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.social-btn {
+  padding: 12px 25px;
+  border: 2px solid #e1e1e1;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-btn:hover {
+  background: #f8f8f8;
+  transform: translateY(-2px);
+}
+
+.social-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-box {
+  animation: slideIn 0.5s ease-out;
+}
+
+.validation-message {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-top: 5px;
+  display: none;
+}
+
+.input-group input:invalid:focus ~ .validation-message {
+  display: block;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+.forgot-password a {
+  color: #666;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  color: #ff4d4d;
+}
+
+.admin-auth {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.admin-btn {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.admin-btn:hover {
+  background-color: #555;
+}

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./Utils\20240921_154411.png">
+  <title>Student Meal Plans</title>
+  <link rel="stylesheet" href="studentplan.css">
+  <link rel="import" href="reusable-modal.html">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <script type="module">
+    import ReusableModal from './ReusableModal.js';
+
+    // Create a new modal instance
+    const cartModal = new ReusableModal("🥳 Item Added to the Cart");
+
+    // Function to add item to cart
+    function addToCart() {
+      console.log("Item added to cart!");
+      cartModal.show(); // Show the modal
+    }
+
+    // Attach event listener to a button
+    document.getElementById("add-to-cart-btn").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn1").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn2").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn3").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn4").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn5").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn6").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn7").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn8").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn9").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn10").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn11").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn12").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn13").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn14").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn15").addEventListener("click", addToCart);
+
+  </script>
+  <link rel="stylesheet" href="style.css">
+
+
+  <style>
+    /* Loader Styles */
+  .loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      z-index: 9999;
+  }
+  
+  .panWrapper {
+      width: 200px;
+      height: fit-content;
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      flex-direction: column;
+      gap: 20px;
+  }
+  
+  .pan {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 100%;
+      height: fit-content;
+      animation: cooking 1.7s infinite;
+  }
+  
+  @keyframes cooking {
+      0% {
+          transform: rotate(0deg);
+          transform-origin: top right;
+      }
+      10% {
+          transform: rotate(-4deg);
+          transform-origin: top right;
+      }
+      50% {
+          transform: rotate(20deg);
+      }
+      100% {
+          transform: rotate(0deg);
+      }
+  }
+  
+  .food {
+      position: absolute;
+      width: 40%;
+      height: 6px;
+      background: linear-gradient(to bottom, rgb(82, 33, 33), rgb(200, 106, 106));
+      left: 10px;
+      border-radius: 50%;
+      animation: flip 1.7s infinite;
+      z-index: 2;
+  }
+  
+  @keyframes flip {
+      0% {
+          transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+          transform: translateY(-100px) rotate(180deg);
+      }
+      100% {
+          transform: translateY(0px) rotate(360deg);
+      }
+  }
+  
+  .panBase {
+      z-index: 3;
+      width: 50%;
+      height: 22px;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      background: linear-gradient(to top, rgb(3, 156, 156), rgb(10, 191, 191));
+  }
+  
+  .panHandle {
+      width: 40%;
+      background: linear-gradient(to bottom, rgb(18, 18, 18), rgb(74, 74, 74));
+      height: 10px;
+      border-radius: 10px;
+  }
+  
+  .panShadow {
+      width: 70px;
+      height: 8px;
+      background-color: rgba(0, 0, 0, 0.21);
+      margin-left: 15px;
+      border-radius: 10px;
+      animation: shadow 1.7s infinite;
+      filter: blur(5px);
+  }
+  
+  @keyframes shadow {
+      0% {
+          transform: scaleX(0.7);
+      }
+      50% {
+          transform: scaleX(1);
+      }
+      100% {
+          transform: scaleX(0.7);
+      }
+  }
+  
+  /* Main Content Styles */
+  .content {
+      display: none;
+      padding: 20px;
+      text-align: center;
+  }
+  </style>
+
+
+
+</head>
+
+<body>
+
+
+    <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="panWrapper">
+        <div class="pan">
+            <div class="food"></div>
+            <div class="panBase"></div>
+            <div class="panHandle"></div>
+        </div>
+        <div class="panShadow"></div>
+    </div>
+</div>
+
+
+
+  <!-- Navbar -->
+    <nav class="navbar bg-light border-bottom border-body navbar-expand-lg">
+      <div class="container-fluid">
+
+        <!-- Logo -->
+        <a class="navbar-brand text-black" href="./index.html">
+          <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
+          Ruchii Tiffin
+        </a>
+
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <!-- Home Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="./index.html#home">Home</a>
+            </li>
+
+            <!-- View Menu Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="./index.html#menu-section">View Menu</a>
+            </li>
+
+            <!-- Meal Plan Dropdown -->
+            <li class="nav-item dropdown meal-plan">
+              <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
+                Meal Plans
+              </a>
+              <ul class="dropdown-menu" id="mealPlanMenu">
+                <li><a class="dropdown-item" href="./index.html#student-plan">Student Plan</a></li>
+                <li><a class="dropdown-item" href="corporateplans.html">Corporate Plan</a></li>
+                <li><a class="dropdown-item" href="dailyplans.html">Daily Plan</a></li>
+              </ul>
+            </li>
+
+            <!-- About Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="./index.html#who-we-are">About</a>
+            </li>
+
+            <!-- Contact Us Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="./index.html#contact-us">Contact Us</a>
+            </li>
+
+          
+
+            <!-- Dark Mode Toggle Button -->
+              <li class="nav-item">
+                <button id="dark-mode-toggle" class="btn btn-outline-dark mx-2">
+                  <i class="fas fa-moon"></i> <!-- Dark mode icon -->
+                </button>
+              </li>
+
+            
+            <!-- Cart Icon in Navbar -->
+          <li class="nav-item">
+            <a href="./menu-page/checkout.html" id="cart-icon" class="nav-link mx-2">
+              <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">(0)</span>
+            </a>
+          </li>
+
+            <!-- Sign In Link -->
+            <li class="nav-item">
+              <a href="./signin.html" class="nav-link mx-2 signinbtn">Sign In </a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+
+  <!-- first three previous plan  -->
+  <!-- Student Meal Plans -->
+  <section id="meal-plans" class="student-plan-section">
+    <h2 class="section-title">Student Meal Plan</h2>
+    <div class="student-plan-container">
+      <!-- Plan 1 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="Utils/st-1.jpg" alt="Budget Meal Plan" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Budget Meal Plan</h3>
+              <p class="price">₹100</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Budget Meal Plan</h3>
+            <ul>
+              <li>Rice and lentils</li>
+              <li>Vegetable stir-fry</li>
+              <li>Fruit salad</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn" class="add-btn" onclick="addToCart('../Utils/st-1.jpg','Budget Meal Plan','Student meal plan', 100)">Add +</button>
+      </div>
+
+      <!-- Plan 2 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://img.clevup.in/268918/1666623916947_SKU-0001_0.jpeg?width=600&format=webp" alt="Vegetarian Meal Plan" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Vegetarian Meal Plan</h3>
+              <p class="price">₹150</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Vegetarian Meal Plan</h3>
+            <ul>
+              <li>Vegetable curry</li>
+              <li>Chapati</li>
+              <li>Salad</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn1" class="add-btn" onclick="addToCart('https:/img.clevup.in/268918/1666623916947_SKU-0001_0.jpeg?width=600&format=webp' ,'Vegetarian Meal Plan','Student meal plan', 150)">Add +</button>
+      </div>
+
+      <!-- Plan 3 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://i.pinimg.com/736x/20/92/48/2092483fde63dc2c9e3f2a0038c8af1f.jpg" alt="Non-Veg Meal Plan" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Non-Veg Meal Plan</h3>
+              <p class="price">₹200</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Non-Veg Meal Plan</h3>
+            <ul>
+              <li>Chicken curry</li>
+              <li>Rice</li>
+              <li>Mixed vegetables</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn2" class="add-btn" onclick="addToCart('https://i.pinimg.com/736x/20/92/48/2092483fde63dc2c9e3f2a0038c8af1f.jpg' ,'Non-Veg Meal Plan','Student meal plan', 200)">Add +</button>
+      </div>
+
+
+
+      <!-- new plans  -->
+      <!-- Plan 4 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://img-global.cpcdn.com/recipes/4e6759e54cbfedc2/1200x630cq70/photo.jpg" alt="North Indian Thali" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">North Indian Thali</h3>
+              <p class="price">₹250</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>North Indian Thali</h3>
+            <ul>
+              <li>Butter Chicken</li>
+              <li>Dal Makhani</li>
+              <li>Aloo Gobi</li>
+              <li>Roti</li>
+              <li>Rice Pudding (Kheer)</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn3" class="add-btn" onclick="addToCart('https://img-global.cpcdn.com/recipes/4e6759e54cbfedc2/1200x630cq70/photo.jpg','North Indian Thali','Student meal plan', 250)">Add +</button>
+      </div>
+
+      <!-- Plan 5 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://imgmediagumlet.lbb.in/media/2018/09/5bad7cfcfc44ed0ea85ed308_1538096380503.jpg" alt="South Indian Thali" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">South Indian Thali</h3>
+              <p class="price">₹280</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>South Indian Thali</h3>
+            <ul>
+              <li>Sambar</li>
+              <li>Vegetable Poriyal</li>
+              <li>Rasam</li>
+              <li>Rice</li>
+              <li>Curd Rice</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn4" class="add-btn" onclick="addToCart('https://imgmediagumlet.lbb.in/media/2018/09/5bad7cfcfc44ed0ea85ed308_1538096380503.jpg','South Indian Thali','Student meal plan', 280)">Add +</button>
+      </div>
+
+      <!-- Plan 6 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://img2.exportersindia.com/product_images/bc-full/2024/6/51256/pani-puri-masala-1718340893-7479621.jpeg" alt="Pani Puri Meal" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Pani Puri Meal</h3>
+              <p class="price">₹150</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Pani Puri Meal</h3>
+            <ul>
+              <li>Pani Puri</li>
+              <li>Sev Puri</li>
+              <li>Dahi Puri</li>
+              <li>Masala Chaas</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn5" class="add-btn" onclick="addToCart('https://img2.exportersindia.com/product_images/bc-full/2024/6/51256/pani-puri-masala-1718340893-7479621.jpeg','Pani Puri Meal','Student meal plan', 150)">Add +</button>
+      </div>
+
+      <!-- Plan 7 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://t4.ftcdn.net/jpg/05/53/98/37/360_F_553983713_fPQArPANoKopj2Tm4621eYAA1SXy48qt.jpg"
+              alt="Chole Bhature" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Chole Bhature</h3>
+              <p class="price">₹200</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Chole Bhature</h3>
+            <ul>
+              <li>Chole (Chickpea Curry)</li>
+              <li>Bhature (Fried Bread)</li>
+              <li>Salad</li>
+              <li>Pickle</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn6" class="add-btn" onclick="addToCart('https://t4.ftcdn.net/jpg/05/53/98/37/360_F_553983713_fPQArPANoKopj2Tm4621eYAA1SXy48qt.jpg','Chole Bhature','Student meal plan', 200)">Add +</button>
+      </div>
+
+      <!-- Plan 8 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://img.freepik.com/premium-photo/hyderabadi-chicken-biryani-food-photos_410516-42775.jpg"
+              alt="Biryani Meal" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Biryani Meal</h3>
+              <p class="price">₹300</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Biryani Meal</h3>
+            <ul>
+              <li>Hyderabadi Biryani</li>
+              <li>Raita</li>
+              <li>Mirchi Ka Salan</li>
+              <li>Salad</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn7" class="add-btn" onclick="addToCart('https://img.freepik.com/premium-photo/hyderabadi-chicken-biryani-food-photos_410516-42775.jpg','Biryani Meal','Student meal plan', 300)">Add +</button>
+      </div>
+
+      <!-- Plan 9 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img
+              src="https://media.istockphoto.com/id/1158578874/photo/indian-hindu-veg-thali-food-platter-selective-focus.jpg?s=612x612&w=0&k=20&c=ZHAsJ9sJJoeAmwD3iU1Oo2YSKn_BG6JoE7zuG1frxwg="
+              alt="Vegan Indian Thali" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Vegan Indian Thali</h3>
+              <p class="price">₹220</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Vegan Indian Thali</h3>
+            <ul>
+              <li>Baingan Bharta</li>
+              <li>Aloo Methi</li>
+              <li>Roti</li>
+              <li>Rice</li>
+              <li>Mango Chutney</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn8" class="add-btn" onclick="addToCart('https://media.istockphoto.com/id/1158578874/photo/indian-hindu-veg-thali-food-platter-selective-focus.jpg?s=612x612&w=0&k=20&c=ZHAsJ9sJJoeAmwD3iU1Oo2YSKn_BG6JoE7zuG1frxwg=','Vegan Indian Thali','Student meal plan', 220)">Add +</button>
+      </div>
+
+      <!-- Plan 10 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://i.pinimg.com/736x/33/d7/8e/33d78e107bb7aea1ab8fdf617ffd6b49.jpg" alt="Mughlai Thali"
+              class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Mughlai Thali</h3>
+              <p class="price">₹350</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Mughlai Thali</h3>
+            <ul>
+              <li>Mutton Korma</li>
+              <li>Naan</li>
+              <li>Methi Malai Murg</li>
+              <li>Gajar Halwa</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn9" class="add-btn" onclick="addToCart('https://i.pinimg.com/736x/33/d7/8e/33d78e107bb7aea1ab8fdf617ffd6b49.jpg','Mughlai Thali','Student meal plan', 350)">Add +</button>
+      </div>
+
+      <!-- Plan 11 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img
+              src="https://thumbs.dreamstime.com/b/indian-thali-rajasthani-food-consisting-daal-baati-churma-gatte-ki-sabji-79196235.jpg"
+              alt="Rajasthani Thali" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Rajasthani Thali</h3>
+              <p class="price">₹280</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Rajasthani Thali</h3>
+            <ul>
+              <li>Dal Baati Churma</li>
+              <li>Gatte Ki Sabzi</li>
+              <li>Missi Roti</li>
+              <li>Chaas (Buttermilk)</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn10" class="add-btn" onclick="addToCart('https://thumbs.dreamstime.com/b/indian-thali-rajasthani-food-consisting-daal-baati-churma-gatte-ki-sabji-79196235.jpg','Rajasthani Thali','Student meal plan', 280)">Add +</button>
+      </div>
+
+      <!-- Plan 12 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img
+              src="https://media.istockphoto.com/id/1329527211/photo/gujarati-thali.jpg?s=612x612&w=0&k=20&c=0YwQAEaHtc7yvnugS1tdUF9d8xw8eEgfShXP4rx4aTA="
+              alt="Gujarati Thali" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Gujarati Thali</h3>
+              <p class="price">₹270</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Gujarati Thali</h3>
+            <ul>
+              <li>Undhiyu</li>
+              <li>Dhokla</li>
+              <li>Khichdi</li>
+              <li>Khandvi</li>
+              <li>Farsan</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn11" class="add-btn" onclick="addToCart('https://media.istockphoto.com/id/1329527211/photo/gujarati-thali.jpg?s=612x612&w=0&k=20&c=0YwQAEaHtc7yvnugS1tdUF9d8xw8eEgfShXP4rx4aTA=','Gujarati Thali','Student meal plan', 270)">Add +</button>
+      </div>
+
+      <!-- Plan 13 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img
+              src="https://img.freepik.com/premium-photo/indian-food-butter-naan-butter-chicken-punjabi-dish_762785-273869.jpg"
+              alt="Punjabi Meal" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Punjabi Meal</h3>
+              <p class="price">₹300</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Punjabi Meal</h3>
+            <ul>
+              <li>Amritsari Kulcha</li>
+              <li>Butter Chicken</li>
+              <li>Punjabi Lassi</li>
+              <li>Aloo Tikki</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn12" class="add-btn" onclick="addToCart('https://img.freepik.com/premium-photo/indian-food-butter-naan-butter-chicken-punjabi-dish_762785-273869.jpg','Punjabi Meal','Student meal plan', 300)">Add +</button>
+      </div>
+
+      <!-- Plan 14 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://veeragroup.com/wp-content/uploads/2024/02/fish-thali-1.jpg" alt="Goan Meal"
+              class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Goan Meal</h3>
+              <p class="price">₹270</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Goan Meal</h3>
+            <ul>
+              <li>Goan Fish Curry</li>
+              <li>Rice</li>
+              <li>Sol Kadhi</li>
+              <li>Prawn Masala</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn13" class="add-btn" onclick="addToCart('https://veeragroup.com/wp-content/uploads/2024/02/fish-thali-1.jpg','Goan Meal','Student meal plan', 270)">Add +</button>
+      </div>
+
+      <!-- Plan 15 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img
+              src="https://images.slurrp.com/prod/articleSource/4o2sglfinj7.webp?impolicy=slurrp-20210601&width=1200&height=900"
+              alt="Maharashtrian Thali" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Maharashtrian Thali</h3>
+              <p class="price">₹280</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Maharashtrian Thali</h3>
+            <ul>
+              <li>Puran Poli</li>
+              <li>Batata Vada</li>
+              <li>Sabudana Khichdi</li>
+              <li>Pithla Bhakri</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn14" class="add-btn" onclick="addToCart('https://images.slurrp.com/prod/articleSource/4o2sglfinj7.webp?impolicy=slurrp-20210601&width=1200&height=900','Maharashtrian Thali','Student meal plan', 280)">Add +</button>
+      </div>
+
+      <!-- Plan 16 -->
+      <div class="student-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img
+              src="https://media.istockphoto.com/id/1219174110/photo/malai-kofta-curry-in-black-bowl-at-dark-slate-background-malai-kofta-is-indian-cuisine-dish.jpg?s=612x612&w=0&k=20&c=YBusjVmB35Q0AAFuMs48KRLNgnDQuL1dONJ0EBYwS9M="
+              alt="Malai Kofta Meal" class="card-image">
+            <div class="card-overlay">
+              <h3 class="meal-name">Malai Kofta Meal</h3>
+              <p class="price">₹330</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Malai Kofta Meal</h3>
+            <ul>
+              <li>Malai Kofta</li>
+              <li>Naan</li>
+              <li>Raita</li>
+              <li>Mango Lassi</li>
+            </ul>
+          </div>
+        </div>
+        <button id="add-to-cart-btn15" class="add-btn" onclick="addToCart('https://media.istockphoto.com/id/1219174110/photo/malai-kofta-curry-in-black-bowl-at-dark-slate-background-malai-kofta-is-indian-cuisine-dish.jpg?s=612x612&w=0&k=20&c=YBusjVmB35Q0AAFuMs48KRLNgnDQuL1dONJ0EBYwS9M=','Malai Kofta Meal','Student meal plan', 330)">Add +</button>
+      </div>
+
+    </div>
+  </section>
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-content"
+        style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background-color: white; color: black;">
+
+        <!-- About Section -->
+        <div class="footer-section about"
+          style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;"
+          onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="width: 100px; margin-right: 20px;">
+          <p style="margin: 0;">Ruchii Tiffin connects customers with local tiffin centers, providing a seamless and
+            delightful dining experience. Our shared passion for food and community drives us to bring quality meals
+            directly to your doorstep.</p>
+        </div>
+
+        <!-- Ruchii Tiffin Links -->
+        <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Ruchii Tiffin</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="whoweare.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+            <li><a href="blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+            <li><a href="work_with_us/work-with-us.html"
+                style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+            <li><a href="investor-relations.html"
+                style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+            <li><a href="./index.html#contact-us" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+                <li><a href="report-fraud/report-fraud.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                  onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                  onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Report Fraud</a></li>
+          </ul>
+        </div>
+
+        <!-- Tiffin Plans Links -->
+        <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Tiffin Plans</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="dailyplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Daily Plan</a></li>
+            <li><a href="studentplan.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Student Plan</a></li>
+            <li><a href="corporateplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Corporate Plan</a></li>
+          </ul>
+          <!--payment options-->
+          <div class="payments" class="footer-section services"  style="flex: 1; min-width: 150px; margin: -2px;">
+            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">we Accept</h2>
+            <a href="https://pay.google.com/intl/en_in/about/" style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-google-pay" title="Google pay" style="padding: 2px;"></i></a>
+           <a href="https://www.apple.com/apple-pay/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px"onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-apple-pay" title="Apple pay" style="padding: 2px;"></i></a>
+            <a href="https://www.visa.co.in/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-visa" title="Visa pay" style="padding: 2px;"></i></a>
+            <a href="https://www.mastercard.co.in/en-in.html"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-mastercard" title="Master card" style="padding: 2px;"></i></a>
+        </div>
+        </div>
+
+        <!-- Learn More Links -->
+        <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="privacy.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+            <li><a href="security.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+            <li><a href="Terms.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+            <li><a href="lodgecomplaint.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Lodge Complaint</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+          <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+            <li><a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/yourprofile" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/x/" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://x.com/x" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Twitter"><i class="fab fa-x-twitter"></i></a></li>
+            <li><a href="https://www.youtube.com/yourchannel" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom" style="margin:10px; padding: 10px; text-align: center;">
+        <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'"
+          onmouseout="this.style.color='black'">© 2025 Ruchii Tiffin. All rights reserved.</p>
+      </div>
+    </footer>
+
+
+    <script>
+      //  Loader js 
+document.addEventListener('DOMContentLoaded', function() {
+    // Show loader for 1.5 seconds (1500 milliseconds)
+    setTimeout(function() {
+        // Hide loader
+        document.getElementById('loader').style.display = 'none';
+        // Show main content
+        document.getElementById('content').style.display = 'block';
+    }, 1500);
+});
+    </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="./menu-page/cart.js"></script>
+  <script src="dark-mode.js"></script>
+
+</body>
+
+</html>

@@ -625,7 +625,7 @@ class WebDev100Days {
             technologies: ["HTML", "CSS", "JavaScript"],
               features: ["Clone"]
 },
-  ];
+    ];
 
 this.projects = projectsData.map((project, index) => ({
   ...project,

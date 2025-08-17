@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="./20240921_154411.png">
+  <title>Ruchii Tiffin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="testimonial.css"> 
+  <link rel="icon" href="../Utils/20240921_154411.png" type="image/x-ixon">
+</head>
+<body>
+
+ <!-- Navbar -->
+<nav class="navbar bg-light border-bottom border-body navbar-expand-lg">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand text-black" href="index.html">
+      <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
+      Ruchii Tiffin
+    </a>
+
+    <!-- Mobile Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <!-- Home Link -->
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="index.html">Home</a>
+        </li>
+        
+        <!-- View Menu Link -->
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="../index.html#menu">View Menu</a>
+        </li>
+
+        <!-- Meal Plan Dropdown -->
+        <li class="nav-item dropdown meal-plan">
+          <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
+            Meal Plans
+          </a>
+          <ul class="dropdown-menu" id="mealPlanMenu">
+            <li><a class="dropdown-item" href="../index.html#student-plan">Student Plan</a></li>
+            <li><a class="dropdown-item" href="#premium-plan">Corporate Plan</a></li>
+            <li><a class="dropdown-item" href="#custom-plan">Daily Plan</a></li>
+          </ul>
+        </li>
+
+        <!-- About Link -->
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="../index.html#who-we-are">About</a>
+        </li>
+        
+        <!-- Contact Us Link -->
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="../index.html#contact-us">Contact Us</a>
+        </li>
+
+        
+
+        <!-- Sign In Link -->
+        <li class="nav-item">
+          <a href="../signin.html" class="nav-link mx-2">Sign In</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<section class="testimonial-section">
+  <div class="container">
+      <div class="flex flex-col items-center">
+          <div class="text-center">
+              <h2 class="main-heading">Our happy clients say about us</h2>
+          </div>
+
+          <div class="cta-container">
+              <a href="#" class="cta-link">Check all 2,157 reviews</a>
+          </div>
+
+          <div class="relative-container">
+              <div class="background-gradient"></div>
+
+              <div class="grid-container">
+                <div class="testimonial-card pulse-effect">
+                      <div class="card-content">
+                          <div class="rating">
+                              <!-- SVG stars -->
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <!-- Repeat for all stars -->
+                          </div>
+
+                          <p>
+                              <p class="quote">“Ruchii Tiffin’s food is consistently delicious, and the delivery is always on time. I can always count on them for a satisfying meal.”</p>
+                          </p>
+                      </div>
+
+                      <div class="profile">
+                          <img src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png" alt="Leslie Alexander" class="avatar">
+                          <div class="profile-details">
+                              <p class="name">Leslie Alexander</p>
+                              <p class="role">Freelance React Developer</p>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Repeat testimonial cards as needed -->
+                  <div class="testimonial-card pulse-effect">
+                      <div class="card-content">
+                          <div class="rating">
+                              <!-- SVG stars -->
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <!-- Repeat for all stars -->
+                          </div>
+
+                          <p>
+                              <p class="quote">“The food from Ruchii Tiffin is truly a treat! Their flavors are amazing and always fresh, making every meal an experience.”</p>
+                          </p>
+                      </div>
+
+                      <div class="profile">
+                          <img src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png" alt="Leslie Alexander" class="avatar">
+                          <div class="profile-details">
+                              <p class="name">Jacob Jones</p>
+                              <p class="role">Digital Marketer</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="testimonial-card pulse-effect">
+                      <div class="card-content">
+                          <div class="rating">
+                              <!-- SVG stars -->
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                              <!-- Repeat for all stars -->
+                          </div>
+
+                          <p>
+                              <p class="quote">“I’m a huge fan of Ruchii Tiffin! The quality and taste of the food they offer is unparalleled, and they cater to all my dietary preferences.”</p>
+                          </p>
+                      </div>
+
+                      <div class="profile">
+                          <img src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female.png" alt="Leslie Alexander" class="avatar">
+                          <div class="profile-details">
+                              <p class="name">Jenny Wilson</p>
+                              <p class="role">Graphic Designer</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="testimonial-card pulse-effect">
+                    <div class="card-content">
+                        <div class="rating">
+                            <!-- SVG stars -->
+                            <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <!-- Repeat for all stars -->
+                        </div>
+
+                        <p>
+                            <p class="quote">“Every meal from Ruchii Tiffin is packed with flavors that remind me of home. They’ve quickly become my go-to choice for lunch!”</p>
+                        </p>
+                    </div>
+
+                    <div class="profile">
+                      <img src="https://images.pexels.com/photos/2204537/pexels-photo-2204537.jpeg" alt="Sophia Bennett" class="avatar">
+                        <div class="profile-details">
+                          <p class="name">Sophia Bennettr</p>
+                          <p class="role">Front-End Developer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card pulse-effect">
+                  <div class="card-content">
+                      <div class="rating">
+                          <!-- SVG stars -->
+                          <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                          </svg>
+                          <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                          </svg>
+                          <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                          </svg>
+                          <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                          </svg>
+                          <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                          </svg>
+                          <!-- Repeat for all stars -->
+                      </div>
+
+                      <p>
+                          <p class="quote">“The best tiffin service I’ve ever used! Ruchii Tiffin delivers hot, tasty, and nutritious meals every time. I highly recommend them!”</p>
+                      </p>
+                  </div>
+
+                  <div class="profile">
+                    <img src="https://images.pexels.com/photos/1138298/pexels-photo-1138298.jpeg" alt="Ethan Carter" class="avatar">
+                      <div class="profile-details">
+                        <p class="name">Ethan Carter</p>
+                        <p class="role">Content Strategist</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="testimonial-card pulse-effect">
+                <div class="card-content">
+                    <div class="rating">
+                        <!-- SVG stars -->
+                        <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <!-- Repeat for all stars -->
+                    </div>
+
+                    <p>
+                        <p class="quote">“Ruchii Tiffin has become my family’s favorite! Their service is fast, the food is always fresh, and the flavors are just perfect.”</p>
+                    </p>
+                </div>
+
+                <div class="profile">
+                  <img src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png" alt="Leslie Alexander" class="avatar">
+                    <div class="profile-details">
+                      <p class="name">Alam Morgan</p>
+                      <p class="role">Brand Consultant</p>
+                    </div>
+                </div>
+            </div>
+
+
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background-color: white; color: black;">
+      <div class="footer-section about" style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="width: 100px; margin-right: 20px;">
+        <p style="margin: 0;">Ruchii Tiffin connects customers with local tiffin centers, providing a seamless and delightful dining experience. Our shared passion for food and community drives us to bring quality meals directly to your doorstep.</p>
+      </div>
+  
+      <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Ruchii Tiffin</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="./whoweare.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+          <li><a href="./blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+          <li><a href="./work_with_us.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+          <li><a href="./investor-relations.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+          <li><a href="./index.html#contact-us" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Tiffin Plans</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="./dailyplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Daily Plan</a></li>
+          <li><a href="./studentplan.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Student Plan</a></li>
+          <li><a href="./corporateplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Corporate Plan</a></li>
+        </ul>
+        <!--payment options-->
+        <div class="payments" class="footer-section services"  style="flex: 1; min-width: 150px; margin: -2px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+          onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">we Accept</h2>
+          <a href="https://pay.google.com/intl/en_in/about/" style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-google-pay" title="Google pay" style="padding: 2px;"></i></a>
+         <a href="https://www.apple.com/apple-pay/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px"onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-apple-pay" title="Apple pay" style="padding: 2px;"></i></a>
+          <a href="https://www.visa.co.in/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-visa" title="Visa pay" style="padding: 2px;"></i></a>
+          <a href="https://www.mastercard.co.in/en-in.html"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-mastercard" title="Master card" style="padding: 2px;"></i></a>
+      </div>
+      </div>
+  
+      <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="./privacy.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+          <li><a href="./security.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+          <li><a href="./Terms.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+        <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+          <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-x-twitter"></i></a></li>
+          <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="footer-bottom" style="padding: 10px; text-align: center; background-color: white;">
+      <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2024 Ruchii Tiffin. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  
+  
+  
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTopBtn" title="Go to top" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script src="submitQuery.js"></script>
+  </body>
+  </html>
+
+
+
+

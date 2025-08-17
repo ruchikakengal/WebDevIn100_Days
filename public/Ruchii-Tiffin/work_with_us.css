@@ -1,0 +1,132 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #e67e22;
+}
+
+/* Main Section */
+main {
+    padding: 40px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.intro h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.intro p {
+    font-size: 18px;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* CTA Section */
+.cta {
+    background-color: #f5f5f5;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.cta p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.cta .cta-button {
+    background-color: #e67e22;
+    color: white;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.cta .cta-button:hover {
+    background-color: #c35e1e;
+}
+
+/* Job Listings */
+.job-listing {
+    background-color: whitesmoke;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.job-listing h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.job-listing ul {
+    list-style: none;
+}
+
+.job-listing ul li {
+    margin-bottom: 30px;
+}
+
+.job-listing ul li h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.job-listing ul li p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.job-listing ul li .apply-link {
+    background-color: #e67e22;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.job-listing ul li .apply-link:hover {
+    background-color: #c35e1e;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+footer p {
+    font-size: 14px;
+}

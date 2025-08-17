@@ -1,0 +1,166 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #E53935;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s; /* Highlighted: Added smooth transition effect */
+}
+
+.nav-link:hover {
+    color: #d32f2f; /* Highlighted: Changed hover color for navbar links */
+}
+
+.signinbtn{
+    background-color: #f44336;
+    color: white !important;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 3px;
+  }
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.student-plan-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Card Styles */
+.student-plan-card {
+    width: 250px;
+    height: 350px;
+    perspective: 1000px; /* Highlighted: Added 3D perspective for card flip effect */
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s; /* Highlighted: Added smooth transition for flip animation */
+}
+
+.student-plan-card:hover .card-inner {
+    transform: rotateY(180deg); /* Highlighted: Flip card on hover */
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px; /* Highlighted: Added rounded corners for better aesthetics */
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Highlighted: Added subtle shadow for depth */
+}
+
+.card-front {
+    background: #e03e00;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Highlighted: Ensured image scales properly */
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Highlighted: Semi-transparent background for text visibility */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.meal-name {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.price {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.card-back {
+    background: #e03e00 ;
+    color: #fff;
+    transform: rotateY(180deg); /* Highlighted: Defined back face rotation */
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.card-back h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-back ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-back ul li {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .student-plan-container {
+        flex-direction: column;
+        align-items: center; /* Highlighted: Centered content for smaller screens */
+    }
+
+    .student-plan-card {
+        width: 80%; /* Highlighted: Adjusted width for tablet screens */
+        height: 400px; /* Highlighted: Increased height for better spacing */
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-link {
+        font-size: 0.9rem; /* Highlighted: Reduced navbar font size for mobile screens */
+    }
+
+    .section-title {
+        font-size: 1.5rem; /* Highlighted: Adjusted title font size for better visibility */
+    }
+
+    .student-plan-card {
+        width: 90%; /* Highlighted: Adjusted width for mobile screens */
+        height: 380px; /* Highlighted: Adjusted height for better layout on mobile */
+    }
+}

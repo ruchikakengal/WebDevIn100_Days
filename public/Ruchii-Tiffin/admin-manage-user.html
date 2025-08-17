@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Users</title>
+    <link rel="icon" href="./Utils/20240921_154411.png" type="image/x-ixon">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            transition: transform 0агности
+
+.3s ease-in-out;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            z-index: 50;
+        }
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
+        .card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .btn-anim {
+            transition: all 0.3s ease;
+        }
+        .btn-anim:hover {
+            transform: scale(1.05);
+        }
+        .overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        @media (min-width: 768px) {
+            .sidebar {
+                position: relative;
+                transform: translateX(0);
+            }
+            .hamburger {
+                display: none;
+            }
+            .overlay {
+                display: none;
+            }
+            .sidebar-close {
+                display: none;
+            }
+        }
+        @media (max-width: 767px) {
+            .main-content {
+                width: 100%;
+            }
+        }
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="relative flex min-h-screen">
+        <!-- Sidebar -->
+        <div class="sidebar bg-gradient-to-b from-red-800 to-red-900 text-white w-64 p-6 flex flex-col shadow-2xl md:shadow-none" id="sidebar">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold animate__animated animate__fadeIn">Admin Panel</h2>
+                <button class="sidebar-close md:hidden text-white" onclick="toggleSidebar()">✕</button>
+            </div>
+            <nav class="space-y-3">
+                <a href="adminindex.html" class="block py-3 px-4 rounded-lg bg-red-600 hover:bg-red-500 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-1s">Dashboard</a>
+                <a href="#" class="block py-3 px-4 rounded-lg bg-red-700 hover:bg-red-600 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-2s">Manage Orders</a>
+                <a href="admin-manage-users.html" class="block py-3 px-4 rounded-lg bg-red-700 hover:bg-red-600 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-3s">Manage Users</a>
+                <a href="admin-meal-plan.html" class="block py-3 px-4 rounded-lg bg-red-700 hover:bg-red-600 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-4s">Meal Plans</a>
+                <a href="admin-meal-items.html" class="block py-3 px-4 rounded-lg bg-red-700 hover:bg-red-600 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-5s">Meal Items</a>
+                <a href="#" class="block py-3 px-4 rounded-lg bg-red-700 hover:bg-red-600 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-6s">Logout</a>
+            </nav>
+        </div>
+
+        <!-- Overlay for mobile -->
+        <div class="overlay fixed inset-0 bg-black bg-opacity-50 hidden" id="overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Main Content -->
+        <div class="main-content flex-1 p-6 md:p-10">
+            <button class="hamburger md:hidden mb-4 p-2 bg-red-600 text-white rounded-lg" onclick="toggleSidebar()">☰</button>
+            <h1 class="text-3xl font-bold mb-8 text-gray-800 animate__animated animate__fadeInDown">Manage Users</h1>
+
+            <!-- Users Table -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 mb-8 animate__animated animate__fadeInUp">
+                <h3 class="text-xl font-semibold mb-6 text-gray-700">Registered Users</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-red-600 text-white">
+                            <tr>
+                                <th class="py-3 px-4 text-left rounded-tl-lg">Name</th>
+                                <th class="py-3 px-4 text-left">Email</th>
+                                <th class="py-3 px-4 text-left">Role</th>
+                                <th class="py-3 px-4 text-left rounded-tr-lg">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody" class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="py-4 px-4">Restaurant 1</td>
+                                <td class="py-4 px-4">restaurant1@example.com</td>
+                                <td class="py-4 px-4">User</td>
+                                <td class="py-4 px-4">
+                                    <button class="bg-red-500 text-white px-3 py-1 rounded mr-2 hover:bg-red-600 transition-all">Edit</button>
+                                    <button class="bg-red-700 text-white px-3 py-1 rounded hover:bg-red-800 transition-all">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="py-4 px-4">Restaurant 2</td>
+                                <td class="py-4 px-4">restaurant2@example.com</td>
+                                <td class="py-4 px-4">User</td>
+                                <td class="py-4 px-4">
+                                    <button class="bg-red-500 text-white px-3 py-1 rounded mr-2 hover:bg-red-600 transition-all">Edit</button>
+                                    <button class="bg-red-700 text-white px-3 py-1 rounded hover:bg-red-800 transition-all">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 animate__animated animate__fadeInUp animate__delay-1s">
+                <h3 class="text-xl font-semibold mb-6 text-gray-700">Add / Edit User</h3>
+                <div class="grid gap-4 md:grid-cols-2">
+                    <input type="text" placeholder="User Name" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all">
+                    <input type="email" placeholder="Email" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all">
+                    <select class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all">
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                    <button class="btn-anim col-span-full md:col-span-1 md:col-start-2 bg-red-600 text-white p-3 rounded-lg hover:bg-red-700">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebar = document.getElementById("sidebar");
+
+            if (window.innerWidth < 768) {
+                sidebar.classList.add("sidebar-hidden");
+            }
+        });
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("overlay");
+            
+            if (window.innerWidth < 768) {
+                sidebar.classList.toggle("sidebar-hidden");
+                overlay.classList.toggle("hidden");
+                
+                if (!sidebar.classList.contains("sidebar-hidden")) {
+                    overlay.style.opacity = "1";
+                } else {
+                    overlay.style.opacity = "0";
+                    setTimeout(() => overlay.classList.add("hidden"), 300);
+                }
+            }
+        }
+
+        window.addEventListener("resize", () => {
+            const sidebar = document.getElementById("sidebar");
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove("sidebar-hidden");
+            } else {
+                sidebar.classList.add("sidebar-hidden");
+            }
+        });
+    </script>
+</body>
+</html>

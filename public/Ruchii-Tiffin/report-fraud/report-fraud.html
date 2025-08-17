@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Fraud - Ruchii Tiffin</title>
+    <link rel="stylesheet" href="report-fraud.css">
+    <link rel="icon" href="./Utils/20240921_154411.png" type="image/x-ixon">
+    <link rel="icon" href="../contributors/20240921_154411.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+   <!-- Navbar -->
+<nav class="navbar bg-light border-bottom border-body navbar-expand-lg">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand text-black" href="../index.html">
+        <img src="../contributors/1726914447956.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
+        Ruchii Tiffin
+      </a>
+  
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="../index.html#home">Home</a>
+          </li>
+          
+          <!-- View Menu Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="../index.html#menu">View Menu</a>
+          </li>
+  
+          <!-- Meal Plan Dropdown -->
+          <li class="nav-item dropdown meal-plan">
+            <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
+              Meal Plans
+            </a>
+            <ul class="dropdown-menu" id="mealPlanMenu">
+              <li><a class="dropdown-item" href="../index.html#student-plan">Student Plan</a></li>
+              <li><a class="dropdown-item" href="../index.html#premium-plan">Corporate Plan</a></li>
+              <li><a class="dropdown-item" href="../index.html#custom-plan">Daily Plan</a></li>
+            </ul>
+          </li>
+  
+          <!-- About Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="../index.html#who-we-are">About</a>
+          </li>
+          
+          <!-- Contact Us Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="../index.html#contact-us">Contact Us</a>
+          </li>
+  
+        
+  
+          <!-- Sign In Link -->
+          <li class="nav-item">
+            <a href="../signin.html" class="nav-link mx-2">Sign In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+<div class="report"><h1> Report a Potential Fraud</h1></div>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">Back to Home</a>
+        <form class="report-form">
+            <h1>Report Fraud</h1>
+            <div class="input-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Your Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Your email address" required>
+            </div>
+            <div class="input-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number" required>
+            </div>
+            <div class="input-group">
+                <label for="person">Name of Person/Organization</label>
+                <input type="text" id="person" name="person" placeholder="Name of the person/organization" required>
+            </div>
+            <div class="input-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="City" required>
+            </div>
+            <div class="input-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <div class="disclaimer">
+                <h3>Disclaimer</h3>
+                <p>
+                    Please use this form only for reporting potential frauds. For order or other general queries,
+                    <a href="../index.html#contact-us">contact us here</a>.
+                </p>
+            </div>
+            <p class="note">
+                This reporting channel is used to provide an opportunity to report your concerns related to suspected
+                fraud or suspected violation of the Code of Conduct of Ruchii Tiffin.
+            </p>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+
+      <!-- Footer Section -->
+<footer>
+  <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background-color: white; color: black;">
+    
+    <!-- About Section -->
+    <div class="footer-section about" style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="../Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="width: 100px; margin-right: 20px;">
+      <p style="margin: 0;">Ruchii Tiffin connects customers with local tiffin centers, providing a seamless and delightful dining experience. Our shared passion for food and community drives us to bring quality meals directly to your doorstep.</p>
+    </div>
+
+    <!-- Ruchii Tiffin Links -->
+    <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+      <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Ruchii Tiffin</h2>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="../index.html#who-we-are" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+        <li><a href="../blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+        <li><a href="../work-with-us.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+        <li><a href="../investor-relations.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+        <li><a href="../index.html#contact-us" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Tiffin Plans Links -->
+    <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+      <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Tiffin Plans</h2>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="../dailyplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Daily Plan</a></li>
+        <li><a href="../studentplan.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Student Plan</a></li>
+        <li><a href="../corporateplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Corporate Plan</a></li>
+      </ul>
+      <!--payment options-->
+      <div class="payments" class="footer-section services"  style="flex: 1; min-width: 150px; margin: -2px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+        onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">we Accept</h2>
+        <a href="https://pay.google.com/intl/en_in/about/" style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-google-pay" title="Google pay" style="padding: 2px;"></i></a>
+       <a href="https://www.apple.com/apple-pay/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px"onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-apple-pay" title="Apple pay" style="padding: 2px;"></i></a>
+        <a href="https://www.visa.co.in/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-visa" title="Visa pay" style="padding: 2px;"></i></a>
+        <a href="https://www.mastercard.co.in/en-in.html"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-mastercard" title="Master card" style="padding: 2px;"></i></a>
+    </div>
+    </div>
+
+    <!-- Learn More Links -->
+    <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
+      <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="../privacy.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+        <li><a href="../security.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+        <li><a href="../Terms.html  " style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
+      <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+      <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+        <li><a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+        <li><a href="https://www.facebook.com/yourprofile" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/x/" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="https://x.com/x" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a></li>
+        <li><a href="https://www.youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom" style="margin:10px; padding: 10px; text-align: center;">
+    <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2025 Ruchii Tiffin. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+      <script src="../app.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

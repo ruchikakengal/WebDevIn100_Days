@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security - Ruchii Tiffin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="security.css"> 
+  <!-- Favicon -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="./Utils\20240921_154411.png">
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar bg-light border-bottom border-body navbar-expand-lg">
+      <div class="container-fluid">
+
+        <!-- Logo -->
+        <a class="navbar-brand text-black" href="./index.html">
+          <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
+          Ruchii Tiffin
+        </a>
+
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <!-- Home Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="./index.html#home">Home</a>
+            </li>
+
+            <!-- View Menu Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="./index.html#menu-section">View Menu</a>
+            </li>
+
+            <!-- Meal Plan Dropdown -->
+            <li class="nav-item dropdown meal-plan">
+              <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
+                Meal Plans
+              </a>
+              <ul class="dropdown-menu" id="mealPlanMenu">
+                <li><a class="dropdown-item" href="./index.html#student-plan">Student Plan</a></li>
+                <li><a class="dropdown-item" href="corporateplans.html">Corporate Plan</a></li>
+                <li><a class="dropdown-item" href="dailyplans.html">Daily Plan</a></li>
+              </ul>
+            </li>
+
+            <!-- About Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="./index.html#who-we-are">About</a>
+            </li>
+
+            <!-- Contact Us Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="./index.html#contact-us">Contact Us</a>
+            </li>
+
+          
+
+            <!-- Dark Mode Toggle Button -->
+              <li class="nav-item">
+                <button id="dark-mode-toggle" class="btn btn-outline-dark mx-2">
+                  <i class="fas fa-moon"></i> <!-- Dark mode icon -->
+                </button>
+              </li>
+
+            
+            <!-- Cart Icon in Navbar -->
+          <li class="nav-item">
+            <a href="./menu-page/checkout.html" id="cart-icon" class="nav-link mx-2">
+              <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">(0)</span>
+            </a>
+          </li>
+
+            <!-- Sign In Link -->
+            <li class="nav-item">
+              <a href="./signin.html" class="nav-link mx-2 signinbtn">Sign In </a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    
+
+    <div
+      class="container d-flex justify-content-center align-items-center"
+      style="min-height: 25vh"
+    >
+      <div class="overlay">
+        <h1 class="text-center" style="font-weight: bold; font-size: 2rem">
+          Security
+        </h1>
+        <p
+          class="text-center text-muted"
+          style="font-weight: bold; font-size: 1rem"
+        >
+          At Ruchii Tiffin, ensuring the security of your information and
+          transactions is our top priority. Below, you’ll find details about our
+          security practices and how you can help us maintain a safe environment
+          for all users.
+        </p>
+
+        <!-- Main Content -->
+        <section>
+          <h2>1. Data Encryption</h2>
+          <p>
+            All sensitive data, including personal and payment information, is
+            encrypted using industry-standard protocols to ensure secure
+            transmission and storage.
+          </p>
+        </section>
+
+        <section>
+          <h2>2. Secure Transactions</h2>
+          <p>
+            We partner with trusted payment gateways to process your
+            transactions safely. Your payment information is never stored on our
+            servers.
+          </p>
+        </section>
+
+        <section>
+          <h2>3. Regular Security Audits</h2>
+          <p>
+            We conduct regular security audits and vulnerability assessments to
+            identify and address potential risks proactively.
+          </p>
+        </section>
+
+        <section>
+          <h2>4. User Responsibilities</h2>
+          <ul>
+            <li>
+              Keep your account credentials secure and do not share them with
+              others.
+            </li>
+            <li>
+              Use strong, unique passwords for your account and update them
+              regularly.
+            </li>
+            <li>
+              Notify us immediately if you suspect unauthorized access to your
+              account.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>5. Reporting Security Issues</h2>
+          <p>
+            If you discover any vulnerabilities or have concerns about the
+            security of our platform, please report them immediately:
+          </p>
+          <ul>
+            <li>
+              Email:
+              <a href="mailto:security@tiffinfusion.com"
+                >security@tiffinfusion.com</a
+              >
+            </li>
+            <li>Phone: +1 (234) 567-8902</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>6. Privacy Policy</h2>
+          <p>
+            Your privacy is important to us. For more details about how we
+            collect, use, and protect your information, please review our
+            <a href="/privacy-policy">Privacy Policy</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2>7. Third-Party Services</h2>
+          <p>
+            While we strive to work with trusted partners, we recommend
+            reviewing the security and privacy practices of any third-party
+            services linked through our platform.
+          </p>
+        </section>
+
+        <section>
+          <h2>8. Changes to Our Security Practices</h2>
+          <p>
+            We may update our security practices from time to time to adapt to
+            emerging threats and technologies. Any changes will be communicated
+            through our website or email notifications.
+          </p>
+        </section>
+
+        <section>
+          <h2>9. Contact Us</h2>
+          <p>
+            If you have any questions or concerns regarding security, feel free
+            to contact us:
+          </p>
+          <ul>
+            <li>
+              Email:
+              <a href="mailto:security@tiffinfusion.com"
+                >security@tiffinfusion.com</a
+              >
+            </li>
+            <li>Phone: +1 (234) 567-8902</li>
+          </ul>
+        </section>
+
+        <!-- Get in Touch Button -->
+        <div class="text-center mt-4">
+          <button>
+            <a href="contactUs.html">
+              Get in touch
+              <div class="star-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-6">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+            </a>
+          </button>
+        </div>
+
+        <!-- Report a Bug Button -->
+        <div class="text-center mt-4">
+          <button>
+            <a href="https://github.com/x18/Tiffin_Fusion/issues">
+              Report a Bug
+              <div class="star-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-6">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="
+                    shape-rendering: geometricPrecision;
+                    text-rendering: geometricPrecision;
+                    image-rendering: optimizeQuality;
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+                  "
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+            </a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content"
+        style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background-color: white; color: black;">
+
+        <!-- About Section -->
+        <div class="footer-section about"
+          style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;"
+          onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="width: 100px; margin-right: 20px;">
+          <p style="margin: 0;">Ruchii Tiffin connects customers with local tiffin centers, providing a seamless and
+            delightful dining experience. Our shared passion for food and community drives us to bring quality meals
+            directly to your doorstep.</p>
+        </div>
+
+        <!-- Ruchii Tiffin Links -->
+        <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Ruchii Tiffin</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="whoweare.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+            <li><a href="blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+            <li><a href="work_with_us/work-with-us.html"
+                style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+            <li><a href="investor-relations.html"
+                style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+            <li><a href="#contact-us" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+                <li><a href="report-fraud/report-fraud.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                  onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                  onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Report Fraud</a></li>
+          </ul>
+        </div>
+
+        <!-- Tiffin Plans Links -->
+        <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Tiffin Plans</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="dailyplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Daily Plan</a></li>
+            <li><a href="studentplan.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Student Plan</a></li>
+            <li><a href="corporateplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Corporate Plan</a></li>
+          </ul>
+          <!--payment options-->
+          <div class="payments" class="footer-section services"  style="flex: 1; min-width: 150px; margin: -2px;">
+            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">we Accept</h2>
+            <a href="https://pay.google.com/intl/en_in/about/" style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-google-pay" title="Google pay" style="padding: 2px;"></i></a>
+           <a href="https://www.apple.com/apple-pay/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px"onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-apple-pay" title="Apple pay" style="padding: 2px;"></i></a>
+            <a href="https://www.visa.co.in/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-visa" title="Visa pay" style="padding: 2px;"></i></a>
+            <a href="https://www.mastercard.co.in/en-in.html"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-mastercard" title="Master card" style="padding: 2px;"></i></a>
+        </div>
+        </div>
+
+        <!-- Learn More Links -->
+        <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="privacy.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+            <li><a href="/security.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+            <li><a href="Terms.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+            <li><a href="lodgecomplaint.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Lodge Complaint</a></li>
+            <li><a href="testimonial.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                  onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                  onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Testimonials</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+          <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+            <li><a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/yourprofile" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/x/" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://x.com/x" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.youtube.com/yourchannel" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom" style="margin:10px; padding: 10px; text-align: center;">
+        <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'"
+          onmouseout="this.style.color='black'">© 2025 Ruchii Tiffin. All rights reserved.</p>
+      </div>
+    </footer>
+
+<!-- Bootstrap JS (includes Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="security.js"></script>
+  <script src="dark-mode.js"></script>
+  </body>
+</html>

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./Utils\20240921_154411.png">
+  <title>Ruchii Tiffin</title>
+
+<!-- SEOs  -->
+
+<meta name="description" content="Discover fresh, nutritious Indian fusion meals with Ruchii Tiffin. Enjoy customizable, budget-friendly meal plans delivered to your doorstep. Order now!">
+<meta name="keywords" content="Indian fusion meals, healthy meal delivery, customizable meal plans, budget-friendly meals, Indian food delivery, student meals, professional meals">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph Meta Tags for Social Media Sharing -->
+<meta property="og:title" content="Ruchii Tiffin | Healthy Indian Meal Delivery Service">
+<meta property="og:description" content="Enjoy fresh, nutritious Indian fusion meals with customizable, budget-friendly plans delivered to your doorstep. Perfect for students and professionals!">
+<meta property="og:image" content="https://x18.github.io/Tiffin_Fusion/menu-page/menu_images/DalMakhani.jpg">
+<meta property="og:url" content="https://x18.github.io/Tiffin_Fusion/">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ruchii Tiffin | Healthy Indian Meal Delivery Service">
+<meta property="twitter:description" content="Enjoy fresh, nutritious Indian fusion meals with customizable, budget-friendly plans delivered to your doorstep.">
+<meta property="twitter:image" content="https://x18.github.io/Tiffin_Fusion/menu-page/menu_images/DalMakhani.jpg">
+
+<!-- Canonical Tag -->
+<link rel="canonical" href="https://x18.github.io/Tiffin_Fusion/">
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="menu-toggle.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <script type="module">
+    import ReusableModal from './ReusableModal.js';
+
+    // Create a new modal instance
+    const cartModal = new ReusableModal("🥳 Item Added to the Cart");
+
+    // Function to add item to cart
+    function addToCart() {
+      console.log("Item added to cart!");
+      cartModal.show(); // Show the modal
+    }
+
+    // Attach event listener to a button
+    document.getElementById("add-to-cart-btn").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn1").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn2").addEventListener("click", addToCart);
+  </script>
+</head>
+
+<body>
+
+  <!-- Loader -->
+
+  <div class="loader" id="preloader">
+    <div class="pulse">
+      <img src="Utils/tififn fusion.jpg" alt="">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+
+  <!-- Loader Section Ends -->
+
+  <div id="main-content">
+
+    <!-- Navbar -->
+    <nav class="navbar bg-light border-bottom border-body navbar-expand-lg">
+      <div class="container-fluid">
+
+        <!-- Logo -->
+        <a class="navbar-brand text-black" href="./index.html">
+          <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
+          Ruchii Tiffin
+        </a>
+
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <!-- Home Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="#home">Home</a>
+            </li>
+
+            <!-- View Menu Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="#menu-section">View Menu</a>
+            </li>
+
+            <!-- Meal Plan Dropdown -->
+            <li class="nav-item dropdown meal-plan">
+              <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
+                Meal Plans
+              </a>
+              <ul class="dropdown-menu" id="mealPlanMenu">
+                <li><a class="dropdown-item" href="#student-plan">Student Plan</a></li>
+                <li><a class="dropdown-item" href="corporateplans.html">Corporate Plan</a></li>
+                <li><a class="dropdown-item" href="dailyplans.html">Daily Plan</a></li>
+              </ul>
+            </li>
+
+            <!-- About Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="#who-we-are">About</a>
+            </li>
+
+            <!-- Contact Us Link -->
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="#contact-us">Contact Us</a>
+            </li>
+
+            
+
+            <!-- Dark Mode Toggle Button -->
+              <li class="nav-item">
+                <button id="dark-mode-toggle" class="btn btn-outline-dark mx-2">
+                  <i class="fas fa-moon"></i> <!-- Dark mode icon -->
+                </button>
+              </li>
+
+            
+            <!-- Cart Icon in Navbar -->
+          <li class="nav-item">
+            <a href="./menu-page/checkout.html" id="cart-icon" class="nav-link mx-2">
+              <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">(0)</span>
+            </a>
+          </li>
+
+            <!-- Sign In Link -->
+            <li class="nav-item">
+              <a href="./signin.html" class="nav-link mx-2 signinbtn">Sign In </a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+
+
+
+
+    <!-- Hero Section in Home -->
+    <section id="home" class="hero-section">
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1>Delicious Homemade Meals</h1>
+          <p>Freshly made tiffin delivered to your doorstep every day!</p>
+          <a href="#menu-section" class="btn btn-primary mt-3">View Menu</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+
+    <section id="menu-section">
+      <div class="men-head">
+        <h2><b>Our Menu</b></h2>
+      </div>
+      <section class="menu-section">
+        <div class="menu-item">
+          <div class="menu-content">
+            <div class="menu-text">
+              <div class="menu-header">
+                <h3>Steamed Rice</h3>
+                <span class="price">₹150</span>
+              </div>
+              <p>
+                Indigenous, Aromatic, Superior long grain rice, served with a
+                mixture of jeera
+              </p>
+              <h4>Half | Full</h4>
+            </div>
+            <div class="menu-image">
+              <img src="./menu-page/menu_images/steamedrice.jpg" alt="steamed_rice" />
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-content">
+            <div class="menu-text">
+              <div class="menu-header">
+                <h3>Dal Tadka</h3>
+                <span class="price">₹100 </span>
+              </div>
+              <p>
+                Perfectly Cooked Trio of lentils, tempered with cumin and red
+                chilli with ghee
+              </p>
+              <h4>Quarter | Half | Full</h4>
+            </div>
+            <div class="menu-image">
+              <img src="./menu-page/menu_images/DalTadka.jpg" alt="Dal_Tadka" />
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-content">
+            <div class="menu-text">
+              <div class="menu-header">
+                <h3>Dal Makhani</h3>
+                <span class="price">₹130 </span>
+              </div>
+              <p>
+                A creamy and indulgent dish of slow-cooked black lentils and
+                kidney beans, enriched with butter, cream, and aromatic spices
+              </p>
+              <h4>Quarter | Half | Full</h4>
+            </div>
+            <div class="menu-image">
+              <img src="./menu-page/menu_images/DalMakhani.jpg" alt="Dal_Makhani" />
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-content">
+            <div class="menu-text">
+              <div class="menu-header">
+                <h3>Vegetable Curry</h3>
+                <span class="price">₹150 </span>
+              </div>
+              <p>
+                A wholesome blend of garden-fresh vegetables simmered in a rich,
+                spiced gravy infused with aromatic herbs and spices.
+              </p>
+              <h4>Half | Full</h4>
+            </div>
+            <div class="menu-image">
+              <img src="./menu-page/menu_images/VegetableCurry.jpg" alt="Vegetable_Curry" />
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-content">
+            <div class="menu-text">
+              <div class="menu-header">
+                <h3>Mixed Vegetable</h3>
+                <span class="price">₹110 </span>
+              </div>
+              <p>
+                A colorful assortment of sautéed seasonal vegetables, lightly
+                seasoned with spices for a simple and flavorful delight.
+              </p>
+            </div>
+            <div class="menu-image">
+              <img src="./menu-page/menu_images/Mixed Vegetables.jpg" alt="Mixed_Vegetable" />
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-content">
+            <div class="menu-text">
+              <div class="menu-header">
+                <h3>Aloo Gobhi</h3>
+                <span class="price">₹70 </span>
+              </div>
+              <p>
+                A classic combination of tender potatoes and cauliflower,
+                stir-fried with fragrant spices and garnished with fresh
+                coriander.
+              </p>
+              <h4>Half | Full</h4>
+            </div>
+            <div class="menu-image">
+              <img src="./menu-page/menu_images/AlooGobi.jpg" alt="Aloo_Gobi" />
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-content">
+            <div class="menu-text">
+              <div class="menu-header">
+                <h3>Chapati</h3>
+                <span class="price">₹15 </span>
+              </div>
+              <p>
+                Soft and wholesome whole wheat flatbread, freshly cooked on a
+                griddle for a perfect complement to any meal.
+              </p>
+            </div>
+            <div class="menu-image">
+              <img src="./menu-page/menu_images/Chapati.jpg" alt="Chapati" />
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-content">
+            <div class="menu-text">
+              <div class="menu-header">
+                <h3>Raita</h3>
+                <span class="price">₹30 </span>
+              </div>
+              <p>
+                A cool and creamy yogurt-based side dish, blended with spices and
+                fresh ingredients like cucumber or boondi for a refreshing touch.
+              </p>
+            </div>
+            <div class="menu-image">
+              <img src="./menu-page/menu_images/Raita.jpg" alt="Raita" />
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-content">
+            <div class="menu-text">
+              <div class="menu-header">
+                <h3>Salad</h3>
+                <span class="price">₹45 </span>
+              </div>
+              <p>
+                A crisp and refreshing mix of fresh vegetables, tossed with a
+                tangy dressing for a light and healthy bite.
+              </p>
+            </div>
+            <div class="menu-image">
+              <img src="./menu-page/menu_images/Salad.jpg" alt="Salad" />
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-content">
+            <div class="menu-text">
+              <div class="menu-header">
+                <h3>Fruit Salad</h3>
+                <span class="price">₹65 </span>
+              </div>
+              <p>
+                A vibrant medley of fresh, seasonal fruits, lightly tossed with a
+                drizzle of honey and a hint of mint for a refreshing twist.
+              </p>
+            </div>
+            <div class="menu-image">
+              <img src="./menu-page/menu_images/FruitSalad.jpg" alt="Fruit_Salad" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="back-clr">
+        <a href="menu-page/menu.html" class="full-menu-button">View Full Menu</a>
+      </div>
+    </section>
+
+
+    <!-- Services -->
+    <section id="menu" class="section-menu">
+      <div class="container text-center">
+        <h2 class="section-menu-h2">Why Ruchii Tiffin?</h2>
+        <br />
+        <div class="row">
+          <div class="col-md-3 circle-container">
+            <div class="circle">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <p>Easy Ordering</p>
+          </div>
+          <div class="col-md-3 circle-container">
+            <div class="circle">
+              <i class="fas fa-clock"></i>
+            </div>
+            <p>Timely Delivery</p>
+          </div>
+          <div class="col-md-3 circle-container">
+            <div class="circle">
+              <i class="fas fa-heart"></i>
+            </div>
+            <p>Healthy Options</p>
+          </div>
+          <div class="col-md-3 circle-container">
+            <div class="circle">
+              <i class="fas fa-users"></i>
+            </div>
+            <p>Community Focused</p>
+          </div>
+
+          <div class="col-md-3 circle-container">
+            <div class="circle">
+              <i class="fa-solid fa-pizza-slice"></i>
+            </div>
+            <p>Daily Variety</p>
+          </div>
+
+          <div class="col-md-3 circle-container">
+            <div class="circle">
+              <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <p>Served Hot</p>
+          </div>
+
+          <div class="col-md-3 circle-container">
+            <div class="circle">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Flexibility</p>
+          </div>
+
+          <div class="col-md-3 circle-container">
+            <div class="circle">
+              <i class="fa-solid fa-face-grin-beam"></i>
+            </div>
+            <p style="display: inline-flex;">No Daily Hassless</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="student-plan" class="student-plan-section">
+      <h2 class="section-title" style="font-family: 'Cosmic Sans MS', cursive, sans-serif;"><b>Student Plan</b></h2>
+      <div class="student-plan-container">
+        <!-- Plan 1 -->
+        <div class="student-plan-box">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <!-- Front Side -->
+              <div class="flip-card-front">
+                <img src="Utils/st-1.jpg" alt="Healthy Food" class="student-plan-image">
+                <div class="student-plan-details">
+                  <h3>Healthy Meal Plan</h3>
+                  <p>Includes fresh fruits, vegetables, and grains.</p>
+                  <p class="price">₹200</p>
+                </div>
+              </div>
+              <!-- Back Side -->
+              <div class="flip-card-back">
+                <h3>What's Inside?</h3>
+                <p>Fresh fruits, green veggies, multigrain chapatis, and quinoa rice.</p>
+              </div>
+            </div>
+          </div>
+          <button id="add-to-cart-btn" class="add-btn" onclick="addToCart('../Utils/st-1.jpg','Healthy Meal Plan','Student Meal' , 200)" >Add +</button>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="student-plan-box">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <!-- Front Side -->
+              <div class="flip-card-front">
+                <img src="Utils/st-2.jpg" alt="Tiffin Service" class="student-plan-image">
+                <div class="student-plan-details">
+                  <h3>Classic Tiffin</h3>
+                  <p>Includes rice, dal, curry, salad, and dessert.</p>
+                  <p class="price">₹150</p>
+                </div>
+              </div>
+              <!-- Back Side -->
+              <div class="flip-card-back">
+                <h3>What's Inside?</h3>
+                <p>Delicious homemade meals with a balance of taste and nutrition.</p>
+              </div>
+            </div>
+          </div>
+          <button id="add-to-cart-btn1" class="add-btn" onclick="addToCart('../Utils/st-2.jpg','Classic Tiffin', 'Student Meal' ,150)">Add +</button>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="student-plan-box">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <!-- Front Side -->
+              <div class="flip-card-front">
+                <img src="Utils/st-3.jpg" alt="Affordable Meal" class="student-plan-image">
+                <div class="student-plan-details">
+                  <h3>Budget Meal Plan</h3>
+                  <p>Includes chapati, vegetables, and curry.</p>
+                  <p class="price">₹100</p>
+                </div>
+              </div>
+              <!-- Back Side -->
+              <div class="flip-card-back">
+                <h3>What's Inside?</h3>
+                <p>A simple, affordable, and filling meal for students on a budget.</p>
+              </div>
+            </div>
+          </div>
+          <button id="add-to-cart-btn2" class="add-btn" onclick="addToCart('../Utils/st-3.jpg','Budget Meal Plan','Student Meal' , 100)">Add +</button>
+        </div>
+
+        <!-- View More Button -->
+        <div class="view-more-container">
+          <button onclick="location.href='studentplan.html';" class="view-more-button">
+            View More
+          </button>
+        </div>     
+        
+        <!-- Customize Menu Button -->
+      <div class="view-more-container">
+        <button onclick="location.href='studentplan.html'" class="customize-menu-button">
+          Customize Menu
+        </button>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+    <section id="who-we-are" class="who-we-are">
+      <div class="content">
+        <h2><b>Who are we?</b></h2>
+        <div class="red-line"></div>
+        <p>
+         Ruchii Tiffin was created to bridge the gap between students and quality tiffin services, ensuring a seamless and delightful dining experience. With a deep understanding of the challenges students face in finding reliable meal options, our mission is to bring fresh, affordable, and delicious food straight to their doorstep.
+        </p>
+      </div>
+
+      <div class="blog-section">
+        <h2><b>From our blog</b></h2>
+        <p>Explore our blog for insightful articles, personal reflections, impactful resources, and ideas that inspire
+          us.</p>
+      </div>
+      <div class="cards-container">
+        <div class="card">
+          <img src="Utils/1.jpg" alt="Our History">
+          <h3>Our Journey</h3>
+          <p>Read about how we built Ruchii Tiffin from the ground up and the hurdles we overcame to reach success.</p>
+          <a href="blog.html" class="read-more-button">See our blog</a>
+        </div>
+        <div class="card">
+          <img src="Utils/2.jpg" alt="Our Services">
+          <h3>Future Plans</h3>
+          <p>Learn about our upcoming projects and how we plan to scale our operations to reach more people.</p>
+          <a href="blog.html" class="read-more-button">See our blog</a>
+        </div>
+        <div class="card">
+          <img src="Utils/3.png" alt="Our Mission">
+          <h3>Food Revolution</h3>
+          <p>Discover the innovations in the food delivery industry and how we’re contributing to the food revolution.
+          </p>
+          <a href="blog.html" class="read-more-button">See our blog</a>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <section id="contact-us">
+      <div class="contact-header">
+        <h2><b>We would love to hear from you!</b></h2>
+      </div>
+      <div class="contact-container">
+        <div class="contact-form">
+          <form id="feedbackForm">
+            <!-- Web3Forms access key -->
+            <input type="hidden" name="access_key" value="24c2d733-3b85-4b25-9d33-ee0fdb1040d8">
+
+            <select name="query">
+              <option value="" disabled selected hidden>How can we help you?*</option>
+              <option value="order">Issue with an Order</option>
+              <option value="feedback">Feedback</option>
+              <option value="other">Other Queries</option>
+            </select>
+            <input type="text" name="name" placeholder="Full Name*" required>
+            <input type="email" name="email" placeholder="Email Address*" required>
+            <input type="text" name="mobile" placeholder="Mobile Number (optional)">
+            <textarea name="message" placeholder="Type text*" required></textarea>
+            <button class="btn submit-btn" type="submit">
+              <span>
+                Submit Feedback
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                  <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path fill="#ffffff"
+                      d="M20.33 3.66996C20.1408 3.48213 19.9035 3.35008 19.6442 3.28833C19.3849 3.22659 19.1135 3.23753 18.86 3.31996L4.23 8.19996C3.95867 8.28593 3.71891 8.45039 3.54099 8.67255C3.36307 8.89471 3.25498 9.16462 3.23037 9.44818C3.20576 9.73174 3.26573 10.0162 3.40271 10.2657C3.5397 10.5152 3.74754 10.7185 4 10.85L10.07 13.85L13.07 19.94C13.1906 20.1783 13.3751 20.3785 13.6029 20.518C13.8307 20.6575 14.0929 20.7309 14.36 20.73H14.46C14.7461 20.7089 15.0192 20.6023 15.2439 20.4239C15.4686 20.2456 15.6345 20.0038 15.72 19.73L20.67 5.13996C20.7584 4.88789 20.7734 4.6159 20.7132 4.35565C20.653 4.09541 20.5201 3.85762 20.33 3.66996ZM4.85 9.57996L17.62 5.31996L10.53 12.41L4.85 9.57996ZM14.43 19.15L11.59 13.47L18.68 6.37996L14.43 19.15Z">
+                    </path>
+                  </g>
+                </svg>
+              </span>
+              <span>
+                Sure ?
+              </span>
+              <span>
+                Done !
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                  <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path stroke-linecap="round" stroke-width="2" stroke="#ffffff"
+                      d="M8.00011 13L12.2278 16.3821C12.6557 16.7245 13.2794 16.6586 13.6264 16.2345L22.0001 6"></path>
+                    <path fill="#ffffff"
+                      d="M11.1892 12.2368L15.774 6.63327C16.1237 6.20582 16.0607 5.5758 15.6332 5.22607C15.2058 4.87635 14.5758 4.93935 14.226 5.36679L9.65273 10.9564L11.1892 12.2368ZM8.02292 16.1068L6.48641 14.8263L5.83309 15.6248L2.6 13.2C2.15817 12.8687 1.53137 12.9582 1.2 13.4C0.868627 13.8419 0.95817 14.4687 1.4 14.8L4.63309 17.2248C5.49047 17.8679 6.70234 17.7208 7.381 16.8913L8.02292 16.1068Z"
+                      clip-rule="evenodd" fill-rule="evenodd"></path>
+                  </g>
+                </svg>
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+  
+
+
+
+    <!-- Sign In Section -->
+
+    <!-- footer-section  -->
+    <div class="footer-section newsletter">
+      <!-- Left Image -->
+      <img class="tiffin-left" src="Utils/tiffin1.png" alt="Tiffin Left">
+
+      <!-- Right Image -->
+      <img class="tiffin-right" src="Utils/tiffin.png" alt="Tiffin Right">
+
+      <!-- Newsletter Content -->
+      <h2>
+        <b>Subscribe to Our Newsletter</b>
+      </h2>
+
+      <p>Get the latest updates on our Tiffin services directly in your inbox.</p>
+      <form class="newsletter-form" id="subscribeForm">
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit" class="subscribe-btn">Subscribe</button>
+      </form>
+      <script>
+        document.getElementById('subscribeForm').addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          const email = document.getElementById('email').value;
+
+          fetch('http://localhost:3000/subscribe', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email })
+          })
+            .then(response => {
+              if (response.ok) {
+                alert('Thank you for subscribing!');
+              } else {
+                return response.text().then(text => {
+                  alert(text);  // Show any error message received from the server
+                });
+              }
+            })
+            .catch(error => {
+              alert('Error subscribing. Please try again later.');
+              console.error('Error subscribing:', error);
+            });
+        });
+      </script>
+    </div>
+      
+    <!-- Divider Line -->
+    <div style="height: 1px; background-color: #000; opacity: 0.1;"></div>
+      
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-content"
+        style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background-color: white; color: black;">
+
+        <!-- About Section -->
+        <div class="footer-section about"
+          style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;"
+          onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="width: 100px; margin-right: 20px;">
+          <p style="margin: 0;">Ruchii Tiffin connects customers with local tiffin centers, providing a seamless and
+            delightful dining experience. Our shared passion for food and community drives us to bring quality meals
+            directly to your doorstep.</p>
+        </div>
+
+        <!-- Ruchii Tiffin Links -->
+        <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Ruchii Tiffin</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="whoweare.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+            <li><a href="blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+            <li><a href="work_with_us/work-with-us.html"
+                style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+            <li><a href="investor-relations.html"
+                style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+            <li><a href="#contact-us" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+                <li><a href="report-fraud/report-fraud.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                  onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                  onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Report Fraud</a></li>
+          </ul>
+        </div>
+
+        <!-- Tiffin Plans Links -->
+        <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Tiffin Plans</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="dailyplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Daily Plan</a></li>
+            <li><a href="studentplan.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Student Plan</a></li>
+            <li><a href="corporateplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Corporate Plan</a></li>
+          </ul>
+          <!--payment options-->
+          <div class="payments" class="footer-section services"  style="flex: 1; min-width: 150px; margin: -2px;">
+            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">we Accept</h2>
+            <a href="https://pay.google.com/intl/en_in/about/" style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-google-pay" title="Google pay" style="padding: 2px;"></i></a>
+           <a href="https://www.apple.com/apple-pay/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px"onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-apple-pay" title="Apple pay" style="padding: 2px;"></i></a>
+            <a href="https://www.visa.co.in/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-visa" title="Visa pay" style="padding: 2px;"></i></a>
+            <a href="https://www.mastercard.co.in/en-in.html"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-mastercard" title="Master card" style="padding: 2px;"></i></a>
+        </div>
+        </div>
+
+        <!-- Learn More Links -->
+        <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="privacy.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+            <li><a href="security.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+            <li><a href="Terms.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+            <li><a href="lodgecomplaint.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Lodge Complaint</a></li>
+            <li><a href="testimonial.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                  onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                  onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Testimonials</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+          <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+            <li><a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/yourprofile" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://x.com" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.youtube.com/yourchannel" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom" style="margin:10px; padding: 10px; text-align: center;">
+        <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'"
+          onmouseout="this.style.color='black'">© 2025 Ruchii Tiffin. All rights reserved.</p>
+      </div>
+    </footer>
+
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top" aria-label="Scroll to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    <script src="//code.tidio.co/epwvpk9pxkdgt0y8ztovm88l1jlp1df6.js" async></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script src="submitQuery.js"></script>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="index.js"></script>
+  <script>
+    if (localStorage.getItem("authToken")) {
+      console.log("user logged in")
+    } else {
+      console.log("not logged in")
+    }
+  </script>
+
+  <script>
+    const btn = document.getElementById("signinoutbtn")
+    if (localStorage.getItem("authToken")) {
+      btn.innerText = "Sign Out"
+    } else {
+      btn.innerText = "Sign In"
+    }
+
+    btn.addEventListener("click", () => {
+      if (localStorage.getItem("authToken")) {
+        localStorage.removeItem("authToken")
+        console.log("loggedout success")
+        window.location.href = "/"
+      } else {
+        window.location.href = "/signin.html"
+      }
+    })
+
+  </script>
+  <script src="./menu-page/cart.js" defer></script>
+  <script src="./menu-page/checkout.js"></script>
+  <script src="dark-mode.js"></script>
+  <script src="https://kit.fontawesome.com/YOUR-FONT-AWESOME-KIT.js" crossorigin="anonymous"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mapButton = document.querySelector('.view-map-btn');
+        const searchInput = document.getElementById('locationSearch');
+        
+        mapButton.addEventListener('click', function(e) {
+            console.log('Opening larger map view...');
+        });
+
+        // Allow search on Enter key
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchLocation();
+            }
+        });
+    });
+
+    function searchLocation() {
+        const location = document.getElementById('locationSearch').value;
+        if (location.trim() === '') {
+            alert('Please enter a location to search');
+            return;
+        }
+
+        const encodedLocation = encodeURIComponent(location);
+        
+        // Update the "View Larger Map" link
+        const viewMapBtn = document.querySelector('.view-map-btn');
+        viewMapBtn.href = `https://www.google.com/maps/search/tiffin+centers+in+${encodedLocation}`;
+        
+        // Open the search in a new tab
+        window.open(`https://www.google.com/maps/search/tiffin+centers+in+${encodedLocation}`, '_blank');
+    }
+</script>
+
+</body>
+
+</html>

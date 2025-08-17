@@ -1,0 +1,296 @@
+/* General Styles */
+body {
+  background: url("Utils/st-3.jpg") no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  overflow-x: hidden;
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Dark Mode for Body */
+body.dark-mode {
+  color: #e0e0e0; /* Light text for dark mode */
+  background-color: #1a1a1a; /* Dark background to blend with image */
+}
+
+/* Container */
+.container {
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Overlay (Card) */
+.overlay {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(5px);
+  width: 100%;
+  animation: slideUp 0.8s ease-out forwards;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .overlay {
+  background-color: rgba(40, 40, 40, 0.95); /* Darker overlay */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+}
+
+/* Section */
+section {
+  margin-bottom: 20px;
+  text-align: left;
+  animation: fadeInUp 0.6s ease-out forwards;
+  animation-delay: calc(0.1s * var(--section-order));
+}
+
+/* Staggered Animation for Sections */
+section:nth-child(1) { --section-order: 1; }
+section:nth-child(2) { --section-order: 2; }
+section:nth-child(3) { --section-order: 3; }
+section:nth-child(4) { --section-order: 4; }
+section:nth-child(5) { --section-order: 5; }
+section:nth-child(6) { --section-order: 6; }
+section:nth-child(7) { --section-order: 7; }
+section:nth-child(8) { --section-order: 8; }
+section:nth-child(9) { --section-order: 9; }
+
+/* Typography */
+h2 {
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #2c3e50;
+  font-size: 1.6rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode h2 {
+  color: #ffffff; /* White headings in dark mode */
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: #4c83fa;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+h2:hover::after {
+  width: 60px;
+}
+
+p {
+  color: #666 !important;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode p {
+  color: #d0d0d0 !important; /* Lighter gray for dark mode */
+}
+
+ul {
+  color: #666 !important;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  padding-left: 20px;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode ul {
+  color: #d0d0d0 !important;
+}
+
+ul li {
+  color: #666 !important;
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode ul li {
+  color: #d0d0d0 !important;
+}
+
+/* Button */
+button {
+  position: relative;
+  padding: 12px 40px;
+  background: linear-gradient(135deg, #4c83fa, #3267d6);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0 5px 15px rgba(76, 131, 250, 0.3);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  margin: 10px;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+body.dark-mode button {
+  background: linear-gradient(135deg, #5a9bff, #4378db); /* Slightly lighter gradient */
+  box-shadow: 0 5px 15px rgba(90, 155, 255, 0.4);
+}
+
+button a {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: "Times New Roman", Times, serif;
+  position: relative;
+  z-index: 1;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  color: #4c83fa;
+  box-shadow: 0 8px 20px rgba(76, 131, 250, 0.4);
+  transform: translateY(-2px);
+  animation: none;
+}
+
+body.dark-mode button:hover {
+  background: linear-gradient(135deg, #333, #444); /* Darker hover in dark mode */
+  color: #5a9bff;
+  box-shadow: 0 8px 20px rgba(90, 155, 255, 0.5);
+}
+
+button:hover a {
+  color: #4c83fa;
+}
+
+body.dark-mode button:hover a {
+  color: #5a9bff;
+}
+
+/* Star Animations */
+.star-1, .star-2, .star-3, .star-4, .star-5, .star-6 {
+  position: absolute;
+  filter: drop-shadow(0 0 5px rgba(76, 131, 250, 0.6));
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+/* Initial Star Positions */
+.star-1 { top: 20%; left: 20%; width: 25px; }
+.star-2 { top: 45%; left: 45%; width: 15px; }
+.star-3 { top: 40%; left: 40%; width: 5px; }
+.star-4 { top: 20%; left: 40%; width: 8px; }
+.star-5 { top: 25%; left: 45%; width: 15px; }
+.star-6 { top: 5%; left: 50%; width: 5px; }
+
+/* Hover Star Positions */
+button:hover .star-1 { top: -50%; left: -20%; opacity: 1; transform: rotate(360deg); }
+button:hover .star-2 { top: -10%; left: 15%; opacity: 1; transform: scale(1.2); }
+button:hover .star-3 { top: 60%; left: 25%; opacity: 1; }
+button:hover .star-4 { top: 40%; left: 85%; opacity: 1; transform: rotate(-360deg); }
+button:hover .star-5 { top: 20%; left: 110%; opacity: 1; transform: scale(1.3); }
+button:hover .star-6 { top: 0%; left: 65%; opacity: 1; }
+
+/* SVG Fill */
+.fil0 {
+  fill: #4c83fa;
+  transition: fill 0.3s ease;
+}
+
+body.dark-mode .fil0 {
+  fill: #5a9bff; /* Lighter blue for dark mode */
+}
+
+button:hover .fil0 {
+  fill: #3267d6;
+}
+
+body.dark-mode button:hover .fil0 {
+  fill: #4378db;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    margin: 0;
+    padding: 10px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .overlay {
+    padding: 25px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    margin: 10px;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+  
+  ul li {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  
+  button {
+    padding: 10px 30px;
+    font-size: 1rem;
+  }
+  
+  section {
+    margin-bottom: 15px;
+  }
+}
+
+/* Accessibility */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 131, 250, 0.4);
+}
+
+body.dark-mode button:focus {
+  box-shadow: 0 0 0 3px rgba(90, 155, 255, 0.5);
+}

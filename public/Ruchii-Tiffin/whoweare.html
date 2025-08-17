@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="Utils/20240921_154411.png">
+  <title>Daily Meal Plans</title>
+  <link rel="stylesheet" href="dailyplans.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<style>
+  body {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .section-box {
+    /* background-color: rgba(255, 255, 255, 0.7); */
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: var(--h3-color);
+    max-width: 800px;
+    margin: 20px auto;
+    box-sizing: border-box;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .section-box {
+      padding: 20px;
+    }
+  }
+
+  /* Navigation */
+  nav.navbar {
+    background-color: #f8f9fa;
+  }
+  .section-box p, 
+.section-box h3, 
+.section-box ul {
+  transition: transform 0.3s ease;
+}
+
+/* Zoom effect on hover */
+.section-box p:hover,
+.section-box h3:hover,
+.section-box ul:hover {
+  transform: scale(1.05); /* Zooms in by 5% */
+}
+  .cta-button {
+  display: inline-block;
+  background-color: #ff6f61; /* A vibrant color to grab attention */
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+/* Hover effect for the button */
+.cta-button:hover {
+  background-color: #ff3b2e;
+  transform: scale(1.05);
+}
+
+/* Optional: Add a focus effect for accessibility */
+.cta-button:focus {
+  outline: 3px solid #ff6f61;
+  outline-offset: 2px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+:root{
+  --background-color: rgba(255, 255, 255, 0.7);
+  --section-desc: #555;
+  --box-bg: rgba(255, 255, 255, 0.7);
+  --h3-color: #444;
+  --p-color: #666;
+  --border-color: #171616;
+  --testimonial-bg: #f1f1f1;
+}
+
+.dark-mode{
+    --background-color: rgba(0, 0, 0, 0.7);
+    --section-desc: #e3dfdf;
+    --box-bg: #06062f;
+    --h3-color: #d2c9c9;
+    --p-color: #b3a8a8;
+    --border-color: #ddd;
+    --testimonial-bg: rgb(61, 61, 74);
+}
+
+.section-box {
+    background-color: var(--background-color);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.section-title {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    font-size: 18px;
+    color: var(--section-desc);
+    margin-bottom: 40px;
+}
+
+.boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.box {
+    background-color: var(--box-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    border: 2px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+h3 {
+    font-size: 24px;
+    color: var(--h3-color);
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 16px;
+    color: var(--p-color);
+    line-height: 1.6;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    padding: 10px 0;
+}
+
+strong {
+    color: var(--section-desc);
+}
+
+.testimonials {
+    background-color: var(--testimonial-bg);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.testimonials p {
+    font-size: 16px;
+    color: var(--h3-color);
+    margin-bottom: 10px;
+}
+
+.team {
+    background-color: var(--testimonial-bg);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.cta {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.cta h3 {
+    font-size: 24px;
+    color: var(--section-desc);
+    margin-bottom: 15px;
+}
+
+.cta p {
+    font-size: 16px;
+    color: var(--section-desc);
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ff6f61;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #e65c54;
+}
+
+@media (max-width: 768px) {
+    .boxes {
+        grid-template-columns: 1fr;
+    }
+}
+/* footer /tiffin plan */
+.payments i:hover{
+            transform: scale(1.2);
+        }
+
+</style>
+
+<body>
+  <nav class="navbar bg-light border-bottom border-body navbar-expand-lg">
+    <div class="container-fluid">
+
+      <!-- Logo -->
+      <a class="navbar-brand text-black" href="./index.html">
+        <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
+        Ruchii Tiffin
+      </a>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="#home">Home</a>
+          </li>
+
+          <!-- View Menu Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="#menu-section">View Menu</a>
+          </li>
+
+          <!-- Meal Plan Dropdown -->
+          <li class="nav-item dropdown meal-plan">
+            <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
+              Meal Plans
+            </a>
+            <ul class="dropdown-menu" id="mealPlanMenu">
+              <li><a class="dropdown-item" href="#student-plan">Student Plan</a></li>
+              <li><a class="dropdown-item" href="corporateplans.html">Corporate Plan</a></li>
+              <li><a class="dropdown-item" href="dailyplans.html">Daily Plan</a></li>
+            </ul>
+          </li>
+
+          <!-- About Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="#who-we-are">About</a>
+          </li>
+
+          <!-- Contact Us Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="#contact-us">Contact Us</a>
+          </li>
+
+          
+
+          <!-- Dark Mode Toggle Button -->
+            <li class="nav-item">
+              <button id="dark-mode-toggle" class="btn btn-outline-dark mx-2">
+                <i class="fas fa-moon"></i> <!-- Dark mode icon -->
+              </button>
+            </li>
+
+          
+          <!-- Cart Icon in Navbar -->
+        <li class="nav-item">
+          <a href="./menu-page/checkout.html" id="cart-icon" class="nav-link mx-2">
+            <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">(0)</span>
+          </a>
+        </li>
+
+          <!-- Sign In Link -->
+          <li class="nav-item">
+            <a href="./signin.html" class="nav-link mx-2 signinbtn">Sign In </a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
+  <section id="who-we-are" class="container">
+    <div class="section-box">
+      <h2 class="section-title">
+        <i class="fas fa-info-circle"></i> Who We Are
+      </h2>
+      <p class="section-description">Welcome to <strong>Ruchii Tiffin</strong>, your gateway to home-style meals that
+        feel like a warm embrace of comfort and quality.</p>
+      
+      <div class="boxes">
+        <!-- Box 1 -->
+        <div class="box">
+          <div class="additional-info">
+            <h3><i class="fas fa-utensils"></i> Why Choose Ruchii Tiffin?</h3>
+            <p>At Ruchii Tiffin, we understand the importance of nourishing food that not only satisfies hunger but also promotes health and well-being. Our meals are crafted using the finest ingredients, blending traditional flavors with modern cooking techniques.</p>
+          </div>
+        </div>
+        
+        <!-- Box 2 -->
+        <div class="box">
+          <div class="mission-statement">
+            <h3><i class="fas fa-bolt"></i> Our Mission</h3>
+            <p>Revolutionizing meal accessibility with home-style tiffin services that connect communities and provide top-quality, affordable meals.</p>
+          </div>
+        </div>
+        
+        <!-- Box 3 -->
+        <div class="box">
+          <div class="values-section">
+            <h3><i class="fas fa-heart"></i> Our Values</h3>
+            <ul>
+              <li><i class="fas fa-users"></i> Community: Empowering local tiffin providers and fostering strong customer relationships.</li>
+              <li><i class="fas fa-star"></i> Quality: Ensuring every meal is prepared with hygiene, freshness, and exceptional taste.</li>
+              <li><i class="fas fa-clock"></i> Convenience: Making home-style meals effortlessly accessible anytime, anywhere.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Box 4 -->
+        <div class="box">
+          <div class="timeline">
+            <h3><i class="fas fa-history"></i> Our Journey</h3>
+            <ul>
+              <li><i class="fas fa-calendar-alt"></i> 2023: Founded with a mission to unite communities through delicious, home-style meals.</li>
+              <li><i class="fas fa-users-cog"></i> 2024: Partnered with over 50 trusted tiffin centers, launching our services nationwide.</li>
+              <li><i class="fas fa-bullhorn"></i> 2025: Expanding rapidly, serving thousands of satisfied customers across multiple cities.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Box 5 -->
+        <div class="box">
+          <div class="testimonials">
+            <h3><i class="fas fa-comment-alt"></i> What Our Customers Say</h3>
+            <p><i class="fas fa-quote-left"></i>"Ruchii Tiffin has transformed the way I experience home-style meals. The quality and taste are unmatched, and the convenience of getting meals delivered daily is a game-changer!" - Alex P.</p>
+            <p><i class="fas fa-quote-left"></i>"The variety and affordability of Ruchii Tiffin meals have made it my go-to choice for a wholesome lunch every day. Highly recommend to everyone!" - Jamie L.</p>
+          </div>
+        </div>
+        
+        <!-- Box 6 -->
+        <div class="box">
+          <div class="team">
+            <h3><i class="fas fa-users"></i> Meet Our Team</h3>
+            <p>Our dedicated team of food enthusiasts and customer service representatives work tirelessly to ensure the best experience for our customers. From chefs crafting exquisite meals to logistics experts ensuring timely deliveries, each member plays a crucial role in delivering our promise of quality and convenience.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h3><i class="fas fa-rocket"></i> Experience the Fusion</h3>
+        <p>Join our growing family of satisfied customers. Explore our tiffin plans today!</p>
+        <a href="./index.html" class="cta-button">Explore Tiffin Options</a>
+      </div>
+    </div>
+</section>
+
+
+  <!-- Footer Section -->
+    <footer>
+      <div class="footer-content"
+        style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background-color: white; color: black;">
+
+        <!-- About Section -->
+        <div class="footer-section about"
+          style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;"
+          onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="width: 100px; margin-right: 20px;">
+          <p style="margin: 0;">Ruchii Tiffin connects customers with local tiffin centers, providing a seamless and
+            delightful dining experience. Our shared passion for food and community drives us to bring quality meals
+            directly to your doorstep.</p>
+        </div>
+
+        <!-- Ruchii Tiffin Links -->
+        <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Ruchii Tiffin</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="whoweare.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+            <li><a href="blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+            <li><a href="work_with_us/work-with-us.html"
+                style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+            <li><a href="investor-relations.html"
+                style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+            <li><a href="./index.html#contact-us" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+                <li><a href="report-fraud/report-fraud.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                  onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                  onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Report Fraud</a></li>
+          </ul>
+        </div>
+
+        <!-- Tiffin Plans Links -->
+        <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Tiffin Plans</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="dailyplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Daily Plan</a></li>
+            <li><a href="studentplan.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Student Plan</a></li>
+            <li><a href="corporateplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Corporate Plan</a></li>
+          </ul>
+          <!--payment options-->
+          <div class="payments" class="footer-section services"  style="flex: 1; min-width: 150px; margin: -2px;">
+            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">we Accept</h2>
+            <a href="https://pay.google.com/intl/en_in/about/" style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-google-pay" title="Google pay" style="padding: 2px;"></i></a>
+           <a href="https://www.apple.com/apple-pay/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px"onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-apple-pay" title="Apple pay" style="padding: 2px;"></i></a>
+            <a href="https://www.visa.co.in/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-visa" title="Visa pay" style="padding: 2px;"></i></a>
+            <a href="https://www.mastercard.co.in/en-in.html"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-mastercard" title="Master card" style="padding: 2px;"></i></a>
+        </div>
+        </div>
+
+        <!-- Learn More Links -->
+        <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="privacy.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+            <li><a href="security.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+            <li><a href="Terms.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+            <li><a href="lodgecomplaint.html" style="color: black; text-decoration: none; transition: all 0.3s ease;"
+                onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'"
+                onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Lodge Complaint</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+          <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+            <li><a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/yourprofile" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/x/" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://x.com/x" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="Twitter"><i class="fab fa-x-twitter"></i></a></li>
+            <li><a href="https://www.youtube.com/yourchannel" target="_blank" rel="noopener noreferrer"
+                style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;"
+                aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom" style="margin:10px; padding: 10px; text-align: center;">
+        <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'"
+          onmouseout="this.style.color='black'">© 2025 Ruchii Tiffin. All rights reserved.</p>
+      </div>
+    </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="dark-mode.js"></script>
+</body>
+
+</html>
