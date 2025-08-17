@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <link rel="icon" href="../Utils\20240921_154411.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <script type="module">
+    import ReusableModal from '../ReusableModal.js';
+
+    // Create a new modal instance
+    const cartModal = new ReusableModal("🥳 Item Added to the Cart");
+
+    // Function to add item to cart
+    function addToCart() {
+      console.log("Item added to cart!");
+      cartModal.show(); // Show the modal
+    }
+
+    // Attach event listener to a button
+    document.getElementById("add-to-cart-btn").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn1").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn2").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn3").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn4").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn5").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn6").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn7").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn8").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn9").addEventListener("click", addToCart);
+  </script>
+  <link rel="stylesheet" href="menu.css">
+
+
+<style>
+  /* Loader Styles */
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 9999;
+}
+
+.panWrapper {
+    width: 200px;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pan {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: fit-content;
+    animation: cooking 1.7s infinite;
+}
+
+@keyframes cooking {
+    0% {
+        transform: rotate(0deg);
+        transform-origin: top right;
+    }
+    10% {
+        transform: rotate(-4deg);
+        transform-origin: top right;
+    }
+    50% {
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.food {
+    position: absolute;
+    width: 40%;
+    height: 6px;
+    background: linear-gradient(to bottom, rgb(82, 33, 33), rgb(200, 106, 106));
+    left: 10px;
+    border-radius: 50%;
+    animation: flip 1.7s infinite;
+    z-index: 2;
+}
+
+@keyframes flip {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-100px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(360deg);
+    }
+}
+
+.panBase {
+    z-index: 3;
+    width: 50%;
+    height: 22px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background: linear-gradient(to top, rgb(3, 156, 156), rgb(10, 191, 191));
+}
+
+.panHandle {
+    width: 40%;
+    background: linear-gradient(to bottom, rgb(18, 18, 18), rgb(74, 74, 74));
+    height: 10px;
+    border-radius: 10px;
+}
+
+.panShadow {
+    width: 70px;
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0.21);
+    margin-left: 15px;
+    border-radius: 10px;
+    animation: shadow 1.7s infinite;
+    filter: blur(5px);
+}
+
+@keyframes shadow {
+    0% {
+        transform: scaleX(0.7);
+    }
+    50% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(0.7);
+    }
+}
+
+/* Main Content Styles */
+.content {
+    display: none;
+    padding: 20px;
+    text-align: center;
+}
+</style>
+
+
+
+</head>
+<body>
+
+
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="panWrapper">
+        <div class="pan">
+            <div class="food"></div>
+            <div class="panBase"></div>
+            <div class="panHandle"></div>
+        </div>
+        <div class="panShadow"></div>
+    </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar bg-light border-bottom border-body navbar-expand-lg">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand text-black" href="../index.html">
+      <img src="../Utils/1726914447956.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
+      Ruchii Tiffin
+    </a>
+
+    <!-- Mobile Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <!-- Home Link -->
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="../index.html#home">Home</a>
+        </li>
+        
+        <!-- View Menu Link -->
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="../index.html#menu">View Menu</a>
+        </li>
+
+        <!-- Meal Plan Dropdown -->
+        <li class="nav-item dropdown meal-plan">
+          <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
+            Meal Plans
+          </a>
+          <ul class="dropdown-menu" id="mealPlanMenu">
+            <li><a class="dropdown-item" href="../index.html#student-plan">Student Plan</a></li>
+            <li><a class="dropdown-item" href="../corporateplans.html">Corporate Plan</a></li>
+            <li><a class="dropdown-item" href="../dailyplans.html">Daily Plan</a></li>
+          </ul>
+        </li>
+
+        <!-- About Link -->
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="../index.html#who-we-are">About</a>
+        </li>
+        
+        <!-- Contact Us Link -->
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="../index.html#contact-us">Contact Us</a>
+        </li>
+
+      
+
+        <!-- Sign In Link -->
+        <li class="nav-item">
+          <a href="../signin.html" class="nav-link mx-2">Sign In</a>
+        </li>
+
+        <!-- Cart Icon in Navbar -->
+        <li class="nav-item">
+          <a href="./checkout.html" id="cart-icon" class="nav-link mx-2">
+            <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">(0)</span>
+          </a>
+        </li>     
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+  <section id="menu-section">
+    <div class="men-head">
+      <h2><b>Our Menu</b></h2>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar-container text-center my-4">
+      <input
+        type="text"
+        id="search-bar"
+        placeholder="Search for a dish..."
+        style="
+          width: 90%;
+          height: 40px;
+          border: none;
+          outline: none;
+          caret-color: rgb(255, 81, 0);
+          background-color: rgb(255, 255, 255);
+          border-radius: 30px;
+          padding-left: 15px;
+          letter-spacing: 0.8px;
+          color: rgb(19, 19, 19);
+          font-size: 13.4px;
+          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+          background: linear-gradient(to bottom, rgb(227, 213, 255), rgb(255, 231, 231));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+          max-width: 500px;
+        "
+      />
+    </div>
+    
+    
+    <section class="menu-section">
+      <div class="menu-item visible">
+        <div class="menu-content">
+          <div class="menu-text">
+            <div class="menu-header">
+              <h3>Steamed Rice</h3>
+              <span class="price">₹150</span>
+            </div>
+            <p>
+              Indigenous, Aromatic, Superior long grain rice, served with a
+              mixture of jeera
+            </p>
+            <h4>Half | Full</h4>
+          </div>
+          <div class="menu-image">
+            <img src="menu_images/steamedrice.jpg" alt="steamed_rice" />
+            <button id="add-to-cart-btn" class="add-btn" onclick="addToCart('menu_images/steamedrice.jpg','Steamed Rice', 'General Meal' ,150)">Add +</button>  <!-- Add button beside the image -->
+          </div><br>
+
+        </div>
+      </div>
+
+      <div class="menu-item visible">
+        <div class="menu-content">
+          <div class="menu-text">
+            <div class="menu-header">
+              <h3>Dal Tadka</h3>
+              <span class="price">₹100</span>
+            </div>
+            <p>
+              Perfectly Cooked Trio of lentils, tempered with cumin and red
+              chilli with ghee
+            </p>
+            <h4>Quarter | Half | Full </h4>  
+          </div>
+          <div class="menu-image">
+            <img src="menu_images/DalTadka.jpg" alt="Dal_Tadka" />
+            <button id="add-to-cart-btn1" class="add-btn"  onclick="addToCart('menu_images/DalTadka.jpg','Dal Tadka','General Meal' , 200)">Add +</button>  <!-- Add button beside the image -->
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item visible">
+        <div class="menu-content">
+          <div class="menu-text">
+            <div class="menu-header">
+              <h3>Dal Makhani</h3>
+              <span class="price">₹130</span>
+            </div>
+            <p>
+              A creamy and indulgent dish of slow-cooked black lentils and
+              kidney beans, enriched with butter, cream, and aromatic spices
+            </p>
+            <h4>Quarter | Half | Full</h4>
+          </div>
+          <div class="menu-image">
+            <img src="menu_images/DalMakhani.jpg" alt="Dal_Makhani" />
+            <button id="add-to-cart-btn2" class="add-btn" onclick="addToCart('menu_images/DalMakhani.jpg','Dal Makhani','General Meal' , 130)">Add +</button>  <!-- Add button beside the image -->
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item visible">
+        <div class="menu-content">
+          <div class="menu-text">
+            <div class="menu-header">
+              <h3>Vegetable Curry</h3>
+              <span class="price">₹150</span>
+            </div>
+            <p>
+              A wholesome blend of garden-fresh vegetables simmered in a rich,
+              spiced gravy infused with aromatic herbs and spices.
+            </p>
+            <h4>Half | Full</h4>
+          </div>
+          <div class="menu-image">
+            <img src="menu_images/VegetableCurry.jpg" alt="Vegetable_Curry" />
+            <button id="add-to-cart-btn3" class="add-btn" onclick="addToCart('menu_images/VegetableCurry.jpg','Vegetable Curry','General Meal' , 150)">Add +</button>  <!-- Add button beside the image -->
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item visible">
+        <div class="menu-content">
+          <div class="menu-text">
+            <div class="menu-header">
+              <h3>Mixed Vegetable</h3>
+              <span class="price">₹110</span>
+            </div>
+            <p>
+              A colorful assortment of sautéed seasonal vegetables, lightly
+              seasoned with spices for a simple and flavorful delight.
+            </p>
+          </div>
+          <div class="menu-image">
+            <img src="menu_images/Mixed Vegetables.jpg" alt="Mixed_Vegetable" />
+            <button id="add-to-cart-btn4" class="add-btn" onclick="addToCart('menu_images/Mixed Vegetables.jpg','Mixed Vegetable','General Meal' , 110)">Add +</button>  <!-- Add button beside the image -->
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item visible">
+        <div class="menu-content">
+          <div class="menu-text">
+            <div class="menu-header">
+              <h3>Aloo Gobhi</h3>
+              <span class="price">₹70</span>
+            </div>
+            <p>
+              A classic combination of tender potatoes and cauliflower,
+              stir-fried with fragrant spices and garnished with fresh
+              coriander.
+            </p>
+            <h4>Half | Full</h4>
+          </div>
+          <div class="menu-image">
+            <img src="menu_images/AlooGobi.jpg" alt="Aloo_Gobi" />
+            <button id="add-to-cart-btn5" class="add-btn" onclick="addToCart('menu_images/AlooGobi.jpg','Aloo Gobhi','General Meal' , 70)">Add +</button>  <!-- Add button beside the image -->
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item visible">
+        <div class="menu-content">
+          <div class="menu-text">
+            <div class="menu-header">
+              <h3>Chapati</h3>
+              <span class="price">₹15</span>
+            </div>
+            <p>
+              Soft and wholesome whole wheat flatbread, freshly cooked on a
+              griddle for a perfect complement to any meal.
+            </p>
+          </div>
+          <div class="menu-image">
+            <img src="menu_images/Chapati.jpg" alt="Chapati" />
+            <button id="add-to-cart-btn6" class="add-btn" onclick="addToCart('menu_images/Chapati.jpg','Chapati','General Meal' , 15)">Add +</button>  <!-- Add button beside the image -->
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item visible">
+        <div class="menu-content">
+          <div class="menu-text">
+            <div class="menu-header">
+              <h3>Raita</h3>
+              <span class="price">₹30</span>
+            </div>
+            <p>
+              A cool and creamy yogurt-based side dish, blended with spices and
+              fresh ingredients like cucumber or boondi for a refreshing touch.
+            </p>
+          </div>
+          <div class="menu-image">
+            <img src="menu_images/Raita.jpg" alt="Raita" />
+            <button id="add-to-cart-btn7" class="add-btn" onclick="addToCart('menu_images/Raita.jpg','Raita','General Meal' , 30)">Add +</button>  <!-- Add button beside the image -->
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item visible">
+        <div class="menu-content">
+          <div class="menu-text">
+            <div class="menu-header">
+              <h3>Salad</h3>
+              <span class="price">₹45</span>
+            </div>
+            <p>
+              A crisp and refreshing mix of fresh vegetables, tossed with a
+              tangy dressing for a light and healthy bite.
+            </p>
+          </div>
+          <div class="menu-image">
+            <img src="menu_images/Salad.jpg" alt="Salad" />
+            <button id="add-to-cart-btn8" class="add-btn" onclick="addToCart('menu_images/Salad.jpg','Salad','General Meal' , 45)">Add +</button>  <!-- Add button beside the image -->
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item visible">
+        <div class="menu-content">
+          <div class="menu-text">
+            <div class="menu-header">
+              <h3>Fruit Salad</h3>
+              <span class="price">₹65</span>
+            </div>
+            <p>
+              A vibrant medley of fresh, seasonal fruits, lightly tossed with a
+              drizzle of honey and a hint of mint for a refreshing twist.
+            </p>
+          </div>
+          <div class="menu-image">
+            <img src="menu_images/FruitSalad.jpg" alt="Fruit_Salad" />
+            <button id="add-to-cart-btn9" class="add-btn" onclick="addToCart('menu_images/FruitSalad.jpg','Fruit Salad','General Meal' , 65)">Add +</button>  <!-- Add button beside the image -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+
+  <footer>
+    <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background-color: white; color: black;">
+      <div class="footer-section about" style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="../Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="width: 100px; margin-right: 20px;">
+        <p style="margin: 0;">Ruchii Tiffin connects customers with local tiffin centers, providing a seamless and delightful dining experience. Our shared passion for food and community drives us to bring quality meals directly to your doorstep.</p>
+      </div>
+  
+      <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Ruchii Tiffin</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="../whoweare.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+          <li><a href="../blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+          <li><a href="../work_with_us.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+          <li><a href="../investor-relations.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+          <li><a href="../index.html#contact-us" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Tiffin Plans</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="../dailyplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Daily Plan</a></li>
+          <li><a href="../studentplan.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Student Plan</a></li>
+          <li><a href="../corporateplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Corporate Plan</a></li>
+        </ul>
+        <!--payment options-->
+        <div class="payments" class="footer-section services"  style="flex: 1; min-width: 150px; margin: -2px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+          onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">we Accept</h2>
+          <a href="https://pay.google.com/intl/en_in/about/" style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-google-pay" title="Google pay" style="padding: 2px;"></i></a>
+         <a href="https://www.apple.com/apple-pay/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px"onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-apple-pay" title="Apple pay" style="padding: 2px;"></i></a>
+          <a href="https://www.visa.co.in/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-visa" title="Visa pay" style="padding: 2px;"></i></a>
+          <a href="https://www.mastercard.co.in/en-in.html"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-mastercard" title="Master card" style="padding: 2px;"></i></a>
+      </div>
+      </div>
+  
+      <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="../privacy.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+          <li><a href="../security.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+          <li><a href="../Terms.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+        <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+          <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="footer-bottom" style="padding: 10px; text-align: center; background-color: white;">
+      <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2024 Ruchii Tiffin. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="../app.js"></script> -->
+  <!-- <script src="../submitQuery.js"></script> -->
+  <script src="./cart.js" defer></script>
+
+  <!-- Script for search functionality -->
+  <script>
+    // Function to filter menu items based on the search query
+    document.getElementById("search-bar").addEventListener("input", function () {
+      const searchQuery = this.value.toLowerCase(); // Get search query in lowercase
+      const menuItems = document.querySelectorAll(".menu-item"); // Select all menu items
+  
+      menuItems.forEach((item) => {
+        const itemName = item.querySelector(".menu-header h3").textContent.toLowerCase(); // Get dish name
+        if (itemName.includes(searchQuery)) {
+          item.style.display = "block"; // Show item if it matches the query
+        } else {
+          item.style.display = "none"; // Hide item if it doesn't match the query
+        }
+      });
+    });
+
+
+
+//  Loader js 
+document.addEventListener('DOMContentLoaded', function() {
+    // Show loader for 1.5 seconds (1500 milliseconds)
+    setTimeout(function() {
+        // Hide loader
+        document.getElementById('loader').style.display = 'none';
+        // Show main content
+        document.getElementById('content').style.display = 'block';
+    }, 1500);
+});
+
+
+
+  </script>
+  
+</body>
+</html>

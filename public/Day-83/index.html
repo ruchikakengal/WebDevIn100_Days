@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Pong</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="game-container">
+        <div id="main-menu" class="menu-screen">
+            <h1 class="game-title">ADVANCED PONG</h1>
+            <div class="menu-buttons">
+                <button id="single-player-btn" class="menu-button">Single Player</button>
+                <button id="two-player-btn" class="menu-button">Two Player</button>
+                <button id="settings-btn" class="menu-button">Settings</button>
+                <button id="leaderboard-btn" class="menu-button">Leaderboard</button>
+                <button id="how-to-play-btn" class="menu-button">How to Play</button>
+            </div>
+        </div>
+
+        <div id="difficulty-menu" class="menu-screen hidden">
+            <h2 class="menu-title">Select Difficulty</h2>
+            <div class="menu-buttons">
+                <button id="easy-btn" class="menu-button">Easy</button>
+                <button id="medium-btn" class="menu-button">Medium</button>
+                <button id="hard-btn" class="menu-button">Hard</button>
+                <button id="back-to-main" class="menu-button secondary">Back</button>
+            </div>
+        </div>
+
+        <div id="settings-menu" class="menu-screen hidden">
+            <h2 class="menu-title" style="margin-top: 10rem;">Settings</h2>
+            <div class="settings-content">
+                <div class="setting-item">
+                    <label for="theme-select">Theme:</label>
+                    <select id="theme-select" class="setting-control">
+                        <option value="retro">Retro</option>
+                        <option value="neon">Neon</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="ball-speed">Ball Speed:</label>
+                    <input type="range" id="ball-speed" class="setting-control" min="1" max="5" value="3">
+                    <span id="ball-speed-value">3</span>
+                </div>
+                <div class="setting-item">
+                    <label for="paddle-size">Paddle Size:</label>
+                    <input type="range" id="paddle-size" class="setting-control" min="1" max="3" value="2">
+                    <span id="paddle-size-value">Medium</span>
+                </div>
+                <div class="setting-item">
+                    <label for="winning-score">Winning Score:</label>
+                    <input type="range" id="winning-score" class="setting-control" min="5" max="21" value="10">
+                    <span id="winning-score-value">10</span>
+                </div>
+                <div class="setting-item">
+                    <label for="sound-toggle">Sound Effects:</label>
+                    <input type="checkbox" id="sound-toggle" class="setting-control" checked>
+                </div>
+                <div class="setting-item">
+                    <label for="music-toggle">Background Music:</label>
+                    <input type="checkbox" id="music-toggle" class="setting-control" checked>
+                </div>
+                <div class="setting-item">
+                    <label for="powerups-toggle">Power-ups:</label>
+                    <input type="checkbox" id="powerups-toggle" class="setting-control" checked>
+                </div>
+            </div>
+            <div class="menu-buttons">
+                <button id="save-settings" class="menu-button">Save Settings</button>
+                <button id="back-from-settings" class="menu-button secondary">Back</button>
+            </div>
+        </div>
+
+        <div id="leaderboard-menu" class="menu-screen hidden">
+            <h2 class="menu-title">Leaderboard</h2>
+            <div id="leaderboard-content" class="leaderboard-content">
+            </div>
+            <div class="menu-buttons">
+                <button id="clear-scores" class="menu-button secondary">Clear Scores</button>
+                <button id="back-from-leaderboard" class="menu-button secondary">Back</button>
+            </div>
+        </div>
+
+        <div id="how-to-play-menu" class="menu-screen hidden">
+            <h2 class="menu-title">How to Play</h2>
+            <div class="how-to-play-content">
+                <div class="how-to-section">
+                    <h3>Basic Controls</h3>
+                    <div class="control-group">
+                        <div class="control-item">
+                            <span class="control-key">W / S</span>
+                            <span class="control-desc">Player 1 - Move paddle up/down</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">↑ / ↓</span>
+                            <span class="control-desc">Player 2 - Move paddle up/down</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">SPACE</span>
+                            <span class="control-desc">Pause/Resume game</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">ESC</span>
+                            <span class="control-desc">Quit to main menu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="how-to-section">
+                    <h3>Game Modes</h3>
+                    <div class="mode-group">
+                        <div class="mode-item">
+                            <strong>Single Player:</strong> Play against AI with three difficulty levels
+                            <ul>
+                                <li>Easy - Slow AI with frequent mistakes</li>
+                                <li>Medium - Balanced AI opponent</li>
+                                <li>Hard - Fast, accurate AI with prediction</li>
+                            </ul>
+                        </div>
+                        <div class="mode-item">
+                            <strong>Two Player:</strong> Play with a friend on the same device
+                        </div>
+                    </div>
+                </div>
+
+                <div class="how-to-section">
+                    <h3>Power-ups</h3>
+                    <div class="powerup-group">
+                        <div class="powerup-item">
+                            <span class="powerup-icon speed">⚡</span>
+                            <span class="powerup-desc">Speed Boost - Ball moves faster</span>
+                        </div>
+                        <div class="powerup-item">
+                            <span class="powerup-icon grow">+</span>
+                            <span class="powerup-desc">Paddle Grow - Your paddle gets bigger</span>
+                        </div>
+                        <div class="powerup-item">
+                            <span class="powerup-icon shrink">-</span>
+                            <span class="powerup-desc">Paddle Shrink - Opponent's paddle shrinks</span>
+                        </div>
+                        <div class="powerup-item">
+                            <span class="powerup-icon multi">●</span>
+                            <span class="powerup-desc">Multi Ball - Extra balls appear</span>
+                        </div>
+                        <div class="powerup-item">
+                            <span class="powerup-icon slow">⏰</span>
+                            <span class="powerup-desc">Slow Motion - Game slows down</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="how-to-section">
+                    <h3>Mobile Controls</h3>
+                    <div class="mobile-info">
+                        <p>On mobile devices, touch the left/right halves of the screen to control your paddle.</p>
+                        <p>Touch and drag up/down to move your paddle in that direction.</p>
+                    </div>
+                </div>
+
+                <div class="how-to-section">
+                    <h3>Scoring</h3>
+                    <div class="scoring-info">
+                        <p>• Score a point when the ball goes past your opponent's paddle</p>
+                        <p>• First player to reach the winning score (default: 10) wins</p>
+                        <p>• Ball speed increases after each paddle hit</p>
+                        <p>• Hit the ball with different parts of your paddle to change its angle</p>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-buttons">
+                <button id="back-from-how-to-play" class="menu-button secondary">Back</button>
+            </div>
+        </div>
+
+        <div id="game-screen" class="hidden">
+            <div id="game-ui">
+                <div id="scoreboard">
+                    <div class="score-section">
+                        <span class="player-name" id="player1-name">Player 1</span>
+                        <span class="score" id="player1-score">0</span>
+                    </div>
+                    <div id="countdown" class="countdown hidden">3</div>
+                    <div class="score-section">
+                        <span class="score" id="player2-score">0</span>
+                        <span class="player-name" id="player2-name">Player 2</span>
+                    </div>
+                </div>
+                <div id="game-info">
+                    <span id="game-mode-display"></span>
+                    <div id="active-powerups"></div>
+                </div>
+            </div>
+            <div class="game-canvas-container">
+                <canvas id="game-canvas"></canvas>
+            </div>
+            <div id="game-controls">
+                <button id="pause-btn" class="control-button">Pause</button>
+                <button id="quit-btn" class="control-button">Quit</button>
+            </div>
+        </div>
+
+        <div id="game-over" class="menu-screen hidden">
+            <h2 class="menu-title">Game Over!</h2>
+            <div id="final-score" class="final-score"></div>
+            <div id="game-stats" class="game-stats"></div>
+            <div class="menu-buttons">
+                <button id="play-again" class="menu-button">Play Again</button>
+                <button id="back-to-menu" class="menu-button secondary">Main Menu</button>
+            </div>
+        </div>
+
+        <div id="pause-screen" class="menu-screen hidden">
+            <h2 class="menu-title">Paused</h2>
+            <div class="menu-buttons">
+                <button id="resume-btn" class="menu-button">Resume</button>
+                <button id="restart-btn" class="menu-button">Restart</button>
+                <button id="pause-quit-btn" class="menu-button secondary">Quit to Menu</button>
+            </div>
+        </div>
+
+        <div id="touch-controls" class="touch-controls hidden">
+            <div id="left-touch-area" class="touch-area">
+                <div class="touch-indicator">P1</div>
+            </div>
+            <div id="right-touch-area" class="touch-area">
+                <div class="touch-indicator">P2</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/paddle.js"></script>
+    <script src="js/ball.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/powerups.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/game.js"></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+
+            if (window.gameInitialized) {
+                console.log('Game already initialized, skipping...');
+                return;
+            }
+
+            try {
+                console.log('Initializing game systems...');
+
+
+                window.gameStorage = new GameStorage();
+                window.audioSystem = new AudioSystem();
+                window.controlSystem = new ControlSystem();
+                window.uiManager = new UIManager();
+                window.game = new PongGame();
+                window.uiManager.initialize();
+                window.gameInitialized = true;
+                window.gameDebug = {
+                    game: window.game,
+                    storage: window.gameStorage,
+                    audio: window.audioSystem,
+                    controls: window.controlSystem,
+                    ui: window.uiManager,
+                    restartGame: () => {
+                        console.log('Debug: Restarting game');
+                        if (window.game) {
+                            window.game.restartGame();
+                        }
+                    }
+                };
+
+                console.log('Advanced Pong Game loaded successfully!');
+                console.log('Use window.gameDebug for debugging functions');
+
+            } catch (error) {
+                console.error('Failed to initialize game:', error);
+                document.body.innerHTML = '<div style="color: red; padding: 20px;">Game failed to load. Please refresh the page.</div>';
+            }
+        });
+    </script>
+</body>
+
+</html>

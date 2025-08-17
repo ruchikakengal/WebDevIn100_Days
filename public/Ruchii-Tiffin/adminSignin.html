@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Sign In - Ruchii Tiffin</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS for consistent styling -->
+    <link rel="icon" href="./Utils/20240921_154411.png" type="image/x-icon">
+    <link rel="stylesheet" href="./adminSignin.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="auth-box">
+            <div class="close-icon" style="position: absolute; top: 30px; right: 30px;">
+                <a href="index.html">
+                    <img src="Utils/cross-icon.png" alt="Close" style="width: 15px; height: 15px;">
+                </a>
+            </div>
+            <div class="logo-container">
+                <div class="logo">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12,3L4,9V21H20V9L12,3M12,7.5L16,10.5V11.5L12,8.5L8,11.5V10.5L12,7.5M6,19V12.5L12,9.5L18,12.5V19H6Z"/>
+                    </svg>
+                </div>
+                <h2>Admin Portal - Ruchii Tiffin</h2>
+            </div>
+
+            <form id="adminAuthForm">
+                <div class="input-group">
+                    <label for="adminEmail">Admin Email</label>
+                    <input type="email" id="adminEmail" required 
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                           placeholder="Enter your admin email">
+                    <span class="validation-message">Please enter a valid email address</span>
+                </div>
+
+                <div class="input-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" required
+                           minlength="8"
+                           placeholder="Enter your password">
+                    <span class="password-toggle" id="password-toggle" style="cursor: pointer;">👁️</span>
+                    <span class="validation-message">Password must be at least 8 characters long</span>
+                </div>
+                
+                <button type="submit" class="auth-btn">Admin Sign In</button>
+            </form>
+
+            <div class="alternate-auth">
+                <span>Return to </span>
+                <a href="signin.html">User Sign In</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+
+    <script type="module">
+        // Mocking the base URL for testing (replace with actual import in production)
+        const url = "http://localhost:3000"; // Replace with your actual backend URL or import from Baselink.js
+
+        // Toggle password visibility
+        document.querySelector('.password-toggle').addEventListener('click', function () {
+            const passwordInput = document.getElementById('adminPassword');
+            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        });
+
+        // Dummy admin credentials for testing
+        const dummyAdmins = [
+            { email: "admin1@tiffinfusion.com", password: "AdminPass123" },
+            { email: "admin2@tiffinfusion.com", password: "SecurePass456" }
+        ];
+
+        // Handle form submission
+        document.getElementById('adminAuthForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const aemail = document.getElementById('adminEmail').value;
+            const apass = document.getElementById('adminPassword').value;
+
+            console.log("Form submitted with:", aemail, apass);
+
+            // Check dummy credentials (for testing only)
+            const isValidAdmin = dummyAdmins.some(
+                admin => admin.email === aemail && admin.password === apass
+            );
+
+            if (isValidAdmin) {
+                console.log("Dummy admin login successful!");
+                localStorage.setItem('token', 'dummy-token-' + aemail);
+                window.location.href = "/adminindex.html";
+            } else {
+                // Fallback to backend API call
+                axios.post(`${url}/api/auth/check-admin`, {
+                    email: aemail,
+                    password: apass
+                })
+                .then((resp) => {
+                    console.log(resp.data);
+                    localStorage.setItem('token', resp.data.token);
+                    window.location.href = "/adminindex.html";
+                })
+                .catch((err) => {
+                    console.error(err);
+                    alert("Invalid email or password. Please try again.");
+                });
+            }
+        });
+    </script>
+</body>
+</html>

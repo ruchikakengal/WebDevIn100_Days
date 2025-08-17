@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../Utils/20240921_154411.png">
+  <title>Daily Meal Plans</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <script type="module">
+    import ReusableModal from '../ReusableModal.js';
+
+    // Create a new modal instance
+    const cartModal = new ReusableModal("🥳 Item Added to the Cart");
+
+    // Function to add item to cart
+    function addToCart() {
+      console.log("Item added to cart!");
+      cartModal.show(); // Show the modal
+    }
+
+    // Attach event listener to a button
+    document.getElementById("add-to-cart-btn").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn1").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn2").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn3").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn4").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn5").addEventListener("click", addToCart);
+  </script>
+  <link rel="stylesheet" href="dailyplans.css">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<style>
+    /* General Styling */
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #E53935;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s; /* Highlighted: Added smooth transition effect */
+}
+
+.nav-link:hover {
+    color: #d32f2f; /* Highlighted: Changed hover color for navbar links */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.daily-plan-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Card Styles */
+.daily-plan-card {
+    width: 250px;
+    height: 350px;
+    perspective: 1000px; /* Highlighted: Added 3D perspective for card flip effect */
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s; /* Highlighted: Added smooth transition for flip animation */
+}
+
+.daily-plan-card:hover .card-inner {
+    transform: rotateY(180deg); /* Highlighted: Flip card on hover */
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px; /* Highlighted: Added rounded corners for better aesthetics */
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Highlighted: Added subtle shadow for depth */
+}
+
+.card-front {
+    background: #fff;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Highlighted: Ensured image scales properly */
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Highlighted: Semi-transparent background for text visibility */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.meal-name {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.price {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.card-back {
+    background: #e74c3e;
+    color: #fff;
+    transform: rotateY(180deg); /* Highlighted: Defined back face rotation */
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.card-back h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-back ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-back ul li {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .daily-plan-container {
+        flex-direction: column;
+        align-items: center; /* Highlighted: Centered content for smaller screens */
+    }
+
+    .daily-plan-card {
+        width: 80%; /* Highlighted: Adjusted width for tablet screens */
+        height: 400px; /* Highlighted: Increased height for better spacing */
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-link {
+        font-size: 0.9rem; /* Highlighted: Reduced navbar font size for mobile screens */
+    }
+
+    .section-title {
+        font-size: 1.5rem; /* Highlighted: Adjusted title font size for better visibility */
+    }
+
+    .daily-plan-card {
+        width: 90%; /* Highlighted: Adjusted width for mobile screens */
+        height: 380px; /* Highlighted: Adjusted height for better layout on mobile */
+    }
+}
+/*footer */
+.payments i:hover{
+            transform: scale(1.2);
+        }
+
+
+
+</style>
+<body>
+
+
+  <nav class="navbar bg-light border-bottom border-body navbar-expand-lg">
+    <div class="container-fluid">
+
+      <!-- Logo -->
+      <a class="navbar-brand text-black" href="../index.html">
+        <img src="../Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
+        Ruchii Tiffin
+      </a>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="../index.html#home">Home</a>
+          </li>
+
+          <!-- View Menu Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="../index.html#menu-section">View Menu</a>
+          </li>
+
+          <!-- Meal Plan Dropdown -->
+          <li class="nav-item dropdown meal-plan">
+            <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
+              Meal Plans
+            </a>
+            <ul class="dropdown-menu" id="mealPlanMenu">
+              <li><a class="dropdown-item" href="../index.html#student-plan">Student Plan</a></li>
+              <li><a class="dropdown-item" href="../corporateplans.html">Corporate Plan</a></li>
+              <li><a class="dropdown-item" href="../dailyplans.html">Daily Plan</a></li>
+            </ul>
+          </li>
+
+          <!-- About Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="../index.html#who-we-are">About</a>
+          </li>
+
+          <!-- Contact Us Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="../index.html#contact-us">Contact Us</a>
+          </li>
+
+         
+
+          
+
+          
+          <!-- Cart Icon in Navbar -->
+        <li class="nav-item">
+          <a href="../menu-page/checkout.html" id="cart-icon" class="nav-link mx-2">
+            <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">(0)</span>
+          </a>
+        </li>
+
+          <!-- Sign In Link -->
+          <li class="nav-item">
+            <a href="../signin.html" class="nav-link mx-2 signinbtn">Sign In </a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+   
+  
+    <!-- Daily Meal Plans -->
+    <section id="meal-plans" class="daily-plan-section">
+      <h2 class="section-title">LUNCH PLAN</h2>
+  
+      <!-- First Row -->
+      <div class="daily-plan-container" style="margin-bottom: 20px;">
+        <div class="daily-plan-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="lunch1.jpg" alt="Breakfast Plan" class="card-image">
+              <div class="card-overlay">
+                <h3 class="meal-name">Dal Tadka</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <h2>Dal Tadka</h2>
+              <h3>Price - Rs.190</h3>
+              <hr style="height: 2px; background-color: white; border-radius: 10px;">
+              <p> A hearty dish of yellow lentils cooked to perfection, tempered with ghee, cumin, garlic, and aromatic spices for a rich, flavorful finish.</p>
+            </div>
+          </div>
+          <button id="add-to-cart-btn" class="add-btn" style="margin-bottom: 40px;" onclick="addToCart('../dailyplans/lunch1.jpg','Dal Tadka','Lunch Meal', 190)">Add +</button>
+        </div>
+  
+        <div class="daily-plan-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="lunch2.jpg" alt="Lunch Plan" class="card-image">
+              <div class="card-overlay">
+                <h3 class="meal-name">Jeera Rice</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <h2>Jeera Rice</h2>
+              <h3>Price - Rs.200</h3>
+              <hr style="height: 2px; background-color: white; border-radius: 10px;">
+              <p> Fragrant basmati rice cooked with cumin seeds, offering a simple yet aromatic side dish to complement any curry.</p>
+            </div>
+          </div>
+          <button id="add-to-cart-btn1" class="add-btn" style="margin-bottom: 40px;" onclick="addToCart('../dailyplans/lunch2.jpg','Jeera Rice','Lunch Meal', 200)">Add +</button>
+        </div>
+  
+        <div class="daily-plan-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="lunch3.jpg" alt="Dinner Plan" class="card-image">
+              <div class="card-overlay">
+                <h3 class="meal-name">Mix Veg</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <h2>Mix Veg</h2>
+              <h3>Price - Rs.220</h3>
+              <hr style="height: 2px; background-color: white; border-radius: 10px;">
+              <p> A flavorful medley of assorted vegetables, cooked in a savory blend of spices for a wholesome and satisfying dish.</p>
+            </div>
+          </div>
+          <button id="add-to-cart-btn2" class="add-btn" style="margin-bottom: 40px;" onclick="addToCart('../dailyplans/lunch3.jpg','Mix Veg','Lunch Meal', 220)">Add +</button>
+        </div>
+      </div>
+  
+      <!-- Second Row -->
+      <div class="daily-plan-container">
+        <div class="daily-plan-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="lunch4.jpg" alt="Lunch Plan" class="card-image">
+              <div class="card-overlay">
+                <h3 class="meal-name">Roti</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <h2>Roti</h2>
+              <h3>Price - Rs.80/- per piece</h3>
+              <hr style="height: 2px; background-color: white; border-radius: 10px;">
+              <p> Soft, whole wheat flatbread, freshly cooked on a hot griddle, perfect for pairing with curries and gravies.</p>
+            </div>
+          </div>
+          <button id="add-to-cart-btn3" class="add-btn" style="margin-bottom: 40px;" onclick="addToCart('../dailyplans/lunch4.jpg','Roti','Lunch Meal', 80)">Add +</button>
+        </div>
+  
+        <div class="daily-plan-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="lunch5.jpg" alt="Lunch Plan" class="card-image">
+              <div class="card-overlay">
+                <h3 class="meal-name">Paneer Butter Masala</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <h2>Paneer Butter Masala</h2>
+              <h3>Price - Rs.250</h3>
+              <hr style="height: 2px; background-color: white; border-radius: 10px;">
+              <p> Soft paneer cubes simmered in a rich, creamy tomato-based gravy with butter and aromatic spices, offering a luxurious, flavorful experience.</p>
+            </div>
+          </div>
+          <button id="add-to-cart-btn4" class="add-btn" style="margin-bottom: 40px;" onclick="addToCart('../dailyplans/lunch5.jpg','Paneer Butter Masala','Lunch Meal', 250)">Add +</button>
+        </div>
+  
+        <div class="daily-plan-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="lunch6.jpg" alt="Lunch Plan" class="card-image">
+              <div class="card-overlay">
+                <h3 class="meal-name">Salad</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <h2>Salad</h2>
+              <h3>Price - Rs.110</h3>
+              <hr style="height: 2px; background-color: white; border-radius: 10px;">
+              <p> A fresh and vibrant mix of crisp vegetables, tossed together with a light dressing for a healthy and refreshing accompaniment.</p>
+            </div>
+          </div>
+          <button id="add-to-cart-btn5" class="add-btn" style="margin-bottom: 40px;" onclick="addToCart('../dailyplans/lunch6.jpg','Salad','Lunch Meal', 110)">Add +</button>
+        </div>
+      </div>
+    </section>
+
+
+    <footer>
+      <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background-color: white; color: black;">
+        
+        <!-- About Section -->
+        <div class="footer-section about" style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="../Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="width: 100px; margin-right: 20px;">
+          <p style="margin: 0;">Ruchii Tiffin connects customers with local tiffin centers, providing a seamless and delightful dining experience. Our shared passion for food and community drives us to bring quality meals directly to your doorstep.</p>
+        </div>
+    
+        <!-- Ruchii Tiffin Links -->
+        <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Ruchii Tiffin</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="../index.html#who-we-are" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+            <li><a href="../blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+            <li><a href="../work_with_us/work-with-us.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+            <li><a href="../investor-relations.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+            <li><a href="../index.html#contact-us" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+          </ul>
+        </div>
+    
+        <!-- Tiffin Plans Links -->
+        <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Tiffin Plans</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="../dailyplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Daily Plan</a></li>
+            <li><a href="../studentplan.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Student Plan</a></li>
+            <li><a href="../corporateplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Corporate Plan</a></li>
+          </ul>
+          <!--payment options-->
+          <div class="payments" class="footer-section services"  style="flex: 1; min-width: 150px; margin: -2px;">
+            <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+            onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">we Accept</h2>
+            <a href="https://pay.google.com/intl/en_in/about/" style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-google-pay" title="Google pay" style="padding: 2px;"></i></a>
+           <a href="https://www.apple.com/apple-pay/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px"onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-apple-pay" title="Apple pay" style="padding: 2px;"></i></a>
+            <a href="https://www.visa.co.in/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-visa" title="Visa pay" style="padding: 2px;"></i></a>
+            <a href="https://www.mastercard.co.in/en-in.html"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-mastercard" title="Master card" style="padding: 2px;"></i></a>
+        </div>
+        </div>
+    
+        <!-- Learn More Links -->
+        <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="../privacy.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+            <li><a href="../security.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+            <li><a href="../Terms.html  " style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+          </ul>
+        </div>
+    
+        <!-- Social Media Links -->
+        <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+          <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+            <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-x-twitter"></i></a></li>
+            <li><a href="#" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.transform='scale(1.2)'; this.style.display='inline-block'" onmouseout="this.style.color='black'; this.style.transform='scale(1)'"><i class="fab fa-youtube"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <!-- Footer Bottom -->
+      <div class="footer-bottom" style="margin:10px; padding: 10px; text-align: center;">
+        <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2025 Ruchii Tiffin. All rights reserved.</p>
+      </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../menu-page/cart.js"></script>
+  </body>
+  
+</html>

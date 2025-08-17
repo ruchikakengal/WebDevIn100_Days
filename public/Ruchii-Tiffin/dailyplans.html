@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./Utils/20240921_154411.png">
+  <title>Daily Meal Plans</title>
+  <link rel="stylesheet" href="dailyplans.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+
+
+ 
+<style>
+  /* Loader Styles */
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 9999;
+}
+
+.panWrapper {
+    width: 200px;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pan {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: fit-content;
+    animation: cooking 1.7s infinite;
+}
+
+@keyframes cooking {
+    0% {
+        transform: rotate(0deg);
+        transform-origin: top right;
+    }
+    10% {
+        transform: rotate(-4deg);
+        transform-origin: top right;
+    }
+    50% {
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.food {
+    position: absolute;
+    width: 40%;
+    height: 6px;
+    background: linear-gradient(to bottom, rgb(82, 33, 33), rgb(200, 106, 106));
+    left: 10px;
+    border-radius: 50%;
+    animation: flip 1.7s infinite;
+    z-index: 2;
+}
+
+@keyframes flip {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-100px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(360deg);
+    }
+}
+
+.panBase {
+    z-index: 3;
+    width: 50%;
+    height: 22px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background: linear-gradient(to top, rgb(3, 156, 156), rgb(10, 191, 191));
+}
+
+.panHandle {
+    width: 40%;
+    background: linear-gradient(to bottom, rgb(18, 18, 18), rgb(74, 74, 74));
+    height: 10px;
+    border-radius: 10px;
+}
+
+.panShadow {
+    width: 70px;
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0.21);
+    margin-left: 15px;
+    border-radius: 10px;
+    animation: shadow 1.7s infinite;
+    filter: blur(5px);
+}
+
+@keyframes shadow {
+    0% {
+        transform: scaleX(0.7);
+    }
+    50% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(0.7);
+    }
+}
+
+/* Main Content Styles */
+.content {
+    display: none;
+    padding: 20px;
+    text-align: center;
+}
+</style>
+ 
+
+  </head>
+
+<body>
+
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="panWrapper">
+        <div class="pan">
+            <div class="food"></div>
+            <div class="panBase"></div>
+            <div class="panHandle"></div>
+        </div>
+        <div class="panShadow"></div>
+    </div>
+</div>
+
+  <nav class="navbar bg-light border-bottom border-body navbar-expand-lg">
+    <div class="container-fluid">
+
+      <!-- Logo -->
+      <a class="navbar-brand text-black" href="./index.html">
+        <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
+        Ruchii Tiffin
+      </a>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html">Home</a>
+          </li>
+
+          <!-- View Menu Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html#menu-section">View Menu</a>
+          </li>
+
+          <!-- Meal Plan Dropdown -->
+          <li class="nav-item dropdown meal-plan">
+            <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
+              Meal Plans
+            </a>
+            <ul class="dropdown-menu" id="mealPlanMenu">
+              <li><a class="dropdown-item" href="./index.html#student-plan">Student Plan</a></li>
+              <li><a class="dropdown-item" href="corporateplans.html">Corporate Plan</a></li>
+              <li><a class="dropdown-item" href="dailyplans.html">Daily Plan</a></li>
+            </ul>
+          </li>
+
+          <!-- About Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html#who-we-are">About</a>
+          </li>
+
+          <!-- Contact Us Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html#contact-us">Contact Us</a>
+          </li>
+
+        
+
+          <!-- Dark Mode Toggle Button -->
+            <li class="nav-item">
+              <button id="dark-mode-toggle" class="btn btn-outline-dark mx-2">
+                <i class="fas fa-moon"></i> <!-- Dark mode icon -->
+              </button>
+            </li>
+
+          
+          <!-- Cart Icon in Navbar -->
+        <li class="nav-item">
+          <a href="./menu-page/checkout.html" id="cart-icon" class="nav-link mx-2">
+            <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">(0)</span>
+          </a>
+        </li>
+
+          <!-- Sign In Link -->
+          <li class="nav-item">
+            <a href="./signin.html" class="nav-link mx-2 signinbtn">Sign In </a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
+  <!-- Daily Meal Plans -->
+  <section id="meal-plans" class="daily-plan-section">
+    <h2 class="section-title">Daily Meal Plans</h2>
+    <div class="daily-plan-container">
+      <!-- Breakfast Plan -->
+      <div class="daily-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://d2rdhxfof4qmbb.cloudfront.net/wp-content/uploads/20180821150600/Indian-Breakfast.jpg" alt="Breakfast Plan" class="card-image">
+            <div class="card-overlay">
+              <a href="./dailyplans/breakfast.html" class="meal-name">Breakfast Plan</a>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Breakfast Plan</h3>
+            <ul>
+              <li>Oats Porridge with Fruits</li>
+              <li>Boiled Eggs or Paneer Bhurji</li>
+              <li>Fresh Orange Juice</li>
+              <li>Multigrain Toast</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lunch Plan -->
+      <div class="daily-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://rakskitchen.net/wp-content/uploads/2013/11/10867983783_854a7fec8f_o.jpg" alt="Lunch Plan" class="card-image">
+            <div class="card-overlay">
+              <a href="./dailyplans/lunch.html" class="meal-name">Lunch Plan</a>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Lunch Plan</h3>
+            <ul>
+              <li>Dal Tadka</li>
+              <li>Jeera Rice</li>
+              <li>Mixed Vegetable Sabzi</li>
+              <li>Roti or Naan</li>
+              <li>Salad and Pickle</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dinner Plan -->
+      <div class="daily-plan-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://www.madhuseverydayindian.com/wp-content/uploads/2021/09/indian-dinner-party-menu-768x1024.jpg" alt="Dinner Plan" class="card-image">
+            <div class="card-overlay">
+              <a href="./dailyplans/dinner.html" class="meal-name">Dinner Plan</a>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3>Dinner Plan</h3>
+            <ul>
+              <li>Paneer Butter Masala</li>
+              <li>Veg Pulao or Plain Rice</li>
+              <li>Roti or Paratha</li>
+              <li>Cucumber Raita</li>
+              <li>Gulab Jamun</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer>
+    <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background-color: white; color: black;">
+      
+      <!-- About Section -->
+      <div class="footer-section about" style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="width: 100px; margin-right: 20px;">
+        <p style="margin: 0;">Ruchii Tiffin connects customers with local tiffin centers, providing a seamless and delightful dining experience. Our shared passion for food and community drives us to bring quality meals directly to your doorstep.</p>
+      </div>
+  
+      <!-- Ruchii Tiffin Links -->
+      <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Ruchii Tiffin</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="./index.html#who-we-are" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+          <li><a href="./blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+          <li><a href="work_with_us/work-with-us.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+          <li><a href="investor-relations.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+          <li><a href="./index.html#contact-us" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+        </ul>
+      </div>
+  
+      <!-- Tiffin Plans Links -->
+      <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Tiffin Plans</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="dailyplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Daily Plan</a></li>
+          <li><a href="studentplan.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Student Plan</a></li>
+          <li><a href="corporateplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Corporate Plan</a></li>
+        </ul>
+        <!--payment options-->
+        <div class="payments" class="footer-section services"  style="flex: 1; min-width: 150px; margin: -2px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+          onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">we Accept</h2>
+          <a href="https://pay.google.com/intl/en_in/about/" style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-google-pay" title="Google pay" style="padding: 2px;"></i></a>
+         <a href="https://www.apple.com/apple-pay/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px"onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-apple-pay" title="Apple pay" style="padding: 2px;"></i></a>
+          <a href="https://www.visa.co.in/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-visa" title="Visa pay" style="padding: 2px;"></i></a>
+          <a href="https://www.mastercard.co.in/en-in.html"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-mastercard" title="Master card" style="padding: 2px;"></i></a>
+      </div>
+      </div>
+  
+      <!-- Learn More Links -->
+      <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="privacy.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+          <li><a href="security.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+          <li><a href="Terms.html  " style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+        </ul>
+      </div>
+  
+      <!-- Social Media Links -->
+      <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+        <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+          <li><a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="https://www.facebook.com/yourprofile" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/x/" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="https://x.com/x" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a></li>
+          <li><a href="https://www.youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- Footer Bottom -->
+    <div class="footer-bottom" style="margin:10px; padding: 10px; text-align: center;">
+      <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2025 Ruchii Tiffin. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    //  Loader js 
+document.addEventListener('DOMContentLoaded', function() {
+    // Show loader for 1.5 seconds (1500 milliseconds)
+    setTimeout(function() {
+        // Hide loader
+        document.getElementById('loader').style.display = 'none';
+        // Show main content
+        document.getElementById('content').style.display = 'block';
+    }, 1500);
+});
+  </script>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="dark-mode.js"></script>
+
+</body>
+
+</html>

@@ -1025,18 +1025,72 @@ class WebDev100Days {
 
 
       {
-        originalDay: 156,
-        name: "Flappy Bird",
-        description: "Play with Bird",
-        demoLink: "./public/flappy-bird/index.html",
-        category: "games",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Bird", "Score", "Hard"]
-      },
 
+         originalDay:156, 
+         name: "Flappy Bird",
+          description: "Play with Bird",
+          demoLink: "./public/flappy-bird/index.html",
+          category: "games",
+          technologies: ["HTML", "CSS", "JavaScript"],
+          features: ["Bird", "Score", "Hard"]
+  },
+
+{
+  originalDay: 157,
+  name: "Invoice Builder",
+  description: "Generate Product Invoice",
+  demoLink: "./public/Invoice-Builder/index.html",
+  category: "utilities",
+  technologies: ["HTML", "CSS", "JavaScript"],
+  features: ["Invoice", "Product Invoice", "Invoice Generator"]
+},
+{
+  originalDay: 158, 
+  name: "Fanta Website Clone",
+  description: "Enjoy your first Drink",
+  demoLink: "./public/Fanta-Website/index.html",
+  category: "creativity",
+  technologies: ["HTML", "CSS", "JavaScript"],
+  features: ["Fanta", "Coldrink", "Animation"]
+},
+{
+  originalDay: 159, 
+  name: "Drum Kit",
+  description: "A fun and interactive drum kit that can be played by clicking buttons or pressing keys.",
+  demoLink: "./public/Drum-Kit/index.html",
+  category: "entertainment",
+  technologies: ["HTML", "CSS", "JavaScript"],
+  features: [
+    "Play drums using mouse clicks or keyboard keys",
+    "Visual feedback on key press",
+    "Multiple drum sounds"
+  ]
+  },
+     
       {
 
-        originalDay: 157,
+
+         originalDay:157, 
+         name: "Fanta Website Clone",
+          description: "Enjoy your first Drink ",
+          demoLink: "./public/Fanta-Website/index.html",
+          category: "creativity",
+          technologies: ["HTML", "CSS", "JavaScript"],
+          features: ["Fanta", "Coldrink", "Animation"]
+  },
+      {
+         originalDay:158, 
+         name: "Ruchii Tiffin ",
+          description: "Simple Homely Tasty Meals ",
+          demoLink: "./public/Ruchii-Tiffin/index.html",
+          category: "creativity",
+          technologies: ["HTML", "CSS", "JavaScript"],
+          features: ["food", "meals", "creativity"]
+  },
+     
+      {
+
+        originalDay: 159,
         name: "Invoice Builder",
         description: "Generate Product Invoice",
         demoLink: "./public/Invoice-Builder/index.html",
@@ -1089,7 +1143,6 @@ class WebDev100Days {
           "Modern Chair - Product Page with Animation and Styling"
         ]
       }
-
     ];
 
     this.projects = projectsData.map((project, index) => ({

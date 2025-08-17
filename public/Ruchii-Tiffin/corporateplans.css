@@ -1,0 +1,236 @@
+/* Loader Styles */
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 9999;
+}
+.panWrapper {
+    width: 200px;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 20px;
+}
+.pan {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: fit-content;
+    animation: cooking 1.7s infinite;
+}
+@keyframes cooking {
+    0% { transform: rotate(0deg); transform-origin: top right; }
+    10% { transform: rotate(-4deg); transform-origin: top right; }
+    50% { transform: rotate(20deg); }
+    100% { transform: rotate(0deg); }
+}
+.food {
+    position: absolute;
+    width: 40%;
+    height: 6px;
+    background: linear-gradient(to bottom, rgb(82, 33, 33), rgb(200, 106, 106));
+    left: 10px;
+    border-radius: 50%;
+    animation: flip 1.7s infinite;
+    z-index: 2;
+}
+@keyframes flip {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-100px) rotate(180deg); }
+    100% { transform: translateY(0px) rotate(360deg); }
+}
+.panBase {
+    z-index: 3;
+    width: 50%;
+    height: 22px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background: linear-gradient(to top, rgb(3, 156, 156), rgb(10, 191, 191));
+}
+.panHandle {
+    width: 40%;
+    background: linear-gradient(to bottom, rgb(18, 18, 18), rgb(74, 74, 74));
+    height: 10px;
+    border-radius: 10px;
+}
+.panShadow {
+    width: 70px;
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0.21);
+    margin-left: 15px;
+    border-radius: 10px;
+    animation: shadow 1.7s infinite;
+    filter: blur(5px);
+}
+@keyframes shadow {
+    0% { transform: scaleX(0.7); }
+    50% { transform: scaleX(1); }
+    100% { transform: scaleX(0.7); }
+}
+
+/* Main Content Styles */
+.content {
+    display: none;
+    padding: 1rem;
+}
+.content.visible {
+    display: block;
+}
+#meal-plans {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #dc2626;
+    text-align: center;
+    margin: 0.5rem 0;
+    position: relative;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: #dc2626;
+    animation: underline 1s ease-in-out infinite alternate;
+}
+@keyframes underline {
+    0% { width: 50px; }
+    100% { width: 100px; }
+}
+.meal-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.tab-button {
+    background: #ffffff;
+    color: #1f2937;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.tab-button:hover {
+    background: linear-gradient(to right, #dc2626, #b91c1c);
+    color: white;
+    transform: translateY(-2px);
+}
+.tab-button.active {
+    background: linear-gradient(to right, #dc2626, #b91c1c);
+    color: white;
+}
+.daily-plan-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem;
+}
+.daily-plan-card {
+    background: #ffffff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.daily-plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(220, 38, 38, 0.2);
+}
+.card-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+.card-content {
+    padding: 0.75rem;
+    text-align: center;
+    flex: 1;
+}
+.meal-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+}
+.price {
+    font-size: 0.9rem;
+    color: #dc2626;
+    font-weight: 700;
+}
+.add-btn {
+    background: linear-gradient(90deg, #dc2626, #b91c1c);
+    color: white;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+}
+.add-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+}
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .daily-plan-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .tab-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    .meal-name {
+        font-size: 0.9rem;
+    }
+    .price {
+        font-size: 0.85rem;
+    }
+    .add-btn {
+        padding: 0.4rem;
+        font-size: 0.85rem;
+    }
+}
+@media (max-width: 480px) {
+    .daily-plan-container {
+        grid-template-columns: 1fr;
+    }
+    .card-image {
+        height: 100px;
+    }
+    .section-title {
+        font-size: 1.25rem;
+    }
+}

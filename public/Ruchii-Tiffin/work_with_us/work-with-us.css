@@ -1,0 +1,405 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+}
+
+
+
+/* Navbar General Styles */
+.navbar {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ccc;
+    padding: 0.5rem 1rem;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+  
+  .navbar-brand img {
+    height: 40px;
+    margin-right: 8px;
+  }
+  
+  .navbar-toggler {
+    margin-left: auto; /* Align toggler to the right for mobile view */
+  }
+  
+  /* Navbar Links */
+  .navbar-nav {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    width: 100%; /* Ensure it fills the container */
+    align-items: center; /* Vertically center all items */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove padding */
+  }
+  
+  .nav-item {
+    margin: 0 5px; /* Reduce the space between the items */
+    padding: 0; /* Remove padding */
+  }
+  
+  .nav-item a {
+    color: black;
+    text-transform: uppercase;
+    font-weight: 600; /* Lighten the font weight */
+    font-size: 14px; /* Ensure uniform font size for all links */
+    position: relative;
+    padding: 8px 12px; /* Consistent padding for each link */
+    transition: color 0.3s ease;
+  }
+  
+  .nav-item a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 50%;
+    bottom: 0;
+    background-color: red;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  .nav-item a:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  /* Mobile View Adjustments */
+  @media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 1rem;
+    }
+  
+    .nav-item {
+      margin: 5px 0; /* Add vertical spacing for mobile view */
+    }
+  
+    .dropdown-menu {
+      width: 100%; /* Full width for mobile dropdowns */
+    }
+  }
+  
+  /* Meal Plan Link */
+  .nav-item.meal-plan a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+  }
+  
+  /* Red line effect on hover for Meal Plan */
+  .nav-item.meal-plan a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 50%;
+    bottom: 0;
+    background-color: red;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  .nav-item.meal-plan a:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  /* Dropdown Menu - Initially hidden */
+  .nav-item.dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Show dropdown on hover */
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-menu {
+    min-width: 180px; /* Optional, you can adjust the width */
+  }
+
+
+
+#contact-us {
+    padding: 20px;
+    max-width: 800px;
+    margin: 50px auto;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-header h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d32f2f;
+    font-size: 2rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-form {
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all elements horizontally */
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    width: 95%; /* Align labels to the same width as inputs */
+}
+
+form input, form textarea, form select {
+    margin-bottom: 15px;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #d32f2f;
+    border-radius: 5px;
+    width: 95%;
+    transition: all 0.3s ease;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+    border-color: #ff6659;
+    box-shadow: 0 0 10px rgba(211, 47, 47, 0.5);
+}
+
+form textarea {
+    resize: none;
+    height: 120px;
+}
+
+form button {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 12px 30px; /* Reduced padding for smaller size */
+    font-size: 14px; /* Slightly smaller font size */
+    font-weight: bold;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    text-align: center; /* Ensure button text is centered */
+}
+
+form button:hover {
+    background-color: #ff6659;
+    transform: scale(1.1);
+}
+
+form button:active {
+    transform: scale(0.95);
+}
+
+.contact-header {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    form button {
+        width: auto;
+    }
+}
+
+
+
+
+/* Success Animation Container */
+.success-animation {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 500px;
+    background-color: #f9fff9;
+    border: 1px solid #d4f0d4;
+    border-radius: 8px;
+    position: relative;
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+ /* Green Tick Styling */
+ .green-tick {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    background: #4caf50 !important; /* Ensures Bootstrap doesn't override */
+    color: rgb(0, 0, 0) !important;        /* Keeps the text white */
+    font-size: 36px !important;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Success Message Styling */
+ .success-message {
+    font-size: 18px;
+    color: #4caf50 !important;
+    text-align: center;
+    margin: 10px 0;
+    line-height: 1.5;
+  }
+  
+  /* Go Back Button Styling */
+  .go-back-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white !important;
+    background-color: #2196f3 !important;
+    border: none !important;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+   .go-back-btn:hover {
+    background-color: #1e88e5 !important;
+    transform: scale(1.05);
+  }
+  
+   .go-back-btn:active {
+    transform: scale(1);
+  }
+  
+  /* Success Message */
+  .success-message {
+    font-size: 18px;
+    color: #4caf50;
+    font-weight: bold;
+  }
+  
+  .success-note {
+    font-size: 16px;
+    color: #333;
+  }
+  
+
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+
+
+  /* Footer Styling */
+footer {
+  background-color: #f8f9fa;
+  padding: 40px 0;
+  font-family: 'Arial', sans-serif;
+  color: #6c757d;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  /* max-width: 1200px; */
+  margin: auto 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.footer-section {
+  margin: 20px;
+}
+
+.footer-section h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+  color: #000;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons li {
+  list-style: none;
+}
+
+.social-icons li a {
+  font-size: 20px;
+  color: #6c757d;
+}

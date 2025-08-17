@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris Classic</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>TETRIS</h1>
+        </div>
+
+        <div class="game-content">
+            <div class="side-panel left-panel">
+                <div class="panel-section">
+                    <h3>HOLD</h3>
+                    <canvas id="holdCanvas" width="120" height="80"></canvas>
+                </div>
+
+                <div class="panel-section">
+                    <h3>SCORE</h3>
+                    <div class="score-display" id="score">0</div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>LEVEL</h3>
+                    <div class="level-display" id="level">1</div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>LINES</h3>
+                    <div class="lines-display" id="lines">0</div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>COMBO</h3>
+                    <div class="combo-display" id="combo">0</div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>TIME</h3>
+                    <div class="time-display" id="time">00:00</div>
+                </div>
+            </div>
+
+            <div class="game-board-container">
+                <canvas id="gameCanvas" width="300" height="600"></canvas>
+                <div class="game-overlay" id="gameOverlay">
+                    <div class="overlay-content">
+                        <h2 id="overlayTitle">TETRIS</h2>
+                        <p id="overlayMessage">Press START to begin</p>
+                        <button id="startBtn" class="game-button">START</button>
+                        <div class="controls-info">
+                            <h4>CONTROLS</h4>
+                            <p>← → Move</p>
+                            <p>↑ Rotate</p>
+                            <p>↓ Soft Drop</p>
+                            <p>SPACE Hard Drop</p>
+                            <p>SHIFT Hold</p>
+                            <p>P Pause</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-panel right-panel">
+                <div class="panel-section">
+                    <h3>NEXT</h3>
+                    <canvas id="nextCanvas" width="120" height="80"></canvas>
+                </div>
+
+                <div class="panel-section">
+                    <button id="pauseBtn" class="game-button">PAUSE</button>
+                    <button id="restartBtn" class="game-button">RESTART</button>
+                </div>
+
+                <div class="panel-section speed-indicator">
+                    <h3>SPEED</h3>
+                    <div class="speed-bars">
+                        <div class="speed-bar" id="speedBar1"></div>
+                        <div class="speed-bar" id="speedBar2"></div>
+                        <div class="speed-bar" id="speedBar3"></div>
+                        <div class="speed-bar" id="speedBar4"></div>
+                        <div class="speed-bar" id="speedBar5"></div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>HIGH SCORE</h3>
+                    <div class="high-score-display" id="highScore">0</div>
+                </div>
+
+                <div class="panel-section theme-selector">
+                    <h3>THEME</h3>
+                    <select id="themeSelect" class="theme-dropdown">
+                        <option value="classic">Classic</option>
+                        <option value="neon">Neon</option>
+                        <option value="retro">Retro</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

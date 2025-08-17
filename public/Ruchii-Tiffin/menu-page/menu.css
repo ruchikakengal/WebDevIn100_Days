@@ -1,0 +1,733 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  padding: 60px 0;
+  text-align: center;
+}
+body.dark {
+  background-color: #292c35;
+} /* #9b59b6 */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #F44336;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #F44336;
+}
+
+
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-label {
+  background-color: #111;
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fa-moon {
+  color: #f1c40f;
+}
+
+.fa-sun {
+  color: #f39c12;
+}
+
+.checkbox-label .ball {
+  background-color: #fff;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+  transform: translateX(24px);
+}
+
+#main-content {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#main-content.visible {
+  opacity: 1;
+}
+
+/* Navbar General Styles */
+.navbar {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  font-family: "Arial", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.navbar-brand img {
+  height: 70px;
+  margin-right: 8px;
+}
+
+.navbar-toggler {
+  margin-left: auto; /* Align toggler to the right for mobile view */
+}
+
+/* Navbar Links */
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  width: 100%; /* Ensure it fills the container */
+  align-items: center; /* Vertically center all items */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove padding */
+}
+
+.nav-item {
+  margin: 0 5px; /* Reduce the space between the items */
+  padding: 0; /* Remove padding */
+}
+
+.nav-item a {
+  color: black;
+  text-transform: uppercase;
+  font-weight: 600; /* Lighten the font weight */
+  font-size: 14px; /* Ensure uniform font size for all links */
+  position: relative;
+  padding: 8px 12px; /* Consistent padding for each link */
+  transition: color 0.3s ease;
+}
+
+.nav-item a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 50%;
+  bottom: 0;
+  background-color: red;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-item a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1rem;
+  }
+
+  .nav-item {
+    margin: 5px 0; /* Add vertical spacing for mobile view */
+  }
+
+  .dropdown-menu {
+    width: 100%; /* Full width for mobile dropdowns */
+  }
+}
+
+/* Meal Plan Link */
+.nav-item.meal-plan a {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+}
+
+/* Red line effect on hover for Meal Plan */
+.nav-item.meal-plan a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 50%;
+  bottom: 0;
+  background-color: red;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-item.meal-plan a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Dropdown Menu - Initially hidden */
+.nav-item.dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Show dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  min-width: 180px; /* Optional, you can adjust the width */
+}
+/* Menu Section */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+#menu-section {
+  padding: 0;
+}
+
+.men-head {
+  text-align: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  font-family: "Cosmic Sans MS", cursive, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: -20px;
+  padding: 10px 0;
+}
+
+.menu-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px 145px;
+  background-color: #f9f9f9;
+}
+
+.menu-item {
+  background-color: #ffffff;
+  border-radius: 10px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateX(0px);
+  filter: blur(10px);
+  transition: all 0.8s ease-out;
+  padding: 15px;
+}
+
+.menu-item.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+.menu-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Ensures it stays within the box */
+  box-sizing: border-box; /* Prevents content overflow due to padding */
+}
+
+.menu-text {
+  flex: 0 0 70%; /* Fixed width percentage */
+  padding-right: 10px; /* Adds spacing between text and image */
+  box-sizing: border-box; /* Ensures it respects the parent box */
+}
+
+.menu-image {
+  flex: 0 0 30%; /* Fixed width percentage */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-image img {
+  width: 100%;
+  height: 100%;
+  max-height: 120px; /* Prevents the image from overflowing */
+  border-radius: 10px;
+  object-fit: cover;
+}
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-header h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  text-align: left;
+}
+
+.menu-header .price {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  margin-left: 20px;
+}
+
+.menu-text p {
+  font-size: 14px;
+  color: #6c757d;
+  margin: 5px 0 0;
+  text-align: left;
+}
+
+.menu-text h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: #484b4e;
+  margin: 10px 0 0;
+  text-align: left;
+}
+
+.back-clr {
+  background-color: #f9f9f9;
+  margin-top: -30px;
+  padding: 20px 0;
+}
+
+/* Make the menu section responsive */
+@media (max-width: 900px) {
+  .menu-image img {
+    width: 100%; /* Ensures the image fills the available width */
+    height: 100%; /* Ensures the image fills the available height */
+    max-width: 150px; /* Fixed width for square aspect */
+    max-height: 150px; /* Fixed height for square aspect */
+    object-fit: cover; /* Ensures the image covers the area without stretching */
+    border-radius: 10px;
+  }
+  .menu-section {
+    grid-template-columns: 1fr;
+    padding: 20px 70px;
+  }
+
+  .menu-item {
+    height: auto;
+  }
+  .full-menu-button {
+    width: 180px;
+  }
+
+  .menu-item:nth-child(odd).visible {
+    transform: translateX(-50px);
+  }
+  
+  .menu-item:nth-child(even).visible {
+    transform: translateX(50px);
+  }
+}
+
+.back-btn {
+  display: inline-block;
+  background-color: #e94c3d;
+  margin-right: 70vw;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+.back-btn:hover {
+  background-color: #c9382e;
+}
+
+/* Media Query for screens below 500px */
+@media (max-width: 500px) {
+  /* Reducing font size */
+  .menu-header h3 {
+    font-size: 16px; /* Smaller font size for the item name */
+  }
+
+  .menu-header .price {
+    font-size: 14px; /* Smaller font size for the price */
+  }
+
+  .menu-text p {
+    font-size: 12px; /* Smaller font size for description */
+  }
+
+  .menu-text h4 {
+    font-size: 14px; /* Slightly smaller font size for serving options */
+  }
+
+  /* Adjusting image size */
+  .menu-image img {
+    max-width: 130px; /* Smaller image width */
+    max-height: 130px; /* Smaller image height */
+  }
+
+  /* Adjusting the translateX length for nth-child(even) */
+  .menu-item:nth-child(even).visible {
+    transform: translateX(50px); /* Reduced translateX length */
+  }
+
+  .menu-item:nth-child(odd).visible {
+    transform: translateX(-50px);
+  }
+  
+  .menu-item:nth-child(even).visible {
+    transform: translateX(50px);
+  }
+
+  /* Menu item layout adjustments */
+  .menu-section {
+    grid-template-columns: 1fr; /* Keep single column layout */
+    padding: 20px 70px; /* Slight margin on the left and right for smaller screens */
+  }
+
+  .menu-item {
+    padding: 10px; /* Reduce padding to save space */
+  }
+
+  /* Button adjustments */
+  .full-menu-button {
+    width: 150px; /* Adjust button width for smaller screens */
+    font-size: 14px; /* Smaller font size for button text */
+  }
+}
+
+/* Menu Section Ends */
+/* Footer Styling */
+footer {
+  background-color: #f8f9fa;
+  padding: 40px 0;
+  font-family: "Arial", sans-serif;
+  color: #6c757d;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  /* max-width: 1200px; */
+  margin: auto 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.footer-section {
+  margin: 20px;
+}
+
+.footer-section h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+  color: #000;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons li {
+  list-style: none;
+}
+
+.social-icons li a {
+  font-size: 20px;
+  color: #6c757d;
+}
+
+/* Newsletter Section Styling */
+.footer-section.newsletter {
+  grid-column: span 4; /* span across all sections */
+  padding: 30px;
+  background-color: #ffffff;
+  background-image: url("https://media.istockphoto.com/id/666193858/photo/indian-vegetarian-office-or-school-lunch-box-or-tiffin-with-north-indian-or-maharashtrian.jpg?s=612x612&w=0&k=20&c=Ac-U7hY1leIuM97jLNPqzv7SX5DbZofu5p_pfUCgeJA=");
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer-section.newsletter h2 {
+  font-family: "Cosmic Sans MS", cursive, sans-serif;
+  font-size: 22px;
+  color: #ea0202;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 0 black;
+}
+
+.footer-section.newsletter p {
+  font-size: 14px;
+  color: #130111;
+  margin-bottom: 20px;
+}
+
+.footer-section.newsletter .newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.footer-section.newsletter .newsletter-form input {
+  padding: 10px;
+  font-size: 14px;
+  width: 250px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.footer-section.newsletter .newsletter-form input:focus {
+  border-color: #ff5722; /* Focused border color */
+  outline: none;
+}
+
+.footer-section.newsletter .subscribe-btn {
+  background: linear-gradient(90deg, #ff5722, #ff0000); /* Red gradient */
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.footer-section.newsletter .subscribe-btn:hover {
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff5722
+  ); /* Reverse gradient on hover */
+  transform: translateY(-3px); /* Button hover animation */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px 0;
+  background-color: rgba(248, 249, 250, 1);
+  font-size: 14px;
+}
+/*  footer */
+.payments i:hover{
+  transform: scale(1.2);
+}
+
+/* Add Button */
+.add-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fcfcfc;
+  background-color: #7fd153;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #0baa64;
+}
+
+.add-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(13, 200, 115, 0.5);
+}
+
+.add-btn:active {
+  background-color: #0a9554;
+}
+
+
+/* Contributors Button */
+#contributorsBtn {
+  position: fixed;
+  bottom: 115px; /* Shifted upward by half the radius (50px / 2 = 25px more) */
+  right: 40px; /* Positioned at the right corner */
+  z-index: 99;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Circular shape */
+  overflow: hidden; /* Ensure image doesn't overflow the circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease; /* For smooth scaling on hover */
+}
+
+#contributorsBtn:hover {
+  transform: scale(1.1); /* Slight enlargement when hovered */
+}
+
+#contributorsBtn img {
+  width: 100%; /* Fill the entire circle with the image */
+  height: 100%; /* Fill the entire circle with the image */
+  object-fit: cover; /* Ensures the image covers the circle without distorting */
+}
+
+/* Responsive Adjustments */
+
+/* Tablets and below */
+@media (max-width: 992px) {
+  #contributorsBtn {
+    bottom: 105px; /* Adjusted for tablets */
+    right: 30px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 576px) {
+  #contributorsBtn {
+    bottom: 95px; /* Adjusted for mobile */
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.footer-section.newsletter {
+  background: linear-gradient(to right, #d4e9b9, #e8f3d6);
+  position: relative;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Style for both images */
+.footer-section.newsletter img {
+  position: absolute;
+  width: 280px; /* Default width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain;
+  transition: all 0.3s ease; /* Smooth transitions for resizing */
+}
+
+/* Left image */
+.tiffin-left {
+  top: 50%;
+  left: 10%; /* Adjust position */
+  transform: translateY(-50%);
+}
+
+/* Right image */
+.tiffin-right {
+  top: 50%;
+  right: 10%; /* Adjust position */
+  transform: translateY(-50%);
+}
+
+/* Content styles (text, form) */
+.footer-section.newsletter h2,
+.footer-section.newsletter p,
+.footer-section.newsletter form {
+  position: relative;
+}
+
+/* Responsive Design: For screens below 720px */
+@media (max-width: 920px) {
+  /* Adjust image sizes */
+  .footer-section.newsletter img {
+    width: 250px; /* Smaller images */
+    opacity: 0.5; /* Slight transparency for cleaner look */
+  }
+
+  /* Center left image */
+  .tiffin-left {
+    top: 50%;
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Fully centered */
+  }
+
+  /* Hide right image */
+  .tiffin-right {
+    display: none;
+  }
+
+  /* Adjust padding for mobile */
+  .footer-section.newsletter {
+    padding: 30px 10px;
+  }
+}

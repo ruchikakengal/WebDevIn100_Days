@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruchii Tiffin - Auth</title>
+    <link rel="icon" href="./Utils/20240921_154411.png" type="image/x-ixon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+        }
+        
+        .auth-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #ff4d4d;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+        
+        h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .input-group input:focus {
+            border-color: #ff4d4d;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.1);
+        }
+        
+        #password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 45px;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .auth-btn {
+            width: 100%;
+            padding: 15px;
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .auth-btn:hover {
+            background: #ff3333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+        }
+        
+        .auth-btn:active {
+            transform: translateY(0);
+        }
+        
+        .alternate-auth {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+        }
+        
+        .alternate-auth a {
+            color: #ff4d4d;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+        
+        .alternate-auth a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-auth {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .social-auth p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .social-btn {
+            padding: 12px 25px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .social-btn:hover {
+            background: #f8f8f8;
+            transform: translateY(-2px);
+        }
+        
+        .social-btn img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .auth-box {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        .validation-message {
+            color: #ff4d4d;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .input-group input:invalid:focus ~ .validation-message {
+            display: block;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
+        
+        .forgot-password a {
+            color: #666;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        
+        .forgot-password a:hover {
+            color: #ff4d4d;
+        }
+        
+        </style>
+        <style>
+            .admin-auth {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.admin-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.admin-btn:hover {
+    background-color: #555;
+}
+
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-box">
+            <div class="close-icon" style="position: absolute; top: 30px; right: 30px;">
+                <a href="index.html">
+                    <img src="Utils/cross-icon.png" alt="Close" style="width: 15px; height: 15px;">
+                </a>
+            </div>
+            <div class="logo-container">
+                <div class="logo">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12,3L4,9V21H20V9L12,3M12,7.5L16,10.5V11.5L12,8.5L8,11.5V10.5L12,7.5M6,19V12.5L12,9.5L18,12.5V19H6Z"/>
+                    </svg>
+                </div>
+                <h2>Welcome to Ruchii Tiffin</h2>
+            </div>
+    
+            <form id="authForm">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required 
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                           placeholder="Enter your email">
+                    <span class="validation-message">Please enter a valid email address</span>
+                </div>
+    
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required
+                           minlength="8"
+                           placeholder="Enter your password">
+                    <span id="password-toggle">👁️</span>
+                    <span class="validation-message">Password must be at least 8 characters long</span>
+                </div>
+    
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+    
+                <button type="submit" class="auth-btn">Sign In</button>
+            </form>
+    
+            <div class="social-auth">
+                <p>Or continue with</p>
+                <div class="social-buttons">
+                    <button class="social-btn">
+                        <img src="Utils/google.png" alt="Google">
+                        Google
+                    </button>
+                </div>
+            </div>
+    
+            <div class="alternate-auth">
+                <span>Don't have an account?</span>
+                <a href="signup.html">Sign up</a>
+            </div>
+    
+            <!-- Admin Sign-In Button -->
+            <div class="admin-auth">
+                <button id="adminbtn" class="auth-btn admin-btn">
+                    Admin Sign In
+                </button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./signin.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script type="module">
+        import { url } from './Baselink.js';
+        
+        document.getElementById('authForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+        
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+        
+            // Basic validation
+            if (!email || !password) {
+                alert('Please fill in both fields');
+                return;
+            }
+        
+            try {
+                console.log(email, password);
+                const response = await axios.post(`${url}/api/auth/login`, {
+                    email,
+                    password,
+                });
+        
+                console.log('Login successful!');
+                console.log('Message:', response.data.message);
+                console.log('Token:', response.data.token);
+                console.log('User:', response.data.user);
+        
+                // Optionally store the token (e.g., in localStorage)
+                localStorage.setItem('authToken', response.data.token);
+        
+                // Redirect the user to a dashboard or another page
+                window.location.href = '/index.html';
+            } catch (error) {
+                const message = error.response?.data?.message || 'Login failed';
+                console.error('Error during login:', message);
+                alert(`Login failed: ${message}`);
+            }
+        });
+    </script>
+    
+    <script>
+        if (localStorage.getItem("authToken")) {
+            window.location.href="/index.html"
+        }else{
+            console.log("not logged in")
+        }
+    </script>
+    <script type="module">
+        // Import necessary Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"; // Import Firebase Auth
+    
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: null,
+            authDomain: "tiffin-fusion.firebaseapp.com",
+            projectId: "tiffin-fusion",
+            storageBucket: "tiffin-fusion.firebasestorage.app",
+            messagingSenderId: "167817158100",
+            appId: "1:167817158100:web:a38deb49378df276b34a41",
+            measurementId: "G-4MXBNMHD9Y"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app); // Initialize Firebase Authentication
+    
+        // Google Auth provider
+        const provider = new GoogleAuthProvider();
+    
+        // Event listener for the custom Google sign-in button
+        document.querySelector('.social-btn').addEventListener('click', function () {
+            // Sign-in with Google
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log("User signed in:", user);
+    
+                    // Example: alert user info
+                    alert(`Welcome ${user.displayName}!`);
+    
+                    // Redirect after successful sign-in (optional)
+                    // window.location.href = '/dashboard';
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    const email = error.email;
+                    const credential = error.credential;
+    
+                    console.error("Error during sign-in:", errorMessage);
+                    alert("There was an error during the sign-in process. Please try again.");
+                });
+        });
+    </script>
+    
+
+    <script>
+        const admin = document.getElementById("adminbtn")
+        admin.addEventListener("click",()=>{
+            window.location.href="./adminSignin.html"
+        })
+    </script>
+</body>
+</html>

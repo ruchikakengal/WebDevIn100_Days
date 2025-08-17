@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lodge Complaint - Ruchii Tiffin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="security.css"> 
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../Utils/20240921_154411.png" type="image/x-ixon">
+  
+  <style>
+    /* Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: url('Utils/st-3.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar Styles */
+    header {
+      width: 100%;
+      background-color: transparent; /* Made transparent */
+      padding: 10px 20px;
+      box-shadow: none; /* Removed box-shadow */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px 30px 30px 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Logo Styles */
+    .logo {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .logo img {
+      height: 60px;
+      display: block;
+    }
+
+    /* Heading Styles */
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #573c86;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #573c86;
+    }
+
+    /* Paragraph Styles */
+    p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    /* Form Styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 0.95rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      width: 100%;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #573c86;
+      outline: none;
+      box-shadow: 0 0 5px rgba(87, 60, 134, 0.5);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      padding: 12px 20px;
+      background-color: #573c86;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      align-self: center;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .submit-btn:hover,
+    .submit-btn:focus {
+      background-color: #482c6d;
+      transform: translateY(-2px);
+    }
+
+    /* Submit Button Icon */
+    .submit-btn svg {
+      fill: #fff;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Additional Information Styles */
+    .additional-info {
+      margin-top: 30px;
+      width: 100%;
+    }
+
+    .additional-info h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .additional-info ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 5px;
+    }
+
+    .additional-info ul li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .additional-info ul li a {
+      color: #573c86;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .additional-info ul li a:hover,
+    .additional-info ul li a:focus {
+      color: #482c6d;
+      text-decoration: underline;
+    }
+
+    /* Social Media Links Styles */
+    .social-media {
+      margin-top: 30px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .social-media h2 {
+      margin-bottom: 15px;
+      color: #573c86;
+      transition: color 0.3s ease;
+      font-size: 1.3rem;
+    }
+
+    .social-media h2:hover,
+    .social-media h2:focus {
+      color: #e67e22;
+    }
+
+    .social-media a {
+      margin: 0 10px;
+      display: inline-block;
+      transition: transform 0.3s, opacity 0.3s;
+      color: #573c86;
+      text-decoration: none;
+    }
+
+    .social-media a:hover,
+    .social-media a:focus {
+      color: #e67e22;
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+
+    .social-media img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Thank You Modal Styles */
+    #thankYouModal {
+      display: none; 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0,0,0,0.5); 
+      justify-content: center; 
+      align-items: center;
+      z-index: 2000;
+      animation: fadeIn 0.3s ease;
+    }
+
+    #thankYouModal .modal-content {
+      background: #fff; 
+      padding: 25px 20px;
+      border-radius: 10px; 
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    #thankYouModal .modal-content h2 {
+      margin-bottom: 15px;
+      color: #573c86;
+      font-size: 1.8rem;
+    }
+
+    #thankYouModal .modal-content p {
+      margin-bottom: 20px;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    #thankYouModal .modal-content button {
+      padding: 10px 20px;
+      background-color: #573c86; 
+      color: #fff; 
+      border: none; 
+      border-radius: 5px; 
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 1rem;
+    }
+
+    #thankYouModal .modal-content button:hover,
+    #thankYouModal .modal-content button:focus {
+      background-color: #482c6d;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); }
+      to { transform: translateY(0); }
+    }
+
+    /* Custom Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #573c86;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(207, 162, 236, 0.96);
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(222, 130, 235, 0.91);
+    }
+
+    /* Firefox Scrollbar Styling */
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(207, 162, 236, 0.96) #573c86;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .logo img {
+        height: 50px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.1rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      .submit-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .submit-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .additional-info h2,
+      .social-media h2 {
+        font-size: 1.1rem;
+      }
+
+      .social-media img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo img {
+        height: 40px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .submit-btn {
+        font-size: 0.9rem;
+        padding: 10px 16px;
+      }
+
+      .submit-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .additional-info h2,
+      .social-media h2 {
+        font-size: 1rem;
+      }
+
+      .social-media img {
+        width: 22px;
+        height: 22px;
+      }
+    }
+  </style>
+</head>
+<body class="custom-scrollbar">
+
+  <!-- Navbar -->
+  <!-- Navbar -->
+  <nav class="navbar bg-light border-bottom border-body navbar-expand-lg">
+    <div class="container-fluid">
+
+      <!-- Logo -->
+      <a class="navbar-brand text-black" href="./index.html">
+        <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
+        Ruchii Tiffin
+      </a>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html#home">Home</a>
+          </li>
+
+          <!-- View Menu Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html#menu-section">View Menu</a>
+          </li>
+
+          <!-- Meal Plan Dropdown -->
+          <li class="nav-item dropdown meal-plan">
+            <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
+              Meal Plans
+            </a>
+            <ul class="dropdown-menu" id="mealPlanMenu">
+              <li><a class="dropdown-item" href="./index.html#student-plan">Student Plan</a></li>
+              <li><a class="dropdown-item" href="corporateplans.html">Corporate Plan</a></li>
+              <li><a class="dropdown-item" href="dailyplans.html">Daily Plan</a></li>
+            </ul>
+          </li>
+
+          <!-- About Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html#who-we-are">About</a>
+          </li>
+
+          <!-- Contact Us Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html#contact-us">Contact Us</a>
+          </li>
+
+       
+          <!-- Dark Mode Toggle Button -->
+            <li class="nav-item">
+              <button id="dark-mode-toggle" class="btn btn-outline-dark mx-2">
+                <i class="fas fa-moon"></i> <!-- Dark mode icon -->
+              </button>
+            </li>
+
+          
+          <!-- Cart Icon in Navbar -->
+        <li class="nav-item">
+          <a href="./menu-page/checkout.html" id="cart-icon" class="nav-link mx-2">
+            <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">(0)</span>
+          </a>
+        </li>
+
+          <!-- Sign In Link -->
+          <li class="nav-item">
+            <a href="./signin.html" class="nav-link mx-2 signinbtn">Sign In </a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
+
+  <!-- Main Content -->
+  <main>
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Logo Placement -->
+      
+
+      <h1>Contact Us</h1>
+      <p>We're here to help! Whether you have a question, feedback, or just want to say hello, please fill out the form below and we'll get back to you as soon as possible.</p>
+
+      <!-- Inquiry Form -->
+      <form action="/submit-inquiry" method="POST" aria-describedby="form-description">
+        <div class="section">
+          <label for="query">How can we help you?<span aria-hidden="true">*</span></label>
+          <select name="query" id="query" required aria-required="true">
+            <option value="" disabled selected hidden>Select an option</option>
+            <option value="order">Issue with an Order</option>
+            <option value="feedback">Feedback</option>
+            <option value="other">Other Queries</option>
+          </select>
+        </div>
+
+        <div class="section">
+          <label for="name">Name<span aria-hidden="true">*</span></label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true">
+        </div>
+
+        <div class="section">
+          <label for="email">Email<span aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" placeholder="your.email@example.com" required aria-required="true">
+        </div>
+
+        <div class="section">
+          <label for="mobile">Mobile Number (optional)</label>
+          <input type="text" id="mobile" name="mobile" placeholder="Your Mobile Number" pattern="^\+?[0-9\s\-]{7,15}$" aria-describedby="mobileHelp">
+          <small id="mobileHelp">Format: +1234567890</small>
+        </div>
+
+        <div class="section">
+          <label for="message">Message<span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" placeholder="Your message here..." required aria-required="true"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" aria-label="Submit your inquiry">
+          <!-- SVG Icon for Submit -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 21h20V3H2v18zm18-2l-6-6-4 4-2-2 6-6 4 4 2-2-6 6z"/>
+          </svg>
+          Submit
+        </button>
+      </form>
+
+      <!-- Thank You Modal -->
+      <div id="thankYouModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+        <div class="modal-content">
+          <h2 id="modalTitle">Thank You!</h2>
+          <p id="modalDescription">Your inquiry has been submitted successfully. We'll get back to you shortly.</p>
+          <button id="closeModalBtn">Close</button>
+        </div>
+      </div>
+
+      <!-- ARIA Live Region for Form Submission Status -->
+      <div id="formStatus" aria-live="polite" class="visually-hidden"></div>
+    </div>
+  </main>
+
+  <!-- JavaScript for Form Submission and Modal -->
+  <script>
+    // Handle form submission
+    const form = document.querySelector('form');
+    const thankYouModal = document.getElementById('thankYouModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const formStatus = document.getElementById('formStatus');
+    const submitButton = document.querySelector('.submit-btn');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Simple form validation (additional client-side validation can be added here)
+      if (form.checkValidity()) {
+        // Simulate form submission
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+
+        setTimeout(() => {
+          // Show thank you modal
+          thankYouModal.style.display = 'flex';
+          thankYouModal.setAttribute('aria-hidden', 'false');
+          form.reset();
+          submitButton.disabled = false;
+          submitButton.innerHTML = `
+            <!-- SVG Icon for Submit -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2 21h20V3H2v18zm18-2l-6-6-4 4-2-2 6-6 4 4 2-2-6 6z"/>
+            </svg>
+            Submit
+          `;
+          formStatus.textContent = 'Form submitted successfully.';
+          // Set focus to modal for accessibility
+          closeModalBtn.focus();
+        }, 1000);
+      } else {
+        formStatus.textContent = 'Please fill out all required fields correctly.';
+      }
+    });
+
+    // Close modal function
+    function closeModal() {
+      thankYouModal.style.display = 'none';
+      thankYouModal.setAttribute('aria-hidden', 'true');
+      // Return focus to the submit button
+      submitButton.focus();
+    }
+
+    // Event listener for close button
+    closeModalBtn.addEventListener('click', closeModal);
+
+    // Close modal when clicking outside the modal content
+    window.addEventListener('click', function(event) {
+      if (event.target == thankYouModal) {
+        closeModal();
+      }
+    });
+
+    // Close modal with Escape key
+    window.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && thankYouModal.style.display === 'flex') {
+        closeModal();
+      }
+    });
+
+    // Accessibility: Trap focus within the modal when it's open
+    document.addEventListener('keydown', function(event) {
+      const isModalOpen = thankYouModal.style.display === 'flex';
+      if (!isModalOpen) return;
+
+      const focusableElements = thankYouModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.key === 'Tab') {
+        if (event.shiftKey) { // Shift + Tab
+          if (document.activeElement === firstElement) {
+            event.preventDefault();
+            lastElement.focus();
+          }
+        } else { // Tab
+          if (document.activeElement === lastElement) {
+            event.preventDefault();
+            firstElement.focus();
+          }
+        }
+      }
+    });
+  </script>
+
+  <!-- Visually Hidden Class for Accessibility -->
+  <style>
+    .visually-hidden { 
+      position: absolute; 
+      width: 1px; 
+      height: 1px; 
+      padding: 0; 
+      margin: -1px; 
+      overflow: hidden; 
+      clip: rect(0,0,0,0); 
+      white-space: nowrap; 
+      border: 0; 
+    }
+  </style>
+</body>
+</html>

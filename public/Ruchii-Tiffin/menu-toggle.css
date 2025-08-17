@@ -1,0 +1,4 @@
+.dark-mode .navbar-toggler-icon {
+    filter: invert(1); /* Makes the icon white */
+  }
+  

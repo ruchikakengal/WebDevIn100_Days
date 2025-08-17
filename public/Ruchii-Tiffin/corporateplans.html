@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./Utils/20240921_154411.png">
+  <title>Corporate Meal Plans</title>
+  <link rel="stylesheet" href="corporateplans.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <script type="module">
+    import ReusableModal from './ReusableModal.js';
+
+    // Create a new modal instance
+    const cartModal = new ReusableModal("🥳 Item Added to the Cart");
+
+    // Function to add item to cart
+    function addToCart() {
+      console.log("Item added to cart!");
+      cartModal.show(); // Show the modal
+    }
+
+    // Attach event listener to a button
+    document.getElementById("add-to-cart-btn").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn1").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn2").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn3").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn4").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn5").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn6").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn7").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn8").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn9").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn10").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn11").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn12").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn13").addEventListener("click", addToCart);
+    document.getElementById("add-to-cart-btn14").addEventListener("click", addToCart);
+  </script>
+
+
+
+</head>
+
+<body>
+
+   <!-- Loader -->
+   <div id="loader" class="loader">
+    <div class="panWrapper">
+        <div class="pan">
+            <div class="food"></div>
+            <div class="panBase"></div>
+            <div class="panHandle"></div>
+        </div>
+        <div class="panShadow"></div>
+    </div>
+</div>
+
+
+  <nav class="navbar bg-light border-bottom border-body navbar-expand-lg">
+    <div class="container-fluid">
+
+      <!-- Logo -->
+      <a class="navbar-brand text-black" href="./index.html">
+        <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
+        Ruchii Tiffin
+      </a>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html#home">Home</a>
+          </li>
+
+          <!-- View Menu Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html#menu-section">View Menu</a>
+          </li>
+
+          <!-- Meal Plan Dropdown -->
+          <li class="nav-item dropdown meal-plan">
+            <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
+              Meal Plans
+            </a>
+            <ul class="dropdown-menu" id="mealPlanMenu">
+              <li><a class="dropdown-item" href="./index.html#student-plan">Student Plan</a></li>
+              <li><a class="dropdown-item" href="corporateplans.html">Corporate Plan</a></li>
+              <li><a class="dropdown-item" href="dailyplans.html">Daily Plan</a></li>
+            </ul>
+          </li>
+
+          <!-- About Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html#who-we-are">About</a>
+          </li>
+
+          <!-- Contact Us Link -->
+          <li class="nav-item">
+            <a class="nav-link mx-2" href="./index.html#contact-us">Contact Us</a>
+          </li>
+
+         
+
+          <!-- Dark Mode Toggle Button -->
+            <li class="nav-item">
+              <button id="dark-mode-toggle" class="btn btn-outline-dark mx-2">
+                <i class="fas fa-moon"></i> <!-- Dark mode icon -->
+              </button>
+            </li>
+
+          
+          <!-- Cart Icon in Navbar -->
+        <li class="nav-item">
+          <a href="./menu-page/checkout.html" id="cart-icon" class="nav-link mx-2">
+            <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">(0)</span>
+          </a>
+        </li>
+
+          <!-- Sign In Link -->
+          <li class="nav-item">
+            <a href="./signin.html" class="nav-link mx-2 signinbtn">Sign In </a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
+  <!-- Corporate Meal Plans Section -->
+ <!-- Main Content -->
+<div class="content" id="content">
+  <section id="meal-plans" class="animate__animated animate__fadeInUp">
+      <h2 class="section-title">Corporate Meal Plans</h2>
+      <div class="meal-tabs">
+          <button class="tab-button active" onclick="showTab('veg')">Vegetarian</button>
+          <button class="tab-button" onclick="showTab('nonveg')">Non-Vegetarian</button>
+          <button class="tab-button" onclick="showTab('vegan')">Vegan</button>
+      </div>
+      <div id="veg" class="daily-plan-container">
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/veg1.jpg" alt="Paneer Butter Masala" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Paneer Butter Masala</h4>
+                  <p class="price">₹600</p>
+                  <button id="add-to-cart-btn" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/veg2.jpg" alt="Paneer Tikka Masala" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Paneer Tikka Masala</h4>
+                  <p class="price">₹580</p>
+                  <button id="add-to-cart-btn1" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/veg3.jpg" alt="Palak Paneer" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Palak Paneer</h4>
+                  <p class="price">₹620</p>
+                  <button id="add-to-cart-btn2" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/veg4.jpg" alt="Mix Veg" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Mix Veg</h4>
+                  <p class="price">₹650</p>
+                  <button id="add-to-cart-btn3" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/veg5.jpg" alt="Vegetable Rice" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Vegetable Rice</h4>
+                  <p class="price">₹590</p>
+                  <button id="add-to-cart-btn4" class="add-btn">Add +</button>
+              </div>
+          </div>
+      </div>
+      <div id="nonveg" class="daily-plan-container hidden">
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/nonveg1.jpg" alt="Chicken Curry with Naan/Roti" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Chicken Curry with Naan/Roti</h4>
+                  <p class="price">₹750</p>
+                  <button id="add-to-cart-btn5" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/nonveg2.jpg" alt="Mutton Curry with Appam" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Mutton Curry with Appam</h4>
+                  <p class="price">₹800</p>
+                  <button id="add-to-cart-btn6" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/nonveg3.jpg" alt="Grilled Prawns" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Grilled Prawns</h4>
+                  <p class="price">₹850</p>
+                  <button id="add-to-cart-btn7" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/nonveg4.png" alt="Grilled Fish with Quinoa" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Grilled Fish with Quinoa</h4>
+                  <p class="price">₹950</p>
+                  <button id="add-to-cart-btn8" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/nonveg5.jpg" alt="Chicken Curry with Rice" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Chicken Curry with Rice</h4>
+                  <p class="price">₹700</p>
+                  <button id="add-to-cart-btn9" class="add-btn">Add +</button>
+              </div>
+          </div>
+      </div>
+      <div id="vegan" class="daily-plan-container hidden">
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/vegan1.jpg" alt="Lentil Curry" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Lentil Curry</h4>
+                  <p class="price">₹550</p>
+                  <button id="add-to-cart-btn10" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/vegan2.jpg" alt="Tofu Masala Curry" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Tofu Masala Curry</h4>
+                  <p class="price">₹580</p>
+                  <button id="add-to-cart-btn11" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/vegan3.jpeg" alt="Quinoa Buddha Bowl" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Quinoa Buddha Bowl</h4>
+                  <p class="price">₹560</p>
+                  <button id="add-to-cart-btn12" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/vegan4.jpg" alt="Lentil & Spinach Soup" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Lentil & Spinach Soup</h4>
+                  <p class="price">₹600</p>
+                  <button id="add-to-cart-btn13" class="add-btn">Add +</button>
+              </div>
+          </div>
+          <div class="daily-plan-card animate__animated animate__fadeIn">
+              <img src="./corporateplans/vegan5.jpg" alt="Chickpea Curry" class="card-image">
+              <div class="card-content">
+                  <h4 class="meal-name">Chickpea Curry</h4>
+                  <p class="price">₹570</p>
+                  <button id="add-to-cart-btn14" class="add-btn">Add +</button>
+              </div>
+          </div>
+      </div>
+  </section>
+</div>
+
+
+
+  <footer>
+    <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; padding: 20px; background-color: white; color: black;">
+      
+      <!-- About Section -->
+      <div class="footer-section about" style="flex: 2; min-width: 300px; display: flex; align-items:flex-start; margin: 10px; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="width: 100px; margin-right: 20px;">
+        <p style="margin: 0;">Ruchii Tiffin connects customers with local tiffin centers, providing a seamless and delightful dining experience. Our shared passion for food and community drives us to bring quality meals directly to your doorstep.</p>
+      </div>
+  
+      <!-- Ruchii Tiffin Links -->
+      <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Ruchii Tiffin</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="./index.html#who-we-are" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Who We Are</a></li>
+          <li><a href="blog.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Blog</a></li>
+          <li><a href="work_with_us/work-with-us.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Work With Us</a></li>
+          <li><a href="investor-relations.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Investor Relations</a></li>
+          <li><a href="./index.html#contact-us" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Contact Us</a></li>
+        </ul>
+      </div>
+  
+      <!-- Tiffin Plans Links -->
+      <div class="footer-section services" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Tiffin Plans</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="dailyplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Daily Plan</a></li>
+          <li><a href="studentplan.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Student Plan</a></li>
+          <li><a href="corporateplans.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Corporate Plan</a></li>
+        </ul>
+        <!--payment options-->
+        <div class="payments" class="footer-section services"  style="flex: 1; min-width: 150px; margin: -2px;">
+          <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;"
+          onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">we Accept</h2>
+          <a href="https://pay.google.com/intl/en_in/about/" style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-google-pay" title="Google pay" style="padding: 2px;"></i></a>
+         <a href="https://www.apple.com/apple-pay/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:27px"onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-apple-pay" title="Apple pay" style="padding: 2px;"></i></a>
+          <a href="https://www.visa.co.in/"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-visa" title="Visa pay" style="padding: 2px;"></i></a>
+          <a href="https://www.mastercard.co.in/en-in.html"style="color: black; text-decoration: none; transition: all 0.3s ease; font-size:25px" onmouseover="this.style.color='#e67e22';" onmouseout="this.style.color='black'";><i class="fa-brands fa-cc-mastercard" title="Master card" style="padding: 2px;"></i></a>
+      </div>
+      </div>
+  
+      <!-- Learn More Links -->
+      <div class="footer-section learn-more" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Learn More</h2>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="privacy.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Privacy Policy</a></li>
+          <li><a href="security.html" style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Security</a></li>
+          <li><a href="Terms.html  " style="color: black; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#e67e22'; this.style.paddingLeft='10px'" onmouseout="this.style.color='black'; this.style.paddingLeft='0'">Terms of Service</a></li>
+        </ul>
+      </div>
+  
+      <!-- Social Media Links -->
+      <div class="footer-section social-links" style="flex: 1; min-width: 150px; margin: 10px;">
+        <h2 style="font-size: 18px; margin-bottom: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">Follow Us</h2>
+        <ul class="social-icons" style="list-style: none; padding: 0; display: flex; gap: 10px;">
+          <li><a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="https://www.facebook.com/yourprofile" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/x/" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="https://x.com/x" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a></li>
+          <li><a href="https://www.youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" style="color: black; text-decoration: none; font-size: 24px; transition: all 0.3s ease;" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- Footer Bottom -->
+    <div class="footer-bottom" style="margin:10px; padding: 10px; text-align: center;">
+      <p style="margin: 0; color: black; transition: color 0.3s ease;" onmouseover="this.style.color='#e67e22'" onmouseout="this.style.color='black'">© 2025 Ruchii Tiffin. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Loader handling
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('content').classList.add('visible');
+        }, 1500);
+    });
+  
+    // Tab switching
+    function showTab(tab) {
+        document.querySelectorAll('.daily-plan-container').forEach(container => container.classList.add('hidden'));
+        document.getElementById(tab).classList.remove('hidden');
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`button[onclick="showTab('${tab}')"]`).classList.add('active');
+    }
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="dark-mode.js"></script>
+
+  <script src="./menu-page/cart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

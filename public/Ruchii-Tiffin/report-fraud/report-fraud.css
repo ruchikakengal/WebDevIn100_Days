@@ -1,0 +1,305 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.report-form h1 {
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.disclaimer {
+    background-color: #fbe8e8;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.disclaimer h3 {
+    color: #e74c3c;
+    margin-bottom: 5px;
+}
+
+.disclaimer a {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.note {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #c0392b;
+}
+
+ .report{
+    background-color: red;
+     text-align: center;
+    padding: 100px;
+    color: white;
+    
+ }
+
+
+/* Navbar General Styles */
+.navbar {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ccc;
+    padding: 0.5rem 1rem;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+  
+  .navbar-brand img {
+    height: 40px;
+    margin-right: 8px;
+  }
+  
+  .navbar-toggler {
+    margin-left: auto; /* Align toggler to the right for mobile view */
+  }
+  
+  /* Navbar Links */
+  .navbar-nav {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    width: 100%; /* Ensure it fills the container */
+    align-items: center; /* Vertically center all items */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove padding */
+  }
+  
+  .nav-item {
+    margin: 0 5px; /* Reduce the space between the items */
+    padding: 0; /* Remove padding */
+  }
+  
+  .nav-item a {
+    color: black;
+    text-transform: uppercase;
+    font-weight: 600; /* Lighten the font weight */
+    font-size: 14px; /* Ensure uniform font size for all links */
+    position: relative;
+    padding: 8px 12px; /* Consistent padding for each link */
+    transition: color 0.3s ease;
+  }
+  
+  .nav-item a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 50%;
+    bottom: 0;
+    background-color: red;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  .nav-item a:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  /* Mobile View Adjustments */
+  @media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 1rem;
+    }
+  
+    .nav-item {
+      margin: 5px 0; /* Add vertical spacing for mobile view */
+    }
+  
+    .dropdown-menu {
+      width: 100%; /* Full width for mobile dropdowns */
+    }
+  }
+  
+  /* Meal Plan Link */
+  .nav-item.meal-plan a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+  }
+  
+  /* Red line effect on hover for Meal Plan */
+  .nav-item.meal-plan a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 50%;
+    bottom: 0;
+    background-color: red;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  .nav-item.meal-plan a:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  /* Dropdown Menu - Initially hidden */
+  .nav-item.dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Show dropdown on hover */
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-menu {
+    min-width: 180px; /* Optional, you can adjust the width */
+  }  
+
+ /* Footer Styling */
+footer {
+  background-color: #f8f9fa;
+  padding: 40px 0;
+  font-family: 'Arial', sans-serif;
+  color: #6c757d;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  /* max-width: 1200px; */
+  margin: auto 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.footer-section {
+  margin: 20px;
+}
+
+.footer-section h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+  color: #000;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons li {
+  list-style: none;
+}
+
+.social-icons li a {
+  font-size: 20px;
+  color: #6c757d;
+}
+.payments i:hover{
+  transform: scale(1.2);
+}

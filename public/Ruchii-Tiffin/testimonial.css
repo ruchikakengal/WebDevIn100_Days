@@ -1,0 +1,428 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9fafb;
+}
+
+/* Navbar General Styles */
+.navbar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  z-index: 1;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Navbar Links */
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  width: 100%; /* Ensure it fills the container */
+  align-items: center; /* Vertically center all items */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove padding */
+}
+
+.nav-item {
+  margin: 0 5px; /* Reduce the space between the items */
+  padding: 0; /* Remove padding */
+}
+
+.nav-item a {
+  color: black;
+  text-transform: uppercase;
+  font-weight: 600; /* Lighten the font weight */
+  font-size: 14px; /* Ensure uniform font size for all links */
+  position: relative;
+  padding: 8px 12px; /* Consistent padding for each link */
+  transition: color 0.3s ease;
+}
+
+.nav-item a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 50%;
+  bottom: 0;
+  background-color: red;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-item a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .navbar-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 1rem;
+  }
+
+  .nav-item {
+      margin: 5px 0; /* Add vertical spacing for mobile view */
+  }
+
+  .dropdown-menu {
+      width: 100%; /* Full width for mobile dropdowns */
+  }
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.navbar-brand img {
+  height: 40px;
+  margin-right: 8px;
+}
+
+.navbar-toggler {
+  margin-left: auto; /* Align toggler to the right for mobile view */
+}
+
+/* Styling for the main heading */
+.main-heading {
+  font-size: 2rem;
+  color: var(--heading-color);
+  font-weight: 700;
+  margin-top: 20px; /* Add a margin to push the heading down */
+}
+
+:root{
+  --heading-color: red;
+  --name-color: #111827;
+  --role-color: #4B5563;
+  --quote-color: black;
+  --Tcard-bg: #fff;
+  --gradient-bg: linear-gradient(90deg, #44ff9a, #44b0ff, #8b44ff, #ff6644, #ebff70);
+}
+.dark{
+  --heading-color: #8b4513;
+  --name-color: aqua;
+  --role-color: yellow;
+  --quote-color: white;
+  --Tcard-bg: #010035;
+  --gradient-bg: linear-gradient(90deg, white, #fafafa, rgb(255, 255, 148), aqua, pink);
+}
+/* Styling for the testimonial section */
+.testimonial-section {
+  padding: 3rem 1rem;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Other sections like the sub-heading, CTA links, etc. remain unchanged */
+.sub-heading {
+  font-size: 1.125rem;
+  color: #78797b;
+  font-weight: 500;
+}
+
+.cta-container {
+  margin-top: 2rem;
+}
+
+.cta-link {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #838891;
+  border-bottom: 2px solid #111827;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.cta-link:hover {
+  color: #4B5563;
+  border-color: #4B5563;
+}
+
+.relative-container {
+  position: relative;
+  margin-top: 3rem;
+}
+
+.background-gradient {
+  position: absolute;
+  inset: -1rem;
+  z-index: -1;
+  filter: blur(16px);
+  background: var(--gradient-bg)  no-repeat;
+  opacity: 0.3;
+  border-radius: 16px;
+}
+
+.grid-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Pulse effect */
+.pulse-effect {
+  animation: pulse-animation 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse-animation {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.testimonial-card {
+  background-color: var(--Tcard-bg);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: start;
+}
+
+.card-content .rating .star {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #FDB241;
+}
+
+.quote {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--quote-color);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+}
+
+.profile-details {
+  margin-left: 1rem;
+  line-height: 0.5;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--name-color);
+}
+
+.role {
+  font-size: 0.875rem;
+  color: var(--role-color);
+}
+
+/**************************/
+
+/* Scroll to Top Button */
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 99;
+  background-color: red;
+  color: white;
+  border: none;
+  outline: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#scrollToTopBtn:hover {
+  background-color: red;
+  transform: scale(1.1);
+}
+
+#scrollToTopBtn i {
+  font-size: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  #scrollToTopBtn {
+      bottom: 30px;
+      right: 30px;
+      width: 45px;
+      height: 45px;
+  }
+
+  #scrollToTopBtn i {
+      font-size: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  #scrollToTopBtn {
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+  }
+
+  #scrollToTopBtn i {
+      font-size: 16px;
+  }
+}
+
+/* Footer Styling */
+footer {
+  background-color: #f8f9fa;
+  padding: 40px 0;
+  font-family: 'Arial', sans-serif;
+  color: #6c757d;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.footer-section {
+  margin: 20px;
+}
+
+.footer-section h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+  color: #000;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons li {
+  list-style: none;
+}
+
+.social-icons li a {
+  font-size: 20px;
+  color: #6c757d;
+}
+
+/* Newsletter Section Styling */
+.footer-section.newsletter {
+  grid-column: span 4; /* span across all sections */
+  padding: 30px;
+  background-color: #ffffff;
+  background-image: url('https://media.istockphoto.com/id/666193858/photo/indian-vegetarian-office-or-school-lunch-box-or-tiffin-with-north-indian-or-maharashtrian.jpg?s=612x612&w=0&k=20&c=KM81yyauDx-DW_qsPBELK1OFtCHkdo79T3rgDacOsQY=');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  border-radius: 12px;
+}
+
+.footer-section.newsletter h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.footer-section.newsletter p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.footer-section.newsletter form {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-section.newsletter input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-right: 10px;
+  width: 250px;
+}
+
+.footer-section.newsletter button {
+  padding: 10px 20px;
+  background-color: #ff6200;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.footer-section.newsletter button:hover {
+  background-color: #ff4500;
+}
+
+/* footer / tiffin plan */
+.payments i:hover{
+  transform: scale(1.2);
+}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Orders</title>
+    <link rel="icon" href="./Utils/20240921_154411.png" type="image/x-ixon">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            z-index: 50;
+        }
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        .btn-anim {
+            transition: all 0.3s ease;
+        }
+        .btn-anim:hover {
+            transform: scale(1.05);
+        }
+        .overlay, .modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+        @media (min-width: 768px) {
+            .sidebar {
+                position: relative;
+                transform: translateX(0);
+            }
+            .hamburger {
+                display: none;
+            }
+            .overlay, .modal-overlay {
+                display: none;
+            }
+            .sidebar-close {
+                display: none;
+            }
+        }
+        @media (max-width: 767px) {
+            .main-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="relative flex min-h-screen">
+        <!-- Sidebar -->
+        <div class="sidebar bg-gradient-to-b from-red-800 to-red-900 text-white w-64 p-6 flex flex-col shadow-2xl md:shadow-none" id="sidebar">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold animate__animated animate__fadeIn">Admin Panel</h2>
+                <button class="sidebar-close md:hidden text-white" onclick="toggleSidebar()">✕</button>
+            </div>
+            <nav class="space-y-3">
+                <a href="adminindex.html" class="block py-3 px-4 rounded-lg bg-red-700 hover:bg-red-600 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-1s">Dashboard</a>
+                <a href="admin-manage-orders.html" class="block py-3 px-4 rounded-lg bg-red-600 hover:bg-red-500 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-2s">Manage Orders</a>
+                <a href="admin-manage-users.html" class="block py-3 px-4 rounded-lg bg-red-700 hover:bg-red-600 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-3s">Manage Users</a>
+                <a href="admin-meal-plan.html" class="block py-3 px-4 rounded-lg bg-red-700 hover:bg-red-600 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-4s">Meal Plans</a>
+                <a href="admin-meal-items.html" class="block py-3 px-4 rounded-lg bg-red-700 hover:bg-red-600 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-5s">Meal Items</a>
+                <a href="#" class="block py-3 px-4 rounded-lg bg-red-700 hover:bg-red-600 transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-6s">Logout</a>
+            </nav>
+        </div>
+
+        <!-- Overlay for mobile sidebar -->
+        <div class="overlay fixed inset-0 bg-black bg-opacity-50 hidden" id="overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Main Content -->
+        <div class="main-content flex-1 p-6 md:p-10">
+            <button class="hamburger md:hidden mb-4 p-2 bg-red-600 text-white rounded-lg" onclick="toggleSidebar()">☰</button>
+            <h1 class="text-3xl font-bold mb-8 text-gray-800 animate__animated animate__fadeInDown">Manage Orders</h1>
+
+            <!-- Filter and Search -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 mb-8 animate__animated animate__fadeInUp">
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                    <div class="flex gap-4 w-full md:w-auto">
+                        <select id="statusFilter" class="p-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-500 w-full md:w-40">
+                            <option value="">All Statuses</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Processing">Processing</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                        </select>
+                        <input type="text" id="searchInput" placeholder="Search by Order ID or Customer" class="p-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-500 focus:border-transparent w-full md:w-64">
+                    </div>
+                    <button class="btn-anim bg-red-600 text-white p-2 rounded-lg hover:bg-red-700" onclick="filterOrders()">Filter</button>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 animate__animated animate__fadeInUp animate__delay-1s">
+                <h3 class="text-xl font-semibold mb-6 text-gray-700">Current Orders</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-red-600 text-white">
+                            <tr>
+                                <th class="py-3 px-4 text-left rounded-tl-lg">Order ID</th>
+                                <th class="py-3 px-4 text-left">Customer</th>
+                                <th class="py-3 px-4 text-left">Date</th>
+                                <th class="py-3 px-4 text-left">Total</th>
+                                <th class="py-3 px-4 text-left">Status</th>
+                                <th class="py-3 px-4 text-left rounded-tr-lg">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderTableBody" class="divide-y divide-gray-200">
+                            <!-- Dynamic content will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Order Details -->
+        <div class="modal-overlay fixed inset-0 bg-black bg-opacity-50 hidden" id="modalOverlay" onclick="hideOrderDetails()"></div>
+        <div class="modal fixed top-1/2 left-1/2 transform -translate-x-1فاقد/2 -translate-y-1/2 bg-white rounded-xl shadow-lg p-6 w-full max-w-lg hidden" id="orderModal">
+            <h3 class="text-xl font-semibold mb-4 text-gray-700">Order Details</h3>
+            <div id="orderDetailsContent">
+                <p><strong>Order ID:</strong> <span id="modalOrderId"></span></p>
+                <p><strong>Customer:</strong> <span id="modalCustomer"></span></p>
+                <p><strong>Date:</strong> <span id="modalDate"></span></p>
+                <p><strong>Total:</strong> <span id="modalTotal"></span></p>
+                <p><strong>Status:</strong> <span id="modalStatus"></span></p>
+                <p><strong>Items:</strong></p>
+                <ul class="list-disc pl-5" id="modalItems">
+                    <li>Meal Plan A - Rs 500</li>
+                    <li>Meal Item B - Rs 1000</li>
+                </ul>
+            </div>
+            <button class="btn-anim bg-red-600 text-white p-2 rounded-lg hover:bg-red-700 mt-4 w-full" onclick="hideOrderDetails()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Sample order data (replace with API call in production)
+        const orders = [
+            { id: "#1001", customer: "John Doe", date: "2025-04-06", total: "Rs 1500", status: "Pending" },
+            { id: "#1002", customer: "Jane Smith", date: "2025-04-05", total: "Rs 2200", status: "Shipped" },
+            { id: "#1003", customer: "Bob Johnson", date: "2025-04-04", total: "Rs 1800", status: "Processing" },
+        ];
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebar = document.getElementById("sidebar");
+            if (window.innerWidth < 768) {
+                sidebar.classList.add("sidebar-hidden");
+            }
+            renderOrders(orders); // Initial render
+        });
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("overlay");
+            
+            if (window.innerWidth < 768) {
+                sidebar.classList.toggle("sidebar-hidden");
+                overlay.classList.toggle("hidden");
+                
+                if (!sidebar.classList.contains("sidebar-hidden")) {
+                    overlay.style.opacity = "1";
+                } else {
+                    overlay.style.opacity = "0";
+                    setTimeout(() => overlay.classList.add("hidden"), 300);
+                }
+            }
+        }
+
+        function renderOrders(orderList) {
+            const tableBody = document.getElementById("orderTableBody");
+            tableBody.innerHTML = "";
+            orderList.forEach(order => {
+                const row = document.createElement("tr");
+                row.className = "hover:bg-gray-50 transition-colors";
+                row.innerHTML = `
+                    <td class="py-4 px-4">${order.id}</td>
+                    <td class="py-4 px-4">${order.customer}</td>
+                    <td class="py-4 px-4">${order.date}</td>
+                    <td class="py-4 px-4">${order.total}</td>
+                    <td class="py-4 px-4">${order.status}</td>
+                    <td class="py-4 px-4 flex flex-col gap-2">
+                        <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition-all" onclick="showOrderDetails('${order.id}')">View</button>
+                        <button class="bg-red-700 text-white px-3 py-1 rounded hover:bg-red-800 transition-all">Update</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function filterOrders() {
+            const statusFilter = document.getElementById("statusFilter").value;
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+
+            const filteredOrders = orders.filter(order => {
+                const matchesStatus = statusFilter === "" || order.status === statusFilter;
+                const matchesSearch = order.id.toLowerCase().includes(searchInput) || order.customer.toLowerCase().includes(searchInput);
+                return matchesStatus && matchesSearch;
+            });
+
+            renderOrders(filteredOrders);
+        }
+
+        function showOrderDetails(orderId) {
+            const modal = document.getElementById("orderModal");
+            const modalOverlay = document.getElementById("modalOverlay");
+            const modalOrderId = document.getElementById("modalOrderId");
+            const modalCustomer = document.getElementById("modalCustomer");
+            const modalDate = document.getElementById("modalDate");
+            const modalTotal = document.getElementById("modalTotal");
+            const modalStatus = document.getElementById("modalStatus");
+
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                modalOrderId.textContent = order.id;
+                modalCustomer.textContent = order.customer;
+                modalDate.textContent = order.date;
+                modalTotal.textContent = order.total;
+                modalStatus.textContent = order.status;
+            }
+
+            modal.classList.remove("hidden");
+            modalOverlay.classList.remove("hidden");
+            modalOverlay.style.opacity = "1";
+        }
+
+        function hideOrderDetails() {
+            const modal = document.getElementById("orderModal");
+            const modalOverlay = document.getElementById("modalOverlay");
+            
+            modalOverlay.style.opacity = "0";
+            setTimeout(() => {
+                modal.classList.add("hidden");
+                modalOverlay.classList.add("hidden");
+            }, 300);
+        }
+
+        window.addEventListener("resize", () => {
+            const sidebar = document.getElementById("sidebar");
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove("sidebar-hidden");
+            } else {
+                sidebar.classList.add("sidebar-hidden");
+            }
+        });
+    </script>
+</body>
+</html>
