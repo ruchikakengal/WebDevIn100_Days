@@ -54,16 +54,16 @@
   <!-- Modern Navigation -->
   <nav class="modern-nav">
     <div class="nav-container">
-      <a href="MainIndex.html" class="nav-brand">
+      <a href="./" class="nav-brand">
         <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg" alt="WebDevIn_100Days logo"
           class="nav-logo" />
         WebDevIn_100Days
       </a>
 
       <ul class="nav-links">
-        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="./" class="nav-link active">Home</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="contributors.html" class="nav-link">Contributors</a></li>
+        <li><a href="./contributors.html" class="nav-link">Contributors</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -86,7 +86,7 @@
       <ul class="mobile-nav-links">
         <li><a href="#home" class="mobile-nav-link">Home</a></li>
         <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
-        <li><a href="contributors.html" class="mobile-nav-link">Contributors</a></li>
+        <li><a href="./contributors.html" class="mobile-nav-link">Contributors</a></li>
       </ul>
     </div>
   </nav>
@@ -107,7 +107,7 @@
             </svg>
             Explore Projects
           </a>
-          <a href="contributors.html" class="btn btn-outline">
+          <a href="./contributors.html" class="btn btn-outline">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -420,7 +420,7 @@
           <ul class="footer-links">
             <li><a href="#projects" class="footer-link">Browse Projects</a></li>
             <li><a href="#about-challenge" class="footer-link">About Challenge</a></li>
-            <li><a href="contributors.html" class="footer-link">Contributors</a></li>
+            <li><a href="./contributors.html" class="footer-link">Contributors</a></li>
             <li><a href="https://github.com/ruchikakengal/100_Days_100_webprojects" class="footer-link">GitHub
                 Repository</a></li>
           </ul>
@@ -455,6 +455,7 @@
 <script>
   // Set current year in footer
   document.getElementById("copyYear").textContent = new Date().getFullYear();
+  if (copyYearEl) copyYearEl.textContent = new Date().getFullYear();
 </script>
 
 </body>
