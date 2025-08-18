@@ -871,7 +871,7 @@ features: ["Quiz", "Scores"]
   originalDay: 78,
   name: "Pong",
     description: "Play Pong",
-      demoLink: "./public/Day-83/index.html",
+      demoLink: "public/Day-83/index.html",
         category: "games",
           technologies: ["HTML", "CSS", "JavaScript"],
             features: ["Future", "Fortune"]
@@ -921,7 +921,7 @@ features: ["Quiz", "Scores"]
     originalDay: 83,
   name: "Tetris",
     description: "Play Tetris",
-      demoLink: "./public/Day-88/index.html",
+      demoLink: "public/Day-88/index.html",
         category: "games",
           technologies: ["HTML", "CSS", "JavaScript"],
             features: ["Tetris", "Boxes"]
@@ -981,7 +981,7 @@ features: ["Fanta", "Coldrink", "Animation"]
   originalDay: 89, 
 name: "Drum Kit",
 description: "A fun and interactive drum kit that can be played by clicking buttons or pressing keys.",
-demoLink: "./public/Drum-Kit/index.html",
+demoLink: "public/Drum-Kit/index.html",
 category: "entertainment",
 technologies: ["HTML", "CSS", "JavaScript"],
 features: [
@@ -994,7 +994,7 @@ features: [
      originalDay: 90, 
  name: "Ruchii Tiffin ",
   description: "Simple Homely Tasty Meals ",
-  demoLink: "./public/Ruchii-Tiffin/index.html",
+  demoLink: "public/Ruchii-Tiffin/index.html",
   category: "creativity",
   technologies: ["HTML", "CSS", "JavaScript"],
   features: ["food", "meals", "creativity"]
@@ -1004,7 +1004,7 @@ features: [
       originalDay:91, 
   name: "Fitness Club ",
    description: "Your Only Gym",
-   demoLink: "./public/Gym-Website/index.html",
+   demoLink: "public/Gym-Website/index.html",
    category: "creativity",
    technologies: ["HTML", "CSS", "JavaScript"],
    features: ["Gym", "Weight", "Fitness"]
