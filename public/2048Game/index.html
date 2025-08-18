@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>2048 Game</title>
+        <link rel="stylesheet" href="index.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+    <div class="game-container">
+        <div class="main-game game-section">
+            <div class="game-header">
+                <h1 class="game-title">2048</h1>
+                <p class="game-subtitle">Join the tiles, get to 2048!</p>
+            </div>
+
+            <div class="score-container">
+                <div class="score-box">
+                    <div class="score-label">SCORE</div>
+                    <div class="score-value" id="score">0</div>
+                </div>
+                <div class="score-box">
+                    <div class="score-label">BEST</div>
+                    <div class="score-value" id="best">0</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-primary" onclick="newGame()">New Game</button>
+                <button class="btn btn-secondary" onclick="toggleInstructions()">How to Play</button>
+            </div>
+
+            <div id="board"></div>
+        </div>
+
+        <div class="instructions game-section" id="instructions">
+            <h2>🎮 How to Play</h2>
+            
+            <div class="goal-highlight">
+                Goal: Reach the 2048 tile!
+            </div>
+
+            <h3>🎯 Game Rules</h3>
+            <ul>
+                <li>Use arrow keys to move tiles</li>
+                <li>When two tiles with the same number touch, they merge into one</li>
+                <li>After every move, a new tile will randomly appear</li>
+                <li>The game is over when you can't make any more moves</li>
+            </ul>
+
+            <h3>⌨️ Controls</h3>
+            <p>Desktop:</p>
+            <ul>
+                <li><span class="key-hint">↑</span> Move Up</li>
+                <li><span class="key-hint">↓</span> Move Down</li>
+                <li><span class="key-hint">←</span> Move Left</li>
+                <li><span class="key-hint">→</span> Move Right</li>
+            </ul>
+
+            <p>Mobile: Swipe in any direction</p>
+
+            <h3>🏆 Scoring</h3>
+            <p>Every time you merge tiles, you get points equal to the value of the new tile created. Try to beat your best score!</p>
+        </div>
+    </div>
+
+    <div class="game-over" id="gameOver">
+        <div class="game-over-content">
+            <h2>Game Over!</h2>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <button class="btn btn-primary" onclick="newGame()">Try Again</button>
+        </div>
+    </div>
+    </body>
+</html>
