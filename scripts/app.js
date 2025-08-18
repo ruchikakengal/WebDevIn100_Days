@@ -1134,7 +1134,19 @@ class WebDev100Days {
   features: [
     "Dynamic grid scaling, pattern generation & replay, dark/light mode, score & level tracking, keyboard accessibility, animated feedback, and replay option."
   ]
+},
+{
+  originalDay: 166,
+  name:"2048 Game",
+  description:"2048 is a sliding puzzle game where you combine numbered tiles to reach the 2048 tile.",
+  demoLink:"./HTML Pages/2048-index.html",
+  category: "games",
+  technologies: ["HTML", "CSS", "JavaScript"],
+    features: [
+      "Sliding puzzle with high score , winner badge and score tracker."
+  ]
 }
+
 
 
     ];
