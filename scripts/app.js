@@ -1139,7 +1139,7 @@ class WebDev100Days {
   originalDay: 166,
   name:"2048 Game",
   description:"2048 is a sliding puzzle game where you combine numbered tiles to reach the 2048 tile.",
-  demoLink:"./public/2048Game/index.html",
+  demoLink:"./HTML Pages/2048-index.html",
   category: "games",
   technologies: ["HTML", "CSS", "JavaScript"],
     features: [
