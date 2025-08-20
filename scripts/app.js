@@ -596,15 +596,6 @@ class WebDev100Days {
         features: ["Score System", "Lifes", "Fruit Cutting"]
       },
       {
-        originalDay: 49,
-        name: "Github Profle Finder ",
-        description: "Find Github Profile ",
-        demoLink: "Pages/Github Finder.html",
-        category: "utilities",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Github", "Github Followers ", "Creative"]
-      },
-      {
         originalDay: 50,
         name: "Hamster Slap",
         description: "Slap the Hamster coming from the hole.",
@@ -632,15 +623,6 @@ class WebDev100Days {
  category: "creativity",
  technologies: ["HTML", "CSS", "JavaScript"],
  features: ["Grid Creation", "Color Selection", "Download Art", "Reset Canvas"]
-},
-{
-  originalDay: 53,
-  name: "Fruit Ninja",
-  description: "Play with fruits",
-  demoLink: "public/Day-59/index.html",
-  category: "games",
-  technologies: ["HTML", "CSS", "JavaScript"],
-  features: ["Cut"]
 },
 {
   originalDay: 54,
@@ -838,16 +820,6 @@ features: ["Quiz", "Scores"]
 },
 
 {
-    originalDay: 75,
-  name: "EduGames phase 2",
-    description: "Class 9 - Class 12",
-      demoLink: "./public/Day-80/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Games", "MCQ"]
-},
-
-{
   originalDay: 76,
   name: "Tank Battle",
     description: "Fight with Tanks",
@@ -878,16 +850,6 @@ features: ["Quiz", "Scores"]
 },
 
 {
-  originalDay: 79,
-  name: "404 Escape Room",
-    description: "Find the hidden clues",
-      demoLink: "./public/Day-84/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Hidden", "Clues"]
-},
-
-{
     originalDay: 80,
   name: "Sudoku",
     description: "Play with numbers",
@@ -906,17 +868,6 @@ features: ["Quiz", "Scores"]
           technologies: ["HTML", "CSS", "JavaScript"],
             features: ["MCQ", "Lifelines"]
 },
-
-{
-    originalDay: 82,
-  name: "Past Life Finder",
-    description: "Know your Past",
-      demoLink: "./public/Day-87/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Past"]
-},
-
 {
     originalDay: 83,
   name: "Tetris",
