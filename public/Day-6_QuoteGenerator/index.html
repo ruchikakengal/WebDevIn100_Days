@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quote Generator 💬</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffe0f0, #d0f0ff);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: #4d4d4d;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .quote-container {
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .quote-text {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .quote-author {
+      font-size: 1rem;
+      color: #888;
+      margin-bottom: 1.5rem;
+    }
+
+    button {
+      background: #ff90b3;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #ff70a6;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Feeling unmotivated? Click below 💖</h1>
+
+  <div class="quote-container" id="card">
+    <p class="quote-text" id="quote">"Click the button to get inspired!"</p>
+    <p class="quote-author" id="author">- Unknown</p>
+    <button id="new-quote">✨ New Quote</button>
+  </div>
+
+<script>
+  const quotes = [
+    { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+    { text: "You are enough just as you are.", author: "Meghan Markle" },
+    { text: "Be a voice, not an echo.", author: "Albert Einstein" },
+    { text: "You’re entirely bonkers. But I’ll tell you a secret. All the best people are.", author: "Lewis Carroll" },
+    { text: "Keep your face always toward the sunshine—and shadows will fall behind you.", author: "Walt Whitman" },
+    { text: "The world needs that special gift only you have.", author: "Marie Forleo" },
+    { text: "You are stronger than you think, braver than you believe, and smarter than you know.", author: "A.A. Milne" },
+    { text: "Don't wait for opportunity. Create it.", author: "Unknown" },
+    { text: "Your only limit is your mind.", author: "Unknown" },
+    { text: "Push yourself, because no one else is going to do it for you.", author: "Unknown" },
+    { text: "Make today so awesome that yesterday gets jealous.", author: "Unknown" },
+    { text: "Doubt kills more dreams than failure ever will.", author: "Suzy Kassem" },
+    { text: "Small steps every day lead to big results.", author: "Unknown" },
+    { text: "Don't compare your chapter 1 to someone else’s chapter 20.", author: "Unknown" },
+    { text: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+    { text: "Stay positive, work hard, and make it happen.", author: "Unknown" },
+    { text: "You didn’t come this far to only come this far.", author: "Unknown" },
+    { text: "Fall in love with taking care of yourself.", author: "Unknown" },
+    { text: "You glow differently when you're confident in your own energy.", author: "Unknown" },
+    { text: "Your vibe attracts your tribe.", author: "Unknown" },
+    { text: "Don’t shrink to fit places you’ve outgrown.", author: "Unknown" }
+  ];
+
+  let shuffledQuotes = [];
+  let index = 0;
+
+  const quoteText = document.getElementById("quote");
+  const authorText = document.getElementById("author");
+  const button = document.getElementById("new-quote");
+  const card = document.getElementById("card");
+
+  function shuffleQuotes() {
+    shuffledQuotes = quotes
+      .map(q => ({ ...q }))
+      .sort(() => Math.random() - 0.5);
+    index = 0;
+  }
+
+  function showNextQuote() {
+    if (index >= shuffledQuotes.length) {
+      shuffleQuotes();
+    }
+    const selected = shuffledQuotes[index];
+    quoteText.innerText = `"${selected.text}"`;
+    authorText.innerText = `- ${selected.author}`;
+    index++;
+
+    // re-trigger fade animation
+    card.style.animation = "none";
+    void card.offsetWidth;
+    card.style.animation = "fadeIn 0.5s ease";
+  }
+
+  // Initialize on load
+  shuffleQuotes();
+
+  button.addEventListener("click", showNextQuote);
+</script>
+
+
+</body>
+</html>

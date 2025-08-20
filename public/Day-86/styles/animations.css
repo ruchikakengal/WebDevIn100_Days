@@ -1,0 +1,618 @@
+/* Keyframe Animations */
+
+@keyframes backgroundShift {
+    0%, 100% {
+        transform: translateX(-100px) translateY(-50px) rotate(0deg);
+    }
+    50% {
+        transform: translateX(100px) translateY(50px) rotate(180deg);
+    }
+}
+
+@keyframes floatingParticles {
+    0% {
+        transform: translateY(100vh) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes spotlightPulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+@keyframes soundWave {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(2);
+    }
+}
+
+@keyframes currentPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(255, 215, 0, 0.5),
+            inset 0 0 20px rgba(255, 215, 0, 0.2);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(255, 215, 0, 0.8),
+            inset 0 0 30px rgba(255, 215, 0, 0.3);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes correctAnswer {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(40, 167, 69, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 40px rgba(40, 167, 69, 0);
+    }
+}
+
+@keyframes incorrectAnswer {
+    0% {
+        transform: translateX(0);
+    }
+    10% {
+        transform: translateX(-10px);
+    }
+    20% {
+        transform: translateX(10px);
+    }
+    30% {
+        transform: translateX(-10px);
+    }
+    40% {
+        transform: translateX(10px);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes modalFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes modalSlideIn {
+    0% {
+        transform: translateY(-50px) scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes logoSpin {
+    0%, 100% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes phoneRing {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+    25% {
+        transform: rotate(-5deg) scale(1.05);
+    }
+    75% {
+        transform: rotate(5deg) scale(1.05);
+    }
+}
+
+@keyframes prizeGlow {
+    0%, 100% {
+        transform: scale(1);
+        filter: brightness(1) drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+    }
+    50% {
+        transform: scale(1.1);
+        filter: brightness(1.2) drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+    }
+}
+
+@keyframes timerWarning {
+    0%, 100% {
+        border-color: var(--danger-red);
+        box-shadow: 
+            0 0 20px rgba(220, 53, 69, 0.5),
+            inset 0 0 20px rgba(220, 53, 69, 0.1);
+    }
+    50% {
+        border-color: var(--warning-orange);
+        box-shadow: 
+            0 0 30px rgba(253, 126, 20, 0.7),
+            inset 0 0 30px rgba(253, 126, 20, 0.2);
+    }
+}
+
+@keyframes questionReveal {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes optionReveal {
+    0% {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes lifeline50Animation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes audiencePollReveal {
+    0% {
+        height: 0;
+        opacity: 0;
+    }
+    100% {
+        height: 25px;
+        opacity: 1;
+    }
+}
+
+@keyframes congratulations {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+    }
+    25% {
+        transform: scale(1.1) rotate(-2deg);
+        filter: brightness(1.2);
+    }
+    75% {
+        transform: scale(1.1) rotate(2deg);
+        filter: brightness(1.2);
+    }
+}
+
+@keyframes gameOverShake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomOut {
+    0% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Utility Animation Classes */
+.animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fadeInDown {
+    animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-fadeInLeft {
+    animation: fadeInLeft 0.6s ease-out forwards;
+}
+
+.animate-fadeInRight {
+    animation: fadeInRight 0.6s ease-out forwards;
+}
+
+.animate-slideInLeft {
+    animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slideInRight {
+    animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-zoomIn {
+    animation: zoomIn 0.5s ease-out forwards;
+}
+
+.animate-zoomOut {
+    animation: zoomOut 0.5s ease-out forwards;
+}
+
+.animate-questionReveal {
+    animation: questionReveal 0.8s ease-out forwards;
+}
+
+.animate-optionReveal {
+    animation: optionReveal 0.6s ease-out forwards;
+}
+
+.animate-congratulations {
+    animation: congratulations 2s ease-in-out infinite;
+}
+
+.animate-gameOverShake {
+    animation: gameOverShake 1s ease-in-out;
+}
+
+/* Staggered Animations for Multiple Elements */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Timer Animation Classes */
+.timer-warning {
+    animation: timerWarning 1s ease-in-out infinite;
+}
+
+.timer-critical {
+    animation: timerWarning 0.5s ease-in-out infinite;
+}
+
+/* Lifeline Animation Classes */
+.lifeline-activate {
+    animation: lifeline50Animation 1s ease-in-out;
+}
+
+/* Poll Animation Classes */
+.poll-animate {
+    animation: audiencePollReveal 2s ease-out forwards;
+}
+
+/* Pause and Resume Animations */
+.paused {
+    animation-play-state: paused;
+}
+
+.resumed {
+    animation-play-state: running;
+}
+
+/* Hover Enhancements */
+.hover-glow:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+    transition: filter 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-3px);
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Loading Animations */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 215, 0, 0.3);
+    border-left-color: var(--accent-gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-dots {
+    display: inline-flex;
+    gap: 4px;
+}
+
+.loading-dots span {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    animation: loadingDots 1.5s ease-in-out infinite;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: 0s; }
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes loadingDots {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    30% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+@keyframes fireFlicker {
+    0%, 100% {
+        transform: scale(1) rotate(-2deg);
+        filter: brightness(1);
+    }
+    25% {
+        transform: scale(1.1) rotate(2deg);
+        filter: brightness(1.2);
+    }
+    50% {
+        transform: scale(0.95) rotate(-1deg);
+        filter: brightness(0.9);
+    }
+    75% {
+        transform: scale(1.05) rotate(1deg);
+        filter: brightness(1.1);
+    }
+}
+
+@keyframes powerupActivate {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.7);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(138, 43, 226, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 20px rgba(138, 43, 226, 0);
+    }
+}
+
+@keyframes doubleDipPulse {
+    0%, 100% {
+        border-color: rgba(138, 43, 226, 0.4);
+        box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.4);
+    }
+    50% {
+        border-color: #8a2be2;
+        box-shadow: 0 0 0 5px rgba(138, 43, 226, 0.2);
+    }
+}
+
+@keyframes timeFreeze {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    25% {
+        filter: hue-rotate(90deg);
+    }
+    50% {
+        filter: hue-rotate(180deg);
+    }
+    75% {
+        filter: hue-rotate(270deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes streakCelebration {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.2) rotate(-5deg);
+    }
+    75% {
+        transform: scale(1.2) rotate(5deg);
+    }
+}
+
+@keyframes settingsPanelSlide {
+    0% {
+        right: -300px;
+        opacity: 0;
+    }
+    100% {
+        right: 20px;
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Enhanced animation for power-up usage */
+.powerup.activating {
+    animation: powerupActivate 0.6s ease-out;
+}
+
+/* Double Dip active state */
+.question-container.double-dip-active {
+    animation: doubleDipPulse 2s ease-in-out infinite;
+}
+
+/* Time Freeze effect */
+.timer-display.time-frozen {
+    animation: timeFreeze 1s ease-in-out;
+}
+
+/* Responsive Animation Adjustments */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .animate-questionReveal,
+    .animate-optionReveal {
+        animation-duration: 0.4s;
+    }
+    
+    .animate-fadeInUp,
+    .animate-fadeInDown,
+    .animate-fadeInLeft,
+    .animate-fadeInRight {
+        animation-duration: 0.4s;
+    }
+    
+    .animate-slideInLeft,
+    .animate-slideInRight {
+        animation-duration: 0.6s;
+    }
+}

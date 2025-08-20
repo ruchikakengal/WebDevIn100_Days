@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien Hunt</title>
+    <link rel="shortcut icon" href="/fav.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>👾Alien Hunt</h1>
+            <div class="game-stats">
+                <div class="stat">
+                    <span class="label">Score:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Lives:</span>
+                    <div class="hearts-container" id="livesContainer">
+                        <span class="heart">❤️‍🔥</span>
+                        <span class="heart">💘</span>
+                        <span class="heart">💗</span>
+                    </div>
+                </div>
+                <div class="stat">
+                    <span class="label">Level:</span>
+                    <span id="level">1</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Streak:</span>
+                    <span id="streak">0</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Best:</span>
+                    <span id="highScore">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="game-area" id="gameArea">
+            <div class="power-ups-container" id="powerUpsContainer"></div>
+            <div class="combo-display" id="comboDisplay"></div>
+            <div class="level-up-notification" id="levelUpNotification"></div>
+            
+            <div class="game-overlay" id="gameOverlay">
+                <div class="overlay-content">
+                    <h2 id="overlayTitle">Alien Hunt</h2>
+                    <p id="overlayMessage">Click aliens to catch them before they escape!</p>
+                    <div class="game-controls">
+                        <button id="startButton" class="start-button">Start Game</button>
+                        <button id="settingsButton" class="settings-button">Settings</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-overlay hidden" id="settingsOverlay">
+                <div class="settings-content">
+                    <h3>Game Settings</h3>
+                    <div class="setting-item">
+                        <label for="difficultySelect">Difficulty:</label>
+                        <select id="difficultySelect" style="background: black;">
+                            <option value="easy">Easy</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="hard">Hard</option>
+                            <option value="insane">Insane</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label for="soundToggle">Sound Effects:</label>
+                        <input type="checkbox" id="soundToggle" checked>
+                    </div>
+                    <div class="setting-item">
+                        <label for="particlesToggle">Particle Effects:</label>
+                        <input type="checkbox" id="particlesToggle" checked>
+                    </div>
+                    <div class="buttons">
+                        <button id="saveSettings" class="save-button">Save</button>
+                        <button id="closeSettings" class="close-button">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="game-footer">
+            <p>🎯 Click aliens to catch them! 🌟 Gold = 5pts | 💜 Purple = 3pts | ❄️ Power-ups boost your abilities</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

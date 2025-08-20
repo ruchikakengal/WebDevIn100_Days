@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Victoria Station Analog Clock</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Roboto+Serif:wght@700&display=swap" rel="stylesheet">
+  <style>
+    .bg-animated {
+      background: linear-gradient(120deg, #f7ecd2 0%, #f9e7b4 40%, #e2c98f 80%, #f7ecd2 100%);
+      background-size: 300% 300%;
+      animation: gradientMove 20s ease-in-out infinite;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;  /* IE 10+ */
+    }
+    html::-webkit-scrollbar, body::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+    .glass {
+      background: rgba(255,255,255,0.90);
+      box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.10);
+      backdrop-filter: blur(10px) saturate(160%);
+      -webkit-backdrop-filter: blur(10px) saturate(160%);
+      border-radius: 2rem;
+      border: 1.5px solid rgba(0,0,0,0.08);
+    }
+    .glow-card {
+      box-shadow: 0 0 32px 0 #bfa76a55, 0 2px 16px 0 #bfa76a33;
+      transition: box-shadow 0.3s;
+    }
+    .glow-card:hover {
+      box-shadow: 0 0 64px 0 #bfa76acc, 0 4px 32px 0 #bfa76a99;
+    }
+    .clock-face {
+      background: radial-gradient(ellipse at center, #f7ecd2 80%, #e2c98f 100%);
+      border-radius: 50%;
+      box-shadow: 0 4px 24px 0 #bfa76a88, 0 1px 8px 0 #bfa76a44;
+      border: 6px solid #222;
+      position: relative;
+      width: min(340px, 80vw);
+      height: min(340px, 80vw);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'EB Garamond', 'Roboto Serif', serif;
+    }
+    .hand {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: bottom center;
+      transform: translate(-50%, -100%) rotate(0deg);
+      transition: transform 0.2s cubic-bezier(.4,2,.6,1);
+    }
+    .hand.hour {
+      width: 10px;
+      height: 80px;
+      background: #222;
+      border-radius: 6px;
+      z-index: 3;
+      box-shadow: 0 2px 8px #bfa76a44;
+    }
+    .hand.minute {
+      width: 6px;
+      height: 110px;
+      background: #444;
+      border-radius: 5px;
+      z-index: 2;
+      box-shadow: 0 2px 8px #bfa76a44;
+    }
+    .hand.second {
+      width: 2.5px;
+      height: 130px;
+      background: #b91c1c;
+      border-radius: 2px;
+      z-index: 4;
+      box-shadow: 0 2px 8px #bfa76a44;
+    }
+    .center-dot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 22px;
+      height: 22px;
+      background: #fffbe6;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid #bfa76a;
+      z-index: 10;
+      box-shadow: 0 2px 8px #bfa76a88;
+    }
+    .tick {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 6px;
+      height: 22px;
+      background: #bfa76a;
+      border-radius: 3px;
+      transform-origin: bottom center;
+      opacity: 0.7;
+    }
+    .tick.hour {
+      height: 32px;
+      width: 8px;
+      background: #222;
+      opacity: 1;
+    }
+    .roman {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-size: 2.1rem;
+      color: #222;
+      font-family: 'EB Garamond', 'Roboto Serif', serif;
+      font-weight: 700;
+      user-select: none;
+      pointer-events: none;
+      text-shadow: 0 1px 2px #fffbe6, 0 0px 1px #bfa76a;
+      transform-origin: center center;
+    }
+    .victoria-text {
+      position: absolute;
+      left: 50%;
+      top: 32%;
+      transform: translate(-50%, -50%);
+      font-family: 'EB Garamond', 'Roboto Serif', serif;
+      font-size: 1.5rem;
+      color: #b91c1c;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-align: center;
+      text-shadow: 0 1px 2px #fffbe6;
+      pointer-events: none;
+      user-select: none;
+    }
+    .station-text {
+      position: absolute;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      font-family: 'EB Garamond', 'Roboto Serif', serif;
+      font-size: 1.1rem;
+      color: #b91c1c;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-align: center;
+      pointer-events: none;
+      user-select: none;
+    }
+    .year-text {
+      position: absolute;
+      left: 50%;
+      top: 68%;
+      transform: translate(-50%, -50%);
+      font-family: 'EB Garamond', 'Roboto Serif', serif;
+      font-size: 1.2rem;
+      color: #bfa76a;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-align: center;
+      pointer-events: none;
+      user-select: none;
+    }
+    .digital-clock {
+      display: none;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 4.5rem;
+      color: #f7ecd2;
+      letter-spacing: -0.02em;
+      width: min(420px, 90vw);
+      min-height: 280px;
+      position: relative;
+      background: linear-gradient(45deg, #bfa76a, #e2c98f, #f7ecd2);
+      background-size: 200% 200%;
+      animation: gradientBG 15s ease infinite;
+      border-radius: 24px;
+      border: 2px solid rgba(191, 167, 106, 0.3);
+      box-shadow: 
+        0 8px 32px rgba(191, 167, 106, 0.2),
+        inset 0 2px 8px rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(12px);
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .digital-clock::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+    .digital-clock .time {
+      font-weight: 700;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 4rem;
+      color: #222;
+      padding: 0.5rem 0;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      width: 100%;
+      text-align: center;
+      margin: 1rem 0;
+      transition: all 0.3s ease;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .digital-clock-header {
+      display: none;
+    }
+    .digital-clock-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 1rem;
+    }
+    .clock-controls {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .clock-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: rgba(0, 0, 0, 0.05);
+      color: #666;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .dark .clock-btn {
+      background: rgba(255, 255, 255, 0.05);
+      color: #999;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    .clock-btn:hover {
+      background: rgba(0, 0, 0, 0.08);
+      transform: translateY(-1px);
+    }
+    .dark .clock-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .toggle-btn {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      padding: 0.75rem 2rem;
+      background: linear-gradient(to bottom, #fffbe6, #f7ecd2);
+      border: 2px solid #bfa76a;
+      border-radius: 2rem;
+      color: #222;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(191, 167, 106, 0.15);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 5;
+      opacity: 0.85;
+      backdrop-filter: blur(4px);
+    }
+    .toggle-btn:hover {
+      background: linear-gradient(to bottom, #f7ecd2, #e2c98f);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(191, 167, 106, 0.3);
+      border-color: #b91c1c;
+      color: #b91c1c;
+      opacity: 1;
+    }
+    .toggle-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(191, 167, 106, 0.2);
+    }
+    .toggle-btn::before {
+      content: '🕐';
+      font-size: 1.2em;
+    }
+    .toggle-btn[data-view="digital"]::before {
+      content: '🕐';
+    }
+    .toggle-btn[data-view="analog"]::before {
+      content: '📱';
+    }
+    .digital-clock .period {
+      font-size: 1.5rem;
+      color: #666;
+      margin-left: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      opacity: 0.8;
+    }
+    .dark .digital-clock .period {
+      color: #999;
+    }
+    .digital-clock-date {
+      font-size: 1.1rem;
+      color: #666;
+      font-weight: 500;
+      text-align: center;
+      width: 100%;
+      padding: 0.5rem 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      margin-top: 0.5rem;
+    }
+    .dark .digital-clock-date {
+      color: #999;
+      border-top-color: rgba(255, 255, 255, 0.1);
+    }
+    .analog-clock-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .analog-date {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 1.1rem;
+      color: #222;
+      font-weight: 500;
+      text-align: center;
+      width: 100%;
+      padding: 0.5rem 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      margin-top: 0.5rem;
+    }
+    .dark .analog-date {
+      color: #f7ecd2;
+      border-top-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-animated min-h-screen flex items-center justify-center select-none" style="background-image: linear-gradient(120deg, #f7ecd2 0%, #e2c98f 100%);">
+  <button class="toggle-btn" onclick="toggleClockView()" data-view="digital">Switch to Digital</button>
+  <main class="glass glow-card px-10 py-10 flex flex-col items-center transition-all duration-500 relative">
+    <h1 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-8 tracking-wide">Analog Clock</h1>
+    <div class="digital-clock" id="digitalClock">
+      <div class="time" id="digitalTime">00:00:00</div>
+      <div class="period" id="period">AM</div>
+      <div class="digital-clock-footer">
+        <div class="digital-clock-date" id="date"></div>
+      </div>
+    </div>
+    <div class="analog-clock-container">
+      <div class="clock-face" id="analogClock">
+        <div class="victoria-text">VICTORIA</div>
+        <div class="station-text">STATION</div>
+        <div class="year-text">1747</div>
+        <div class="hand hour" id="hourHand"></div>
+        <div class="hand minute" id="minuteHand"></div>
+        <div class="hand second" id="secondHand"></div>
+        <div class="center-dot"></div>
+        <!-- Roman numerals -->
+        <script>
+          // Place numerals at correct hour positions, clockwise
+          const romanNumerals = [
+            'XII', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'
+          ];
+          for (let i = 0; i < 12; i++) {
+            // Place XII at top, then each next at +30deg steps
+            const angle = i * 30;
+            document.write(`<div class='roman' style='transform: translate(-50%,-50%) rotate(${angle}deg) translateY(-135px) rotate(${-angle}deg)'>${romanNumerals[i]}</div>`);
+          }
+          for (let i = 0; i < 60; i++) {
+            const tickClass = 'tick' + (i % 5 === 0 ? ' hour' : '');
+            document.write(`<div class='${tickClass}' style='transform: translate(-50%,-100%) rotate(${i * 6}deg)'></div>`);
+          }
+        </script>
+      </div>
+      <div class="analog-date" id="analogDate"></div>
+    </div>
+  </main>
+  <script>
+    function pad(n) {
+      return n.toString().padStart(2, '0');
+    }
+    function formatDate(date) {
+      const options = { 
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      };
+      return date.toLocaleDateString('en-US', options);
+    }
+    function toggleClockView() {
+      const analogClock = document.getElementById('analogClock');
+      const digitalClock = document.getElementById('digitalClock');
+      const toggleBtn = document.querySelector('.toggle-btn');
+      const title = document.querySelector('h1');
+      
+      if (analogClock.style.display !== 'none') {
+        analogClock.style.display = 'none';
+        digitalClock.style.display = 'flex';
+        digitalClock.style.flexDirection = 'column';
+        digitalClock.style.alignItems = 'center';
+        digitalClock.style.gap = '0.5rem';
+        toggleBtn.textContent = 'Switch to Analog';
+        toggleBtn.setAttribute('data-view', 'analog');
+        title.textContent = 'Digital Clock';
+      } else {
+        analogClock.style.display = 'flex';
+        digitalClock.style.display = 'none';
+        toggleBtn.textContent = 'Switch to Digital';
+        toggleBtn.setAttribute('data-view', 'digital');
+        title.textContent = 'Analog Clock';
+      }
+    }
+    function updateAnalogClock() {
+      // Get current time in GMT+5:30 (India Standard Time)
+      const now = new Date();
+      // Convert to IST by adding 5.5 hours in ms
+      const istOffset = 5.5 * 60 * 60 * 1000;
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const istDate = new Date(utc + istOffset);
+      
+      const sec = istDate.getSeconds();
+      const min = istDate.getMinutes();
+      let hr = istDate.getHours();
+      const period = hr >= 12 ? 'PM' : 'AM';
+      
+      const secDeg = sec * 6;
+      const minDeg = min * 6 + sec * 0.1;
+      const hrDeg = (hr % 12) * 30 + min * 0.5;
+      
+      // Update digital clock
+      const digitalTime = document.getElementById('digitalTime');
+      const periodEl = document.getElementById('period');
+      digitalTime.textContent = `${pad(istDate.getHours())}:${pad(min)}:${pad(sec)}`;
+      periodEl.style.display = 'none'; // Hide period for digital clock
+      
+      // Update both clocks with the same date format
+      const formattedDate = formatDate(istDate);
+      document.getElementById('date').textContent = formattedDate;
+      document.getElementById('analogDate').textContent = formattedDate;
+      
+      // Update clock hands
+      document.getElementById('secondHand').style.transform = `translate(-50%, -100%) rotate(${secDeg}deg)`;
+      document.getElementById('minuteHand').style.transform = `translate(-50%, -100%) rotate(${minDeg}deg)`;
+      document.getElementById('hourHand').style.transform = `translate(-50%, -100%) rotate(${hrDeg}deg)`;
+    }
+
+    // Update clock every second
+    setInterval(updateAnalogClock, 1000);
+    // Initial update
+    updateAnalogClock();
+
+    // Also update at the start of each day
+    function scheduleNextDayUpdate() {
+      const now = new Date();
+      const tomorrow = new Date(now);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setHours(0, 0, 0, 0);
+      
+      const timeUntilMidnight = tomorrow - now;
+      
+      // Schedule the next update
+      setTimeout(() => {
+        updateAnalogClock();
+        scheduleNextDayUpdate(); // Schedule the next day's update
+      }, timeUntilMidnight);
+    }
+    
+    // Start scheduling updates
+    scheduleNextDayUpdate();
+  </script>
+</body>
+</html>

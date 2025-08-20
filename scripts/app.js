@@ -52,17 +52,17 @@ class WebDev100Days {
           this.currentPage = page;
           this.renderTable();
 
-           // Scroll headings se start ho
-      setTimeout(() => {
-        const tableHead = document.querySelector("table thead");
-        if (tableHead) {
-          // Agar koi fixed header ya navbar height hai to uska offset nikal lo
-          const headerOffset = 80; // yahan apne header ki actual height set karo
-          const y = tableHead.getBoundingClientRect().top + window.scrollY - headerOffset;
-          window.scrollTo({ top: y, behavior: "smooth" });
-        }
-      }, 50);
-      
+          // Scroll headings se start ho
+          setTimeout(() => {
+            const tableHead = document.querySelector("table thead");
+            if (tableHead) {
+              // Agar koi fixed header ya navbar height hai to uska offset nikal lo
+              const headerOffset = 80; // yahan apne header ki actual height set karo
+              const y = tableHead.getBoundingClientRect().top + window.scrollY - headerOffset;
+              window.scrollTo({ top: y, behavior: "smooth" });
+            }
+          }, 50);
+
         }
       }
     });
@@ -605,412 +605,461 @@ class WebDev100Days {
         features: ["Hide n seek", "Catch", "Slap"]
       },
 
-{
 
-  originalDay: 51,
-    name: "Amazon",
-      description: "Amazon Clone",
-        demoLink: "Pages/Amazon Clone.html",
-          category: "Utility",
-            technologies: ["HTML", "CSS", "JavaScript"],
-              features: ["Clone"]
-},
-{
-   originalDay: 52,
- name: " Pixel Art Maker",
- description: "Create pixel art with a simple grid interface.",
- demoLink: "public/Day-76_PixelArt/index.html",
- category: "creativity",
- technologies: ["HTML", "CSS", "JavaScript"],
- features: ["Grid Creation", "Color Selection", "Download Art", "Reset Canvas"]
-},
-{
-  originalDay: 54,
-name: "Solitaire",
-description: "Play with Cards",
-demoLink: "public/Day-90/index.html",
-category: "games",
-technologies: ["HTML", "CSS", "JavaScript"],
-features: ["Ace", "King"]
-},
-{
-  originalDay: 55,
-  name: "Door Game",
-  description: "Open the Doors of your luck",
-  demoLink: "public/Day-91/index.html",
-  category: "games",
-  technologies: ["HTML", "CSS", "JavaScript"],
-  features: ["Luck", "Doors"]
-},
-{
-  originalDay: 56,
-  name: "Roast Battle",
-  description: "Roast Your self by AI",
-  demoLink: "public/Day-92/index.html",
-  category: "games",
-  technologies: ["HTML", "CSS", "JavaScript"],
-  features: ["Roast"]
-},
-{
-  originalDay: 57,
-  name: "Compliment Generator",
-  description: "Generate Compliment for your love once",
-  demoLink: "public/Day-93/index.html",
-  category: "games",
-  technologies: ["HTML", "CSS", "JavaScript"],
-  features: ["Compliments"]
-},
-{
-  originalDay: 58,
-  name: "PickUp Lines",
-  description: "Generate PickUp Lines for your someonce",
-  demoLink: "public/Day-94/index.html",
-  category: "games",
-  technologies: ["HTML", "CSS", "JavaScript"],
-  features: ["PickUp Lines"]
-},
-{
-  originalDay: 59,
-  name: "University Management System",
-  description: "Manage university operations including courses, students, and faculty.",
-  demoLink: "public/University_managment_system/demo main.html",
-  category: "utilities",
-  technologies: ["HTML", "CSS", "JavaScript", "API"],
-  features: ["Visitor Management", "History Tracking", "Search Functionality"]
-},
-{
-  originalDay: 60,
-name: "QuizProgram",
-description: "Take a random quiz",
-demoLink: "public/QuizProgram/index.html",
-category: "basic",
-technologies: ["HTML", "CSS", "JavaScript"],
-features: ["Quiz", "Scores"]
-},
-{
-    originalDay: 61,
-    name: "LoveVerse",
-    description: "A Lovely Website with some crazy stuffs.",
-    demoLink: "public/Day-70/index.html",
-    category: "games",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    features: ["Love Game", "Romantic"]
-},
-{
-    originalDay: 62,
-    name: "LeetMatrix",
-    description: "Check Leetcode stats",
-    demoLink: "public/LeetMatrix/index.html",
-    category: "basic",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    features: ["LeetCode", "Stats", "Graph"]
-},
-{
-  originalDay: 63,
-  name: "RoboBuilder",
-  description: "Buildd the Robot",
-  demoLink: "public/Day-72/index.html",
-  category: "games",
-  technologies: ["HTML", "CSS", "JavaScript"],
-  features: ["Repair", "Fix"]
-},
-{
-  originalDay: 64,
-  name: "HeliFly",
-  description: "Fly the Helicopter",
-  demoLink: "public/Day-55/index.html",
-  category: "games",
-  technologies: ["HTML", "CSS", "JavaScript"],
-  features: ["Fly"]
-},
-{
-  originalDay: 65,
-  name: "BattleShip",
-  description: "Destroy the enemy ship",
-  demoLink: "public/Day-71/dist/index.html",
-  category: "games",
-  technologies: ["HTML", "CSS", "JavaScript", "Node.js"],
-  features: ["Hide 'n' seek", "Catch"]
-},
-{
-    originalDay: 66,
-    name: "Book Recommendation",
-    description: "Suggests books based on user-selected genres, moods, or interests with a clean UI.",
-    demoLink: "https://book-recomendation.netlify.app/",
-    category: "education",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    features: ["Genre-Based Suggestions", "Book Covers & Descriptions", "Responsive Design", "Interactive Filters"]
-},
+      {
 
-{
-  originalDay: 67,
-  name: "Hero Identity",
-  description: "Know who you are",
-  demoLink: "public/Day-95/index.html",
-  category: "games",
-  technologies: ["HTML", "CSS", "JavaScript"],
-  features: ["Hero", "Powers"]
-},
-{
-  originalDay: 68,
-  name: "Fotune Teller",
-    description: "Know your future",
-      demoLink: "public/Day-96/index.html",
+        originalDay: 127,
+
+        name: "LeetMatrix",
+        description: "Check Leetcode stats",
+        demoLink: "./public/LeetMatrix/index.html",
+        category: "basic",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["LeetCode", "Stats", "Graph"]
+      },
+
+
+
+
+      {
+
+
+        originalDay: 128,
+        name: "LoveVerse",
+        description: "A Lovely Website with some crazy stuffs.",
+        demoLink: "./public/Day-70/index.html",
         category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Future", "Fortune"]
-},
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Love Game", "Romantic"]
+      },
 
-{
-   originalDay: 69,
- name: "Fitness Tracker",
- description: "Advanced, vibrant web app to track daily steps and water intake with charts, themes, and responsive design.",
- demoLink: "public/Fitness_Tracker/index.html",
- category: "productivity",
- technologies: ["HTML", "CSS", "JavaScript", "Chart.js"],
- features: ["Daily Steps & Water Input", "Dark/Light Mode", "Chart.js Visualizations", "Responsive Design", "Duplicate Prevention", "Tooltips on Charts"]
-},
-{
-  originalDay: 70,
-  name: "Super Mario",
-    description: "Mario is back.",
-      demoLink: "public/Day-62/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Mario", "Jump"]
-},
-
-{
-    originalDay: 71,
-    name: "Netflix",
-      description: "Netflix Clone",
-        demoLink: "public/Day-97/index.html",
-          category: "Utility",
-            technologies: ["HTML", "CSS", "JavaScript"],
-              features: ["Clone"]
-},
-
-{
-  originalDay: 72,
-  name: "Spin",
-    description: "Spin the wheel",
-      demoLink: "public/Day-98/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Spin", "Wheel"]
-},
-{
-  originalDay: 73,
-  name: "PuckMan",
-    description: "Escape from the ghost",
-      demoLink: "public/Day-99/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["PuckMan", "Ghost"]
-},
-
-{
-  originalDay: 74,
-  name: "EduGames phase 1",
-    description: "Class 1 - Class 8",
-      demoLink: "public/Day-100/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Games", "MCQ"]
-},
-
-{
-  originalDay: 76,
-  name: "Tank Battle",
-    description: "Fight with Tanks",
-      demoLink: "./public/Day-81/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Future", "Fortune"]
-},
-
-{
-    originalDay: 77,
-  name: "Carrom",
-    description: "Play carrom",
-      demoLink: "public/Day-82/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Carrom", "Fun"]
-},
-
-{
-  originalDay: 78,
-  name: "Pong",
-    description: "Play Pong",
-      demoLink: "public/Day-83/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Future", "Fortune"]
-},
-
-{
-    originalDay: 80,
-  name: "Sudoku",
-    description: "Play with numbers",
-      demoLink: "public/Day-85/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Numbers"]
-},
-
-{
-    originalDay: 81,
-  name: "KBC",
-    description: "Kaun Banega crorepati?",
-      demoLink: "./public/Day-86/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["MCQ", "Lifelines"]
-},
-{
-    originalDay: 83,
-  name: "Tetris",
-    description: "Play Tetris",
-      demoLink: "public/Day-88/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Tetris", "Boxes"]
-},
-
-{
-    originalDay: 84,
-  name: "Puzzle",
-    description: "Slides the boxes",
-      demoLink: "public/Day-89/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Slide", "Solve"]
-},
-
-{
-    originalDay: 85,
-  name: "Archery",
-    description: "Aim the target",
-      demoLink: "./public/Day-61/index.html",
-        category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-            features: ["Slide", "Solve"]
-},
-
-{
-    originalDay:86, 
-name: "Flappy Bird",
- description: "Play with Bird",
- demoLink: "public/flappy-bird/index.html",
- category: "games",
- technologies: ["HTML", "CSS", "JavaScript"],
- features: ["Bird", "Score", "Hard"]
-},
-
-{
-    originalDay: 87,
-name: "Invoice Builder",
-description: "Generate Product Invoice",
-demoLink: "public/Invoice-Builder/index.html",
-category: "utilities",
-technologies: ["HTML", "CSS", "JavaScript"],
-features: ["Invoice", "Product Invoice", "Invoice Generator"]
-},
-
-{
-  originalDay: 88, 
-name: "Fanta Website Clone",
-description: "Enjoy your first Drink",
-demoLink: "public/Fanta-Website/index.html",
-category: "creativity",
-technologies: ["HTML", "CSS", "JavaScript"],
-features: ["Fanta", "Coldrink", "Animation"]
-},
-
-{
-  originalDay: 89, 
-name: "Drum Kit",
-description: "A fun and interactive drum kit that can be played by clicking buttons or pressing keys.",
-demoLink: "public/Drum-Kit/index.html",
-category: "entertainment",
-technologies: ["HTML", "CSS", "JavaScript"],
-features: [
-  "Play drums using mouse clicks or keyboard keys",
-  "Visual feedback on key press",
-  "Multiple drum sounds"]
-},
-
-{
-     originalDay: 90, 
- name: "Ruchii Tiffin ",
-  description: "Simple Homely Tasty Meals ",
-  demoLink: "public/Ruchii-Tiffin/index.html",
-  category: "creativity",
-  technologies: ["HTML", "CSS", "JavaScript"],
-  features: ["food", "meals", "creativity"]
-},
-
-{
-      originalDay:91, 
-  name: "Fitness Club ",
-   description: "Your Only Gym",
-   demoLink: "public/Gym-Website/index.html",
-   category: "creativity",
-   technologies: ["HTML", "CSS", "JavaScript"],
-   features: ["Gym", "Weight", "Fitness"]
-},
+      {
+        originalDay: 129,
+        name: "QuizProgram",
+        description: "Take a random quiz",
+        demoLink: "./public/QuizProgram/index.html",
+        category: "basic",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Quiz", "Scores"]
+      },
 
 
-{
-    originalDay: 92,
-name: "Library Book Manager",
-description: "A stylish, accessible, and fully functional library management app to add, edit, delete, and track reading status of books with persistent storage.",
-demoLink: "public/Library_Book_Manager/index.html",
-category: "productivity",
-technologies: ["HTML", "CSS", "JavaScript", "LocalStorage"],
-features: [
-  "Add, Edit, and Delete Books",
-  "Reading Status Toggle (Unread, Reading, Read)",
-  "Dark/Light Mode Toggle with Persistence",
-  "Responsive and Accessible UI",
-  "Animated Border Gradient Styling",
-  "Empty Library Message Handling"
+      {
+
+
+        originalDay: 125,
+        name: "University Management System",
+
+
+        description: "Manage university operations including courses, students, and faculty.",
+        demoLink: "./public/University_managment_system/index.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "JavaScript", "API"],
+        features: ["Visitor Management", "History Tracking", "Search Functionality"]
+
+
+
+      },
+      {
+        originalDay: 126,
+        name: " Pixel Art Maker",
+        description: "Create pixel art with a simple grid interface.",
+        demoLink: "./public/Day-76_PixelArt/index.html",
+        category: "creativity",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Grid Creation", "Color Selection", "Download Art", "Reset Canvas"]
+
+      },
+
+      {
+         originalDay: 127,
+          name: "CineSearch",
+        description: "stylish and responsive movie search web app that allows users to search for any movie using the OMDB API.",
+        demoLink: "./public/CineSearch/index.html",
+        category: "entertainment",
+        technologies: ["HTML", "CSS", "JavaScript", "API"],
+        features:[
+  "Live Movie Search Functionality",
+  "Poster, Title & Year Display",
+  "Responsive Grid Layout",
+  "OMDb API Integration",
+  "Error Handling & No Result Messages",
+  "Dark-Themed UI with Neon Accents",
+  "Clean Separation of HTML, CSS, and JS"
 ]
-},
+       },
 
-{
-  originalDay: 93,
-  name: "Memory Grid Rush",
-  description: "Fast-paced memory game where players repeat flashing grid patterns that get progressively harder with each level.",
-  demoLink: "public/Memory_Grid_Rush/index.html",
-  category: "games",
-  technologies: ["HTML", "CSS", "JavaScript"],
-  features: [
-  "Dynamic grid scaling, pattern generation & replay, dark/light mode, score & level tracking, keyboard accessibility, animated feedback, and replay option."
-]
-},
-  ];
 
-this.projects = projectsData.map((project, index) => ({
-  ...project,
-  day: index + 1
-}));
 
-this.filteredProjects = [...this.projects];
+      {
+
+        originalDay: 131,
+        name: "Fruit Ninja",
+        description: "Play with fruits",
+        demoLink: "./public/Day-59/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Cut"]
+      },
+      {
+
+        originalDay: 132,
+        name: "Solitaire",
+        description: "Play with Cards",
+        demoLink: "./public/Day-90/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Ace", "King"]
+      },
+      {
+
+        originalDay: 133,
+        name: "Door Game",
+        description: "Open the Doors of your luck",
+        demoLink: "./public/Day-91/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Luck", "Doors"]
+      },
+      {
+
+        originalDay: 134,
+        name: "Roast Battle",
+        description: "Roast Your self by AI",
+        demoLink: "./public/Day-92/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Roast"]
+      },
+      {
+
+        originalDay: 135,
+        name: "Compliment Generator",
+        description: "Generate Compliment for your love once",
+        demoLink: "./public/Day-93/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Compliments"]
+      },
+      {
+
+        originalDay: 136,
+        name: "PickUp Lines",
+        description: "Generate PickUp Lines for your someonce",
+        demoLink: "./public/Day-94/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["PickUp Lines"]
+      },
+      {
+
+        originalDay: 137,
+        name: "Hero Identity",
+        description: "Know who you are",
+        demoLink: "./public/Day-95/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Hero", "Powers"]
+      },
+      {
+
+        originalDay: 138,
+        name: "Fotune Teller",
+        description: "Know your future",
+        demoLink: "./public/Day-96/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Future", "Fortune"]
+      },
+      {
+        originalDay: 139,
+        name: "Fitness Tracker",
+        description: "Advanced, vibrant web app to track daily steps and water intake with charts, themes, and responsive design.",
+        demoLink: "./public/Fitness_Tracker/index.html",
+        category: "productivity",
+        technologies: ["HTML", "CSS", "JavaScript", "Chart.js"],
+        features: ["Daily Steps & Water Input", "Dark/Light Mode", "Chart.js Visualizations", "Responsive Design", "Duplicate Prevention", "Tooltips on Charts"]
+      },
+
+
+      {
+
+        originalDay: 140,
+        name: "Super Mario",
+        description: "Mario is back.",
+        demoLink: "./public/Day-62/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Mario", "Jump"]
+      },
+
+      {
+
+        originalDay: 141,
+        name: "Netflix",
+        description: "Netflix Clone",
+        demoLink: "./public/Day-97/index.html",
+        category: "Utility",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Clone"]
+      },
+      {
+
+        originalDay: 142,
+        name: "Spin",
+        description: "Spin the wheel",
+        demoLink: "./public/Day-98/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Spin", "Wheel"]
+      },
+      {
+
+        originalDay: 143,
+        name: "PuckMan",
+        description: "Escape from the ghost",
+        demoLink: "./public/Day-99/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["PuckMan", "Ghost"]
+      },
+      {
+
+        originalDay: 144,
+        name: "EduGames phase 1",
+        description: "Class 1 - Class 8",
+        demoLink: "./public/Day-100/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Games", "MCQ"]
+      },
+      {
+
+        originalDay: 145,
+        name: "EduGames phase 2",
+        description: "Class 9 - Class 12",
+        demoLink: "./public/Day-80/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Games", "MCQ"]
+      },
+      {
+
+        originalDay: 146,
+        name: "Tank Battle",
+        description: "Fight with Tanks",
+        demoLink: "./public/Day-81/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Future", "Fortune"]
+      },
+      {
+
+        originalDay: 147,
+        name: "Carrom",
+        description: "Play carrom",
+        demoLink: "./public/Day-82/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Carrom", "Fun"]
+      },
+      {
+
+        originalDay: 148,
+        name: "Pong",
+        description: "Play Pong",
+        demoLink: "./public/Day-83/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Future", "Fortune"]
+      },
+      {
+
+        originalDay: 149,
+        name: "404 Escape Room",
+        description: "Find the hidden clues",
+        demoLink: "./public/Day-84/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Hidden", "Clues"]
+      },
+      {
+
+        originalDay: 150,
+        name: "Sudoku",
+        description: "Play with numbers",
+        demoLink: "./public/Day-85/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Numbers"]
+      },
+      {
+
+        originalDay: 151,
+        name: "KBC",
+        description: "Kaun Banega crorepati?",
+        demoLink: "./public/Day-86/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["MCQ", "Lifelines"]
+      },
+      {
+
+        originalDay: 152,
+        name: "Past Life Finder",
+        description: "Know your Past",
+        demoLink: "./public/Day-87/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Past"]
+      },
+      {
+
+        originalDay: 153,
+        name: "Tetris",
+        description: "Play Tetris",
+        demoLink: "./public/Day-88/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Tetris", "Boxes"]
+      },
+      {
+
+        originalDay: 154,
+        name: "Puzzle",
+        description: "Slides the boxes",
+        demoLink: "./public/Day-89/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Slide", "Solve"]
+      },
+      {
+
+        originalDay: 155,
+        name: "Archery",
+        description: "Aim the target",
+        demoLink: "./public/Day-61/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Slide", "Solve"]
+      },
+
+
+      {
+        originalDay: 156,
+        name: "Flappy Bird",
+        description: "Play with Bird",
+        demoLink: "./public/flappy-bird/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Bird", "Score", "Hard"]
+      },
+
+      {
+
+
+        originalDay: 157,
+        name: "Fanta Website Clone",
+        description: "Enjoy your first Drink ",
+        demoLink: "./public/Fanta-Website/index.html",
+        category: "creativity",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Fanta", "Coldrink", "Animation"]
+      },
+      {
+        originalDay: 158,
+        name: "Ruchii Tiffin ",
+        description: "Simple Homely Tasty Meals ",
+        demoLink: "./public/Ruchii-Tiffin/index.html",
+        category: "creativity",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["food", "meals", "creativity"]
+      },
+
+      {
+
+        originalDay: 159,
+        name: "Invoice Builder",
+        description: "Generate Product Invoice",
+        demoLink: "./public/Invoice-Builder/index.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Invoice", "Product Invoice ", "Invoice Generator"]
+      },
+
+      {
+        originalDay: 160,
+        name: "Fitness Club ",
+        description: "Your Only Gym",
+        demoLink: "./public/Gym-Website/index.html",
+        category: "creativity",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Gym", "Weight", "Fitness"]
+      },
+
+
+      {
+        originalDay: 164,
+        name: "Library Book Manager",
+        description: "A stylish, accessible, and fully functional library management app to add, edit, delete, and track reading status of books with persistent storage.",
+        demoLink: "./public/Library_Book_Manager/index.html",
+        category: "productivity",
+        technologies: ["HTML", "CSS", "JavaScript", "LocalStorage"],
+        features: [
+          "Add, Edit, and Delete Books", "Reading Status Toggle (Unread, Reading, Read)",
+          "Dark/Light Mode Toggle with Persistence", "Responsive and Accessible UI",
+          "Animated Border Gradient Styling", "Empty Library Message Handling"]
+      },
+      {
+        originalDay: 164,
+        name: "Drum Kit",
+        description: "Play the Drum",
+        demoLink: "./public/Drum-Kit/index.html",
+        category: "productivity",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Music", "Drum"]
+      },
+
+      {
+        originalDay: 165,
+        name: "Memory Grid Rush",
+        description: "Fast-paced memory game where players repeat flashing grid patterns that get progressively harder with each level.",
+        demoLink: "./public/Memory_Grid_Rush/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: [
+          "Dynamic grid scaling, pattern generation & replay, dark/light mode, score & level tracking, keyboard accessibility, animated feedback, and replay option."
+        ]
+      }, 
+      
+      {
+         originalDay:166, 
+         name: "Salon Website ",
+          description: "Firt Cut Free",
+          demoLink: "./public/Salon-Website/index.html",
+          category: "creativity",
+          technologies: ["HTML", "CSS", "JavaScript"],
+          features: ["salon", "cutting", "glow up
+
+    this.projects = projectsData.map((project, index) => ({
+      ...project,
+      day: index + 1
+    }));
+
+    this.filteredProjects = [...this.projects];
   }
 
-updateStatistics() {
-  const statsContainer = document.querySelector('.challenge-stats');
-  if (!statsContainer) return;
+  updateStatistics() {
+    const statsContainer = document.querySelector('.challenge-stats');
+    if (!statsContainer) return;
 
-  // Calculate unique technologies
-  const uniqueTechnologies = [...new Set(
-    this.projects.flatMap(project => project.technologies)
-  )].length;
+    // Calculate unique technologies
+    const uniqueTechnologies = [...new Set(
+      this.projects.flatMap(project => project.technologies)
+    )].length;
 
-  // Update stats
-  statsContainer.innerHTML = `
+    // Update stats
+    statsContainer.innerHTML = `
       <h3 class="challenge-stats-title">Challenge Statistics</h3>
       <div class="stats-grid">
         <div class="stat-item">
@@ -1031,68 +1080,68 @@ updateStatistics() {
         </div>
       </div>
     `;
-}
-
-filterProjects() {
-  let filtered = [...this.projects];
-
-  if (this.currentFilter !== 'all') {
-    filtered = filtered.filter(project => project.category === this.currentFilter);
   }
 
-  if (this.searchTerm) {
-    filtered = filtered.filter(project =>
-      project.name.toLowerCase().includes(this.searchTerm) ||
-      project.description.toLowerCase().includes(this.searchTerm) ||
-      project.technologies.some(tech => tech.toLowerCase().includes(this.searchTerm)) ||
-      project.features.some(feature => feature.toLowerCase().includes(this.searchTerm))
-    );
-  }
+  filterProjects() {
+    let filtered = [...this.projects];
 
-  this.filteredProjects = filtered;
-  this.currentPage = 1;
-  this.renderTable();
-}
-
-setActiveFilter(filter) {
-  this.currentFilter = filter;
-  this.currentPage = 1;
-
-  document.querySelectorAll('.filter-tab').forEach(tab => {
-    tab.classList.remove('active');
-  });
-  document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
-
-  this.filterProjects();
-}
-
-renderTable() {
-  const tableContainer = document.querySelector('.projects-table-container');
-  const emptyState = document.querySelector('.empty-state');
-
-  if (!tableContainer) return;
-
-  const startIndex = (this.currentPage - 1) * this.projectsPerPage;
-  const endIndex = startIndex + this.projectsPerPage;
-  const projectsToShow = this.filteredProjects.slice(startIndex, endIndex);
-
-  tableContainer.innerHTML = '';
-
-  if (projectsToShow.length === 0) {
-    if (emptyState) {
-      emptyState.classList.add('show');
+    if (this.currentFilter !== 'all') {
+      filtered = filtered.filter(project => project.category === this.currentFilter);
     }
-    return;
+
+    if (this.searchTerm) {
+      filtered = filtered.filter(project =>
+        project.name.toLowerCase().includes(this.searchTerm) ||
+        project.description.toLowerCase().includes(this.searchTerm) ||
+        project.technologies.some(tech => tech.toLowerCase().includes(this.searchTerm)) ||
+        project.features.some(feature => feature.toLowerCase().includes(this.searchTerm))
+      );
+    }
+
+    this.filteredProjects = filtered;
+    this.currentPage = 1;
+    this.renderTable();
   }
 
-  if (emptyState) {
-    emptyState.classList.remove('show');
+  setActiveFilter(filter) {
+    this.currentFilter = filter;
+    this.currentPage = 1;
+
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.classList.remove('active');
+    });
+    document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+
+    this.filterProjects();
   }
 
-  const table = document.createElement('table');
-  table.className = 'projects-table';
+  renderTable() {
+    const tableContainer = document.querySelector('.projects-table-container');
+    const emptyState = document.querySelector('.empty-state');
 
-  table.innerHTML = `
+    if (!tableContainer) return;
+
+    const startIndex = (this.currentPage - 1) * this.projectsPerPage;
+    const endIndex = startIndex + this.projectsPerPage;
+    const projectsToShow = this.filteredProjects.slice(startIndex, endIndex);
+
+    tableContainer.innerHTML = '';
+
+    if (projectsToShow.length === 0) {
+      if (emptyState) {
+        emptyState.classList.add('show');
+      }
+      return;
+    }
+
+    if (emptyState) {
+      emptyState.classList.remove('show');
+    }
+
+    const table = document.createElement('table');
+    table.className = 'projects-table';
+
+    table.innerHTML = `
       <thead>
         <tr>
           <th onclick="app.sortTable('day')" class="sortable">Day <span class="sort-icon">↕</span></th>
@@ -1140,84 +1189,84 @@ renderTable() {
       </tbody>
     `;
 
-  tableContainer.appendChild(table);
+    tableContainer.appendChild(table);
 
-  this.renderPagination();
-}
-
-sortTable(column) {
-  this.filteredProjects.sort((a, b) => {
-    if (column === 'day') {
-      return a.day - b.day;
-    } else if (column === 'name') {
-      return a.name.localeCompare(b.name);
-    } else if (column === 'category') {
-      return a.category.localeCompare(b.category);
-    }
-    return 0;
-  });
-
-  this.renderTable();
-}
-
-renderPagination() {
-  const totalPages = Math.ceil(this.filteredProjects.length / this.projectsPerPage);
-  const paginationContainer = document.querySelector('.pagination');
-
-  if (!paginationContainer || totalPages <= 1) {
-    if (paginationContainer) paginationContainer.style.display = 'none';
-    return;
+    this.renderPagination();
   }
 
-  paginationContainer.style.display = 'flex';
-  paginationContainer.innerHTML = '';
+  sortTable(column) {
+    this.filteredProjects.sort((a, b) => {
+      if (column === 'day') {
+        return a.day - b.day;
+      } else if (column === 'name') {
+        return a.name.localeCompare(b.name);
+      } else if (column === 'category') {
+        return a.category.localeCompare(b.category);
+      }
+      return 0;
+    });
 
-  const prevBtn = document.createElement('button');
-  prevBtn.className = 'pagination-btn';
-  prevBtn.disabled = this.currentPage === 1;
-  prevBtn.innerHTML = '‹';
-  prevBtn.dataset.page = this.currentPage - 1;
-  paginationContainer.appendChild(prevBtn);
-
-  for (let i = 1; i <= totalPages; i++) {
-    if (i === 1 || i === totalPages || (i >= this.currentPage - 2 && i <= this.currentPage + 2)) {
-      const pageBtn = document.createElement('button');
-      pageBtn.className = `pagination-btn ${i === this.currentPage ? 'active' : ''}`;
-      pageBtn.textContent = i;
-      pageBtn.dataset.page = i;
-      paginationContainer.appendChild(pageBtn);
-    } else if (i === this.currentPage - 3 || i === this.currentPage + 3) {
-      const ellipsis = document.createElement('span');
-      ellipsis.textContent = '...';
-      ellipsis.className = 'pagination-info';
-      paginationContainer.appendChild(ellipsis);
-    }
+    this.renderTable();
   }
 
-  const nextBtn = document.createElement('button');
-  nextBtn.className = 'pagination-btn';
-  nextBtn.disabled = this.currentPage === totalPages;
-  nextBtn.innerHTML = '›';
-  nextBtn.dataset.page = this.currentPage + 1;
-  paginationContainer.appendChild(nextBtn);
+  renderPagination() {
+    const totalPages = Math.ceil(this.filteredProjects.length / this.projectsPerPage);
+    const paginationContainer = document.querySelector('.pagination');
 
-  const pageInfo = document.createElement('div');
-  pageInfo.className = 'pagination-info';
-  pageInfo.textContent = `${this.currentPage} of ${totalPages}`;
-  paginationContainer.appendChild(pageInfo);
-}
+    if (!paginationContainer || totalPages <= 1) {
+      if (paginationContainer) paginationContainer.style.display = 'none';
+      return;
+    }
 
-debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
+    paginationContainer.style.display = 'flex';
+    paginationContainer.innerHTML = '';
+
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'pagination-btn';
+    prevBtn.disabled = this.currentPage === 1;
+    prevBtn.innerHTML = '‹';
+    prevBtn.dataset.page = this.currentPage - 1;
+    paginationContainer.appendChild(prevBtn);
+
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || (i >= this.currentPage - 2 && i <= this.currentPage + 2)) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = `pagination-btn ${i === this.currentPage ? 'active' : ''}`;
+        pageBtn.textContent = i;
+        pageBtn.dataset.page = i;
+        paginationContainer.appendChild(pageBtn);
+      } else if (i === this.currentPage - 3 || i === this.currentPage + 3) {
+        const ellipsis = document.createElement('span');
+        ellipsis.textContent = '...';
+        ellipsis.className = 'pagination-info';
+        paginationContainer.appendChild(ellipsis);
+      }
+    }
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'pagination-btn';
+    nextBtn.disabled = this.currentPage === totalPages;
+    nextBtn.innerHTML = '›';
+    nextBtn.dataset.page = this.currentPage + 1;
+    paginationContainer.appendChild(nextBtn);
+
+    const pageInfo = document.createElement('div');
+    pageInfo.className = 'pagination-info';
+    pageInfo.textContent = `${this.currentPage} of ${totalPages}`;
+    paginationContainer.appendChild(pageInfo);
+  }
+
+  debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
       clearTimeout(timeout);
-      func(...args);
+      timeout = setTimeout(later, wait);
     };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
+  }
 }
 
 let app;

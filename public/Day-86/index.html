@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaun Banega Crorepati - Quiz Game</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-container">
+        <div class="animated-bg"></div>
+        <div class="particles-container"></div>
+        <div class="spotlight-effect"></div>
+    </div>
+
+    <div class="game-container">
+
+        <header class="game-header">
+            <div class="logo">
+                <h1>KAUN BANEGA CROREPATI</h1>
+                <div class="sound-wave-animation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="game-info">
+                <div class="timer-container">
+                    <div class="timer-circle">
+                        <div class="timer-fill"></div>
+                        <span class="timer-text">30</span>
+                    </div>
+                </div>
+                <div class="question-number">
+                    Question <span id="current-question">1</span> of 15
+                </div>
+            </div>
+        </header>
+
+
+        <main class="game-main">
+
+            <aside class="prize-ladder">
+                <div class="ladder-title">Prize Money</div>
+                <div class="ladder-container">
+                    <div class="ladder-item milestone" data-level="15">
+                        <span class="amount">₹7 CRORE</span>
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="ladder-item" data-level="14">₹3.5 CRORE</div>
+                    <div class="ladder-item" data-level="13">₹1.75 CRORE</div>
+                    <div class="ladder-item" data-level="12">₹87.5 LAKH</div>
+                    <div class="ladder-item milestone" data-level="11">
+                        <span class="amount">₹50 LAKH</span>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="ladder-item" data-level="10">₹25 LAKH</div>
+                    <div class="ladder-item" data-level="9">₹12.5 LAKH</div>
+                    <div class="ladder-item" data-level="8">₹6.25 LAKH</div>
+                    <div class="ladder-item" data-level="7">₹3.2 LAKH</div>
+                    <div class="ladder-item milestone" data-level="6">
+                        <span class="amount">₹1.6 LAKH</span>
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="ladder-item" data-level="5">₹80,000</div>
+                    <div class="ladder-item" data-level="4">₹40,000</div>
+                    <div class="ladder-item" data-level="3">₹20,000</div>
+                    <div class="ladder-item" data-level="2">₹10,000</div>
+                    <div class="ladder-item current" data-level="1">₹5,000</div>
+                </div>
+            </aside>
+
+            <section class="question-area">
+                <div class="question-container">
+                    <div class="question-text" id="question-text">
+                        Welcome to Kaun Banega Crorepati! Are you ready to start your journey?
+                    </div>
+                    <div class="options-container" id="options-container">
+                        <div class="option" data-option="A">
+                            <span class="option-label">A</span>
+                            <span class="option-text">Yes, I'm ready!</span>
+                        </div>
+                        <div class="option" data-option="B">
+                            <span class="option-label">B</span>
+                            <span class="option-text">Let me think...</span>
+                        </div>
+                        <div class="option" data-option="C">
+                            <span class="option-label">C</span>
+                            <span class="option-text">Show me the rules</span>
+                        </div>
+                        <div class="option" data-option="D">
+                            <span class="option-label">D</span>
+                            <span class="option-text">I'm nervous!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lifelines-container">
+                    <button class="lifeline" id="fifty-fifty" data-lifeline="50-50">
+                        <i class="fas fa-balance-scale"></i>
+                        <span>50:50</span>
+                    </button>
+                    <button class="lifeline" id="phone-friend" data-lifeline="phone">
+                        <i class="fas fa-phone"></i>
+                        <span>Phone Friend</span>
+                    </button>
+                    <button class="lifeline" id="ask-audience" data-lifeline="audience">
+                        <i class="fas fa-users"></i>
+                        <span>Ask Audience</span>
+                    </button>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="quit-game">Quit Game</button>
+                    <button class="btn btn-warning" id="skip-question" disabled>Skip Question (-50%)</button>
+                    <button class="btn btn-primary" id="lock-answer" disabled>Lock Answer</button>
+                </div>
+
+                <div class="powerups-container">
+                    <button class="powerup" id="double-dip" data-powerup="double-dip"
+                        title="Get a second chance if first answer is wrong">
+                        <i class="fas fa-redo"></i>
+                        <span>Double Dip</span>
+                        <small>2nd Chance</small>
+                    </button>
+                    <button class="powerup" id="switch-question" data-powerup="switch"
+                        title="Switch to a different question of same difficulty">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Switch Question</span>
+                        <small>New Question</small>
+                    </button>
+                    <button class="powerup" id="time-freeze" data-powerup="time-freeze"
+                        title="Freeze timer for 15 seconds">
+                        <i class="fas fa-stopwatch"></i>
+                        <span>Time Freeze</span>
+                        <small>+15 seconds</small>
+                    </button>
+                </div>
+
+                <div class="streak-container">
+                    <div class="streak-counter">
+                        <i class="fas fa-fire"></i>
+                        <span>Streak: <span id="current-streak">0</span></span>
+                    </div>
+                    <div class="high-score">
+                        <i class="fas fa-trophy"></i>
+                        <span>Best: <span id="high-score">₹0</span></span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="settings-panel" id="settings-panel">
+            <button class="settings-toggle" id="settings-toggle">
+                <i class="fas fa-cog"></i>
+            </button>
+            <div class="settings-content">
+                <h3>Game Settings</h3>
+                <div class="setting-group">
+                    <label>Audio Volume</label>
+                    <input type="range" id="master-volume" min="0" max="100" value="70">
+                </div>
+                <div class="setting-group">
+                    <label>Music Volume</label>
+                    <input type="range" id="music-volume" min="0" max="100" value="30">
+                </div>
+                <div class="setting-group">
+                    <label>Effects Volume</label>
+                    <input type="range" id="effects-volume" min="0" max="100" value="80">
+                </div>
+                <div class="setting-group">
+                    <label>Timer Speed</label>
+                    <select id="timer-speed">
+                        <option value="30">Normal (30s)</option>
+                        <option value="45">Easy (45s)</option>
+                        <option value="20">Hard (20s)</option>
+                        <option value="15">Expert (15s)</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>Question Difficulty</label>
+                    <select id="difficulty-mode">
+                        <option value="normal">Normal Mix</option>
+                        <option value="easy">Easy Mode</option>
+                        <option value="hard">Hard Mode</option>
+                        <option value="random">Random</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="start-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome to KBC!</h2>
+                <div class="kbc-logo">
+                    <i class="fas fa-trophy"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p>Get ready to answer 15 questions and win up to ₹7 Crore!</p>
+                <div class="rules">
+                    <h3>Game Rules:</h3>
+                    <ul>
+                        <li>Answer 15 multiple-choice questions correctly</li>
+                        <li>Each question has a 30-second timer</li>
+                        <li>You have 3 lifelines to help you</li>
+                        <li>Milestone amounts: ₹1.6 Lakh, ₹50 Lakh, ₹7 Crore</li>
+                        <li>You can quit anytime and keep your winnings</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="start-game">Start Game</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="phone-friend-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Phone a Friend</h2>
+                <button class="close-btn" data-close="phone-friend-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="phone-animation">
+                    <i class="fas fa-phone phone-icon"></i>
+                    <div class="calling-text">Calling your friend...</div>
+                </div>
+                <div class="friend-response" style="display: none;">
+                    <div class="friend-avatar">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Friend</span>
+                    </div>
+                    <div class="response-text" id="friend-response-text"></div>
+                    <div class="confidence">Confidence: <span id="friend-confidence"></span>%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="ask-audience-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Ask the Audience</h2>
+                <button class="close-btn" data-close="ask-audience-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="audience-poll">
+                    <div class="poll-option">
+                        <span class="option-label">A</span>
+                        <div class="poll-bar">
+                            <div class="poll-fill" data-option="A"></div>
+                        </div>
+                        <span class="poll-percentage" id="poll-A">0%</span>
+                    </div>
+                    <div class="poll-option">
+                        <span class="option-label">B</span>
+                        <div class="poll-bar">
+                            <div class="poll-fill" data-option="B"></div>
+                        </div>
+                        <span class="poll-percentage" id="poll-B">0%</span>
+                    </div>
+                    <div class="poll-option">
+                        <span class="option-label">C</span>
+                        <div class="poll-bar">
+                            <div class="poll-fill" data-option="C"></div>
+                        </div>
+                        <span class="poll-percentage" id="poll-C">0%</span>
+                    </div>
+                    <div class="poll-option">
+                        <span class="option-label">D</span>
+                        <div class="poll-bar">
+                            <div class="poll-fill" data-option="D"></div>
+                        </div>
+                        <span class="poll-percentage" id="poll-D">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="game-over-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="game-over-title">Game Over</h2>
+            </div>
+            <div class="modal-body">
+                <div class="final-prize">
+                    <div class="prize-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="prize-text">
+                        <p>You won:</p>
+                        <h3 id="final-amount">₹0</h3>
+                    </div>
+                </div>
+                <div class="game-stats">
+                    <p>Questions Answered: <span id="questions-answered">0</span></p>
+                    <p>Lifelines Used: <span id="lifelines-used">0</span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="play-again">Play Again</button>
+                <button class="btn btn-secondary" id="share-score">Share Score</button>
+            </div>
+        </div>
+    </div>
+    <audio id="background-music" loop>
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="correct-sound">
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-01.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="wrong-sound">
+        <source src="https://www.soundjay.com/misc/sounds/fail-buzzer-02.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="lifeline-sound">
+        <source src="https://www.soundjay.com/misc/sounds/magic-chime-01.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="timer-sound">
+        <source src="https://www.soundjay.com/misc/sounds/clock-ticking-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/questions.js"></script>
+    <script src="scripts/audio.js"></script>
+    <script src="scripts/lifelines.js"></script>
+    <script src="scripts/game.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><b> WebDevIn_100Days Feedback</b></title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="Feedback_Form.css">
+</head>
+<body>
+  <section class="section">
+    <div class="container feedback-container">
+      <h2><b>WebDevIn_100Days Feedback Form</b></h2>
+      <form action="https://formsubmit.co/your-email@example.com" method="POST">
+        
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
+
+        <label>How has this series improved your Web Dev skills?</label>
+        <textarea name="skill_feedback" placeholder="Your experience..." required></textarea>
+
+        <label>What did you feel about completing 100+ mini projects?</label>
+        <textarea name="project_feedback" placeholder="Was it helpful, overwhelming, exciting?" required></textarea>
+
+        <label>Rate your overall experience (1–5)</label>
+        <select name="rating" required>
+          <option value="" disabled selected>Select rating</option>
+          <option>1 - Poor</option>
+          <option>2 - Fair</option>
+          <option>3 - Good</option>
+          <option>4 - Very Good</option>
+          <option>5 - Excellent</option>
+        </select>
+
+        <label>Any suggestions or improvements?</label>
+        <textarea name="suggestions" placeholder="We value your suggestions..."></textarea>
+
+        <button type="submit">Submit Feedback</button>
+
+        <!-- Redirect to thank you page -->
+        <input type="hidden" name="_next" value="thankyou.html">
+        <input type="hidden" name="_captcha" value="false">
+      </form>
+    </div>
+  </section>
+</body>
+</html>

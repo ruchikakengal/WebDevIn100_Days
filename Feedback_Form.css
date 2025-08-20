@@ -1,0 +1,89 @@
+/* Reset some default styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f0f9ff, #cbebff);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container styling */
+.feedback-container {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 600px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  color: #1abc9c;   /* default teal */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+h2:hover {
+  color: #16a085;   /* darker teal on hover */
+  transform: scale(1.05);   /* slight zoom effect */
+}
+
+
+/* Heading */
+.feedback-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #030405;
+}
+
+/* Label styling */
+.feedback-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #34495e;
+  font-weight: 600;
+}
+
+/* Input, select, textarea */
+.feedback-container input,
+.feedback-container textarea,
+.feedback-container select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.feedback-container input:focus,
+.feedback-container textarea:focus,
+.feedback-container select:focus {
+  border-color: #1abc9c;
+  outline: none;
+}
+
+/* Submit button */
+.feedback-container button {
+  margin-left: 90px;
+  width: 50%;
+  padding: 5px;
+  background-color :blue ;
+  border-radius: 8px;
+  color:white;
+  border-block: black;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.feedback-container button:hover {
+  background-color: #16a085;
+}

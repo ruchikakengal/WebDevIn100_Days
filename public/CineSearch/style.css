@@ -1,0 +1,260 @@
+/* ========== GLOBAL RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #0f0f1a, #000);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Background Stars Animation */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: stars 60s linear infinite;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+@keyframes stars {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-500px, -500px); }
+}
+
+/* ========== HEADER ========== */
+h1 {
+  font-size: 3rem;
+  color: #00ffe7;
+  margin: 2rem 0 1rem;
+  text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7;
+  animation: fadeInDown 1s ease forwards;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== SEARCH BAR ========== */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 0.5rem;
+  border-radius: 50px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease forwards;
+}
+
+.search-bar input {
+  padding: 0.75rem 1rem;
+  width: 280px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 50px 0 0 50px;
+  background: #111;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+  box-shadow: 0 0 15px #00ffe7;
+}
+
+.search-bar button {
+  padding: 0.75rem 1rem;
+  border: none;
+  background: #00ffe7;
+  color: #000;
+  border-radius: 0 50px 50px 0;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+  background: #00d4c1;
+  transform: scale(1.05);
+}
+
+/* ========== MOVIE GRID ========== */
+.movie-grid {
+  width: 90%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* ========== MOVIE CARD ========== */
+.movie-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transform: scale(1);
+  animation: fadeInUp 0.8s ease forwards;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.4s ease;
+}
+
+.movie-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay on Hover */
+.movie-card::after {
+  content: attr(data-year);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  text-align: center;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: #00ffe7;
+  font-weight: bold;
+}
+
+/* Title Below Poster */
+.movie-card h3 {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Fade In Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========== MOVIE DETAILS ========== */
+.movie-details-container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  animation: fadeIn 1s ease forwards;
+}
+
+.movie-details-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.movie-details-card img {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.4);
+}
+
+.movie-info {
+  max-width: 600px;
+}
+
+.movie-info h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #00ffe7;
+  text-shadow: 0 0 10px #00ffe7;
+}
+
+.movie-info p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Back Button */
+.back-btn {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #00ffe7;
+  color: #000;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.back-btn:hover {
+  background: #00d4c1;
+  transform: scale(1.05);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 500px) {
+  .search-bar {
+    flex-direction: column;
+    border-radius: 12px;
+  }
+  .search-bar input,
+  .search-bar button {
+    width: 100%;
+    border-radius: 8px;
+    margin: 0.25rem 0;
+  }
+  .movie-details-card {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.tagline {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 3rem;
+  color: #00ffe7;
+  text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 40px rgba(0,255,255,0.5);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@media (max-width: 600px) {
+  .tagline {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+}

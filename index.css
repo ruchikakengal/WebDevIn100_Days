@@ -6,25 +6,39 @@
   transition: color 0.3s ease, background-color 0.3s ease;
 
   #bgCanvas {
-    position: fixed;
+    position:absolute;
     top: 0;
-    left: 0;
+    left: 100%;
     width: 100%;
     height: 100%;
     z-index: -1;
     filter: blur(5px);
   }
 
-  .navbar-item:hover {
-    color: #ffffff; /* White text */
-    text-decoration: none;
-  }
+.hero-actions {
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  gap: 20px;                /* Space between buttons */
+  margin-top: 20px;
+}
 
-  .navbar-burger:hover {
-    background-color: #1abc9c; /* Teal hover for burger menu */
-    color: #ffffff;
-  }
-/* Styling for the animated cursor */
+.feedback-btn {
+  padding: 12px 30px;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.feedback-btn:hover {
+  background-color: #16a085;
+  transform: translateY(-2px);
+}
+
+
 /* Styling for the animated cursor */
 .hero-subtitle .typed-cursor {
     color: #FFF; /* Or any color that looks good on your hero background */
@@ -40,9 +54,22 @@
 
   button:hover,
   .button:hover {
-    transform: scale(1.1);
+   transform: scale(1.1);
     background-color: #27ae60; /* Darker green for hover */
   }
+
+  .btn.btn-primary {
+ font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn.btn-primary:hover {
+  background-color: #16a085;
+   transform: scale(1.1);
+}
+
+
 
   /* Links */
   a {
@@ -121,11 +148,11 @@
     background-color: #ffffff;
     color: #000000;
 
-    @media (max-width: 426px) {
+    }
+@media (max-width: 426px) {
       .links table tbody tr td {
         padding: 6px 2px; /* Reduce padding for smaller screens */
       }
-    }
 
     @media (max-width: 330px) {
       .links table tbody tr td {
@@ -350,16 +377,6 @@ body.dark-theme table {
 }
 
 body.dark-theme table th {
-  background-color: #34495e; /* Darker header */
-  color: #ffffff; /* Set white color for text */
-  padding: 12px;
-  text-align: left;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  font-family: "Orbitron", sans-serif; /* Tech-inspired font */
-  font-weight: bold; /* Optional: Makes the header bolder */
-}
-body.dark-theme table th {
   background-color: #284a6b;
   padding: 12px;
   text-align: left;
@@ -432,10 +449,11 @@ body.dark-theme #scrollBtn:hover {
   background-color: #34495e;
   transform: scale(1.1);
 }
-body.dark-theme .subtitle has-text-centered{
+body.dark-theme .subtitle.has-text-centered{
   color: #fff;
 }
-/*........................................................................................................................*/
+
+
 
 /* Light theme styles */
 body.light-theme {
@@ -515,16 +533,6 @@ body.light-theme table {
 }
 
 body.light-theme table th {
-  background-color: #0080ff; /* Darker header */
-  color: #000000; /* Set white color for text */
-  padding: 12px;
-  text-align: left;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  font-family: "Orbitron", sans-serif; /* Tech-inspired font */
-  font-weight: bold; /* Optional: Makes the header bolder */
-}
-body.light-theme table th {
   background-color: hsl(131, 100%, 42%);
   color: #000000 !important; /* Force white color */
   padding: 12px;
@@ -541,13 +549,13 @@ body.light-theme #title-two {
 }
 
 body.light-theme table td {
-  background-color: linear-gradient(145deg, #f0f9ff, #5cff33);
+  background: linear-gradient(145deg, #f0f9ff, #5cff33);
   color: white;
   padding: 12px;
 }
 
 body.light-theme table tr:hover {
-  background-color: linear-gradient(145deg, #f0f9ff, #5cff33, white);
+  background: linear-gradient(145deg, #f0f9ff, #5cff33, white);
   transition: background-color 0.4s ease;
 }
 
@@ -887,7 +895,7 @@ body {
   width: 20px;
   height: 20px;
 }
-body.light-theme .subtitle has-text-centered{
+body.light-theme .subtitle.has-text-centered{
   color: black;
 }
 .vertical-links {

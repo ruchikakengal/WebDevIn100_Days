@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archery Master</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="gameContainer">
+        <div id="mainMenu" class="screen active">
+            <div class="menu-content">
+                <h1 class="game-title" style="margin-top: 10rem;">🏹 ARCHERY MASTER</h1>
+                <div class="menu-buttons">
+                    <button class="menu-btn" data-mode="timeAttack">
+                        <span class="btn-icon">⏱️</span>
+                        Time Attack
+                        <span class="btn-desc">60 seconds to score maximum points</span>
+                    </button>
+                    <button class="menu-btn" data-mode="accuracy">
+                        <span class="btn-icon">🎯</span>
+                        Accuracy Mode
+                        <span class="btn-desc">10 arrows, best accuracy wins</span>
+                    </button>
+                    <button class="menu-btn" data-mode="endless">
+                        <span class="btn-icon">♾️</span>
+                        Endless Mode
+                        <span class="btn-desc">Keep going until you miss</span>
+                    </button>
+                    <button class="menu-btn" id="leaderboardBtn">
+                        <span class="btn-icon">🏆</span>
+                        Leaderboard
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameScreen" class="screen">
+            <canvas id="gameCanvas"></canvas>
+
+            <div id="gameUI">
+                <div class="hud-top">
+                    <div class="hud-left">
+                        <div class="score-display">
+                            <span class="label">Score:</span>
+                            <span id="scoreValue">0</span>
+                        </div>
+                        <div class="combo-display">
+                            <span class="label">Combo:</span>
+                            <span id="comboValue">0</span>
+                        </div>
+                    </div>
+                    <div class="hud-center">
+                        <div id="timerDisplay" class="timer-display">
+                            <span class="label">Time:</span>
+                            <span id="timerValue">60</span>
+                        </div>
+                        <div id="arrowsDisplay" class="arrows-display">
+                            <span class="label">Arrows:</span>
+                            <span id="arrowsValue">10</span>
+                        </div>
+                    </div>
+                    <div class="hud-right">
+                        <div class="level-display">
+                            <span class="label">Level:</span>
+                            <span id="levelValue">1</span>
+                        </div>
+                        <button id="pauseBtn" class="control-btn">⏸️</button>
+                    </div>
+                </div>
+
+                <div id="powerMeter" class="power-meter">
+                    <div class="power-label">Power</div>
+                    <div class="power-bar">
+                        <div id="powerFill" class="power-fill"></div>
+                    </div>
+                    <div class="power-percentage">0%</div>
+                </div>
+
+                <div id="windIndicator" class="wind-indicator">
+                    <div class="wind-label">Wind</div>
+                    <div class="wind-arrow" id="windArrow">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5"
+                                    orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#00ff88" />
+                                </marker>
+                            </defs>
+                            <line x1="20" y1="30" x2="20" y2="10" stroke="#00ff88" stroke-width="3"
+                                marker-end="url(#arrowhead)" />
+                        </svg>
+                    </div>
+                    <div class="wind-strength" id="windStrength">0</div>
+                </div>
+
+                <div id="aimingGuide" class="aiming-guide">
+                    <div class="crosshair"></div>
+                    <div class="trajectory-line" id="trajectoryLine"></div>
+                </div>
+
+                <div id="instructions" class="instructions">
+                    <div class="instruction-text">
+                        <span class="desktop-only">Drag mouse to aim • Hold to charge power • Release to shoot</span>
+                        <span class="mobile-only">Touch and drag to aim • Hold to charge • Release to shoot</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pauseMenu" class="screen overlay">
+            <div class="menu-content">
+                <h2>Game Paused</h2>
+                <div class="menu-buttons">
+                    <button id="resumeBtn" class="menu-btn">Resume Game</button>
+                    <button id="restartBtn" class="menu-btn">Restart</button>
+                    <button id="mainMenuBtn" class="menu-btn">Main Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameOverScreen" class="screen overlay">
+            <div class="menu-content">
+                <h2 id="gameOverTitle">Game Over!</h2>
+                <div class="stats-display">
+                    <div class="stat">
+                        <span class="stat-label">Final Score:</span>
+                        <span id="finalScore" class="stat-value">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Best Combo:</span>
+                        <span id="bestCombo" class="stat-value">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Accuracy:</span>
+                        <span id="finalAccuracy" class="stat-value">0%</span>
+                    </div>
+                    <div id="newRecord" class="new-record">🎉 NEW RECORD! 🎉</div>
+                </div>
+                <div class="menu-buttons">
+                    <button id="playAgainBtn" class="menu-btn">Play Again</button>
+                    <button id="gameOverMenuBtn" class="menu-btn">Main Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="leaderboardScreen" class="screen overlay">
+            <div class="menu-content">
+                <h2>🏆 Leaderboard</h2>
+                <div class="leaderboard-tabs">
+                    <button class="tab-btn active" data-mode="timeAttack">Time Attack</button>
+                    <button class="tab-btn" data-mode="accuracy">Accuracy</button>
+                    <button class="tab-btn" data-mode="endless">Endless</button>
+                </div>
+                <div id="leaderboardList" class="leaderboard-list">
+
+                </div>
+                <div class="menu-buttons">
+                    <button id="clearScoresBtn" class="menu-btn danger">Clear Scores</button>
+                    <button id="backToMenuBtn" class="menu-btn">Back to Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="hitEffects"></div>
+
+    <script src="physics.js"></script>
+    <script src="audio.js"></script>
+    <script src="ui.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>

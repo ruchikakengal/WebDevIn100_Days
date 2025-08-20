@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tank Fighting</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="1200" height="800"></canvas>
+
+        <div id="mainMenu" class="menu">
+            <h1>Tank Fighter</h1>
+            <div class="menu-buttons">
+                <button id="startGame" class="menu-btn">Single Player</button>
+                <button id="startTwoPlayer" class="menu-btn">Two Player</button>
+                <button id="instructions" class="menu-btn">Instructions</button>
+                <button id="settings" class="menu-btn">Settings</button>
+            </div>
+        </div>
+
+        <div id="instructionsMenu" class="menu hidden">
+            <h2>Instructions</h2>
+            <div class="instructions-content">
+                <div class="control-group">
+                    <h3>Single Player Controls</h3>
+                    <p><strong>WASD / Arrow Keys:</strong> Move and rotate tank</p>
+                    <p><strong>Spacebar:</strong> Fire primary bullets</p>
+                    <p><strong>Shift:</strong> Fire secondary weapon (missiles)</p>
+                </div>
+                <div class="control-group">
+                    <h3>Two Player Controls</h3>
+                    <p><strong>Player 1:</strong> WASD + G (shoot) + F (missiles)</p>
+                    <p><strong>Player 2:</strong> Arrow Keys + Enter (shoot) + RShift (missiles)</p>
+                </div>
+                <div class="control-group">
+                    <h3>Objectives</h3>
+                    <p>• Destroy all enemy tanks to advance levels</p>
+                    <p>• Collect power-ups to gain advantages</p>
+                    <p>• Avoid enemy fire and obstacles</p>
+                    <p>• Survive as long as possible</p>
+                </div>
+                <div class="control-group">
+                    <h3>Power-ups</h3>
+                    <p><i class="fas fa-heart" style="color: red;"></i> Health Pack - Restore HP</p>
+                    <p><i class="fas fa-shield-alt" style="color: blue;"></i> Shield - Temporary invincibility</p>
+                    <p><i class="fas fa-bolt" style="color: yellow;"></i> Speed Boost - Faster movement</p>
+                    <p><i class="fas fa-crosshairs" style="color: orange;"></i> Double Damage - More power</p>
+                </div>
+            </div>
+            <button id="backToMenu" class="menu-btn">Back to Menu</button>
+        </div>
+
+        <div id="settingsMenu" class="menu hidden">
+            <h2>Settings</h2>
+            <div class="settings-content">
+                <div class="setting-item">
+                    <label for="volumeSlider">Volume:</label>
+                    <input type="range" id="volumeSlider" min="0" max="100" value="50">
+                    <span id="volumeValue">50%</span>
+                </div>
+                <div class="setting-item">
+                    <label for="difficultySelect">Difficulty:</label>
+                    <select id="difficultySelect">
+                        <option value="easy">Easy</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="tankColorSelect">Tank Color:</label>
+                    <select id="tankColorSelect">
+                        <option value="green" selected>Green</option>
+                        <option value="blue">Blue</option>
+                        <option value="red">Red</option>
+                        <option value="yellow">Yellow</option>
+                    </select>
+                </div>
+            </div>
+            <button id="backToMenuFromSettings" class="menu-btn">Back to Menu</button>
+        </div>
+
+        <div id="levelCompleteMenu" class="menu hidden">
+            <h2>Level Complete!</h2>
+            <div id="levelStats" class="stats-content">
+                <p>Level: <span id="levelCompleteLevel">1</span></p>
+                <p>Level Score: <span id="levelCompleteScore">0</span></p>
+                <p>Enemies Defeated: <span id="levelCompleteEnemies">0</span></p>
+                <p>Accuracy: <span id="levelCompleteAccuracy">0%</span></p>
+                <p>Time Bonus: <span id="levelCompleteTimeBonus">0</span></p>
+            </div>
+            <div class="menu-buttons">
+                <button id="nextLevelBtn" class="menu-btn primary">Next Level</button>
+                <button id="quitToMenuBtn" class="menu-btn">Main Menu</button>
+            </div>
+        </div>
+
+        <div id="gameOverMenu" class="menu hidden">
+            <h2>Game Over</h2>
+            <div id="finalStats" class="stats-content">
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <p>Level Reached: <span id="finalLevel">1</span></p>
+                <p>Enemies Destroyed: <span id="finalKills">0</span></p>
+                <p>Accuracy: <span id="finalAccuracy">0%</span></p>
+            </div>
+            <div class="menu-buttons">
+                <button id="playAgain" class="menu-btn">Play Again</button>
+                <button id="backToMenuFromGameOver" class="menu-btn">Main Menu</button>
+            </div>
+        </div>
+
+        <div id="gameHUD" class="hud hidden">
+            <div class="hud-top">
+                <div class="hud-item">
+                    <span>Score: <span id="scoreDisplay">0</span></span>
+                </div>
+                <div class="hud-item">
+                    <span>Level: <span id="levelDisplay">1</span></span>
+                </div>
+                <div class="hud-item">
+                    <span>Enemies: <span id="enemiesDisplay">0</span></span>
+                </div>
+                <div class="game-controls">
+                    <button id="pauseBtn" class="control-btn">Pause</button>
+                    <button id="resumeBtn" class="control-btn hidden">Resume</button>
+                    <button id="quitBtn" class="control-btn">Quit</button>
+                </div>
+            </div>
+
+            <div class="minimap">
+                <canvas id="minimapCanvas" width="150" height="100"></canvas>
+            </div>
+            <div class="hud-bottom">
+                <div class="health-bar-container">
+                    <div class="health-bar">
+                        <div id="healthBarFill" class="health-bar-fill"></div>
+                    </div>
+                    <span id="healthDisplay">100/100</span>
+                </div>
+                <div class="ammo-display">
+                    <span>Ammo: <span id="ammoDisplay">∞</span></span>
+                    <span>Missiles: <span id="missileDisplay">10</span></span>
+                </div>
+                <div class="mode-display">
+                    <span id="dayNightDisplay">Day</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <script src="audio.js"></script>
+    <script src="particles.js"></script>
+    <script src="physics.js"></script>
+    <script src="entities.js"></script>
+    <script src="ai.js"></script>
+    <script src="ui.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
