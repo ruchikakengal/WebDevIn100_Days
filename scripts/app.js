@@ -1039,7 +1039,6 @@ class WebDev100Days {
         features: ["Slide", "Solve"]
       },
 
-
       {
         originalDay: 156,
         name: "Flappy Bird",
@@ -1131,6 +1130,17 @@ class WebDev100Days {
       },
 
       {
+
+        originalDay: 158,
+        name: "Fanta Website Clone",
+        description: "Enjoy your first Drink ",
+        demoLink: "./public/Fanta-Website/index.html",
+        category: "creativity",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Fanta", "Coldrink", "Animation"]
+      }
+
+      {
         originalDay: 160,
         name: "Fitness Club ",
         description: "Your Only Gym",
@@ -1139,6 +1149,7 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Gym", "Weight", "Fitness"]
       },
+
 
 
       {
@@ -1153,15 +1164,6 @@ class WebDev100Days {
           "Dark/Light Mode Toggle with Persistence", "Responsive and Accessible UI",
           "Animated Border Gradient Styling", "Empty Library Message Handling"]
       },
-      {
-        originalDay: 164,
-        name: "Drum Kit",
-        description: "Play the Drum",
-        demoLink: "./public/Drum-Kit/index.html",
-        category: "productivity",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Music", "Drum"]
-      },
 
       {
         originalDay: 165,
@@ -1173,18 +1175,18 @@ class WebDev100Days {
         features: [
           "Dynamic grid scaling, pattern generation & replay, dark/light mode, score & level tracking, keyboard accessibility, animated feedback, and replay option."
         ]
-      }, 
-      
+      },
       {
-         originalDay:166, 
-         name: "Salon Website ",
-          description: "Firt Cut Free",
-          demoLink: "./public/Salon-Website/index.html",
-          category: "creativity",
-          technologies: ["HTML", "CSS", "JavaScript"],
-          features: ["salon", "cutting", "glow up"]
-  }
-
+        originalDay: 166,
+        name: "3D Modern Chair Product Page",
+        description: "Product page of Modern Chair 3D layout with the animation of different color pallets",
+        demoLink: "./public/Day-95modernChair/index.html",
+        category: "creativity",
+        technologies: ["HTML", "CSS"],
+        features: [
+          "Modern Chair - Product Page with Animation and Styling"
+        ]
+      }
     ];
 
     this.projects = projectsData.map((project, index) => ({
@@ -1234,6 +1236,7 @@ class WebDev100Days {
     if (this.currentFilter !== 'all') {
       filtered = filtered.filter(project => project.category === this.currentFilter);
     }
+
 
     if (this.searchTerm) {
       filtered = filtered.filter(project =>
