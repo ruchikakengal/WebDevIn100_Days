@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Wizard – Scramble & Solve</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">
+                <i class="fas fa-magic"></i>
+                Word Wizard
+            </h1>
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Game Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <i class="fas fa-star"></i>
+                <span>Score: <span id="score">0</span></span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-fire"></i>
+                <span>Streak: <span id="streak">0</span></span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-clock"></i>
+                <span>Time: <span id="timer">60</span>s</span>
+            </div>
+        </div>
+
+        <!-- Game Area -->
+        <div class="game-area">
+            <div class="word-display">
+                <h2 class="scrambled-word" id="scrambledWord">Ready to start?</h2>
+            </div>
+            
+            <div class="hint-section">
+                <i class="fas fa-lightbulb"></i>
+                <p class="hint-text" id="hintText">Click "Start Game" to begin!</p>
+            </div>
+
+            <div class="input-section">
+                <input type="text" id="userInput" placeholder="Type your answer here..." disabled>
+                <button id="submitBtn" class="submit-btn" disabled>
+                    <i class="fas fa-check"></i>
+                    Submit
+                </button>
+            </div>
+
+            <div class="game-controls">
+                <button id="startBtn" class="start-btn">
+                    <i class="fas fa-play"></i>
+                    Start Game
+                </button>
+                <button id="newWordBtn" class="new-word-btn" style="display: none;">
+                    <i class="fas fa-random"></i>
+                    New Word
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Messages -->
+        <div class="result-message" id="resultMessage"></div>
+
+        <!-- Game Over Modal -->
+        <div class="modal" id="gameOverModal">
+            <div class="modal-content">
+                <h2>Game Over!</h2>
+                <div class="final-stats">
+                    <p>Final Score: <span id="finalScore">0</span></p>
+                    <p>Best Streak: <span id="finalStreak">0</span></p>
+                    <p>Words Solved: <span id="wordsSolved">0</span></p>
+                </div>
+                <button id="playAgainBtn" class="play-again-btn">
+                    <i class="fas fa-redo"></i>
+                    Play Again
+                </button>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> How to Play</h3>
+            <ul>
+                <li>Unscramble the word based on the hint provided</li>
+                <li>Type your answer and click Submit</li>
+                <li>Get points for correct answers and build your streak!</li>
+                <li>Beat the timer for an extra challenge</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
