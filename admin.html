@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CarePlus • Admin</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <header class="nav nav--solid">
+    <div class="brand"><i class="ri-shield-cross-line"></i> CarePlus Admin</div>
+    <nav class="links">
+      <a href="#appointments">Appointments</a>
+      <a href="#doctors">Doctors</a>
+      <button class="btn btn--ghost" id="alogout"><i class="ri-logout-box-r-line"></i> Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card glass">
+      <h2>Overview</h2>
+      <div class="grid4 stats">
+        <div class="stat"><span id="a_total">0</span><small>Total Appointments</small></div>
+        <div class="stat"><span id="a_pending">0</span><small>Pending</small></div>
+        <div class="stat"><span id="a_approved">0</span><small>Approved</small></div>
+        <div class="stat"><span id="a_rejected">0</span><small>Rejected</small></div>
+      </div>
+    </section>
+
+    <!-- Appointments -->
+    <section id="appointments" class="card">
+      <div class="section__head">
+        <h3><i class="ri-calendar-check-line"></i> Appointments</h3>
+        <div class="filters">
+          <select id="af_status">
+            <option value="">All statuses</option>
+            <option>Pending</option>
+            <option>Approved</option>
+            <option>Rejected</option>
+          </select>
+          <input id="af_search" type="search" placeholder="Search by patient/doctor…" />
+        </div>
+      </div>
+      <div class="tablewrap">
+        <table class="table">
+          <thead>
+            <tr><th>Patient</th><th>Doctor</th><th>Specialty</th><th>Date</th><th>Time</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="a_apps"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Doctors -->
+    <section id="doctors" class="card">
+      <div class="section__head">
+        <h3><i class="ri-stethoscope-line"></i> Doctors</h3>
+      </div>
+      <form id="addDoctor" class="grid4">
+        <input id="d_name" placeholder="Dr. Full Name" required />
+        <input id="d_spec" placeholder="Specialty (e.g., Cardiology)" required />
+        <input id="d_loc" placeholder="Location (e.g., Vadodara)" required />
+        <input id="d_slots" placeholder="Slots (e.g., 09:00,10:30,14:00)" required />
+        <button class="btn btn--primary" type="submit"><i class="ri-add-line"></i> Add Doctor</button>
+      </form>
+      <div id="a_docs" class="cards"></div>
+    </section>
+  </main>
+
+  <div id="toast"></div>
+
+  <script src="app.js"></script>
+  <script>
+    protectAdmin();
+    renderAdminOverview();
+    renderAdminAppointments();
+    renderAdminDoctors();
+
+    document.getElementById('af_status').addEventListener('change', () => { renderAdminAppointments(); });
+    document.getElementById('af_search').addEventListener('input', () => { renderAdminAppointments(); });
+
+    document.getElementById('alogout').onclick = () => { localStorage.removeItem('cp_admin'); location.href='index.html'; };
+
+    // Add doctor
+    document.getElementById('addDoctor').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      addDoctorFromForm();
+    });
+  </script>
+</body>
+</html>

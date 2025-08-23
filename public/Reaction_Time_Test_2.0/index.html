@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reaction Time Test 2.0</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    Reaction Time Test 2.0
+    <label class="switch" title="Toggle Light/Dark Mode">
+      <input type="checkbox" id="theme-toggle" aria-label="Toggle Light/Dark Mode" />
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <main>
+    <section id="info-bar" role="region" aria-live="polite" aria-atomic="true">
+      <div id="level">Level: 1</div>
+      <div id="score">Score: 0</div>
+      <div id="reaction-time">Reaction Time: 0 ms</div>
+    </section>
+
+    <section id="game-area" aria-label="Reaction Test Game Area" tabindex="0">
+      <!-- Targets appear here -->
+    </section>
+
+    <button id="start-btn" aria-pressed="false" aria-label="Start Game">Start Test</button>
+
+    <div id="message" role="alert" aria-live="assertive"></div>
+  </main>
+
+  <audio id="success-sound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>
+  <audio id="fail-sound" src="https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

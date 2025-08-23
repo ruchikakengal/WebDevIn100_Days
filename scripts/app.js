@@ -259,6 +259,20 @@ class WebDev100Days {
         features: ["Real-time Data", "City Search", "Weather Icons"]
       },
       {
+  originalDay: 12,
+  name: "Health Checkup Appointment",
+  description: "Doctor appointment scheduled for a routine health checkup on 25th Aug, 2025 at 10:30 AM.",
+  demoLink: "Home.html", // link to details page
+  category: "Basic",
+  technologies: ["HTML", "CSS","JS"], 
+  features: [
+    "Doctor consultation details",
+    "Date & time reminder",
+    "Hospital/Clinic information"
+  ]
+},
+
+      {
         originalDay: 13,
         name: "Coin Flip",
         description: "A realistic coin flipping animation with statistics tracking.",
@@ -1090,7 +1104,17 @@ class WebDev100Days {
           category: "creativity",
           technologies: ["HTML", "CSS", "JavaScript"],
           features: ["Gym", "Weight", "Fitness"]
-  },
+        },
+      {
+      originalDay: 161,
+      name: "Reaction Time Test 2.0",
+      description: "Challenging reaction game where players quickly identify and click the correct shape and color among multiple targets with increasing levels and timed responses.",
+      demoLink: "./public/Reaction_Time_Test_2.0/index.html",
+      category: "games",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      features: ["Multiple colorful shapes display", "timed reaction tracking", "progressive levels", "scoring system", "light/dark mode", "responsive layout", "keyboard accessibility", "animations", "sound effects"]
+      }, 
+
 
 {
           originalDay: 163,
