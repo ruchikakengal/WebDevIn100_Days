@@ -1269,6 +1269,7 @@ class WebDev100Days {
              category: "creativity",
              technologies: ["HTML", "CSS", "JavaScript"],
              features: ["Animal", "Save", "Website"]
+
          },
 
 
@@ -1315,6 +1316,7 @@ class WebDev100Days {
               category: "creativity",
               technologies: ["HTML", "CSS", "JavaScript"],
               features: ["SunDown", "Studio", "Website"]
+
          }
 
     
