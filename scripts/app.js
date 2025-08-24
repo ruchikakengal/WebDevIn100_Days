@@ -1235,7 +1235,16 @@ class WebDev100Days {
              category: "creativity",
              technologies: ["HTML", "CSS", "JavaScript"],
              features: ["Christmas", "Lights", "Website"]
-         }
+         },
+           {
+    originalDay: 172,
+    name: "Parallax Scrolling Demo",
+    description: "A smooth parallax scrolling effect with layered backgrounds and fixed text.",
+    demoLink: "./public/ParallaxScrollingDemo/index.html",
+    category: "creativity",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    features: ["Parallax Effect", "Fixed Text Overlay", "Responsive Design"]
+  }
 
     
 
