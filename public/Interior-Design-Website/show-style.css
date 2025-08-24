@@ -1,0 +1,75 @@
+.banner{
+    height: 85vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url(source/show-background-living-room.jpg); */
+}
+.content{
+    top: 45%;
+}
+
+
+
+
+
+
+
+.m1{
+    padding: 50px;
+}
+.t1{
+    width: 100%;
+    text-align: center;
+}
+.t1 p{
+    font-size: 30px;
+}
+.d1{
+    margin: 50px 0 0 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.d1 div{
+    width: 550px;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    text-align: center;
+    padding: 0 0 10px 0;
+    margin: 0 0 70px 0;
+}
+.d1 div img{
+    display: block;
+    width: inherit;
+    transition: .5s;
+    cursor: pointer;
+}
+.d1 img:hover{
+    transform: scale(1.05);
+}
+.d1 div h2{
+    margin: 20px 0 10px 0;
+    text-align: center;
+    font-size: 25px;
+}
+.d1 div span{
+    font-size: 25px;
+}
+.d1 div button{
+    cursor: pointer;
+    font-size: 15px;
+    background: #ffffff;
+    border: 2px solid #eb595f;
+    padding: 10px;
+    margin: 0 0 0 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: .5s;
+    bottom: 10px;
+    right: 10px;
+}
+.d1 div button:hover{
+    color: #ffffff;
+    background: #eb595f;
+}

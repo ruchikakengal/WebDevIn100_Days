@@ -1,0 +1,123 @@
+.banner{
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url('source/corona-background.jpg');
+}
+.content{
+    width: 65%;
+    left: 17.5%;
+}
+
+
+
+.m1{
+    padding: 50px;
+}
+.t1{
+    width: 75%;
+    margin: auto;
+    text-align: center;
+}
+.t1 h1{
+   font-size: 45px;
+}
+.d1{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.d1 div{
+    margin: 25px;
+    height: 215px;
+}
+.d1 div h1{
+    font-size: 35px;
+    width: 100%;
+    margin: 25px 0 25px 0;
+}
+.d1 div p{
+    font-size: 20px;
+}
+.d1 div img{
+    display: block;
+}
+
+
+
+
+
+.m2{
+    margin: 30px 0 20px 0;
+}
+.m2 div{
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: auto;
+    width: 872px;
+    height: 490px;
+    overflow: hidden;
+    background: url('source/corona-m2-img.png');
+    background-size: cover;
+    /* filter: brightness(50%); */
+}
+
+
+
+.m3{
+    padding: 50px;
+    margin: 0 0 100px 0;
+    text-align: center;
+}
+.t3 h1{
+    font-size: 45px;
+    margin: 0 0 15px 0;
+}
+.t3 p{
+    font-size: 19px;
+    margin: 0 0 30px 0;
+}
+.d3{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.d3 div{
+    width: 150px;
+    height: 150px;
+    background: #eb595f;
+}
+.d3 div img{
+    width: 150px;
+    height: 150px;
+}
+
+
+
+
+
+
+.t4{
+    width: 75%;
+    margin: auto;
+}
+.t4 h1{
+    font-size: 45px;
+    width: 100%;
+}
+.d4{
+    width: 75%;
+    margin: auto;
+}
+.d4 h4{
+    font-size: 30px;
+    font-weight: bold;
+}   
+.d4 p{
+    font-size: 23px;
+}
+.d4 div{
+    background: #ffd5d5;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
