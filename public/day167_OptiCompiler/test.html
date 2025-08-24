@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OptiCompiler Test</title>
+</head>
+<body>
+    <h1>OptiCompiler Test</h1>
+    <textarea id="codeInput" rows="10" cols="50">x = 10 + 5;
+y = x * 2;
+print(y);
+if (x > 10) { print(x); }</textarea>
+    <br><br>
+    <button onclick="testCompile()">Test Compile</button>
+    <br><br>
+    <div id="output"></div>
+
+    <script src="tokenizer_js.js"></script>
+    <script src="parser_js.js"></script>
+    <script src="optimizer_js.js"></script>
+    <script src="machine_code_js.js"></script>
+    <script src="compiler_js.js"></script>
+    
+    <script>
+        function testCompile() {
+            const output = document.getElementById("output");
+            try {
+                const sourceCode = document.getElementById("codeInput").value.trim();
+                
+                // Test tokenization
+                const tokens = tokenize(sourceCode);
+                output.innerHTML += "<h3>Tokens:</h3><pre>" + JSON.stringify(tokens, null, 2) + "</pre>";
+                
+                // Test parsing
+                const ast = parse(tokens);
+                output.innerHTML += "<h3>AST:</h3><pre>" + JSON.stringify(ast, null, 2) + "</pre>";
+                
+                // Test optimization
+                const optimizationResult = optimize(ast);
+                output.innerHTML += "<h3>Optimized Code:</h3><pre>" + optimizationResult.optimizedCode + "</pre>";
+                
+                // Test machine code generation
+                const machineCode = generateMachineCode(optimizationResult.optimizedCode);
+                output.innerHTML += "<h3>Machine Code:</h3><pre>" + machineCode + "</pre>";
+                
+                output.innerHTML += "<h3>Status: SUCCESS!</h3>";
+            } catch (error) {
+                output.innerHTML += "<h3>Error:</h3><pre>" + error.message + "</pre>";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1207,7 +1207,7 @@ class WebDev100Days {
           category: "creativity",
           technologies: ["HTML", "CSS", "JavaScript"],
           features: ["salon", "cutting", "glow up"]
-  }, 
+        },
     {
       originalDay: 167,
       name: "Agency Website",
@@ -1259,6 +1259,16 @@ class WebDev100Days {
              category: "creativity",
              technologies: ["HTML", "CSS", "JavaScript"],
              features: ["Christmas", "Lights", "Website"]
+         },
+         {
+
+            originalDay:172,
+             name: "OptiCompiler",
+             description: "A mini Ahead-of-Time compiler with optimizations",
+             demoLink: "./public/OptiCompiler/index.html",
+             category: "Creativity",
+             technologies: ["C++", "JavaScript", "HTML", "CSS"],
+             features: ["Lexical Analysis", "Syntax Parsing", "Intermediate Code Generation", "Optimizations (constant folding, dead code elimination)"]
          },
 
          {
@@ -1387,9 +1397,18 @@ class WebDev100Days {
             technologies: ["HTML", "CSS", "JavaScript"],
             features: ["Chat", "UI", "Channels"]
 
-         }
+         },
+         {
 
-
+            originalDay:183,
+            name: "Uttarakhand Image",
+            description: "Click on a district to visit its Wikipedia page.",
+            demoLink: "./public/uttar/uttarakhand_image.html",
+            category: "Creativity",
+            technologies: ["C++", "JavaScript", "HTML", "CSS"],
+            features: ["knowledge","Image"]
+           
+        }
     ];
 
     this.projects = projectsData.map((project, index) => ({

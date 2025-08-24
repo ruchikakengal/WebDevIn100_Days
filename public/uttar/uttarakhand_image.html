@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uttarakhand Image Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .map-container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+        .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4fd;
+            border-radius: 5px;
+            border-left: 4px solid #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Uttarakhand Interactive Map</h1>
+    <p>Click on any district to visit its Wikipedia page</p>
+    
+    <div class="map-container">
+        <img src="uttarakhand.jpg" usemap="#uttarakhandmap" alt="Uttarakhand Map" width="600">
+        
+        <map name="uttarakhandmap">
+            <area shape="rect" coords="100,50,180,100" href="https://en.wikipedia.org/wiki/Dehradun_district" alt="Dehradun" target="_blank">
+            <area shape="rect" coords="200,120,280,170" href="https://en.wikipedia.org/wiki/Haridwar_district" alt="Haridwar" target="_blank">
+            <area shape="rect" coords="150,200,230,250" href="https://en.wikipedia.org/wiki/Nainital_district" alt="Nainital" target="_blank">
+            <area shape="rect" coords="250,80,330,130" href="https://en.wikipedia.org/wiki/Uttarkashi_district" alt="Uttarkashi" target="_blank">
+            <area shape="rect" coords="300,160,380,210" href="https://en.wikipedia.org/wiki/Pauri_Garhwal_district" alt="Pauri Garhwal" target="_blank">
+        </map>
+        
+        <div class="instructions">
+            <strong>How to use:</strong> Hover over the map to see clickable districts. Click on any district to learn more about it on Wikipedia.
+        </div>
+    </div>
+</body>
+</html>
