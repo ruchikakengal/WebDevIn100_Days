@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+  <head>
+
+		<script src="js/oz.js"></script>
+		<script src="js/css3.oz.js"></script>
+		<script src="js/rubik.js"></script>
+		<script src="js/quaternion.js"></script>
+		<link rel="stylesheet" href="css/style.css" />
+    
+    <!-- <script src="../assets/js/color-modes.js"></script> -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+    <title>Animated Rubik's Cube Solving Guide</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+<link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/headers.css" rel="stylesheet">
+  </head>
+  <body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-sm-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Animation of Algorithm</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="algo-text text-center fw-light position-relative" id="rubik-algo-text">R U R <span class="highlighted-move">U</span> R U R</div>
+        <div class="rubik-window" id="rubik-window"></div>
+      </div>
+      <div class="modal-footer d-flex justify-content-between w-100">
+
+
+        <div class="btn-group" role="group">
+          <!-- Slower 按鈕 -->
+          <button id="slower-btn" type="button" class="btn btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fast-forward" viewBox="0 0 16 16">
+              <g transform="rotate(180, 8, 8)">
+                <path d="M6.804 8 1 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+                <path d="M14.804 8 9 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+              </g>
+            </svg>
+          </button>
+        
+          <!-- 顯示速度的按鈕（Disabled） -->
+          <button id="speed-display" type="button" class="btn btn-secondary disabled">
+            <span id="speed-text">1x</span>
+          </button>
+        
+          <!-- Faster 按鈕 -->
+          <button id="faster-btn" type="button" class="btn btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fast-forward" viewBox="0 0 16 16">
+              <path d="M6.804 8 1 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+              <path d="M14.804 8 9 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+            </svg>
+          </button>
+        </div>
+        
+        
+      
+        <!-- 右側的按鈕群組 -->
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-secondary" onclick="init_and_demonstrate(lastInitState, lastAlgoToBeExec, lastRotation)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+              <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+            </svg>
+            Replay
+          </button>
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+              <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+            </svg>
+            Close
+          </button> -->
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="rubik" viewBox="0 0 78 90">
+    <path clip-rule="evenodd" d="M38.7766 0L77.5532 22.5V67.5L52.8349 81.8427V66.3862L38.7766 74.5434L38.6861 74.596L38.7766 90L0 67.5V22.5L38.7766 0ZM38.7766 28.4296L52.4727 20.4825L38.7766 12.5354L25.0805 20.4825L38.7766 28.4296Z" fill="#E55841" fill-rule="evenodd"/><path clip-rule="evenodd" d="M52.8349 51.0862V66.3862L38.7766 74.5434L38.5068 74.7V74.3869L24.1787 66.0731V50.7731V36.9V36.3731L10.9367 28.6894L25.0805 20.4825L38.7766 28.4296L24.6328 36.6365L38.5068 44.6869L38.7766 44.8435L52.9204 36.6365L66.2675 28.8919V43.2919L52.8349 51.0862Z" fill="#5B76FF" fill-rule="evenodd"/><path clip-rule="evenodd" d="M62.7128 13.8889L77.5532 22.5V67.5L52.8349 81.8427V66.3862L66.2675 58.5919V43.2919V28.8919L66.6165 28.6894L52.4727 20.4825L62.7128 13.8889ZM49.634 6.3L38.7766 0L0 22.5V67.5L10.7461 73.7354V58.2788V42.9788V28.8L10.9367 28.6894L25.0805 20.4825L38.7766 12.5354L49.634 6.3Z" fill="#5B76FF" fill-rule="evenodd"/><path clip-rule="evenodd" d="M52.8349 66.3862L38.7766 74.5434L38.5068 74.7V74.3869V59.4V59.0869L24.1787 50.7731L10.7461 42.9788V28.8L10.9367 28.6894L24.1787 36.3731L24.6328 36.6365L38.5068 44.6869L38.7766 44.8435L52.9204 36.6365L38.7766 28.4296L52.4727 20.4825L66.6165 28.6894L66.2675 28.8919V43.2919L52.8349 51.0862V66.3862Z" fill="#FFFDFD" fill-rule="evenodd"/><path clip-rule="evenodd" d="M52.8349 66.3862V51.0862L38.7766 59.2435L38.5068 59.0869V45L38.7766 44.8435L38.5068 44.6869L24.6328 36.6365L24.1787 36.3731V36.9V50.7731L38.5068 59.0869V59.4V74.3869V74.7L38.7766 74.5434L52.8349 66.3862Z" fill="#199D46" fill-rule="evenodd"/><path d="M0 22.5V67.5L10.7461 73.7354V58.2788V42.9788V28.8L10.9367 28.6894L25.0805 20.4825L14.3617 14.1667L0 22.5Z" fill="#199D46"/><path clip-rule="evenodd" d="M77.5532 22.5L63.1915 14.1667L52.4727 20.4825L66.6165 28.6894L66.2675 28.8919V43.2919L77.5532 36.6365V22.5ZM14.3617 14.1667L27.9191 6.3L38.7766 12.5354L25.0805 20.4825L14.3617 14.1667Z" fill="#199D46" fill-rule="evenodd"/><path clip-rule="evenodd" d="M0 67.5V36.3731L10.7461 42.9788V58.2788V73.7354L0 67.5Z" fill="#FF8C5B" fill-rule="evenodd"/><path d="M0 22.5V36.3731L10.7461 42.9788V28.8L10.9367 28.6894L0 22.5Z" fill="#FF8C5B"/><path clip-rule="evenodd" d="M63.1915 14.1667L77.5532 22.5L66.6165 28.6894L52.4727 20.4825L63.1915 14.1667ZM27.9191 6.3L14.3617 14.1667L25.0805 20.4825L38.7766 12.5354L27.9191 6.3Z" fill="#FF8C5B" fill-rule="evenodd"/><path clip-rule="evenodd" d="M52.8349 51.0862V66.3862L38.7766 74.5434L38.5068 74.7V74.3869V59.4V59.0869L38.7766 59.2435L52.8349 51.0862ZM38.7766 44.8435L38.5068 45V44.6869L38.7766 44.8435ZM24.6328 36.6365L24.1787 36.3731V36.9L24.6328 36.6365Z" fill="#FF8C5B" fill-rule="evenodd"/><path d="M0 52.2V67.5L10.7461 73.7354V58.3923L0 52.2Z" fill="#EDDC40"/><path d="M10.7461 43.1791V58.3923L24.1787 66.1327V51.0279L10.7461 43.1791Z" fill="#EDDC40"/><path clip-rule="evenodd" d="M38.5068 45V44.6869L24.6328 36.6365L38.7766 28.4296L52.4727 20.4825L66.6165 28.6894L66.2675 28.8919L52.9204 36.6365L38.7766 44.8435L38.5068 45ZM24.1787 36.9L24.6328 36.6365L24.1787 36.3731V36.9ZM38.5068 74.7V74.3891L38.7757 74.544L38.5068 74.7Z" fill="#EDDC40" fill-rule="evenodd"/><mask fill="white" id="path-7-inside-1"><path d="M38.7766 0L77.5532 22.5V67.5L38.7766 90L0 67.5V22.5L38.7766 0Z"/></mask><path d="M10.7461 28.8L10.4957 28.3672L10.2461 28.5116V28.8H10.7461ZM39.0068 89.1V44.1H38.0068V89.1H39.0068ZM24.6787 81V36H23.6787V81H24.6787ZM11.2461 73.8V28.8H10.2461V73.8H11.2461ZM53.3349 81.9V36.9H52.3349V81.9H53.3349ZM66.7675 73.8V28.8H65.7675V73.8H66.7675ZM38.7577 45.4325L77.5343 22.9325L77.0325 22.0675L38.2559 44.5675L38.7577 45.4325ZM38.7577 59.8325L77.5343 37.3325L77.0325 36.4675L38.2559 58.9675L38.7577 59.8325ZM38.7577 75.1325L77.5343 52.6325L77.0325 51.7675L38.2559 74.2675L38.7577 75.1325ZM24.435 37.3293L62.9691 14.3182L62.4564 13.4596L23.9223 36.4707L24.435 37.3293ZM10.9965 29.2328L49.8844 6.73278L49.3836 5.86722L10.4957 28.3672L10.9965 29.2328ZM0.0188501 22.9325L38.7954 45.4325L39.2973 44.5675L0.520728 22.0675L0.0188501 22.9325ZM14.347 14.8325L53.1236 37.3325L53.6254 36.4675L14.8488 13.9675L14.347 14.8325ZM0.0188501 37.3325L38.7954 59.8325L39.2973 58.9675L0.520728 36.4675L0.0188501 37.3325ZM0.0188501 52.6325L38.7954 75.1325L39.2973 74.2675L0.520728 51.7675L0.0188501 52.6325ZM27.7796 6.73247L66.5562 29.2325L67.058 28.3675L28.2814 5.86753L27.7796 6.73247ZM38.7766 0L39.2785 -0.864938L38.7766 -1.15615L38.2747 -0.864938L38.7766 0ZM77.5532 22.5H78.5532V21.9241L78.0551 21.6351L77.5532 22.5ZM77.5532 67.5L78.0551 68.3649L78.5532 68.0759V67.5H77.5532ZM38.7766 90L38.2747 90.8649L38.7766 91.1562L39.2785 90.8649L38.7766 90ZM0 67.5H-1V68.0759L-0.501878 68.3649L0 67.5ZM0 22.5L-0.501878 21.6351L-1 21.9241V22.5H0ZM38.2747 0.864938L77.0513 23.3649L78.0551 21.6351L39.2785 -0.864938L38.2747 0.864938ZM76.5532 22.5V67.5H78.5532V22.5H76.5532ZM77.0513 66.6351L38.2747 89.1351L39.2785 90.8649L78.0551 68.3649L77.0513 66.6351ZM39.2785 89.1351L0.501878 66.6351L-0.501878 68.3649L38.2747 90.8649L39.2785 89.1351ZM1 67.5V22.5H-1V67.5H1ZM0.501878 23.3649L39.2785 0.864938L38.2747 -0.864938L-0.501878 21.6351L0.501878 23.3649Z" fill="grey" mask="url(#path-7-inside-1)"/>
+  </symbol>
+  <symbol id="bootstrap" viewBox="0 0 118 94">
+    <title>Bootstrap</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
+  </symbol>
+  <symbol id="home" viewBox="0 0 16 16">
+    <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+  </symbol>
+  <!-- <symbol id="layer2" viewBox="0 0 16 16">
+    <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+    <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
+  </symbol> -->
+
+  
+  <symbol id="layer1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-grid-3x2-gap" viewBox="0 8 16 16">
+    <path d="M4 4v2H2V4zm1 7V9a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 5V9a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 4v2H7V4zm5 0h-2v2h2zM4 9v2H2V9zm5 0v2H7V9zm5 0v2h-2V9zm-3-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/>
+  </symbol>
+
+  <!-- <symbol id="table" viewBox="0 0 16 16">
+    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
+  </symbol> -->
+
+  <symbol id="layer2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-grid-3x2-gap" viewBox="0 0 16 16">
+    <path d="M4 4v2H2V4zm1 7V9a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 5V9a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 4v2H7V4zm5 0h-2v2h2zM4 9v2H2V9zm5 0v2H7V9zm5 0v2h-2V9zm-3-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/>
+  </symbol>
+
+  <symbol id="layer3-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-grid-3x3-gap" viewBox="0 0 16 16">
+    <path d="M4 2v2H2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 2v2H7V2zm5 0v2h-2V2zM4 7v2H2V7zm5 0v2H7V7zm5 0h-2v2h2zM4 12v2H2v-2zm5 0v2H7v-2zm5 0v2h-2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"/>
+  </symbol>
+
+  <symbol id="layer3-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-grid-3x3-gap-fill" viewBox="0 0 16 16">
+    <path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+  </symbol>
+
+
+  <symbol id="people-circle" viewBox="0 0 16 16">
+    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+  </symbol>
+  <symbol id="grid" viewBox="0 0 16 16">
+    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+  </symbol>
+</svg>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+    <div class="container">
+      <!-- Logo -->
+      <a href="/rubik-guide/" class="navbar-brand d-flex align-items-center">
+        <!-- <svg class="bi me-2" width="60" height="48" role="img" aria-label="Bootstrap">
+          <use xlink:href="#rubik"/>
+        </svg> -->
+        <svg class="bi me-2 me-lg-2" width="24" height="24">
+          <use xlink:href="#layer3-2" x="0" y="0"/>
+        </svg>
+        <!-- Rubik's Cube Guide -->
+        Third Layer (Side)
+      </a>
+
+      <!-- 漢堡選單按鈕 -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- 導航選單 -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a href="./index.html" class="nav-link text-white d-flex flex-row flex-lg-column align-items-center text-lg-center">
+              <svg class="bi me-2 me-lg-0" width="24" height="24">
+                <use xlink:href="#home"/>
+              </svg>
+              <span>Introduction</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="./layer1.html" class="nav-link text-white d-flex flex-row flex-lg-column align-items-center text-lg-center">
+              <svg class="bi me-2 me-lg-0" width="24" height="24">
+                <use xlink:href="#layer1" x="0" y="10"/>
+              </svg>
+              <span>First Layer</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="./layer2.html" class="nav-link text-white d-flex flex-row flex-lg-column align-items-center text-lg-center">
+              <svg class="bi me-2 me-lg-0" width="24" height="24">
+                <use xlink:href="#layer2"/>
+              </svg>
+              <span>Second Layer</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="./layer3_1.html" class="nav-link text-white d-flex flex-row flex-lg-column align-items-center text-lg-center">
+              <svg class="bi me-2 me-lg-0" width="24" height="24">
+                <use xlink:href="#layer3-1"/>
+              </svg>
+              <span>Third Layer (Top)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="./layer3_2.html" class="nav-link text-secondary d-flex flex-row flex-lg-column align-items-center text-lg-center">
+              <svg class="bi me-2 me-lg-0" width="24" height="24">
+                <use xlink:href="#layer3-2"/>
+              </svg>
+              <span>Third Layer (Side)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+<!-- <div class="b-example-divider"></div> -->
+
+<main class="mb-5">
+
+  <section class="pt-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-8 col-md-8 mx-auto">
+        <!-- <h4 class="fw-light text-secondary">The Layer-By-Layer Method Explained</h4> -->
+        <!-- <h1 class="display-5 mb-5">Second Layer</h1> -->
+        <h3 class="display-5 fw-light mb-4">Your Goal</h3>
+
+        <div class="row">
+          <div class="col-8 col-md-6 mx-auto">
+            <img src="./image/Layer3_2_goal.png" alt="" class="img-fluid">
+          </div>
+        </div>
+
+        <p class="lead text-center text-body-secondary mt-5 px-2">Complete the whole cube by achieving the following sub-goals.</p>
+
+        <!-- <p>
+          <a href="#" class="btn btn-primary my-2">Main call to action</a>
+          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        </p> -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="text-center container">
+
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#firstLayerDetails" aria-expanded="false" aria-controls="firstLayerDetails">Sub-goal 1: Solving the corners</button>
+        </h2>
+        <div id="firstLayerDetails" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+
+
+        
+            <div class="text-center">
+              <h4 class="fw-light my-3">Your Sub-Goal</h4>
+              <div class="row">
+                <div class="col-10 col-md-6 mx-auto">
+                  <img src="./image/Layer3_2_sub_goal_1.png" alt="Forming the Cross" class="img-fluid d-block mx-auto">
+                </div>
+              </div>
+              <hr>
+
+              <div class="mt-3 mb-2 mt-3">Check the third layer's four corner sides for matching color pairs.</div>
+
+              <div class="row">
+                <div class="col-12 col-sm-10 col-md-6 mx-auto">
+                  <img src="./image/Layer3_2_sub_goal_1_same_vs_different.png" alt="Forming the Cross" class="img-fluid d-block mx-auto">
+                </div>
+              </div>
+
+
+              <div class="mt-3 mb-2 mt-3">Then, position the matching pair on the left and execute the algorithm.</div>
+              <div class="mt-3 mb-5 small text-secondary">(If the cube doesn't have a pair of corner, the same algorithm will create a pair.)</div>
+              <!-- <h5 class="fw-bold mb-3">Easy Case</h5> -->
+              <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 justify-content-center">
+          
+                <div class="algo-body col d-flex">
+                  <button
+                    class="card shadow-sm"
+                    init-state="YYY BXR GXB RXG OXO WWW 
+                                YYY BBB RRR GGG OOO WWW
+                                YYY BBB RRR GGG OOO WWW"
+                    exec-algo="F R' F L2 F' R F L2 F2"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    onclick="init_and_demonstrate(this.getAttribute('init-state'), this.getAttribute('exec-algo'), {X: -20, Y: 35})">
+                    
+                    <!-- <h4 class="fw-light my-2">With Pair</h4>  -->
+                    <img class="bd-placeholder-img card-img-top" src="./image/Layer3_sub_goal_1_stage_1.png" alt="">
+                    <div class="card-body text-center w-100">
+                      <h4 class="fw-light text-center algo-display-box mt-2"></h4>
+                    </div>
+                  </button>
+                </div>
+
+                <!-- <div class="algo-body col d-flex">
+                  <button
+                    class="card shadow-sm"
+                    init-state="YYY OXR GXB RXO BXG WWW 
+                                YYY BBB RRR GGG OOO WWW
+                                YYY BBB RRR GGG OOO WWW"
+                    exec-algo="F R' F L2 F' R F L2 F2 U'"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    onclick="init_and_demonstrate(this.getAttribute('init-state'), this.getAttribute('exec-algo'), {X: -20, Y: 35})">
+                    
+                    <h4 class="fw-light my-2">Without Pair</h4> 
+                    <img class="bd-placeholder-img card-img-top" src="./image/Layer3_sub_goal_1_stage_2.png" alt="">
+                    <div class="card-body text-center w-100">
+                      <h4 class="fw-light text-center algo-display-box mt-2"></h4>
+                    </div>
+                  </button>
+                </div> -->
+    
+        
+              </div>
+              <!-- <p class="mt-3"> Align the edge pieces with the center colors, then rotate them into position to create a white cross.  </p> -->
+            </div>
+            
+    
+
+
+          </div>
+        </div>
+      </div>
+    
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingIncorrect">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#incorrectExample" aria-expanded="false" aria-controls="incorrectExample">Sub-goal 2: Solving the Edges</button>
+        </h2>
+        <div id="incorrectExample" class="accordion-collapse collapse" aria-labelledby="headingIncorrect" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+
+            <div class="text-center">
+              <h4 class="fw-light my-3">Your Sub-Goal</h4>
+              <!-- <img src="./image/Layer3_2_sub_goal_2.png" alt="Forming the Cross" class="img-fluid d-block mx-auto" style="max-width: 250px;"> -->
+
+
+              <div class="row">
+                <div class="col-10 col-md-6 mx-auto">
+                  <img src="./image/Layer3_2_sub_goal_2.png" alt="Forming the Cross" class="img-fluid d-block mx-auto">
+                </div>
+              </div>
+
+
+              <hr>
+
+              <div class="mt-3 mb-2 mt-3">Put the solved side at the back. Then, repeat the following algorithm until solved.</div>
+              <!-- <img src="./image/Layer3_2_sub_goal_1_solved_side_vs_unsolved_side.png" alt="Forming the Cross" class="img-fluid d-block mx-auto" style="max-width: 300px;"> -->
+
+              <div class="row">
+                <div class="col-12 col-sm-10 col-md-6 mx-auto">
+                  <img src="./image/Layer3_2_sub_goal_1_solved_side_vs_unsolved_side.png" alt="Forming the Cross" class="img-fluid d-block mx-auto">
+                </div>
+              </div>
+
+              <!-- <div class="mt-3 mb-2 mt-3">Then, position the matching pair on the left and execute the algorithm.</div> -->
+              <div class="mt-3 mb-5 small text-secondary">(If the cube doesn't have a solved side, the same algorithm will create a solved side.)</div>
+
+              <!-- <h5 class="fw-bold mb-3 mt-5">Base Cases</h5> -->
+              <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 justify-content-center">
+          
+                <div class="algo-body col d-flex">
+                  <button
+                    class="card shadow-sm"
+                    init-state="YYY BRB ROR GGG OBO WWW 
+                                YYY BBB RRR GGG OOO WWW
+                                YYY BBB RRR GGG OOO WWW"
+                    exec-algo="R U' R U R U R U' R' U' R2"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    onclick="init_and_demonstrate(this.getAttribute('init-state'), this.getAttribute('exec-algo'), {X: -20, Y: -30})">
+                    
+                    <img class="bd-placeholder-img card-img-top" src="./image/Layer3_sub_goal_2_edge.png" alt="">
+                    <div class="card-body text-center w-100">
+                      <h4 class="fw-light text-center algo-display-box mt-2"></h4>
+                    </div>
+                  </button>
+                </div>
+
+              </div>
+
+              <!-- <h5 class="fw-bold mt-5">Congratulation! You have successfully solved your cube!</h5> -->
+
+
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </section>
+
+  
+
+
+
+
+</main>
+
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
+<script src="./bootstrap/bootstrap.bundle.min.js"></script>
+<!-- <script src="./js/rubik_operation.js"></script> -->
+
+<script>
+  var script = document.createElement('script');
+  script.src = './js/rubik_operation.js?v=' + new Date().getTime();
+  document.head.appendChild(script);
+</script>
+
+
+    </body>
+</html>
+
+
+       

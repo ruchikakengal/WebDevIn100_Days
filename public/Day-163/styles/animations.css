@@ -1,0 +1,412 @@
+/* Animation Styles */
+
+/* Fade-in animation for screens */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.screen.active {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Typing animation for story text */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.story-text.typing {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid;
+    animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: var(--primary-color);
+    }
+}
+
+/* Smooth text reveal */
+.story-paragraph {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: revealText 0.8s ease-out forwards;
+}
+
+.story-paragraph:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.story-paragraph:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.story-paragraph:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+@keyframes revealText {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Choice button animations */
+.choice-btn {
+    transform: scale(1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.choice-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.choice-btn:active {
+    transform: scale(0.98);
+}
+
+.choice-btn.animate-in {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInChoice 0.5s ease-out forwards;
+}
+
+.choice-btn.animate-in:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.choice-btn.animate-in:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.choice-btn.animate-in:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+@keyframes slideInChoice {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Progress bar animation */
+.progress-fill {
+    animation: progressGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes progressGlow {
+    from {
+        box-shadow: 0 0 5px rgba(99, 102, 241, 0.3);
+    }
+    to {
+        box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
+    }
+}
+
+/* Modal animations */
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    transform: scale(0.9) translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+/* Button pulse animation */
+.btn-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    }
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Shake animation for errors */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(10px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Slide transitions between screens */
+.screen-slide-out {
+    animation: slideOut 0.3s ease-in forwards;
+}
+
+.screen-slide-in {
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideOut {
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Theme-specific animations */
+.theme-fantasy .story-text {
+    animation: sparkle 4s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(139, 92, 246, 0.1);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 30px rgba(251, 191, 36, 0.2);
+    }
+}
+
+.theme-sci-fi .story-content {
+    animation: techGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes techGlow {
+    from {
+        box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.1);
+    }
+    to {
+        box-shadow: inset 0 0 40px rgba(6, 182, 212, 0.2);
+    }
+}
+
+.theme-mystery .story-text {
+    animation: mysteryFade 5s ease-in-out infinite;
+}
+
+@keyframes mysteryFade {
+    0%, 100% {
+        opacity: 0.9;
+        text-shadow: 0 0 10px rgba(124, 58, 237, 0.2);
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+    }
+}
+
+.theme-horror .story-content {
+    animation: horrorFlicker 4s ease-in-out infinite;
+}
+
+@keyframes horrorFlicker {
+    0%, 90%, 100% {
+        box-shadow: 0 0 30px rgba(220, 38, 38, 0.1);
+    }
+    95% {
+        box-shadow: 0 0 50px rgba(220, 38, 38, 0.3);
+    }
+}
+
+/* Loading animations */
+.loading-dots::after {
+    content: '';
+    animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+    0%, 20% {
+        content: '';
+    }
+    40% {
+        content: '.';
+    }
+    60% {
+        content: '..';
+    }
+    80%, 100% {
+        content: '...';
+    }
+}
+
+/* Particle animation for background */
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleFloat 10s linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) translateX(0px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* Narration indicator */
+.narrating {
+    position: relative;
+}
+
+.narrating::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    animation: narrateBorder 1s ease-in-out infinite alternate;
+}
+
+@keyframes narrateBorder {
+    from {
+        opacity: 0.3;
+        border-width: 1px;
+    }
+    to {
+        opacity: 1;
+        border-width: 3px;
+    }
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+    .choice-btn:hover {
+        transform: none;
+    }
+    
+    .choice-btn:active {
+        transform: scale(0.95);
+    }
+    
+    .story-text.typing {
+        white-space: normal;
+        animation: none;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .story-text.typing {
+        animation: none;
+        white-space: normal;
+    }
+    
+    .choice-btn:hover {
+        transform: none;
+    }
+    
+    .progress-fill,
+    .theme-fantasy .story-text,
+    .theme-sci-fi .story-content,
+    .theme-mystery .story-text,
+    .theme-horror .story-content {
+        animation: none;
+    }
+    
+    .story-paragraph {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+    
+    .choice-btn.animate-in {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+}
+
+/* Focus animations */
+.btn:focus,
+.choice-btn:focus {
+    animation: focusPulse 0.5s ease-out;
+}
+
+@keyframes focusPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+    }
+}

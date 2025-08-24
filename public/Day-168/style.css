@@ -1,0 +1,47 @@
+.container{
+      display: inline;
+}
+
+#bingo-table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+#bingo-table, #bingo-table th, #bingo-table td {
+  border: 1px solid #ccc;
+}
+#bingo-table th, #bingo-table td {
+  text-align: center;
+}
+#bingo-table th {
+  border-bottom: 3px double #ccc;
+  padding: 1.2rem 1.5rem;
+}
+#bingo-table td {
+  padding: 0;
+}
+#bingo-table td div {
+  padding: 1.2rem 1.5rem;
+  min-height: 5rem;
+}
+#bingo-table input[type=checkbox] {
+  display: none;
+}
+#bingo-table input[type=checkbox]:checked + div {
+  background: #ece;
+}
+
+#numbers-list {
+  -moz-column-count: 5;
+       column-count: 5;
+  margin-top: -5rem;
+}
+#numbers-list li {
+  margin: 0;
+  text-align: right;
+}
+#numbers-list li input {
+  margin: 0;
+}
+#numbers-list li.checked {
+  background-color: #ece;
+}

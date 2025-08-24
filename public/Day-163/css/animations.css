@@ -1,0 +1,434 @@
+/* Animation Utilities */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Slide In From Right */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+}
+
+/* Slide In From Left */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+/* Scale In */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.scale-in {
+    animation: scaleIn 0.4s ease-out;
+}
+
+/* Typing Animation */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.typing-animation {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--accent-primary);
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: var(--accent-primary);
+    }
+}
+
+/* Float Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Glow Animation */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px var(--accent-glow);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--accent-glow), 0 0 30px var(--accent-glow);
+    }
+}
+
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+}
+
+/* Bounce In Animation */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.bounce-in {
+    animation: bounceIn 0.6s ease-out;
+}
+
+/* Rotate Animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotate 2s linear infinite;
+}
+
+/* Wobble Animation */
+@keyframes wobble {
+    0% { transform: translateX(0%); }
+    15% { transform: translateX(-25px) rotate(-5deg); }
+    30% { transform: translateX(20px) rotate(3deg); }
+    45% { transform: translateX(-15px) rotate(-3deg); }
+    60% { transform: translateX(10px) rotate(2deg); }
+    75% { transform: translateX(-5px) rotate(-1deg); }
+    100% { transform: translateX(0%); }
+}
+
+.wobble {
+    animation: wobble 0.8s ease-in-out;
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    10%, 30% {
+        transform: scale(0.9);
+    }
+    20%, 40%, 60%, 80% {
+        transform: scale(1.1);
+    }
+    50%, 70% {
+        transform: scale(1.05);
+    }
+}
+
+.heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* Text Focus Animation */
+@keyframes textFocus {
+    0% {
+        text-shadow: 0 0 0 transparent;
+    }
+    100% {
+        text-shadow: 
+            0 0 10px var(--accent-primary),
+            0 0 20px var(--accent-primary),
+            0 0 30px var(--accent-primary);
+    }
+}
+
+.text-focus {
+    animation: textFocus 0.8s ease-out forwards;
+}
+
+/* Character Entrance Animations */
+.character-entrance-1 {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.character-entrance-2 {
+    animation: slideInRight 0.8s ease-out 0.2s both;
+}
+
+.character-entrance-3 {
+    animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+.character-entrance-4 {
+    animation: scaleIn 0.8s ease-out 0.6s both;
+}
+
+/* Choice Hover Effects */
+.choice-hover-effect-1:hover {
+    animation: pulse 0.5s ease-in-out;
+}
+
+.choice-hover-effect-2:hover {
+    animation: wobble 0.6s ease-in-out;
+}
+
+.choice-hover-effect-3:hover {
+    animation: glow 1s ease-in-out;
+}
+
+/* Background Particle Animation */
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-100px) rotate(180deg);
+    }
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    animation: particleFloat 10s linear infinite;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 6s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 8s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 1s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 3s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 5s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 7s; }
+
+/* Loading Animations */
+@keyframes loadingDots {
+    0%, 20% {
+        color: transparent;
+        text-shadow: 0.25em 0 0 transparent, 0.5em 0 0 transparent;
+    }
+    40% {
+        color: var(--accent-primary);
+        text-shadow: 0.25em 0 0 transparent, 0.5em 0 0 transparent;
+    }
+    60% {
+        text-shadow: 0.25em 0 0 var(--accent-primary), 0.5em 0 0 transparent;
+    }
+    80%, 100% {
+        text-shadow: 0.25em 0 0 var(--accent-primary), 0.5em 0 0 var(--accent-primary);
+    }
+}
+
+.loading-dots::after {
+    content: '...';
+    animation: loadingDots 1.5s infinite;
+}
+
+/* Transition Classes */
+.transition-fast {
+    transition: all 0.2s ease;
+}
+
+.transition-normal {
+    transition: all 0.3s ease;
+}
+
+.transition-slow {
+    transition: all 0.5s ease;
+}
+
+/* Hover Transform Effects */
+.hover-lift:hover {
+    transform: translateY(-2px);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-rotate:hover {
+    transform: rotate(5deg);
+}
+
+/* Story-specific Animations */
+.story-reveal {
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.5s forwards;
+}
+
+.choice-appear {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInRight 0.4s ease-out forwards;
+}
+
+.choice-appear:nth-child(1) { animation-delay: 0.1s; }
+.choice-appear:nth-child(2) { animation-delay: 0.2s; }
+.choice-appear:nth-child(3) { animation-delay: 0.3s; }
+.choice-appear:nth-child(4) { animation-delay: 0.4s; }
+
+/* Theme-specific enhanced animations */
+.theme-fantasy .magical-sparkle {
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-fantasy .magical-sparkle::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle, var(--accent-primary) 1px, transparent 1px),
+        radial-gradient(circle, var(--accent-primary) 1px, transparent 1px);
+    background-size: 50px 50px, 80px 80px;
+    background-position: 0 0, 40px 40px;
+    animation: sparkleMove 20s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes sparkleMove {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.theme-scifi .data-stream {
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-scifi .data-stream::after {
+    content: '01001001 01101110 01100110 01101001 01101110 01101001 01110100 01111001';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    color: var(--accent-primary);
+    font-family: monospace;
+    font-size: 8px;
+    line-height: 1;
+    animation: dataFlow 5s linear infinite;
+    opacity: 0.1;
+}
+
+@keyframes dataFlow {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

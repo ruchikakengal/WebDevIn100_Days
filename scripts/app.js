@@ -1570,9 +1570,48 @@ class WebDev100Days {
               features: ["Yoga", "Website", "Showcase"]
 
          },
-              {
+               {
+            originalDay: 149,
+            name: "Email Validator",
+            description: "A website for real time email validation",
+            demoLink: "./public/Day-101_Email_Validator/index.html",
+            category: "Utility",
+            technologies: ["HTML", "CSS", "JavaScript"],
+            features: ["Real time email validation", "Clean UI", "Website"]
+          },
+          {
+           originalDay:150, 
+           name:"TATA 1mg Website Clone",
+           description: "A website for online pharmacy services",
+           demoLink: "./public/TATA-1mg-Clone/index.html",
+           category: "creativity",
+           technologies: ["HTML", "CSS", "JavaScript"],
+           features: ["Online Pharmacy", "Health", "Wellness"]
 
-              originalDay: 151,
+         },
+           {
+
+          originalDay:151,
+          name : "Jewellery Website",
+          description: "A website for showcasing jewellery products",
+          demoLink: "./public/Jwellery-Website/index.html",
+          category: "creativity",
+          technologies: ["HTML", "CSS", "JavaScript"],
+          features: ["Jewellery", "Website", "Showcase"]
+         },
+          {
+
+              originalDay: 152,
+              name:"Blog Website",
+              description: "A website for showcasing blog posts",
+              demoLink: "./public/Blog-Website/index.html",
+              category: "creativity",
+              technologies: ["HTML", "CSS", "JavaScript"],
+              features: ["Blog", "Website", "Showcase"]
+         },
+             {
+
+              originalDay: 153,
               name : "SunDown Studio",
               description: "A website for showcasing SunDown Studio's projects",
               demoLink: "./public/SunDown-Studio-Website/index.html",
@@ -1581,7 +1620,6 @@ class WebDev100Days {
               features: ["SunDown", "Studio", "Website"]
 
          }
-           
         ];
 
         this.projects = projectsData.map((project, index) => ({

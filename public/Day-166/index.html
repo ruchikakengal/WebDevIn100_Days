@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Your Past Life - Mystical Journey</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <canvas id="starsCanvas"></canvas>
+    <canvas id="particlesCanvas"></canvas>
+
+    <div class="audio-control">
+        <button id="audioToggle" class="audio-btn">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        <audio id="backgroundMusic" loop>
+            <source src="https://www.soundjay.com/misc/sounds/magic-chime-02.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <section id="landingPage" class="screen active">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="mystical-title">
+                    <span class="glow-text">Discover</span>
+                    <span class="glow-text delayed">Your</span>
+                    <span class="glow-text super-delayed">Past Life</span>
+                </h1>
+                <p class="subtitle">Embark on a mystical journey through time and uncover the secrets of your ancient
+                    soul</p>
+                <button id="startJourneyBtn" class="cta-button">
+                    <span class="btn-text">Start Your Journey</span>
+                    <span class="btn-glow"></span>
+                </button>
+            </div>
+            <div class="mystical-symbols">
+                <div class="symbol symbol-1">✦</div>
+                <div class="symbol symbol-2">◈</div>
+                <div class="symbol symbol-3">❋</div>
+                <div class="symbol symbol-4">✧</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quizPage" class="screen">
+        <div class="container">
+            <div class="quiz-header">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span class="progress-text">Question <span id="currentQuestion">1</span> of <span
+                            id="totalQuestions">5</span></span>
+                </div>
+            </div>
+
+            <div class="quiz-content">
+                <div id="questionContainer" class="question-container">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resultsPage" class="screen">
+        <div class="container">
+            <div class="results-content">
+                <h2 class="results-title">Your Past Life Revealed</h2>
+                <div class="result-card" id="resultCard">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-symbol">🔮</div>
+                            <h3 class="past-life-title" id="pastLifeTitle"></h3>
+                            <p class="past-life-era" id="pastLifeEra"></p>
+                            <div class="card-decoration"></div>
+                        </div>
+                        <div class="card-back">
+                            <div class="past-life-story" id="pastLifeStory"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-actions">
+                    <button id="findAgainBtn" class="action-btn primary">
+                        <i class="fas fa-redo"></i>
+                        Find Again
+                    </button>
+                    <button id="shareResultBtn" class="action-btn secondary">
+                        <i class="fas fa-share-alt"></i>
+                        Share Result
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Share Your Past Life</h3>
+            <div class="share-options">
+                <button class="share-btn" onclick="copyToClipboard()">
+                    <i class="fas fa-copy"></i>
+                    Copy Link
+                </button>
+                <button class="share-btn" onclick="downloadResult()">
+                    <i class="fas fa-download"></i>
+                    Download Card
+                </button>
+            </div>
+            <div class="share-url">
+                <input type="text" id="shareUrl" readonly>
+            </div>
+        </div>
+    </div>
+
+    <script src="quiz-data.js"></script>
+    <script src="results.js"></script>
+    <script src="particles.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

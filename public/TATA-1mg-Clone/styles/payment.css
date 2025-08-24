@@ -1,0 +1,221 @@
+body{
+    margin: 0%;
+    background: whitesmoke;
+    font-family: "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;;
+}
+/* header */
+#payment_header{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background: white;
+   padding-left: 2%;
+   padding-right: 2%;
+   height: 55px;
+}
+#mg_home{
+   cursor: pointer;
+}
+#need_help{
+   cursor: pointer;
+}
+#payment_header>div>img:nth-child(2){
+   margin-left: 30px;
+   height: 60px;
+}
+/* footer */
+#payment_footer{
+ display: flex;
+ width: 80%;
+ margin: auto;
+}
+#payment_footer>div{
+ border-top: 1px solid darkgray;
+ margin-right: 1%;
+}
+#payment_footer>div:nth-child(2){
+   width: 30%;
+}
+#payment_footer>div:nth-child(1){
+   width: 60%;
+}
+#payment_footer>div>p{
+   font-size: 11px;
+   color: lightslategray;
+}
+#payment_footer>div>p>span{
+   color: lightsalmon;
+}
+
+/* payment_main */
+#payment_main{
+   display: flex;
+   width: 80%;
+   margin: auto;
+   margin-top: 30px;
+   margin-bottom: 50px;
+}
+#payment_options{
+   background: oldlace;
+   width: 20%;
+   padding: 3%;
+}
+#payment_options>div{
+    display: flex;
+    font-size: 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+#payment_options>div>p{
+    margin-left: 5%;
+}
+
+
+#card_details{
+    width: 30%;
+    padding: 2%;
+    background: white;
+}
+#card_details>div{
+    margin-bottom: 20px;
+}
+#card_details>div>p{
+    font-size: 10px;
+    color: darkgray;
+}
+#card_details>div>input{
+    border: none;
+    border-bottom: 2px solid darkgray;
+    outline:none;
+    width: 95%;
+}
+#date_code{
+    display: flex;
+}
+#date_code>div{
+    width: 50%;
+}
+#date_code>div>p{
+    font-size: 10px;
+    color: darkgray;
+}
+#date_code>div>input{
+    border: none;
+    border-bottom: 2px solid darkgray;
+    outline:none;
+}
+#checkbox{
+width: 25px !important;
+height: 25px;
+}
+#card_payment_btn{
+   margin-top: 20px;
+ margin-left: 60%;
+ margin-bottom: 80px;
+ padding: 10px 8px 10px 8px ;
+ color: white;
+ background: #ff6f61;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+}
+#card_brands{
+   text-align: center;
+}
+#card_brands>p{
+   color: darkslategray !important;
+}
+#card_brands>div{
+   display: flex;
+   justify-content: center;
+}
+#card_brands>div>img{
+   width: 40px;
+   height: 25px;
+   margin-left: 5px;
+}
+
+
+#price_summary{
+   width: 30%;
+   margin-left: 2%;
+}
+#price_summary>div{
+   margin-bottom: 20px;
+   padding: 2%;
+   background: white;
+}
+#show_offers_first{
+   font-size: 14px;
+}
+#show_offers_first>img{
+   width: 18px;
+   height: 18px;
+}
+#show_offers{
+   text-align: right;
+   font-size: 15px;
+   cursor: pointer;
+}
+
+#mg_cash>div{
+  display: flex;
+  justify-content: space-between;
+}
+#mg_cash>div>input{
+   width: 30px;
+   height: 25px;
+   margin-top: 12px;
+}
+#mg_cash>div>div>p:nth-child(1){
+   font-size: 15px;
+}
+#mg_cash>div>div>p:nth-child(2){
+   font-size: 11px;
+   color: dimgray;
+}
+#mg_cash>div>p:nth-child(1){
+ font-size:12px ;
+}
+#mg_cash>div>p:nth-child(2){
+ font-size:12px ;
+ color: #ff6f61;
+ text-decoration: underline;
+ cursor: pointer;
+}
+
+
+#mrp_summary>div{
+   display: flex;
+   justify-content: space-between;
+   font-size: 12px;
+   color: dimgray;
+}
+#mrp_summary>div:nth-child(4){
+   color:#ff6f61 ;
+   cursor: pointer;
+}
+#mrp_summary>div:nth-child(6){
+   color: darkslategray;
+   font-size: 15px;
+   font-weight: bold;
+}
+#mrp_summary>div:nth-child(7){
+   background: honeydew;
+}
+#total_savings_amount{
+   color: green;
+   font-weight: bold;
+   font-size: 15px;
+}
+
+
+#main_card_payment_btn{
+   width: 100%;
+   color: white;
+   background: #ff6f61;
+   border-radius: 5px;
+   border: none;
+   height: 40px;
+   cursor: pointer;
+}
