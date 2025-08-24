@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost & Found Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <i class="fas fa-search"></i>
+                    Lost & Found Hub
+                </h1>
+                <div class="header-controls">
+                    <div class="stats">
+                        <span id="stats-total">0 items posted</span>
+                        <span id="stats-returned">0 returned</span>
+                    </div>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Add Item Section -->
+            <section class="add-item-section">
+                <button id="add-item-btn" class="add-item-btn">
+                    <i class="fas fa-plus"></i>
+                    Post New Item
+                </button>
+
+                <!-- Add Item Modal -->
+                <div id="add-item-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Post Lost or Found Item</h2>
+                            <button class="close-modal" aria-label="Close modal">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <form id="add-item-form" class="add-item-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="item-name">Item Name *</label>
+                                    <input type="text" id="item-name" name="itemName" required placeholder="e.g., iPhone 13, Black Wallet">
+                                </div>
+                                <div class="form-group">
+                                    <label for="item-status">Status *</label>
+                                    <select id="item-status" name="itemStatus" required>
+                                        <option value="">Select Status</option>
+                                        <option value="lost">Lost ❌</option>
+                                        <option value="found">Found ✅</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="item-category">Category *</label>
+                                    <select id="item-category" name="itemCategory" required>
+                                        <option value="">Select Category</option>
+                                        <option value="electronics">📱 Electronics</option>
+                                        <option value="clothing">👕 Clothing</option>
+                                        <option value="bags">🎒 Bags</option>
+                                        <option value="books">📚 Books</option>
+                                        <option value="id-cards">🆔 ID Cards</option>
+                                        <option value="others">📦 Others</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="item-date">Date *</label>
+                                    <input type="date" id="item-date" name="itemDate" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="item-location">Location *</label>
+                                <input type="text" id="item-location" name="itemLocation" required placeholder="e.g., Library 2nd Floor, Cafeteria, Parking Lot B">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="item-description">Description</label>
+                                <textarea id="item-description" name="itemDescription" placeholder="Additional details about the item..."></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-name">Contact Name *</label>
+                                    <input type="text" id="contact-name" name="contactName" required placeholder="Your name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-phone">Phone</label>
+                                    <input type="tel" id="contact-phone" name="contactPhone" placeholder="(555) 123-4567">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-email">Email *</label>
+                                <input type="email" id="contact-email" name="contactEmail" required placeholder="your.email@example.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="item-image">Upload Image</label>
+                                <div class="file-input-wrapper">
+                                    <input type="file" id="item-image" name="itemImage" accept="image/*">
+                                    <label for="item-image" class="file-input-label">
+                                        <i class="fas fa-camera"></i>
+                                        Choose Image
+                                    </label>
+                                </div>
+                                <div id="image-preview" class="image-preview"></div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-plus"></i>
+                                    Post Item
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search and Filter Section -->
+            <section class="search-filter-section">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search items by name...">
+                </div>
+                <div class="filters">
+                    <select id="status-filter">
+                        <option value="">All Items</option>
+                        <option value="lost">Lost Items ❌</option>
+                        <option value="found">Found Items ✅</option>
+                        <option value="returned">Returned Items 🏆</option>
+                    </select>
+                    <select id="category-filter">
+                        <option value="">All Categories</option>
+                        <option value="electronics">📱 Electronics</option>
+                        <option value="clothing">👕 Clothing</option>
+                        <option value="bags">🎒 Bags</option>
+                        <option value="books">📚 Books</option>
+                        <option value="id-cards">🆔 ID Cards</option>
+                        <option value="others">📦 Others</option>
+                    </select>
+                    <button id="clear-filters" class="btn btn-outline">
+                        <i class="fas fa-times"></i>
+                        Clear Filters
+                    </button>
+                </div>
+            </section>
+
+            <!-- Items Grid -->
+            <section class="items-section">
+                <div id="items-grid" class="items-grid">
+                    <!-- Items will be dynamically inserted here -->
+                </div>
+                <div id="no-items" class="no-items" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No items found</h3>
+                    <p>Try adjusting your search criteria or post the first item!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Success Animation -->
+    <div id="success-animation" class="success-animation">
+        <div class="success-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>Item Marked as Returned!</h3>
+            <p>Great job reuniting someone with their item! 🎉</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

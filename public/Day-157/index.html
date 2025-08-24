@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Time Capsule</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/themes.css">
+</head>
+
+<body>
+    <div class="background-animation">
+        <div class="stars"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <header class="header">
+            <h1 class="logo">
+                <i class="fas fa-time-capsule"></i>
+                Digital Time Capsule
+            </h1>
+            <div class="theme-selector">
+                <button class="theme-btn active" data-theme="metallic">
+                    <i class="fas fa-cog"></i> Metallic
+                </button>
+                <button class="theme-btn" data-theme="neon">
+                    <i class="fas fa-bolt"></i> Neon
+                </button>
+                <button class="theme-btn" data-theme="glass">
+                    <i class="fas fa-gem"></i> Glass
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="screen active">
+                <div class="welcome-content">
+                    <h2 class="welcome-title">Send Messages to Your Future Self</h2>
+                    <p class="welcome-subtitle">Create digital time capsules that unlock at the perfect moment</p>
+                    <div class="action-buttons">
+                        <button id="create-capsule-btn" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Create New Capsule
+                        </button>
+                        <button id="view-capsules-btn" class="btn btn-secondary">
+                            <i class="fas fa-eye"></i> View My Capsules
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Capsule Screen -->
+            <div id="create-screen" class="screen">
+                <div class="form-container">
+                    <h2 class="screen-title">Create Your Time Capsule</h2>
+
+                    <form id="capsule-form" class="capsule-form">
+                        <!-- Message Input -->
+                        <div class="form-group">
+                            <label for="message-input">Your Message to the Future</label>
+                            <div class="text-editor">
+                                <div class="editor-toolbar">
+                                    <button type="button" class="emoji-btn" data-emoji="😊">😊</button>
+                                    <button type="button" class="emoji-btn" data-emoji="🎉">🎉</button>
+                                    <button type="button" class="emoji-btn" data-emoji="💫">💫</button>
+                                    <button type="button" class="emoji-btn" data-emoji="🌟">🌟</button>
+                                    <button type="button" class="emoji-btn" data-emoji="🎯">🎯</button>
+                                    <button type="button" class="emoji-btn" data-emoji="🚀">🚀</button>
+                                    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                                    <button type="button" id="add-image-btn" class="toolbar-btn">
+                                        <i class="fas fa-image"></i>
+                                    </button>
+                                </div>
+                                <textarea id="message-input" placeholder="Write your message to your future self..."
+                                    required></textarea>
+                                <div id="image-preview" class="image-preview"></div>
+                            </div>
+                        </div>
+
+                        <!-- Unlock Date/Time -->
+                        <div class="form-group">
+                            <label for="unlock-datetime">When should this capsule unlock?</label>
+                            <div class="datetime-container">
+                                <input type="datetime-local" id="unlock-datetime" required>
+                                <div class="quick-options">
+                                    <button type="button" class="quick-btn" data-hours="24">1 Day</button>
+                                    <button type="button" class="quick-btn" data-hours="168">1 Week</button>
+                                    <button type="button" class="quick-btn" data-hours="720">1 Month</button>
+                                    <button type="button" class="quick-btn" data-hours="8760">1 Year</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Optional Settings -->
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="password-protect">
+                                <span class="checkmark"></span>
+                                Password protect this capsule
+                            </label>
+                            <input type="password" id="capsule-password" placeholder="Enter password"
+                                style="display: none;">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="email-notify">
+                                <span class="checkmark"></span>
+                                Send email notification when unlocked
+                            </label>
+                            <input type="email" id="notification-email" placeholder="Enter your email"
+                                style="display: none;">
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <button type="button" id="cancel-create-btn" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-lock"></i> Create & Lock Capsule
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- View Capsules Screen -->
+            <div id="view-screen" class="screen">
+                <div class="capsules-container">
+                    <h2 class="screen-title">Your Time Capsules</h2>
+                    <div id="capsules-grid" class="capsules-grid">
+                        <!-- Capsules will be dynamically loaded here -->
+                    </div>
+                    <button id="back-to-welcome" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                </div>
+            </div>
+
+            <!-- Capsule Detail Screen -->
+            <div id="detail-screen" class="screen">
+                <div class="capsule-detail">
+                    <div id="capsule-display" class="capsule-display">
+                        <!-- Capsule 3D model and countdown will be shown here -->
+                    </div>
+                    <button id="back-to-list" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Capsules
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Password Input -->
+    <div id="password-modal" class="modal">
+        <div class="modal-content">
+            <h3>Enter Password</h3>
+            <input type="password" id="modal-password" placeholder="Enter capsule password">
+            <div class="modal-actions">
+                <button id="cancel-password" class="btn btn-secondary">Cancel</button>
+                <button id="submit-password" class="btn btn-primary">Unlock</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <span id="toast-message"></span>
+            <button id="toast-close" class="toast-close">×</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="assets/sounds.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/capsule.js"></script>
+    <script src="js/emailjs-config.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

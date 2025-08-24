@@ -1,0 +1,178 @@
+.banner{
+    height: 75vh;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url(source/how-background.jpg);
+
+}
+.content{
+    width: 100%;
+    position: absolute;
+    top: 40%;
+}
+
+.m1{
+    padding: 50px;
+}
+.t1{
+    text-align: center;
+}
+.t1 h1{
+    font-size: 45px;
+}
+.t1 p{
+    font-size: 25px;
+}
+.d1{
+    margin: 100px 25px 25px 25px;
+    display: flex;
+    justify-content: space-around;
+}
+.d1 div{
+    width: 525px;
+    height: 295.8px;
+}
+.d1 div img{
+    border-radius: 10px;
+    height: inherit;
+    width: inherit;
+    display: block;
+}
+.d1 div h1{
+    margin: 20px 0 10px 15px;
+    font-size: 40px;
+}
+.d1 div li{
+    margin: 0 0 0 25px;
+}
+.d1 div h2{
+    margin: 12px 0 5px 0;
+    font-size: 25px;
+}
+.d1 div p{
+    margin: 5px 0 5px 0;
+    font-size: 20px;
+}
+.d1 div button{
+    border-radius: 10px;
+    font-size: 25px;
+    padding: 7px;
+    background: #ffffff;
+    border: 2px solid #eb595f;
+    font-weight: bold;
+    cursor: pointer;
+}
+.d1 div button:hover{
+    color: #ffffff;
+    background: #eb595f;
+}
+
+
+
+.m2{
+    background-color: #644b5e;
+    padding: 60px;
+}
+.m2 h1{
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+}
+
+
+.m3{
+    margin: 0 0 75px 0;
+}
+.d3{
+    margin: 75px 25px 25px 25px;
+    display: flex;
+    justify-content: space-around;
+}
+.d3 div{
+    width: 525px;
+    height: 295.8px;
+}
+.d3 div img{
+    border-radius: 10px;
+    height: inherit;
+    width: inherit;
+    display: block;
+}
+.d3 div h1{
+    margin: 20px 0 10px 15px;
+    font-size: 40px;
+}
+.d3 div li{
+    margin: 0 0 0 25px;
+}
+.d3 div h2{
+    margin: 12px 0 5px 0;
+    font-size: 25px;
+}
+.d3 div p{
+    margin: 5px 0 5px 0;
+    font-size: 20px;
+}
+
+
+
+.m4{
+    margin: 100px 0 0 0;
+    background-color: #644b5e;
+    padding: 60px;
+}
+.m4 h1{
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+}
+
+
+
+.d5{
+    margin: 75px 25px 25px 25px;
+    display: flex;
+    justify-content: space-around;
+}
+.d5 div{
+    width: 525px;
+    height: 295.8px;
+}
+.d5 div img{
+    border-radius: 10px;
+    height: inherit;
+    width: inherit;
+    display: block;
+}
+.d5 div h1{
+    margin: 80px 0 0 0;
+    font-size: 40px;
+}
+.d5 div p{
+    margin: 5px 0 5px 0;
+    font-size: 20px;
+}
+
+
+
+.t6{
+    width: 100%;
+    text-align: center;
+    margin: 100px 0 30px 0;
+}
+.t6 h1{
+    font-size: 45px;
+}
+.t6 p{
+    font-size: 25px;
+}
+.d6{
+    width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+.d6 div{
+    text-align: center;
+    width: 322px;
+}

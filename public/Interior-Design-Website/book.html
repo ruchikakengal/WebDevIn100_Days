@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interia: Best Interior Design Solutions for your Home | Get Free Quotes</title>
+    <link rel="stylesheet" href="./icons/css/all.css">
+    <link rel="stylesheet" href="./common-style.css">
+    <link rel="stylesheet" href="./book-style.css">
+    <link rel="shortcut icon" href="./source/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <script src="./book-code.js"></script>
+    <script src="./code.js"></script>
+
+    <div class="banner">
+        <div class="navbar">
+            <img onclick="btn('./index.html');" src="./source/logo.png" class="logo">
+            <ul>
+                <li><a href="#">Get Quote</a></li>
+                <li><a  href="./corona.html">covid-19</a></li>
+                <li><a href="./design.html">Design ideas</a></li>
+                <li><a href="./how.html">How It Works?</a></li>
+                <li><a href="./visit.html">Visit Us</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>TALK TO A DESIGNER</h1>
+        </div>
+    </div>
+
+    <div class="up" onclick="totop();">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <div class="m1">
+        <div class="d1">
+            <div class="final">
+                <div class="form" id="frm">
+                    <form action="form.php" method="GET">
+                        <input class="inp" id="nam" type="text" name="name" autocomplete="off" required>
+                        <label class="lab" id="lab_nam" for="name">
+                        <span class="spn" id="content-name">Name</span></label>
+                        
+                        <input class="inp" id="email" type="text" name="email" autocomplete="off" required>
+                        <label class="lab" id="lab_email" for="email">
+                        <span class="spn" id="content-email">Email</span></label>
+                        
+                        <input class="inp" id="num" type="text" name="num" min="5" max="10" autocomplete="off" required>
+                        <label class="lab" id="lab_num" for="num">
+                        <span class="spn" id="content-num">Mobile Number</span></label>
+                        
+                        <div>
+                            <input type="checkbox" id="whatsapp" checked>
+                            <label id="lab_chk" for="whatsapp">Send me updates on Whatsapp</label>
+                        </div>
+            
+                        <input class="inp" id="prop" type="text" name="prop" autocomplete="off" required>
+                        <label class="lab" id="lab_prop" for="prop">
+                        <span class="spn" id="content-prop">Looking For...</span></label>
+                    </form>
+                        <button onclick="frmsbm();" id="sub-btn">BOOK ONLINE CONSULTATION</button>
+                </div>
+                <div>
+                    <h2 id="subm">Your details are submitted. <br> Our staff will contact you soon.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m2">
+        <div class="t2">
+            <h1>Superior interiors</h1>
+            <p>With stunning designs and professional on-site services, we make dream homes come alive.</p>
+        </div>
+        <div class="d2">
+            <div onclick="btn('show.html?topic=master-bedroom');">
+                <img src="./source/book-m2-1.jpg">
+                <h3>Bedroom</h3>
+            </div>
+            <div onclick="btn('show.html?topic=dining-room');">
+                <img src="./source/book-m2-2.jpg">
+                <h3>Dining Room</h3>
+            </div>
+            <div onclick="btn('show.html?topic=living-room');">
+                <img src="./source/book-m2-3.jpg">
+                <h3>Living Room</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="m3">
+        <div class="d3">
+            <div>
+                <h1>Ensuring a safe experience from design to installation</h1>
+                <p>We're following all protocols to ensure your safety and vaccination drives are underway to ensure our employees are ready to meet you safely.</p>
+                <a href="./corona.html"><p class="rd">know more →</p></a>
+            </div>
+            <div>
+                <img src="./source/safe.jpg">
+            </div>
+        </div>
+    </div>
+
+    <div class="m4">
+        <div class="t4">
+            <h1>FAQs</h1>
+        </div>
+        <div class="d4">
+            <div onclick="showorhide('p1');">
+                <h4>Is this the right time to do my home interiors?</h4>
+                <p id="p1" style="display:none;"><span><br>Yes, it is. From meetings at our Experience Centres to installing your home interiors at the site, we have a strict no-contact safety policy. From temperature checks to fumigation, all is taken care of. So don't worry about kick-starting your dream project.</span>
+                <span><br>Since the process of co-creating a design typically takes 4-6 weeks, you can get started with online consultation. Our designers can assist you online via video calls. You can also schedule an appointment and meet us at our Experience Centre.</span></p>
+            </div>
+            <div onclick="showorhide('p2');">
+                <h4>Can I meet my interior designer?</h4>
+                <p id="p2" style="display:none;"><br>Yes, certainly. Keeping safety in mind, we have enabled 2 different ways of interactions:<br>1. Online consultation<br>2. Contactless and safe design meets at our Experience Centres<br>Please note: If your site or the place of meeting falls under Red or Containment Zone, we can only assign a designer for online consultation, and we won"t be in a position to facilitate face-to-face meetings.</p>
+            </div>
+            <div onclick="showorhide('p3');">
+                <h4>Can I have a meeting at my home?</h4>
+                <p id="p3" style="display:none;"><br>We would recommend meetings at our Experience Centre which is completely safe for your visit. We are taking every step to make it a safe environment. However, you can always opt for online consultation and we will be happy to discuss your project in detail.</p>
+            </div>
+            <div onclick="showorhide('p4');">
+                <h4>How can I select materials for design?</h4>
+                <p id="p4" style="display:none;"><br>While we can share images of the materials and finishes during the design phase online, you will have to visit our Experience Centre to finalise them. We can assure you that our centres are safe and we are adhering to every protocol. Please note - We can only facilitate your visit from green and orange zones. We will not be able to attend to visitors who do not adhere to safety protocols.</p>
+            </div>
+            <div onclick="showorhide('p5');">
+                <h4>How will my site be measured?</h4>
+                <p id="p5" style="display:none;"><br>You can share the floor plan of your home with our designers, that should help us to start your project. If in case you don’t have the floor plan, we will assign our representative for a site visit. Be assured, our representatives will follow all the protocol for their and your safety.</p>
+            </div>
+            <div onclick="showorhide('p6');">
+                <h4>What will be the timelines for my project completion?</h4>
+                <p id="p6" style="display:none;"><br>We will keep you updated on the timelines based on the discussion with the designers. The lockdown left us with no choice but to hold handover of all projects. Since the relaxation, things are slowly getting to normal. We are doing everything we can to cover up on the lost time and to deliver your home interiors in the safest way possible.</p>
+            </div>
+            <div onclick="showorhide('p7');">
+                <h4>Can I reach out to my Interia designer for any queries or clarifications?</h4>
+                <p id="p7" style="display:none;"><br>Yes, definitely. You can get in touch with your designers via video calls or messages, as per your convenience. We are always there to assist you.</p>
+            </div>
+            <div onclick="showorhide('p8');">
+                <h4>Can I visit the Interia Experience Centre during the lockdown restrictions?</h4>
+                <p id="p8" style="display:none;"><span><br>Yes, certainly. We have opened our Experience Centres in Delhi, Gurugram, Bangalore and Hyderabad and are functioning as per the directives from the government. We are taking all the necessary precautions.</span>
+                <span><br>With temperature checks, use of alcohol-based hand rubs, and contactless meetings, there's nothing you need to be worried about.</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-last">
+        <div class="last">
+            <div>
+                <h1>Your dream home is just a click away</h1>
+                <button onclick="btn('#');">GET STARTED</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="ftr-m">
+            <div class="ftr-t">
+                <img src="./source/logo.png">
+                <ul>
+                    <li><a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a target="_blank" href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a target="_blank" href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a target="_blank" href="#"><i class="fab fa-instagram"></i></i></a></li>
+                </ul>
+            </div>
+            <div class="ftr-d">
+                <div>
+                    <h3>Design ideas</h3>
+                    <ul>
+                        <li><a href="./show.html?topic=living-room">Living Rooms</a></li>
+                        <li><a href="./show.html?topic=kitchen">Kitchens</a></li>
+                        <li><a href="./show.html?topic=master-bedroom">Master Bedrooms</a></li>
+                        <li><a href="./show.html?topic=kids-bedroom">Kids Bedrooms</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Locations</h3>
+                    <ul>
+                        <li><a href="https://www.google.com/maps/place/Mumbai" target="_blank">Mumbai</a></li>
+                        <li><a href="https://www.google.com/maps/place/New+Delhi" target="_blank">New Delhi</a></li>
+                        <li><a href="https://www.google.com/maps/place/Kolkata" target="_blank">Kolkata</a></li>
+                        <li><a href="https://www.google.com/maps/place/Bengaluru" target="_blank">Bengaluru</a></li>
+                    </ul>
+                </div><div>
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="./book.html">Book A Design</a></li>
+                        <li><a href="./visit.html">Visit Us</a></li>
+                        <li><a href="./how.html">How It Works?</a></li>
+                        <li><a href="./corona.html">covid-19 Precautions</a></li>
+                    </ul>
+                </div><div>
+                    <h3>Get in touch</h3>
+                    <ul>
+                        <li>Call us</li>
+                        <a href="tel:987654890">907856890</a>
+                        <li>Email us</li>
+                        <a href="mailto:interior@gmail.com">interior@gmail.com</a>
+                    </ul>
+                </div>
+            </div>
+            <div class="ftr-b">
+                <p>© 2025 Interia.com | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
