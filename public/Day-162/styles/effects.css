@@ -1,0 +1,483 @@
+/* Glitch Effects */
+.glitch-text {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.glitch-text::before {
+    animation: glitch-1 0.5s infinite;
+    color: var(--secondary-neon);
+    transform: translate(-2px, -2px);
+}
+
+.glitch-text::after {
+    animation: glitch-2 0.5s infinite;
+    color: var(--accent-neon);
+    transform: translate(2px, 2px);
+}
+
+@keyframes glitch-1 {
+    0%, 14%, 15%, 49%, 50%, 99%, 100% {
+        transform: translate(-2px, -2px);
+        opacity: 1;
+    }
+    15%, 49% {
+        transform: translate(-4px, -4px);
+        opacity: 0.8;
+    }
+}
+
+@keyframes glitch-2 {
+    0%, 20%, 21%, 62%, 63%, 99%, 100% {
+        transform: translate(2px, 2px);
+        opacity: 1;
+    }
+    21%, 62% {
+        transform: translate(4px, 4px);
+        opacity: 0.8;
+    }
+}
+
+/* Screen Glitch Effect */
+.screen-glitch {
+    position: relative;
+    overflow: hidden;
+}
+
+.screen-glitch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 0, 128, 0.1) 50%,
+        transparent 100%
+    );
+    animation: scan-line 2s infinite;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+@keyframes scan-line {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Matrix Rain Effect */
+.matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.matrix-column {
+    position: absolute;
+    top: -100%;
+    font-family: var(--font-family);
+    font-size: var(--font-size-small);
+    color: var(--primary-neon);
+    opacity: 0.3;
+    animation: matrix-fall 10s infinite linear;
+    white-space: nowrap;
+}
+
+@keyframes matrix-fall {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Neon Border Effects */
+.neon-border {
+    border: 2px solid var(--primary-neon);
+    box-shadow: 
+        0 0 5px var(--primary-neon),
+        inset 0 0 5px var(--primary-neon);
+    animation: neon-pulse 2s infinite alternate;
+}
+
+@keyframes neon-pulse {
+    0% {
+        box-shadow: 
+            0 0 5px var(--primary-neon),
+            inset 0 0 5px var(--primary-neon);
+    }
+    100% {
+        box-shadow: 
+            0 0 20px var(--primary-neon),
+            0 0 30px var(--primary-neon),
+            inset 0 0 10px var(--primary-neon);
+    }
+}
+
+/* Hologram Effect */
+.hologram {
+    position: relative;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 255, 255, 0.1) 50%,
+        transparent 70%
+    );
+    background-size: 20px 20px;
+    animation: hologram-flicker 3s infinite;
+}
+
+.hologram::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        0deg,
+        transparent 0%,
+        rgba(0, 255, 255, 0.05) 50%,
+        transparent 100%
+    );
+    animation: hologram-scan 2s infinite;
+}
+
+@keyframes hologram-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes hologram-scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* Typing Effect */
+.typing-effect {
+    overflow: hidden;
+    border-right: 2px solid var(--primary-neon);
+    white-space: nowrap;
+    animation: 
+        typing 3s steps(40, end),
+        blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--primary-neon); }
+}
+
+/* Loading Spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--primary-neon);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Progress Ring */
+.progress-ring {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.progress-ring circle {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: var(--border-color);
+    stroke-width: 3;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.progress-ring .progress {
+    stroke: var(--primary-neon);
+    stroke-dasharray: 157;
+    stroke-dashoffset: 157;
+    animation: progress-animation 2s ease-in-out;
+    filter: drop-shadow(0 0 5px var(--primary-neon));
+}
+
+@keyframes progress-animation {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Particle Effect */
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--primary-neon);
+    border-radius: 50%;
+    animation: particle-float 5s infinite ease-in-out;
+    box-shadow: 0 0 6px var(--primary-neon);
+}
+
+@keyframes particle-float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    33% {
+        transform: translate(30px, -30px) scale(0.5);
+        opacity: 0.7;
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.8);
+        opacity: 0.4;
+    }
+}
+
+/* Data Stream Effect */
+.data-stream {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0, 255, 0, 0.1) 50%,
+        transparent 100%
+    );
+}
+
+.data-stream::before {
+    content: '01001001 01101110 01110100 01110010 01110101 01100100 01100101 01110010';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-family);
+    font-size: 8px;
+    color: var(--primary-neon);
+    opacity: 0.2;
+    animation: data-flow 10s infinite linear;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes data-flow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Alert Pulse */
+.alert-pulse {
+    animation: alert-pulse-animation 1s infinite;
+}
+
+@keyframes alert-pulse-animation {
+    0% {
+        background-color: transparent;
+        transform: scale(1);
+    }
+    50% {
+        background-color: rgba(255, 0, 64, 0.2);
+        transform: scale(1.02);
+    }
+    100% {
+        background-color: transparent;
+        transform: scale(1);
+    }
+}
+
+/* Success Flash */
+.success-flash {
+    animation: success-flash-animation 0.5s ease-out;
+}
+
+@keyframes success-flash-animation {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(0, 255, 0, 0.3); }
+    100% { background-color: transparent; }
+}
+
+/* Error Shake */
+.error-shake {
+    animation: error-shake-animation 0.5s ease-in-out;
+}
+
+@keyframes error-shake-animation {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Hack Progress */
+.hack-progress {
+    position: relative;
+    background: var(--secondary-bg);
+    border: 1px solid var(--primary-neon);
+    height: 20px;
+    overflow: hidden;
+}
+
+.hack-progress-bar {
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--primary-neon) 0%,
+        var(--secondary-neon) 50%,
+        var(--accent-neon) 100%
+    );
+    width: 0%;
+    transition: width 0.3s ease;
+    position: relative;
+}
+
+.hack-progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    animation: progress-shine 2s infinite;
+}
+
+@keyframes progress-shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Terminal Boot Effect */
+.boot-effect {
+    animation: boot-sequence 0.5s ease-out;
+}
+
+@keyframes boot-sequence {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+        filter: blur(2px);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.05);
+        filter: blur(1px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Scan Line Effect */
+.scan-lines {
+    position: relative;
+}
+
+.scan-lines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 2px,
+        rgba(0, 255, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    animation: scan-lines-flicker 0.1s infinite linear;
+}
+
+@keyframes scan-lines-flicker {
+    0% { opacity: 1; }
+    98% { opacity: 1; }
+    99% { opacity: 0.98; }
+    100% { opacity: 1; }
+}
+
+/* CRT Monitor Effect */
+.crt-effect {
+    position: relative;
+}
+
+.crt-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 60%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .glitch-text::before,
+    .glitch-text::after,
+    .matrix-column,
+    .hologram,
+    .particle,
+    .scan-lines::after {
+        animation: none;
+    }
+    
+    .neon-border {
+        animation: none;
+        box-shadow: 0 0 5px var(--primary-neon);
+    }
+}

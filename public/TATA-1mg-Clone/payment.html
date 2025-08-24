@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <link rel="icon" type="image/x-icon" href="https://www.1mg.com/faviconRebrand.ico">
+    <link rel="stylesheet" href="./styles/payment.css">
+</head>
+<body>
+
+    <div id="payment_header">
+           <div>
+             <img id="mg_home" src="https://www.1mg.com/images/tata_1mg_logo.svg"/>
+             <img src="./images/payment_page_img.png" alt="">
+           </div>
+        <div id="need_help">Need Help?</div>
+    </div>
+
+
+    <div id="payment_main">
+
+       <div id="payment_options">
+          <div>
+              <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530172217/marketing/vvew3rcvwfjrhknifj1z.png"/>
+              <p>WALLETS</p>
+          </div>
+          <div>
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1581576219/marketing/p0w0w4crcgcthkom8j23.png"/>
+            <p>UPI</p>
+          </div>
+          <div>
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530172186/marketing/p45zk16fua8dmxany3up.png"/>
+            <p>CARDS</p>
+          </div>
+          <div>
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530172229/marketing/bsnk5fvtd4b6xffsvjdm.png"/>
+            <p>NET BANKING</p>
+          </div>
+          <div>
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530172202/marketing/pyzcsicqsnwawi4yrpo7.png"/>
+            <p>PAY ON DELIVERY</p>
+          </div>
+       </div>
+
+
+       <div id="card_details">
+
+         <div>
+             <h5>Credit & Debit Cards</h5>
+             <p>Add New Card For Payment</p>
+         </div>
+
+         <div>
+             <p>Card Number</p>
+             <input id="card_num" type="text" maxlength="16" placeholder="xxxx xxxx xxxx xxxx">
+         </div>
+
+         <div id="date_code">
+            <div>
+                <p>Expiry Date (MM/YY)</p>
+                <input id="exp_date" type="month" placeholder=" MM / YY">
+            </div>
+
+            <div>
+                <p>Security code</p>
+                <input id="cvv" type="password" maxlength="3" placeholder="CVV">
+            </div>
+         </div>
+
+         <div>
+           <input id="card_name" type="text" placeholder="Name on card">
+         </div>
+
+         <div>
+            <input id="checkbox" type="checkbox">
+            <p>Your card details will be saved securely for future transactions, based on the industry standards.</p>
+         </div>
+
+         <!-- <div>
+            <button id="card_payment_btn">MAKE PAYMENT</button>
+         </div> -->
+
+         <div id="card_brands">
+           <p>We support domestic credit and debit cards of following brands</p>
+           <div>
+               <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530098898/marketing/rv6lj5fubobesvsomlzr.png" alt="">
+               <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1532957968/marketing/j9kc0uquxwrcbyoeomfw.png" alt="">
+               <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530098792/marketing/vujtyvkwxchd16egv0wt.png" alt="">
+               <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530098811/marketing/szfylmvspyj5ccvhesnp.png" alt="">
+           </div>
+         </div>
+
+       </div>
+
+
+       <div id="price_summary">
+
+           <div>
+             <p id="show_offers_first"><img src="https://res.cloudinary.com/du8msdgbj/image/upload/v1609235175/rwfhtgwtk8zmnbwdvfme.png" alt="">Pay with Paytm wallet on Tata 1mg for ₹999 or more and get 4000 cashback points.</p>
+             <p id="show_offers">SHOW ALL PAYMENT OFFERS <img  src="https://www.1mg.com/images/chevron_right_18.svg" alt=""></p>
+           </div>
+
+
+           <div id="mg_cash">
+             <div>
+                 <input type="checkbox" />
+                 <div>
+                     <p>Pay using 1mgCash</p>
+                     <p>₹ 105 of your order amount is eligible for payment through 1mgCash</p>
+                 </div>
+             </div>
+
+             <div>
+                 <p>Available balance: ₹0.00</p>
+                 <p>How 1mgCash works?</p>
+             </div>
+           </div>
+
+           <!-- dynamics part -->
+           <div id="mrp_summary">
+               <div>
+                   <p>Item Total(MRP)</p>
+                   <p id="total_mrp_item">₹0.00</p>
+               </div>
+
+               <div>
+                <p>Price Discount</p>
+                <p id="discount_price">-₹0.00</p>
+               </div>
+
+               <div>
+                <p>Shipping Fee</p>
+                <p id="shipping_fee">₹50</p>
+               </div>
+
+               <div>
+                   <p>Want Free Shipping?</p>
+               </div>
+
+               <div>
+                <p>Safety Handling Feeⓘ</p>
+                <p>₹40</p>
+               </div>
+
+               <div>
+                <p>To be paid</p>
+                <p id="to_be_paid">₹0.00</p>
+               </div>
+
+               <!-- <div>
+                <p>Total Savings</p>
+                <p id="total_savings_amount">₹0.00</p>
+               </div> -->
+           </div>
+
+           <button id="main_card_payment_btn">MAKE PAYMENT</button>
+       </div>
+
+    </div>
+
+
+
+    <div id="payment_footer">
+        <div>
+            <p>1mg is a technology platform to facilitate transaction of business. The products and services are offered for sale by the sellers. The user authorizes the delivery personel to be his agent for delivery of the goods. For details read <span>terms and conditions.</span></p>
+        </div>
+        <div>
+          <p>*1mgCash will be credited 7 days after your complete order is delivered in case of Products and in case of Lab Services 1mgCash will be credited within 24 hours from the time of generation of test report. 1mgCash will not be credited in case a return request is initiated for the order.</p> 
+          <p>**Coupon Discount value may change if the total order value changes.</p> 
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+
+<script src="./script/payment.js"></script>

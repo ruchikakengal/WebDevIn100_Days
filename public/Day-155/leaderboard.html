@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - Alice in Borderland</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header -->
+        <header class="game-header">
+            <div class="header-left">
+                <h1 class="game-title">
+                    <i class="fas fa-trophy"></i>
+                    Leaderboard
+                </h1>
+                <div class="subtitle">Hall of Survivors</div>
+            </div>
+            <div class="header-right">
+                <button id="backToGameBtn" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Game
+                </button>
+                <button id="clearScoresBtn" class="btn btn-secondary">
+                    <i class="fas fa-trash"></i>
+                    Clear Scores
+                </button>
+            </div>
+        </header>
+
+        <!-- Leaderboard Content -->
+        <div class="leaderboard-container">
+            <!-- Current Game Stats -->
+            <div class="current-stats" id="currentStats">
+                <h2>
+                    <i class="fas fa-user"></i>
+                    Current Game Statistics
+                </h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="currentScore">0</div>
+                        <div class="stat-label">Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="currentCards">0</div>
+                        <div class="stat-label">Cards Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="currentStreak">0</div>
+                        <div class="stat-label">Current Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="currentLives">3</div>
+                        <div class="stat-label">Lives Remaining</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="playTime">0s</div>
+                        <div class="stat-label">Play Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="accuracy">100%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- High Scores Table -->
+            <div class="high-scores">
+                <h2>
+                    <i class="fas fa-medal"></i>
+                    High Scores
+                </h2>
+                <div class="scores-table" id="scoresTable">
+                    <div class="table-header">
+                        <div>Rank</div>
+                        <div>Score</div>
+                        <div>Cards</div>
+                        <div>Streak</div>
+                        <div>Date</div>
+                        <div>Time</div>
+                    </div>
+                    <div id="scoresBody">
+                        <!-- Scores will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div id="noScores" class="no-scores" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>No high scores yet. Complete some challenges to see your scores here!</p>
+                </div>
+            </div>
+
+            <!-- Progress by Suit -->
+            <div class="suit-progress">
+                <h2>
+                    <i class="fas fa-chart-bar"></i>
+                    Progress by Suit
+                </h2>
+                <div class="progress-grid">
+                    <div class="suit-progress-card" data-suit="spades">
+                        <div class="suit-icon">
+                            <i class="fas fa-spade"></i>
+                            <span>Spades</span>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress-bar-small">
+                                <div class="progress-fill-small" id="spadesProgress"></div>
+                            </div>
+                            <div class="progress-text-small" id="spadesText">0/13</div>
+                        </div>
+                        <div class="difficulty-badge hard">HARD</div>
+                    </div>
+
+                    <div class="suit-progress-card" data-suit="hearts">
+                        <div class="suit-icon">
+                            <i class="fas fa-heart"></i>
+                            <span>Hearts</span>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress-bar-small">
+                                <div class="progress-fill-small" id="heartsProgress"></div>
+                            </div>
+                            <div class="progress-text-small" id="heartsText">0/13</div>
+                        </div>
+                        <div class="difficulty-badge medium">MEDIUM</div>
+                    </div>
+
+                    <div class="suit-progress-card" data-suit="clubs">
+                        <div class="suit-icon">
+                            <i class="fas fa-club"></i>
+                            <span>Clubs</span>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress-bar-small">
+                                <div class="progress-fill-small" id="clubsProgress"></div>
+                            </div>
+                            <div class="progress-text-small" id="clubsText">0/13</div>
+                        </div>
+                        <div class="difficulty-badge easy">EASY</div>
+                    </div>
+
+                    <div class="suit-progress-card" data-suit="diamonds">
+                        <div class="suit-icon">
+                            <i class="fas fa-diamond"></i>
+                            <span>Diamonds</span>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress-bar-small">
+                                <div class="progress-fill-small" id="diamondsProgress"></div>
+                            </div>
+                            <div class="progress-text-small" id="diamondsText">0/13</div>
+                        </div>
+                        <div class="difficulty-badge bonus">BONUS</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="achievements">
+                <h2>
+                    <i class="fas fa-award"></i>
+                    Achievements
+                </h2>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Achievements will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Action</h2>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">Are you sure you want to clear all high scores? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirmYes" class="btn btn-primary">Yes, Clear</button>
+                <button id="confirmNo" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particles Canvas -->
+    <canvas id="particlesCanvas" class="particles-canvas"></canvas>
+
+    <!-- Scripts -->
+    <script src="game-engine.js"></script>
+    <script src="leaderboard.js"></script>
+</body>
+</html>

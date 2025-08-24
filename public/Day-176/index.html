@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Treasure Hunt - The Cipher Chronicles</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    
+    <header class="header">
+        <div class="logo-container">
+            <div class="circuit-border">
+                <h1 class="title glitch" data-text="THE CIPHER CHRONICLES">THE CIPHER CHRONICLES</h1>
+                <div class="subtitle">Digital Treasure Hunt Experience</div>
+            </div>
+        </div>
+        
+        <div class="header-stats">
+            <div class="stat-item">
+                <i class="fas fa-trophy"></i>
+                <span>Score: <span id="current-score">0</span></span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-clock"></i>
+                <span>Time: <span id="elapsed-time">00:00</span></span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-star"></i>
+                <span>Level: <span id="current-level">1</span></span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="fullscreen-toggle" class="control-btn" title="Toggle Fullscreen">
+                <i class="fas fa-expand"></i>
+            </button>
+            <button id="theme-toggle" class="control-btn" title="Change Theme">
+                <i class="fas fa-palette"></i>
+            </button>
+            <button id="sound-toggle" class="control-btn" title="Toggle Sound">
+                <i class="fas fa-volume-up"></i>
+            </button>
+            <button id="settings-btn" class="control-btn" title="Settings">
+                <i class="fas fa-cog"></i>
+            </button>
+            <button id="hint-btn" class="control-btn" title="Get Hint">
+                <i class="fas fa-lightbulb"></i>
+                <span id="hint-count">3</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section id="progress-map" class="progress-section">
+            <h2>Your Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-stage="0">
+                    <div class="timeline-marker completed">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>The Beginning</h3>
+                        <p>Your adventure starts here</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-stage="1">
+                    <div class="timeline-marker locked">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>The Caesar's Secret</h3>
+                        <p>Decode the ancient cipher</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-stage="2">
+                    <div class="timeline-marker locked">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Morse Mysteries</h3>
+                        <p>Listen to the dots and dashes</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-stage="3">
+                    <div class="timeline-marker locked">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>The Hidden Pattern</h3>
+                        <p>Arrange the pieces correctly</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-stage="4">
+                    <div class="timeline-marker locked">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>The Final Key</h3>
+                        <p>Solve the ultimate puzzle</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="puzzle-container" class="puzzle-section">
+            <div id="puzzle-0" class="puzzle active">
+                <h2>Welcome, Treasure Hunter!</h2>
+                <div class="puzzle-content">
+                    <p class="intro-text">
+                        You have discovered an ancient treasure map that leads to five mystical artifacts. 
+                        Each artifact is protected by a unique cipher or puzzle. Only the worthy can claim them all.
+                    </p>
+                    <div class="hidden-clue" title="Hover to reveal a secret!">
+                        <span class="invisible-text">First hint: ROT13 of PURPX GUR PBAFBYR</span>
+                    </div>
+                    <button class="start-btn glow-btn" onclick="startHunt()">
+                        Begin Your Quest
+                    </button>
+                </div>
+            </div>
+
+            <div id="puzzle-1" class="puzzle">
+                <h2>The Caesar's Secret</h2>
+                <div class="puzzle-content">
+                    <p>The first artifact is protected by Caesar's cipher. Decode this message:</p>
+                    <div class="cipher-text">WUHDVXUH LV KLGGHQ LQ WKH GDUNQHVV</div>
+                    <div class="cipher-tools">
+                        <label for="caesar-shift">Caesar Shift:</label>
+                        <input type="range" id="caesar-shift" min="1" max="25" value="1">
+                        <span id="shift-value">1</span>
+                    </div>
+                    <div id="decoded-text" class="decoded-output"></div>
+                    <input type="text" id="answer-1" placeholder="Enter the decoded message" class="answer-input">
+                    <button onclick="checkAnswer(1)" class="submit-btn glow-btn">Submit Answer</button>
+                </div>
+            </div>
+
+            <div id="puzzle-2" class="puzzle">
+                <h2>Morse Mysteries</h2>
+                <div class="puzzle-content">
+                    <p>Listen carefully to the Morse code message and decode it:</p>
+                    <div class="morse-controls">
+                        <button id="play-morse" class="glow-btn">
+                            <i class="fas fa-play"></i> Play Morse Code
+                        </button>
+                        <button id="morse-help" class="help-btn">
+                            <i class="fas fa-question"></i> Morse Chart
+                        </button>
+                    </div>
+                    <div id="morse-chart" class="morse-chart hidden">
+                        <div class="morse-grid">
+                            <div>A: .-</div><div>B: -...</div><div>C: -.-.</div><div>D: -..</div>
+                            <div>E: .</div><div>F: ..-.</div><div>G: --.</div><div>H: ....</div>
+                            <div>I: ..</div><div>J: .---</div><div>K: -.-</div><div>L: .-..</div>
+                            <div>M: --</div><div>N: -.</div><div>O: ---</div><div>P: .--.</div>
+                            <div>Q: --.-</div><div>R: .-.</div><div>S: ...</div><div>T: -</div>
+                            <div>U: ..-</div><div>V: ...-</div><div>W: .--</div><div>X: -..-</div>
+                            <div>Y: -.--</div><div>Z: --..</div>
+                        </div>
+                    </div>
+                    <div class="morse-display" id="morse-display"></div>
+                    <input type="text" id="answer-2" placeholder="Enter the decoded message" class="answer-input">
+                    <button onclick="checkAnswer(2)" class="submit-btn glow-btn">Submit Answer</button>
+                </div>
+            </div>
+
+            <div id="puzzle-3" class="puzzle">
+                <h2>The Hidden Pattern</h2>
+                <div class="puzzle-content">
+                    <p>Arrange the puzzle pieces to reveal the hidden message:</p>
+                    <div id="puzzle-pieces" class="puzzle-grid">
+                        <div class="puzzle-piece" draggable="true" data-piece="0">KEY</div>
+                        <div class="puzzle-piece" draggable="true" data-piece="1">IS</div>
+                        <div class="puzzle-piece" draggable="true" data-piece="2">HIDDEN</div>
+                        <div class="puzzle-piece" draggable="true" data-piece="3">THE</div>
+                        <div class="puzzle-piece" draggable="true" data-piece="4">BENEATH</div>
+                        <div class="puzzle-piece" draggable="true" data-piece="5">STARS</div>
+                    </div>
+                    <div id="drop-zone" class="drop-zone">
+                        <div class="drop-slot" data-slot="0"></div>
+                        <div class="drop-slot" data-slot="1"></div>
+                        <div class="drop-slot" data-slot="2"></div>
+                        <div class="drop-slot" data-slot="3"></div>
+                        <div class="drop-slot" data-slot="4"></div>
+                        <div class="drop-slot" data-slot="5"></div>
+                    </div>
+                    <button onclick="checkAnswer(3)" class="submit-btn glow-btn">Check Arrangement</button>
+                </div>
+            </div>
+
+            <div id="puzzle-4" class="puzzle">
+                <h2>The Final Key</h2>
+                <div class="puzzle-content">
+                    <p>Solve this riddle to claim the ultimate treasure:</p>
+                    <div class="riddle-text">
+                        I am not a number, but I can be counted.<br>
+                        I am not alive, but I can grow.<br>
+                        I am not physical, but I can be felt.<br>
+                        What am I, that leads to digital gold?
+                    </div>
+                    <div class="image-puzzle" onclick="revealFinalClue()">
+                        <div class="overlay-text">Click to reveal the final clue</div>
+                    </div>
+                    <input type="text" id="answer-4" placeholder="Enter your answer" class="answer-input">
+                    <button onclick="checkAnswer(4)" class="submit-btn glow-btn">Final Submit</button>
+                </div>
+            </div>
+
+            <div id="victory" class="puzzle victory-screen">
+                <h2>🎉 Victory! 🎉</h2>
+                <div class="puzzle-content">
+                    <p>Congratulations, master treasure hunter!</p>
+                    <p>You have successfully solved all the puzzles and claimed the digital treasure!</p>
+                    <div class="treasure-display">
+                        <div class="treasure-chest">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                    </div>
+                    <button onclick="resetGame()" class="reset-btn glow-btn">Start New Adventure</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="theme-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3><i class="fas fa-palette"></i> Choose Your Theme</h3>
+            <div class="theme-options">
+                <button class="theme-btn" data-theme="neon">
+                    <div class="theme-preview neon-preview"></div>
+                    <span>Neon Cyber</span>
+                    <small>Classic cyberpunk vibes</small>
+                </button>
+                <button class="theme-btn" data-theme="matrix">
+                    <div class="theme-preview matrix-preview"></div>
+                    <span>Matrix Green</span>
+                    <small>Digital rain aesthetic</small>
+                </button>
+                <button class="theme-btn" data-theme="purple">
+                    <div class="theme-preview purple-preview"></div>
+                    <span>Purple Mystery</span>
+                    <small>Mystical and elegant</small>
+                </button>
+                <button class="theme-btn" data-theme="orange">
+                    <div class="theme-preview orange-preview"></div>
+                    <span>Amber Glow</span>
+                    <small>Warm and inviting</small>
+                </button>
+                <button class="theme-btn" data-theme="retro">
+                    <div class="theme-preview retro-preview"></div>
+                    <span>Retro Wave</span>
+                    <small>80s synthwave style</small>
+                </button>
+                <button class="theme-btn" data-theme="dark">
+                    <div class="theme-preview dark-preview"></div>
+                    <span>Dark Mode</span>
+                    <small>Easy on the eyes</small>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3><i class="fas fa-cog"></i> Game Settings</h3>
+            <div class="settings-grid">
+                <div class="setting-group">
+                    <h4>Audio</h4>
+                    <div class="setting-item">
+                        <label for="master-volume">Master Volume</label>
+                        <input type="range" id="master-volume" min="0" max="100" value="70">
+                        <span class="volume-value">70%</span>
+                    </div>
+                    <div class="setting-item">
+                        <label for="sfx-volume">Sound Effects</label>
+                        <input type="range" id="sfx-volume" min="0" max="100" value="50">
+                        <span class="volume-value">50%</span>
+                    </div>
+                    <div class="setting-item">
+                        <label for="music-volume">Background Music</label>
+                        <input type="range" id="music-volume" min="0" max="100" value="30">
+                        <span class="volume-value">30%</span>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h4>Visual Effects</h4>
+                    <div class="setting-item">
+                        <label for="particles-toggle">Particle Effects</label>
+                        <input type="checkbox" id="particles-toggle" checked>
+                    </div>
+                    <div class="setting-item">
+                        <label for="animations-toggle">Animations</label>
+                        <input type="checkbox" id="animations-toggle" checked>
+                    </div>
+                    <div class="setting-item">
+                        <label for="glitch-toggle">Glitch Effects</label>
+                        <input type="checkbox" id="glitch-toggle" checked>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h4>Gameplay</h4>
+                    <div class="setting-item">
+                        <label for="auto-save">Auto Save Progress</label>
+                        <input type="checkbox" id="auto-save" checked>
+                    </div>
+                    <div class="setting-item">
+                        <label for="difficulty-level">Difficulty</label>
+                        <select id="difficulty-level">
+                            <option value="easy">Easy</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="hard">Hard</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-actions">
+                <button id="reset-settings" class="secondary-btn">Reset to Default</button>
+                <button id="export-save" class="glow-btn">Export Save</button>
+                <button id="import-save" class="glow-btn">Import Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="achievement-notification" class="achievement-popup">
+        <div class="achievement-content">
+            <div class="achievement-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="achievement-text">
+                <div class="achievement-title">Achievement Unlocked!</div>
+                <div class="achievement-description">First Steps</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-screen" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="circuit-loader"></div>
+                <h2>THE CIPHER CHRONICLES</h2>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <div class="loading-text">Initializing quantum encryption...</div>
+        </div>
+    </div>
+
+    <div id="hint-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Need a Hint?</h3>
+            <div id="hint-content">
+                <p>No hints available for this puzzle.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="particles.js"></script>
+    <script src="themes.js"></script>
+    <script src="audio.js"></script>
+    <script src="puzzles.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        console.log("🕵️ Well done, detective! You found the console clue!");
+        console.log("The shadows whisper: 'Check the invisible text on hover'");
+        console.log("ASCII Art Clue:");
+        console.log(`
+        ████████╗██████╗ ███████╗ █████╗ ███████╗██╗   ██╗██████╗ ███████╗
+        ╚══██╔══╝██╔══██╗██╔════╝██╔══██╗██╔════╝██║   ██║██╔══██╗██╔════╝
+           ██║   ██████╔╝█████╗  ███████║███████╗██║   ██║██████╔╝█████╗  
+           ██║   ██╔══██╗██╔══╝  ██╔══██║╚════██║██║   ██║██╔══██╗██╔══╝  
+           ██║   ██║  ██║███████╗██║  ██║███████║╚██████╔╝██║  ██║███████╗
+           ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+        `);
+    </script>
+</body>
+</html>

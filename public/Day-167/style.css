@@ -1,0 +1,112 @@
+.avoid-clicks {
+    pointer-events: none;
+}
+
+html,
+body {
+    background-color: black;
+    height: 100%;
+}
+
+#overlay {
+    position: fixed;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.container {
+    min-height: 100%;
+}
+
+.texts {
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: fixed;
+    top: 10%;
+}
+
+.cups .cup {
+    position: fixed;
+    top: 35%;
+    z-index: 0;
+    cursor: pointer;
+}
+
+.cups .cup .main path {
+    transition: .5s;
+    position: absolute;
+    transform: translateY(100px);
+}
+
+#ball {
+    transition: .5s linear;
+    position: absolute;
+    left: 15%;
+    bottom: 0;
+    z-index: -1;
+    transform: translateY(-100px);
+}
+
+.answer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translateY(-70px);
+}
+
+.answer .x {
+    stroke: red;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-width: 5;
+    display: none;
+}
+
+.answer .o {
+    display: none;
+}
+
+.buttons {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    position: fixed;
+    bottom: 10%;
+}
+
+.buttons p#tap-to-start {
+    animation: tapToStart .8s infinite steps(1);
+}
+
+@keyframes tapToStart {
+    0% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+.buttons p#game-over{
+    display: none;
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+.buttons span {
+    border: 1px solid white;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: none;
+}

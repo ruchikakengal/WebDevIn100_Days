@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | 1mg.com</title>
+  <link rel="icon" type="image/x-icon" href="https://www.1mg.com/faviconRebrand.ico">
+  <link rel="stylesheet" href="login.css" />
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="navbar"></div>
+
+    <div id="container_1">
+
+      <div id="slideshow_container">
+        <div class="mySlides">
+            <img
+              src="https://www.1mg.com/images/login-signup/Your-Go-To-Health-App.png"
+              alt="slideimage"
+            />
+            <div class="text">
+              <h2>Make Healthcare Simpler</h2>
+              <p>
+                Get medicine information, order medicines, book lab<br />tests
+                and consult doctors online from the comfort of<br />your home.
+              </p>
+            </div>
+          </div>
+          <div class="mySlides">
+            <img
+              src="https://www.1mg.com/images/login-signup/Know-Your-Medicines.png"
+              alt=""
+            />
+            <div class="text">
+              <h2>Know Your Medicines</h2>
+              <p>
+                View medicine information like usage, side effects and <br />
+                cheaper substitutes before you take them.
+              </p>
+            </div>
+          </div>
+          <div class="mySlides">
+            <img
+              src="https://www.1mg.com/images/login-signup/Home-Delivery-of-Medicines.png"
+              alt="slideimage"
+            />
+            <div class="text">
+              <h2>Medicines, Home Delivered</h2>
+              <p>
+                Order any medicine or health product and we'll deliver <br />
+                it for free. Enjoy discounts on everything.
+              </p>
+            </div>
+          </div>
+          <div class="mySlides">
+            <img
+              src="https://www.1mg.com/images/login-signup/Lab-Tests-at-Home.png"
+              alt="slideimage"
+            />
+            <div class="text">
+              <h2>Lab Tests at Home</h2>
+              <p>
+                Book any test from any lab. We'll collect the sample <br />and
+                send the reports. Save up to 80% every time.
+              </p>
+            </div>
+          </div>
+          <div class="mySlides">
+            <img
+              src="https://www.1mg.com/images/login-signup/Health-Related-Queries.png"
+              alt="slideimage"
+            />
+            <div class="text">
+              <h2>Health Related Queries?</h2>
+              <p>
+                Consult our certified doctors from anywhere, anytime,<br />and
+                for free. We guarantee your privacy.
+              </p>
+            </div>
+          </div>
+          <div class="dot_container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+          </div>
+      </div>
+
+      <div id="account_1">
+        <h1>
+          Sign Up
+          <a href="index.html"><span class="close" id="close_btn"> &times;</span></a>
+        </h1>
+        <p>
+          Please enter your Mobile number to receive One Time Password (OTP)
+        </p>
+        <form>
+          <input type="number" placeholder="Enter Mobile Number" id="mobile_number"
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            maxlength="10" />
+        </form>
+        <p id="account_invalid_num">
+          Entered mobile number is not valid. Please enter a valid 10 digit
+          mobile number.
+        </p>
+        <p><input type="checkbox" />Are you a Healtcare Professional?</p>
+        <button id="account_continue">CONTINUE</button>
+        <div>
+          <p>
+            Have an account?
+            <span class="a_orange" id="login_span">Login</span>
+          </p>
+          <p>
+            For Corporate Sign Up,
+            <a href="" class="a_orange">Click Here</a>
+          </p>
+
+          <p id="terms">
+            By signing up, you agree to our
+            <a href="">Terms and Conditions</a> &
+            <a href="">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+
+      <div id="account_2">
+        <h1>
+          Login
+          <a href="index.html"><span class="close" id="close_btn"> &times;</span></a>
+        </h1>
+        <p>Get access to your orders, lab tests & doctor consultations</p>
+        <form>
+          <input type="number" placeholder="Enter Mobile Number" id="login_mobile_number"
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            maxlength="10" />
+        </form>
+        <p id="login_invalid_num">
+          Entered mobile number is not valid. Please enter a valid 10 digit
+          mobile number.
+        </p>
+        <button id="login_button-1">LOGIN</button>
+        <div>
+          <p>
+            New on 1mg?
+            <span class="a_orange" id="signup_span">Sign Up</span>
+          </p>
+          <p>
+            Have a corporate account?
+            <a href="" class="a_orange">Click Here</a>
+          </p>
+
+          <p id="terms">
+            By logging up, you agree to our
+            <a href="">Terms and Conditions</a> &
+            <a href="">Privacy Policy</a>
+          </p>
+          <p>
+            <a href="" class="a_orange">Need help? Get In Touch</a>
+          </p>
+        </div>
+      </div>
+
+      <div id="verify_otp">
+        <h1>
+          Verify OTP
+          <a href="index.html"><span class="close" id="close_btn"> &times;</span></a>
+        </h1>
+        <p>
+          Provide OTP sent to <span id="user_mobile"></span>
+          <span class="a_orange" id="edit_button">Edit</span>
+        </p>
+        <form>
+          <input type="password" placeholder="One Time Password" id="one_time_p" minlength="8" maxlength="12" />
+        </form>
+        <p id="wrong_otp">Please enter a valid OTP.</p>
+        <p id="error">
+          <span class="a_orange" id="otp_sms">Get OTP on SMS</span> |
+          <span class="a_orange" id="otp_call">Get OTP on Call</span>
+        </p>
+        <button id="done">DONE</button>
+        <div>
+          <p>
+            <a href="" class="a_orange">Need help? Get In Touch</a>
+          </p>
+        </div>
+      </div>
+
+      <div id="email_id_new">
+        <h1>
+          Enter your email id
+          <a href="index.html">
+            <span class="close" id="close_btn"> &times;</span>
+          </a>
+        </h1>
+        <p>
+          We are almost ready! just need your email id to keep your account
+          extra safe
+        </p>
+        <form>
+          <input type="email" placeholder="Enter Email ID" id="email_new" />
+        </form>
+        <p id="invalid_email">Please enter a valid email ID.</p>
+        <button id="email_continue" onclick="login(event)">CONTINUE</button>
+        <div>
+          <p id="terms">
+            By logging up, you agree to our
+            <a href="">Terms and Conditions</a> &
+            <a href="">Privacy Policy</a>
+          </p>
+          <p>
+            <a href="" class="a_orange">Need help? Get In Touch</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="snackbar_otp">Show some message</div>
+
+    <div id="footer">
+    </div>
+
+  </div>
+</body>
+<script src="login.js">
+ </script>
+
+</html>

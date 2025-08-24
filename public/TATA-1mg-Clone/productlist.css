@@ -1,0 +1,248 @@
+body {
+    padding: 0%;
+    margin: 0%;
+    font-family: "Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.42857143;
+    background-color: #f1f4f6;
+}
+.style__contentSection___2fS9b{
+    display: none;
+}
+.mk_red {
+    color: #ff6f61;
+}
+.mk_grey {
+    color: #1a1a1a;
+}
+.mk_mGre {
+    color: grey;
+}
+.mk_bold {
+    font-weight: bold;
+}
+.mk_green {
+    font-weight: bold;
+    color: #1AAB2A;
+}
+.mk_linethro {
+    text-decoration: line-through;
+}
+
+/* Side Bar */
+#mainContainer {
+    display: flex;
+    width: 93%;
+    margin: auto;
+    margin-top: 15px;
+}
+#sidebar {
+    font-size: 0.8rem;
+    line-height: 25px;
+    width: 100%;
+    height: fit-content;
+    padding: 1%;
+    background-color: white;
+
+}
+#sidebar h5 {
+    margin-top: 20px;
+    color: #ff6f61;
+    font-size: 0.9rem;
+}
+
+#product_container {
+    width: 100%;
+    padding: 2%;
+}
+#product_container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    font-weight: bolder;
+}
+hr {
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+#product_container h4{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* slideshow section  1*/
+#slideshow {
+    color: white;
+    margin-top: 10px;
+    background-color: white;
+}
+.container-fluid {
+    padding: 0% 3%;
+}
+.commonCSS {
+    margin-top: 10px;
+    height: 200px;
+}
+.carousel-control-prev, .carousel-control-next {
+    width: 30px;
+    
+}
+
+
+/* .carousel-control-prev-icon,.carousel-control-next-icon  {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 8 8'%3e%3cpath d='M6.5 0l-3.5 3.5 3.5 3.5-1 1-4.5-4.5 4.5-4.5z'/%3e%3c/svg%3e");
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  } */
+
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #ff6f61;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+.slideData {
+    display: flex;
+    gap: 6%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 50px;
+    color: black;
+    /* added by me */
+    /* justify-content: space-evenly; */
+}
+
+
+/* slide end */
+
+#mid_img {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#mid_img > img {
+    width: 100%;
+}
+
+
+/* Product show section */
+
+#sort_div {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+#sort_prod {
+    padding: 5px;
+    outline: 0px;
+    border: none;
+}
+#productShow {
+    display: grid;
+    grid-template-columns: repeat(4, 260px);
+    gap: 20px;
+}
+.inDiv {
+    padding: 5%;
+    background-color: white;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.imgDiv {
+    text-align: center;
+}
+.imgDiv img{
+    height: 200px;
+    width:min-content;
+    width: 60%;
+    padding: 5% 0% 5% 0%;
+    cursor: pointer;
+}
+.bottomSec {
+    font-size: 0.7rem;
+}
+.bottomSec h6 {
+    height: 20px;
+    font-size: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.rateDiv {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.priceDiv {
+    display: flex;
+    height: fit-content;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.priceDiv > div {
+    height: fit-content;
+}
+.priceDiv p {
+    font-size: 1.2rem;
+    margin-bottom: 0px;
+}
+.addtoCartBtn p {
+    padding: 0%;
+    margin-top: 22px;
+    font-size: 0.9rem;
+    font-weight: bolder;
+    color: #ff6f61;
+    cursor: pointer;
+}
+#rating {
+    font-size: 0.9rem;
+    background-color:#1AAB2A;
+    color: white;
+    width: fit-content;
+    padding: 2px 6px;
+    
+}
+#rating i {
+    color: white;
+}
+
+@media all and (min-width: 100px) and (max-width:450px) {
+    #sidebar {
+        display: none;
+    }
+    #mainContainer {
+        width: 100%;
+    }
+    #productShow {
+        grid-template-columns: repeat(2, 50%);
+        gap: 10px;
+        box-sizing: border-box;
+        padding: 0%;
+        margin: 0%;
+    }
+    #sort_div {
+        gap: 10%;
+    }
+}
+
+@media all and (min-width: 451px) and (max-width:750px) {
+    #sidebar {
+        display: none;
+    }
+    #mainContainer {
+        width: 100%;
+    }
+    #productShow {
+        grid-template-columns: repeat(3, 35%);
+        gap: 10px;
+        box-sizing: border-box;
+        padding: 0%;
+        margin: 0%;
+    }
+    #sort_div {
+        gap: 10%;
+    }
+}

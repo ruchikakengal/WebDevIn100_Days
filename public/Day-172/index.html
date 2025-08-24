@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tattoo Design Studio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&family=Dancing+Script:wght@400;500;600&family=Oswald:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="app" class="app">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-paint-brush"></i>
+                    <h1>Tattoo Studio</h1>
+                </div>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="btn btn-icon" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="save-design" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Save Design
+                    </button>
+                    <button id="export-design" class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        Export PNG
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <aside class="sidebar">
+                <div class="sidebar-content">
+                    <section class="sidebar-section">
+                        <h3>Body Templates</h3>
+                        <div class="body-templates" id="body-templates">
+                            <div class="template-item active" data-template="arm">
+                                <i class="fas fa-hand-paper"></i>
+                                <span>Arm</span>
+                            </div>
+                            <div class="template-item" data-template="chest">
+                                <i class="fas fa-user"></i>
+                                <span>Chest</span>
+                            </div>
+                            <div class="template-item" data-template="back">
+                                <i class="fas fa-male"></i>
+                                <span>Back</span>
+                            </div>
+                            <div class="template-item" data-template="leg">
+                                <i class="fas fa-running"></i>
+                                <span>Leg</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="sidebar-section">
+                        <h3>Skin Tone</h3>
+                        <div class="skin-tones" id="skin-tones">
+                            <div class="skin-tone" data-tone="#f4c2a1" style="background-color: #f4c2a1;"></div>
+                            <div class="skin-tone" data-tone="#d4a574" style="background-color: #d4a574;"></div>
+                            <div class="skin-tone" data-tone="#c4925c" style="background-color: #c4925c;"></div>
+                            <div class="skin-tone" data-tone="#9d7a54" style="background-color: #9d7a54;"></div>
+                            <div class="skin-tone active" data-tone="#7d5a3f" style="background-color: #7d5a3f;"></div>
+                            <div class="skin-tone" data-tone="#5d3a2f" style="background-color: #5d3a2f;"></div>
+                        </div>
+                    </section>
+                    <section class="sidebar-section">
+                        <h3>Tattoo Library</h3>
+                        <div class="category-tabs" id="category-tabs">
+                            <button class="tab-btn active" data-category="tribal">Tribal</button>
+                            <button class="tab-btn" data-category="minimalist">Minimalist</button>
+                            <button class="tab-btn" data-category="geometric">Geometric</button>
+                        </div>
+                        <div class="tattoo-gallery" id="tattoo-gallery">
+
+                        </div>
+                    </section>
+
+                    <section class="sidebar-section">
+                        <h3>Custom Text</h3>
+                        <div class="text-controls">
+                            <input type="text" id="custom-text" placeholder="Enter your text..." class="text-input">
+                            <div class="font-controls">
+                                <select id="font-family" class="font-select">
+                                    <option value="Inter">Inter</option>
+                                    <option value="Playfair Display">Playfair Display</option>
+                                    <option value="Dancing Script">Dancing Script</option>
+                                    <option value="Oswald">Oswald</option>
+                                </select>
+                                <input type="range" id="font-size" min="12" max="72" value="24" class="slider">
+                                <span class="font-size-value">24px</span>
+                            </div>
+                            <button id="add-text" class="btn btn-secondary btn-full">
+                                <i class="fas fa-plus"></i>
+                                Add Text
+                            </button>
+                        </div>
+                    </section>
+                </div>
+            </aside>
+
+            <div class="canvas-container">
+                <div class="canvas-toolbar">
+                    <div class="toolbar-group">
+                        <button id="undo-btn" class="btn btn-icon" title="Undo">
+                            <i class="fas fa-undo"></i>
+                        </button>
+                        <button id="redo-btn" class="btn btn-icon" title="Redo">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <button id="reset-btn" class="btn btn-icon" title="Reset Canvas">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="toolbar-group">
+                        <button id="snap-grid" class="btn btn-icon" title="Toggle Snap to Grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <label class="opacity-control">
+                            Opacity:
+                            <input type="range" id="opacity-slider" min="0" max="100" value="100" class="slider">
+                            <span id="opacity-value">100%</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="canvas-wrapper" id="canvas-wrapper">
+                    <canvas id="main-canvas" width="800" height="600"></canvas>
+                    <div class="selection-handles" id="selection-handles" style="display: none;">
+                        <div class="handle handle-nw" data-handle="nw"></div>
+                        <div class="handle handle-ne" data-handle="ne"></div>
+                        <div class="handle handle-sw" data-handle="sw"></div>
+                        <div class="handle handle-se" data-handle="se"></div>
+                        <div class="handle handle-rotate" data-handle="rotate">
+                            <i class="fas fa-redo"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="properties-panel" id="properties-panel">
+                <h3>Element Properties</h3>
+                <div class="property-group">
+                    <label>Color:</label>
+                    <div class="color-picker-wrapper">
+                        <input type="color" id="element-color" class="color-picker">
+                        <div class="color-presets" id="color-presets">
+                            <div class="color-preset" data-color="#000000" style="background-color: #000000;"></div>
+                            <div class="color-preset" data-color="#FFFFFF" style="background-color: #FFFFFF;"></div>
+                            <div class="color-preset" data-color="#FF0000" style="background-color: #FF0000;"></div>
+                            <div class="color-preset" data-color="#00FF00" style="background-color: #00FF00;"></div>
+                            <div class="color-preset" data-color="#0000FF" style="background-color: #0000FF;"></div>
+                            <div class="color-preset" data-color="#FFFF00" style="background-color: #FFFF00;"></div>
+                            <div class="color-preset" data-color="#FF00FF" style="background-color: #FF00FF;"></div>
+                            <div class="color-preset" data-color="#00FFFF" style="background-color: #00FFFF;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-group">
+                    <label>Size:</label>
+                    <input type="range" id="size-slider" min="10" max="500" value="100" class="slider">
+                    <span id="size-value">100px</span>
+                </div>
+
+                <div class="property-group">
+                    <label>Rotation:</label>
+                    <input type="range" id="rotation-slider" min="0" max="360" value="0" class="slider">
+                    <span id="rotation-value">0°</span>
+                </div>
+
+                <div class="property-group">
+                    <label>Layer:</label>
+                    <div class="layer-controls">
+                        <button id="bring-forward" class="btn btn-small">
+                            <i class="fas fa-chevron-up"></i>
+                            Forward
+                        </button>
+                        <button id="send-backward" class="btn btn-small">
+                            <i class="fas fa-chevron-down"></i>
+                            Backward
+                        </button>
+                    </div>
+                </div>
+
+                <div class="property-group">
+                    <button id="flip-horizontal" class="btn btn-secondary">
+                        <i class="fas fa-arrows-alt-h"></i>
+                        Flip H
+                    </button>
+                    <button id="flip-vertical" class="btn btn-secondary">
+                        <i class="fas fa-arrows-alt-v"></i>
+                        Flip V
+                    </button>
+                </div>
+
+                <div class="property-group">
+                    <button id="delete-element" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="loading" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage-manager.js"></script>
+    <script src="js/canvas-manager.js"></script>
+    <script src="js/tattoo-library.js"></script>
+    <script src="js/text-tool.js"></script>
+    <script src="js/body-templates.js"></script>
+    <script src="js/color-picker.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
