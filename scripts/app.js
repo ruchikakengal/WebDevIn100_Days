@@ -1571,6 +1571,18 @@ class WebDev100Days {
 
          },
 
+                 {
+          "originalDay": 163,
+          "name": "Emotion Reader",
+          "description": "Advanced empathy game where players modify facial features of cartoon faces to match hidden emotions by selecting and cycling through shapes, with evaluation, dark/light mode, responsive design, and accessible controls.",
+          "demoLink": "./public/Emotion_Reader/index.html",
+          "category": "games",
+          "technologies": ["HTML", "CSS", "JavaScript"],
+          "features": [
+            "Interactive face feature customization with CSS morphing", "Emotion matching evaluation", "Dark/light mode toggle", "Responsive layout", "Keyboard accessibility",
+            "Smooth animations", "Polished UI" ]
+},
+
          {
            originalDay:183, 
            name:"TATA 1mg Website Clone",
