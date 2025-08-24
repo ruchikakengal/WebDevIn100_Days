@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flip Tiles Puzzle</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🎮 Flip Tiles Puzzle</h1>
+    <button id="themeToggle">🌙 Toggle Dark/Light</button>
+  </header>
+
+  <!-- Instructions Section -->
+  <section id="instructions" class="instructions">
+    <h2>📜 How to Play</h2>
+    <p>Welcome to the <strong>Flip Tiles Puzzle</strong>! Your goal is simple:</p>
+    <ul>
+      <li>Click on any tile to flip it.</li>
+      <li>The clicked tile and its <em>adjacent neighbors</em> will also toggle colors.</li>
+      <li>Win when <strong>all tiles are the same color</strong> 🎉</li>
+    </ul>
+    <button id="startBtn">🚀 Start Game</button>
+  </section>
+
+  <!-- Game Section -->
+  <main id="gameArea" class="hidden">
+    <div id="gameBoard" class="board"></div>
+    <div class="controls">
+      <button id="resetBtn">🔄 Reset</button>
+    </div>
+    <p id="status"></p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
