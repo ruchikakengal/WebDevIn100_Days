@@ -1,0 +1,217 @@
+/* Theme Variables and Styles */
+
+/* Fantasy Theme */
+.theme-fantasy {
+    --theme-primary: #8b5cf6;
+    --theme-secondary: #a78bfa;
+    --theme-accent: #fbbf24;
+    --theme-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --theme-text: #1f2937;
+    --theme-text-light: #6b7280;
+}
+
+.theme-fantasy .story-text {
+    color: #374151;
+}
+
+.theme-fantasy .choice-btn {
+    background: rgba(139, 92, 246, 0.05);
+    border-color: rgba(139, 92, 246, 0.2);
+}
+
+.theme-fantasy .choice-btn:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: var(--theme-primary);
+}
+
+/* Science Fiction Theme */
+.theme-sci-fi {
+    --theme-primary: #06b6d4;
+    --theme-secondary: #67e8f9;
+    --theme-accent: #34d399;
+    --theme-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --theme-text: #e2e8f0;
+    --theme-text-light: #94a3b8;
+}
+
+.theme-sci-fi .story-content {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #e2e8f0;
+    border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.theme-sci-fi .story-text {
+    color: #e2e8f0;
+}
+
+.theme-sci-fi .choice-btn {
+    background: rgba(6, 182, 212, 0.1);
+    border-color: rgba(6, 182, 212, 0.3);
+    color: #e2e8f0;
+}
+
+.theme-sci-fi .choice-btn:hover {
+    background: rgba(6, 182, 212, 0.2);
+    border-color: var(--theme-primary);
+}
+
+/* Mystery Theme */
+.theme-mystery {
+    --theme-primary: #7c3aed;
+    --theme-secondary: #a855f7;
+    --theme-accent: #f59e0b;
+    --theme-bg: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    --theme-text: #f3f4f6;
+    --theme-text-light: #d1d5db;
+}
+
+.theme-mystery .story-content {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    color: #f3f4f6;
+    border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+.theme-mystery .story-text {
+    color: #f3f4f6;
+}
+
+.theme-mystery .choice-btn {
+    background: rgba(124, 58, 237, 0.1);
+    border-color: rgba(124, 58, 237, 0.3);
+    color: #f3f4f6;
+}
+
+.theme-mystery .choice-btn:hover {
+    background: rgba(124, 58, 237, 0.2);
+    border-color: var(--theme-primary);
+}
+
+/* Horror Theme */
+.theme-horror {
+    --theme-primary: #dc2626;
+    --theme-secondary: #ef4444;
+    --theme-accent: #f97316;
+    --theme-bg: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    --theme-text: #f5f5f5;
+    --theme-text-light: #d4d4d4;
+}
+
+.theme-horror .story-content {
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    color: #f5f5f5;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.1);
+}
+
+.theme-horror .story-text {
+    color: #f5f5f5;
+}
+
+.theme-horror .choice-btn {
+    background: rgba(220, 38, 38, 0.1);
+    border-color: rgba(220, 38, 38, 0.3);
+    color: #f5f5f5;
+}
+
+.theme-horror .choice-btn:hover {
+    background: rgba(220, 38, 38, 0.2);
+    border-color: var(--theme-primary);
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
+}
+
+/* Theme-specific animations */
+.theme-fantasy .story-text {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.1);
+}
+
+.theme-sci-fi .story-text {
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+}
+
+.theme-mystery .story-text {
+    text-shadow: 0 0 10px rgba(124, 58, 237, 0.2);
+}
+
+.theme-horror .story-text {
+    text-shadow: 0 0 15px rgba(220, 38, 38, 0.3);
+}
+
+/* Theme-specific progress bars */
+.theme-fantasy .progress-fill {
+    background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+}
+
+.theme-sci-fi .progress-fill {
+    background: linear-gradient(90deg, #06b6d4, #67e8f9);
+}
+
+.theme-mystery .progress-fill {
+    background: linear-gradient(90deg, #7c3aed, #a855f7);
+}
+
+.theme-horror .progress-fill {
+    background: linear-gradient(90deg, #dc2626, #ef4444);
+}
+
+/* Theme-specific buttons */
+.theme-fantasy .btn-primary {
+    background: var(--theme-primary);
+}
+
+.theme-fantasy .btn-primary:hover {
+    background: #7c3aed;
+}
+
+.theme-sci-fi .btn-primary {
+    background: var(--theme-primary);
+}
+
+.theme-sci-fi .btn-primary:hover {
+    background: #0891b2;
+}
+
+.theme-mystery .btn-primary {
+    background: var(--theme-primary);
+}
+
+.theme-mystery .btn-primary:hover {
+    background: #6d28d9;
+}
+
+.theme-horror .btn-primary {
+    background: var(--theme-primary);
+}
+
+.theme-horror .btn-primary:hover {
+    background: #b91c1c;
+}
+
+/* Theme transitions */
+.story-content,
+.choice-btn,
+.story-text,
+.progress-fill {
+    transition: all 0.5s ease-in-out;
+}
+
+/* Responsive theme adjustments */
+@media (max-width: 768px) {
+    .theme-sci-fi .story-content,
+    .theme-mystery .story-content,
+    .theme-horror .story-content {
+        border: none;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+    .theme-fantasy .story-content {
+        background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+        color: #e0e7ff;
+    }
+    
+    .theme-fantasy .story-text {
+        color: #e0e7ff;
+    }
+}

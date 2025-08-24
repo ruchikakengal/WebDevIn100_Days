@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Escape Room Challenge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glitch-overlay"></div>
+    <div class="stars"></div>
+
+    <div id="error-screen" class="screen active">
+        <div class="container">
+            <h1 class="glitch-text" data-text="404">404</h1>
+            <p class="error-message glitch-text" data-text="PAGE NOT FOUND">PAGE NOT FOUND</p>
+            <p class="subtitle">Something went wrong... or did it?</p>
+            <div class="scan-lines"></div>
+            <button id="start-btn" class="neon-btn">INVESTIGATE ERROR</button>
+        </div>
+    </div>
+
+    <div id="game-screen" class="screen">
+        <div class="hud">
+            <div class="timer-container">
+                <span class="timer-label">ESCAPE TIME:</span>
+                <span id="timer" class="timer">60</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-label">PROGRESS:</div>
+                <div class="progress-bars">
+                    <div class="progress-bar" id="progress-1"></div>
+                    <div class="progress-bar" id="progress-2"></div>
+                    <div class="progress-bar" id="progress-3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="level-1" class="level active">
+            <div class="level-container">
+                <h2 class="level-title">SYSTEM ERROR DETECTED</h2>
+                <p class="level-description">Find the hidden access key in the corrupted data stream</p>
+                <div class="glitch-area">
+                    <div class="data-stream">
+                        <div class="data-line">01001000 01100101 01101100 01110000</div>
+                        <div class="data-line glitching">01001001 <span class="hidden-key" id="key-1">🔑</span> 01101101
+                        </div>
+                        <div class="data-line">01110100 01110010 01100001 01110000</div>
+                        <div class="data-line glitching">01110000 01100101 01100100</div>
+                    </div>
+                </div>
+                <div class="key-slot" id="key-slot-1">
+                    <span class="slot-text">DROP KEY HERE</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="level-2" class="level">
+            <div class="level-container">
+                <h2 class="level-title">DECRYPTION REQUIRED</h2>
+                <div class="riddle-container">
+                    <div class="riddle-screen">
+                        <p class="riddle-text">
+                            I am not a number, but I count time,<br>
+                            I have no body, but I can chime,<br>
+                            When servers fail and systems break,<br>
+                            I'm the first thing admins awake.<br><br>
+                            What am I?
+                        </p>
+                    </div>
+                    <div class="answer-input">
+                        <input type="text" id="riddle-answer" placeholder="Enter your answer..." maxlength="15">
+                        <button id="submit-riddle" class="neon-btn small">DECRYPT</button>
+                    </div>
+                    <div class="hint-container">
+                        <span class="hint" id="riddle-hint">HINT: It rings when something goes wrong</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="level-3" class="level">
+            <div class="level-container">
+                <h2 class="level-title">FINAL SECURITY BARRIER</h2>
+                <div class="keypad-container">
+                    <div class="display-screen">
+                        <span id="keypad-display">____</span>
+                    </div>
+                    <div class="keypad">
+                        <button class="key-btn" data-key="1">1</button>
+                        <button class="key-btn" data-key="2">2</button>
+                        <button class="key-btn" data-key="3">3</button>
+                        <button class="key-btn" data-key="4">4</button>
+                        <button class="key-btn" data-key="5">5</button>
+                        <button class="key-btn" data-key="6">6</button>
+                        <button class="key-btn" data-key="7">7</button>
+                        <button class="key-btn" data-key="8">8</button>
+                        <button class="key-btn" data-key="9">9</button>
+                        <button class="key-btn clear" data-key="clear">CLR</button>
+                        <button class="key-btn" data-key="0">0</button>
+                        <button class="key-btn enter" data-key="enter">ENT</button>
+                    </div>
+                    <div class="keypad-hint">
+                        <span>CLUE: The year HTTP status codes were standardized</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="success-screen" class="screen">
+        <div class="success-container">
+            <div class="success-animation">
+                <div class="door-frame">
+                    <div class="door left-door"></div>
+                    <div class="door right-door"></div>
+                    <div class="exit-light"></div>
+                </div>
+            </div>
+            <h1 class="success-title">ESCAPE SUCCESSFUL!</h1>
+            <p class="success-message">You've broken free from the 404 trap!</p>
+            <div class="stats">
+                <span id="final-time">Time: --:--</span>
+            </div>
+            <button id="restart-btn" class="neon-btn">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <div id="failure-screen" class="screen">
+        <div class="failure-container">
+            <h1 class="failure-title glitch-text" data-text="SYSTEM RESET">SYSTEM RESET</h1>
+            <p class="failure-message">Time expired. The server has reset the connection.</p>
+            <button id="retry-btn" class="neon-btn">TRY AGAIN</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

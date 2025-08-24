@@ -1,0 +1,248 @@
+/* CSS Custom Properties for Theming */
+
+/* Fantasy Theme */
+.theme-fantasy {
+    --font-heading: 'Crimson Text', serif;
+    --font-body: 'Crimson Text', serif;
+    
+    --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    --bg-secondary: rgba(26, 26, 46, 0.9);
+    --bg-tertiary: rgba(22, 33, 62, 0.8);
+    
+    --text-primary: #e8e3d3;
+    --text-secondary: #c7b377;
+    --text-light: #ffffff;
+    
+    --accent-primary: #d4af37;
+    --accent-secondary: #b8860b;
+    --accent-glow: rgba(212, 175, 55, 0.3);
+    
+    --border-radius: 8px;
+    --box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.theme-fantasy #backgroundCanvas {
+    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+}
+
+/* Sci-Fi Theme */
+.theme-scifi {
+    --font-heading: 'Orbitron', monospace;
+    --font-body: 'Crimson Text', serif;
+    
+    --bg-primary: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #2d2d2d 100%);
+    --bg-secondary: rgba(0, 255, 255, 0.1);
+    --bg-tertiary: rgba(0, 255, 255, 0.05);
+    
+    --text-primary: #00ffff;
+    --text-secondary: #80ffff;
+    --text-light: #ffffff;
+    
+    --accent-primary: #00ffff;
+    --accent-secondary: #0080ff;
+    --accent-glow: rgba(0, 255, 255, 0.3);
+    
+    --border-radius: 0px;
+    --box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.theme-scifi .btn,
+.theme-scifi .modal-content,
+.theme-scifi .story-content,
+.theme-scifi .setup-form,
+.theme-scifi .contribution-form {
+    border-radius: 0;
+    border: 2px solid var(--accent-primary);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.theme-scifi .choice-item {
+    border-radius: 0;
+    position: relative;
+}
+
+.theme-scifi .choice-item::before {
+    content: '>';
+    position: absolute;
+    left: 1rem;
+    color: var(--accent-primary);
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.theme-scifi .choice-item:hover::before {
+    opacity: 1;
+}
+
+.theme-scifi .choice-item:hover {
+    padding-left: 3rem;
+}
+
+/* Mystery Theme */
+.theme-mystery {
+    --font-heading: 'Crimson Text', serif;
+    --font-body: 'Crimson Text', serif;
+    
+    --bg-primary: linear-gradient(135deg, #2c1810 0%, #4a2c2a 50%, #3d2914 100%);
+    --bg-secondary: rgba(44, 24, 16, 0.9);
+    --bg-tertiary: rgba(74, 44, 42, 0.8);
+    
+    --text-primary: #f4f1e8;
+    --text-secondary: #d4c4a8;
+    --text-light: #ffffff;
+    
+    --accent-primary: #cd853f;
+    --accent-secondary: #a0522d;
+    --accent-glow: rgba(205, 133, 63, 0.3);
+    
+    --border-radius: 4px;
+    --box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.theme-mystery .story-text {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.theme-mystery .choice-item {
+    border-left: 4px solid var(--accent-primary);
+    border-radius: 0 8px 8px 0;
+}
+
+.theme-mystery .choice-item:hover {
+    border-left-width: 8px;
+    box-shadow: inset 4px 0 8px rgba(205, 133, 63, 0.2);
+}
+
+/* Horror Theme */
+.theme-horror {
+    --font-heading: 'Crimson Text', serif;
+    --font-body: 'Crimson Text', serif;
+    
+    --bg-primary: linear-gradient(135deg, #0f0f0f 0%, #1a0a0a 50%, #2a1010 100%);
+    --bg-secondary: rgba(15, 15, 15, 0.95);
+    --bg-tertiary: rgba(26, 10, 10, 0.9);
+    
+    --text-primary: #f8f8f8;
+    --text-secondary: #cccccc;
+    --text-light: #ffffff;
+    
+    --accent-primary: #dc143c;
+    --accent-secondary: #8b0000;
+    --accent-glow: rgba(220, 20, 60, 0.3);
+    
+    --border-radius: 8px;
+    --box-shadow: 0 4px 20px rgba(220, 20, 60, 0.2);
+}
+
+.theme-horror .story-text {
+    text-shadow: 0 0 8px rgba(220, 20, 60, 0.3);
+}
+
+.theme-horror .choice-item {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(220, 20, 60, 0.1) 100%);
+    border: 2px solid rgba(220, 20, 60, 0.3);
+}
+
+.theme-horror .choice-item:hover {
+    background: linear-gradient(135deg, rgba(220, 20, 60, 0.1) 0%, rgba(220, 20, 60, 0.2) 100%);
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.4);
+}
+
+.theme-horror .btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+}
+
+/* Theme-specific animations */
+@keyframes fantasy-glow {
+    0%, 100% { text-shadow: 0 0 5px var(--accent-glow); }
+    50% { text-shadow: 0 0 20px var(--accent-glow), 0 0 30px var(--accent-glow); }
+}
+
+@keyframes scifi-pulse {
+    0%, 100% { box-shadow: 0 0 5px var(--accent-glow); }
+    50% { box-shadow: 0 0 20px var(--accent-glow), 0 0 30px var(--accent-glow); }
+}
+
+@keyframes mystery-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes horror-throb {
+    0%, 100% { box-shadow: 0 0 5px var(--accent-glow); }
+    50% { box-shadow: 0 0 15px var(--accent-glow), inset 0 0 15px var(--accent-glow); }
+}
+
+/* Apply theme animations */
+.theme-fantasy .app-title {
+    animation: fantasy-glow 3s ease-in-out infinite;
+}
+
+.theme-scifi .btn-primary {
+    animation: scifi-pulse 2s ease-in-out infinite;
+}
+
+.theme-mystery .story-text {
+    animation: mystery-flicker 4s ease-in-out infinite;
+}
+
+.theme-horror .choice-item:hover {
+    animation: horror-throb 1s ease-in-out infinite;
+}
+
+/* Dynamic background patterns */
+.theme-fantasy::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.theme-scifi::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(90deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%),
+        linear-gradient(180deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.theme-mystery::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 30% 70%, rgba(205, 133, 63, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.theme-horror::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(ellipse at center, rgba(220, 20, 60, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}

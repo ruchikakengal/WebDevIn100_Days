@@ -1,0 +1,439 @@
+/* Body Templates */
+.body-templates {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.template-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+    background-color: var(--bg-primary);
+}
+
+.template-item:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.template-item.active {
+    border-color: var(--accent-primary);
+    background-color: color-mix(in srgb, var(--accent-primary) 10%, var(--bg-primary));
+}
+
+.template-item i {
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+}
+
+.template-item span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* Skin Tones */
+.skin-tones {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.skin-tone {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: var(--transition);
+}
+
+.skin-tone:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.skin-tone.active {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-primary) 30%, transparent);
+}
+
+/* Category Tabs */
+.category-tabs {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    overflow-x: auto;
+}
+
+.tab-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.tab-btn:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.tab-btn.active {
+    background-color: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+/* Tattoo Gallery */
+.tattoo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: var(--spacing-sm);
+    max-height: 400px;
+    overflow-y: auto;
+    padding: var(--spacing-sm);
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.tattoo-item {
+    aspect-ratio: 1;
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--radius-sm);
+    cursor: grab;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.tattoo-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px var(--shadow);
+    border-color: var(--accent-primary);
+}
+
+.tattoo-item:active {
+    cursor: grabbing;
+    transform: scale(0.95);
+}
+
+.tattoo-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.tattoo-item:hover::before {
+    transform: translateX(100%);
+}
+
+/* Font Controls */
+.font-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.font-size-value {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-left: auto;
+}
+
+/* Color Picker Wrapper */
+.color-picker-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.color-presets {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: var(--spacing-xs);
+}
+
+.color-preset {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.color-preset:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 4px var(--shadow);
+}
+
+.color-preset.active {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-primary) 30%, transparent);
+}
+
+/* Layer Controls */
+.layer-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.layer-controls .btn {
+    flex: 1;
+}
+
+/* Drawing Controls */
+.drawing-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.brush-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.brush-controls label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brush-controls input[type="range"] {
+    width: 100%;
+    margin: var(--spacing-xs) 0;
+}
+
+.brush-controls input[type="color"] {
+    width: 100%;
+    height: 32px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.drawing-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.drawing-actions .btn {
+    flex: 1;
+}
+
+/* Text Controls */
+.text-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Canvas Grid Toggle */
+.canvas-wrapper.show-grid {
+    background-size: 20px 20px;
+}
+
+.canvas-wrapper.hide-grid {
+    background-image: none;
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+}
+
+.tooltip::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 1000;
+}
+
+.tooltip:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-4px);
+}
+
+/* Drag and Drop States */
+.drag-over {
+    background-color: color-mix(in srgb, var(--accent-primary) 10%, var(--bg-primary)) !important;
+    border-color: var(--accent-primary) !important;
+}
+
+.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+    z-index: 1000;
+}
+
+/* Canvas element states */
+.canvas-element {
+    cursor: move;
+    user-select: none;
+}
+
+.canvas-element.selected {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+.canvas-element:hover {
+    outline: 1px solid var(--accent-secondary);
+    outline-offset: 1px;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    background: var(--success);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    box-shadow: 0 4px 12px var(--shadow);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.error {
+    background: var(--danger);
+}
+
+.notification.warning {
+    background: var(--warning);
+}
+
+/* Loading state for tattoo items */
+.tattoo-item.loading {
+    background: linear-gradient(45deg, var(--bg-tertiary) 25%, var(--border-color) 25%, var(--border-color) 50%, var(--bg-tertiary) 50%, var(--bg-tertiary) 75%, var(--border-color) 75%);
+    background-size: 20px 20px;
+    animation: loading-stripes 1s linear infinite;
+}
+
+@keyframes loading-stripes {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 0; }
+}
+
+/* Context menu */
+.context-menu {
+    position: fixed;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xs);
+    box-shadow: 0 8px 24px var(--shadow-lg);
+    z-index: 1002;
+    min-width: 160px;
+}
+
+.context-menu-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.context-menu-item:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.context-menu-item i {
+    width: 16px;
+    text-align: center;
+}
+
+.context-menu-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: var(--spacing-xs) 0;
+}
+
+/* Status indicators */
+.status-indicator {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+}
+
+.status-indicator.loading {
+    background: var(--warning);
+    animation: pulse 1s infinite;
+}
+
+.status-indicator.error {
+    background: var(--danger);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Resize cursors for handles */
+.handle-nw, .handle-se { cursor: nw-resize; }
+.handle-ne, .handle-sw { cursor: ne-resize; }
+.handle-rotate { cursor: grab; }
+.handle-rotate:active { cursor: grabbing; }

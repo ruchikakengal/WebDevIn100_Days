@@ -1,0 +1,32 @@
+.face {
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+
+.rubik-window {
+	perspective: 460px;
+	height: 100%;
+	min-height: 350px;
+	transform: translateY(1px) scale(0.7);
+}
+
+.algo-text {
+	font-size: 42px;
+	margin-bottom: -75px;
+}
+
+.highlighted-move {
+	color: brown;
+	font-weight: 500;
+}
+
+.modal-body {
+	overflow-y: clip !important;
+}
+
+.card {
+	cursor: pointer;
+	text-decoration: none !important;
+	color: inherit !important;
+}

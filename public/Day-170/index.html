@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shooting Game</title>
+    <style>
+        body { 
+            margin: 0; 
+            overflow: hidden; 
+            position: absolute; 
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const WINDOW_WIDTH = window.innerWidth;
+        const WINDOW_HEIGHT = window.innerHeight;
+        const SCREEN_FRAME_LINE_WIDTH = 32;
+        const MY_SPACE_CRAFT_DEFAULT_LIFE = 5;
+        const KEY_CODE = {
+            ARROW_UP: "ArrowUp",
+            ARROW_DOWN: "ArrowDown",
+            ARROW_LEFT: "ArrowLeft",
+            ARROW_RIGHT: "ArrowRight",
+            SPACE: "Space",
+            ESCAPE: "Escape",
+            ENTER: "Enter"
+        };
+        const LIFE_BAR_CLASS = "lifeBarClass";
+        const ENEMY_1_CLASS = "enemy1Class";
+
+        const SCREEN_FRAME_ID = "screenFrame";
+        const GITHUB_LINK_ID = "githubLink";
+        const MY_SPACE_CRAFT_ID = "mySpaceCraft";
+        const MY_SPACE_CRAFT_MISSILE_ID = "mySpaceCraftMissile";
+        const STARTED_TITLE_ID = "startedTitle";
+        const OPERATION_MESSAGE_ID = "operationMessage";
+        const ELAPSED_TIME_ID = "elapsedTime";
+        const LIFE_MESSAGE_ID = "lifeMessageId";
+        const LIFE_BAR_ID = "lifeBarId";
+        const ENEMY_1_ID = "enemy1";
+        const ENEMY_1_HP_ID = "enemy1HitPoint";
+        const ENEMY_1_MISSILE_ID = "enemy1MissileId";
+        const GAME_CLEAR_MESSAGE_ID = "gameClearMessage"
+        const GAME_OVER_MESSAGE_ID = "gameOverMessage";
+        const GAME_CLEAR_ENDROLL_MESSAGE_ID = "gameClaerEndrollMessage";
+        const GAME_CLEAR_END_CONFIRM_CONTINUE_ID = "gameClearEndConfirmContinue";
+
+        const Z_INDEX = {
+            SCREEN_FRAME: 2,
+            GITHUB_LINK: 2,
+            TITLE_MESSAGE: 2,
+            OPERATION_MESSAGE: 2,
+            ELAPSED_TIME: 2,
+            LIFE_MESSAGE: 2,
+            LIFE_BAR: 2,
+            GAME_CLEAR_MESSAGE: 2,
+            GAME_OVER_MESSAGE: 2,
+            GAME_CLEAR_ENDROLL_MESSAGE: 2,
+            GAME_CLEAR_END_CONFIRM_CONTINUE: 2,
+            MY_SPACE_CRAFT: 1,
+            MY_SPACE_FRATF_MISSILE: 1,
+            ENEMY_1: 1,
+            ENEMY_1_HP: 1,
+            ENEMY_1_MISSILE: 1,
+            BACKGROUND_STARS: 0
+        };
+
+        let global_mutable_background_stars_set_interval_id;
+        let global_mutable_enemy_1_set_interval_id;
+        let global_mutable_game_clear_effect_set_interval_id;
+
+        let global_mutable_elapsed_time_request_id;
+        let global_mutable_gamepad_observe_request_id;
+
+        function drawScreenFrame() {
+            const canvas = document.createElement("canvas");
+            canvas.id = SCREEN_FRAME_ID;
+            canvas.width = WINDOW_WIDTH;
+            canvas.height = WINDOW_HEIGHT;
+            canvas.style.position = "absolute";
+            canvas.style.zIndex = Z_INDEX.SCREEN_FRAME;
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext("2d");
+            ctx.strokeStyle = "springgreen";
+            ctx.lineWidth = SCREEN_FRAME_LINE_WIDTH;
+            ctx.strokeRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+            ctx.stroke();
+        }
+
+        function addGithubLink() {
+            const url = "https://github.com/";
+            const a = document.createElement("a");
+            const width_css = 340;
+            a.id = GITHUB_LINK_ID;
+            a.href = url;
+            a.textContent = url;
+            a.target = "_blank";
+            a.rel = "noopener";
+            a.style.zIndex = Z_INDEX.GITHUB_LINK;
+            a.style.width = width_css + "px";
+            a.style.position = "absolute";
+            a.style.margin = 0;
+            a.style.color = "white";
+            a.style.fontSize = 12 + "px";
+            a.style.fontFamily = "serif";
+            a.style.textAlign = "center";
+            a.style.left = WINDOW_WIDTH - 370 + "px";
+            a.style.top = SCREEN_FRAME_LINE_WIDTH + 4 + "px";
+            document.body.appendChild(a);
+
+            const mouseover = "mouseover";
+            const mouseleave = "mouseleave"
+            function changeColor(e, status) {
+                switch(status) {
+                    case mouseover: 
+                        e.target.style.color = "lightgreen";
+                        break; 
+                    case mouseleave: 
+                        e.target.style.color = "white";
+                        break;
+                }
+            }
+
+            a.addEventListener(mouseover, (e) => changeColor(e, mouseover));
+            a.addEventListener(mouseleave, (e) => changeColor(e, mouseleave));
+        }
+
+        function drawMySpaceCraft() {
+            const size = 32;
+            const canvas = document.createElement("canvas");
+            canvas.id = MY_SPACE_CRAFT_ID;
+            canvas.width = size;
+            canvas.height = size;
+            canvas.style.position = "absolute";
+            canvas.style.zIndex = Z_INDEX.MY_SPACE_CRAFT;
+            canvas.style.left = 128 + "px";
+            canvas.style.top = (WINDOW_HEIGHT / 2) + "px";
+            canvas.style.borderWidth = 1 + "px";
+            canvas.style.borderStyle = "dashed";
+            canvas.style.borderColor = "lightgreen";
+            canvas.style.borderRadius = 16 + "px";
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext("2d");
+            ctx.fillStyle = "lightgreen";
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(size, size / 2);
+            ctx.lineTo(0, size);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function addMySpaceCraftToKeyDownEvent(event) {
+            switch(event.code) {
+                case KEY_CODE.ARROW_UP:
+                    addMySpaceCraftMoveWay(KEY_CODE.ARROW_UP);
+                    break;
+                case KEY_CODE.ARROW_DOWN:
+                    addMySpaceCraftMoveWay(KEY_CODE.ARROW_DOWN);
+                    break;
+                case KEY_CODE.ARROW_LEFT:
+                    addMySpaceCraftMoveWay(KEY_CODE.ARROW_LEFT);
+                    break;
+                case KEY_CODE.ARROW_RIGHT:
+                    addMySpaceCraftMoveWay(KEY_CODE.ARROW_RIGHT);
+                    break;
+                case KEY_CODE.SPACE:
+                    addMySpaceCraftMissile();
+                    break;
+                case KEY_CODE.ESCAPE:
+                    window.location.reload();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function addMySpaceCraftMoveWay(keyCode) {
+            const mySpaceCraft = document.getElementById(MY_SPACE_CRAFT_ID);
+            if(mySpaceCraft == null) {
+                return;
+            }
+            const top = parseInt(mySpaceCraft.style.top);
+            const left = parseInt(mySpaceCraft.style.left); 
+            const offset = SCREEN_FRAME_LINE_WIDTH;
+            switch(keyCode) {
+                case KEY_CODE.ARROW_UP: 
+                    if(top > offset * 2) {
+                        mySpaceCraft.style.top = (top - offset) + "px";
+                    }
+                    break;
+                case KEY_CODE.ARROW_DOWN:
+                    if(top < WINDOW_HEIGHT - offset * 2) {
+                        mySpaceCraft.style.top = (top + offset) + "px";
+                    }
+                    break;
+                case KEY_CODE.ARROW_LEFT:
+                    if(left > offset) {
+                        mySpaceCraft.style.left = (left - offset) + "px";
+                    }
+                    break;
+                case KEY_CODE.ARROW_RIGHT:
+                    if(left < WINDOW_WIDTH / 2 - offset) {
+                            mySpaceCraft.style.left = (left + offset) + "px";
+                    }
+                    break;
+            }
+        }
+
+        function addMySpaceCraftMissile() {
+            const mySpaceCraft = document.getElementById(MY_SPACE_CRAFT_ID);
+            if(mySpaceCraft == null) {
+                return;
+            }
+            const defaultMissileLeftPosition = parseInt(mySpaceCraft.style.left) + mySpaceCraft.width + 8;
+            const defualtMissileTopPosition = parseInt(mySpaceCraft.style.top) + mySpaceCraft.height / 4;
+            const size = 20;
+            const canvas = document.createElement("canvas");
+            canvas.id = MY_SPACE_CRAFT_MISSILE_ID;
+            canvas.width = size;
+            canvas.height = size;
+            canvas.style.position = "absolute";
+            canvas.style.zIndex = Z_INDEX.MY_SPACE_FRATF_MISSILE;
+            canvas.style.left = defaultMissileLeftPosition + "px";
+            canvas.style.top = defualtMissileTopPosition + "px";
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext("2d");
+            ctx.fillStyle = "orange";
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(size, size / 2);
+            ctx.lineTo(0, size);
+            ctx.closePath();
+            ctx.fill();
+
+            const missileSpeed = 42;
+            let requestId;
+            function animate() {
+                let left = parseInt(canvas.style.left);
+                if(left > WINDOW_WIDTH - SCREEN_FRAME_LINE_WIDTH - size) {
+                    cancelAnimationFrame(requestId);
+                    canvas.remove();
+                    return;
+                }
+
+                left += missileSpeed;
+                canvas.style.left = left + "px";
+                requestId = requestAnimationFrame(animate);
+            }
+            requestId = requestAnimationFrame(animate);
+        }
+
+        function resizeWindow() {
+            window.location.reload();
+        }
+
+        function gamepadHandler(e, connecting) {
+            if(!connecting) {
+                cancelAnimationFrame(global_mutable_gamepad_observe_request_id);
+                return;
+            }
+
+            function observe() {
+                const connectedGamepadIndex = e.gamepad.index;
+                const gamepads = window.navigator.getGamepads();
+                const gamepad = gamepads[connectedGamepadIndex];
+                if(gamepad == null) {
+                    return;
+                }
+
+                // https://www.w3.org/TR/gamepad/#remapping
+                const leftCluster = {
+                    top: gamepad.buttons[12],
+                    bottom: gamepad.buttons[13],
+                    left: gamepad.buttons[14],
+                    right: gamepad.buttons[15]
+                };
+                const rightCluster = {
+                    bottom: gamepad.buttons[0],
+                    right: gamepad.buttons[1],
+                    left: gamepad.buttons[2],
+                    top: gamepad.buttons[3]
+                }
+                if(leftCluster.top.pressed) {
+                    addMySpaceCraftMoveWay(KEY_CODE.ARROW_UP);
+                } else if(leftCluster.bottom.pressed) {
+                    addMySpaceCraftMoveWay(KEY_CODE.ARROW_DOWN);
+                } else if(leftCluster.left.pressed) {
+                    addMySpaceCraftMoveWay(KEY_CODE.ARROW_LEFT);
+                } else if(leftCluster.right.pressed) {
+                    addMySpaceCraftMoveWay(KEY_CODE.ARROW_RIGHT);
+                } else if(
+                    rightCluster.bottom.pressed || 
+                    rightCluster.right.pressed || 
+                    rightCluster.left.pressed || 
+                    rightCluster.top.pressed) 
+                {
+                    addMySpaceCraftMissile();
+                }
+                global_mutable_gamepad_observe_request_id = requestAnimationFrame(observe);
+            }
+            global_mutable_gamepad_observe_request_id = requestAnimationFrame(observe);
+        }
+
+        function startedTitleMessage() {
+            const p = document.createElement("p");
+            const width_css = 820;
+            p.id = STARTED_TITLE_ID;
+            p.textContent = "- JavaScript Shooting Game -";
+            p.style.zIndex = Z_INDEX.TITLE_MESSAGE;
+            p.style.width = width_css + "px";
+            p.style.position = "absolute";
+            p.style.margin = 0;
+            p.style.color = "lightgreen";
+            p.style.fontSize = 56 + "px";
+            p.style.fontFamily = "serif";
+            p.style.textAlign = "center";
+            p.style.left = (WINDOW_WIDTH / 2 - (width_css / 2)) + "px";
+            p.style.top = (WINDOW_HEIGHT / 2 - 60) + "px";
+            document.body.appendChild(p);
+        }
+
+        function operationDescriptionMessage() {
+            const p = document.createElement("p");
+            const width_css = 720;
+            p.id = OPERATION_MESSAGE_ID;
+            p.textContent = "MOVE: ↑→↓← ATTACK: space key or standard controller right buttons";
+            p.style.zIndex = Z_INDEX.OPERATION_MESSAGE;
+            p.style.width = width_css + "px";
+            p.style.position = "absolute";
+            p.style.margin = 0;
+            p.style.color = "white";
+            p.style.fontSize = 18 + "px";
+            p.style.fontFamily = "serif";
+            p.style.textAlign = "center";
+            p.style.left = (WINDOW_WIDTH / 2 - (width_css / 2)) + "px";
+            p.style.top = (WINDOW_HEIGHT / 2 + 32) + "px";
+            document.body.appendChild(p);
+        }
+
+        function setTimeoutRemoveOpeningMessages() {
+            const seconds = 15;
+            const delayDeletedTime = seconds * 1000;
+            setTimeout(() => {
+                const seconds = 3;
+                const fadeoutTime = seconds * 1000;
+                const startedTitle = document.getElementById(STARTED_TITLE_ID);
+                if(startedTitle != null) {
+                    fadeoutAnimation(startedTitle, fadeoutTime);
+                    setTimeout(() => { startedTitle.remove(); },fadeoutTime);
+                }
+                const operationMessage = document.getElementById(OPERATION_MESSAGE_ID);
+                if(operationMessage != null) {
+                    fadeoutAnimation(operationMessage, fadeoutTime);
+                    setTimeout(() => { operationMessage.remove(); },fadeoutTime);
+                }
+            }, delayDeletedTime);
+        }
+
+        function fadeoutAnimation(targetElement, durationMilliSeconds) {
+            targetElement.animate(
+                [
+                    { opacity: 1 },
+                    { opacity: 0 }
+                ],
+                {
+                    duration: durationMilliSeconds,
+                    fill: "forwards"
+                }
+            );
+        }
+
+        function createBackgroundStars() {
+            const size = Math.floor(Math.random() * 3) + 2;
+            const canvas = document.createElement("canvas");
+            canvas.width = size;
+            canvas.height = size;
+            canvas.style.zIndex = Z_INDEX.BACKGROUND_STARS;
+            canvas.style.position = "absolute";
+            canvas.style.left = (WINDOW_WIDTH - 100) + "px";
+            canvas.style.top = (Math.floor(Math.random() * WINDOW_HEIGHT) + 32) + "px";
+            document.body.appendChild(canvas);
+
+            const rgb = {
+                r: Math.floor(Math.random() * 101) + 156,
+                g: Math.floor(Math.random() * 101) + 156,
+                b: Math.floor(Math.random() * 101) + 156
+            };
+            const ctx = canvas.getContext("2d");
+            ctx.fillStyle = `rgb(${rgb.r},${rgb.g},${rgb.b})`;
+            ctx.fillRect(0, 0, size, size);
+            ctx.fill();
+
+            const speed = Math.floor(Math.random() * 10.0) + 4.0;
+            let requestId;
+            function animate() {
+                let left = parseInt(canvas.style.left);
+                left -= speed;
+                canvas.style.left = left + "px";
+
+                if(left < SCREEN_FRAME_LINE_WIDTH) {
+                    cancelAnimationFrame(requestId);
+                    canvas.remove();
+                    return;
+                }
+                requestId = requestAnimationFrame(animate);
+            }
+            requestId = requestAnimationFrame(animate);
+        }
+
+        function drawBackgroundStars() {
+            const spawnTime = Math.floor(Math.random() * 200) + 500;
+            global_mutable_background_stars_set_interval_id = setInterval(createBackgroundStars, spawnTime);
+        }
+
+        function drawElapsedTime() {
+            const p = document.createElement("p");
+            const width_css = 120;
+            p.id = ELAPSED_TIME_ID;
+            p.textContent = "TIME: 00:00";
+            p.style.zIndex = Z_INDEX.ELAPSED_TIME;
+            p.style.width = width_css + "px";
+            p.style.position = "absolute";
+            p.style.margin = 0;
+            p.style.color = "white";
+            p.style.fontSize = 16 + "px";
+            p.style.fontFamily = "serif";
+            p.style.textAlign = "center";
+            p.style.left = SCREEN_FRAME_LINE_WIDTH + "px";
+            p.style.top = SCREEN_FRAME_LINE_WIDTH + "px";
+            document.body.appendChild(p);
+
+            const startTimeMilliSeconds = new Date().getTime();
+            function animate() {
+                const nowMilliSeconds = new Date().getTime();
+                const elapsedTimeMilliSeconds = nowMilliSeconds - startTimeMilliSeconds;
+                const elapsedTime = adjustElapsedTime(Math.floor(elapsedTimeMilliSeconds / 1000));
+                if(elapsedTime.length >= 6) {
+                    gameOverAllClearObject();
+                    return;
+                }
+                p.textContent = `TIME: ${elapsedTime}`;
+                global_mutable_elapsed_time_request_id = requestAnimationFrame(animate);
+            }
+            global_mutable_elapsed_time_request_id = requestAnimationFrame(animate);
+        }
+
+        function adjustElapsedTime(elapsedSeconds) {
+            if(elapsedSeconds < 60) {
+                const minutesString = "00"
+                const secondsString = elapsedSeconds.toString().length == 1 ? `0${elapsedSeconds}` : elapsedSeconds.toString();
+                return `${minutesString}:${secondsString}`;
+            } else {
+                const minutes = Math.floor(elapsedSeconds / 60);
+                const seconds = elapsedSeconds - minutes * 60;
+                const minutesString = minutes.toString().length == 1 ? `0${minutes}` : minutes.toString();
+                const secondsString = seconds.toString().length == 1 ? `0${seconds}` : seconds.toString();
+                return `${minutesString}:${secondsString}`;
+            }
+        }
+
+        function drawMyLife() {
+            const p = document.createElement("p");
+            const width_css = 24;
+            const lifeMessageLeft = SCREEN_FRAME_LINE_WIDTH + 124;
+            p.id = LIFE_MESSAGE_ID;
+            p.textContent = "LIFE: ";
+            p.style.zIndex = Z_INDEX.ELAPSED_TIME;
+            p.style.width = width_css + "px";
+            p.style.position = "absolute";
+            p.style.margin = 0;
+            p.style.color = "white";
+            p.style.fontSize = 16 + "px";
+            p.style.fontFamily = "serif";
+            p.style.textAlign = "center";
+            p.style.left = lifeMessageLeft + "px";
+            p.style.top = SCREEN_FRAME_LINE_WIDTH + "px";
+            document.body.appendChild(p);
+
+            const spanBetweenLifeMessageAndLifeBar = 36;
+            const spanLifeBar = 16;
+            let lifeBarLeftOffset = 0;
+            for(let i = 0; i < MY_SPACE_CRAFT_DEFAULT_LIFE; i++) {
+                if(i == 0) {
+                    lifeBarLeftOffset += spanBetweenLifeMessageAndLifeBar;
+                }
+                lifeBarLeftOffset += spanLifeBar;
+                drawLifeBar(lifeBarLeftOffset);
+            }
+        }
+
+        function drawLifeBar(leftOffset) {
+            const lifeMessage = document.getElementById(LIFE_MESSAGE_ID);
+            if(lifeMessage == null) {
+                return;
+            }
+            const lifeMessageLeft = parseInt(lifeMessage.style.left);
+            const canvas = document.createElement("canvas");
+            const barWidth = 10;
+            const barHeight = 20
+            canvas.className = LIFE_BAR_CLASS;
+            canvas.id = LIFE_BAR_ID;
+            canvas.width = barWidth;
+            canvas.height = barHeight;
+            canvas.style.position = "absolute";
+            canvas.style.zIndex = Z_INDEX.MY_SPACE_CRAFT;
+            canvas.style.left = (lifeMessageLeft + leftOffset) + "px";
+            canvas.style.top = SCREEN_FRAME_LINE_WIDTH + "px";
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext("2d");
+            ctx.fillStyle = "lightgreen";
+            ctx.fillRect(0, 0, barWidth, barHeight);
+            ctx.fill();
+        }
+
+        function deleteLifeBar() {
+            const lifeBars = document.getElementsByClassName(LIFE_BAR_CLASS);
+            if(lifeBars.length != 0) {
+                const latestLife = lifeBars[lifeBars.length - 1];
+                latestLife.remove();
+
+                const lifeAfterDeleted = document.getElementsByClassName(LIFE_BAR_CLASS);
+                if(lifeAfterDeleted.length == 0) {
+                    gameOverAllClearObject();
+                }
+            } 
+        }
+
+        function drawScreenFrameRect(ctx, color) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = SCREEN_FRAME_LINE_WIDTH;
+            ctx.strokeRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+            ctx.stroke();
+        }
+
+        function observeLifeBarAndChangeScreenFrameColor() {
+            let requestId;
+            function observe() {
+                const lifeBars = document.getElementsByClassName(LIFE_BAR_CLASS);
+                const screenFrame = document.getElementById(SCREEN_FRAME_ID);
+                const screenFrameCtx = screenFrame.getContext("2d");
+
+                if(lifeBars.length == 0) {
+                    cancelAnimationFrame(requestId);
+                    return;
+                } 
+
+                if(screenFrame != null) {
+                    switch(lifeBars.length) {
+                        case 3: 
+                            drawScreenFrameRect(screenFrameCtx, "yellow");
+                            break;
+                        case 1: 
+                            drawScreenFrameRect(screenFrameCtx, "red");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                requestId = requestAnimationFrame(observe);
+            }
+            requestId = requestAnimationFrame(observe);
+        }
+
+        function createEnemy1() {
+            const size = 32;
+            const canvas = document.createElement("canvas");
+            canvas.className = ENEMY_1_CLASS;
+            canvas.id = ENEMY_1_ID;
+            canvas.width = size;
+            canvas.height = size;
+            canvas.style.position = "absolute";
+            canvas.style.zIndex = Z_INDEX.ENEMY_1;
+            canvas.style.left = Math.floor(Math.random() * WINDOW_WIDTH / 3.8) + WINDOW_WIDTH / 1.7 + "px";
+            canvas.style.top = (Math.floor(Math.random() * WINDOW_HEIGHT / 1.5) + SCREEN_FRAME_LINE_WIDTH + 26)  + "px";
+            document.body.appendChild(canvas);
+
+            const rgb = {
+                r: Math.floor(Math.random() * 256),
+                g: Math.floor(Math.random() * 256),
+                b: Math.floor(Math.random() * 256)
+            };
+            const ctx = canvas.getContext("2d");
+            ctx.fillStyle = `rgb(${rgb.r},${rgb.g},${rgb.b})`;
+            ctx.beginPath();
+            ctx.moveTo(size, 0);
+            ctx.lineTo(0, size / 2);
+            ctx.lineTo(size, size);
+            ctx.closePath();
+            ctx.fill();
+
+            const p = document.createElement("p");
+            const width_css = 72;
+            const hp = Math.floor(Math.random() * 501) + 200;
+            const defaultHpLeftPosition = parseInt(canvas.style.left) - 8;
+            const defaultHpTopPosition = parseInt(canvas.style.top) - 26;
+            p.id = ENEMY_1_HP_ID;
+            p.textContent = hp;
+            p.style.zIndex = Z_INDEX.ENEMY_1_HP;
+            p.style.width = width_css + "px";
+            p.style.position = "absolute";
+            p.style.margin = 0;
+            p.style.color = "white";
+            p.style.fontWeight = "900";
+            p.style.fontSize = 12 + "px";
+            p.style.fontFamily = "serif";
+            p.style.textAlign = "center";
+            p.style.left = defaultHpLeftPosition + "px";
+            p.style.top = defaultHpTopPosition + "px";
+            document.body.appendChild(p);
+
+            const moveEnemy1PixelSize = 24;
+            const enemy1MoveIntervalMilliSeconds = Math.floor(Math.random() * 501) + 200; 
+            const missileSpeed = 42;
+            let requestId;
+            let start;
+            let count = 1;
+            function animate(timestamp) {
+                if(start == undefined) {
+                    start = timestamp;
+                }
+                let left = parseInt(canvas.style.left);
+                let top = parseInt(canvas.style.top);
+                const elapsed = timestamp - start;
+                const isMaxRight = left + size > WINDOW_WIDTH - SCREEN_FRAME_LINE_WIDTH - 24;
+                const isMaxLeft = left < WINDOW_WIDTH / 1.65;
+                const isMaxTop = top + 26 < 96;
+                const isMaxBottom = top > WINDOW_HEIGHT - SCREEN_FRAME_LINE_WIDTH - 48;
+
+                if(Math.floor(elapsed / enemy1MoveIntervalMilliSeconds) / count == 1) {
+                    count++;
+
+                    if(isMaxRight) {
+                        left -= moveEnemy1PixelSize;
+                    } else if(isMaxLeft) {
+                        left += moveEnemy1PixelSize;
+                    } else if(isMaxTop) {
+                        top += moveEnemy1PixelSize;
+                    } else if(isMaxBottom) {
+                        top -= moveEnemy1PixelSize
+                    } else {
+                        const enemyNextMoveWay = Math.floor(Math.random() * 4) + 1;
+                        switch(enemyNextMoveWay) {
+                            case 1:
+                                top += moveEnemy1PixelSize;
+                                left -= moveEnemy1PixelSize;
+                                break; 
+                            case 2: 
+                                top += moveEnemy1PixelSize;
+                                left += moveEnemy1PixelSize;
+                                break; 
+                            case 3:
+                                top -= moveEnemy1PixelSize;
+                                left += moveEnemy1PixelSize;
+                                break;
+                            case 4: 
+                                top -= moveEnemy1PixelSize;
+                                left -= moveEnemy1PixelSize;
+                                break; 
+                            default: 
+                                break;
+                        }
+                    }
+
+                    setTimeout(() => {
+                        addEnemy1Missile(canvas);
+                    }, 100);
+                }
+
+                const mySpaceCraftMissile = document.getElementById(MY_SPACE_CRAFT_MISSILE_ID);
+                if(mySpaceCraftMissile != null) {
+                    const mySpaceCraftMissleLeft = parseInt(mySpaceCraftMissile.style.left);
+                    const mySpaceCraftMissleTop = parseInt(mySpaceCraftMissile.style.top);
+                    if(
+                        mySpaceCraftMissleTop + mySpaceCraftMissile.height >= top - 64 &&
+                        mySpaceCraftMissleTop <= top + canvas.height + 48 && 
+                        mySpaceCraftMissleLeft + mySpaceCraftMissile.width >= left - 64 &&
+                        mySpaceCraftMissleLeft <= left + canvas.width + 128
+                    ) {
+                        mySpaceCraftMissile.remove();
+                        let hp = parseInt(p.textContent);
+                        hp -= 10;
+                        if(hp <= 0) {
+                            cancelAnimationFrame(requestId);
+                            canvas.remove();
+                            p.remove();
+                            return;
+                        }
+                        p.textContent = hp.toString();
+                    }
+                }
+
+                if(document.getElementsByClassName(LIFE_BAR_CLASS).length == 0) {
+                    cancelAnimationFrame(requestId);
+                    canvas.remove();
+                    p.remove();
+                    return;
+                }
+
+                canvas.style.top = top + "px";
+                canvas.style.left = left + "px";
+                p.style.top = (top - 26) + "px";
+                p.style.left = (left - 16) + "px";
+                requestId = requestAnimationFrame(animate);
+            }
+            requestId = requestAnimationFrame(animate);
+        }
+
+        function addEnemy1Missile(enemy1) {
+            const defaultMissileLeftPosition = parseInt(enemy1.style.left) - 32;
+            const defualtMissileTopPosition = parseInt(enemy1.style.top) + enemy1.height / 4;
+
+            const missileSize = 20;
+            const enemyMissile = document.createElement("canvas");
+            enemyMissile.id = ENEMY_1_MISSILE_ID;
+            enemyMissile.width = missileSize;
+            enemyMissile.height = missileSize;
+            enemyMissile.style.position = "absolute";
+            enemyMissile.style.zIndex = Z_INDEX.ENEMY_1_MISSILE;
+            enemyMissile.style.left = defaultMissileLeftPosition + "px";
+            enemyMissile.style.top = defualtMissileTopPosition + "px";
+            document.body.appendChild(enemyMissile);
+
+            const rgb = {
+                r: Math.floor(Math.random() * 101) + 156,
+                g: Math.floor(Math.random() * 101) + 156,
+                b: Math.floor(Math.random() * 101) + 156
+            };
+            const ctx = enemyMissile.getContext("2d");
+            ctx.fillStyle = `rgb(${rgb.r},${rgb.g},${rgb.b})`;
+            ctx.beginPath();
+            ctx.moveTo(missileSize, 0);
+            ctx.lineTo(0, missileSize / 2);
+            ctx.lineTo(missileSize, missileSize);
+            ctx.closePath();
+            ctx.fill();
+
+            const missileSpeed = Math.floor(Math.random() * 11) + 5;
+            let requestId;
+            function animate() {
+                let enemyMissleLeft = parseInt(enemyMissile.style.left);
+                let enemyMissileTop = parseInt(enemyMissile.style.top);
+                if(enemyMissleLeft < SCREEN_FRAME_LINE_WIDTH + missileSize) {
+                    cancelAnimationFrame(requestId);
+                    enemyMissile.remove();
+                    return;
+                }
+
+                const mySpaceCraft = document.getElementById(MY_SPACE_CRAFT_ID);
+                if(mySpaceCraft != null) {
+                    const mySpaceCraftLeft = parseInt(mySpaceCraft.style.left);
+                    const mySpaceCraftTop = parseInt(mySpaceCraft.style.top);
+                    if(
+                        mySpaceCraftTop + mySpaceCraft.height >= enemyMissileTop &&
+                        mySpaceCraftTop <= enemyMissileTop + enemyMissile.height &&
+                        mySpaceCraftLeft + mySpaceCraft.width >= enemyMissleLeft - 32 && 
+                        mySpaceCraftLeft <= enemyMissleLeft + enemyMissile.width
+                    ) {
+                        deleteLifeBar();
+                        cancelAnimationFrame(requestId);
+                        enemyMissile.remove();
+                        return;
+                    }
+                }
+
+                enemyMissleLeft -= missileSpeed;
+                enemyMissile.style.left = enemyMissleLeft + "px";
+                requestId = requestAnimationFrame(animate);
+            }
+            requestId = requestAnimationFrame(animate);
+        }
+
+        function drawEnemy1Interval() {
+            const spawnTime = Math.floor(Math.random() * 200) + 10000;
+            global_mutable_enemy_1_set_interval_id = setInterval(createEnemy1, spawnTime);
+            clearIntarvalEnemy1();
+        }
+
+        function clearIntarvalEnemy1() {
+            const seconds = 52;
+            const enemy1StopTime = seconds * 1000;
+            setTimeout(() => {
+                clearInterval(global_mutable_enemy_1_set_interval_id);
+                observeEnemy1Number();
+            }, enemy1StopTime);
+        }
+
+        function observeEnemy1Number() {
+            let requestId;
+            function observe() {
+                const existEnemy1Count = document.getElementsByClassName(ENEMY_1_CLASS).length;
+                const lifeBars = document.getElementsByClassName(LIFE_BAR_CLASS);
+                if(existEnemy1Count == 0 && lifeBars.length != 0) {
+                    cancelAnimationFrame(requestId);
+                    gameClear();
+                    return;
+                }
+                requestId = requestAnimationFrame(observe);
+            }
+            requestId = requestAnimationFrame(observe);
+        }
+
+        function gameOverMessage() {
+            const p = document.createElement("p");
+            const width_css = 620;
+            p.id = GAME_OVER_MESSAGE_ID;
+            p.textContent = "GAME OVER";
+            p.style.zIndex = Z_INDEX.GAME_OVER_MESSAGE;
+            p.style.width = width_css + "px";
+            p.style.position = "absolute";
+            p.style.margin = 0;
+            p.style.color = "red";
+            p.style.fontSize = 56 + "px";
+            p.style.fontFamily = "serif";
+            p.style.textAlign = "center";
+            p.style.left = (WINDOW_WIDTH / 2 - (width_css / 2)) + "px";
+            p.style.top = (WINDOW_HEIGHT / 2 - 60) + "px";
+            document.body.appendChild(p);   
+        }
+
+        function gameOverAllClearObject() {
+            clearInterval(global_mutable_background_stars_set_interval_id);
+            clearInterval(global_mutable_enemy_1_set_interval_id);
+
+            cancelAnimationFrame(global_mutable_elapsed_time_request_id);
+            cancelAnimationFrame(global_mutable_gamepad_observe_request_id);
+
+            const mySpaceCraft = document.getElementById(MY_SPACE_CRAFT_ID);
+            if(mySpaceCraft != null) {
+                mySpaceCraft.remove();
+            }
+
+            const screenFrame = document.getElementById(SCREEN_FRAME_ID);
+            if(screenFrame != null) {
+                const screenFrameCtx = screenFrame.getContext("2d");
+                drawScreenFrameRect(screenFrameCtx, "red");
+            }
+
+            gameOverMessage();
+            console.log("生死去来 棚頭傀儡 一線断時 落落磊磊");
+        }
+
+        function gameClearElapsedTimeAnimation() {
+            const elapsedTime = document.getElementById(ELAPSED_TIME_ID);
+            elapsedTime.style.color = "orange";
+            let time = 1000;
+            for(let i = 0; i < 8; i++) {
+                time += 1000;
+                setTimeout(() => {
+                    elapsedTime.style.visibility = i % 2 == 0 ? "hidden" : "visible";
+                }, time);
+            }
+        }
+
+        function gameClearRemoveLifeBars() {
+            const lifeBars = document.getElementsByClassName(LIFE_BAR_CLASS);
+            if(lifeBars.length != 0) {
+                const lastIndex = lifeBars.length - 1;
+                for(let i = lastIndex; i >= 0; i--) {
+                    lifeBars[i].remove();
+                }
+            }
+        }
+
+        function gameClearCongratulationsMessage() {
+            const p = document.createElement("p");
+            const width_css = 620;
+            p.id = GAME_CLEAR_MESSAGE_ID;
+            p.textContent = "GAME CLEAR";
+            p.style.zIndex = Z_INDEX.GAME_CLEAR_MESSAGE;
+            p.style.width = width_css + "px";
+            p.style.position = "absolute";
+            p.style.margin = 0;
+            p.style.color = "lightgreen";
+            p.style.fontSize = 56 + "px";
+            p.style.fontFamily = "serif";
+            p.style.textAlign = "center";
+            p.style.left = (WINDOW_WIDTH / 2 - (width_css / 2)) + "px";
+            p.style.top = (WINDOW_HEIGHT / 2 - 60) + "px";
+            document.body.appendChild(p);
+        }
+
+        function drawCircle(count) {
+            const isEven = count % 2 == 0;
+            const widthCenter = WINDOW_WIDTH / 2 - 200 / 2;
+            const widthOffset = Math.floor(Math.random() * WINDOW_WIDTH / 3.3);
+            const left = isEven ? widthCenter + widthOffset : widthCenter - widthOffset;
+
+            const heightCenter = WINDOW_HEIGHT / 2 - 200 / 2;
+            const heightOffset = Math.floor(Math.random() * WINDOW_HEIGHT / 3.1);
+            const top = isEven ? heightCenter + heightOffset : heightCenter - heightOffset;
+            const canvas = document.createElement("canvas");
+            canvas.id = "gameClearEffect";
+            canvas.width = 200;
+            canvas.height = 200;
+            canvas.style.position = "absolute";
+            canvas.style.zIndex = Z_INDEX.MY_SPACE_CRAFT;
+            canvas.style.left = left + "px";
+            canvas.style.top = top + "px";
+            document.body.appendChild(canvas);
+
+            const rgb = {
+                r: Math.floor(Math.random() * 256),
+                g: Math.floor(Math.random() * 256),
+                b: Math.floor(Math.random() * 256)
+            };
+
+            function circle(x_center, y_center, radius) {
+                const ctx = canvas.getContext('2d');
+                ctx.strokeStyle = `rgb(${rgb.r},${rgb.g},${rgb.b})`; 
+                ctx.beginPath();
+                ctx.arc(x_center, y_center, radius, 0, Math.PI * 2, false);
+                ctx.closePath();
+                ctx.stroke();
+            }
+            circle(100, 100, 20);
+            circle(100, 49, 30);
+            circle(100, 151, 30);
+            circle(49, 100, 30);
+            circle(151, 100, 30);
+            circle(100, 100, 10);
+            circle(100, 49, 20);
+            circle(100, 151, 20);
+            circle(49, 100, 20);
+            circle(151, 100, 20);
+                
+            let transform_t_clockwise = 0;
+            let transform_t_counterclockwise = 360;
+            let speed = Math.floor(Math.random() * 6) + 2; 
+            let magic_interval;
+            if(count % 2 == 0) {
+                magic_interval = setInterval(() => {
+                    canvas.style.transform = `rotateZ(${transform_t_clockwise}deg)`;        
+                    transform_t_clockwise += speed;
+                    if(transform_t_clockwise >= 360) {
+                        transform_t_clockwise = 0;
+                    }
+                }, 1);
+            } else {
+                magic_interval = setInterval(() => {
+                    canvas.style.transform = `rotateZ(${transform_t_counterclockwise}deg)`;
+                    transform_t_counterclockwise -= speed;
+                    if(transform_t_counterclockwise <= 0) {
+                        transform_t_counterclockwise = 360;
+                    }
+                }, 1);
+            }
+            setTimeout(() => {     
+                clearInterval(magic_interval); 
+                canvas.remove();              
+            }, 1000);  
+        }
+
+        function gameClearCongratulationsEffects() {
+            let count = 0;
+            global_mutable_game_clear_effect_set_interval_id = setInterval(() => {
+                count++;
+                drawCircle(count);
+            }, 50);
+        }
+
+        function createGameClearEndrollMessage(message, fontSize) {
+            const p = document.createElement("p");
+            const width_css = 820;
+            p.id = GAME_CLEAR_ENDROLL_MESSAGE_ID;
+            p.textContent = message;
+            p.style.zIndex = Z_INDEX.GAME_CLEAR_ENDROLL_MESSAGE;
+            p.style.width = width_css + "px";
+            p.style.position = "absolute";
+            p.style.margin = 0;
+            p.style.color = "lightgreen";
+            p.style.fontSize = fontSize + "px";
+            p.style.fontFamily = "serif";
+            p.style.textAlign = "center";
+            p.style.left = (WINDOW_WIDTH / 2 - (width_css / 2)) + "px";
+            p.style.top = WINDOW_HEIGHT - 100 + "px";
+            document.body.appendChild(p);
+
+            let requestId;
+            function animate() {
+                let top = parseInt(p.style.top);
+                if(top < SCREEN_FRAME_LINE_WIDTH + 16) {
+                    cancelAnimationFrame(requestId);
+                    p.remove();
+                    return;
+                }
+
+                top -= 1;
+                p.style.top = top + "px";
+                requestId = requestAnimationFrame(animate);
+            }
+            requestId = requestAnimationFrame(animate);
+        }
+
+        function gameClearEndroll() {
+            const endList = [
+                "- TITLE -", 
+                "JavaScript Shooting Game",
+                "- LANGUAGE -",
+                "html / css / JavaScript",
+                "- LICENSE -",
+                "MIT",
+                "- BROWSER -",
+                "Google Chrome v105.0.5195.102 Official Build x86_64",
+                "- CODE EDITOR -",
+                "Visual Studio Code v1.71.1",
+                "- DEVELOPMENT CONTROLLER -",
+                "dualshock 4 wireless controller for playstation 4 - jet black (cuh-zct2)",
+                "- CREATED BY -",
+                "@hibi221b"
+            ];
+
+            const titleSize = 32;
+            const messageSize = 24;
+            let time = 1;
+            for(let i = 0; i < endList.length; i++) {
+                if(i == endList.length - 2) {
+                    time += 3000;
+                }
+                time += 2000;
+                if(i % 2 != 0) {
+                    time -= 1000;
+                }
+                setTimeout(() => {
+                    createGameClearEndrollMessage(endList[i], i % 2 == 0 ? titleSize : messageSize);
+                }, time);
+            }
+        }
+
+        function gameClearEndConfirmContinue() {
+            const p = document.createElement("p");
+            const width_css = 280;
+            p.id = GAME_CLEAR_END_CONFIRM_CONTINUE_ID;
+            p.textContent = "_";
+            p.style.zIndex = Z_INDEX.GAME_CLEAR_END_CONFIRM_CONTINUE;
+            p.style.width = width_css + "px";
+            p.style.position = "absolute";
+            p.style.margin = 0;
+            p.style.color = "white";
+            p.style.fontSize = 24 + "px";
+            p.style.fontFamily = "serif";
+            p.style.textAlign = "start";
+            p.style.left = (WINDOW_WIDTH / 2 - (width_css / 2)) + "px";
+            p.style.top = (WINDOW_HEIGHT / 2 - 60) + "px";
+            document.body.appendChild(p);
+
+            let firstUnderBarTime = 1;
+            for(let i = 0; i < 10; i++) {
+                firstUnderBarTime += 500;
+                setTimeout(() => {
+                    p.style.visibility = i % 2 == 0 ? "hidden" : "visible";
+                }, firstUnderBarTime);
+            }
+
+            const name = "YUKI.  N＞ Continue？";
+            let n = "";
+            let time = 6001;
+            for(let i = 0; i < name.length; i++) {
+                time += 150;
+                setTimeout(() => {
+                    n += name[i];
+                    p.textContent = n;
+                }, time);
+            }
+
+            setTimeout(() => {
+                removeEventListener("keydown", addMySpaceCraftToKeyDownEvent);
+                addEventListener("keydown", (e) => {
+                    if(e.code == KEY_CODE.ENTER) {
+                        window.location.reload();
+                    } else {
+                        window.close();
+                    }
+                })
+            }, 8000);
+        }
+
+        function gameClear() {
+            cancelAnimationFrame(global_mutable_elapsed_time_request_id);
+            gameClearElapsedTimeAnimation();
+
+            clearInterval(global_mutable_background_stars_set_interval_id);
+
+            const lifeMessage = document.getElementById(LIFE_MESSAGE_ID);
+            if(lifeMessage != null) {
+                lifeMessage.remove();
+            }
+
+            const screenFrame = document.getElementById(SCREEN_FRAME_ID);
+            if(screenFrame != null) {
+                const screenFrameCtx = screenFrame.getContext("2d");
+                drawScreenFrameRect(screenFrameCtx, "springgreen");
+            }
+
+            gameClearRemoveLifeBars();
+            gameClearCongratulationsMessage();
+            gameClearCongratulationsEffects();
+
+            const seconds = 15;
+            const removeMilliSeconds = seconds * 1000;
+            setTimeout(() => {
+                const gameClearMessage = document.getElementById(GAME_CLEAR_MESSAGE_ID);
+                if(gameClearMessage != null) {
+                    gameClearMessage.remove();
+                }
+                clearInterval(global_mutable_game_clear_effect_set_interval_id);
+
+                setTimeout(() => {
+                    const mySpaceCraft = document.getElementById(MY_SPACE_CRAFT_ID);
+                    if(mySpaceCraft != null) {
+                        mySpaceCraft.remove();
+                    }
+                }, 4000);
+
+                setTimeout(gameClearEndroll, 5000);
+                setTimeout(gameClearEndConfirmContinue, 45000);
+            }, removeMilliSeconds);
+        }
+
+        function main() {
+            drawScreenFrame();
+            addGithubLink();
+            drawMySpaceCraft();
+            addEventListener("keydown", addMySpaceCraftToKeyDownEvent);
+            addEventListener("resize", resizeWindow);
+            addEventListener("gamepadconnected", (e) => gamepadHandler(e, true));
+            addEventListener("gamepaddisconnected", (e) => gamepadHandler(e, false));
+            startedTitleMessage();
+            operationDescriptionMessage();
+            setTimeoutRemoveOpeningMessages();
+            drawBackgroundStars();
+            drawElapsedTime();
+            drawMyLife();
+            observeLifeBarAndChangeScreenFrameColor();
+            drawEnemy1Interval();
+        }
+
+        main();
+    </script>
+</body>
+</html>

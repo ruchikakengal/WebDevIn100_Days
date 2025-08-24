@@ -1,0 +1,387 @@
+/* Large Screens */
+@media (min-width: 1200px) {
+    .sidebar {
+        width: 360px;
+    }
+    
+    .properties-panel {
+        width: 320px;
+    }
+    
+    .tattoo-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
+
+/* Medium Screens */
+@media (max-width: 1024px) {
+    .header-content {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .sidebar {
+        width: 280px;
+    }
+    
+    .properties-panel {
+        width: 260px;
+    }
+    
+    .canvas-toolbar {
+        padding: var(--spacing-sm);
+    }
+    
+    .toolbar-group {
+        gap: var(--spacing-xs);
+    }
+    
+    .header-actions {
+        gap: var(--spacing-xs);
+    }
+    
+    .header-actions .btn {
+        padding: var(--spacing-sm);
+    }
+    
+    .header-actions .btn span {
+        display: none;
+    }
+}
+
+/* Tablet Portrait */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 40vh;
+        order: 2;
+    }
+    
+    .sidebar-content {
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: var(--spacing-md);
+        gap: var(--spacing-lg);
+    }
+    
+    .sidebar-section {
+        flex-shrink: 0;
+        min-width: 250px;
+    }
+    
+    .canvas-container {
+        order: 1;
+        min-height: 60vh;
+    }
+    
+    .properties-panel {
+        display: none; /* Hide properties panel on mobile, use bottom sheet instead */
+    }
+    
+    .canvas-wrapper {
+        padding: var(--spacing-md);
+    }
+    
+    #main-canvas {
+        max-width: calc(100vw - 2rem);
+        max-height: calc(60vh - 6rem);
+        width: auto;
+        height: auto;
+    }
+    
+    .body-templates {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .tattoo-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+        max-height: 200px;
+    }
+    
+    .logo h1 {
+        display: none;
+    }
+    
+    .header-actions .btn {
+        font-size: 0.75rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+}
+
+/* Mobile Landscape & Small Tablets */
+@media (max-width: 768px) and (orientation: landscape) {
+    .main-content {
+        flex-direction: row;
+    }
+    
+    .sidebar {
+        width: 320px;
+        height: 100%;
+        max-height: none;
+        order: 1;
+    }
+    
+    .sidebar-content {
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    
+    .canvas-container {
+        order: 2;
+        min-height: auto;
+    }
+    
+    #main-canvas {
+        max-width: calc(100vw - 340px);
+        max-height: calc(100vh - 140px);
+    }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .sidebar-content {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-md);
+    }
+    
+    .sidebar-section {
+        min-width: 200px;
+    }
+    
+    .canvas-wrapper {
+        padding: var(--spacing-sm);
+    }
+    
+    .canvas-toolbar {
+        padding: var(--spacing-xs);
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-sm);
+    }
+    
+    .toolbar-group {
+        justify-content: center;
+    }
+    
+    .opacity-control {
+        justify-content: center;
+    }
+    
+    .body-templates {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .category-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        flex: 1;
+        min-width: 80px;
+    }
+    
+    .tattoo-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+        max-height: 150px;
+    }
+    
+    .text-input {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    /* Make buttons more touch-friendly */
+    .btn {
+        min-height: 44px;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .btn-icon {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    .skin-tone {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .color-preset {
+        width: 32px;
+        height: 32px;
+    }
+    
+    /* Selection handles larger for touch */
+    .handle {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .handle-rotate {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Touch device specific */
+@media (hover: none) and (pointer: coarse) {
+    .tattoo-item::before {
+        display: none; /* Remove hover shimmer on touch devices */
+    }
+    
+    .tooltip::before {
+        display: none; /* Remove hover tooltips on touch devices */
+    }
+    
+    /* Larger touch targets */
+    .template-item {
+        min-height: 80px;
+    }
+    
+    .tattoo-item {
+        min-height: 60px;
+    }
+    
+    /* Remove hover effects that don't work well on touch */
+    .btn:hover,
+    .template-item:hover,
+    .tattoo-item:hover,
+    .skin-tone:hover,
+    .color-preset:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    /* Add active states instead */
+    .btn:active {
+        transform: scale(0.95);
+    }
+    
+    .template-item:active,
+    .skin-tone:active,
+    .color-preset:active {
+        transform: scale(0.9);
+    }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .tattoo-item {
+        background-size: cover;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    #main-canvas {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .header,
+    .sidebar,
+    .properties-panel,
+    .canvas-toolbar {
+        display: none;
+    }
+    
+    .canvas-container {
+        width: 100%;
+        height: auto;
+    }
+    
+    .canvas-wrapper {
+        background: none;
+        padding: 0;
+    }
+    
+    #main-canvas {
+        max-width: 100%;
+        height: auto;
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .loading-spinner i {
+        animation: none;
+    }
+    
+    .tattoo-item::before {
+        display: none;
+    }
+}
+
+/* Dark mode specific responsive adjustments */
+@media (max-width: 768px) {
+    [data-theme="dark"] .canvas-wrapper {
+        background-image: 
+            radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    }
+    
+    [data-theme="dark"] #main-canvas {
+        border-color: #404040;
+    }
+}
+
+/* Landscape phone specific */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+    .header {
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .header-actions .btn {
+        padding: var(--spacing-xs);
+    }
+    
+    .canvas-toolbar {
+        padding: var(--spacing-xs);
+    }
+    
+    .sidebar-content {
+        padding: var(--spacing-sm);
+    }
+    
+    .canvas-wrapper {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+    .sidebar-section {
+        min-width: 180px;
+    }
+    
+    .color-presets {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .body-templates {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tattoo-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    }
+}
