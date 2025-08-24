@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>3D Emoji Emotion Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h2>3D Emoji Emotion Game</h2>
+      <button id="mode-toggle">Dark Mode</button>
+    </header>
+    <div class="instruction">
+      Click/tap face features to morph them. Guess the hidden emotion!
+    </div>
+    <div class="face-3d-container">
+      <div class="face">
+        <div class="emoji-shine"></div>
+        <div class="cheek left"></div>
+        <div class="cheek right"></div>
+        <div id="eye-left" class="feature eye" tabindex="0" aria-label="Left Eye">
+          <div class="eyeball-left"></div>
+        </div>
+        <div id="eye-right" class="feature eye" tabindex="0" aria-label="Right Eye">
+          <div class="eyeball-right"></div>
+        </div>
+        <div id="mouth" class="feature mouth" tabindex="0" aria-label="Mouth"></div>
+        <div id="eyebrows" class="feature eyebrows" tabindex="0" aria-label="Eyebrows"></div>
+        <div class="nose"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <select id="emotion-guess">
+        <option value="">Select Emotion</option>
+        <option value="happy">Happy</option>
+        <option value="sad">Sad</option>
+        <option value="angry">Angry</option>
+        <option value="surprised">Surprised</option>
+        <option value="neutral">Neutral</option>
+      </select>
+      <button id="submit-btn">Submit Guess</button>
+      <span id="result-message" class="result-msg"></span>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
