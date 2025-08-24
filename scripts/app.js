@@ -1570,27 +1570,8 @@ class WebDev100Days {
               features: ["Yoga", "Website", "Showcase"]
 
          },
-        {
-          originalDay: 162,
-          name: "Flip Tiles Puzzle",
-          description: "An advanced logic puzzle game where players must flip all tiles to the same color. Clicking a tile toggles its state along with adjacent tiles. The goal is achieved when the entire board is uniform in color.",
-          demoLink: "./public/Flip_Tiles_Puzzle/index.html",
-          category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-          features: [
-            "Interactive 5x5 puzzle grid",
-            "Stylish instructions before gameplay",
-            "Dark and light mode support",
-            "Responsive modern UI with animations",
-            "Reset and Start functionality",
-            "Win detection when all tiles match color",
-            "Hover effects and smooth transitions",
-            "Attractive gradients, shadows, and game-like polish"
-          ]
-        },
-
-
-                 {
+        
+     {
           "originalDay": 163,
           "name": "Emotion Reader",
           "description": "Advanced empathy game where players modify facial features of cartoon faces to match hidden emotions by selecting and cycling through shapes, with evaluation, dark/light mode, responsive design, and accessible controls.",
