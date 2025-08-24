@@ -1571,6 +1571,7 @@ class WebDev100Days {
 
          },
 
+
                  {
           "originalDay": 163,
           "name": "Emotion Reader",
@@ -1592,7 +1593,18 @@ class WebDev100Days {
            technologies: ["HTML", "CSS", "JavaScript"],
            features: ["Online Pharmacy", "Health", "Wellness"]
 
-         }
+         },
+
+               {
+            originalDay: 149,
+            name: "Email Validator",
+            description: "A website for real time email validation",
+            demoLink: "./public/Day-101_Email_Validator/index.html",
+            category: "Utility",
+            technologies: ["HTML", "CSS", "JavaScript"],
+            features: ["Real time email validation", "Clean UI", "Website"]
+          }
+
         ];
 
         this.projects = projectsData.map((project, index) => ({
