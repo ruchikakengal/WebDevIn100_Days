@@ -1728,7 +1728,7 @@ class WebDev100Days {
     originalDay: 165, 
     name: "Parallax Demo",
     description: "A smooth parallax scrolling effect demo using HTML, CSS, and JS",
-    demoLink: "./public/Parallax_Demo/index.html", 
+    demoLink: "./public/ParallaxScrollingDemo/index.html", 
     category: "creativity", 
     technologies: ["HTML", "CSS", "JavaScript"],
     features: [
