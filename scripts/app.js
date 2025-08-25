@@ -1598,28 +1598,9 @@ class WebDev100Days {
           category: "creativity",
           technologies: ["HTML", "CSS", "JavaScript"],
           features: ["Jewellery", "Website", "Showcase"]
-         },
-          {
-
-              originalDay: 152,
-              name:"Blog Website",
-              description: "A website for showcasing blog posts",
-              demoLink: "./public/Blog-Website/index.html",
-              category: "creativity",
-              technologies: ["HTML", "CSS", "JavaScript"],
-              features: ["Blog", "Website", "Showcase"]
-         },
-             {
-
-              originalDay: 153,
-              name : "SunDown Studio",
-              description: "A website for showcasing SunDown Studio's projects",
-              demoLink: "./public/SunDown-Studio-Website/index.html",
-              category: "creativity",
-              technologies: ["HTML", "CSS", "JavaScript"],
-              features: ["SunDown", "Studio", "Website"]
 
          },
+
            {
 
               originalDay: 154,
@@ -1629,6 +1610,7 @@ class WebDev100Days {
               category: "creativity",
               technologies: ["HTML", "CSS", "JavaScript"],
               features: ["Game", "Over", "Website"]
+
 
          }
         ];
