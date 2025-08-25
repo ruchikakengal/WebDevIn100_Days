@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Shooter </title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/vendor.js"></script>
+</head>
+<body>
+    <div id="canves" data-wave="" class="loading intro">
+        <div class="loader">
+            <div class="loading-char">
+                <div class="zombie-loader"></div>
+                <span>Loading</span>
+            </div>
+        </div>
+        <div class="game-cover"></div>
+        <div class="overlay-screen">
+            <h2 class="big-title game-over-title">Game <div>Over</div></h2>
+            <h2 class="big-title end-game-title">You <div>Won</div></h2>
+            <span class="restart-hint">Click Here to Restart</span>
+            <h2 class="big-title game-pause-title">Paused</h2>
+            <h2 class="big-title level-title">Level <span></span></h2>
+        </div>
+        <ul class="info-board">
+            <li class="killed-status"><span>0</span></li>
+            <li class="life"><i class="heart-icon"></i><i class="heart-icon"></i><i class="heart-icon"></i></li>
+            <li id="mute-music" data-tootik="Mute Music" data-tootik-conf="right invert"></li>
+            <li id="mute-sounds" data-tootik="Mute Sounds" data-tootik-conf="right invert"></li>
+        </ul>
+        <div id="pause-game"></div>
+        <div class="ammo" data-ammo="6"><span class="reload-key">R</span></div>
+        <div class="reload-hint"><div class="reload-trigger"></div></div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

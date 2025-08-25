@@ -1,0 +1,872 @@
+@font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cinzel-Regular'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/i2BwM1Eq2JyiNOY_VrkubOvvDin1pK8aKteLpeZ5c0A.woff2') format('woff2');
+    unicode-range: U0-0FF, U131, U152-153, U2C 6, U2DA, U2DC, U2000-206F, U2074, U20AC, U2212, U2215, UE0FF, UEFFD, UF000;
+  }
+  html, body, #footer p, .info-board {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  ::selection {
+    background: transparent;
+  }
+  html, body {
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    font-family: 'Century Gothic', AppleGothic, 'CenturyGothic', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  @keyframes walk {
+    to {
+        transform: translateX(-1024px);
+   }
+  }
+  @keyframes reload {
+    to {
+        transform: rotate(6turn);
+   }
+  }
+  @keyframes reload-trigger {
+    0% {
+        transform: rotate(-360deg);
+   }
+    20% {
+        transform: rotate(0deg);
+   }
+    100% {
+        transform: rotate(0deg);
+   }
+  }
+  @keyframes flash {
+    0% {
+        opacity: 1;
+   }
+    25% {
+        opacity: 0.5;
+   }
+    50% {
+        opacity: 0.8;
+   }
+    75% {
+        opacity: 0.4;
+   }
+    100% {
+        opacity: 0.2;
+   }
+  }
+  @keyframes dripping {
+    0% {
+        text-shadow: 6px 4px 0 red, -5px 5px 0 red, -3px 6px 0 red, 2px 11px 0 red;
+   }
+    30% {
+        text-shadow: 5px 3px 0 red, -4px 4px 0 red, -2px 5px 0 red, 1px 10px 0 red;
+   }
+    60% {
+        text-shadow: 6px 4px 0 red, -5px 5px 0 red, -3px 6px 0 red, 2px 11px 0 red;
+   }
+    90% {
+        text-shadow: 5px 3px 0 red, -4px 4px 0 red, -2px 5px 0 red, 1px 10px 0 red;
+   }
+    100% {
+        text-shadow: 6px 4px 0 red, -5px 5px 0 red, -3px 6px 0 red, 2px 11px 0 red;
+   }
+  }
+  #canves {
+    width: 1024px;
+    height: 550px;
+    min-width: 1024px;
+    min-height: 550px;
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+    cursor: crosshair;
+    border-radius: 8px;
+    font-family: 'Cinzel', serif;
+    transition: background-image 1.3s ease;
+    background-repeat: no-repeat;
+    background-size: 1024px 550px;
+  }
+  #canves[data-wave="1"] {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/bg-1.png');
+  }
+  #canves[data-wave="2"] {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/bg-2.png');
+  }
+  #canves[data-wave="3"] {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/bg-3.png');
+  }
+  #canves[data-wave="4"] {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/bg-4.png');
+  }
+  #canves .game-cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/cover.jpg");
+    background-size: 1024px 550px;
+    display: block;
+    z-index: 100000;
+  }
+  #canves:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    pointer-events: none;
+    display: block;
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/frame.png") no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    z-index: 1000000;
+  }
+  
+  @keyframes octocat-wave {
+    0%, 100% {
+        transform: rotate(0);
+   }
+    20%, 60% {
+        transform: rotate(-25deg);
+   }
+    40%, 80% {
+        transform: rotate(10deg);
+   }
+  }
+  
+
+  
+  .loader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.3s ease;
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/cover.jpg");
+    background-size: 1024px 550px;
+  }
+  .loading .loader {
+    opacity: 1;
+  }
+  .loader .zombie-loader {
+    transform: scale(0.5);
+    margin-bottom: 20px;
+  }
+  .loader .zombie-loader:before {
+    content: '';
+    display: block;
+    animation-duration: 0.7s !important;
+  }
+  .loader span {
+    animation: flash 1.8s ease infinite;
+    color: #fff;
+    font-size: 9px;
+    position: absolute;
+    bottom: 62px;
+    right: 72px;
+  }
+  .loader .loading-char {
+    background: radial-gradient(ellipse at center, black 0%, rgba(246, 246, 246, 0) 50%);
+    position: absolute;
+    bottom: -20px;
+    right: 30px;
+  }
+  .info-board {
+    display: block;
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    font-size: 25px;
+    color: #fff;
+    z-index: 10000;
+    padding: 0;
+  }
+  .intro .info-board, .end-game .info-board, .game-over .info-board, .level-message .info-board {
+    display: none;
+  }
+  .info-board li {
+    list-style: none;
+    margin-bottom: 16px;
+  }
+  .info-board li.killed-status {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/icons.png") no-repeat;
+    background-position: 0 0;
+    background-size: 114px;
+    width: 114px;
+    height: 39.5px;
+    padding: 0 0 10px 51px;
+    font-size: 32px;
+    line-height: 41px;
+  }
+  .info-board li.life {
+    margin-top: 20px;
+    margin-bottom: 9px;
+  }
+  .info-board li.life .heart-icon {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/icons.png") no-repeat;
+    background-position: 0 -47px;
+    background-size: 114px;
+    width: 24px;
+    height: 23px;
+    display: inline-block;
+    margin-right: 15px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  .info-board li.life .heart-icon.hide {
+    animation: flash 0.6s ease;
+    opacity: 0.2;
+  }
+  .info-board li.life .heart-icon:last-child {
+    margin-right: 0;
+  }
+  .info-board li#mute-music {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/icons.png") no-repeat;
+    background-position: 0 -75px;
+    background-size: 114px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  .info-board li#mute-music.muted {
+    background-position: 0 -105px;
+  }
+  .info-board li#mute-sounds {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/icons.png") no-repeat;
+    background-position: -30px -73px;
+    background-size: 114px;
+    width: 22px;
+    height: 25px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  .info-board li#mute-sounds.muted {
+    background-position: -30px -104px;
+  }
+  #pause-game {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/icons.png") no-repeat;
+    background-position: -60px -106px;
+    background-size: 114px;
+    width: 19px;
+    height: 22px;
+    cursor: pointer;
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    z-index: 100000;
+  }
+  #pause-game.paused {
+    background-position: -60px -75px;
+  }
+  .intro #pause-game, .end-game #pause-game, .game-over #pause-game, .level-message #pause-game {
+    display: none;
+  }
+  .game-paused #pause-game {
+    z-index: 100000;
+  }
+  .ammo {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/icons.png") no-repeat;
+    background-position: 0 -134px;
+    background-size: 114px;
+    width: 70px;
+    height: 74.5px;
+    transition: transform 0.3s ease;
+    position: absolute;
+    bottom: 35px;
+    right: 35px;
+    z-index: 10000;
+    display: block;
+  }
+  .intro .ammo, .end-game .ammo, .game-over .ammo, .level-message .ammo {
+    display: none;
+  }
+  .ammo[data-ammo="0"] {
+    background-position: 0px -581px;
+    transform: rotate(360deg);
+  }
+  .ammo[data-ammo="1"] {
+    background-position: 0px -507px;
+    transform: rotate(300deg);
+  }
+  .ammo[data-ammo="2"] {
+    background-position: 0px -432px;
+    transform: rotate(240deg);
+  }
+  .ammo[data-ammo="3"] {
+    background-position: 0px -358px;
+    transform: rotate(180deg);
+  }
+  .ammo[data-ammo="4"] {
+    background-position: 0 -283px;
+    transform: rotate(120deg);
+  }
+  .ammo[data-ammo="5"] {
+    background-position: 0 -208px;
+    transform: rotate(60deg);
+  }
+  .ammo[data-ammo="6"] {
+    background-position: 0 -134px;
+  }
+  .ammo.reload {
+    animation: reload 0.6s ease;
+  }
+  .reload-key {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    color: #878787;
+    transform: translateX(0);
+    transition: transform 0.3s cubic-bezier(0.6, 1.14, 0.04, 1.02), opacity 0.3s cubic-bezier(0.6, 1.14, 0.04, 1.02);
+    z-index: 100000;
+  }
+  [data-ammo="6"] .reload-key, .intro .reload-key, .end-game .reload-key, .game-over .reload-key, .level-message .reload-key {
+    display: none;
+  }
+  .reload-hint {
+    position: absolute;
+    bottom: 55px;
+    right: 25px;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.6, 1.14, 0.04, 1.02), opacity 0.3s cubic-bezier(0.6, 1.14, 0.04, 1.02);
+    padding: 0 28px;
+    color: #fff;
+    opacity: 0;
+    z-index: 1000000;
+    display: block;
+  }
+  .reload-hint.visible {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .reload-hint.visible .reload-trigger {
+    animation: reload-trigger 2s ease infinite;
+  }
+  .intro .reload-hint, .end-game .reload-hint, .game-over .reload-hint, .level-message .reload-hint {
+    display: none;
+  }
+  .reload-trigger {
+    cursor: pointer;
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/icons.png") no-repeat;
+    background-size: 114px;
+    background-position: bottom right;
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease;
+  }
+  .overlay-screen-levels, .overlay-screen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .8);
+    visibility: hidden;
+    transition: visibility 0.3s ease, opacity 0.3s ease;
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+  }
+  .end-game .overlay-screen-levels, .end-game .overlay-screen, .game-over .overlay-screen-levels, .game-over .overlay-screen, .level-message .overlay-screen-levels, .level-message .overlay-screen, .game-paused .overlay-screen-levels, .game-paused .overlay-screen {
+    visibility: visible;
+    opacity: 1;
+  }
+  .big-title {
+    top: 115px;
+    color: #fff;
+    text-align: center;
+    font-size: 128px;
+    margin: 0;
+    text-shadow: 5px 3px 0 red, -4px 4px 0 red, -2px 5px 0 red, 1px 10px 0 red;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    animation: dripping 0.2s ease infinite;
+    cursor: default;
+    display: none;
+  }
+  .big-title:hover {
+    animation: flash 0.3s ease infinite, dripping 0.2s ease infinite;
+  }
+  .big-title div {
+    text-transform: uppercase;
+    font-size: 99px;
+    letter-spacing: 20px;
+    display: block;
+    margin-top: -73px;
+    margin-left: 31px;
+  }
+  .game-over .big-title.game-over-title {
+    display: block;
+  }
+  .big-title.game-over-title span {
+    margin-left: 18px;
+  }
+  .end-game .big-title.end-game-title {
+    display: block;
+  }
+  .big-title.end-game-title span {
+    margin-left: 19px;
+  }
+  .game-paused .big-title.game-pause-title {
+    display: block;
+  }
+  .level-message .big-title.level-title {
+    display: block;
+  }
+  .restart-hint {
+    animation: flash 1.8s ease infinite;
+    color: #838383;
+    font-size: 23px;
+    position: absolute;
+    bottom: 109px;
+    display: none;
+    cursor: pointer;
+  }
+  .end-game .restart-hint, .game-over .restart-hint {
+    display: block;
+  }
+  .zombie {
+    position: absolute;
+    bottom: 74px;
+    right: 0;
+    transform: translateX(400px);
+    animation: walk linear infinite;
+  }
+  .zombie:before {
+    content: '';
+    display: block;
+  }
+  .zombie.killed {
+    pointer-events: none;
+    transition: none;
+    animation-play-state: paused;
+  }
+  .zombie.killed:before {
+    pointer-events: none;
+    animation-fill-mode: forwards;
+  }
+  .game-paused .zombie {
+    pointer-events: none;
+    transition: none;
+    animation-play-state: paused;
+  }
+  .game-paused .zombie:before {
+    pointer-events: none;
+    animation-play-state: paused;
+  }
+  .zombie-1:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-1.png');
+    background-repeat: no-repeat;
+    animation: zombie-1 steps(16);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 194px;
+    height: 255px;
+    background-position: 0 top;
+  }
+  @keyframes zombie-1 {
+    to {
+        background-position: 0 -4080px;
+   }
+  }
+  .zombie-1.killed:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-1-death.png');
+    background-repeat: no-repeat;
+    animation: zombie-1-death steps(20);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 340px;
+    height: 261px;
+    background-position: 0 top;
+    transform: translate(158px, 22px);
+  }
+  @keyframes zombie-1-death {
+    to {
+        background-position: 0 -5220px;
+   }
+  }
+  .zombie-2:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-2.png');
+    background-repeat: no-repeat;
+    animation: zombie-2 steps(16);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 211px;
+    height: 256px;
+    background-position: 0 top;
+  }
+  @keyframes zombie-2 {
+    to {
+        background-position: 0 -4096px;
+   }
+  }
+  .zombie-2.killed:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-2-death.png');
+    background-repeat: no-repeat;
+    animation: zombie-2-death steps(20);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 347px;
+    height: 270px;
+    background-position: 0 top;
+    transform: translate(159px, 31px);
+  }
+  @keyframes zombie-2-death {
+    to {
+        background-position: 0 -5400px;
+   }
+  }
+  .zombie-3:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-3.png');
+    background-repeat: no-repeat;
+    animation: zombie-3 steps(16);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 189px;
+    height: 234px;
+    background-position: 0 top;
+  }
+  @keyframes zombie-3 {
+    to {
+        background-position: 0 -3744px;
+   }
+  }
+  .zombie-3.killed:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-3-death.png');
+    background-repeat: no-repeat;
+    animation: zombie-3-death steps(20);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 334px;
+    height: 256px;
+    background-position: 0 top;
+    transform: translate(156px, 25px);
+  }
+  @keyframes zombie-3-death {
+    to {
+        background-position: 0 -5120px;
+   }
+  }
+  .zombie-4:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-4.png');
+    background-repeat: no-repeat;
+    animation: zombie-4 steps(16);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 386px;
+    height: 375px;
+    background-position: 0 top;
+  }
+  @keyframes zombie-4 {
+    to {
+        background-position: 0 -6000px;
+   }
+  }
+  .zombie-4.killed:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-4-death.png');
+    background-repeat: no-repeat;
+    animation: zombie-4-death steps(16);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 497px;
+    height: 401px;
+    background-position: 0 top;
+    transform: translate(65px, 45px);
+  }
+  @keyframes zombie-4-death {
+    to {
+        background-position: 0 -6416px;
+   }
+  }
+  .zombie-5:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-5.png');
+    background-repeat: no-repeat;
+    animation: zombie-5 steps(16);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 386px;
+    height: 376px;
+    background-position: 0 top;
+  }
+  @keyframes zombie-5 {
+    to {
+        background-position: 0 -6016px;
+   }
+  }
+  .zombie-5.killed:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-5-death.png');
+    background-repeat: no-repeat;
+    animation: zombie-5-death steps(16);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 488px;
+    height: 390px;
+    background-position: 0 top;
+    transform: translate(70px, 37px);
+  }
+  @keyframes zombie-5-death {
+    to {
+        background-position: 0 -6240px;
+   }
+  }
+  .zombie-6:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-6.png');
+    background-repeat: no-repeat;
+    animation: zombie-6 steps(16);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 386px;
+    height: 404px;
+    background-position: 0 top;
+  }
+  @keyframes zombie-6 {
+    to {
+        background-position: 0 -6464px;
+   }
+  }
+  .zombie-6.killed:before {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/zombie-6-death.png');
+    background-repeat: no-repeat;
+    animation: zombie-6-death steps(16);
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    width: 510px;
+    height: 419px;
+    background-position: 0 top;
+    transform: translate(75px, 44px);
+  }
+  @keyframes zombie-6-death {
+    to {
+        background-position: 0 -6704px;
+   }
+  }
+  .strength-bar {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #fff;
+    height: 5px;
+    border-radius: 14px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  .strength-bar.hide {
+    opacity: 0;
+  }
+  .zombie-1 .strength-bar {
+    width: 15px;
+  }
+  .zombie-2 .strength-bar {
+    width: 30px;
+  }
+  .zombie-3 .strength-bar {
+    width: 45px;
+  }
+  .zombie-4 .strength-bar {
+    width: 60px;
+  }
+  .zombie-5 .strength-bar {
+    width: 75px;
+  }
+  .zombie-6 .strength-bar {
+    width: 90px;
+  }
+  .strength-bar:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    background: red;
+    transition: width 0.3s ease;
+    display: block;
+    width: 0;
+  }
+  .zombie-1[data-strength="0"] .strength-bar:after {
+    width: 0;
+  }
+  .zombie-1[data-strength="1"] .strength-bar:after {
+    width: 100%;
+  }
+  .zombie-2[data-strength="0"] .strength-bar:after {
+    width: 0;
+  }
+  .zombie-2[data-strength="1"] .strength-bar:after {
+    width: 50%;
+  }
+  .zombie-2[data-strength="2"] .strength-bar:after {
+    width: 100%;
+  }
+  .zombie-3[data-strength="0"] .strength-bar:after {
+    width: 0;
+  }
+  .zombie-3[data-strength="1"] .strength-bar:after {
+    width: 33%;
+  }
+  .zombie-3[data-strength="2"] .strength-bar:after {
+    width: 66%;
+  }
+  .zombie-3[data-strength="3"] .strength-bar:after {
+    width: 100%;
+  }
+  .zombie-4[data-strength="0"] .strength-bar:after {
+    width: 0;
+  }
+  .zombie-4[data-strength="1"] .strength-bar:after {
+    width: 25%;
+  }
+  .zombie-4[data-strength="2"] .strength-bar:after {
+    width: 50%;
+  }
+  .zombie-4[data-strength="3"] .strength-bar:after {
+    width: 75%;
+  }
+  .zombie-4[data-strength="4"] .strength-bar:after {
+    width: 100%;
+  }
+  .zombie-5[data-strength="0"] .strength-bar:after {
+    width: 0;
+  }
+  .zombie-5[data-strength="1"] .strength-bar:after {
+    width: 20%;
+  }
+  .zombie-5[data-strength="2"] .strength-bar:after {
+    width: 40%;
+  }
+  .zombie-5[data-strength="3"] .strength-bar:after {
+    width: 60%;
+  }
+  .zombie-5[data-strength="4"] .strength-bar:after {
+    width: 80%;
+  }
+  .zombie-5[data-strength="5"] .strength-bar:after {
+    width: 100%;
+  }
+  .zombie-6[data-strength="0"] .strength-bar:after {
+    width: 0;
+  }
+  .zombie-6[data-strength="1"] .strength-bar:after {
+    width: 25%;
+  }
+  .zombie-6[data-strength="2"] .strength-bar:after {
+    width: 40%;
+  }
+  .zombie-6[data-strength="3"] .strength-bar:after {
+    width: 55%;
+  }
+  .zombie-6[data-strength="4"] .strength-bar:after {
+    width: 70%;
+  }
+  .zombie-6[data-strength="5"] .strength-bar:after {
+    width: 85%;
+  }
+  .zombie-6[data-strength="6"] .strength-bar:after {
+    width: 100%;
+  }
+  .walk-speed-1 {
+    animation-duration: 11s;
+  }
+  .walk-speed-1:before {
+    animation-duration: 0.5s;
+  }
+  .walk-speed-2 {
+    animation-duration: 12s;
+  }
+  .walk-speed-2:before {
+    animation-duration: 1s;
+  }
+  .walk-speed-3 {
+    animation-duration: 13s;
+  }
+  .walk-speed-3:before {
+    animation-duration: 1.5s;
+  }
+  .walk-speed-4 {
+    animation-duration: 14s;
+  }
+  .walk-speed-4:before {
+    animation-duration: 2s;
+  }
+  .walk-speed-5 {
+    animation-duration: 15s;
+  }
+  .walk-speed-5:before {
+    animation-duration: 2.5s;
+  }
+  .walk-speed-6 {
+    animation-duration: 16s;
+  }
+  .walk-speed-6:before {
+    animation-duration: 3s;
+  }
+  .walk-delay-1 {
+    animation-delay: 0.6666666667s;
+  }
+  .walk-delay-2 {
+    animation-delay: 1.3333333333s;
+  }
+  .walk-delay-3 {
+    animation-delay: 2s;
+  }
+  .walk-delay-4 {
+    animation-delay: 2.6666666667s;
+  }
+  .walk-delay-5 {
+    animation-delay: 3.3333333333s;
+  }
+  .walk-delay-6 {
+    animation-delay: 4s;
+  }

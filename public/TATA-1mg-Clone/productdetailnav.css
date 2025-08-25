@@ -1,0 +1,134 @@
+#navbartop1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+#navleft1{
+    display: flex;
+    flex-wrap: wrap;
+}
+#navleft1 > div{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#navleft1 > div:nth-child(1) img{
+    margin: auto 20px;
+    width: 110px;
+}
+#navleft1 > div:nth-child(1){
+    padding-top: 5px;
+}
+#navleft1 > div:nth-child(2) h4{
+    color: rgb(247, 110, 60);
+    cursor: pointer;
+}
+#navleft1 > div h4{
+    margin: auto 15px;
+    font-size: 0.975em
+}
+
+#navright1{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 21px;
+}
+#navright1 > div{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#navright1 > div:nth-child(3) img{
+    margin: auto 20px;
+    width: 30px;
+}
+#navright1 > div h5{
+    margin: auto 15px;
+    font-size: 14px;
+}
+/* navbar */
+
+/* navinput */
+#inputnav1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    padding-top: 7px;
+    padding-right: 30px;
+    padding-bottom: 7px;
+    padding-left: 50px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px;
+}
+
+#inputnav1 > div{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+#inputnavright1 > div{
+    margin-left: 3px;
+}
+#inputnavright1 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#inputnavright1 > div select{
+    width: 200px;
+    height: 35px;
+    border: none;
+    background-color: rgb(233, 233, 233);
+    padding-left: 15px;
+    padding-right: 10px;
+    border-radius: 2px;
+}
+#inputnavright1 > div input{
+    width: 550px;
+    height: 35px;
+    border: none;
+    background-color: rgb(233, 233, 233);
+    padding-left: 15px;
+    border-radius: 2px;
+}
+#inputnavright1 > div input:focus{
+    background-color: #ebebeb;
+    border: 0 none;
+    outline: none;
+}
+
+
+#inputnavleft1 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#inputnavleft1 > div{
+    margin-left: 8px;
+}
+#inputnavleft1 > div > button{
+    padding: 10px 28px;
+    background-color: #FF6F61;
+    cursor: pointer;
+    border: 0px;
+    color: #FFFF;
+    border-radius: 4px;
+}
+#userimg{
+    display: none;
+    width: 30px;
+  }
+
+#userlog{
+    text-decoration: none;
+  }
+  .userlogo{
+    text-decoration: none;
+    color: black;
+  }

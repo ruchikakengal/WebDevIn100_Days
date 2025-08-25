@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Number Spin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1 class="game-title">🎰 Lucky Number Spin</h1>
+            <div class="difficulty-selector">
+                <label>Difficulty:</label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+        </header>
+
+        <div class="stats-panel">
+            <div class="stat-item">
+                <span class="stat-label">Total Spins:</span>
+                <span id="totalSpins" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Wins:</span>
+                <span id="totalWins" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Win Rate:</span>
+                <span id="winRate" class="stat-value">0%</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="wheel-container">
+                <div class="wheel" id="wheel1">
+                    <div class="number-strip">
+                        <div class="number">0</div>
+                        <div class="number">1</div>
+                        <div class="number">2</div>
+                        <div class="number">3</div>
+                        <div class="number">4</div>
+                        <div class="number">5</div>
+                        <div class="number">6</div>
+                        <div class="number">7</div>
+                        <div class="number">8</div>
+                        <div class="number">9</div>
+                        <div class="number">0</div>
+                        <div class="number">1</div>
+                        <div class="number">2</div>
+                        <div class="number">3</div>
+                        <div class="number">4</div>
+                        <div class="number">5</div>
+                        <div class="number">6</div>
+                        <div class="number">7</div>
+                        <div class="number">8</div>
+                        <div class="number">9</div>
+                    </div>
+                </div>
+                <div class="wheel" id="wheel2">
+                    <div class="number-strip">
+                        <div class="number">0</div>
+                        <div class="number">1</div>
+                        <div class="number">2</div>
+                        <div class="number">3</div>
+                        <div class="number">4</div>
+                        <div class="number">5</div>
+                        <div class="number">6</div>
+                        <div class="number">7</div>
+                        <div class="number">8</div>
+                        <div class="number">9</div>
+                        <div class="number">0</div>
+                        <div class="number">1</div>
+                        <div class="number">2</div>
+                        <div class="number">3</div>
+                        <div class="number">4</div>
+                        <div class="number">5</div>
+                        <div class="number">6</div>
+                        <div class="number">7</div>
+                        <div class="number">8</div>
+                        <div class="number">9</div>
+                    </div>
+                </div>
+                <div class="wheel" id="wheel3">
+                    <div class="number-strip">
+                        <div class="number">0</div>
+                        <div class="number">1</div>
+                        <div class="number">2</div>
+                        <div class="number">3</div>
+                        <div class="number">4</div>
+                        <div class="number">5</div>
+                        <div class="number">6</div>
+                        <div class="number">7</div>
+                        <div class="number">8</div>
+                        <div class="number">9</div>
+                        <div class="number">0</div>
+                        <div class="number">1</div>
+                        <div class="number">2</div>
+                        <div class="number">3</div>
+                        <div class="number">4</div>
+                        <div class="number">5</div>
+                        <div class="number">6</div>
+                        <div class="number">7</div>
+                        <div class="number">8</div>
+                        <div class="number">9</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-display" id="resultDisplay"></div>
+
+        <div class="control-panel">
+            <button id="spinButton" class="spin-button">
+                <i class="fas fa-sync-alt"></i>
+                SPIN!
+            </button>
+            <button id="resetButton" class="reset-button">
+                <i class="fas fa-undo"></i>
+                Reset Stats
+            </button>
+        </div>
+
+        <div class="confetti-container" id="confettiContainer"></div>
+    </div>
+
+    <audio id="spinSound" preload="auto">
+        <source
+            src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+Do0nkpBSl+zPLZiTQGGmi+8+OaUQwOUKXh8bllHgU2jdXzzn0vBSF0xe/eizEIHW/A9+WcUw0PVqrk9bJoIAUvhM3z2Yk2Bhxqv/XqnVcNDlOg5O+2aSEELIHK8tiJOQkaaLzt451QDAxPpeTwt2IdBTiS2O/LdSoEJHfH8N+SQAoUXrXr66hWFAlGnt/o0ngqBCl+zfPaizUHG2nA9+OcUw0PVqzl9bNpIgUuhM7z2os3Bhtsv/bpnVgODlOi5fC4ayIELIHM8tiMOQkaab/z455SEAxQpOPwtmQdBTaO1u/NdSoEJnfJ8N+SQAoTXrXs66hWFAlGnt/p0nkpBSh+zfPaizUHG2nC+OOcUg0PVq3m9bNpIgUuhM7z2os3Bhxsv/fnnVgODlOi5fC4aiIFLYHM8tiMOQoZab/1455SEAxPpOPwt2MdBTaM1u/OdisEJnfJ8OCRQAoTXrTs66hWFAlGnt/p0nkpBSh+zvLaizYGG2nC+OScUg0PV63m9LNpIwQug8v02os3Bhxsv/fnnVkODVKh5fC4aiIFLoHM8tiMOgkZab/1455TEQxPpOPwtmMeBDaM1u7OdisEJnfK8OCRQAoTXrTs66hXEglFnt/p0nkpBSh+zvLaizYGG2nC+OOcUg0PV63l9LJpIwQug8v02os3Bhxsv/fnnVkODVKh5PC3aiMELoHM8tiNOwkZab/1455TFBFOpOLvtmQeBDWL1e7OdSwGJnjK8OCRQQsUX7Xs66dXEglFnN/o0ngpBShdzPLbijUGHGjA9+OdUAwMUqHi7rZqHwQyiM3v1osyBh1tv/nkm1INDVSm5PKzayIGL4bN8dqLNwkZacP24p1SEAwMUKDi8LhlHgQ1i9Xvz3YpBCR2x/HhkUEKEV+16+mrVhUJRJvd59N4KgUrdcrx24o2ChppvvbkmlEKCU+j4+63Zh8EMojM79Z5LQYfaLz24ZpTDQ5UqOTys2wgBTCFzvDVizYIGWrA+uKdUAwMU6Dh8LdkHgU3jdPvz3kqBSV1xe7fkUALFF600+aoVhYIRJvd59N4KgUrdcrx24s2CRlqvvXkmVEKCU+j4+63ZiAEMojM79Z5LQgfaLz24JpTDQ5UqOTzs2wgBTCFzvDVizYJGWrA+uKdUQwLU6Dh8LdkHwQ2jNPvz3kpBSV1xe7gkUALFF600+aoVhYIRJvd59N4KgUrdcrx24s2CRlqv/XkmVEKCU+j4++3ZiAEMojL7tZ5LQgfabz24JpTDA5VqOTzs2sgBTCFzvDVizYJGWrA+uKcUQwLU6Dh8LdkHwQ2jNPw0HkpBSV1xe7gkUALFF+10+aoVhYIRJvd59N4KgUrdcrx24s2CRlqv/XkmVEKCU+j4++3ZiAEMofL7tZ5LQgfabz24JpTDA5VqOTzs2sgBTCFzvDVizYJGWrA+uKcUQwLU6Dh8LdkHwQ2jNPw0HkpBSV1xe7gkUALFF+10+aoVhYIRJvd59N4KgUqder54pxTDAxVqOTzs2sgBTCFzvDVizYJGWrA+uKcUAwLU6Dh8LdkHwQ2jNPw0HkpBSV1xe7gkUALFF+10+aoVhYIRJvd59N4KgUqder54pxTDAxVqOTzs2sgBTCFzvDVizYJGWrA+uKcUAwLU6Dh8LdkHwQ2jNPw0HkpBSV1xe7gkUALFF+10+aoVhYIRJvd59N4KgUqder54pxTDAxVqOTzs2sgBTCFzvDVizYJGWrA+uKcUAwLU6Dh8LdkHwQ2jNPw0HkpBSV1xe7gkUAL"
+            type="audio/wav">
+    </audio>
+    <audio id="winSound" preload="auto">
+        <source
+            src="data:audio/wav;base64,UklGRvIFAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+Do0nkpBSl+zPLZiTQGGmi+8+OaUQwOUKXh8bllHgU2jdXzzn0vBSF0xe/eizEIHW/A9+WcUw0PVqrk9bJoIAUvhM3z2Yk2Bhxqv/XqnVcNDlOg5O+2aSEELIHK8tiJOQkaaLzt451QDAxPpeTwt2IdBTiS2O/LdSoEJHfH8N+SQAoUXrXr66hWFAlGnt/o0ngqBCl+zfPaizUHG2nA9+OcUw0PVqzl9bNpIgUuhM7z2os3Bhtsv/bpnVgODlOi5fC4ayIELIHM8tiMOQkaab/z455SEAxQpOPwtmQdBTaO1u/NdSoEJnfJ8N+SQAoTXrXs66hWFAlGnt/p0nkpBSh+zfPaizUHG2nC+OOcUg0PVq3m9bNpIgUuhM7z2os3Bhxsv/fnnVgODlOi5fC4aiIFLYHM8tiMOQoZab/1455SEAxPpOPwt2MdBTaM1u/OdisEJnfJ8OCRQAoTXrTs66hWFAlGnt/p0nkpBSh+zvLaizYGG2nC+OScUg0PV63m9LNpIwQug8v02os3Bhxsv/fnnVkODVKh5fC4aiIFLoHM8tiMOgkZab/1455TEQxPpOPwtmMeBDaM1u7OdisEJnfK8OCRQAoTXrTs66hXEglFnt/p0nkpBSh+zvLaizYGG2nC+OOcUg0PV63l9LJpIwQug8v02os3Bhxsv/fnnVkODVKh5PC3aiMELoHM8tiNOwkZab/1455TFBFOpOLvtmQeBDWL1e7OdSwGJnjK8OCRQQsUX7Xs66dXEglFnN/o0ngpBShdzPLbijUGHGjA9+OdUAwMUqHi7rZqHwQyiM3v1osyBh1tv/nkm1INDVSm5PKzayIGL4bN8dqLNwkZacP24p1SEAwMUKDi8LhlHgQ1i9Xvz3YpBCR2x/HhkUEKEV+16+mrVhUJRJvd59N4KgUrdcrx24o2ChppvvbkmlEKCU+j4+63Zh8EMojM79Z5LQYfaLz24ZpTDQ5UqOTys2wgBTCFzvDVizYIGWrA+uKdUAwMU6Dh8LdkHgU3jdPvz3kqBSV1xe7fkUALFF600+aoVhYIRJvd59N4KgUrdcrx24s2CRlqvvXkmVEKCU+j4+63ZiAEMojM79Z5LQgfaLz24JpTDQ5UqOTzs2wgBTCFzvDVizYJGWrA+uKdUQwLU6Dh8LdkHwQ2jNPvz3kpBSV1xe7gkUAL"
+            type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
