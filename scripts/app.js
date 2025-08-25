@@ -1602,8 +1602,27 @@ class WebDev100Days {
             category: "Utility",
             technologies: ["HTML", "CSS", "JavaScript"],
             features: ["Real time email validation", "Clean UI", "Website"]
-          }
+          },
+          {
+           originalDay:150, 
+           name:"TATA 1mg Website Clone",
+           description: "A website for online pharmacy services",
+           demoLink: "./public/TATA-1mg-Clone/index.html",
+           category: "creativity",
+           technologies: ["HTML", "CSS", "JavaScript"],
+           features: ["Online Pharmacy", "Health", "Wellness"]
 
+         },
+           {
+
+          originalDay:151,
+          name : "Jewellery Website",
+          description: "A website for showcasing jewellery products",
+          demoLink: "./public/Jwellery-Website/index.html",
+          category: "creativity",
+          technologies: ["HTML", "CSS", "JavaScript"],
+          features: ["Jewellery", "Website", "Showcase"]
+         }
         ];
 
         this.projects = projectsData.map((project, index) => ({
