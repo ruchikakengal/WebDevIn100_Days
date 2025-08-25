@@ -1723,7 +1723,21 @@ class WebDev100Days {
             "Reset and Start functionality",
             "Win detection when all tiles match color",
             "Hover effects and smooth transitions",
-            "Attractive gradients, shadows, and game-like polish"]}
+            "Attractive gradients, shadows, and game-like polish"]},
+            {
+    originalDay: 165, 
+    name: "Parallax Demo",
+    description: "A smooth parallax scrolling effect demo using HTML, CSS, and JS",
+    demoLink: "./public/Parallax_Demo/index.html", 
+    category: "creativity", 
+    technologies: ["HTML", "CSS", "JavaScript"],
+    features: [
+        "Smooth scrolling effect",
+        "Multiple layers with depth",
+        "Responsive design",
+        "Interactive animations on scroll"
+    ]
+}
           
         ];
 
