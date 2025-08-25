@@ -1611,6 +1611,37 @@ class WebDev100Days {
          },
            {
 
+
+         {
+            originalDay: 170,
+            name: "Pirate Website",
+            description: "A website for showcasing pirate-themed products",
+            demoLink: "./public/Pirates-Website/index.html",
+            category: "creativity",
+            technologies: ["HTML", "CSS", "JavaScript"],
+            features: ["Pirate", "Website", "Showcase"]
+         }, 
+
+         {
+
+             originalDay: 171,
+             name: "Christmas Lights",
+             description: "A website for showcasing Christmas lights",
+             demoLink: "./public/Christmas-Website/index.html",
+             category: "creativity",
+             technologies: ["HTML", "CSS", "JavaScript"],
+             features: ["Christmas", "Lights", "Website"]
+         },
+           {
+    originalDay: 172,
+    name: "Parallax Scrolling Demo",
+    description: "A smooth parallax scrolling effect with layered backgrounds and fixed text.",
+    demoLink: "./public/ParallaxScrollingDemo/index.html",
+    category: "creativity",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    features: ["Parallax Effect", "Fixed Text Overlay", "Responsive Design"]
+  }
+
           originalDay:151,
           name : "Jewellery Website",
           description: "A website for showcasing jewellery products",
@@ -1620,6 +1651,7 @@ class WebDev100Days {
           features: ["Jewellery", "Website", "Showcase"]
          }
         ];
+   main
 
         this.projects = projectsData.map((project, index) => ({
             ...project,
