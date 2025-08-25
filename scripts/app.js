@@ -1741,7 +1741,7 @@ class WebDev100Days {
                 category: "utilities",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Photography"]
-            }
+            },
  
         {
           originalDay: 164,
@@ -1771,10 +1771,9 @@ class WebDev100Days {
         "Multiple layers with depth",
         "Responsive design",
         "Interactive animations on scroll"
-    ]
-}
+    ]}
           
- main
+ 
         ];
 
         this.projects = projectsData.map((project, index) => ({
