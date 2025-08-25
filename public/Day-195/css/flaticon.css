@@ -1,0 +1,82 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 19/02/2019 07:27
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("../fonts/Flaticon.eot");
+  src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/Flaticon.woff2") format("woff2"),
+       url("../fonts/Flaticon.woff") format("woff"),
+       url("../fonts/Flaticon.ttf") format("truetype"),
+       url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-size: 40px;
+  font-style: normal;
+  margin-left: 0;
+}
+
+.flaticon-001-mattress:before { content: "\f100"; }
+.flaticon-002-dumbell:before { content: "\f101"; }
+.flaticon-003-weight:before { content: "\f102"; }
+.flaticon-004-measuring-tape:before { content: "\f103"; }
+.flaticon-005-clipboard:before { content: "\f104"; }
+.flaticon-006-weight-1:before { content: "\f105"; }
+.flaticon-007-rings:before { content: "\f106"; }
+.flaticon-008-calendar:before { content: "\f107"; }
+.flaticon-009-smartwatch:before { content: "\f108"; }
+.flaticon-010-lockers:before { content: "\f109"; }
+.flaticon-011-punching-ball:before { content: "\f10a"; }
+.flaticon-012-bag:before { content: "\f10b"; }
+.flaticon-013-balance:before { content: "\f10c"; }
+.flaticon-014-heart-beat:before { content: "\f10d"; }
+.flaticon-015-proteins:before { content: "\f10e"; }
+.flaticon-016-fitness:before { content: "\f10f"; }
+.flaticon-017-pull-up-bar:before { content: "\f110"; }
+.flaticon-018-scale:before { content: "\f111"; }
+.flaticon-019-bands:before { content: "\f112"; }
+.flaticon-020-smartphone:before { content: "\f113"; }
+.flaticon-021-tshirt:before { content: "\f114"; }
+.flaticon-022-short:before { content: "\f115"; }
+.flaticon-023-dumbbells:before { content: "\f116"; }
+.flaticon-024-jumping-rope:before { content: "\f117"; }
+.flaticon-025-fitness-1:before { content: "\f118"; }
+.flaticon-026-gym:before { content: "\f119"; }
+.flaticon-027-fitness-2:before { content: "\f11a"; }
+.flaticon-028-weightlifting:before { content: "\f11b"; }
+.flaticon-029-wheel:before { content: "\f11c"; }
+.flaticon-030-dumbbells-1:before { content: "\f11d"; }
+.flaticon-031-workout:before { content: "\f11e"; }
+.flaticon-032-bottle:before { content: "\f11f"; }
+.flaticon-033-juice:before { content: "\f120"; }
+.flaticon-034-stationary-bike:before { content: "\f121"; }
+.flaticon-035-punching-ball-1:before { content: "\f122"; }
+.flaticon-036-timer:before { content: "\f123"; }
+.flaticon-037-medal:before { content: "\f124"; }
+.flaticon-038-treadmill:before { content: "\f125"; }
+.flaticon-039-syringe:before { content: "\f126"; }
+.flaticon-040-whistle:before { content: "\f127"; }
+.flaticon-041-chest:before { content: "\f128"; }
+.flaticon-042-pills:before { content: "\f129"; }
+.flaticon-043-mp3:before { content: "\f12a"; }
+.flaticon-044-no-smoking:before { content: "\f12b"; }
+.flaticon-045-boxing-gloves:before { content: "\f12c"; }
+.flaticon-046-gloves:before { content: "\f12d"; }
+.flaticon-047-buck:before { content: "\f12e"; }
+.flaticon-048-headgear:before { content: "\f12f"; }
+.flaticon-049-hand-grip:before { content: "\f130"; }
+.flaticon-050-no-fast-food:before { content: "\f131"; }

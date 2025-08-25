@@ -195,3 +195,45 @@ footer a:hover{
         filter: invert(1);
     }
 }
+
+#resultCont {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.result-key {
+  font-weight: bold;
+  color: #0077b6;
+}
+
+.result-value {
+  font-family: "Roboto Mono", monospace;
+}
+
+.result-valid {
+  color: green;
+  font-weight: bold;
+}
+
+.result-invalid {
+  color: red;
+  font-weight: bold;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}

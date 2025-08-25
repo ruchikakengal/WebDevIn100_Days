@@ -1,0 +1,166 @@
+/*---------------------
+  Portfolio
+-----------------------*/
+.portfolio {
+  background: #100028;
+}
+
+.portfolio__filter {
+  text-align: center;
+  margin-bottom: 40px;
+
+  li {
+    list-style: none;
+    font-size: 16px;
+    color: #adadad;
+    margin-right: 5px;
+    display: inline-block;
+    cursor: pointer;
+    padding: 6px 22px;
+    
+    &.active {
+      border: 1px solid $primary-color;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.portfolio__item {
+  margin-bottom: 35px;
+
+  &:hover {
+
+    .portfolio__item__text {
+
+      h4 {
+
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.portfolio__item__video {
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+
+  .play-btn {
+    display: inline-block;
+    color: $white-color;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+  }
+}
+
+.portfolio__item__text {
+  text-align: center;
+
+  h4 {
+    color: $white-color;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 1px;
+      width: 100%;
+      background: #333;
+      content: "";
+      @include transition(all, .3s);
+      opacity: 0;
+    }
+  }
+
+  ul {
+
+    li {
+      list-style: none;
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 300;
+      margin-right: 24px;
+      position: relative;
+      color: #adadad;
+
+      &:after {
+        position: absolute;
+        right: -16px;
+        top: 0;
+        content: "/";
+      }
+
+      &:last-child {
+        margin-right: 0;
+
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: 300;
+    color: #adadad;
+    display: block;
+  }
+}
+
+.pagination__option {
+  text-align: center;
+  padding-top: 20px;
+
+  &.blog__pagi {
+    padding-top: 5px;
+  }
+
+  .arrow__pagination {
+    font-size: 15px;
+    color: $white-color;
+    display: inline-block;
+    text-transform: uppercase;
+
+    &.left__arrow {
+      margin-right: 26px;
+    }
+
+    &.right__arrow {
+      margin-left: 18px;
+    }
+
+    span {
+      opacity: .5;
+    }
+  }
+
+  .number__pagination {
+    font-size: 18px;
+    color: $white-color;
+    height: 50px;
+    width: 50px;
+    background: rgba(242, 242, 242, 0.1);
+    line-height: 50px;
+    text-align: center;
+    display: inline-block;
+    margin-right: 6px;
+  }
+}
