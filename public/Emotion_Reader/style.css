@@ -1,498 +1,140 @@
 :root {
-  --emoji-bg: #ffe357;
-  --emoji-bg-dark: #ffdc36;
-  --emoji-shadow: #e2b313;
-  --emoji-outline: #b18a21;
-  --emoji-shine: #fffde7;
-  --background-light: #fbfbfb;
-  --background-dark: #242424;
-  --text-light: #181818;
-  --text-dark: #fafafa;
-  --primary-color: #0078d7;
-  --feature-highlight: #ffb347;
-  --feature-neutral: #555;
+  --accent1: #865dff;
+  --accent2: #eaacff;
 }
-
-/* Base */
-
 body {
-  background: var(--background-light);
-  color: var(--text-light);
+  --bg: #f2f4fb;
+  --text: #222;
+  --box: #fff;
+  --result-bg: #f9f9fc;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2) 70%);
+  color: var(--text);
+  font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
-  transition: background-color 0.3s, color 0.3s;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
+  overflow-x: hidden;
+  transition: background 0.7s, color 0.5s;
 }
-
-body.dark-mode {
-  background: var(--background-dark);
-  color: var(--text-dark);
+.background-blur {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 60% at 20% 15%, #b3cfff44 25%, transparent 70%),
+              radial-gradient(ellipse 48% 38% at 90% 80%, #eaacff33 10%, transparent 85%);
+  filter: blur(32px);
 }
 
 .container {
-  max-width: 410px;
-  width: 100%;
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 10px 32px 0 #967e3c33;
-  padding: 18px 18px 26px 18px;
-  margin: auto;
-  transition: background 0.3s;
-}
-
-body.dark-mode .container {
-  background: #171616;
-}
-
-/* Header */
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-button#mode-toggle {
-  padding: 7px 14px;
-  background: var(--primary-color);
-  color: #fff;
-  border: none;
-  border-radius: 7px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-button#mode-toggle:hover {
-  background: #005a9e;
-}
-
-/* Instruction */
-
-.instruction {
-  text-align: center;
-  margin: 17px 0 14px 0;
-}
-
-/* Face container with perspective */
-
-.face-3d-container {
-  display: flex;
-  justify-content: center;
-  perspective: 1200px;
-}
-
-/* Face */
-
-.face {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 18px auto;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle 80px at 62px 60px,
-    var(--emoji-shine) 0 40%,
-    var(--emoji-bg-dark) 80%,
-    var(--emoji-bg) 100%
-  );
-  box-shadow:
-    0 6px 28px 0 var(--emoji-shadow),
-    0 0 0 4px var(--emoji-outline);
-  border: 3px solid var(--emoji-outline);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform-style: preserve-3d;
-  transition: background-color 0.3s ease;
-}
-
-body.dark-mode .face {
-  background: radial-gradient(
-    circle 80px at 62px 60px,
-    #fff9c6 0 40%,
-    #ffe883 80%,
-    #ba8d1ab2 100%
-  );
-  border-color: #796106;
-  box-shadow: 0 10px 40px #916f1790;
-}
-
-/* Shine overlay */
-
-.emoji-shine {
-  position: absolute;
-  top: 36px;
-  left: 36px;
-  width: 68px;
-  height: 30px;
-  border-radius: 70px 55px 70px 55px;
-  background: radial-gradient(
-    ellipse 100% 50% at 50% 45%,
-    var(--emoji-shine) 84%,
-    #fff0 100%
-  );
-  opacity: 0.78;
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* Cheeks */
-
-.cheek {
-  position: absolute;
-  width: 35px;
-  height: 20px;
-  background: radial-gradient(
-    ellipse 70% 60% at 50% 50%,
-    #ffb1b1bb 75%,
-    #fff0 100%
-  );
-  bottom: 54px;
-  z-index: 5;
-}
-
-.cheek.left {
-  left: 24px;
-}
-
-.cheek.right {
-  right: 24px;
-}
-
-/* Eyes */
-
-.eye {
-  position: absolute;
-  width: 39px;
-  height: 39px;
-  top: 53px;
-  background: transparent;
-  border-radius: 50%;
-  box-shadow: 0 1px 8px #1114;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  transition: box-shadow 0.18s;
-  outline: none;
-}
-
-#eye-left {
-  left: 35px;
-}
-
-#eye-right {
-  right: 35px;
-}
-
-.eye:focus {
-  box-shadow: 0 0 0 3px var(--primary-color), 0 1px 8px #1114;
-  z-index: 9;
-}
-
-/* Eyeball */
-
-.eyeball-left,
-.eyeball-right {
-  width: 23px;
-  height: 23px;
-  background: radial-gradient(
-    ellipse at 55% 57%,
-    #fff 80%,
-    #bbb 100%
-  );
-  border-radius: 50%;
-  position: relative;
-  margin-bottom: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.eyeball-left {
-  box-shadow: 0 0 0 4px #f0e4cc, 0 2px 13px 0 #432;
-}
-
-.eyeball-right {
-  box-shadow: 0 0 0 4px #f0e4cc, 0 2px 13px 0 #432;
-}
-
-/* Pupil with 3D shine */
-
-.eyeball-left:after,
-.eyeball-right:after {
-  content: "";
-  position: absolute;
-  width: 11px;
-  height: 11px;
-  top: 6px;
-  left: 7px;
-  background: radial-gradient(
-    ellipse at 22% 28%,
-    #282826 70%,
-    #0f1416 100%
-  );
-  border-radius: 50%;
-}
-
-.eyeball-left:before,
-.eyeball-right:before {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 4px;
-  height: 4px;
-  background: #fff8;
-  border-radius: 50%;
-  opacity: 0.85;
   z-index: 2;
+  position: relative;
+  max-width: 400px;
+  margin: 44px auto;
+  padding: 32px 24px;
+  background: var(--box);
+  border-radius: 28px;
+  box-shadow: 0 18px 48px 0 rgba(70,48,150,0.26), 0 2px 10px rgba(110,80,160,0.11);
+  /* 3D effect */
+  transform: perspective(700px) rotateY(-6deg) scale(1.06);
+  transition: background 0.5s, box-shadow 0.5s;
 }
 
-/* Eyebrows */
-
-.eyebrows {
-  position: absolute;
-  width: 74px;
-  height: 15px;
-  top: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: transparent;
-  z-index: 7;
-  outline: none;
+.card-3d:active {
+  transform: perspective(700px) rotateY(0deg) scale(1.03);
 }
 
-.eyebrows:focus {
-  filter: drop-shadow(0 0 0.5px var(--primary-color));
+h1 {
+  text-align: center;
+  font-size: 2.3rem;
+  margin-bottom: 25px;
+  letter-spacing: 1.2px;
+  font-weight: 600;
 }
 
-.eyebrows.shape-0::before,
-.eyebrows.shape-1::before,
-.eyebrows.shape-2::before {
+.theme-switch {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 18px;
+}
+.theme-switch input {
+  display: none;
+}
+.slider {
+  width: 38px;
+  height: 18px;
+  background: #b0b0b0;
+  border-radius: 18px;
+  margin: 0 12px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.slider:before {
   content: "";
-  display: block;
-  width: 74px;
-  height: 15px;
-  background: linear-gradient(to right, #4a3221 0%, #805e39 100%);
-  border-radius: 30px / 60%;
-  box-shadow: 0 1px 4px #2228;
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 5px;
+  top: 3px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.theme-switch input:checked + .slider:before {
+  transform: translateX(15px);
+  background: #333;
+}
+.theme-switch input:checked + .slider {
+  background: #616161;
+}
+.upload-area {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 13px 0 10px 0;
+}
+.preview-box {
+  width: 128px;
+  height: 128px;
+  margin: 0 auto 12px auto;
+  background: #f0f1f7;
+  border-radius: 16px;
+  box-shadow: 0 2px 14px rgba(80,66,140,.09);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s;
+}
+.preview-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.eyebrows.shape-0::before {
-  transform: rotate(0deg);
-}
-
-.eyebrows.shape-1::before {
-  transform: rotate(-16deg) scaleY(1.1);
-}
-
-.eyebrows.shape-2::before {
-  transform: rotate(21deg) scaleY(1.1);
-}
-
-/* Nose */
-
-.nose {
-  position: absolute;
-  left: 50%;
-  top: 92px;
-  width: 22px;
-  height: 26px;
-  background: radial-gradient(
-    ellipse at 50% 75%,
-    #ffe9b9 70%,
-    #ddc896 100%
-  );
-  border-radius: 44% 48% 60% 46% / 55% 45% 70% 30%;
-  box-shadow: 0 7px 12px 0 #e4b89a48, inset 0 2px 8px #fffde8aa;
-  border: 1px solid #efd29b50;
-  transform: translateX(-50%) rotateX(9deg);
-  z-index: 8;
-}
-
-/* Mouth (3D style) */
-
-.mouth {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 98px;
-  height: 44px;
-  z-index: 9;
-  outline: none;
-}
-
-.mouth:focus {
-  box-shadow: 0 0 0 2.5px var(--primary-color);
-}
-
-.mouth.shape-0 {
-  background: linear-gradient(180deg, #ff6889 0%, #b72a36 65%, #7a1818 100%);
-  border-radius: 0 0 55px 55px / 0 0 33px 33px;
-  border-top: 4px solid #d48f9800;
-  border-bottom: 5px solid #850f2a80;
-  box-shadow: 0 2px 13px #e13e5c44,
-    0 7px 20px #a8343c33,
-    inset 0 4px 16px #ffadc9cc;
-}
-
-.mouth.shape-1 {
-  background: linear-gradient(180deg, #891e33 0%, #c1444e 65%, #7a2249 100%);
-  border-radius: 0 0 47px 47px / 0 0 80px 80px;
-  border-top: 7px solid #a8619419;
-  border-bottom: 2px solid #581d317a;
-  transform: translateX(-50%) scaleY(-1);
-  box-shadow: 0 2px 10px #7a224944,
-    0 5px 12px #5933603b,
-    inset 0 3px 11px #dfa1db99;
-}
-
-.mouth.shape-2 {
-  background: radial-gradient(
-    ellipse at 50% 58%,
-    #fff 26%,
-    #fcbc84 51%,
-    #913838 90%
-  );
-  border-radius: 80px 80px 80px 80px / 100px 100px 100px 100px;
-  border: 1.5px solid #eed19080;
-  width: 47px;
-  height: 47px;
-  left: 50%;
-  bottom: 36px;
-  transform: translateX(-50%);
-  box-shadow: 0 2px 10px #ae765588, inset 0 0 22px #ffffff62;
-}
-
-/* Morph cycles for eyes */
-
-.eye.shape-0 .eyeball-left:after,
-.eye.shape-0 .eyeball-right:after {
-  top: 6px;
-}
-.eye.shape-1 .eyeball-left:after,
-.eye.shape-1 .eyeball-right:after {
-  top: 10px;
-}
-.eye.shape-2 .eyeball-left:after,
-.eye.shape-2 .eyeball-right:after {
-  top: 2px;
-}
-
-.eye.shape-1 {
-  filter: brightness(0.88) blur(0.4px);
-  top: 63px;
-}
-
-.eye.shape-2 {
-  filter: brightness(1.03) drop-shadow(0 15px 8px #fff6);
-  top: 48px;
-}
-
-/* Controls */
-
-.controls {
-  margin-top: 12px;
+.result-box {
+  min-height: 65px;
+  background: var(--result-bg);
+  border-radius: 14px;
+  box-shadow: 0 1.5px 8px rgba(80,60,120,0.09);
+  margin-top: 8px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  text-align: center;
+  align-items: center;
+  font-size: 1.08rem;
 }
 
-.controls select,
-.controls button {
-  padding: 9px 14px;
-  font-size: 1rem;
-  border-radius: 7px;
-  border: 2px solid var(--primary-color);
-  outline: none;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+body.dark {
+  --bg: #121214;
+  --text: #f7f7fa;
+  --box: #21232c;
+  --result-bg: #262743;
+  background: linear-gradient(135deg, #3e386a 10%, #7f57e0 65%, #19193d 100%);
 }
-
-.controls button {
-  background-color: var(--primary-color);
-  color: white;
-  font-weight: 600;
-  border: none;
-}
-
-.controls button:hover {
-  background-color: #005a9e;
-}
-
-.controls button:disabled {
-  background-color: #bbb;
-  cursor: not-allowed;
-  color: #eee;
-}
-
-/* Result message */
-
-.result-msg {
-  font-weight: 700;
-  font-size: 1.1rem;
-  min-height: 2em;
-  margin-top: 10px;
-  text-align: center;
-}
-
-/* Responsive */
-
-@media (max-width: 500px) {
-  .container {
-    max-width: 100%;
-    padding: 7px;
-  }
-
-  .face {
-    width: 128px;
-    height: 128px;
-  }
-
-  .cheek {
-    width: 18px;
-    height: 9px;
-    bottom: 24px;
-  }
-
-  .eye {
-    width: 21px;
-    height: 21px;
-    top: 30px;
-  }
-
-  #eye-left {
-    left: 10px;
-  }
-
-  #eye-right {
-    right: 10px;
-  }
-
-  .eyebrow {
-    width: 34px;
-    height: 7px;
-    top: 10px;
-  }
-
-  .nose {
-    width: 10px;
-    height: 12px;
-    top: 53px;
-  }
-
-  .mouth {
-    width: 41px;
-    height: 19px;
-    bottom: 16px;
-  }
+@media (max-width:600px) {
+  .container { padding: 14px 3px; }
+  .preview-box { width: 92px; height: 92px; }
 }
