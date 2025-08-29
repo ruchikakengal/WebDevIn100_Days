@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css?family=Kameron:700");
+html, body {
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+svg {
+  fill: #fffcff;
+  height: 30%;
+  left: 25%;
+  overflow: visible;
+  position: absolute;
+  stroke: black;
+  top: 12%;
+  width: 50%;
+  z-index: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stage {
+  background: #feebcb;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  visibility: hidden;
+  width: 100%;
+}
+
+#bHoop {
+  stroke-width: 5;
+}
+#bHoop .shadow {
+  fill: rgba(0, 0, 0, 0.7);
+  stroke: none;
+}
+
+#basket #net {
+  fill: none;
+  stroke: #CCC;
+  stroke-miterlimit: 10;
+}
+#basket #ring {
+  fill: #df4931;
+  stroke: none;
+}
+
+#ball {
+  cursor: pointer;
+  fill: #df4931;
+  stroke: none;
+}
+#ball .ballPath {
+  -webkit-clip-path: url(#clip-path);
+          clip-path: url(#clip-path);
+}
+#ball .ballStripe {
+  fill: none;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  top: 0;
+}
+
+li {
+  display: inline-block;
+  width: 33%;
+}
+
+.copy {
+  background: #414042;
+  box-shadow: 0 0 1px #633a26;
+  color: #adafb3;
+  font-family: "Kameron", serif;
+  font-size: 1rem;
+  left: 0;
+  margin: 0;
+  padding: 6px 0;
+  position: fixed;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.instructions {
+  bottom: 0;
+  font-size: 1rem;
+}

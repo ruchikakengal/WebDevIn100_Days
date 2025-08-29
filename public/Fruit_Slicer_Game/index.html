@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Fruit Slicer</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"
-    />
-    <link rel="stylesheet" href="/fav.svg">
-  </head>
-  <body>
-       <div id="container">
-      <div id="instructions">
-        Fruits Slicer 
-      </div>
-      <div id="fruitcontainer">
-        <div id="score">
-          <div class="scoreDisplay">
-            <img
-              src="images/watermelon.png"
-              alt=""
-            />
-            <span id="scoreValue">0</span>
-          </div>
-        </div>
-        <div id="trialsleft"></div>
-        <div id="front">
-          Are you ready for the ultimate slice action ? <br />
-          <img
-            src="images/4_fruits.png"
-            alt="Fruit logo"
-          />
-        </div>
-        <img id="fruit1" class="fruit" />
-      </div>
-      <div id="startReset">
-        Start Game
-      </div>
-      <!--for game over block-->
-      <div id="gameOver"></div>
+
+<head>
+  <title>Fruit Slicer</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+  <link rel="stylesheet" href="/fav.svg">
+</head>
+
+<body>
+  <div id="container">
+    <div id="instructions">
+      Fruits Slicer
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+    <div id="fruitcontainer">
+      <div id="score">
+        <div class="scoreDisplay">
+          <img src="images/watermelon.png" alt="" />
+          <span id="scoreValue">0</span>
+        </div>
+      </div>
+      <div id="trialsleft"></div>
+      <div id="front">
+        Are you ready for the ultimate slice action ? <br />
+        <img src="images/4_fruits.png" alt="Fruit logo" />
+      </div>
+      <img id="fruit1" class="fruit" />
+    </div>
+    <div id="startReset">
+      Start Game
+    </div>
+    <!--for game over block-->
+    <div id="gameOver"></div>
+  </div>
+
+  <!-- Leaderboard Button -->
+<div id="showLeaderboardBtn">Show Leaderboard</div>
+
+<!-- Leaderboard Modal -->
+<div id="leaderboardModal">
+  <div id="leaderboardContent">
+    <span id="closeLeaderboard">&times;</span>
+    <h2>🏆 Leaderboard</h2>
+    <ol id="leaderboardList"></ol>
+  </div>
+</div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien Language Translator | Intergalactic Communication System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="cosmic-background">
+        <canvas id="particle-canvas"></canvas>
+    </div>
+
+    <div class="interface-overlay">
+        <header class="header">
+            <div class="logo-container">
+                <i class="fas fa-satellite-dish logo-icon"></i>
+                <h1 class="main-title">
+                    <span class="title-text">XENOLINGUIST</span>
+                    <span class="subtitle">Intergalactic Translation Matrix</span>
+                </h1>
+            </div>
+
+            <div class="status-indicators">
+                <div class="status-item">
+                    <span class="status-dot active"></span>
+                    <span>ONLINE</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-dot"></span>
+                    <span id="connection-status">CONNECTED</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="translator-interface">
+            <div class="control-panel">
+                <div class="language-selector">
+                    <label for="alien-language">SPECIES:</label>
+                    <select id="alien-language" class="alien-select">
+                        <option value="zephyrian">Zephyrian</option>
+                        <option value="crystalline">Crystalline</option>
+                        <option value="nebular">Nebular</option>
+                        <option value="quantum">Quantum</option>
+                    </select>
+                </div>
+
+                <div class="audio-controls">
+                    <button id="audio-toggle" class="control-btn">
+                        <i class="fas fa-volume-up"></i>
+                        <span>AUDIO</span>
+                    </button>
+                    <button id="transmission-mode" class="control-btn">
+                        <i class="fas fa-satellite"></i>
+                        <span>TRANSMISSION</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="translation-chambers">
+                <div class="chamber human-chamber">
+                    <div class="chamber-header">
+                        <h3><i class="fas fa-globe"></i> HUMAN LANGUAGE</h3>
+                        <div class="chamber-status">READY</div>
+                    </div>
+                    <div class="input-container">
+                        <textarea id="human-input" placeholder="Enter your message here..." maxlength="500"></textarea>
+                        <div class="character-count">
+                            <span id="char-count">0</span>/500
+                        </div>
+                    </div>
+                </div>
+
+                <div class="translation-beam">
+                    <div class="beam-line"></div>
+                    <div class="beam-pulse"></div>
+                    <button id="translate-btn" class="translate-button">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                </div>
+
+                <div class="chamber alien-chamber">
+                    <div class="chamber-header">
+                        <h3><i class="fas fa-rocket"></i> ALIEN LANGUAGE</h3>
+                        <div class="chamber-status" id="alien-status">STANDBY</div>
+                    </div>
+                    <div class="output-container">
+                        <div id="alien-output" class="alien-text">
+                            <div class="placeholder-text">Translation will appear here...</div>
+                        </div>
+                        <div class="alien-controls">
+                            <button id="play-audio" class="action-btn" title="Play Translation Audio">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button id="copy-translation" class="action-btn" title="Copy to Clipboard">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <button id="clear-all" class="action-btn" title="Clear All">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="translation-history">
+                <h3><i class="fas fa-history"></i> TRANSMISSION HISTORY</h3>
+                <div id="history-container" class="history-list">
+                    <div class="history-placeholder">No previous transmissions</div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="system-info">
+                    <span>XENOLINGUIST v3.7.2</span>
+                    <span>|</span>
+                    <span>GALACTIC STANDARD TIME: <span id="current-time"></span></span>
+                </div>
+                <div class="credits">
+                    <span>Developed by the Intergalactic Communications Consortium</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="hover-tooltip" class="hover-tooltip">
+        <div class="tooltip-content"></div>
+    </div>
+
+    <div id="notification-container" class="notification-container"></div>
+
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Establishing quantum link...</div>
+        </div>
+    </div>
+
+    <script src="particle-background.js"></script>
+    <script src="audio-engine.js"></script>
+    <script src="translator.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

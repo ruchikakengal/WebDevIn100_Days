@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValidateX - Email Validator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/logo.svg" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+    <nav>
+        <div class="logo">
+            <img src="images/logo.svg" alt="ValidateX-logo">
+            <span class="logo-text"><a href="index.html">ValidateX</a></span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <main>
+            <div class="container">
+                <h1>Validate Emails with ValidateX</h1>
+                <form action="/submit" method="post">
+                    <input placeholder="example@domain.com" type="text" id="email" name="email" required>
+                    <br><br>
+
+                    <input id="submitBtn" class="btn" type="submit" value="Submit">
+                </form>
+            </div>
+
+            <div class="container">
+                <h2>Your Results</h2>
+                    <div id="resultCont" >
+                    </div>
+                </div>
+    </main>
+
+    <footer>
+        <div id="contact" class="footer-content">
+            &copy; 2025 ValidateX Web App | All rights reserved |
+            Created with ❤️ by <strong>Sougata Paul</strong> |
+                <a href="https://github.com/Sougata2006" target="_blank">GitHub</a> |
+                <a href="https://www.linkedin.com/in/sougata-paul/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

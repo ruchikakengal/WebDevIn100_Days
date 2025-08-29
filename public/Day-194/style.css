@@ -1,0 +1,510 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --clr-one: #f6f5f5;
+  --clr-two: #e1f0da;
+  --clr-font: #1b9c85;
+  --clr-text: #677483;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+button {
+  cursor: pointer;
+}
+i {
+  cursor: pointer;
+}
+/* .container {
+  margin: 2rem 4rem;
+} */
+.nav__bar {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  align-items: center;
+  width: 100%;
+  background: var(--clr-one);
+  padding: 2rem 4rem;
+}
+.nav__bar .logo {
+  display: flex;
+}
+.nav__bar .logo span {
+  color: var(--clr-font);
+  padding-right: 1rem;
+  padding-top: 0.2rem;
+}
+.nav__bar ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+ul li a {
+  color: var(--clr-font);
+  text-decoration: none;
+}
+hr {
+  color: var(--clr-font);
+  height: 6.4rem;
+  background: var(--clr-one);
+}
+/* -------------------------------------- */
+.home {
+  background: var(--clr-two);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 2rem 8rem;
+}
+.home .home__first {
+  padding-top: 4rem;
+}
+.home .home__first h2 {
+  padding: 3rem 0 2rem 0;
+  color: var(--clr-font);
+  font-size: 2.2em;
+}
+
+.home .home__first button {
+  padding: 0.6rem 1.9rem;
+  border: 2px solid var(--clr-font);
+  border-radius: 0.5rem;
+  background: transparent;
+  margin: 2rem 0;
+}
+.home .home__first button:hover {
+  background: var(--clr-font);
+  color: var(--clr-one);
+}
+
+.home .home__second img {
+  width: 400px;
+  height: 400px;
+  margin-left: 5rem;
+}
+/* --------------------------------------- */
+.service {
+  background: var(--clr-one);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 8rem;
+  text-align: center;
+  gap: 1rem;
+}
+.service .service__first,
+.service .service__second,
+.service .service__third,
+.service .service__fourth {
+  border: 2px solid var(--clr-font);
+  border-radius: 0.3rem;
+}
+.service .service__first i,
+.service .service__second i,
+.service .service__third i,
+.service .service__fourth i {
+  font-size: 3em;
+  padding: 2rem 0;
+  color: var(--clr-font);
+}
+.service .service__first h2,
+.service .service__second h2,
+.service .service__third h2,
+.service .service__fourth h2 {
+  font-size: 2em;
+}
+.service .service__first p,
+.service .service__second p,
+.service .service__third p,
+.service .service__fourth p {
+  padding: 1rem 0;
+}
+/* ------------------------------------- */
+.about__page {
+  background: var(--clr-two);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 8rem;
+  text-align: left;
+  gap: 1rem;
+}
+.about__page .about__one,
+.about__page .about__two,
+.about__page .about__three,
+.about__page .about__four,
+.about__page .about__five,
+.about__page .about__six {
+  border: 2px solid var(--clr-font);
+  padding-left: 2rem;
+  border-radius: 0.3rem;
+}
+.about__page .about__one i,
+.about__page .about__two i,
+.about__page .about__three i,
+.about__page .about__four i,
+.about__page .about__five i,
+.about__page .about__six i {
+  color: var(--clr-font);
+  font-size: 3em;
+  padding: 2rem 2rem 1rem 2rem;
+}
+.about__page .about__one h2,
+.about__page .about__two h2,
+.about__page .about__three h2,
+.about__page .about__four h2,
+.about__page .about__five h2,
+.about__page .about__six h2 {
+  padding-bottom: 1rem;
+}
+.about__page .about__one p,
+.about__page .about__two p,
+.about__page .about__three p,
+.about__page .about__four p,
+.about__page .about__five p,
+.about__page .about__six p {
+  color: var(--clr-text);
+}
+.about__page .about__one button,
+.about__page .about__two button,
+.about__page .about__three button,
+.about__page .about__four button,
+.about__page .about__five button,
+.about__page .about__six button {
+  padding: 0.6rem 1.9rem;
+  border: 2px solid var(--clr-font);
+  border-radius: 0.5rem;
+  background: var(--clr-font);
+  margin: 1rem 0;
+  color: var(--clr-one);
+}
+/* ------------------------------------------ */
+.about {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 5rem 8rem;
+  gap: 1rem;
+  background-color: var(--clr-one);
+}
+.about__top h2 {
+  text-align: center;
+  font-size: 3em;
+  padding-top: 1rem;
+  background-color: var(--clr-one);
+}
+.about__top h2 span {
+  color: var(--clr-font);
+}
+.about .about__second {
+  padding-top: 1cap;
+}
+.about .about__second h2 {
+  color: var(--clr-font);
+  font-size: 2em;
+  padding-bottom: 2rem;
+}
+.about .about__second p {
+  color: var(--clr-text);
+  padding-top: 1rem;
+}
+.about .about__second button {
+  padding: 0.6rem 1.9rem;
+  border: 2px solid var(--clr-font);
+  border-radius: 0.5rem;
+  background: var(--clr-font);
+  margin: 2rem 1rem;
+  color: var(--clr-one);
+}
+/* ------------------------------------- */
+.doctor {
+  background: var(--clr-two);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 1rem 8rem;
+  text-align: center;
+  gap: 1rem;
+}
+.doctor__title h2 {
+  background: var(--clr-two);
+  text-align: center;
+  font-size: 3em;
+  padding: 1rem 0 6rem 0;
+}
+.doctor__title h2 span {
+  color: var(--clr-font);
+}
+.doctor .doctor__one,
+.doctor .doctor__two,
+.doctor .doctor__three,
+.doctor .doctor__four,
+.doctor .doctor__five,
+.doctor .doctor__six {
+  border: 2px solid var(--clr-font);
+  border-radius: 0.3rem;
+}
+.doctor .doctor__one img,
+.doctor .doctor__two img,
+.doctor .doctor__three img,
+.doctor .doctor__four img,
+.doctor .doctor__five img,
+.doctor .doctor__six img {
+  width: 100px;
+  height: 100px;
+  border: 2px solid var(--clr-font);
+  margin: 2rem auto;
+  border-radius: 0.3rem;
+}
+.doctor .doctor__one h2,
+.doctor .doctor__two h2,
+.doctor .doctor__three h2,
+.doctor .doctor__four h2,
+.doctor .doctor__five h2,
+.doctor .doctor__six h2 {
+  color: var(--clr-font);
+}
+.doctor .doctor__one p,
+.doctor .doctor__two p,
+.doctor .doctor__three p,
+.doctor .doctor__four p,
+.doctor .doctor__five p,
+.doctor .doctor__six p {
+  color: var(--clr-text);
+}
+.media__icon {
+  text-align: center;
+  font-size: 1.6em;
+  padding: 1rem;
+  color: var(--clr-font);
+}
+.media__icon i {
+  padding: 0.6rem;
+  border: 2px solid var(--clr-font);
+  border-radius: 0.3rem;
+}
+/* -------------------------------------------- */
+.book {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem 8rem;
+}
+.book__title h2 {
+  text-align: center;
+  font-size: 3em;
+  padding: 3rem 0 6rem 0;
+}
+.book__title span {
+  color: var(--clr-font);
+}
+.book .book__first img {
+  width: 300px;
+  height: 300px;
+}
+.book .book__second {
+  border: 2px solid var(--clr-font);
+}
+.book .book__second h2 {
+  text-align: center;
+  font-size: 2em;
+  padding: 2rem 0;
+}
+.book .book__second input {
+  display: block;
+  border: 2px solid var(--clr-font);
+  color: var(--clr-font);
+  padding: 0.8rem 1rem;
+  margin: 0.4rem 1rem;
+  width: 94%;
+}
+.book .book__second button {
+  padding: 0.6rem 1.9rem;
+  border: 2px solid var(--clr-font);
+  border-radius: 0.5rem;
+  background: transparent;
+  margin: 1rem 0;
+  margin: 1rem 13rem;
+}
+.book .book__second button a {
+  color: var(--clr-font);
+  text-decoration: none;
+}
+.book .book__second button:hover {
+  background: var(--clr-font);
+  color: var(--clr-one);
+}
+/* --------------------------------------------- */
+.bottom {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 5rem 8rem;
+  background: var(--clr-two);
+}
+.bottom .bottom__one h2,
+.bottom .bottom__two h2,
+.bottom .bottom__three h2,
+.bottom .bottom__four h2 {
+  padding-bottom: 1rem;
+}
+.bottom .bottom__one ul,
+.bottom .bottom__two ul,
+.bottom .bottom__three ul,
+.bottom .bottom__four ul {
+  list-style: none;
+}
+.bottom .bottom__one ul li a span,
+.bottom .bottom__two ul li a span,
+.bottom .bottom__three ul li a span,
+.bottom .bottom__four ul li a span {
+  color: var(--clr-text);
+  padding-left: 1rem;
+}
+footer p {
+  text-align: center;
+  background: var(--clr-two);
+}
+/* ----------------------------------------------- */
+#menu__btn {
+  color: var(--clr-font);
+  font-size: 1.7em;
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 830px) {
+  body {
+    overflow-x: hidden;
+  }
+  #menu__btn {
+    display: initial;
+  }
+  .nav__bar .navbar {
+    position: absolute;
+    top: 100%;
+    right: 0rem;
+    border-radius: 0.5rem;
+    width: 30rem;
+    background: var(--clr-one);
+    display: inline;
+    text-align: center;
+    padding-top: 2rem;
+    border: 2px solid var(--clr-font);
+    transform: scale(0);
+    opacity: 0;
+    transition: none;
+    transform-origin: top right;
+  }
+  .nav__bar .navbar.active {
+    transform: scale(1);
+    opacity: 1;
+    transform-origin: 0.2s ease-out;
+  }
+  .nav__bar ul li {
+    padding-bottom: 1.5rem;
+  }
+  .nav__bar ul {
+    display: none;
+  }
+  .home .home__first {
+    padding-top: 0;
+  }
+  .home .home__first h2 {
+    font-size: 1.5em;
+  }
+  .home .home__first p {
+    font-size: 1em;
+  }
+  .home .home__second img {
+    width: 300px;
+    height: 300px;
+  }
+  .about .about__second h2 {
+    font-size: 1.4em;
+  }
+  .about__page .about__one h2,
+  .about__page .about__two h2,
+  .about__page .about__three h2,
+  .about__page .about__four h2,
+  .about__page .about__five h2,
+  .about__page .about__six h2 {
+    font-size: 1em;
+  }
+  .about .about__first img {
+    width: 300px;
+    height: 300px;
+  }
+  .book {
+    padding: 1rem 4rem;
+  }
+  .bottom .bottom__one h2,
+  .bottom .bottom__two h2,
+  .bottom .bottom__three h2,
+  .bottom .bottom__four h2 {
+    font-size: 1em;
+  }
+  .bottom {
+    grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+  }
+}
+@media (max-width: 750px) {
+  .about__page {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .doctor {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .book {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .book .book__first img {
+    margin-left: 8rem;
+  }
+  .about {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .about .about__first img {
+    margin-left: 4rem;
+  }
+  .service {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (max-width: 580px) {
+  body {
+    overflow-x: hidden;
+  }
+  .home {
+    padding: 4rem 2rem;
+  }
+  .home .home__first p,
+  .about .about__second p {
+    width: 94%;
+  }
+  .service {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 4rem 2rem;
+  }
+  .about__page,
+  .about,
+  .doctor,
+  .book,
+  .bottom {
+    padding: 4rem 2rem;
+  }
+  .book .book__first img {
+    margin-left: 0;
+  }
+  .about__page {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .doctor {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .book .book__second button {
+    margin: 1rem 10rem;
+  }
+}

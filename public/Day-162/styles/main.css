@@ -1,0 +1,281 @@
+/* CSS Custom Properties for Theme Management */
+:root {
+    /* Cyberpunk Theme */
+    --primary-bg: #0a0a0a;
+    --secondary-bg: #111111;
+    --terminal-bg: #000000;
+    --primary-neon: #00ff00;
+    --secondary-neon: #ff0080;
+    --accent-neon: #00ffff;
+    --warning-color: #ffff00;
+    --error-color: #ff0040;
+    --text-primary: #00ff00;
+    --text-secondary: #40ff40;
+    --text-muted: #666666;
+    --border-color: #333333;
+    --font-family: 'Fira Code', 'Courier New', monospace;
+    --font-size-base: 14px;
+    --font-size-small: 12px;
+    --font-size-large: 16px;
+    --animation-speed: 0.3s;
+    --glow-intensity: 0 0 10px;
+    --cursor-blink: 1s;
+}
+
+/* Matrix Theme */
+[data-theme="matrix"] {
+    --primary-neon: #00ff00;
+    --secondary-neon: #008800;
+    --accent-neon: #40ff40;
+    --text-primary: #00ff00;
+    --text-secondary: #008800;
+}
+
+/* Retro Theme */
+[data-theme="retro"] {
+    --primary-bg: #001100;
+    --secondary-bg: #002200;
+    --terminal-bg: #000000;
+    --primary-neon: #ffaa00;
+    --secondary-neon: #ff6600;
+    --accent-neon: #ffff00;
+    --text-primary: #ffaa00;
+    --text-secondary: #ff8800;
+}
+
+/* Global Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    overflow: hidden;
+    height: 100vh;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.glow {
+    text-shadow: var(--glow-intensity) var(--primary-neon);
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+.flicker {
+    animation: flicker 0.5s infinite alternate;
+}
+
+.glitch {
+    animation: glitch 0.3s infinite;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.9; }
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes neonGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px var(--primary-neon), 0 0 10px var(--primary-neon), 0 0 15px var(--primary-neon);
+    }
+    50% {
+        box-shadow: 0 0 10px var(--primary-neon), 0 0 20px var(--primary-neon), 0 0 30px var(--primary-neon);
+    }
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-neon);
+    border-radius: 4px;
+    box-shadow: var(--glow-intensity) var(--primary-neon);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-neon);
+}
+
+/* Main Interface Layout */
+.main-interface {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(45deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+    position: relative;
+}
+
+/* Control Buttons */
+.control-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: var(--font-size-small);
+    transition: all var(--animation-speed);
+    border-radius: 3px;
+}
+
+.control-btn:hover {
+    background: var(--primary-neon);
+    color: var(--primary-bg);
+    box-shadow: var(--glow-intensity) var(--primary-neon);
+    transform: scale(1.05);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+/* Close Button */
+.close-btn {
+    background: transparent;
+    border: none;
+    color: var(--error-color);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--animation-speed);
+}
+
+.close-btn:hover {
+    color: #ffffff;
+    background: var(--error-color);
+    border-radius: 50%;
+    transform: scale(1.1);
+}
+
+/* Loading and Progress Elements */
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: var(--secondary-bg);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-neon), var(--secondary-neon));
+    width: 0%;
+    transition: width 0.3s ease;
+    box-shadow: var(--glow-intensity) var(--primary-neon);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        --font-size-base: 12px;
+        --font-size-small: 10px;
+        --font-size-large: 14px;
+    }
+    
+    .control-btn {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-size-base: 10px;
+        --font-size-small: 8px;
+        --font-size-large: 12px;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --glow-intensity: 0 0 20px;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .main-interface {
+        background: white;
+        color: black;
+    }
+    
+    .control-btn,
+    .close-btn {
+        display: none;
+    }
+}

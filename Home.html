@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CarePlus • Health Checkup Appointments</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg">
+  <header class="nav">
+    <div class="brand"><i class="ri-heart-pulse-fill"></i> CarePlus</div>
+    <nav class="links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero__content card glass">
+      <h1>Book Health Checkups with Ease</h1>
+      <p>Find doctors, pick a slot, and get instant confirmation. Simple. Fast. Reliable.</p>
+      <div class="hero__cta">
+        <button class="btn btn--primary" id="openPatient">Continue as Patient</button>
+        <button class="btn btn--ghost" id="openAdmin">Admin Login</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Patient quick-login -->
+  <section class="panel card" id="patientPanel" hidden>
+    <h2><i class="ri-user-heart-line"></i> Patient</h2>
+    <form id="patientLogin" class="grid2">
+      <div class="field">
+        <label for="pname">Your Full Name</label>
+        <input id="pname" type="text" placeholder="e.g., Shreya Parikh" required />
+      </div>
+      <div class="field">
+        <label for="pmobile">Mobile</label>
+        <input id="pmobile" type="tel" placeholder="e.g., 98765 43210" required />
+      </div>
+      <button class="btn btn--primary" type="submit"><i class="ri-arrow-right-line"></i> Go to Patient Dashboard</button>
+    </form>
+  </section>
+
+  <!-- Admin login -->
+  <section class="panel card" id="adminPanel" hidden>
+    <h2><i class="ri-shield-user-line"></i> Admin</h2>
+    <form id="adminLogin" class="grid2">
+      <div class="field">
+        <label for="auser">Username</label>
+        <input id="auser" type="text" placeholder="admin" required />
+      </div>
+      <div class="field">
+        <label for="apass">Password</label>
+        <input id="apass" type="password" placeholder="••••••••" required />
+      </div>
+      <button class="btn btn--primary" type="submit"><i class="ri-login-box-line"></i> Sign in</button>
+      <p class="muted">Demo credentials: <b>admin</b> / <b>admin123</b></p>
+    </form>
+  </section>
+
+  <section class="features" id="features">
+    <div class="card glass">
+      <i class="ri-stethoscope-line bigicon"></i>
+      <h3>Top Specialists</h3>
+      <p>Choose from curated doctors across departments.</p>
+    </div>
+    <div class="card glass">
+      <i class="ri-calendar-check-line bigicon"></i>
+      <h3>Smart Scheduling</h3>
+      <p>Book slots that fit your routine—no phone calls needed.</p>
+    </div>
+    <div class="card glass">
+      <i class="ri-lock-2-line bigicon"></i>
+      <h3>Secure & Private</h3>
+      <p>Your information is safe and stays on your device.</p>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="card">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li>Sign in as Patient or Admin</li>
+        <li>Patients: pick doctor & available slot</li>
+        <li>Admin: approve or reject requests</li>
+        <li>Attend your appointment on time</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer class="footer" id="contact">
+    <p>© 2025 CarePlus • Crafted with <i class="ri-heart-3-fill"></i></p>
+  </footer>
+
+  <div id="toast"></div>
+
+  <script src="app.js"></script>
+  <script>
+    // Landing interactions
+    const pPanel = document.getElementById('patientPanel');
+    const aPanel = document.getElementById('adminPanel');
+    document.getElementById('openPatient').onclick = () => { pPanel.hidden = false; aPanel.hidden = true; pPanel.scrollIntoView({behavior:'smooth'}); };
+    document.getElementById('openAdmin').onclick = () => { aPanel.hidden = false; pPanel.hidden = true; aPanel.scrollIntoView({behavior:'smooth'}); };
+
+    // Patient login -> store basic profile and go
+    document.getElementById('patientLogin').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('pname').value.trim();
+      const mobile = document.getElementById('pmobile').value.trim();
+      if(name.length < 2){ showToast('Please enter a valid name'); return; }
+      localStorage.setItem('cp_currentPatient', JSON.stringify({ name, mobile }));
+      location.href = 'patient.html';
+    });
+
+    // Admin login
+    document.getElementById('adminLogin').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const u = document.getElementById('auser').value.trim();
+      const p = document.getElementById('apass').value.trim();
+      if(u === 'admin' && p === 'admin123'){
+        localStorage.setItem('cp_admin', 'true');
+        location.href = 'admin.html';
+      } else {
+        showToast('Invalid credentials');
+      }
+    });
+  </script>
+</body>
+</html>

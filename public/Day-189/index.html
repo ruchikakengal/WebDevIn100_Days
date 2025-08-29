@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<title>Bird Hunter</title>
+	<link rel="icon" href="shootingbird.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="startGame">
+			<input type="submit" value="Start Game" id="start">
+		</div>
+		<div class="birdTitle">
+			<h1>Shoot the birds</h1>
+			<h2 id="level">Level 1</h2>
+			<h3 id="score">Score is 0</h3>
+		</div>
+		<div id="main">
+		</div>
+		<audio id="myAudio">
+				<source src="boom.mp3" type="audio/mpeg">
+				Your browser does not support the audio element.
+		</audio>
+		<audio id="gameover">
+				<source src="game.mp3" type="audio/mpeg">
+				Your browser does not support the audio element.
+		</audio>
+		<audio id="background">
+				<source src="background.mp3" type="audio/mpeg">
+				Your browser does not support the audio element.
+		</audio>
+	</div>
+</body>
+</html>
+<script src="index.js">
+</script>

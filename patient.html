@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CarePlus • Patient</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <header class="nav nav--solid">
+    <div class="brand"><i class="ri-heart-pulse-fill"></i> CarePlus</div>
+    <nav class="links">
+      <a href="#doctors">Doctors</a>
+      <a href="#myapps">My Appointments</a>
+      <button class="btn btn--ghost" id="logout"><i class="ri-logout-box-r-line"></i> Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="welcome card glass">
+      <h2>Welcome, <span id="pname"></span></h2>
+      <p class="muted">Browse doctors and book your health checkups in a few clicks.</p>
+      <div class="grid3 stats">
+        <div class="stat"><span id="statPending">0</span><small>Pending</small></div>
+        <div class="stat"><span id="statApproved">0</span><small>Approved</small></div>
+        <div class="stat"><span id="statTotal">0</span><small>Total</small></div>
+      </div>
+    </section>
+
+    <!-- Doctors -->
+    <section id="doctors" class="card">
+      <div class="section__head">
+        <h3><i class="ri-stethoscope-line"></i> Doctors</h3>
+        <div class="filters">
+          <input type="search" id="searchDoc" placeholder="Search name/specialty/location…" />
+          <select id="specFilter">
+            <option value="">All specialties</option>
+          </select>
+        </div>
+      </div>
+      <div id="docList" class="cards"></div>
+    </section>
+
+    <!-- My Appointments -->
+    <section id="myapps" class="card">
+      <div class="section__head">
+        <h3><i class="ri-calendar-2-line"></i> My Appointments</h3>
+      </div>
+      <div class="tablewrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Doctor</th><th>Specialty</th><th>Date</th><th>Time</th><th>Status</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="myAppsBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Book Modal -->
+  <dialog id="bookModal" class="modal">
+    <form method="dialog" class="modal__content">
+      <h3><i class="ri-calendar-event-line"></i> Book Appointment</h3>
+      <div class="field">
+        <label>Doctor</label>
+        <input id="bm_doctor" type="text" readonly>
+      </div>
+      <div class="grid2">
+        <div class="field">
+          <label>Date</label>
+          <input id="bm_date" type="date" required>
+        </div>
+        <div class="field">
+          <label>Time</label>
+          <select id="bm_time" required></select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Reason / Notes</label>
+        <textarea id="bm_reason" rows="3" placeholder="e.g., Full body checkup"></textarea>
+      </div>
+      <menu class="modal__actions">
+        <button class="btn btn--ghost" value="cancel">Cancel</button>
+        <button class="btn btn--primary" id="bm_submit" value="default">Confirm Booking</button>
+      </menu>
+      <input type="hidden" id="bm_doctorId">
+    </form>
+  </dialog>
+
+  <div id="toast"></div>
+  <script src="app.js"></script>
+  <script>
+    protectPatient();
+    const patient = JSON.parse(localStorage.getItem('cp_currentPatient') || '{}');
+    document.getElementById('pname').textContent = patient.name || 'Guest';
+
+    // Stats + lists
+    renderDoctorsForPatient();
+    renderPatientAppointments();
+
+    // Filters
+    document.getElementById('searchDoc').addEventListener('input', renderDoctorsForPatient);
+    document.getElementById('specFilter').addEventListener('change', renderDoctorsForPatient);
+
+    // Book modal handlers are wired in app.js via delegation
+    document.getElementById('logout').onclick = () => { localStorage.removeItem('cp_currentPatient'); location.href='index.html'; };
+  </script>
+</body>
+</html>

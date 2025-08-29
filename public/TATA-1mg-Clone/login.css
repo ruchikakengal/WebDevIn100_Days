@@ -1,0 +1,328 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#container {
+  width: 100%;
+  height: 100vh;
+  /* padding-top: 250px; */
+}
+
+a {
+  text-decoration: none;
+}
+
+#container_1 {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 950px;
+  height: 545px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  /* border:  black solid 2px; */
+}
+
+#slideshow_container {
+  width: 100%;
+  height: 98%;
+  box-sizing: border-box;
+  /* border: cyan 2px solid; */
+  align-items: center;
+  text-align: center;
+  padding: 10%;
+  padding-bottom: 15%;
+  border-right: 1px solid rgb(196, 196, 196);
+}
+
+.mySlides {
+  display: none;
+  padding-top: 30%;
+  width: 100%;
+  box-sizing: border-box;
+  height: 90%;
+  font-size: 12px;
+  color: #717171;
+}
+
+.dot {
+  cursor: pointer;
+  height: 8px;
+  width: 8px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  box-sizing: border-box;
+}
+
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+.mySlides>img {
+  margin-bottom: 20px;
+}
+
+.text>p {
+  color: gray;
+  line-height: 1.2;
+}
+
+#account_2 {
+  display: block;
+  width: 100%;
+  height: 98%;
+  box-sizing: border-box;
+  /* border: pink 2px solid; */
+  border-left: none;
+  padding: 15px 15%;
+}
+
+#account_1,
+#verify_otp,
+#email_id_new {
+  width: 100%;
+  height: 98%;
+  box-sizing: border-box;
+  /* border: pink 2px solid; */
+  border-left: none;
+  padding: 15px 15%;
+  display: none;
+}
+
+#account_continue,
+#login_button-1,
+#done,
+#email_continue {
+  width: 100%;
+  background-color: #ff6f61;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: white;
+  padding: 5px;
+  margin-top: 70px;
+}
+
+#account_continue:hover,
+#login_button-1:hover,
+#done:hover,
+#email_continue:hover {
+  background: #fc6456;
+}
+
+#mobile_number,
+#login_mobile_number,
+#one_time_p,
+#email_new {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px crimson solid;
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+#account_1>p,
+#account_2>p,
+#verify_otp>p,
+#email_id_new>p {
+  font-size: 12px;
+  color: #717171;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.5;
+  margin-top: 5px;
+}
+
+#account_1>div>p,
+#account_2>div>p,
+#verify_otp>div>p,
+#email_id_new>div>p {
+  text-align: center;
+  font-size: 12px;
+  color: #717171;
+}
+
+.a_orange {
+  text-decoration: none;
+  color: #ff6f61;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#terms {
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: gray;
+}
+
+#account_1>h1,
+#account_2>h1,
+#verify_otp>h1,
+#email_id_new>h1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.close {
+  color: gray;
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: lighter;
+}
+
+.close:hover {
+  color: red;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+/* input[type="number"] {
+    -moz-appearance: textfield;
+  } */
+
+#email_continue {
+  margin-top: 125px;
+}
+
+#error {
+  justify-content: space-between;
+  display: flex;
+}
+
+#done {
+  margin-top: 120px;
+}
+
+#wrong_otp {
+  color: red;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  display: none;
+}
+
+form {
+  margin-top: 50px;
+}
+
+#account_invalid_num,
+#login_invalid_num,
+#invalid_email {
+  color: red;
+  display: none;
+}
+
+#user_mobile {
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#login_mobile_number,
+#one_time_p,
+#email_new {
+  outline: none;
+}
+
+/* Snackbarotp */
+
+#snackbar_otp {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #ff6f61;
+  color: #fff;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+}
+
+
+#snackbar_otp.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+  animation: fadein 0.5s, fadeout 0.5s 4.5s;
+}
+
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  #slideshow_container {
+    display: none;
+  }
+
+  #container_1 {
+    width: 100%;
+    /* background-color: #717171; */
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+}

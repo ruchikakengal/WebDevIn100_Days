@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Bucket List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-globe-americas"></i>
+                    <h1>Travel Bucket List</h1>
+                </div>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalDestinations">0</h3>
+                            <p>Total Destinations</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="visitedDestinations">0</h3>
+                            <p>Places Visited</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="progressPercentage">0%</h3>
+                            <p>Progress</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="controls-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search destinations...">
+                    </div>
+                </div>
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-globe"></i> All
+                    </button>
+                    <button class="filter-btn" data-filter="visited">
+                        <i class="fas fa-check"></i> Visited
+                    </button>
+                    <button class="filter-btn" data-filter="not-visited">
+                        <i class="fas fa-clock"></i> To Visit
+                    </button>
+                </div>
+                <button class="add-btn" id="addDestinationBtn">
+                    <i class="fas fa-plus"></i> Add Destination
+                </button>
+            </section>
+
+            <section class="view-controls">
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="cards">
+                        <i class="fas fa-th-large"></i> Cards
+                    </button>
+                    <button class="view-btn" data-view="timeline">
+                        <i class="fas fa-calendar-alt"></i> Timeline
+                    </button>
+                </div>
+            </section>
+
+            <section class="destinations-section">
+                <div class="destinations-grid" id="destinationsGrid">
+
+                </div>
+                <div class="timeline-view hidden" id="timelineView">
+                </div>
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">
+                        <i class="fas fa-suitcase"></i>
+                    </div>
+                    <h3>No destinations yet</h3>
+                    <p>Start planning your adventures by adding your first destination!</p>
+                    <button class="add-btn-secondary" onclick="openAddModal()">
+                        <i class="fas fa-plus"></i> Add Your First Destination
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Destination</h2>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="destinationForm">
+                    <div class="form-group">
+                        <label for="destinationName">Destination Name *</label>
+                        <input type="text" id="destinationName" required placeholder="e.g., Paris, France">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="destinationCountry">Country</label>
+                            <input type="text" id="destinationCountry" placeholder="e.g., France">
+                        </div>
+                        <div class="form-group">
+                            <label for="destinationCity">City/Landmark</label>
+                            <input type="text" id="destinationCity" placeholder="e.g., Eiffel Tower">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="destinationPriority">Priority</label>
+                            <select id="destinationPriority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="destinationYear">Target Year</label>
+                            <input type="number" id="destinationYear" min="2024" max="2050" placeholder="2024">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="destinationNotes">Notes</label>
+                        <textarea id="destinationNotes" rows="3"
+                            placeholder="Any special notes or reasons for visiting..."></textarea>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="destinationVisited">
+                            <span class="checkmark"></span>
+                            Mark as visited
+                        </label>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-primary" id="saveBtn">Save Destination</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="confirmationModal">
+        <div class="modal confirmation-modal">
+            <div class="modal-header">
+                <h2>Confirm Action</h2>
+            </div>
+            <div class="modal-body">
+                <p id="confirmationMessage">Are you sure you want to delete this destination?</p>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="confirmCancel">Cancel</button>
+                    <button type="button" class="btn-danger" id="confirmDelete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

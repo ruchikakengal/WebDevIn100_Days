@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1;
+}
+
+body {
+  color: #333333;
+  overflow: hidden;
+  background: #111111;
+}
+
+#score {
+  position: fixed;
+  color: white;
+  font-size: 13px;
+  padding: 5px;
+  user-select: none;
+  z-index: 99;
+}
+
+#score p {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+button:focus {
+  outline: none;
+}
+
+#modelEl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 1em;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+#modelEl>div {
+  width: 100%;
+  max-width: 350px;
+  padding: 1.5em;
+  background: white;
+}
+
+#modelEl h1 {
+  font-size: 3em;
+  font-weight: 600;
+}
+
+#modelEl p {
+  font-size: 14px;
+}
+
+#modelEl button {
+  width: 100%;
+  margin-top: 1.5em;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 2em;
+  padding: 1em 2em;
+  background: dodgerblue;
+  transition: all 0.3s ease;
+}
+
+#modelEl button:hover {
+  opacity: 0.8;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}

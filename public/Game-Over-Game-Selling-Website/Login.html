@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/Login.css">
+    <title>Login in GameOver</title>
+</head>
+<body>
+    
+    <section>
+        
+    
+        <div class="container">
+
+
+            <div class="user signinBx">
+                <div class="imgBx"><img src="assets/img/p1-game.jpg" class="p1"></div>
+                <div class="formBx">
+                    <form>
+                        
+                        <h2>Log In</h2>
+                        <input type="text" placeholder="Username">
+                        <input type="password" placeholder="Password">
+                        <input type="submit" value="Login">
+                        <p class="signup">don't have an account ? <a href="#" onclick="toggleForm();">Registr.</a></p>
+                    </form>
+                </div>
+            </div>
+            
+            
+
+            <div class="user signupBx">
+                
+                <div class="formBx">
+                    <form>
+                        
+                        <h2>Create an account </h2>
+                        <input type="text" placeholder="Username">
+                        <input type="text" placeholder="Email Address">
+                        <input type="password" placeholder="Create Password">
+                        <input type="password" placeholder="Confim Password">
+                        <input type="submit" value="sign up">
+                        <p class="signup">Already have an account ? <a href="#" onclick="toggleForm();">Login.</a></p>
+                    </form>
+                </div>
+                <div class="imgBx"><img src="assets/img/p4.jpg"></div>
+            </div> 
+
+
+        </div>
+    
+    </section>
+    
+    <script>
+        function toggleForm(){
+            section = document.querySelector('section');
+            container = document.querySelector('.container');
+            container.classList.toggle('active');
+            section.classList.toggle('active');
+
+        }
+    </script>
+</body>
+</html>

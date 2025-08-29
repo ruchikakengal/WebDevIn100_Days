@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberHack Terminal v2.1.7</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/terminal.css">
+    <link rel="stylesheet" href="styles/effects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="bootScreen" class="boot-screen">
+        <div class="boot-content">
+            <div class="ascii-art">
+                <pre id="bootLogo"></pre>
+            </div>
+            <div class="boot-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="bootProgress"></div>
+                </div>
+                <div class="boot-text" id="bootText">Initializing CyberHack OS...</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainInterface" class="main-interface hidden">
+
+        <div class="terminal-header">
+            <div class="header-left">
+                <span class="terminal-title">CyberHack Terminal v2.1.7</span>
+                <span class="connection-status">
+                    <span class="status-indicator"></span>
+                    Connected to: MAINFRAME.SYS
+                </span>
+            </div>
+            <div class="header-right">
+                <button id="soundToggle" class="control-btn">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="fullscreenToggle" class="control-btn">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button id="settingsBtn" class="control-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="terminal-container">
+            <div id="terminalOutput" class="terminal-output"></div>
+
+            <div class="input-line">
+                <span class="prompt" id="currentPrompt">root@cyberhack:~$ </span>
+                <input type="text" id="terminalInput" class="terminal-input" autocomplete="off" spellcheck="false">
+                <span class="cursor" id="cursor"></span>
+            </div>
+        </div>
+
+        <div id="minigameOverlay" class="minigame-overlay hidden">
+            <div class="minigame-container">
+                <div class="minigame-header">
+                    <h3 id="minigameTitle">Security Challenge</h3>
+                    <button id="closeMinigame" class="close-btn">&times;</button>
+                </div>
+                <div id="minigameContent" class="minigame-content"></div>
+            </div>
+        </div>
+
+        <div id="fileViewer" class="file-viewer hidden">
+            <div class="file-container">
+                <div class="file-header">
+                    <span id="fileName">Document Viewer</span>
+                    <button id="closeFile" class="close-btn">&times;</button>
+                </div>
+                <div id="fileContent" class="file-content"></div>
+            </div>
+        </div>
+
+        <div id="suggestions" class="suggestions hidden"></div>
+
+        <div id="alertContainer" class="alert-container"></div>
+
+        <div id="networkScanner" class="network-scanner hidden">
+            <div class="scanner-container">
+                <div class="scanner-header">
+                    <h3>Network Scanner</h3>
+                    <button id="closeScanner" class="close-btn">&times;</button>
+                </div>
+                <div class="scanner-content">
+                    <div class="network-grid" id="networkGrid"></div>
+                    <div class="scanner-controls">
+                        <button id="scanBtn" class="scan-btn">Initiate Scan</button>
+                        <div class="scan-progress">
+                            <div class="scan-bar">
+                                <div class="scan-fill" id="scanProgress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="settingsPanel" class="settings-panel hidden">
+        <div class="settings-container">
+            <div class="settings-header">
+                <h3>Terminal Settings</h3>
+                <button id="closeSettings" class="close-btn">&times;</button>
+            </div>
+            <div class="settings-content">
+                <div class="setting-group">
+                    <label>Sound Effects</label>
+                    <input type="checkbox" id="soundEnabled" checked>
+                </div>
+                <div class="setting-group">
+                    <label>Glitch Effects</label>
+                    <input type="checkbox" id="glitchEnabled" checked>
+                </div>
+                <div class="setting-group">
+                    <label>Typing Animation Speed</label>
+                    <input type="range" id="typingSpeed" min="10" max="100" value="50">
+                </div>
+                <div class="setting-group">
+                    <label>Terminal Theme</label>
+                    <select id="terminalTheme">
+                        <option value="cyberpunk">Cyberpunk</option>
+                        <option value="matrix">Matrix</option>
+                        <option value="retro">Retro</option>
+                    </select>
+                </div>
+                <button id="resetProgress" class="reset-btn">Reset Progress</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/audio.js"></script>
+    <script src="scripts/effects.js"></script>
+    <script src="scripts/filesystem.js"></script>
+    <script src="scripts/minigames.js"></script>
+    <script src="scripts/terminal.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

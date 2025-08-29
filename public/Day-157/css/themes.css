@@ -1,0 +1,274 @@
+/* Theme Definitions */
+
+/* Metallic Theme (Default) */
+body[data-theme="metallic"] {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-accent: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #888888;
+    --accent-primary: #4a9eff;
+    --accent-secondary: #6bb6ff;
+    --gradient-primary: linear-gradient(135deg, #4a9eff, #0066cc);
+    --gradient-secondary: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    --shadow-primary: 0 8px 32px rgba(74, 158, 255, 0.3);
+    --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Neon Theme */
+body[data-theme="neon"] {
+    --bg-primary: #0d001a;
+    --bg-secondary: #1a0033;
+    --bg-accent: #33004d;
+    --text-primary: #e6ccff;
+    --text-secondary: #cc99ff;
+    --text-muted: #9966cc;
+    --accent-primary: #ff3399;
+    --accent-secondary: #ff66b3;
+    --gradient-primary: linear-gradient(135deg, #ff3399, #cc0066);
+    --gradient-secondary: linear-gradient(135deg, #33004d, #1a0033);
+    --shadow-primary: 0 8px 32px rgba(255, 51, 153, 0.4);
+    --shadow-secondary: 0 4px 16px rgba(51, 0, 77, 0.5);
+}
+
+body[data-theme="neon"] .stars::before {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #ff3399, transparent),
+        radial-gradient(2px 2px at 40px 70px, #ff66b3, transparent),
+        radial-gradient(1px 1px at 90px 40px, #e6ccff, transparent),
+        radial-gradient(1px 1px at 130px 80px, #ff3399, transparent),
+        radial-gradient(2px 2px at 160px 30px, #cc99ff, transparent);
+}
+
+body[data-theme="neon"] .floating-particles::before,
+body[data-theme="neon"] .floating-particles::after {
+    background: #ff3399;
+    box-shadow: 0 0 10px #ff3399, 0 0 20px #ff3399, 0 0 30px #ff3399;
+}
+
+body[data-theme="neon"] .capsule-locked {
+    border-color: #ff3399;
+    box-shadow: 
+        0 0 20px rgba(255, 51, 153, 0.5),
+        inset 0 0 20px rgba(255, 51, 153, 0.2);
+}
+
+body[data-theme="neon"] .capsule-locked::before {
+    border-color: #ff3399;
+    background: linear-gradient(135deg, #4d0026, #660033);
+}
+
+body[data-theme="neon"] .light-beam {
+    background: radial-gradient(ellipse, rgba(255, 51, 153, 0.8) 0%, transparent 70%);
+}
+
+/* Glass Theme */
+body[data-theme="glass"] {
+    --bg-primary: #0f1419;
+    --bg-secondary: rgba(255, 255, 255, 0.1);
+    --bg-accent: rgba(255, 255, 255, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: #e0e6ed;
+    --text-muted: #9ca3af;
+    --accent-primary: #00d4ff;
+    --accent-secondary: #33ddff;
+    --gradient-primary: linear-gradient(135deg, #00d4ff, #0099cc);
+    --gradient-secondary: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    --shadow-primary: 0 8px 32px rgba(0, 212, 255, 0.3);
+    --shadow-secondary: 0 4px 16px rgba(255, 255, 255, 0.1);
+}
+
+body[data-theme="glass"] .form-container,
+body[data-theme="glass"] .capsule-card,
+body[data-theme="glass"] .modal-content,
+body[data-theme="glass"] .toast {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body[data-theme="glass"] .text-editor,
+body[data-theme="glass"] input[type="datetime-local"],
+body[data-theme="glass"] input[type="password"],
+body[data-theme="glass"] input[type="email"] {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body[data-theme="glass"] .countdown-item {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body[data-theme="glass"] .stars::before {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #00d4ff, transparent),
+        radial-gradient(2px 2px at 40px 70px, #33ddff, transparent),
+        radial-gradient(1px 1px at 90px 40px, #ffffff, transparent),
+        radial-gradient(1px 1px at 130px 80px, #00d4ff, transparent),
+        radial-gradient(2px 2px at 160px 30px, #66e6ff, transparent);
+}
+
+body[data-theme="glass"] .floating-particles::before,
+body[data-theme="glass"] .floating-particles::after {
+    background: #00d4ff;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+}
+
+body[data-theme="glass"] .capsule-locked {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    border-color: #00d4ff;
+    box-shadow: 
+        0 0 20px rgba(0, 212, 255, 0.4),
+        inset 0 0 20px rgba(0, 212, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+body[data-theme="glass"] .capsule-locked::before {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    border-color: #00d4ff;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+body[data-theme="glass"] .light-beam {
+    background: radial-gradient(ellipse, rgba(0, 212, 255, 0.6) 0%, transparent 70%);
+}
+
+/* Theme-specific button styles */
+body[data-theme="neon"] .btn-primary {
+    background: linear-gradient(135deg, #ff3399, #cc0066);
+    box-shadow: 0 8px 32px rgba(255, 51, 153, 0.4);
+}
+
+body[data-theme="neon"] .btn-primary:hover {
+    box-shadow: 0 12px 40px rgba(255, 51, 153, 0.6);
+}
+
+body[data-theme="glass"] .btn-primary {
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+body[data-theme="glass"] .btn-primary:hover {
+    box-shadow: 0 12px 40px rgba(0, 212, 255, 0.5);
+}
+
+/* Theme-specific glow effects */
+body[data-theme="neon"] .glow-effect {
+    animation: neonGlow 2s ease-in-out infinite;
+}
+
+@keyframes neonGlow {
+    0%, 100% { 
+        box-shadow: 0 0 5px #ff3399, 0 0 10px #ff3399, 0 0 15px #ff3399;
+    }
+    50% { 
+        box-shadow: 0 0 10px #ff3399, 0 0 20px #ff3399, 0 0 30px #ff3399, 0 0 40px #ff3399;
+    }
+}
+
+body[data-theme="glass"] .glow-effect {
+    animation: glassGlow 2s ease-in-out infinite;
+}
+
+@keyframes glassGlow {
+    0%, 100% { 
+        box-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 15px #00d4ff;
+    }
+    50% { 
+        box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #00d4ff, 0 0 40px #00d4ff;
+    }
+}
+
+/* Theme-specific particle colors */
+body[data-theme="neon"] .particle {
+    background: #ff3399;
+}
+
+body[data-theme="neon"] .confetti-piece {
+    background: #ff3399;
+}
+
+body[data-theme="neon"] .confetti-piece:nth-child(even) {
+    background: #ff66b3;
+}
+
+body[data-theme="neon"] .confetti-piece:nth-child(3n) {
+    background: #cc99ff;
+}
+
+body[data-theme="glass"] .particle {
+    background: #00d4ff;
+}
+
+body[data-theme="glass"] .confetti-piece {
+    background: #00d4ff;
+}
+
+body[data-theme="glass"] .confetti-piece:nth-child(even) {
+    background: #33ddff;
+}
+
+body[data-theme="glass"] .confetti-piece:nth-child(3n) {
+    background: #66e6ff;
+}
+
+/* Theme transition animations */
+body {
+    transition: all 0.5s ease;
+}
+
+/* Additional theme-specific customizations */
+body[data-theme="neon"] .welcome-title {
+    background: linear-gradient(135deg, #ff3399, #ff66b3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(255, 51, 153, 0.5);
+}
+
+body[data-theme="glass"] .welcome-title {
+    background: linear-gradient(135deg, #00d4ff, #33ddff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+}
+
+body[data-theme="neon"] .logo {
+    color: #ff3399;
+    text-shadow: 0 0 20px rgba(255, 51, 153, 0.7);
+}
+
+body[data-theme="glass"] .logo {
+    color: #00d4ff;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.7);
+}
+
+body[data-theme="neon"] .countdown-number {
+    color: #ff3399;
+    text-shadow: 0 0 10px rgba(255, 51, 153, 0.8);
+}
+
+body[data-theme="glass"] .countdown-number {
+    color: #00d4ff;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+}
+
+body[data-theme="neon"] .screen-title {
+    color: #ff3399;
+    text-shadow: 0 0 20px rgba(255, 51, 153, 0.5);
+}
+
+body[data-theme="glass"] .screen-title {
+    color: #00d4ff;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}

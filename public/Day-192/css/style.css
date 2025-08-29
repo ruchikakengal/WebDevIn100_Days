@@ -1,0 +1,718 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor:url('../assets/img/sight.cur'), pointer;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
+        -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+}
+
+
+cursor {
+    opacity:0.4;
+filter:alpha(opacity=40);
+}
+
+.screen0Section {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes fade {
+    0%,100% { opacity: 0 }
+    50% { opacity: 1 }
+  }
+    .intro{
+        height: 100%;
+        width: 100%;
+
+        opacity: 1;
+        animation: fade 10s linear;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }​
+    
+    .monleone {
+        height: 30em;
+        width: 30em;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+        #monleoneImg{
+            height: 5em;
+            width: 15em;
+
+        }
+        #geekshubsImg{
+            height: 10em;
+            width: 15em;
+        }
+
+
+.screen1Section {
+    background-image: url('../assets/img/vietnam.gif');
+    background-size: 100% 100vw;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    .options{
+        height: 5%;
+        width: 3%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+        top: 12%;
+        right: 11%
+    }
+    .options2{
+        height: 5%;
+        width: 3%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+        top: 3%;
+        right: 3%
+    }
+        .optionsImg{
+            height: 100%;
+            width: 100%;
+        }
+    .screen1Main {
+        background-color: grey;
+        height: 80%;
+        width: 80%;
+
+        border-style: solid;
+        border-color: white;
+        border-width: 1em;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+        .screen1MainBox {
+            height: 80%;
+            width: 75%;
+            border-style: dotted;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+            .screen1MainBoxTitle {
+                -webkit-text-stroke: 2px white;
+                height: 50%;
+                width: 100%;
+                font-family: 'Exoplanet', sans-serif;
+                font-size: 8vw;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .screen1MainBoxSelection {
+                height: 50%;
+                width: 100%;
+                font-family: 'Hussar Woodtype', sans-serif;
+                                                
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+.screen2Section {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    .screen2Main {
+        background-color: grey;
+        height: 100vw;
+        width: 100vw;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }   
+        .screen2Title {
+            height: 10%;
+
+            font-family: 'ICBM SS-25', sans-serif;
+            font-family: 'ICBM SS-20', sans-serif;
+            font-size: 3vw;
+
+            color: white;
+        }
+        .screen2Characters{
+            background-color: black;
+
+            height: 40%;
+            width: 80%;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+            .screen2CharacterDiv {
+                height: 90%;
+                width: 20%;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+                .screen2Char {
+                    height: 80%;
+                    width: 100%;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+                    .screen2CharImg{
+                        height: 100%;
+                        width: 100%;
+                    }
+                .sreen2CharTitle {
+                    height: 10%;
+                    width: 100%;
+
+                    font-family: 'ICBM SS-25', sans-serif;
+                    font-family: 'ICBM SS-20', sans-serif;
+                    font-size: 1.5vw;
+
+                    color: white;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-around;
+                }
+        .screen2CharactersStats{
+            height: 40%;
+            width: 80%;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            
+        }
+        #screen2Character1Stats {
+            border-style: double;
+            background-color: rgb(75, 83, 32);
+            height: 100%;
+            width: 20%;
+            border-radius: 10%;
+
+            display: flex;
+            flex-direction: column;
+            text-align:center;
+            align-items: center;
+
+            font-family: 'ICBM SS-25', sans-serif;
+            font-family: 'ICBM SS-20', sans-serif;
+
+            font-size: 1.3vw;
+        }
+        #screen2Character2Stats {
+            border-style: double;
+            background-color: rgb(75, 83, 32);
+            height: 100%;
+            width: 20%;
+            border-radius: 10%;
+
+            display: flex;
+            flex-direction: column;
+            text-align:center;
+            align-items: center;
+
+            font-family: 'ICBM SS-25', sans-serif;
+            font-family: 'ICBM SS-20', sans-serif;
+
+            font-size: 1.3vw;
+        }
+        #screen2Character3Stats {
+            border-style: double;
+            background-color: rgb(75, 83, 32);
+            height: 100%;
+            width: 20%;
+            border-radius: 10%;
+
+            display: flex;
+            flex-direction: column;
+            text-align:center;
+            align-items: center;
+
+            font-family: 'ICBM SS-25', sans-serif;
+            font-family: 'ICBM SS-20', sans-serif;
+
+            font-size: 1.3vw;
+        }
+
+        .warning{
+            background-color: aliceblue;
+            position: absolute;
+            opacity: 0;
+
+            text-align: center;
+        }
+        .warning:hover{
+            opacity: 0.8;
+            font-family: 'ICBM SS-25', sans-serif;
+            font-family: 'ICBM SS-20', sans-serif;
+        }
+        #screen2Character4Stats {
+            border-style: double;
+            background-color: rgb(75, 83, 32);
+            height: 100%;
+            width: 20%;
+            border-radius: 10%;
+
+            display: flex;
+            flex-direction: column;
+            text-align:center;
+            align-items: center;
+
+            font-family: 'ICBM SS-25', sans-serif;
+            font-family: 'ICBM SS-20', sans-serif;
+
+            font-size: 1.3vw;
+        }
+
+
+        .screen2GunsDifficulty {
+            height: 40%;
+            width: 80%;
+
+            display: flex;
+            flex-direction: row;
+            align-items:center;
+            justify-content: center;
+        }
+            .screen2Guns {
+                height: 100%;
+                width: 80%;
+
+                display: flex;
+                flex-direction: column;
+                align-items:center;
+                justify-content: center;
+            }
+                .screen2GunsTitle{
+                    padding-top: 1%;
+                    height: 20%;
+                    width: 100%;
+
+                    color: white;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    text-align: center;
+                    font-size: 2vw;
+                    font-family: 'ICBM SS-25', sans-serif;
+                    font-family: 'ICBM SS-20', sans-serif;
+                }
+                .screen2GunsList {
+                    padding-top: 2%;
+                    height: 10%;
+                    width: 100%;
+
+                    display: flex;
+                    flex-direction: row;
+                    align-items:center;
+                    justify-content: center; 
+                }
+                    .gunName {
+                        height: 100%;
+                        width: 25%;
+
+                        display: flex;
+                        flex-direction: row;
+                        align-items:center;
+                        justify-content: center; 
+
+                        font-size: 1.8vw;
+                        font-family: 'ICBM SS-25', sans-serif;
+                        font-family: 'ICBM SS-20', sans-serif;
+                    }
+                .screen2GunsImgDiv{
+                height: 70%;
+                width: 100%;
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                }
+                .gunDiv {
+                height: 100%;
+                width: 25%;
+
+                display: flex;
+                flex-direction: column;
+                align-items:center;
+                justify-content: center; 
+
+                font-size: 1.8vw;
+                font-family: 'ICBM SS-25', sans-serif;
+                font-family: 'ICBM SS-20', sans-serif;
+                }
+                
+                    .gunImgCircle {
+                    border-style: solid;
+                    height: 80%;
+                    width: 80%;
+
+                    border-radius: 100%;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items:center;
+                    justify-content: center; 
+                    background-color: white;
+                        
+                }
+                    .gunImg{
+                        height: 55%;
+                        width: 80%;
+                    }
+
+            .screen2Difficulty {
+                height: 100%;
+                width: 20%;
+
+                display: flex;
+                flex-direction: column;
+                align-items:center;
+                justify-content: center;
+
+                text-align: center;
+            }
+        .screen2diffTitle {
+            height: 20%;
+            width: 100%;
+            padding-top: 10%;
+
+            font-family: 'ICBM SS-25', sans-serif;
+            font-family: 'ICBM SS-20', sans-serif;
+            font-size: 2vw;
+            
+            color: white;
+        }
+        
+        .screen2DiffList{
+            height: 80%;
+            width: 100%;
+            
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            justify-content: center;
+        }
+        .difficulty {
+            height: 10%;
+            width: 100%;
+
+            margin: 3%;
+
+            font-size: 1.8vw;
+            font-family: 'ICBM SS-25', sans-serif;
+            font-family: 'ICBM SS-20', sans-serif;
+        }
+
+        .warning2{
+            background-color: aliceblue;
+            position: absolute;
+            bottom: 12%;
+            right: 2%;
+            opacity: 0;
+            height: 10%;
+            width: 25%;
+            text-align: center;
+        }
+        .warning2:hover{
+            height: 5%;
+            width: 25%;
+            opacity: 0.8;
+            font-family: 'ICBM SS-25', sans-serif;
+            font-family: 'ICBM SS-20', sans-serif;
+            font-size: 1.3vw;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .screen2NextButton {
+            margin-right: 2%;
+            height: 10%;
+            width: 100%;
+
+            font-size: 2vw;
+
+            display: flex;
+            flex-direction: column;
+            text-align:right;
+            align-items: bottom;
+
+            font-family: 'ICBM SS-25', sans-serif;
+            font-family: 'ICBM SS-20', sans-serif;  
+        }
+
+.screen3Section {
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    .topVoid {
+        background-color: rgb(0, 153, 255);
+        height: 20%;
+        width: 100%;
+
+        background-image: url('../assets/img/skyTexture.png');
+        background-size: 10% 100%;
+
+        z-index: 1;
+    }
+    .topWall {
+        height: 10%;
+        width: 100%;
+        
+        background-image: url('../assets/img/brickWallTexture.png');
+        background-size: 20% 100%;
+
+        z-index: 3;
+    }
+    .xVision {
+        opacity: 0.5;
+    }
+        .character2L{
+            height: 30%;
+            width: 20%;
+            position: absolute;
+            top: 0%;
+
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+
+            z-index: 2;
+        }
+        .character2R{
+            height: 30%;
+            width: 20%;
+            position: absolute;
+            top: 0%;
+
+            z-index: 2;
+        }
+        .character2img {
+            height: 100%;
+            width: 100%;
+        }
+
+    .centerVoid {
+        background-color: peru;
+        height: 30%;
+        width: 100%;
+    }
+        .stats{
+            background-color: white;
+            height: 20%;
+            width: 100%;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 20%;
+            background-color: peru;
+        }
+            .statsItem2 {
+                font-family: 'ICBM SS-25', sans-serif;
+                font-family: 'ICBM SS-20', sans-serif;
+
+                font-size: 3vw;
+                color: red;
+                -webkit-text-stroke: 2px black;
+    
+            }
+            .statsItem1 {
+                font-family: 'ICBM SS-25', sans-serif;
+                font-family: 'ICBM SS-20', sans-serif;
+
+                font-size: 3vw;
+                color: rgb(0, 115, 255);
+                -webkit-text-stroke: 2px black;
+                margin-bottom: 1%;
+            }
+        .emptyStats {
+            background-color: peru;
+        }
+
+        @keyframes getPowerUp{
+            0% {transform: translateY(0em);}
+            10% {z-index: 10;}
+            25% {transform: translateY(-10em);}
+            50% {transform: translateY(-20em);}
+            60% {transform: translateY(-30em);}
+            100% {transform: translateY(-40em);}
+        }
+
+        .getPowerUp {
+            animation: getPowerUp 5s;
+        }
+
+        .powerUpDiv {
+            height: 10%;
+            width: 10%;
+            position: absolute;
+            top:40%
+        }
+        .powerUpImg {
+            height: 100%;
+            width: 100%; 
+        }
+    .bottomWall {
+        height: 40%;
+        width: 100%;
+
+        background-image: url('../assets/img/brickPlayerTexture.png');
+    }
+
+    .character1L{
+        height: 50%;
+        width: 25%;
+        position: absolute;
+        bottom: 0%;
+
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+
+    .character1R{
+        height: 50%;
+        width: 25%;
+        position: absolute;
+        bottom: 0%;
+    }
+    .character1img {
+        height: 100%;
+        width: 100%;
+    }
+
+
+
+    .screen4Section {
+        background-color: black;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+        .screen4Main {
+            background-image: url('../assets/img/vietnam.gif');
+            background-size: 100% 100vw;
+            background-repeat: no-repeat;
+            height: 80%;
+            width: 80%;
+    
+            border-style: solid;
+            border-color: white;
+            border-width: 1em;
+    
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+            .screen4MainBox {
+                height: 80%;
+                width: 75%;
+                border-style: dotted;
+    
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+                .screen4MainBoxTitle {
+                    -webkit-text-stroke: 2px white;
+                    height: 50%;
+                    width: 100%;
+                    font-family: 'Exoplanet', sans-serif;
+                    font-size: 5em;
+    
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .screen4Stats {
+                    -webkit-text-stroke: 0.5px white;
+                    height: 50%;
+                    width: 100%;
+                    font-family: 'Hussar Woodtype', sans-serif;
+                                                    
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }

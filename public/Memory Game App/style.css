@@ -1,107 +1,240 @@
-/* Font and base setup */
 body {
-  margin: 0;
-  font-family: 'Outfit', sans-serif;
-  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: #333;
+  background-color: #FFFFEA;
+  background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
+  font-family: "Abel", sans-serif;
+  color: #FF5E5B;
 }
 
-.container {
-  background: #ffffffc7;
-  padding: 2rem 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  text-align: center;
-  max-width: 650px;
-  width: 90%;
-  backdrop-filter: blur(8px);
+/* Main page */
+.heading {
+  font-size: 52px;
+  font-family: "Lobster", cursive;
+  color: #FF5E5B;
+  margin-bottom: 0;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  font-weight: 800;
-  color: #4b0082;
+p.desc {
+  letter-spacing: 0.5px;
+  margin-top: 0;
+  margin-bottom: 60px;
 }
 
-.stats {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-  font-size: 18px;
+/* Cards */
+.cards-container {
+  display: block;
+  margin: 40px;
 }
 
-.game-board {
-  display: grid;
-  grid-template-columns: repeat(4, 85px);
-  gap: 14px;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-.card {
-  width: 85px;
-  height: 85px;
+.flip-container {
+  position: relative;
+  display: inline-block;
+  margin: 15px;
   perspective: 1000px;
   cursor: pointer;
 }
-
-.card-inner {
+.flip-container .flipper {
   position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.5s ease;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+  -moz-transform-style: preserve-3d;
+  -moz-transition: 0.5s;
+  -ms-transform-style: preserve-3d;
+  -ms-transition: 0.5s;
+  -o-transform-style: preserve-3d;
+  -o-transition: 0.5s;
 }
-
-.card.flipped .card-inner {
+.flip-container.active .flipper {
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
-.card-front,
-.card-back {
+.flip-container,
+.front,
+.back {
+  border-radius: 5px;
+  color: #FFFFEA;
+  width: 180px;
+  height: 220px;
+}
+
+.front,
+.back {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  backface-visibility: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  top: 0;
+  left: 0;
 }
 
-.card-front {
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-  color: #fff;
+.front {
+  background-color: #FF5E5B;
+  z-index: 2;
+  -moz-transform: rotateY(0);
+  -o-transform: rotateY(0);
+  -ms-transform: rotateY(0);
+  -webkit-transform: rotateY(0);
+  transform: rotateY(0);
 }
-
-.card-back {
-  background-color: #ffffff;
-  color: #222;
-  transform: rotateY(180deg);
-  font-weight: bold;
-}
-
-button {
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #43cea2, #185a9d);
-  color: white;
+.front label {
   cursor: pointer;
-  transition: all 0.3s ease;
+  display: inline-block;
+  font-size: 22px;
+  padding-top: 15px;
 }
 
-button:hover {
-  background: linear-gradient(135deg, #185a9d, #43cea2);
-  transform: scale(1.05);
+.back {
+  background-color: #00CECB;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.back label {
+  display: block;
+  width: 100%;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+/* Timer */
+.timer {
+  display: none;
+  position: fixed;
+  pointer-events: none;
+  left: 30px;
+  top: 30px;
+}
+.timer label#minutes,
+.timer label#seconds {
+  display: inline-block;
+  font-size: 20px;
+}
+.timer .time {
+  display: none;
+  font-size: 13px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background-color: #FFED66;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 30px;
+  font-family: "Abel", sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #FF5E5B;
+  box-shadow: 0 3px 0 #FF5E5B;
+  cursor: pointer;
+  transition: all 100ms linear;
+}
+.btn:hover {
+  -moz-transform: translateY(-4px);
+  -o-transform: translateY(-4px);
+  -ms-transform: translateY(-4px);
+  -webkit-transform: translateY(-4px);
+  transform: translateY(-4px);
+  box-shadow: 0 7px 0 #FF5E5B;
+}
+.btn:focus {
+  outline: 0;
+}
+
+/* Github ribbon */
+#github {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+/* Helpers */
+.align-center {
+  text-align: center;
+}
+
+.hide {
+  display: none !important;
+}
+
+.cursor-default {
+  cursor: default !important;
+}
+
+/* Reponsive Rules */
+@media screen and (max-width: 1200px) {
+  .flip-container, .front, .back {
+    width: 140px;
+    height: 180px;
+  }
+
+  .timer {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #FFFFEA;
+  }
+}
+@media screen and (max-width: 992px) {
+  .flip-container, .front, .back {
+    width: 100px;
+    height: 140px;
+  }
+
+  .front label {
+    display: inline-block;
+    font-size: 16px;
+    padding-top: 10px;
+  }
+
+  .cards-container {
+    margin: 40px 10px;
+  }
+
+  .timer {
+    top: 10px;
+    left: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .flip-container, .front, .back {
+    width: 80px;
+    height: 120px;
+  }
+}
+/* Animations */
+@keyframes wobble {
+  from {
+    transform: none;
+  }
+  15% {
+    transform: translate3d(-10%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+  30% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+  45% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+  60% {
+    transform: translate3d(5%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+  75% {
+    transform: translate3d(-10%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+  to {
+    transform: none;
+  }
+}
+.wobble {
+  animation: wobble 600ms ease-in-out;
 }

@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🧠 Memory Game</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Memory game</title>
+    <link href="https://fonts.googleapis.com/css?family=Abel|Lobster" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-  <div class="container">
-    <h1>🧠 Memory Match</h1>
+    <div class="align-center">
 
-    <div class="stats">
-      <div>⏳ <span id="timer">60</span>s</div>
-      <div>🎯 Score: <span id="score">0</span></div>
+        <h1 class="heading">Memory Game</h1>
+        <p class="desc">Frontend Arsenal Memory Game</p>
+
+        <button class="btn" id="btn-start">
+            Start
+        </button>
+
+        <div class="cards-container">
+            <div class="flip-container hide" id="card-template">
+                <div class="flipper">
+                    <div class="front">
+                        <label>frontend technologies</label>
+                    </div>
+                    <div class="back">
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timer">
+            <label id="minutes"></label>:
+            <label id="seconds"></label>
+            <div class="time">
+                MY BEST TIME: <span id="bestTime"></span>
+            </div>
+        </div>
     </div>
+    <script src="script.js"></script>
 
-    <div id="game-board" class="game-board"></div>
-
-    <button id="restart-btn">🔄 Restart Game</button>
-  </div>
-
-  <script src="script.js"></script>
 </body>
+
 </html>

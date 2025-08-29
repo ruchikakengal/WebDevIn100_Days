@@ -1,159 +1,160 @@
 class WebDev100Days {
-  constructor() {
-    this.projects = [];
-    this.filteredProjects = [];
-    this.currentFilter = 'all';
-    this.currentPage = 1;
-    this.projectsPerPage = 20;
-    this.searchTerm = '';
+    constructor() {
+        this.projects = [];
+        this.filteredProjects = [];
+        this.currentFilter = 'all';
+        this.currentPage = 1;
+        this.projectsPerPage = 20;
+        this.searchTerm = '';
 
-    this.init();
-  }
-
-  async init() {
-    this.setupEventListeners();
-    this.setupThemeToggle();
-    this.setupScrollProgress();
-    this.setupScrollToTop();
-    this.setupMobileMenu();
-    await this.loadProjects();
-    this.updateStatistics();
-    this.renderTable();
-  }
-
-  setupEventListeners() {
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-
-    if (searchInput) {
-      searchInput.addEventListener('input', this.debounce(() => {
-        this.searchTerm = searchInput.value.toLowerCase();
-        this.filterProjects();
-      }, 300));
+        this.init();
     }
 
-    if (searchButton) {
-      searchButton.addEventListener('click', () => {
-        this.searchTerm = searchInput.value.toLowerCase();
-        this.filterProjects();
-      });
+    async init() {
+        this.setupEventListeners();
+        this.setupThemeToggle();
+        this.setupScrollProgress();
+        this.setupScrollToTop();
+        this.setupMobileMenu();
+        await this.loadProjects();
+        this.updateStatistics();
+        this.renderTable();
     }
 
-    document.addEventListener('click', (e) => {
-      if (e.target.matches('.filter-tab')) {
-        this.setActiveFilter(e.target.dataset.filter);
-      }
-    });
+    setupEventListeners() {
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
 
-    document.addEventListener('click', (e) => {
-      if (e.target.matches('.pagination-btn')) {
-        const page = parseInt(e.target.dataset.page);
-        if (page && page !== this.currentPage) {
-          this.currentPage = page;
-          this.renderTable();
+        if (searchInput) {
+            searchInput.addEventListener('input', this.debounce(() => {
+                this.searchTerm = searchInput.value.toLowerCase();
+                this.filterProjects();
+            }, 300));
+        }
 
-          // Scroll headings se start ho
-          setTimeout(() => {
-            const tableHead = document.querySelector("table thead");
-            if (tableHead) {
-              // Agar koi fixed header ya navbar height hai to uska offset nikal lo
-              const headerOffset = 80; // yahan apne header ki actual height set karo
-              const y = tableHead.getBoundingClientRect().top + window.scrollY - headerOffset;
-              window.scrollTo({ top: y, behavior: "smooth" });
+        if (searchButton) {
+            searchButton.addEventListener('click', () => {
+                this.searchTerm = searchInput.value.toLowerCase();
+                this.filterProjects();
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('.filter-tab')) {
+                this.setActiveFilter(e.target.dataset.filter);
             }
-          }, 50);
-
-        }
-      }
-    });
-
-    document.addEventListener('click', (e) => {
-      if (e.target.matches('.demo-btn') || e.target.closest('.demo-btn')) {
-        e.preventDefault();
-        const demoBtn = e.target.closest('.demo-btn');
-        if (demoBtn && demoBtn.href) {
-          window.open(demoBtn.href, '_blank');
-        }
-      }
-    });
-  }
-
-  setupThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-
-        this.updateThemeIcon(next);
-      });
-    }
-
-    this.updateThemeIcon(currentTheme);
-  }
-
-  updateThemeIcon(theme) {
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (themeToggle) {
-      themeToggle.innerHTML = theme === 'dark'
-        ? '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
-        : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>';
-    }
-  }
-
-  setupScrollProgress() {
-    const progressBar = document.querySelector('.scroll-progress-bar');
-    if (progressBar) {
-      window.addEventListener('scroll', () => {
-        const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        progressBar.style.width = `${scrolled}%`;
-      });
-    }
-  }
-
-  setupScrollToTop() {
-    const scrollBtn = document.querySelector('.scroll-top');
-    if (scrollBtn) {
-      window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-          scrollBtn.classList.add('visible');
-        } else {
-          scrollBtn.classList.remove('visible');
-        }
-      });
-
-      scrollBtn.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
         });
-      });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('.pagination-btn')) {
+                const page = parseInt(e.target.dataset.page);
+                if (page && page !== this.currentPage) {
+                    this.currentPage = page;
+                    this.renderTable();
+
+                    // Scroll headings se start ho
+                    setTimeout(() => {
+                        const tableHead = document.querySelector("table thead");
+                        if (tableHead) {
+                            // Agar koi fixed header ya navbar height hai to uska offset nikal lo
+                            const headerOffset = 80; // yahan apne header ki actual height set karo
+                            const y = tableHead.getBoundingClientRect().top + window.scrollY - headerOffset;
+                            window.scrollTo({ top: y, behavior: "smooth" });
+                        }
+                    }, 50);
+
+                }
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('.demo-btn') || e.target.closest('.demo-btn')) {
+                e.preventDefault();
+                const demoBtn = e.target.closest('.demo-btn');
+                if (demoBtn && demoBtn.href) {
+                    window.open(demoBtn.href, '_blank');
+                }
+            }
+        });
     }
-  }
 
-  setupMobileMenu() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const mobileNav = document.querySelector('.mobile-nav');
+    setupThemeToggle() {
+        const themeToggle = document.querySelector('.theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
 
-    if (mobileMenuBtn && mobileNav) {
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuBtn.classList.toggle('active');
-        mobileNav.classList.toggle('active');
-      });
+        document.documentElement.setAttribute('data-theme', currentTheme);
 
-      document.addEventListener('click', (e) => {
-        if (!mobileMenuBtn.contains(e.target) && !mobileNav.contains(e.target)) {
-          mobileMenuBtn.classList.remove('active');
-          mobileNav.classList.remove('active');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+
+                this.updateThemeIcon(next);
+            });
         }
-      });
+
+        this.updateThemeIcon(currentTheme);
+    }
+
+    updateThemeIcon(theme) {
+        const themeToggle = document.querySelector('.theme-toggle');
+        if (themeToggle) {
+            themeToggle.innerHTML = theme === 'dark'
+                ? '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
+                : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>';
+        }
+    }
+
+    setupScrollProgress() {
+        const progressBar = document.querySelector('.scroll-progress-bar');
+        if (progressBar) {
+            window.addEventListener('scroll', () => {
+                const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                progressBar.style.width = `${scrolled}%`;
+            });
+        }
+    }
+
+    setupScrollToTop() {
+        const scrollBtn = document.querySelector('.scroll-top');
+        if (scrollBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            });
+
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    }
+
+    setupMobileMenu() {
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        if (mobileMenuBtn && mobileNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuBtn.contains(e.target) && !mobileNav.contains(e.target)) {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                }
+            });
+        }
     }
   }
 
@@ -1239,7 +1240,7 @@ class WebDev100Days {
 
       {
 
-        originalDay: 171,
+        originalDay: 172,
         name: "Modern Chair Product Page",
         description: "A animated webpage for modern chair",
         demoLink: "./public/Day-109/chair.html",
@@ -1273,6 +1274,7 @@ class WebDev100Days {
 
     // Update stats
     statsContainer.innerHTML = `
+            
       <h3 class="challenge-stats-title">Challenge Statistics</h3>
       <div class="stats-grid">
         <div class="stat-item">
@@ -1293,68 +1295,68 @@ class WebDev100Days {
         </div>
       </div>
     `;
-  }
-
-  filterProjects() {
-    let filtered = [...this.projects];
-
-    if (this.currentFilter !== 'all') {
-      filtered = filtered.filter(project => project.category === this.currentFilter);
     }
 
-    if (this.searchTerm) {
-      filtered = filtered.filter(project =>
-        project.name.toLowerCase().includes(this.searchTerm) ||
-        project.description.toLowerCase().includes(this.searchTerm) ||
-        project.technologies.some(tech => tech.toLowerCase().includes(this.searchTerm)) ||
-        project.features.some(feature => feature.toLowerCase().includes(this.searchTerm))
-      );
+    filterProjects() {
+        let filtered = [...this.projects];
+
+        if (this.currentFilter !== 'all') {
+            filtered = filtered.filter(project => project.category === this.currentFilter);
+        }
+
+        if (this.searchTerm) {
+            filtered = filtered.filter(project =>
+                project.name.toLowerCase().includes(this.searchTerm) ||
+                project.description.toLowerCase().includes(this.searchTerm) ||
+                project.technologies.some(tech => tech.toLowerCase().includes(this.searchTerm)) ||
+                project.features.some(feature => feature.toLowerCase().includes(this.searchTerm))
+            );
+        }
+
+        this.filteredProjects = filtered;
+        this.currentPage = 1;
+        this.renderTable();
     }
 
-    this.filteredProjects = filtered;
-    this.currentPage = 1;
-    this.renderTable();
-  }
+    setActiveFilter(filter) {
+        this.currentFilter = filter;
+        this.currentPage = 1;
 
-  setActiveFilter(filter) {
-    this.currentFilter = filter;
-    this.currentPage = 1;
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
 
-    document.querySelectorAll('.filter-tab').forEach(tab => {
-      tab.classList.remove('active');
-    });
-    document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
-
-    this.filterProjects();
-  }
-
-  renderTable() {
-    const tableContainer = document.querySelector('.projects-table-container');
-    const emptyState = document.querySelector('.empty-state');
-
-    if (!tableContainer) return;
-
-    const startIndex = (this.currentPage - 1) * this.projectsPerPage;
-    const endIndex = startIndex + this.projectsPerPage;
-    const projectsToShow = this.filteredProjects.slice(startIndex, endIndex);
-
-    tableContainer.innerHTML = '';
-
-    if (projectsToShow.length === 0) {
-      if (emptyState) {
-        emptyState.classList.add('show');
-      }
-      return;
+        this.filterProjects();
     }
 
-    if (emptyState) {
-      emptyState.classList.remove('show');
-    }
+    renderTable() {
+        const tableContainer = document.querySelector('.projects-table-container');
+        const emptyState = document.querySelector('.empty-state');
 
-    const table = document.createElement('table');
-    table.className = 'projects-table';
+        if (!tableContainer) return;
 
-    table.innerHTML = `
+        const startIndex = (this.currentPage - 1) * this.projectsPerPage;
+        const endIndex = startIndex + this.projectsPerPage;
+        const projectsToShow = this.filteredProjects.slice(startIndex, endIndex);
+
+        tableContainer.innerHTML = '';
+
+        if (projectsToShow.length === 0) {
+            if (emptyState) {
+                emptyState.classList.add('show');
+            }
+            return;
+        }
+
+        if (emptyState) {
+            emptyState.classList.remove('show');
+        }
+
+        const table = document.createElement('table');
+        table.className = 'projects-table';
+
+        table.innerHTML = `
       <thead>
         <tr>
           <th onclick="app.sortTable('day')" class="sortable">Day <span class="sort-icon">↕</span></th>
@@ -1402,91 +1404,91 @@ class WebDev100Days {
       </tbody>
     `;
 
-    tableContainer.appendChild(table);
+        tableContainer.appendChild(table);
 
-    this.renderPagination();
-  }
-
-  sortTable(column) {
-    this.filteredProjects.sort((a, b) => {
-      if (column === 'day') {
-        return a.day - b.day;
-      } else if (column === 'name') {
-        return a.name.localeCompare(b.name);
-      } else if (column === 'category') {
-        return a.category.localeCompare(b.category);
-      }
-      return 0;
-    });
-
-    this.renderTable();
-  }
-
-  renderPagination() {
-    const totalPages = Math.ceil(this.filteredProjects.length / this.projectsPerPage);
-    const paginationContainer = document.querySelector('.pagination');
-
-    if (!paginationContainer || totalPages <= 1) {
-      if (paginationContainer) paginationContainer.style.display = 'none';
-      return;
+        this.renderPagination();
     }
 
-    paginationContainer.style.display = 'flex';
-    paginationContainer.innerHTML = '';
+    sortTable(column) {
+        this.filteredProjects.sort((a, b) => {
+            if (column === 'day') {
+                return a.day - b.day;
+            } else if (column === 'name') {
+                return a.name.localeCompare(b.name);
+            } else if (column === 'category') {
+                return a.category.localeCompare(b.category);
+            }
+            return 0;
+        });
 
-    const prevBtn = document.createElement('button');
-    prevBtn.className = 'pagination-btn';
-    prevBtn.disabled = this.currentPage === 1;
-    prevBtn.innerHTML = '‹';
-    prevBtn.dataset.page = this.currentPage - 1;
-    paginationContainer.appendChild(prevBtn);
-
-    for (let i = 1; i <= totalPages; i++) {
-      if (i === 1 || i === totalPages || (i >= this.currentPage - 2 && i <= this.currentPage + 2)) {
-        const pageBtn = document.createElement('button');
-        pageBtn.className = `pagination-btn ${i === this.currentPage ? 'active' : ''}`;
-        pageBtn.textContent = i;
-        pageBtn.dataset.page = i;
-        paginationContainer.appendChild(pageBtn);
-      } else if (i === this.currentPage - 3 || i === this.currentPage + 3) {
-        const ellipsis = document.createElement('span');
-        ellipsis.textContent = '...';
-        ellipsis.className = 'pagination-info';
-        paginationContainer.appendChild(ellipsis);
-      }
+        this.renderTable();
     }
 
-    const nextBtn = document.createElement('button');
-    nextBtn.className = 'pagination-btn';
-    nextBtn.disabled = this.currentPage === totalPages;
-    nextBtn.innerHTML = '›';
-    nextBtn.dataset.page = this.currentPage + 1;
-    paginationContainer.appendChild(nextBtn);
+    renderPagination() {
+        const totalPages = Math.ceil(this.filteredProjects.length / this.projectsPerPage);
+        const paginationContainer = document.querySelector('.pagination');
 
-    const pageInfo = document.createElement('div');
-    pageInfo.className = 'pagination-info';
-    pageInfo.textContent = `${this.currentPage} of ${totalPages}`;
-    paginationContainer.appendChild(pageInfo);
-  }
+        if (!paginationContainer || totalPages <= 1) {
+            if (paginationContainer) paginationContainer.style.display = 'none';
+            return;
+        }
 
-  debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
+        paginationContainer.style.display = 'flex';
+        paginationContainer.innerHTML = '';
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'pagination-btn';
+        prevBtn.disabled = this.currentPage === 1;
+        prevBtn.innerHTML = '‹';
+        prevBtn.dataset.page = this.currentPage - 1;
+        paginationContainer.appendChild(prevBtn);
+
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === 1 || i === totalPages || (i >= this.currentPage - 2 && i <= this.currentPage + 2)) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = `pagination-btn ${i === this.currentPage ? 'active' : ''}`;
+                pageBtn.textContent = i;
+                pageBtn.dataset.page = i;
+                paginationContainer.appendChild(pageBtn);
+            } else if (i === this.currentPage - 3 || i === this.currentPage + 3) {
+                const ellipsis = document.createElement('span');
+                ellipsis.textContent = '...';
+                ellipsis.className = 'pagination-info';
+                paginationContainer.appendChild(ellipsis);
+            }
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'pagination-btn';
+        nextBtn.disabled = this.currentPage === totalPages;
+        nextBtn.innerHTML = '›';
+        nextBtn.dataset.page = this.currentPage + 1;
+        paginationContainer.appendChild(nextBtn);
+
+        const pageInfo = document.createElement('div');
+        pageInfo.className = 'pagination-info';
+        pageInfo.textContent = `${this.currentPage} of ${totalPages}`;
+        paginationContainer.appendChild(pageInfo);
+    }
+
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
 }
 
 let app;
 document.addEventListener('DOMContentLoaded', () => {
-  app = new WebDev100Days();
+    app = new WebDev100Days();
 });
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = WebDev100Days;
+    module.exports = WebDev100Days;
 }

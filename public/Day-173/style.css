@@ -1,0 +1,105 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    padding: 20px;
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #333;
+    font-weight: 600;
+}
+
+.canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+}
+
+canvas {
+    border: 2px solid #007BFF;
+    border-radius: 10px;
+    background-color: #fff;
+    cursor: crosshair;
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+canvas:hover {
+    transform: scale(1.01);
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+button, 
+input[type="file"], 
+input[type="color"], 
+input[type="range"], 
+input[type="text"] {
+    padding: 10px 16px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #007BFF;
+    color: white;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+button:hover, 
+input[type="file"]:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+input[type="color"], 
+input[type="range"], 
+input[type="text"] {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+input[type="range"] {
+    width: 120px;
+}
+
+input[type="text"] {
+    width: 160px;
+    border-radius: 6px;
+    padding: 8px;
+}

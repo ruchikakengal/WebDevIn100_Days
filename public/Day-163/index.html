@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Generator</title>
+    <meta name="description"
+        content="Create and explore branching interactive stories with multiple themes and immersive experiences">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/themes.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="theme-fantasy">
+    <canvas id="background-canvas"></canvas>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <i class="fas fa-book-open"></i>
+                Story Generator
+            </h1>
+            <nav class="nav">
+                <button class="nav-btn" id="new-story-btn">
+                    <i class="fas fa-plus"></i>
+                    New Story
+                </button>
+                <button class="nav-btn" id="load-story-btn">
+                    <i class="fas fa-folder-open"></i>
+                    Load Story
+                </button>
+                <button class="nav-btn" id="settings-btn">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section id="setup-screen" class="screen active">
+            <div class="container">
+                <div class="setup-content">
+                    <h2 class="setup-title">Create Your Story</h2>
+                    <p class="setup-subtitle">Choose your adventure and begin your journey</p>
+
+                    <form id="story-setup-form" class="setup-form">
+
+                        <div class="form-group">
+                            <label for="theme-select" class="form-label">
+                                <i class="fas fa-palette"></i>
+                                Choose Theme
+                            </label>
+                            <select id="theme-select" class="form-select" required>
+                                <option value="">Select a theme...</option>
+                                <option value="fantasy">🧙‍♂️ Fantasy</option>
+                                <option value="sci-fi">🚀 Science Fiction</option>
+                                <option value="mystery">🔍 Mystery</option>
+                                <option value="horror">👻 Horror</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="character-name" class="form-label">
+                                <i class="fas fa-user"></i>
+                                Main Character Name
+                            </label>
+                            <input type="text" id="character-name" name="character-name" class="form-input"
+                                placeholder="Enter character name" maxlength="30" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="character-trait" class="form-label">
+                                <i class="fas fa-star"></i>
+                                Character Trait
+                            </label>
+                            <select id="character-trait" name="character-trait" class="form-select" required>
+                                <option value="">Select a trait...</option>
+                                <option value="brave">Brave</option>
+                                <option value="clever">Clever</option>
+                                <option value="cautious">Cautious</option>
+                                <option value="curious">Curious</option>
+                                <option value="determined">Determined</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="story-goal" class="form-label">
+                                <i class="fas fa-target"></i>
+                                Story Goal
+                            </label>
+                            <select id="story-goal" name="story-goal" class="form-select" required>
+                                <option value="">Select a goal...</option>
+                                <option value="treasure">Find Treasure</option>
+                                <option value="rescue">Rescue Someone</option>
+                                <option value="mystery">Solve Mystery</option>
+                                <option value="power">Gain Power</option>
+                                <option value="survival">Survive</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="custom-element" class="form-label">
+                                <i class="fas fa-magic"></i>
+                                Custom Element (Optional)
+                            </label>
+                            <input type="text" id="custom-element" name="custom-element" class="form-input"
+                                placeholder="Add your own story element" maxlength="50">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-play"></i>
+                            Begin Story
+                        </button>
+                    </form>
+
+
+                    <div id="saved-stories" class="saved-stories">
+                        <h3>Continue Previous Stories</h3>
+                        <div id="saved-stories-list" class="saved-stories-list">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="story-screen" class="screen">
+            <div class="container">
+
+                <div class="story-progress">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <span id="progress-text" class="progress-text">Chapter 1</span>
+                </div>
+
+
+                <div class="story-content">
+                    <div id="story-text" class="story-text">
+
+                    </div>
+
+
+                    <div id="story-choices" class="story-choices">
+
+                    </div>
+                </div>
+
+                <div class="story-controls">
+                    <div class="control-group">
+                        <button id="back-btn" class="btn btn-secondary" disabled>
+                            <i class="fas fa-arrow-left"></i>
+                            Back
+                        </button>
+                        <button id="narrate-btn" class="btn btn-secondary">
+                            <i class="fas fa-volume-up"></i>
+                            Narrate
+                        </button>
+                        <button id="save-btn" class="btn btn-secondary">
+                            <i class="fas fa-save"></i>
+                            Save
+                        </button>
+                    </div>
+                    <div class="control-group">
+                        <button id="export-btn" class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                        <button id="share-btn" class="btn btn-secondary">
+                            <i class="fas fa-share"></i>
+                            Share
+                        </button>
+                        <button id="restart-btn" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i>
+                            Restart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="modal-close" id="settings-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h3>Narration</h3>
+                    <div class="setting-item">
+                        <label for="voice-select">Voice:</label>
+                        <select id="voice-select" class="form-select">
+
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label for="speech-rate">Speed:</label>
+                        <input type="range" id="speech-rate" min="0.5" max="2" step="0.1" value="1" class="range-input">
+                        <span id="speech-rate-value">1.0x</span>
+                    </div>
+                    <div class="setting-item">
+                        <label for="auto-narrate">Auto-narrate new scenes:</label>
+                        <input type="checkbox" id="auto-narrate" class="checkbox-input">
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3>Display</h3>
+                    <div class="setting-item">
+                        <label for="text-size">Text Size:</label>
+                        <input type="range" id="text-size" min="14" max="24" value="18" class="range-input">
+                        <span id="text-size-value">18px</span>
+                    </div>
+                    <div class="setting-item">
+                        <label for="animations-enabled">Enable Animations:</label>
+                        <input type="checkbox" id="animations-enabled" class="checkbox-input" checked>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="share-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Share Your Story</h2>
+                <button class="modal-close" id="share-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="share-options">
+                    <div class="share-option">
+                        <label for="share-link">Story Summary:</label>
+                        <div class="share-summary" id="share-summary">
+
+                        </div>
+                    </div>
+                    <div class="share-social">
+                        <button class="btn btn-social twitter" id="share-twitter">
+                            <i class="fab fa-twitter"></i>
+                            Twitter
+                        </button>
+                        <button class="btn btn-social facebook" id="share-facebook">
+                            <i class="fab fa-facebook"></i>
+                            Facebook
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading hidden">
+        <div class="loading-spinner">
+            <i class="fas fa-magic"></i>
+        </div>
+        <p>Crafting your story...</p>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="data/themes.js"></script>
+    <script src="data/story-templates.js"></script>
+    <script src="scripts/storage-manager.js"></script>
+    <script src="scripts/background-effects.js"></script>
+    <script src="scripts/theme-manager.js"></script>
+    <script src="scripts/audio-manager.js"></script>
+    <script src="scripts/export-manager.js"></script>
+    <script src="scripts/story-generator.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>

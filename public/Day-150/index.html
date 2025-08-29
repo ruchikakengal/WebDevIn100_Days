@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottle Spin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="game-title">
+                <i class="fas fa-wine-bottle"></i>
+                Bottle Spin Game
+            </h1>
+            <div class="header-controls">
+                <button class="theme-toggle" aria-label="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="settings-btn" aria-label="Game settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+
+        <div id="setupModal" class="modal active">
+            <div class="modal-content">
+                <h2>Game Setup</h2>
+                <div class="setup-section">
+                    <h3>Players (2-12)</h3>
+                    <div class="player-setup">
+                        <div class="player-inputs" id="playerInputs">
+                            <div class="player-input">
+                                <input type="text" placeholder="Player 1" maxlength="20">
+                                <div class="color-picker">
+                                    <input type="color" value="#ff6b6b">
+                                </div>
+                            </div>
+                            <div class="player-input">
+                                <input type="text" placeholder="Player 2" maxlength="20">
+                                <div class="color-picker">
+                                    <input type="color" value="#4ecdc4">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="add-player-btn" id="addPlayer">
+                            <i class="fas fa-plus"></i> Add Player
+                        </button>
+                    </div>
+                </div>
+
+                <div class="setup-section">
+                    <h3>Game Mode</h3>
+                    <div class="game-modes">
+                        <label class="game-mode">
+                            <input type="radio" name="gameMode" value="classic" checked>
+                            <span>Classic (Truth/Dare)</span>
+                        </label>
+                        <label class="game-mode">
+                            <input type="radio" name="gameMode" value="truth">
+                            <span>Truth Only</span>
+                        </label>
+                        <label class="game-mode">
+                            <input type="radio" name="gameMode" value="dare">
+                            <span>Dare Only</span>
+                        </label>
+                        <label class="game-mode">
+                            <input type="radio" name="gameMode" value="double">
+                            <span>Double Spin</span>
+                        </label>
+                        <label class="game-mode">
+                            <input type="radio" name="gameMode" value="custom">
+                            <span>Custom Questions</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setup-section">
+                    <h3>Question Categories</h3>
+                    <div class="category-checkboxes">
+                        <label class="category-checkbox">
+                            <input type="checkbox" name="categories" value="funny" checked>
+                            <span>Funny</span>
+                        </label>
+                        <label class="category-checkbox">
+                            <input type="checkbox" name="categories" value="friendship" checked>
+                            <span>Friendship</span>
+                        </label>
+                        <label class="category-checkbox">
+                            <input type="checkbox" name="categories" value="general" checked>
+                            <span>General</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="start-game-btn" id="startGame">
+                    <i class="fas fa-play"></i> Start Game
+                </button>
+            </div>
+        </div>
+
+        <div class="game-area" id="gameArea" style="display: none;">
+
+            <div class="scoreboard">
+                <h3>Scoreboard</h3>
+                <div class="scores" id="scoresList"></div>
+            </div>
+
+            <div class="game-controls">
+                <div class="game-info">
+                    <span class="game-mode-display" id="gameModeDisplay">Classic Mode</span>
+                    <span class="round-counter" id="roundCounter">Round 1</span>
+                </div>
+                <button class="menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i> Menu
+                </button>
+            </div>
+
+            <div class="players-circle" id="playersCircle"></div>
+
+            <div class="bottle-container" id="bottleContainer">
+                <svg class="bottle" id="bottle" viewBox="0 0 100 300" xmlns="http://www.w3.org/2000/svg">
+
+                    <rect x="35" y="80" width="30" height="200" fill="url(#bottleGradient)" stroke="#2c3e50"
+                        stroke-width="2" />
+
+                    <rect x="42" y="20" width="16" height="60" fill="url(#bottleGradient)" stroke="#2c3e50"
+                        stroke-width="2" />
+
+                    <rect x="38" y="10" width="24" height="15" fill="#e74c3c" stroke="#c0392b" stroke-width="1" />
+
+                    <ellipse cx="50" cy="280" rx="15" ry="8" fill="url(#bottleGradient)" stroke="#2c3e50"
+                        stroke-width="2" />
+
+                    <defs>
+                        <linearGradient id="bottleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#34495e" />
+                            <stop offset="50%" style="stop-color:#95a5a6" />
+                            <stop offset="100%" style="stop-color:#34495e" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <button class="spin-btn" id="spinBtn" aria-label="Spin the bottle">
+                    <i class="fas fa-play"></i>
+                    <span>SPIN</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="questionModal" class="modal">
+            <div class="modal-content question-content">
+                <div class="selected-player" id="selectedPlayer"></div>
+                <div class="question-type" id="questionType"></div>
+                <div class="question-text" id="questionText"></div>
+                <div class="question-actions">
+                    <button class="complete-btn" id="completeBtn">
+                        <i class="fas fa-check"></i> Complete (+10 pts)
+                    </button>
+                    <button class="skip-btn" id="skipBtn">
+                        <i class="fas fa-times"></i> Skip (-5 pts)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="customQuestionsModal" class="modal">
+            <div class="modal-content">
+                <h2>Custom Questions</h2>
+                <div class="custom-questions-section">
+                    <h3>Add New Questions</h3>
+                    <div class="question-input-group">
+                        <select id="customQuestionType">
+                            <option value="truth">Truth</option>
+                            <option value="dare">Dare</option>
+                        </select>
+                        <input type="text" id="customQuestionInput" placeholder="Enter your question...">
+                        <button id="addCustomQuestion">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="custom-questions-list">
+                    <h3>Your Custom Questions</h3>
+                    <div id="customQuestionsList"></div>
+                </div>
+
+                <button class="close-modal-btn" id="closeCustomModal">Close</button>
+            </div>
+        </div>
+
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <h2>Settings</h2>
+                <div class="settings-section">
+                    <label class="setting-item">
+                        <span>Sound Effects</span>
+                        <input type="checkbox" id="soundToggle" checked>
+                    </label>
+                    <label class="setting-item">
+                        <span>Animations</span>
+                        <input type="checkbox" id="animationToggle" checked>
+                    </label>
+                    <label class="setting-item">
+                        <span>Confetti Effects</span>
+                        <input type="checkbox" id="confettiToggle" checked>
+                    </label>
+                </div>
+
+                <div class="settings-actions">
+                    <button id="resetGame" class="reset-btn">
+                        <i class="fas fa-redo"></i> New Game
+                    </button>
+                    <button id="clearData" class="clear-data-btn">
+                        <i class="fas fa-trash"></i> Clear All Data
+                    </button>
+                </div>
+
+                <button class="close-modal-btn" id="closeSettingsModal">Close</button>
+            </div>
+        </div>
+
+        <div id="particles" class="particles-container"></div>
+    </div>
+
+    <audio id="spinSound" preload="auto">
+        <source
+            src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+Dt1mwdBSyJzPDP"
+            type="audio/wav">
+    </audio>
+    <audio id="stopSound" preload="auto">
+        <source
+            src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+Dt1mwdBSyJzPDP"
+            type="audio/wav">
+    </audio>
+    <audio id="successSound" preload="auto">
+        <source
+            src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+Dt1mwdBSyJzPDP"
+            type="audio/wav">
+    </audio>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

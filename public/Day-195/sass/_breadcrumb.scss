@@ -1,0 +1,44 @@
+/*---------------------
+  Breadcrumb
+-----------------------*/
+.breadcrumb-option {
+    padding-top: 180px;
+}
+
+.breadcrumb__text {
+
+    h2 {
+        color: $white-color;
+        font-size: 50px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+}
+
+.breadcrumb__links {
+
+    a {
+        font-size: 16px;
+        color: $white-color;
+        font-weight: 300;
+        display: inline-block;
+        margin-right: 32px;
+        position: relative;
+
+        &:after {
+            position: absolute;
+            right: -22px;
+            top: -3px;
+            content: "/";
+            color: #adadad;
+            font-size: 20px;
+        }
+    }
+
+    span {
+        font-size: 16px;
+        color: #adadad;
+        font-weight: 300;
+        display: inline-block;
+    }
+}

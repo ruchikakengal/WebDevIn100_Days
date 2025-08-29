@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Recursive&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Recursive", "sans serif";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+  color: brown;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.movie-container select {
+  margin: 0;
+  border-radius: 5px;
+  background-color: #ffffff;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 7px 5px;
+}
+
+.seat {
+  background-color: #777;
+  width: 15px;
+  height: 12px;
+  margin: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.seat.selected {
+  background-color: #6feaf6;
+}
+
+.seat.occupied {
+  background-color: #fff;
+}
+/* Selects the nth elements among the group of siblings */
+.seat:nth-of-type(2) {
+  margin-right: 20px;
+}
+
+/* Selects the nth elements among the group of siblings starting from end */
+.seat:nth-last-of-type(2) {
+  margin-left: 20px;
+}
+
+/* Selects any element that is NOT a given type or contains a class */
+.container .seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase {
+  background: rgba(31, 31, 31, 0.89);
+  padding: 5px 10px;
+  color: #777;
+  border-radius: 5px;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+.showcase li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.showcase li small {
+  margin: 2px;
+}
+
+.row {
+  display: flex;
+}
+
+.container {
+  perspective: 350px;
+  margin-bottom: 15px;
+}
+
+.screen {
+  width: 100%;
+  height: 70px;
+  background-color: #fff;
+  margin: 20px 0;
+  box-shadow: 0 3px 12px rgba(255, 255, 255, 0.7);
+  transform: rotateX(-45deg);
+}
+
+p.text {
+  margin: 5px 0;
+}
+
+p.text span {
+  color: #6feaf6;
+}

@@ -98,8 +98,12 @@ $(function () {
           $("#startReset").html("Start Game");
           $("#gameOver").show();
           $("#gameOver").html(
-            "<p>Game Over!</p><p>Your score is " + playerScore + "</p>"
+            "<p>Game Over!</p><p>Your score: " + playerScore + "</p>"
           );
+
+          // Save to leaderboard
+          saveScore(playerScore);
+
           $("#trialsleft").hide();
           stopFruitDrop();
         }
@@ -112,8 +116,8 @@ $(function () {
     $("#fruit1").attr(
       "src",
       "https://raw.githubusercontent.com/Saumya-07/Fruit-Slicer/master/images/" +
-        fruitTypes[Math.round(9 * Math.random())] +
-        ".png"
+      fruitTypes[Math.round(9 * Math.random())] +
+      ".png"
     );
   }
 
@@ -122,4 +126,59 @@ $(function () {
     clearInterval(gameInterval);
     $("#fruit1").hide();
   }
+
+  // ----- Leaderboard Functions -----
+
+  // Save score to leaderboard (top 5 stored in localStorage)
+  function saveScore(score) {
+    let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    leaderboard.push(score);
+
+    // Sort descending & keep top 5
+    leaderboard.sort((a, b) => b - a);
+    leaderboard = leaderboard.slice(0, 5);
+
+    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+    displayLeaderboard();
+  }
+
+  // Display leaderboard on screen
+  function displayLeaderboard() {
+    let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    $("#leaderboardList").empty();
+    leaderboard.forEach((s, i) => {
+      $("#leaderboardList").append(`<li>#${i + 1} - ${s} pts</li>`);
+    });
+  }
+
+  // Call this at page load
+  displayLeaderboard();
+
+  // Toggle leaderboard visibility
+  $("#showLeaderboardBtn").click(function () {
+    $("#leaderboard").fadeToggle(500);
+    // Update text on button
+    if ($("#leaderboard").is(":visible")) {
+      $(this).text("Hide Leaderboard");
+    } else {
+      $(this).text("Show Leaderboard");
+    }
+  });
+
+  // Leaderboard modal controls
+  $("#showLeaderboardBtn").click(function () {
+    $("#leaderboardModal").fadeIn(300).css("display", "flex");
+  });
+
+  $("#closeLeaderboard").click(function () {
+    $("#leaderboardModal").fadeOut(300);
+  });
+
+  // Close modal when clicking outside content
+  $(window).click(function (e) {
+    if ($(e.target).is("#leaderboardModal")) {
+      $("#leaderboardModal").fadeOut(300);
+    }
+  });
+
 });

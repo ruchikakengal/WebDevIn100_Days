@@ -1,0 +1,89 @@
+body {
+	background-color: #EDE7D9;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
+	overflow-x: hidden;
+}
+
+#raceTrack {
+	margin-top: 2%;
+	background: url('https://res.cloudinary.com/d3lrsu65ml/image/upload/v1480193365/raceTrack_zitxqz.png') repeat-x;
+	height: 500px;
+	width: 100%;
+}
+
+img#raceButton {
+	cursor: pointer;
+	height: 10%;
+	text-align: center;
+
+}
+
+img {
+	display: block;
+	position: relative;
+	height: 14%;
+}
+
+#carBlue {
+	top: 66px;
+}
+
+#carRed {
+	top: 199px;
+}
+
+
+h3 {
+	text-align: center;
+	color: #495D63;
+	margin-top: -31px;
+}
+
+
+h4#output {
+	color: #394F49;
+	text-align: center;
+}
+
+
+.betCar {
+	padding-left: 0px;
+}
+
+@keyframes hinge {
+	0% {
+		transform: rotate(0);
+		transform-origin: top left;
+		animation-timing-function: ease-in-out;
+	}
+
+	20%,
+	60% {
+		transform: rotate(80deg);
+		transform-origin: top left;
+		animation-timing-function: ease-in-out;
+	}
+
+	40% {
+		transform: rotate(60deg);
+		transform-origin: top left;
+		animation-timing-function: ease-in-out;
+	}
+
+	80% {
+		transform: rotate(60deg) translateY(0);
+		opacity: .7;
+		transform-origin: top left;
+		animation-timing-function: ease-in-out;
+	}
+
+	100% {
+		transform: rotate(90deg);
+		opacity: 0;
+	}
+}
+
+.hinge {
+	animation-duration: 1s;
+	animation-name: hinge;
+}
