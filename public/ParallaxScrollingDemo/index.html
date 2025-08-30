@@ -1,47 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parallax Website</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Website</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Logo</h1>
-        <nav>
-            <a href="#" class="active">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
+  <header>
+    <h1>Logo</h1>
+    <nav>
+      <a href="#" class="active" data-target ="home">Home</a>
+      <a href="#" data-target = "about">About</a>
+      <a href="#" data-target ="services">Services</a>
+      <a href="#" data-target="contact">Contact</a>
+    </nav>
+  </header>
 
-    <section class="home">
-        <img src="assets/mount2.png" class="mount2">
-        <img src="assets/mount1.png" class="mount1">
-        <img src="assets/bush2.png" class="bush2">
+  <!-- Home Section -->
+  <section id="home" class="home">
+    <img src="assets/mount2.png" class="mount2">
+    <img src="assets/mount1.png" class="mount1">
+    <img src="assets/bush2.png" class="bush2">
 
-        <h1 class="title">Parallax</h1>
-         <p class="subtitle">Scroll down to see the magic ✨</p>
+    <h1 class="title">Parallax</h1>
+    <h2 class="subtitle">Scroll down to see the magic ✨</h2>
 
-        <img src="assets/bush1.png" class="bush1">
-        <img src="assets/leaf2.png" class="leaf2">
-        <img src="assets/leaf1.png" class="leaf1">
-    </section>
+    <img src="assets/bush1.png" class="bush1">
+    <img src="assets/leaf2.png" class="leaf2">
+    <img src="assets/leaf1.png" class="leaf1">
+  </section>
 
-    <section class="about">
-        <h1>Parallax</h1>
-        <br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis rem aliquid unde praesentium harum consequuntur consequatur exercitationem quas officiis quod quidem amet, illum facere ipsam vitae quae, a aut non numquam minus voluptate doloremque. Fugiat dolor dolores, temporibus, culpa quia illo, enim sint harum adipisci voluptatem aliquid. Officia tempore dolore natus iure, odit blanditiis? Voluptate aliquid vel suscipit fugiat dolor distinctio, blanditiis cupiditate rerum quidem repellat sint vero error minima? Culpa, porro ipsa totam consequuntur molestiae nulla dignissimos voluptatum provident, minima eligendi sapiente tempore quas asperiores, reiciendis veritatis placeat? Odit nobis rem a iste reiciendis nemo tempore quae asperiores quia.</p>
-        <br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, aliquam illum. Totam inventore beatae, facilis harum adipisci molestias blanditiis voluptatibus consequatur, explicabo, voluptates consectetur eaque nihil perferendis ratione architecto. Unde odio modi dolor, suscipit nostrum quibusdam quia minima, facilis distinctio aliquid excepturi. Repellendus consequuntur numquam, minus tenetur commodi ipsum velit aspernatur nostrum suscipit explicabo possimus molestiae minima doloribus. Doloribus architecto voluptates perferendis nostrum ullam hic odio sunt. Dolores facilis, pariatur eligendi excepturi accusamus optio aliquam maxime aspernatur, explicabo velit cum, quia a cumque voluptas quis nesciunt. Repellendus hic consequuntur aperiam delectus ratione reprehenderit expedita adipisci ut nesciunt amet, exercitationem illo.</p>
-        <br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt saepe dolorem consectetur architecto officiis. Unde, at. Magnam sed aliquid nesciunt error sint repudiandae ad. Reiciendis minus, esse eos soluta mollitia quia est! Inventore aliquid ut hic fuga ratione consectetur ea? Ratione tempore, ab dolor, assumenda neque doloremque voluptate nesciunt eaque, illo ipsa quia. Nihil dolor libero animi quibusdam recusandae et cumque deleniti minima unde iste sint possimus numquam nam, corporis cupiditate? Maxime voluptate atque alias consequuntur tenetur non quia amet, eligendi libero odio adipisci aperiam dolore perferendis illum vero, nam temporibus numquam cumque, neque fuga iste? Totam cum modi excepturi!</p>
-    </section>
+  <!-- About Section -->
+  <section class="about">
+    <h1>About This Demo</h1>
+    <br>
+    <p>
+        This Parallax Scrolling project is built as a <strong>demo website</strong> to showcase
+        how layered backgrounds and scroll-triggered animations can create an engaging visual effect. 
+        The sections, text, and buttons included here are for demonstration purposes only.
+    </p>
+    <br>
+    <p>
+       
+        These paragraphs act as <em>placeholder text</em>, so that developers can easily visualize how a real-world 
+        project might look once actual content is inserted.
+    </p>
+    <br>
+    <p>
+        In a production website, you could replace this section with details about your company, your services, 
+        your team, or any information you’d like to highlight. The purpose here is simply to demonstrate the 
+        scrolling parallax effect across different sections of the page.
+    </p>
+    <br>
+    <p>
+        Feel free to customize and extend this template as per your needs. Replace the headings, text, and even 
+        add more images or animations to align it with your actual project goals. This demo is meant to give you 
+        a starting point and inspiration ✨.
+    </p>
+</section>
 
-    <script src="script.js"></script>
+
+  <section class="services">
+  <h2>Services</h2>
+  <p>In a real website, this section could describe the services offered. 
+     For this demo, it’s simply a placeholder to demonstrate smooth parallax scrolling.</p>
+  <div class="service-list">
+    <div class="service-item">Service 1 (Demo)</div>
+    <div class="service-item">Service 2 (Demo)</div>
+    <div class="service-item">Service 3 (Demo)</div>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Contact</h2>
+  <p>This is the contact section. You could add a form, social media links, 
+     or any way to reach out. For now, this is just demo content.</p>
+  <button>Contact Us (Demo)</button>
+</section>
+
+
+<button id="scrollTopBtn">↑</button>
+  <script src="script.js"></script>
 
 </body>
 </html>
