@@ -317,6 +317,17 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript", "API"],
         features: ["Image Search", "High Quality", "Download Options"]
       },
+
+{
+  originalDay: 18,
+  name: "Attendance Tracker",
+  description: "A web-based tool to mark and track student attendance with a clean UI.",
+  demoLink: "./public/Day-18_Attendance_Tracker/attance.html",
+  category: "utilities",
+  technologies: ["HTML", "CSS", "JavaScript"],
+  features: ["Add Students", "Mark Attendance", "Date-wise Tracking", "LocalStorage Support"]
+},
+
       {
         originalDay: 20,
         name: "Tic Tac Toe",
