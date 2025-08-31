@@ -320,16 +320,6 @@ class WebDev100Days {
         features: ["Image Search", "High Quality", "Download Options"]
       },
 
-{
-  originalDay: 18,
-  name: "Attendance Tracker",
-  description: "A web-based tool to mark and track student attendance with a clean UI.",
-  demoLink: "./public/Day-18_Attendance_Tracker/attance.html",
-  category: "utilities",
-  technologies: ["HTML", "CSS", "JavaScript"],
-  features: ["Add Students", "Mark Attendance", "Date-wise Tracking", "LocalStorage Support"]
-},
-
       {
         originalDay: 20,
         name: "Tic Tac Toe",
@@ -337,7 +327,7 @@ class WebDev100Days {
         demoLink: "./public/Day-20_tictactoe/index.html",
         category: "games",
         technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["AI Opponent", "Score Tracking", "Responsive Design"]
+        features: ["AI Opponent", "Score Tracking", "Responsive Design"],
       },
       {
         originalDay: 21,
@@ -592,6 +582,15 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Marks Input", "Total & Average Calculation", "Grade Assignment", "Performance Feedback"]
       },
+        {
+  originalDay: 113,
+  name: "Attendance Tracker",
+  description: "A web-based tool to mark and track student attendance with a clean UI.",
+  demoLink: "./public/Attendance_Tracker/Attendance.html",
+  category: "education",
+  technologies: ["HTML", "CSS", "JavaScript"],
+  features: ["Add Students", "Mark Attendance", "Date-wise Tracking", "LocalStorage Support"]
+},
       {
         originalDay: 113,
         name: "Mood Based Music Suggester",
