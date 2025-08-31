@@ -1,0 +1,94 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Heading */
+.heading {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.head {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ffcc00, #ff6600);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Game container */
+#game {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 20px 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Canvas */
+#canvy {
+  border-radius: 12px;
+  background: #111;
+  border: 2px solid #444;
+  box-shadow: 0 0 10px rgba(0, 255, 200, 0.4);
+}
+
+/* Controls */
+#game input[type="button"],
+#game input[type="number"] {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+/* Button */
+#game input[type="button"] {
+  background: #ff6600;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#game input[type="button"]:hover {
+  background: #ff4500;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 100, 50, 0.4);
+}
+
+/* Number Inputs */
+#game input[type="number"] {
+  background: #1e1e1e;
+  color: #fff;
+  text-align: center;
+  border: 1px solid #555;
+}
+
+#game input[type="number"]:focus {
+  border-color: #ff6600;
+  box-shadow: 0 0 6px #ff6600;
+}

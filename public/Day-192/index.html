@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro Royale</title>
+    <link href="https://fonts.cdnfonts.com/css/exoplanet" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/hussar-woodtype" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/icbm-ss-2025" rel="stylesheet">
+                
+    <link href="css/style.css" rel="stylesheet" media="">
+</head>
+<body>
+    <section id="screen0" class="screen0Section">
+        <div class="intro">
+            <div class="monleone">
+                <img id="monleoneImg" src="./assets/img/firma.png" alt="">
+            </div>
+            <div class="geekshubs">
+                <img id="geekshubsImg" src="./assets/img/Geeks-Hub-academy.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section id="screen1" class="screen1Section" style="display: none">
+        <div class="screen1Main">
+            <div class="screen1MainBox">
+                <div class="screen1MainBoxTitle">MICRO ROYALE</div>
+                <div class="screen1MainBoxSelection">CLICK FOR START</div>
+            </div>
+        </div>
+        <div class="options">
+            <img class="optionsImg" src="./assets/img/speaker.png" alt=""onclick="muteSound()">
+        </div>
+    </section>
+    <section id="screen2" class="screen2Section" style="display: none">
+        <div class="screen2Main">
+            <div class="screen2Title">SELECT YOUR SOLDIER</div>
+            <div class="screen2Characters" id='_screen2Characters'>
+                <div class="screen2CharacterDiv" id="_screen2CharDiv1">
+                    <div class="screen2Char"  id="_screen2Char1">
+                        <img class="screen2CharImg" src="./assets/img/01navy/idle.png" alt="">
+                    </div>
+                    <div class="sreen2CharTitle" id="_screen2Char1Stats">NAVY SEAL</div>
+
+                </div>
+                <div class="screen2CharacterDiv" id="_screen2CharDiv2">
+                    <div class="screen2Char" id="_screen2Char2">
+                        <img class="screen2CharImg" src="./assets/img/02spetnaz/idle.png" alt="">
+                    </div>
+                    <div class="sreen2CharTitle" id="_screen2Char2Stats">SPETNAZ</div>
+                </div>
+                <div class="screen2CharacterDiv" id="_screen2CharDiv3">
+                    <div class="screen2Char" id="_screen2Char3">
+                        <img class="screen2CharImg" src="./assets/img/03legio/idle.png" alt="">
+                    </div>
+                    <div class="sreen2CharTitle" id="_screen2Char3Stats">LEGIONARIO</div>
+                </div>
+                <div class="screen2CharacterDiv" id="_screen2CharDiv4">
+                    <div class="screen2Char" id="_screen2Char4" style="display: none;">
+                        <img class="screen2CharImg" src="./assets/img/04ghost/idle.png" alt="">
+                    </div>
+                    <div class="screen2Char" id="_screen2Char4question">
+                        <img class="screen2CharImg" src="./assets/img/question.png" alt="">
+                        <div class="warning">
+                            <p>defeat first<br> the 3 other characters<br></p>
+                        </div>
+                    </div>
+                    <div class="sreen2CharTitle" id="_screen2Char4Stats" style="display: none;">GHOST</div>
+                </div>
+            </div>
+            <div class="screen2CharactersStats" id='_screen2CharactersStats'>
+                <div id="screen2Character1Stats">
+                    <p class="brief">NAME: JOHN<br>
+                     AGE: 24<br>
+                     COUNTRY: USA<br><br>
+                    - His dream was to be a baker <br>
+                    - Experimented in battle <br>
+                    - He's seen more than he'd like
+                    </p>
+                    <h3>HEALTH POINTS: 1200</h3>
+                </div>
+                <div id="screen2Character2Stats">
+                    <p class="brief">NAME: IGOR<br>
+                        AGE: 48<br>
+                        COUNTRY: URSS<br><br>
+                       - Veteran from URSS secret services <br>
+                       - Tactical and methodic <br> <br>
+                       - Colder than your ex
+                       </p><br>
+                       <h3>HEALTH POINTS: 1500</h3>
+                </div>
+                <div id="screen2Character3Stats">
+                    <p class="brief">NAME: FRANK'O<br>
+                        AGE: 33<br>
+                        COUNTRY: SPAIN<br><br>
+                       -  Vanguard from the Legion army <br>
+                       - Expert in military parades <br><br>
+                       - Hard as fuck 
+                       </p>
+                       <h3>HEALTH POINTS: 2000</h3>
+                </div>
+                <div id="screen2Character4Stats">
+                    <p class="brief">NAME: ?<br>
+                        AGE: ?<br>
+                        COUNTRY: ?<br><br>
+                        ?g? ??ee?¿?¡ ?k? ?4 ?? 7 ?sh? <br>
+                       ??u¿ ¿b?¡sa 3c¿6?¿ 4a7 d  9??¿ 32! <br><br>
+                       ¿?3e?! !89m3?¿?! y ?¿54<br>
+                    </p>
+                       <h3>HEALTH POINTS: ????</h3>
+                </div>
+            </div>
+            <div class="screen2GunsDifficulty" id="_screen2GunsDifficulty" style="display: none;">
+                <div class="screen2Guns" id="_screen2Guns">
+                    <div class="screen2GunsTitle">SELECT YOUR GUN</div>
+                    <div class="screen2GunsList">
+                        <div class="gunName" id="desertEagle">DESERT EAGLE</div>
+                        <div class="gunName" id="mp5">MP5</div>
+                        <div class="gunName" id="aa12">AA-12</div>
+                        <div class="gunName" id="ak47">AK47</div>
+                    </div>
+                    <div class="screen2GunsImgDiv">
+                        <div class="gunDiv" id="desertEagleDiv">
+                            <div class="gunImgCircle">
+                                <img class="gunImg" src="./assets/img/desertEagle.jfif" alt="">
+                            </div>
+                        </div>
+                        <div class="gunDiv" id="mp5Div">
+                            <div class="gunImgCircle">
+                                <img class="gunImg" src="./assets/img/mp5.jfif" alt="">
+                            </div>
+                        </div>
+                        <div class="gunDiv" id="aa12Div">
+                            <div class="gunImgCircle">
+                                <img class="gunImg" src="./assets/img/aa12.jfif" alt="">
+                            </div>
+                        </div>
+                        <div class="gunDiv" id="ak47Div">
+                            <div class="gunImgCircle">
+                                <img class="gunImg" src="./assets/img/ak47.jfif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="screen2Difficulty">
+                    <div class="screen2diffTitle">SELECT YOUR DIFFICULTY</div>
+                    <div class="screen2DiffList">
+                        <div class="difficulty" id="_easy">EASY</div>
+                        <div class="difficulty" id="_medium">MEDIUM</div>
+                        <div class="difficulty" id="_hard">HARD</div>
+                        <div class="difficulty" id="_fsd" style="display: none;">FSD BOOTCAMP</div>
+                        <div class="difficulty" id="_fsdInactive">FSD BOOTCAMP
+                            <div class="warning2">
+                                <p>defeat first<br> the 3 other characters<br></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="screen2NextButton">NEXT</div>
+
+        </div>
+        <div class="options2">
+            <img class="optionsImg" src="./assets/img/speaker.png" alt=""onclick="muteSound()">
+        </div>
+    </section>
+    <section id="screen3" class="screen3Section" style="display: none" onmouseover="mouseInScreen3()">
+        <div class="topVoid shooting1" onclick="player1.show(), clickedOutsideWall()">
+            <p id="cheat" style="display: none;">KILL GHOST WITH 'ENTER'</p>
+            <div class="options2">
+                <img class="optionsImg" src="./assets/img/speaker.png" alt="" onclick="muteSound()">
+            </div>
+        </div>
+        <div class="character2R shooting1" id="_character2" onclick="player1.show(), clickedOutsideWall()">
+            <img class="character2img" id="_character2imgHero1" src="./assets/img/01navy/shoot (1).png" alt="" style="display: none;">
+            <img class="character2img" id="_character2imgHero2" src="./assets/img/02spetnaz/shoot (1).png" alt="" style="display: none;">
+            <img class="character2img" id="_character2imgHero3" src="./assets/img/03legio/shoot (1).png" alt="" style="display: none;">
+            <img class="character2img" id="_character2imgHero4" src="./assets/img/04ghost/shoot (1).png" alt="" style="display: none;">
+        </div>
+        <div class="topWall shooting1" id="_topWall" onclick="player1.show(), clickedOutsideWall()">
+        </div>
+        <div class="centerVoid shooting1" id="_centerVoid" onclick="player1.show(), clickedOutsideWall()">
+            <div class="stats" id="statsP2">
+                <div class="statsItem2"><span></span><span id="character2"></span></div>
+                <div class="statsItem2"><span></span><span id="gun2"></span></div>
+                <div class="statsItem2"><span>HEALTH: </span><span id="life2"></span></div>
+                <div class="statsItem2"><span>AMMO: </span><span id="ammo2"></span></div>
+            </div>
+            <div class="stats emptyStats"></div>
+            <div class="stats emptyStats" id="powerUpZone">
+                <!-- <div class='powerUpDiv' id='dEagle' draggable='true' ondragstart='drag(event)'>
+                    <img class='powerUpImg' src='./assets/img/desertEagle.jfif' alt=''>
+                </div> -->
+            </div>
+            <div class="stats emptyStats"></div>
+            <div class="stats" id="statsP1">
+                <div class="statsItem1"><span></span><span id="character1"></span></div>
+                <div class="statsItem1"><span></span><span id="gun1"></span></div>
+                <div class="statsItem1"><span>HEALTH: </span><span id="life1"></span></div>
+                <div class="statsItem1"><span>AMMO: </span><span id="ammo1"></span></div>
+            </div>
+        </div>
+        <div class="bottomWall" id="_bottomWall" onclick="player1.hide()" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="character1R" id="_character1">
+                <img class="character1img" id="_character1imgHero1" src="./assets/img/01navy/crouch (1).png" alt="" style="display: none;">
+                <img class="character1img" id="_character1imgHero2" src="./assets/img/02spetnaz/crouch (1).png" alt="" style="display: none;">
+                <img class="character1img" id="_character1imgHero3" src="./assets/img/03legio/crouch (1).png" alt="" style="display: none;">
+                <img class="character1img" id="_character1imgHero4" src="./assets/img/04ghost/crouch (1).png" alt="" style="display: none;">
+            </div>
+        </div>
+    </section>
+    <section id="screen4" class="screen4Section" style="display: none">
+        <div class="screen4Main">
+            <div class="screen4MainBox">
+                <div class="screen4MainBoxTitle" id="youWin" style="display: none;">YOU WIN</div>
+                <div class="screen4MainBoxTitle"id="gameOver" style="display: none;">GAME OVER</div>
+                <div class="screen4Stats">
+                    <p>Accuracy: <span id="accuracy"></span>% <br>   
+                    Damage Received: <span id="damageReceived"></span><br>     
+                    Damage Caused: <span id="damageCaused"></span><br>
+                    Collected Power-Ups: <span id="pickedPU"></span><br>
+                </p> 
+                <div class="retry"><h2 id="retry" onclick="resetGame()">RETRY</h2></div>
+                </div>
+            </div>
+        </div>
+        <div class="options">
+            <img class="optionsImg" src="./assets/img/speaker.png" alt=""onclick="muteSound()">
+        </div>
+    </section>
+    
+
+    
+    <script src="js/players.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/battle.js"></script>
+</body>
+</html>

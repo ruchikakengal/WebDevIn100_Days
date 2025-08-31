@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+html, body {
+  height: 105%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+nav{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(0, 183, 255);
+    color: white;
+    padding: 20px 10px;
+}
+
+ul{
+    display: flex;
+}
+
+ul li{
+    list-style: none;
+    padding:  0 23px;
+    font-size: 15px;
+}
+
+ul li a{
+    color: white;
+    text-decoration: none;
+}
+ul li a:hover{
+    color: wheat;
+    text-decoration: underline;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.container h1{
+    padding-bottom: 20px;
+}
+
+input[type="text"] {
+    min-width: 270px;
+    min-height: 35px;
+    padding: 3px 12px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif; /* if you're using Poppins */
+  color: #000;
+}
+
+.logo-text a{
+    text-decoration: none;
+    color: white;
+}
+
+main {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px 0;
+  margin-top: 140px;
+}
+
+.logo img{
+    width: 35px;
+    vertical-align: middle;
+    filter: invert(1);
+}
+
+.container {
+  border: 5px solid rgb(0, 183, 255);        
+  border-radius: 90px;
+  padding: 30px;
+  max-width: 400px;
+  width: 90%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  margin: 20px auto;              
+}
+
+.btn{
+    background-color: rgb(0, 183, 255);
+    color: white;
+    padding: 9px 12px;
+    border: 1px solid gray;
+    border-radius: 90px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover{
+    background-color: rgb(0, 150, 209);
+    transform: scale(1.07);
+}
+
+#resultCont div::first-letter{
+    text-transform: uppercase;
+}
+
+footer{
+    font-size: 13px;
+    background-color: rgb(0, 183, 255);
+    color: white;
+    display: flex;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+footer a{
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover{
+    color: wheat;
+    text-decoration: underline;
+}
+
+.about {
+    color: white;
+  text-align: left; 
+  padding: 30px;
+}
+
+.about  div{
+    background-color: rgb(0, 183, 255);
+    width: 50%;
+    height: 80%;
+    text-align: left;
+    font-size: 16px;
+    border: 2px black;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.about main h1{
+    text-decoration: underline;
+}
+
+.about p a{
+    font-size: larger;
+    font-weight: bolder;
+    text-decoration: none;
+    color: white;
+}
+
+.about a:hover{
+    text-decoration: underline;
+    color: rgb(100, 156, 178);
+}
+
+
+@media only screen and (max-width:600px){
+    body{
+        background-color: rgb(0, 183, 255);
+    }
+    .container{
+    font-size: 12px;
+    }
+    nav{
+        flex-direction: column;
+    }
+    .logo{
+        padding: 6px 0px;
+    }
+    .logo img{
+        width: 25px;
+        vertical-align: middle;
+        filter: invert(1);
+    }
+}
+
+#resultCont {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.result-key {
+  font-weight: bold;
+  color: #0077b6;
+}
+
+.result-value {
+  font-family: "Roboto Mono", monospace;
+}
+
+.result-valid {
+  color: green;
+  font-weight: bold;
+}
+
+.result-invalid {
+  color: red;
+  font-weight: bold;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}

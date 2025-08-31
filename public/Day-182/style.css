@@ -1,0 +1,435 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+header {
+  box-shadow: 0px 2px 10px 0px silver;
+  height: 70px;
+  z-index: 1000;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+.carousel {
+  margin-top: 80px;
+}
+
+.carouselBottomIntro img {
+  width: 100%;
+  margin-top: 50px;
+  cursor: pointer;
+  padding: 0px 10px;
+}
+
+.navLogo img {
+  width: 50px;
+}
+
+/* menuPart */
+.navMenus {
+  height: 70px;
+}
+.navMenus a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(37, 36, 36);
+  font-weight: 500;
+  padding: 22px 0px;
+  transition: 0.1s;
+}
+.navMenus a:hover {
+  border-bottom: 4px solid rgb(245, 92, 181);
+  color: black;
+}
+
+/* Navbar */
+.navBar {
+  height: 40px;
+}
+
+/* searchBar */
+.navSearchBar {
+  position: relative;
+}
+.navSearchBar i {
+  position: absolute;
+  left: 10px;
+}
+input[type="search"] {
+  outline: none;
+  width: 500px;
+  height: 40px;
+  border: none;
+  border: 1px solid silver;
+  border-radius: 5px;
+  text-align: center;
+  border: none;
+  background-color: rgba(192, 192, 192, 0.164);
+}
+
+.iconNames {
+  height: 70px;
+}
+.iconNames a {
+  display: block;
+  padding: 10px 0px;
+  flex-direction: column;
+  text-align: center;
+  text-decoration: none;
+  color: rgb(83, 82, 82);
+  margin-left: 40px;
+  transition: 0.2s;
+}
+
+.iconNames a:hover {
+  border-bottom: 4px solid rgb(243, 47, 210);
+  color: rgb(83, 82, 82);
+}
+
+/* for cards */
+
+.carouselDeal {
+  text-transform: uppercase;
+  margin-top: 50px;
+  color: rgb(104, 101, 101);
+  margin-left: 40px;
+}
+
+/* Dealing section css */
+
+.dealcards img {
+  width: 250px;
+  cursor: pointer;
+}
+
+.Deals {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
+  padding: 0px 60px;
+}
+
+/* Bigdeal Section */
+
+.biggestDealsHead {
+  color: silver;
+  text-transform: uppercase;
+  margin-top: 50px;
+  color: rgb(104, 101, 101);
+  margin-left: 40px;
+}
+
+.bigdealcard img {
+  width: 250px;
+}
+
+.upperDealSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.lowerdealcard img {
+  width: 250px;
+}
+
+.lowerDealSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.biggestDeal {
+  margin-top: 50px;
+}
+
+/* BAG CATEGORIES */
+
+.bagcategory {
+  margin-top: 50px;
+}
+
+.bagCategorieshead {
+  color: silver;
+  text-transform: uppercase;
+  margin-top: 50px;
+  color: rgb(104, 101, 101);
+  margin-left: 40px;
+}
+
+.upperBagCategories {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.bagcard img {
+  width: 200px;
+}
+
+.lowerBagCategories {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+/* Explore the top Brands */
+
+.topBrandshead {
+  color: silver;
+  text-transform: uppercase;
+  margin-top: 50px;
+  color: rgb(104, 101, 101);
+  margin-left: 40px;
+}
+
+.topBrands img {
+  width: 250px;
+}
+
+.upperbrandcards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.bottomtopBrandCards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.topBrands {
+  margin-top: 50px;
+}
+
+/* Trending in western wear */
+
+.trendingWearHead {
+  color: silver;
+  text-transform: uppercase;
+  margin-top: 50px;
+  color: rgb(104, 101, 101);
+  margin-left: 40px;
+}
+
+.upperTrendingWear {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.trendcards img {
+  width: 250px;
+}
+
+.lowerTrendingWear {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.trendingWesternWear {
+  margin-top: 50px;
+}
+/* trending in indian wear */
+
+.indianWearHead {
+  color: silver;
+  text-transform: uppercase;
+  margin-top: 50px;
+  color: rgb(104, 101, 101);
+  margin-left: 40px;
+}
+
+.upperIndianCard img {
+  width: 250px;
+}
+
+.upperIndian {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.bottomIndian {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.trendingIndianWear {
+  margin-top: 50px;
+}
+
+/* <!-- TRENDING IN SPORTS WEAR --> */
+
+.sportsWearHead {
+  color: silver;
+  text-transform: uppercase;
+  margin-top: 50px;
+  color: rgb(104, 101, 101);
+  margin-left: 40px;
+}
+
+.upperSportsWear {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.sportsCard img {
+  width: 250px;
+}
+
+.trendingSportsWear {
+  margin-top: 50px;
+}
+
+.lowerSportsWear {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+/* <!-- TRENDING IN FOOTWEAR --> */
+
+.trendFootHead {
+  color: silver;
+  text-transform: uppercase;
+  margin-top: 50px;
+  color: rgb(104, 101, 101);
+  margin-left: 40px;
+}
+
+.FootCard img {
+  width: 250px;
+}
+
+.upperFootWear {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.bottomFootWear {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.trendingFootWear {
+  margin-top: 50px;
+}
+
+/* <!-- TRENDING IN ACCESSORIES --> */
+
+.trendAcces {
+  color: silver;
+  text-transform: uppercase;
+  margin-top: 50px;
+  color: rgb(104, 101, 101);
+  margin-left: 40px;
+}
+
+.AccessCard img {
+  width: 250px;
+}
+
+.upperAccess {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+.trendAccessories {
+  margin-top: 50px;
+}
+
+.lowerAccess {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 60px;
+}
+
+/* BIO */
+
+.firstSection li {
+  list-style: none;
+}
+
+.secondsection li {
+  list-style: none;
+}
+
+.thirdSection li {
+  list-style: none;
+}
+.socialImage img {
+  width: 150px;
+}
+
+/* For Social Icons */
+.socialIcons i {
+  font-size: 1.4rem;
+}
+
+.fourthSection a {
+  color: rgba(85, 82, 82, 0.938);
+  text-decoration: none;
+}
+
+.upperfourthSection img {
+  width: 50px;
+}
+
+.lowerfourthSection img {
+  width: 50px;
+}
+
+/* Mainbiocss */
+.MainBIO {
+  background-color: rgba(192, 192, 192, 0.137);
+}
+
+.MainBIO a {
+  text-decoration: none;
+  color: rgba(85, 82, 82, 0.938);
+  font-size: 0.9rem;
+}
+
+.underBio {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 70px;
+}
+.underBio a:hover {
+  color: rgba(85, 82, 82, 0.938);
+}

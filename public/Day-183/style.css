@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap");
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    color: hsl(260, 2%, 5%);
+    background: hsl(55, 30%, 95%);
+    font-family: "Quicksand", sans-serif;
+}
+
+main {
+    max-width: 400px;
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+}
+/* display the headings in a row */
+main header {
+    padding: 0 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 0.25rem 0.5rem;
+    position: relative;
+}
+
+h1:before,
+h1:after {
+    position: absolute;
+    left: 100%;
+    transform: translate(-50%, 0);
+}
+h1:after {
+    bottom: 100%;
+    content: "8";
+    font-weight: inherit;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #3d3c3f;
+    background: radial-gradient(circle at 50% 50%, hsl(25, 70%, 94%) 40%, transparent 42%), hsl(260, 2%, 25%);
+    /* transition and delay applied as the :hover state is removed
+    specify different values as the hover state occurs
+    */
+    transition: transform 0.5s ease-in-out;
+    transition-delay: 0s;
+}
+/* translate the ball as the stick reaches its new vertical position */
+h1:hover:after {
+    transform: translate(-50%, -8px);
+    transition-delay: 0.45s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.5);
+}
+h1:before {
+    content: "";
+    bottom: 0%;
+    height: 100%;
+    width: 5px;
+    background: linear-gradient(to bottom, hsl(25, 70%, 70%) 4px, transparent 4px), hsl(260, 2%, 25%);
+    transform: translate(-50%, 0);
+    transition: transform 0.5s ease-in-out;
+    transition-delay: 0.1s;
+}
+h1:hover:before {
+    transform: translate(-50%, -2px);
+    transition-delay: 0s;
+    transition-timing-function: cubic-bezier(0.6, -1.25, 0.735, 0.045);
+}
+h2 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+h2 mark {
+    font-weight: 700;
+    background: hsl(25, 70%, 70%);
+    padding: 0.2rem 0.5rem;
+}
+canvas {
+    width: 100%;
+}

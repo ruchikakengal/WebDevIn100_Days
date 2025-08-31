@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord | Friends</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="./Assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div class="loader-home" id="loader">
+        <i class="fa-brands fa-discord"></i>
+        <h1>DID YOU KNOW</h1>
+        <p class="rest-of-words">
+            <span>
+                <span class="button-style">CTRL</span>
+                <span class="button-style">K</span>
+                to quickly find a previous
+            </span>
+            <span>conversation or channel.</span>
+        </p>
+    </div>
+    <main>
+        <aside>
+            <i class="fa-brands fa-discord" onclick="openToggle()"></i>
+            <hr>
+            <img src="./Assets/Azaan.jpeg" alt="">
+            <div class="icon"><i class="fa-solid fa-plus"></i></div>
+            <div class="icon"><i class="fa-solid fa-compass"></i></div>
+            <hr>
+            <div class="icon"><i class="fa-solid fa-arrow-down"></i></div>
+        </aside>
+        <div class="sidebar-chat" id="s">
+            <div class="top-nav">
+                <input type="text" placeholder="Find or start a conversation">
+            </div>
+            <div class="list">
+                <div class="list-item active">
+                    <svg class="linkButtonIcon_c91bad" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M13 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" class=""></path>
+                        <path fill="currentColor"
+                            d="M3 5v-.75C3 3.56 3.56 3 4.25 3s1.24.56 1.33 1.25C6.12 8.65 9.46 12 13 12h1a8 8 0 0 1 8 8 2 2 0 0 1-2 2 .21.21 0 0 1-.2-.15 7.65 7.65 0 0 0-1.32-2.3c-.15-.2-.42-.06-.39.17l.25 2c.02.15-.1.28-.25.28H9a2 2 0 0 1-2-2v-2.22c0-1.57-.67-3.05-1.53-4.37A15.85 15.85 0 0 1 3 5Z"
+                            class=""></path>
+                    </svg>
+                    <p>Friends</p>
+                </div>
+                <div class="list-item">
+                    <svg class="linkButtonIcon_c91bad" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path>
+                        <path fill="currentColor" fill-rule="evenodd"
+                            d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"
+                            clip-rule="evenodd" class=""></path>
+                        <path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path>
+                    </svg>
+                    <p>Nitro</p>
+                    <div class="buy">BUY 1, GET 1</div>
+                </div>
+                <div class="list-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path transform="translate(4, 0)"
+                            d="M12.3172 7.80738C12.4618 7.67827 12.591 7.54399 12.702 7.40972C13.4018 6.58082 13.7375 5.58924 13.8717 4.5202C13.9234 3.93145 13.944 3.20068 13.6703 2.54738C13.3889 2.00511 12.7201 1.79336 12.1778 2.07483C11.602 2.38728 11.1501 2.77461 10.7705 3.22134C10.7266 2.94246 10.6724 2.66358 10.6052 2.38728C10.3883 1.68491 10.1482 0.724321 9.50003 0.176888C8.12112 -0.618439 7.52204 1.47317 7.26124 2.38728C7.1941 2.66358 7.13987 2.94504 7.09597 3.2265C7.08306 3.21101 7.07015 3.19293 7.05466 3.17486C6.65699 2.73846 6.1328 2.22718 5.46658 1.98703C4.87525 1.82693 4.26843 2.17553 4.10833 2.76687C3.81137 3.94695 3.97922 4.99017 4.37172 6.05405C4.62478 6.72284 5.01986 7.33225 5.5518 7.8048C2.4712 7.90034 0 10.4283 0 13.5348V21H6.46849V16.4966C6.46849 15.159 7.55303 14.0745 8.89062 14.0745C10.2282 14.0745 11.3128 15.159 11.3128 16.4966V21H17.8613V13.5348C17.8613 10.4309 15.3953 7.90551 12.3147 7.80738H12.3172ZM4.54731 13.416C3.62029 13.416 2.87144 12.6646 2.87144 11.7401C2.87144 10.8157 3.62287 10.0643 4.54731 10.0643C5.47175 10.0643 6.22318 10.8157 6.22318 11.7401C6.22318 12.6646 5.47175 13.416 4.54731 13.416Z"
+                            fill="currentColor"></path>
+                    </svg>
+                    <p>Shop</p>
+                    <div class="new">NEW</div>
+                </div>
+            </div>
+            <div class="dm">
+                <h1>DIRECT MESSAGES <i class="fa fa-plus"></i></h1>
+                <div class="friends">
+                    <div class="f-li">
+                        <div class="img-wrapper">
+                            <img src="./Assets/img-icon 4.jpeg" alt="icon">
+                        </div>
+                        <p>Mr_Sigma</p>
+                        <i class="fa fa-xmark"></i>
+                    </div>
+                    <div class="f-li">
+                        <div class="img-wrapper">
+                            <img src="./Assets/img-icon 3.png" alt="icon">
+                        </div>
+                        <p>Gpro-fighter</p>
+                        <i class="fa fa-xmark"></i>
+                    </div>
+                    <div class="f-li">
+                        <div class="img-wrapper">
+                            <img src="./Assets/img-icon 2.png" alt="icon">
+                        </div>
+                        <p>Moiz Hussain</p>
+                        <i class="fa fa-xmark"></i>
+                    </div>
+                    <div class="f-li">
+                        <div class="img-wrapper">
+                            <img src="./Assets/img-icon 1.png" alt="icon">
+                        </div>
+                        <p>nxn</p>
+                        <i class="fa fa-xmark"></i>
+                    </div>
+                    <div class="f-li">
+                        <div class="img-wrapper">
+                            <img src="./Assets/img-icon.png" alt="icon">
+                        </div>
+                        <p>Unknown_Inj3ctor</p>
+                        <i class="fa fa-xmark"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="profile">
+                <div class="left">
+                    <div class="img-wrapper">
+                        <img src="./Assets/img-icon-profile.jpeg" alt="profile-icon">
+                    </div>
+                    <div class="txt">
+                        <p>Anonymou5</p>
+                        <span>Online</span>
+                    </div>
+                </div>
+                <div class="right">
+                    <i class="fa-solid fa-microphone" id="mic" onclick="mic()"></i>
+                    <i class="fa-solid fa-headphones" id="head" onclick="headp()"></i>
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+            </div>
+        </div>
+        <div class="rightside-area" id="r">
+            <nav>
+                <div class="left-side">
+                <div class="one"><svg class="linkButtonIcon_c91bad" aria-hidden="true" role="img"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M13 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" class=""></path>
+                        <path fill="currentColor"
+                            d="M3 5v-.75C3 3.56 3.56 3 4.25 3s1.24.56 1.33 1.25C6.12 8.65 9.46 12 13 12h1a8 8 0 0 1 8 8 2 2 0 0 1-2 2 .21.21 0 0 1-.2-.15 7.65 7.65 0 0 0-1.32-2.3c-.15-.2-.42-.06-.39.17l.25 2c.02.15-.1.28-.25.28H9a2 2 0 0 1-2-2v-2.22c0-1.57-.67-3.05-1.53-4.37A15.85 15.85 0 0 1 3 5Z"
+                            class=""></path>
+                    </svg>
+                    <p>Friends</p>
+                </div>
+                <div class="buttons">
+                    <button class="active">Online</button>
+                    <button>All</button>
+                    <button>Pending</button>
+                    <button>Blocked</button>
+                    <button>Add Freind</button>
+                </div>
+            </div>
+              <div class="icons-end">
+                    <i class="fa-solid fa-comment"></i>
+                    <i class="fa-solid fa-inbox"></i>
+                    <i class="fa-solid fa-circle-question"></i>
+                </div>
+            </nav>
+            <div class="bottom">
+                <div class="left">
+                    <img src="./Assets/1641b16ec6ac0c4e733d.svg" alt="img-centre">
+                    <p>No one's around to play with Wumpus.</p>
+                </div>
+                <div class="right">
+                    <h1>Active Now</h1>
+                    <div class="sec">
+                        <h2>It's quiet for now...</h2>
+                        <p>When a friend starts an activity—like playing a game or hanging out on voice—we'll show it here!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+
+</html>
