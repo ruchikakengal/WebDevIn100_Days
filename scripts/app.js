@@ -579,7 +579,7 @@ class WebDev100Days {
                 originalDay: 46,
                 name: "Attendance Tracker Website",
                 description: "Attendance Tracking Website For Students",
-                demoLink: "attendance_tracker.html",
+                demoLink: "./public/Attendace_Tracker/attendance_tracker",
                 category: "education",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Student Attendance Tracking", "Add-remove students", "Present/Absent"]
