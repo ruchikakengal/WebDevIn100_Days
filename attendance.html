@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Tracker</title>
+  <style>
+    /* ===== Global Styles ===== */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background: #2c3e50;
+      color: #ccc;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 30px auto 70px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    /* ===== Controls ===== */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"], input[type="date"] {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    button {
+      padding: 10px 18px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .add-btn {
+      background: #27ae60;
+      color: white;
+    }
+    .add-btn:hover {
+      background: #219150;
+    }
+
+    .mark-all-btn {
+      background: #2980b9;
+      color: white;
+    }
+    .mark-all-btn:hover {
+      background: #216799;
+    }
+
+    /* ===== Table ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #34495e;
+      color: #fff;
+    }
+
+    tr:hover {
+      background: #f9f9f9;
+    }
+
+    .present {
+      background: #2ecc71;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .absent {
+      background: #e74c3c;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .controls {
+        flex-direction: column;
+      }
+      table {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>📊 Attendance Tracker</header>
+
+  <main>
+    <h2>Manage Daily Attendance</h2>
+
+    <div class="controls">
+      <input type="text" id="studentName" placeholder="Enter student name">
+      <button class="add-btn" onclick="addStudent()">➕ Add Student</button>
+      <input type="date" id="attendanceDate">
+      <button class="mark-all-btn" onclick="markAllPresent()">✅ Mark All Present</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Toggle</th>
+        </tr>
+      </thead>
+      <tbody id="studentList"></tbody>
+    </table>
+  </main>
+
+  <footer>© 2025 Attendance Tracker | Designed with ❤️</footer>
+
+  <script>
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+
+    function renderTable() {
+      const date = document.getElementById("attendanceDate").value;
+      const tbody = document.getElementById("studentList");
+      tbody.innerHTML = "";
+
+      students.forEach((student, index) => {
+        const status = student.attendance[date] || "Absent";
+
+        tbody.innerHTML += `
+          <tr>
+            <td>${student.name}</td>
+            <td>${date || "Not Selected"}</td>
+            <td><span class="${status.toLowerCase()}">${status}</span></td>
+            <td>
+              <button onclick="toggleAttendance(${index}, '${date}')">Toggle</button>
+            </td>
+          </tr>`;
+      });
+
+      localStorage.setItem("students", JSON.stringify(students));
+    }
+
+    function addStudent() {
+      const name = document.getElementById("studentName").value.trim();
+      if (name === "") return alert("Please enter a name.");
+      students.push({ name, attendance: {} });
+      document.getElementById("studentName").value = "";
+      renderTable();
+    }
+
+    function toggleAttendance(index, date) {
+      if (!date) return alert("Please select a date first.");
+      const student = students[index];
+      student.attendance[date] =
+        student.attendance[date] === "Present" ? "Absent" : "Present";
+      renderTable();
+    }
+
+    function markAllPresent() {
+      const date = document.getElementById("attendanceDate").value;
+      if (!date) return alert("Please select a date first.");
+      students.forEach(student => {
+        student.attendance[date] = "Present";
+      });
+      renderTable();
+    }
+
+    document.getElementById("attendanceDate").addEventListener("change", renderTable);
+    renderTable();
+  </script>
+
+</body>
+</html>
