@@ -1,0 +1,7 @@
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:system-ui}
+.card{width:min(92vw,520px);padding:1.5rem;border-radius:1rem;box-shadow:0 10px 30px rgba(0,0,0,.1);background:#fff}
+.row{display:flex;gap:.5rem}
+input[readonly]{flex:1;padding:.7rem;border-radius:.5rem;border:1px solid #ddd}
+button{padding:.7rem 1rem;border:0;border-radius:.6rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:.4rem 1rem;margin:.8rem 0}
+.strength{margin:.6rem 0;font-weight:600}

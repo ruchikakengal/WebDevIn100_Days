@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Password Generator</h1>
+    <div class="row">
+      <input id="output" readonly value="Click Generate" />
+      <button id="copyBtn" title="Copy">Copy</button>
+    </div>
+    <label>Length: <span id="lenVal">16</span></label>
+    <input id="len" type="range" min="6" max="32" value="16">
+    <div class="opts">
+      <label><input type="checkbox" id="lc" checked> a-z</label>
+      <label><input type="checkbox" id="uc" checked> A-Z</label>
+      <label><input type="checkbox" id="num" checked> 0-9</label>
+      <label><input type="checkbox" id="sym"> !@#$%</label>
+    </div>
+    <div class="strength" id="strength">Strength: —</div>
+    <button id="gen">Generate</button>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
