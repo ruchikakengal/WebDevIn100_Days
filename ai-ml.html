@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI/ML Projects - WebDevIn_100Days</title>
+
+  <!-- Favicon Setup -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
+  <link rel="manifest" href="./site.webmanifest">
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Explore AI/ML projects - Advanced applications featuring artificial intelligence, machine learning concepts, and data visualization.">
+  <meta name="keywords" content="AI, ML, artificial intelligence, machine learning, data visualization, advanced projects">
+  <meta name="author" content="WebDevIn_100Days Team">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AI/ML Projects - WebDevIn_100Days">
+  <meta property="og:description" content="Explore AI/ML projects - Advanced applications featuring artificial intelligence, machine learning concepts, and data visualization.">
+  <meta property="og:image" content="https://i.imgur.com/3cztaa9.png">
+  <meta property="og:url" content="https://your-site.com/ai-ml.html">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI/ML Projects - WebDevIn_100Days">
+  <meta name="twitter:description" content="Explore AI/ML projects with advanced features and machine learning concepts.">
+  <meta name="twitter:image" content="https://i.imgur.com/3cztaa9.png">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#10b981">
+
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="chatbot.css">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress">
+    <div class="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Modern Navigation -->
+  <nav class="modern-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg" alt="WebDevIn_100Days logo"
+          class="nav-logo" />
+        WebDevIn_100Days
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="index.html#projects" class="nav-link">All Projects</a></li>
+        <li><a href="webdev.html" class="nav-link">Web Dev</a></li>
+        <li><a href="ai-ml.html" class="nav-link active">AI/ML</a></li>
+        <li><a href="modern-ui.html" class="nav-link">Modern UI</a></li>
+        <li><a href="contributors.html" class="nav-link">Contributors</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" title="Toggle theme">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+        <button class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+      <ul class="mobile-nav-links">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="index.html#projects" class="mobile-nav-link">All Projects</a></li>
+        <li><a href="webdev.html" class="mobile-nav-link">Web Dev</a></li>
+        <li><a href="ai-ml.html" class="mobile-nav-link active">AI/ML</a></li>
+        <li><a href="modern-ui.html" class="mobile-nav-link">Modern UI</a></li>
+        <li><a href="contributors.html" class="mobile-nav-link">Contributors</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="category-hero-section aiml-theme">
+    <div class="container">
+      <div class="category-hero-content">
+        <div class="category-breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>AI/ML</span>
+        </div>
+        <h1 class="category-hero-title">
+          <span class="category-icon-large">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </span>
+          AI/ML Projects
+        </h1>
+        <p class="category-hero-subtitle">
+          Dive into the future with our advanced AI and Machine Learning projects. Explore data visualization, 
+          audio processing, intelligent algorithms, and cutting-edge web technologies.
+        </p>
+        <div class="category-stats-hero">
+          <div class="stat-hero">
+            <span class="stat-number" id="aiml-count">0</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-hero">
+            <span class="stat-number">Advanced</span>
+            <span class="stat-label">Level</span>
+          </div>
+          <div class="stat-hero">
+            <span class="stat-number">APIs</span>
+            <span class="stat-label">& Data</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Section -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-container">
+        <div class="search-form">
+          <input type="text" id="searchInput" class="search-input"
+            placeholder="Search AI/ML projects...">
+          <button id="searchButton" class="search-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <div class="projects-header">
+        <h2 class="projects-title">AI/ML Projects</h2>
+        <p class="projects-subtitle">
+          Explore advanced projects featuring artificial intelligence, machine learning concepts, and intelligent data processing.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Projects</button>
+        <button class="filter-tab" data-filter="basic">Basic</button>
+        <button class="filter-tab" data-filter="games">Games</button>
+        <button class="filter-tab" data-filter="utilities">Utilities</button>
+        <button class="filter-tab" data-filter="advanced">Advanced</button>
+        <button class="filter-tab" data-filter="education">Education</button>
+        <button class="filter-tab" data-filter="productivity">Productivity</button>
+        <button class="filter-tab" data-filter="entertainment">Entertainment</button>
+        <button class="filter-tab" data-filter="creativity">Creativity</button>
+      </div>
+
+      <!-- Projects Table -->
+      <div class="projects-table-container">
+        <!-- Table will be dynamically generated here -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state">
+        <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+        <h3 class="empty-title">No projects found</h3>
+        <p class="empty-description">
+          Try adjusting your search criteria or browse different categories to discover our amazing AI/ML projects.
+        </p>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <!-- Pagination will be dynamically generated here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Chatbot Widget -->
+  <div id="chatbot-container">
+    <!-- Floating Chat Icon -->
+    <div id="chat-icon" class="chat-icon" aria-label="Open chat" role="button" tabindex="0">
+      <div class="icon-container">
+        <svg class="chat-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 2C17.523 2 22 6.477 22 12C22 13.821 21.53 15.534 20.708 17.031L22 22L16.969 20.708C15.534 21.53 13.821 22 12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2Z"
+            fill="white" fill-opacity="0.95" />
+          <circle cx="8.5" cy="12" r="1.5" fill="#10b981" />
+          <circle cx="12" cy="12" r="1.5" fill="#10b981" />
+          <circle cx="15.5" cy="12" r="1.5" fill="#10b981" />
+        </svg>
+        <div class="notification-pulse"></div>
+      </div>
+    </div>
+
+    <!-- Chat Window -->
+    <div id="chat-window" class="chat-window" aria-hidden="true">
+      <!-- Chat Header -->
+      <div class="chat-header">
+        <div class="chat-title">
+          <div class="bot-avatar">
+            <img src="Vaani_w.svg" alt="">
+            <div class="online-indicator"></div>
+          </div>
+          <div class="chat-info">
+            <span class="assistant-name">Vaani</span>
+            <span class="status">AI Assistant • Online • Ready to help with AI/ML</span>
+          </div>
+        </div>
+        <button id="close-chat" class="close-button" aria-label="Close chat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Chat Messages Container -->
+      <div id="chat-messages" class="chat-messages">
+        <div class="welcome-section">
+          <div class="welcome-avatar">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="url(#aimlGradient)" />
+              <circle cx="9" cy="10" r="1.5" fill="white" />
+              <circle cx="15" cy="10" r="1.5" fill="white" />
+              <path d="M8 15C8 15 10 17 12 17C14 17 16 15 16 15" stroke="white" stroke-width="1.5"
+                stroke-linecap="round" />
+              <defs>
+                <linearGradient id="aimlGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="welcome-content">
+            <h3>Welcome to AI/ML! 🤖</h3>
+            <p>I can help you explore our advanced AI and Machine Learning projects, from data visualization to intelligent algorithms. Ready to dive into the future?</p>
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <button class="quick-btn" data-message="Show me data visualization projects">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 3v18h18M9 17l4-4 2 2 4-4" />
+            </svg>
+            Data Visualization
+          </button>
+          <button class="quick-btn" data-message="Show me audio processing projects">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+              <line x1="12" y1="19" x2="12" y2="23" />
+              <line x1="8" y1="23" x2="16" y2="23" />
+            </svg>
+            Audio Processing
+          </button>
+          <button class="quick-btn" data-message="Show me intelligent algorithms">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+            Algorithms
+          </button>
+        </div>
+      </div>
+      
+      <!-- Chat Input -->
+      <div class="chat-input-container">
+        <div class="input-wrapper">
+          <input type="text" id="chat-input" placeholder="Ask about AI/ML projects..." maxlength="500"
+            aria-label="Type your message">
+          <button id="send-button" aria-label="Send message">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </button>
+
+  <!-- Footer -->
+  <footer class="modern-footer">
+    <div class="footer-container">
+      <!-- Footer Main Content -->
+      <div class="footer-main">
+        <!-- AI/ML Section -->
+        <div class="footer-challenge">
+          <h3 class="footer-title">AI/ML Projects</h3>
+          <p class="footer-description">
+            This section contains advanced projects featuring artificial intelligence, machine learning concepts, and intelligent data processing using modern web technologies.
+          </p>
+          <div class="footer-social">
+            <a href="https://github.com/ruchikakengal/100_Days_100_webprojects" class="social-link" target="_blank"
+              aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/ruchika-kengal-8085092b7" class="social-link" target="_blank"
+              aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/" class="social-link" target="_blank" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="footer-section">
+          <h3 class="footer-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="webdev.html" class="footer-link">Web Dev Projects</a></li>
+            <li><a href="modern-ui.html" class="footer-link">Modern UI Projects</a></li>
+            <li><a href="contributors.html" class="footer-link">Contributors</a></li>
+          </ul>
+        </div>
+
+        <!-- Technologies Section -->
+        <div class="footer-section">
+          <h3 class="footer-title">AI/ML Technologies</h3>
+          <div class="tech-badges">
+            <span class="tech-badge ai">Machine Learning</span>
+            <span class="tech-badge data">Data Visualization</span>
+            <span class="tech-badge api">APIs</span>
+            <span class="tech-badge responsive">Intelligent</span>
+          </div>
+          <div class="footer-copyright">
+            <p>&copy; <span id="copyYear">2025</span> WebDevIn_100Days by Ruchika Kengal & Contributors</p>
+          </div>
+        </div>
+      </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="./scripts/category-app.js" data-domain="ai-ml"></script>
+  <script src="chatbot.js"></script>
+  <script>
+    // Set current year in footer
+    document.getElementById("copyYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+

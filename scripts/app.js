@@ -379,6 +379,7 @@ class WebDev100Days {
                 description: "A simple and elegant todo list application with local storage support.",
                 demoLink: "./public/Day-1_TodoList/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Add/Remove Tasks", "Mark Complete", "Local Storage"]
             },
@@ -388,6 +389,7 @@ class WebDev100Days {
                 description: "A beautiful digital clock with customizable themes and formats.",
                 demoLink: "./public/Day-2_digital_clock/digitalclock.html",
                 category: "basic",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Real-time Updates", "Multiple Formats", "Theme Options"]
             },
@@ -397,6 +399,7 @@ class WebDev100Days {
                 description: "Convert text into ASCII art with various font styles and customization options.",
                 demoLink: "./public/Day-3_AsciiArtGenerator/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Multiple Fonts", "Customizable Output", "Copy to Clipboard"]
             },
@@ -406,6 +409,7 @@ class WebDev100Days {
                 description: "Visualize password strength and complexity with interactive graphics.",
                 demoLink: "./public/Day-4_password_visualizer/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Strength Analysis", "Visual Feedback", "Security Tips"]
             },
@@ -415,6 +419,7 @@ class WebDev100Days {
                 description: "Interactive physics simulation with bouncing balls and gravity effects.",
                 demoLink: "./public/Day-5_physics_simulation/index.html",
                 category: "advanced",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript", "Canvas"],
                 features: ["Physics Engine", "Interactive Controls", "Real-time Animation"]
             },
@@ -433,6 +438,7 @@ class WebDev100Days {
                 description: "Count characters, words, and paragraphs in real-time with detailed statistics.",
                 demoLink: "./public/Day-7_CharacterWordCounter/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Real-time Counting", "Statistics", "Word Analysis"]
             },
@@ -442,6 +448,7 @@ class WebDev100Days {
                 description: "Simulate dice rolls with realistic 3D animations and multiple dice options.",
                 demoLink: "./public/Day-8_DiceRollSimulator/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["3D Animation", "Multiple Dice", "Statistics Tracking"]
             },
@@ -451,6 +458,7 @@ class WebDev100Days {
                 description: "A fun number guessing game with hints and score tracking.",
                 demoLink: "./public/Day-9_Guess_My_Number/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Hint System", "Score Tracking", "Difficulty Levels"]
             },
@@ -469,6 +477,7 @@ class WebDev100Days {
                 description: "Get real-time weather information for any city with a beautiful interface.",
                 demoLink: "./public/Day-11_WeatherApp/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript", "API"],
                 features: ["Real-time Data", "City Search", "Weather Icons"]
             },
@@ -478,6 +487,7 @@ class WebDev100Days {
                 description: "A realistic coin flipping animation with statistics tracking.",
                 demoLink: "./public/Day-13_Coin_Flip/index.html",
                 category: "basic",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Realistic Animation", "Statistics", "Sound Effects"]
             },
@@ -487,6 +497,7 @@ class WebDev100Days {
                 description: "Educational platform for e-waste management with location finder.",
                 demoLink: "./public/Day-14_E-WasteManagementHub/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Location Finder", "Educational Content", "Environmental Impact"]
             },
@@ -496,6 +507,7 @@ class WebDev100Days {
                 description: "Convert between different currencies with real-time exchange rates.",
                 demoLink: "./public/Day-15_Currency_Converter/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript", "API"],
                 features: ["Real-time Rates", "Multiple Currencies", "History"]
             },
@@ -505,6 +517,7 @@ class WebDev100Days {
                 description: "Generate random user profiles with photos and detailed information.",
                 demoLink: "./public/Day-16_Random_User_Generator/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript", "API"],
                 features: ["Random Profiles", "Photo Gallery", "Export Data"]
             },
@@ -514,6 +527,7 @@ class WebDev100Days {
                 description: "Search and browse high-quality images with advanced filtering options.",
                 demoLink: "./public/Day-17_Image_Search_App/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript", "API"],
                 features: ["Image Search", "High Quality", "Download Options"]
             },
@@ -523,6 +537,7 @@ class WebDev100Days {
                 description: "Classic tic-tac-toe game with AI opponent and score tracking.",
                 demoLink: "./public/Day-20_tictactoe/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["AI Opponent", "Score Tracking", "Responsive Design"]
             },
@@ -532,6 +547,7 @@ class WebDev100Days {
                 description: "Match-3 puzzle game inspired by the popular Candy Crush saga.",
                 demoLink: "./public/Day-21_candycrush/candy_crush.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Match-3 Gameplay", "Score System", "Power-ups"]
             },
@@ -541,6 +557,7 @@ class WebDev100Days {
                 description: "Generate beautiful color palettes for your design projects.",
                 demoLink: "./public/Day-22_Palette_generator/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Random Generation", "Export Options", "Color Codes"]
             },
@@ -550,6 +567,7 @@ class WebDev100Days {
                 description: "Generate QR codes for text, URLs, and other data types.",
                 demoLink: "./public/Day-23_QRCodeGenerator/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Multiple Data Types", "Customizable Size", "Download Option"]
             },
@@ -559,6 +577,7 @@ class WebDev100Days {
                 description: "Classic rock paper scissors game with computer opponent.",
                 demoLink: "./public/Day-23_RockPaperScissor/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Computer AI", "Score Tracking", "Animated Results"]
             },
@@ -577,6 +596,7 @@ class WebDev100Days {
                 description: "Test your reflexes by clicking on moving targets as fast as possible.",
                 demoLink: "./public/Day-28_Target_Reflex_Test/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Reflex Testing", "High Scores", "Difficulty Levels"]
             },
@@ -586,6 +606,7 @@ class WebDev100Days {
                 description: "Classic memory card matching game with multiple difficulty levels.",
                 demoLink: "./public/Day-31/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Memory Training", "Multiple Levels", "Timer Challenge"]
             },
@@ -595,6 +616,7 @@ class WebDev100Days {
                 description: "Advanced color picker with multiple format outputs and palette saving.",
                 demoLink: "./public/Day-34-Colour_picker/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Multiple Formats", "Palette Saving", "Color History"]
             },
@@ -613,6 +635,7 @@ class WebDev100Days {
                 description: "Feature-rich notes application with search and organization tools.",
                 demoLink: "./public/Day-36_Notes_App/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Rich Text Editor", "Search Function", "Tag Organization"]
             },
@@ -622,6 +645,7 @@ class WebDev100Days {
                 description: "Simple and efficient note-taking app with markdown support.",
                 demoLink: "./public/Day-42_NoteTaker/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Markdown Support", "Auto-save", "Export Notes"]
             },
@@ -631,6 +655,7 @@ class WebDev100Days {
                 description: "Interactive audio visualizer with particle effects and real-time frequency analysis.",
                 demoLink: "./public/Day-45/index.html",
                 category: "utilities",
+                domain: "ai-ml",
                 technologies: ["HTML", "CSS", "JavaScript", "Web Audio API"],
                 features: ["Audio Analysis", "Particle Effects", "Real-time Visualization", "Multiple Themes"]
             },
@@ -640,6 +665,7 @@ class WebDev100Days {
                 description: "Productivity timer with task management, customizable themes, and session tracking.",
                 demoLink: "./public/Day-47_Pomodoro-app/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Timer Sessions", "Task Management", "Dark Mode", "Custom Themes", "Statistics"]
             },
@@ -658,6 +684,7 @@ class WebDev100Days {
                 description: "Interactive rock paper scissors game with user vs computer gameplay.",
                 demoLink: "./public/Day-54_RockPaperSessior/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Move Validation", "Piece Animation", "Game Logic", "Interactive Board"]
             },
@@ -668,6 +695,7 @@ class WebDev100Days {
                 description: "Modern portfolio website template with responsive design and animations.",
                 demoLink: "./public/Day-72_Portfolio/index.html",
                 category: "advanced",
+                domain: "modern-ui",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Responsive Design", "Smooth Animations", "Contact Form"]
             },
@@ -677,6 +705,7 @@ class WebDev100Days {
                 description: "Digital Etch-a-Sketch with customizable grid and drawing modes.",
                 demoLink: "./public/Etch-a-Sketch/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Customizable Grid", "Multiple Drawing Modes", "Clear Function"]
             },
@@ -686,6 +715,7 @@ class WebDev100Days {
                 description: "Fun collection of interactive mini-games and entertainment.",
                 demoLink: "./public/GiggleBits/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Mini Games", "Entertainment Hub", "High Scores"]
             },
@@ -695,6 +725,7 @@ class WebDev100Days {
                 description: "Create beautiful CSS gradients with live preview and export functionality.",
                 demoLink: "./public/Gradient_Generator/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Live Preview", "CSS Export", "Color Picker", "Multiple Gradient Types"]
             },
@@ -704,6 +735,7 @@ class WebDev100Days {
                 description: "Classic board game with multiplayer support and animated gameplay.",
                 demoLink: "./public/Snake-and-Ladder-Game/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Multiplayer Support", "Animated Gameplay", "Classic Rules"]
             },
@@ -731,6 +763,7 @@ class WebDev100Days {
                 description: "Precision stopwatch with lap timing and split functionality.",
                 demoLink: "./public/Stopwatch/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Precision Timing", "Lap Records", "Split Timing", "Export Results"]
             },
@@ -740,6 +773,7 @@ class WebDev100Days {
                 description: "Display multiple world time zones with real-time updates and customization.",
                 demoLink: "./public/World_Clock/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Multiple Time Zones", "Real-time Updates", "Custom Locations", "12/24 Hour Format"]
             },
@@ -749,6 +783,7 @@ class WebDev100Days {
                 description: "A simple and organized digital notebook to create, update, and manage notes efficiently.",
                 demoLink: "./public/Day-42_NoteTaker/index.html",
                 category: "productivity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Add/Edit/Delete Notes", "Persistent Local Storage", "Search Functionality", "Dark Mode"]
             },
@@ -758,6 +793,7 @@ class WebDev100Days {
                 description: "A fun and fast-paced shooting game where players hunt down aliens and score points.",
                 demoLink: "./public/Day-31/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Alien Spawning", "Score Counter", "Sound Effects", "Game Over Logic"]
             },
@@ -767,6 +803,7 @@ class WebDev100Days {
                 description: "Suggests books based on user-selected genres, moods, or interests with a clean UI.",
                 demoLink: "https://book-recomendation.netlify.app/",
                 category: "education",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Genre-Based Suggestions", "Book Covers & Descriptions", "Responsive Design", "Interactive Filters"]
             },
@@ -776,6 +813,7 @@ class WebDev100Days {
                 description: "Analyzes student marks and provides insights like total, average, grade, and performance level.",
                 demoLink: "./public/Student_Grade_Analyzer/index.html",
                 category: "education",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Marks Input", "Total & Average Calculation", "Grade Assignment", "Performance Feedback"]
             },
@@ -785,6 +823,7 @@ class WebDev100Days {
                 description: "Recommends music tracks based on the user's selected mood for a personalized listening experience.",
                 demoLink: "./public/Mood_Music_Suggester/index.html",
                 category: "entertainment",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Mood Selection", "Curated Song List", "Audio Player Integration", "Responsive UI"]
             },
@@ -794,6 +833,7 @@ class WebDev100Days {
                 description: "A fast-paced calculator racing game where players solve math problems under time pressure to advance.",
                 demoLink: "./public/Day-45/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Math Problem Challenges", "Timer-Based Gameplay", "Score Tracking", "Level Progression"]
             },
@@ -803,6 +843,7 @@ class WebDev100Days {
                 description: "An interactive word guessing game where players try to reveal the hidden word within limited attempts.",
                 demoLink: "./public/Day53-Word-Guess-Game/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Random Word Generation", "Limited Attempts", "Letter Hints", "Win/Loss Feedback"]
             },
@@ -812,6 +853,7 @@ class WebDev100Days {
                 description: "A strategic two-player game where the goal is to connect four discs in a row vertically, horizontally, or diagonally.",
                 demoLink: "./public/Day-57_4_in_a_row/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Two Player Mode", "Win Detection", "Interactive Grid", "Game Reset"]
             },
@@ -821,6 +863,7 @@ class WebDev100Days {
                 description: "A simple financial tracking tool to manage income, expenses, and visualize spending habits.",
                 demoLink: "./public/Budget-Tracker/index.html",
                 category: "productivity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Add Income & Expenses", "Balance Calculation", "Expense Categories", "Persistent Local Storage"]
             },
@@ -830,6 +873,7 @@ class WebDev100Days {
                 description: "A classic card-flipping memory game where players match pairs to win with the fewest moves.",
                 demoLink: "./public/Memory Game App/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Card Matching Logic", "Move Counter", "Timer", "Game Reset Functionality"]
             },
@@ -839,6 +883,7 @@ class WebDev100Days {
                 description: "A simple and fun digital drawing app that allows users to sketch, doodle, and paint freely on a canvas.",
                 demoLink: "./public/day75-mypaint/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Canvas Drawing", "Color Picker", "Brush Size Control", "Clear Canvas Button"]
             },
@@ -848,6 +893,7 @@ class WebDev100Days {
                 description: "Every slice counts. Miss and it’s game over!",
                 demoLink: "./public/Fruit_Slicer_Game/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Score System", "Lifes", "Fruit Cutting"]
             },
@@ -866,6 +912,7 @@ class WebDev100Days {
                 description: "Find Github Profile ",
                 demoLink: "./public/Github_Profile_Finder/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Github", "Github Followers ", "Creative"]
             },
@@ -875,6 +922,7 @@ class WebDev100Days {
                 description: "Fly the Helicopter",
                 demoLink: "./public/Day-55/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Fly"]
             },
@@ -884,6 +932,7 @@ class WebDev100Days {
                 description: "Buildd the Robot",
                 demoLink: "./public/Day-72/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Repair", "Fix"]
             },
@@ -893,6 +942,7 @@ class WebDev100Days {
                 description: "Find Github Profile",
                 demoLink: "./public/Github_Profile_Finder/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Github", "Github Followers", "Creative"]
             },
@@ -902,6 +952,7 @@ class WebDev100Days {
                 description: "Slap the Hamster coming from the hole.",
                 demoLink: "./public/Day-69/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Hide n seek", "Catch", "Slap"]
             },
@@ -912,6 +963,7 @@ class WebDev100Days {
                 description: "Check Leetcode stats",
                 demoLink: "./public/LeetMatrix/index.html",
                 category: "basic",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["LeetCode", "Stats", "Graph"]
             },
@@ -921,6 +973,7 @@ class WebDev100Days {
                 description: "A Lovely Website with some crazy stuffs.",
                 demoLink: "./public/Day-70/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Love Game", "Romantic"]
             },
@@ -930,6 +983,7 @@ class WebDev100Days {
                 description: "Take a random quiz",
                 demoLink: "./public/QuizProgram/index.html",
                 category: "basic",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Quiz", "Scores"]
             },
@@ -939,6 +993,7 @@ class WebDev100Days {
                 description: "Manage university operations including courses, students, and faculty.",
                 demoLink: "./public/University_managment_system/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript", "API"],
                 features: ["Visitor Management", "History Tracking", "Search Functionality"]
             },
@@ -948,6 +1003,7 @@ class WebDev100Days {
                 description: "Create pixel art with a simple grid interface.",
                 demoLink: "./public/Day-76_PixelArt/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Grid Creation", "Color Selection", "Download Art", "Reset Canvas"]
 
@@ -976,6 +1032,7 @@ class WebDev100Days {
                 description: "Play with fruits",
                 demoLink: "./public/Day-59/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Cut"]
             },
@@ -986,6 +1043,7 @@ class WebDev100Days {
                 description: "Play with Cards",
                 demoLink: "./public/Day-90/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Ace", "King"]
             },
@@ -996,6 +1054,7 @@ class WebDev100Days {
                 description: "Open the Doors of your luck",
                 demoLink: "./public/Day-91/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Luck", "Doors"]
             },
@@ -1006,6 +1065,7 @@ class WebDev100Days {
                 description: "Roast Your self by AI",
                 demoLink: "./public/Day-92/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Roast"]
             },
@@ -1016,6 +1076,7 @@ class WebDev100Days {
                 description: "Generate Compliment for your love once",
                 demoLink: "./public/Day-93/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Compliments"]
             },
@@ -1026,6 +1087,7 @@ class WebDev100Days {
                 description: "Generate PickUp Lines for your someonce",
                 demoLink: "./public/Day-94/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["PickUp Lines"]
             },
@@ -1036,6 +1098,7 @@ class WebDev100Days {
                 description: "Know who you are",
                 demoLink: "./public/Day-95/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Hero", "Powers"]
             },
@@ -1046,6 +1109,7 @@ class WebDev100Days {
                 description: "Know your future",
                 demoLink: "./public/Day-96/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Future", "Fortune"]
             },
@@ -1055,6 +1119,7 @@ class WebDev100Days {
                 description: "Advanced, vibrant web app to track daily steps and water intake with charts, themes, and responsive design.",
                 demoLink: "./public/Fitness_Tracker/index.html",
                 category: "productivity",
+                domain: "ai-ml",
                 technologies: ["HTML", "CSS", "JavaScript", "Chart.js"],
                 features: ["Daily Steps & Water Input", "Dark/Light Mode", "Chart.js Visualizations", "Responsive Design", "Duplicate Prevention", "Tooltips on Charts"]
             },
@@ -1067,6 +1132,7 @@ class WebDev100Days {
                 description: "Mario is back.",
                 demoLink: "./public/Day-62/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Mario", "Jump"]
             },
@@ -1078,6 +1144,7 @@ class WebDev100Days {
                 description: "Netflix Clone",
                 demoLink: "./public/Day-97/index.html",
                 category: "Utility",
+                domain: "modern-ui",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Clone"]
             },
@@ -1088,6 +1155,7 @@ class WebDev100Days {
                 description: "Spin the wheel",
                 demoLink: "./public/Day-98/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Spin", "Wheel"]
             },
@@ -1098,6 +1166,7 @@ class WebDev100Days {
                 description: "Escape from the ghost",
                 demoLink: "./public/Day-99/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["PuckMan", "Ghost"]
             },
@@ -1108,6 +1177,7 @@ class WebDev100Days {
                 description: "Class 1 - Class 8",
                 demoLink: "./public/Day-100/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Games", "MCQ"]
             },
@@ -1118,6 +1188,7 @@ class WebDev100Days {
                 description: "Class 9 - Class 12",
                 demoLink: "./public/Day-80/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Games", "MCQ"]
             },
@@ -1128,6 +1199,7 @@ class WebDev100Days {
                 description: "Fight with Tanks",
                 demoLink: "./public/Day-81/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Future", "Fortune"]
             },
@@ -1138,6 +1210,7 @@ class WebDev100Days {
                 description: "Play carrom",
                 demoLink: "./public/Day-82/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Carrom", "Fun"]
             },
@@ -1148,6 +1221,7 @@ class WebDev100Days {
                 description: "Play Pong",
                 demoLink: "./public/Day-83/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Future", "Fortune"]
             },
@@ -1158,6 +1232,7 @@ class WebDev100Days {
                 description: "Find the hidden clues",
                 demoLink: "./public/Day-84/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Hidden", "Clues"]
             },
@@ -1168,6 +1243,7 @@ class WebDev100Days {
                 description: "Play with numbers",
                 demoLink: "./public/Day-85/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Numbers"]
             },
@@ -1178,6 +1254,7 @@ class WebDev100Days {
                 description: "Kaun Banega crorepati?",
                 demoLink: "./public/Day-86/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["MCQ", "Lifelines"]
             },
@@ -1188,6 +1265,7 @@ class WebDev100Days {
                 description: "Know your Past",
                 demoLink: "./public/Day-87/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Past"]
             },
@@ -1198,6 +1276,7 @@ class WebDev100Days {
                 description: "Play Tetris",
                 demoLink: "./public/Day-88/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Tetris", "Boxes"]
             },
@@ -1208,6 +1287,7 @@ class WebDev100Days {
                 description: "Slides the boxes",
                 demoLink: "./public/Day-89/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Slide", "Solve"]
             },
@@ -1218,6 +1298,7 @@ class WebDev100Days {
                 description: "Aim the target",
                 demoLink: "./public/Day-61/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Slide", "Solve"]
             },
@@ -1229,6 +1310,7 @@ class WebDev100Days {
                 description: "Play with Bird",
                 demoLink: "./public/flappy-bird/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Bird", "Score", "Hard"]
             },
@@ -1241,6 +1323,7 @@ class WebDev100Days {
                 description: "Enjoy your first Drink ",
                 demoLink: "./public/Fanta-Website/index.html",
                 category: "creativity",
+                domain: "modern-ui",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Fanta", "Coldrink", "Animation"]
             },
@@ -1250,6 +1333,7 @@ class WebDev100Days {
                 description: "Simple Homely Tasty Meals ",
                 demoLink: "./public/Ruchii-Tiffin/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["food", "meals", "creativity"]
             },
@@ -1261,6 +1345,7 @@ class WebDev100Days {
                 description: "Generate Product Invoice",
                 demoLink: "./public/Invoice-Builder/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Invoice", "Product Invoice ", "Invoice Generator"]
             },
@@ -1271,6 +1356,7 @@ class WebDev100Days {
                 description: "Your Only Gym",
                 demoLink: "./public/Gym-Website/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Gym", "Weight", "Fitness"]
             },
@@ -1281,6 +1367,7 @@ class WebDev100Days {
                 description: "Engaging bubble popping game where players clear groups of matching bubbles under a timer with increasing difficulty and score multipliers.",
                 demoLink: "./public/Bubble_Pop/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Dynamic 8x8 bubble grid", "group matching and popping", "multi-levels with timer", "score tracking", "light/dark mode", "responsive design", "keyboard accessible", "animations", "sound effects"]
             },
@@ -1307,6 +1394,7 @@ class WebDev100Days {
                 description: "Fast-paced memory game where players repeat flashing grid patterns that get progressively harder with each level.",
                 demoLink: "./public/Memory_Grid_Rush/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: [
                     "Dynamic grid scaling, pattern generation & replay, dark/light mode, score & level tracking, keyboard accessibility, animated feedback, and replay option."
@@ -1319,6 +1407,7 @@ class WebDev100Days {
                 description: "Your Only Gym",
                 demoLink: "./public/Gym-Website/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Gym", "Weight", "Fitness"]
             },
@@ -1342,6 +1431,7 @@ class WebDev100Days {
                 description: "Play the Drum",
                 demoLink: "./public/Drum-Kit/index.html",
                 category: "productivity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Music", "Drum"]
             },
@@ -1352,6 +1442,7 @@ class WebDev100Days {
                 description: "Fast-paced memory game where players repeat flashing grid patterns that get progressively harder with each level.",
                 demoLink: "./public/Memory_Grid_Rush/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: [
                     "Dynamic grid scaling, pattern generation & replay, dark/light mode, score & level tracking, keyboard accessibility, animated feedback, and replay option."
@@ -1364,6 +1455,7 @@ class WebDev100Days {
                 description: "Firt Cut Free",
                 demoLink: "./public/Salon-Website/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["salon", "cutting", "glow up"]
             },
@@ -1373,6 +1465,7 @@ class WebDev100Days {
                 description: "Showcase your agency",
                 demoLink: "./public/Agency-Website/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["agency", "showcase", "portfolio"]
             },
@@ -1384,6 +1477,7 @@ class WebDev100Days {
                 description: "A website for showcasing RAM products",
                 demoLink: "./public/RAM-Website/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["RAM", "Computer", "Website"]
             },
@@ -1394,6 +1488,7 @@ class WebDev100Days {
                 description: "A website for showcasing Lagunitas products",
                 demoLink: "./public/Lagunitas-Website/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Lagunitas", "Beer", "Website"]
             },
@@ -1405,6 +1500,7 @@ class WebDev100Days {
                 description: "A website for showcasing pirate-themed products",
                 demoLink: "./public/Pirates-Website/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Pirate", "Website", "Showcase"]
             },
@@ -1415,6 +1511,7 @@ class WebDev100Days {
                 description: "A website for showcasing Christmas lights",
                 demoLink: "./public/Christmas-Website/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Christmas", "Lights", "Website"]
             },
@@ -1424,6 +1521,7 @@ class WebDev100Days {
                 description: "Play truth & dare with friends",
                 demoLink: "./public/Day-150/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Truth", "Dare", "Fun"]
             },
@@ -1433,6 +1531,7 @@ class WebDev100Days {
                 description: "A website for your Travel Bucket List",
                 demoLink: "./public/Day-151/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Travel", "List", "Planning"]
             },
@@ -1442,6 +1541,7 @@ class WebDev100Days {
                 description: "A website for Lost & Found products",
                 demoLink: "./public/Day-152/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Items", "Lost", "Found"]
             },
@@ -1451,6 +1551,7 @@ class WebDev100Days {
                 description: "A website which helps you in finding your favorait Recipes",
                 demoLink: "./public/Day-153/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Recipes"]
             },
@@ -1460,6 +1561,7 @@ class WebDev100Days {
                 description: "Beaware from Cars",
                 demoLink: "./public/Day-154/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Car", "Road"]
             },
@@ -1469,6 +1571,7 @@ class WebDev100Days {
                 description: "A website for Browser-Based Survival Game",
                 demoLink: "./public/Day-155/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Cards", "survival"]
             },
@@ -1478,6 +1581,7 @@ class WebDev100Days {
                 description: "Match the 3 numbers",
                 demoLink: "./public/Day-156/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Numbers"]
             },
@@ -1487,6 +1591,7 @@ class WebDev100Days {
                 description: "A website where you hide your message",
                 demoLink: "./public/Day-157/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Message", "Vault", "Time"]
             },
@@ -1496,6 +1601,7 @@ class WebDev100Days {
                 description: "Puzzle Game",
                 demoLink: "./public/Day-158/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Game"]
             },
@@ -1505,6 +1611,7 @@ class WebDev100Days {
                 description: "Build the Lighthouse",
                 demoLink: "./public/Day-159/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Lighthouse", "Building"]
             },
@@ -1514,6 +1621,7 @@ class WebDev100Days {
                 description: "Car Racing game",
                 demoLink: "./public/Day-160/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Racing"]
             },
@@ -1523,6 +1631,7 @@ class WebDev100Days {
                 description: "Bust the Baloon",
                 demoLink: "./public/Day-161/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Baloon"]
             },
@@ -1532,6 +1641,7 @@ class WebDev100Days {
                 description: "A Hacker themed Website",
                 demoLink: "./public/Day-162/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Website"]
             },
@@ -1541,6 +1651,7 @@ class WebDev100Days {
                 description: "Generate Stories",
                 demoLink: "./public/Day-163/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Stories"]
             },
@@ -1550,6 +1661,7 @@ class WebDev100Days {
                 description: "Translate Alien Language",
                 demoLink: "./public/Day-164/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Translator"]
             },
@@ -1559,6 +1671,7 @@ class WebDev100Days {
                 description: "Chrome Dino Game",
                 demoLink: "./public/Day-165/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Dino"]
             },
@@ -1568,6 +1681,7 @@ class WebDev100Days {
                 description: "Past Life Finder website",
                 demoLink: "./public/Day-166/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Website"]
             },
@@ -1590,6 +1704,7 @@ class WebDev100Days {
                 description: "Challenging reaction game where players quickly identify and click the correct shape and color among multiple targets with increasing levels and timed responses.",
                 demoLink: "./public/Reaction_Time_Test_2.0/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Multiple colorful shapes display", "timed reaction tracking", "progressive levels", "scoring system", "light/dark mode", "responsive layout", "keyboard accessibility", "animations", "sound effects"]
             },
@@ -1599,6 +1714,7 @@ class WebDev100Days {
                 description: "A website for saving animals",
                 demoLink: "./public/Save-Animals-Website/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Animal", "Save", "Website"]
             },
@@ -1608,6 +1724,7 @@ class WebDev100Days {
                 description: "A website for showcasing a zombie shooter game",
                 demoLink: "./public/Zombie-Shooter-Game/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Zombie", "Shooter", "Game"]
             },
@@ -1617,6 +1734,7 @@ class WebDev100Days {
                 description: "A classic word-guessing game where players try to guess a hidden word by suggesting letters within a certain number of guesses.",
                 demoLink: "./public/HangmanGame/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["HangMan", "Game", "Word Guessing"]
             },
@@ -1626,6 +1744,7 @@ class WebDev100Days {
                 description: "A website for booking movie seats",
                 demoLink: "./public/MovieSeatBooking/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Movie", "Seat", "Booking"]
             },
@@ -1635,6 +1754,7 @@ class WebDev100Days {
                 description: "Discord UI Clone ",
                 demoLink: "./public/Discord-Clone/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Chat", "UI", "Channels"]
             },
@@ -1644,6 +1764,7 @@ class WebDev100Days {
                 description: "Play with cups",
                 demoLink: "./public/Day-167/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Cups", "Ball"]
             },
@@ -1653,6 +1774,7 @@ class WebDev100Days {
                 description: "Play BINGO",
                 demoLink: "./public/Day-168/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["BINGO"]
             },
@@ -1662,6 +1784,7 @@ class WebDev100Days {
                 description: "Spin the wheel",
                 demoLink: "./public/Day-169/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Wheel", "Luck"]
             },
@@ -1671,6 +1794,7 @@ class WebDev100Days {
                 description: "Aim the target",
                 demoLink: "./public/Day-170/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Shoot", "Aim"]
             },
@@ -1680,6 +1804,7 @@ class WebDev100Days {
                 description: "A website for Car Racing Game",
                 demoLink: "./public/Day-171/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Car", "Race"]
             },
@@ -1689,6 +1814,7 @@ class WebDev100Days {
                 description: "A website for Tattoo Designer",
                 demoLink: "./public/Day-172/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Tattoo", "Designer"]
             },
@@ -1698,6 +1824,7 @@ class WebDev100Days {
                 description: "A website for Signature Maker",
                 demoLink: "./public/Day-173/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Signature"]
             },
@@ -1707,6 +1834,7 @@ class WebDev100Days {
                 description: "A website for Car rent",
                 demoLink: "./public/Day-174/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Cars", "Rent"]
             },
@@ -1716,6 +1844,7 @@ class WebDev100Days {
                 description: "A website for Admin Dashboard",
                 demoLink: "./public/Day-175/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Dashboard"]
             },
@@ -1725,6 +1854,7 @@ class WebDev100Days {
                 description: "A website for Browser-Based Treasure Hunt Game",
                 demoLink: "./public/Day-176/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Treasure Hunt"]
             },
@@ -1734,6 +1864,7 @@ class WebDev100Days {
                 description: "A website for Rubik Cube solve",
                 demoLink: "./public/Day-177/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Rubik Cube"]
             },
@@ -1743,6 +1874,7 @@ class WebDev100Days {
                 description: "A website for Rocket Fighting Games",
                 demoLink: "./public/Day-178/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Rocket", "Fighting"]
             },
@@ -1752,6 +1884,7 @@ class WebDev100Days {
                 description: "Play Basketball Game",
                 demoLink: "./public/Day-179/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Basketball"]
             },
@@ -1761,6 +1894,7 @@ class WebDev100Days {
                 description: "A Blocks Smash Game",
                 demoLink: "./public/Day-180/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Blocks", "Smash"]
             },
@@ -1770,6 +1904,7 @@ class WebDev100Days {
                 description: "A Temple run type game",
                 demoLink: "./public/Day-181/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Run"]
             },
@@ -1781,6 +1916,7 @@ class WebDev100Days {
                 description: "A website for showcasing yoga classes",
                 demoLink: "./public/Yoga-Website/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Yoga", "Website", "Showcase"]
 
@@ -1800,6 +1936,7 @@ class WebDev100Days {
                 description: "A website for online pharmacy services",
                 demoLink: "./public/TATA-1mg-Clone/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Online Pharmacy", "Health", "Wellness"]
 
@@ -1810,6 +1947,7 @@ class WebDev100Days {
                 description: "A website for showcasing jewellery products",
                 demoLink: "./public/Jwellery-Website/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Jewellery", "Website", "Showcase"]
             },
@@ -1819,6 +1957,7 @@ class WebDev100Days {
                 description: "Myntra Clone",
                 demoLink: "./public/Day-182/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Myntra Clone", "Website"]
             },
@@ -1828,6 +1967,7 @@ class WebDev100Days {
                 description: "8 Ball Pool game",
                 demoLink: "./public/Day-183/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["8 Ball"]
             },
@@ -1837,6 +1977,7 @@ class WebDev100Days {
                 description: "Aim the board",
                 demoLink: "./public/Day-184/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Dart", "Aim"]
             },
@@ -1846,6 +1987,7 @@ class WebDev100Days {
                 description: "Shooting Game",
                 demoLink: "./public/Day-185/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Gun"]
             },
@@ -1855,6 +1997,7 @@ class WebDev100Days {
                 description: "A website for showcasing Watches",
                 demoLink: "./public/Day-186/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Watches", "Website", "Showcase"]
             },
@@ -1864,6 +2007,7 @@ class WebDev100Days {
                 description: "A website for showcasing Coffee",
                 demoLink: "./public/Day-187/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Coffee", "Website"]
             },
@@ -1873,6 +2017,7 @@ class WebDev100Days {
                 description: "A Dashboard for Social Media",
                 demoLink: "./public/Day-188/index.html",
                 category: "creativity",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Dashboard", "Social Media"]
             },
@@ -1882,6 +2027,7 @@ class WebDev100Days {
                 description: "Shoot The Bird",
                 demoLink: "./public/Day-189/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Shooting"]
             },
@@ -1891,6 +2037,7 @@ class WebDev100Days {
                 description: "Ghost Jumper Game",
                 demoLink: "./public/Day-190/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Ghost", "Jumper"]
             },
@@ -1900,6 +2047,7 @@ class WebDev100Days {
                 description: "Monkey Runner Game",
                 demoLink: "./public/Day-191/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Monkey", "Runner"]
             },
@@ -1909,6 +2057,7 @@ class WebDev100Days {
                 description: "Soldier War Game",
                 demoLink: "./public/Day-192/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["War"]
             },
@@ -1918,6 +2067,7 @@ class WebDev100Days {
                 description: "Pinball Game",
                 demoLink: "./public/Day-193/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Pinball"]
             },
@@ -1927,6 +2077,7 @@ class WebDev100Days {
                 description: "An advanced logic puzzle game where players must flip all tiles to the same color. Clicking a tile toggles its state along with adjacent tiles. The goal is achieved when the entire board is uniform in color.",
                 demoLink: "./public/Flip_Tiles_Puzzle/index.html",
                 category: "games",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: [
                     "Interactive 5x5 puzzle grid",
@@ -1944,6 +2095,7 @@ class WebDev100Days {
                 description: "A Hospital Website",
                 demoLink: "./public/Day-194/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Hospital"]
             },
@@ -1953,6 +2105,7 @@ class WebDev100Days {
                 description: "A Photography Portfolio Website",
                 demoLink: "./public/Day-195/index.html",
                 category: "utilities",
+                domain: "webdev",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Photography"]
             },
@@ -2049,6 +2202,59 @@ class WebDev100Days {
         document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
 
         this.filterProjects();
+    }
+
+    renderProjectOverview() {
+        // Show category overview cards instead of full project table on home page
+        const tableContainer = document.querySelector('.projects-table-container');
+        if (!tableContainer) return;
+
+        // Auto-categorize projects based on their properties
+        const webdevProjects = this.projects.filter(p => 
+            p.domain === 'webdev' || 
+            (!p.domain && (p.category === 'basic' || p.category === 'utilities'))
+        );
+        
+        const aimlProjects = this.projects.filter(p => 
+            p.domain === 'ai-ml' || 
+            (!p.domain && (p.technologies.some(t => t.toLowerCase().includes('api')) || 
+                          p.name.toLowerCase().includes('ai') || 
+                          p.name.toLowerCase().includes('generator') ||
+                          p.name.toLowerCase().includes('search') ||
+                          p.category === 'advanced'))
+        );
+        
+        const modernuiProjects = this.projects.filter(p => 
+            p.domain === 'modern-ui' || 
+            (!p.domain && (p.category === 'games' || 
+                          p.category === 'creativity' ||
+                          p.name.toLowerCase().includes('portfolio') ||
+                          p.name.toLowerCase().includes('animation') ||
+                          p.technologies.some(t => t.toLowerCase().includes('canvas'))))
+        );
+
+        tableContainer.innerHTML = `
+            <div class="category-overview-grid">
+                <div class="category-overview-card">
+                    <h3>Web Development</h3>
+                    <p class="project-count">${webdevProjects.length} Projects</p>
+                    <p class="category-description">HTML, CSS, JavaScript applications and utilities</p>
+                    <a href="webdev.html" class="view-projects-btn">View Projects</a>
+                </div>
+                <div class="category-overview-card">
+                    <h3>AI/ML</h3>
+                    <p class="project-count">${aimlProjects.length} Projects</p>
+                    <p class="category-description">Artificial Intelligence and Machine Learning projects</p>
+                    <a href="ai-ml.html" class="view-projects-btn">View Projects</a>
+                </div>
+                <div class="category-overview-card">
+                    <h3>Modern UI</h3>
+                    <p class="project-count">${modernuiProjects.length} Projects</p>
+                    <p class="category-description">Modern user interfaces and creative designs</p>
+                    <a href="modern-ui.html" class="view-projects-btn">View Projects</a>
+                </div>
+            </div>
+        `;
     }
 
     renderTable() {

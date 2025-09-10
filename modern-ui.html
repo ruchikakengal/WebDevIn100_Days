@@ -4,36 +4,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebDevIn_100Days</title>
+  <title>Modern UI Projects - WebDevIn_100Days</title>
 
   <!-- Favicon Setup -->
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
   <link rel="manifest" href="./site.webmanifest">
+  
   <!-- SEO Meta Tags -->
-  <meta name="description"
-    content="100 Days of Web Development — A journey through 100 fun and interactive HTML, CSS, and JS projects. Perfect for beginners to intermediate developers.">
-  <meta name="keywords" content="web development, HTML, CSS, JavaScript, projects, learning, coding, frontend">
+  <meta name="description" content="Explore Modern UI projects - Cutting-edge user interfaces with modern design patterns, animations, and contemporary web technologies.">
+  <meta name="keywords" content="modern UI, user interface, design, animations, contemporary web, UX, responsive design">
   <meta name="author" content="WebDevIn_100Days Team">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WebDevIn_100Days - 100 Days of Web Development Projects">
-  <meta property="og:description"
-    content="Build 100 unique frontend projects while learning HTML, CSS, and JavaScript. Ideal for beginners to intermediate developers.">
+  <meta property="og:title" content="Modern UI Projects - WebDevIn_100Days">
+  <meta property="og:description" content="Explore Modern UI projects - Cutting-edge user interfaces with modern design patterns and animations.">
   <meta property="og:image" content="https://i.imgur.com/3cztaa9.png">
-  <meta property="og:url" content="https://your-site.com">
+  <meta property="og:url" content="https://your-site.com/modern-ui.html">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WebDevIn_100Days - 100 Days of Web Development Projects">
-  <meta name="twitter:description"
-    content="Build 100 unique frontend projects while learning HTML, CSS, and JavaScript.">
+  <meta name="twitter:title" content="Modern UI Projects - WebDevIn_100Days">
+  <meta name="twitter:description" content="Explore Modern UI projects with cutting-edge design patterns and animations.">
   <meta name="twitter:image" content="https://i.imgur.com/3cztaa9.png">
 
   <!-- Theme Color -->
-  <meta name="theme-color" content="#6366f1">
+  <meta name="theme-color" content="#f59e0b">
 
   <!-- CSS Styles -->
   <link rel="stylesheet" href="./styles/main.css">
@@ -60,11 +58,11 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#projects" class="nav-link">All Projects</a></li>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="index.html#projects" class="nav-link">All Projects</a></li>
         <li><a href="webdev.html" class="nav-link">Web Dev</a></li>
         <li><a href="ai-ml.html" class="nav-link">AI/ML</a></li>
-        <li><a href="modern-ui.html" class="nav-link">Modern UI</a></li>
+        <li><a href="modern-ui.html" class="nav-link active">Modern UI</a></li>
         <li><a href="contributors.html" class="nav-link">Contributors</a></li>
       </ul>
 
@@ -86,119 +84,28 @@
     <!-- Mobile Navigation -->
     <div class="mobile-nav">
       <ul class="mobile-nav-links">
-        <li><a href="#home" class="mobile-nav-link">Home</a></li>
-        <li><a href="#projects" class="mobile-nav-link">All Projects</a></li>
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="index.html#projects" class="mobile-nav-link">All Projects</a></li>
         <li><a href="webdev.html" class="mobile-nav-link">Web Dev</a></li>
         <li><a href="ai-ml.html" class="mobile-nav-link">AI/ML</a></li>
-        <li><a href="modern-ui.html" class="mobile-nav-link">Modern UI</a></li>
+        <li><a href="modern-ui.html" class="mobile-nav-link active">Modern UI</a></li>
         <li><a href="contributors.html" class="mobile-nav-link">Contributors</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section id="home" class="hero-section">
-    <div class="hero-bg"></div>
-    <!-- Vanta.js Globe Background Container -->
-    <div id="vanta-bg"></div>
+  <section class="category-hero-section modernui-theme">
     <div class="container">
-      <div class="hero-content animate-fade-in">
-        <h1 class="hero-title"><span id="animated-hero-title"></span></h1>
-        <p class="hero-subtitle"><span id="animated-hero-subtitle"></span></p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 7h10v10" />
-              <path d="M7 17 17 7" />
-            </svg>
-            Explore Projects
-          </a>
-          <a href="contributors.html" class="btn btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-            Meet Contributors
-          </a>
-        </div> 
-        <br>
-         <div class="hero-actions">
-  <a href="Feedback.html" class="btn btn-primary feedback-btn">Share Your Feedback</a>
-</div>
-      </div>
-    </div>    
-  </section>
-
-  <!-- Explore by Category Section -->
-  <section id="explore-categories" class="explore-categories-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Explore by Category</h2>
-        <p class="section-subtitle">
-          Discover projects organized by technology domains and find exactly what you're looking for.
-        </p>
-      </div>
-      
-      <div class="category-cards">
-        <!-- Web Development Card -->
-        <div class="category-card webdev-card">
-          <div class="category-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="16,18 22,12 16,6"></polyline>
-              <polyline points="8,6 2,12 8,18"></polyline>
-            </svg>
-          </div>
-          <h3 class="category-title">Web Development</h3>
-          <p class="category-description">
-            Classic web projects using HTML, CSS, and JavaScript. Perfect for learning fundamentals and building interactive applications.
-          </p>
-          <div class="category-stats">
-            <span class="stat-item">100+ Projects</span>
-            <span class="stat-item">All Skill Levels</span>
-          </div>
-          <a href="webdev.html" class="category-btn">
-            <span>Explore Web Dev</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 7h10v10"></path>
-              <path d="M7 17 17 7"></path>
-            </svg>
-          </a>
+      <div class="category-hero-content">
+        <div class="category-breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>Modern UI</span>
         </div>
-
-        <!-- AI/ML Card -->
-        <div class="category-card aiml-card">
-          <div class="category-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-              <path d="M2 17l10 5 10-5"></path>
-              <path d="M2 12l10 5 10-5"></path>
-            </svg>
-          </div>
-          <h3 class="category-title">AI/ML</h3>
-          <p class="category-description">
-            Advanced projects featuring artificial intelligence, machine learning concepts, and data visualization with modern APIs.
-          </p>
-          <div class="category-stats">
-            <span class="stat-item">10+ Projects</span>
-            <span class="stat-item">Advanced Level</span>
-          </div>
-          <a href="ai-ml.html" class="category-btn">
-            <span>Explore AI/ML</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 7h10v10"></path>
-              <path d="M7 17 17 7"></path>
-            </svg>
-          </a>
-        </div>
-
-        <!-- Modern UI Card -->
-        <div class="category-card modernui-card">
-          <div class="category-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <h1 class="category-hero-title">
+          <span class="category-icon-large">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
               <rect x="9" y="9" width="6" height="6"></rect>
               <path d="M9 1v6"></path>
@@ -210,22 +117,26 @@
               <path d="M17 9h6"></path>
               <path d="M17 15h6"></path>
             </svg>
+          </span>
+          Modern UI Projects
+        </h1>
+        <p class="category-hero-subtitle">
+          Experience the future of web design with our modern UI projects. Featuring cutting-edge design patterns, 
+          smooth animations, and contemporary user experiences that push the boundaries of web development.
+        </p>
+        <div class="category-stats-hero">
+          <div class="stat-hero">
+            <span class="stat-number" id="modernui-count">0</span>
+            <span class="stat-label">Projects</span>
           </div>
-          <h3 class="category-title">Modern UI</h3>
-          <p class="category-description">
-            Cutting-edge user interfaces with modern design patterns, animations, and contemporary web technologies.
-          </p>
-          <div class="category-stats">
-            <span class="stat-item">20+ Projects</span>
-            <span class="stat-item">UI/UX Focus</span>
+          <div class="stat-hero">
+            <span class="stat-number">UI/UX</span>
+            <span class="stat-label">Focus</span>
           </div>
-          <a href="modern-ui.html" class="category-btn">
-            <span>Explore Modern UI</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 7h10v10"></path>
-              <path d="M7 17 17 7"></path>
-            </svg>
-          </a>
+          <div class="stat-hero">
+            <span class="stat-number">Modern</span>
+            <span class="stat-label">Design</span>
+          </div>
         </div>
       </div>
     </div>
@@ -237,7 +148,7 @@
       <div class="search-container">
         <div class="search-form">
           <input type="text" id="searchInput" class="search-input"
-            placeholder="Search projects by name, description, or technology...">
+            placeholder="Search modern UI projects...">
           <button id="searchButton" class="search-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -254,13 +165,11 @@
   <section id="projects" class="projects-section">
     <div class="container">
       <div class="projects-header">
-        <h2 class="projects-title">Featured Projects</h2>
+        <h2 class="projects-title">Modern UI Projects</h2>
         <p class="projects-subtitle">
-          Explore our collection of web development projects, from beginner-friendly exercises to advanced applications.
+          Discover projects showcasing modern design principles, smooth animations, and cutting-edge user interface patterns.
         </p>
       </div>
-
-      
 
       <!-- Filter Tabs -->
       <div class="filter-tabs">
@@ -289,76 +198,13 @@
         </svg>
         <h3 class="empty-title">No projects found</h3>
         <p class="empty-description">
-          Try adjusting your search criteria or browse different categories to discover our amazing projects.
+          Try adjusting your search criteria or browse different categories to discover our amazing modern UI projects.
         </p>
       </div>
 
       <!-- Pagination -->
       <div class="pagination">
         <!-- Pagination will be dynamically generated here -->
-      </div>
-    </div>
-  </section>
-
-  <!-- About the Challenge Section -->
-  <section id="about-challenge" class="about-challenge-section">
-    <div class="container">
-      <div class="about-challenge-header">
-        <h2 class="about-challenge-title">About the Challenge</h2>
-      </div>
-
-      <div class="challenge-cards">
-        <!-- Our Mission Card -->
-        <div class="challenge-card">
-          <div class="challenge-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-            </svg>
-          </div>
-          <h3 class="challenge-card-title">Our Mission</h3>
-          <p class="challenge-card-description">
-            Build 100 amazing web projects to master HTML, CSS, and JavaScript through hands-on practice and real-world
-            applications.
-          </p>
-        </div>
-
-        <!-- Skill Development Card -->
-        <div class="challenge-card">
-          <div class="challenge-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
-          <h3 class="challenge-card-title">Skill Development</h3>
-          <p class="challenge-card-description">
-            From basic to intermediate level projects, each designed to challenge and improve your web development
-            skills progressively.
-          </p>
-        </div>
-
-        <!-- Community Card -->
-        <div class="challenge-card">
-          <div class="challenge-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          </div>
-          <h3 class="challenge-card-title">Community</h3>
-          <p class="challenge-card-description">
-            Join a growing community of developers, contribute to projects, and learn together in this collaborative
-            journey.
-          </p>
-        </div>
-      </div>
-
-      <!-- Challenge Statistics -->
-      <div class="challenge-stats">
-        <h3 class="challenge-stats-title">Challenge Statistics</h3>
-        <div class="stats-grid">
-          <!-- Stats will be dynamically generated with counter animation -->
-        </div>
       </div>
     </div>
   </section>
@@ -372,9 +218,9 @@
           <path
             d="M12 2C17.523 2 22 6.477 22 12C22 13.821 21.53 15.534 20.708 17.031L22 22L16.969 20.708C15.534 21.53 13.821 22 12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2Z"
             fill="white" fill-opacity="0.95" />
-          <circle cx="8.5" cy="12" r="1.5" fill="#4A90E2" />
-          <circle cx="12" cy="12" r="1.5" fill="#4A90E2" />
-          <circle cx="15.5" cy="12" r="1.5" fill="#4A90E2" />
+          <circle cx="8.5" cy="12" r="1.5" fill="#f59e0b" />
+          <circle cx="12" cy="12" r="1.5" fill="#f59e0b" />
+          <circle cx="15.5" cy="12" r="1.5" fill="#f59e0b" />
         </svg>
         <div class="notification-pulse"></div>
       </div>
@@ -391,7 +237,7 @@
           </div>
           <div class="chat-info">
             <span class="assistant-name">Vaani</span>
-            <span class="status">AI Assistant • Online • Ready to help</span>
+            <span class="status">AI Assistant • Online • Ready to help with Modern UI</span>
           </div>
         </div>
         <button id="close-chat" class="close-button" aria-label="Close chat">
@@ -407,53 +253,51 @@
         <div class="welcome-section">
           <div class="welcome-avatar">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="10" fill="url(#welcomeGradient)" />
+              <circle cx="12" cy="12" r="10" fill="url(#modernuiGradient)" />
               <circle cx="9" cy="10" r="1.5" fill="white" />
               <circle cx="15" cy="10" r="1.5" fill="white" />
               <path d="M8 15C8 15 10 17 12 17C14 17 16 15 16 15" stroke="white" stroke-width="1.5"
                 stroke-linecap="round" />
               <defs>
-                <linearGradient id="welcomeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#4A90E2;stop-opacity:1" />
+                <linearGradient id="modernuiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
                 </linearGradient>
               </defs>
             </svg>
           </div>
           <div class="welcome-content">
-            <h3>Hi there! 👋</h3>
-            <p>I can help you explore our 100+ projects including games, utilities, creative tools, and educational
-              apps. What interests you?</p>
+            <h3>Welcome to Modern UI! ✨</h3>
+            <p>I can help you explore our modern UI projects, from sleek portfolios to innovative design patterns. Ready to discover the future of web design?</p>
           </div>
         </div>
 
         <div class="quick-actions">
-          <button class="quick-btn" data-message="games">
+          <button class="quick-btn" data-message="Show me portfolio websites">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M15,7.5V2H9V7.5L12,10.5L15,7.5M7.5,9H2V15H7.5L10.5,12L7.5,9M16.5,9L13.5,12L16.5,15H22V9H16.5M7.5,16H2V22H7.5L10.5,19L7.5,16M9,16.5V22H15V16.5L12,13.5L9,16.5Z" />
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
             </svg>
-            Show Games
+            Portfolios
           </button>
-          <button class="quick-btn" data-message="utilities">
+          <button class="quick-btn" data-message="Show me website clones">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
+              <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
             </svg>
-            Utility Apps
+            Clones
           </button>
-          <button class="quick-btn" data-message="Tell me about the projects">
+          <button class="quick-btn" data-message="Show me creative designs">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
-            All Projects
+            Creative
           </button>
         </div>
       </div>
+      
       <!-- Chat Input -->
       <div class="chat-input-container">
         <div class="input-wrapper">
-          <input type="text" id="chat-input" placeholder="Type your message..." maxlength="500"
+          <input type="text" id="chat-input" placeholder="Ask about modern UI projects..." maxlength="500"
             aria-label="Type your message">
           <button id="send-button" aria-label="Send message">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -478,12 +322,11 @@
     <div class="footer-container">
       <!-- Footer Main Content -->
       <div class="footer-main">
-        <!-- 100 Days Challenge Section -->
+        <!-- Modern UI Section -->
         <div class="footer-challenge">
-          <h3 class="footer-title">100 Days Challenge</h3>
+          <h3 class="footer-title">Modern UI Projects</h3>
           <p class="footer-description">
-            This repository contains 100 web projects from basic to intermediate using HTML, CSS, and JS. Each project
-            is designed to teach specific concepts and improve your coding skills.
+            This section contains cutting-edge UI projects showcasing modern design principles, smooth animations, and contemporary user experience patterns.
           </p>
           <div class="footer-social">
             <a href="https://github.com/ruchikakengal/100_Days_100_webprojects" class="social-link" target="_blank"
@@ -513,21 +356,20 @@
         <div class="footer-section">
           <h3 class="footer-title">Quick Links</h3>
           <ul class="footer-links">
-            <li><a href="#projects" class="footer-link">Browse Projects</a></li>
-            <li><a href="#about-challenge" class="footer-link">About Challenge</a></li>
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="webdev.html" class="footer-link">Web Dev Projects</a></li>
+            <li><a href="ai-ml.html" class="footer-link">AI/ML Projects</a></li>
             <li><a href="contributors.html" class="footer-link">Contributors</a></li>
-            <li><a href="https://github.com/ruchikakengal/100_Days_100_webprojects" class="footer-link">GitHub
-                Repository</a></li>
           </ul>
         </div>
 
         <!-- Technologies Section -->
         <div class="footer-section">
-          <h3 class="footer-title">Technologies</h3>
+          <h3 class="footer-title">Modern UI Technologies</h3>
           <div class="tech-badges">
-            <span class="tech-badge html">HTML5</span>
-            <span class="tech-badge css">CSS3</span>
-            <span class="tech-badge js">JavaScript</span>
+            <span class="tech-badge ui">Modern UI</span>
+            <span class="tech-badge ux">UX Design</span>
+            <span class="tech-badge animation">Animations</span>
             <span class="tech-badge responsive">Responsive</span>
           </div>
           <div class="footer-copyright">
@@ -538,16 +380,12 @@
   </footer>
 
   <!-- JavaScript -->
-  <script src="./scripts/app.js"></script>
+  <script src="./scripts/category-app.js" data-domain="modern-ui"></script>
   <script src="chatbot.js"></script>
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-  <script src="./scripts/hero-animation.js"></script>
-  <!-- Vanta.js for Globe Background -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
-<script>
-  // Set current year in footer
-  document.getElementById("copyYear").textContent = new Date().getFullYear();
-</script>
+  <script>
+    // Set current year in footer
+    document.getElementById("copyYear").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
