@@ -231,9 +231,8 @@
     </div>
   </section>
 
-  <!-- Search Section removed per requirements -->
-
-  <!-- Featured Projects section removed per requirements. Keep a minimal anchor for nav: -->
+  <!-- Featured Projects section removed per requirements. Keep a minimal anchor for nav and host table container: -->
+  <!-- Projects list removed from homepage per requirements -->
   <div id="projects"></div>
 
   <!-- About the Challenge Section -->
@@ -475,6 +474,23 @@
 
   <!-- JavaScript -->
   <script src="./scripts/app.js"></script>
+  <script>
+    // Support nav/category clicks to filter homepage projects by domain
+    document.addEventListener('click', function(e){
+      const link = e.target.closest('a[data-domain]');
+      if (!link) return;
+      const domain = link.getAttribute('data-domain');
+      const section = document.getElementById('projects');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      if (window.app && Array.isArray(window.app.projects)) {
+        window.app.filteredProjects = window.app.projects.filter(function(p){ return p.domain === domain; });
+        window.app.currentPage = 1;
+        window.app.renderTable();
+      }
+    });
+  </script>
   <script src="chatbot.js"></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="./scripts/hero-animation.js"></script>
