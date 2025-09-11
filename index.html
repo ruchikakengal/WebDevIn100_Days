@@ -8,8 +8,10 @@
 
   <!-- Favicon Setup -->
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
   <link rel="manifest" href="./site.webmanifest">
   <!-- SEO Meta Tags -->
   <meta name="description"
@@ -124,13 +126,13 @@
             </svg>
             Meet Contributors
           </a>
-        </div> 
+        </div>
         <br>
-         <div class="hero-actions">
-  <a href="Feedback.html" class="btn btn-primary feedback-btn">Share Your Feedback</a>
-</div>
+        <div class="hero-actions">
+          <a href="Feedback.html" class="btn btn-primary feedback-btn">Share Your Feedback</a>
+        </div>
       </div>
-    </div>    
+    </div>
   </section>
 
   <!-- Explore by Category Section -->
@@ -142,6 +144,7 @@
           Discover projects organized by technology domains and find exactly what you're looking for.
         </p>
       </div>
+
       
       <div class="category-cards">
         <!-- Web Development Card -->
@@ -194,6 +197,39 @@
             </svg>
           </a>
         </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Projects</button>
+        <button class="filter-tab" data-filter="basic">Basic</button>
+        <button class="filter-tab" data-filter="games">Games</button>
+        <button class="filter-tab" data-filter="utilities">Utilities</button>
+        <button class="filter-tab" data-filter="advanced">Advanced</button>
+        <button class="filter-tab" data-filter="education">Education</button>
+        <button class="filter-tab" data-filter="productivity">Productivity</button>
+        <button class="filter-tab" data-filter="entertainment">Entertainment</button>
+        <button class="filter-tab" data-filter="creativity">Creativity</button>
+        <button class="filter-tab" data-filter="AI/ML">AI/ML</button>
+      </div>
+
+      <!-- Projects Table -->
+      <div class="projects-table-container">
+        <!-- Table will be dynamically generated here -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state">
+        <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+        <h3 class="empty-title">No projects found</h3>
+        <p class="empty-description">
+          Try adjusting your search criteria or browse different categories to discover our amazing projects.
+        </p>
+      </div>
+
 
         <!-- Modern UI Card -->
         <div class="category-card modernui-card">
@@ -478,6 +514,7 @@
   <script src="chatbot.js"></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="./scripts/hero-animation.js"></script>
+
   <!-- Vanta.js for Globe Background -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
@@ -485,5 +522,7 @@
   // Set current year in footer
   document.getElementById("copyYear").textContent = new Date().getFullYear();
 </script>
+
 </body>
+
 </html>

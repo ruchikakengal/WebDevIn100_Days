@@ -1,63 +1,122 @@
-// picking a random number from 1 to 20
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
-let score = 20;
-let highscore = 0;
+// DOM elements
+    const themeToggle = document.getElementById('theme-toggle');
+    const againBtn = document.querySelector('.again');
+    const checkBtn = document.querySelector('.check');
+    const guessInput = document.querySelector('.guess');
+    const message = document.querySelector('.message');
+    const number = document.querySelector('.number');
+    const scoreDisplay = document.querySelector('.score');
+    const highscoreDisplay = document.querySelector('.highscore');
+    const body = document.body;
 
-// function to change the message text 
-const displayMessage = function (message) {
-  document.querySelector('.message').textContent = message;
-};
+    // Game state
+    let secretNumber = Math.trunc(Math.random() * 20) + 1;
+    let score = 20;
+    let highscore = 0;
+    let gameOver = false;
 
-// helper to disable input and button
-const disableGame = function () {
-  document.querySelector('.guess').disabled = true;
-  document.querySelector('.check').disabled = true;
-};
+    // Theme functionality
+    themeToggle.addEventListener('click', function() {
+      body.classList.toggle('light-theme');
+      if (body.classList.contains('light-theme')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+    });
 
-// when we click the Check button
-document.querySelector('.check').addEventListener('click', function () {
-  const guess = Number(document.querySelector('.guess').value);
-  console.log(guess, typeof guess); 
-
-  if (!guess) {
-    displayMessage('⛔️ No number!');
-  } else if (guess === secretNumber) {
-    displayMessage('🎉 You guessed the correct number! Click "Again!" to play.');
-    document.querySelector('.message').style.fontSize = '20px';
-    document.querySelector('.number').textContent = secretNumber;
-    document.querySelector('body').style.backgroundColor = '#60b347';
-    document.querySelector('.number').style.width = '480px';
-
-    if (score > highscore) {
-      highscore = score;
-      document.querySelector('.highscore').textContent = highscore;
+    // Game functionality
+    function displayMessage(msg) {
+      message.textContent = msg;
     }
 
-    disableGame(); // disable after correct guess
-  } else {
-    if (score > 1) {
-      displayMessage(guess > secretNumber ? '📈 Too high!' : '📉 Too low!');
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      displayMessage('💥 You lost the game!');
-      document.querySelector('.score').textContent = 0;
+    function createConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear forwards`;
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        document.body.appendChild(confetti);
+        
+        // Remove confetti after animation completes
+        setTimeout(() => {
+          confetti.remove();
+        }, 5000);
+      }
     }
-  }
-});
 
-// to restart the game
-document.querySelector('.again').addEventListener('click', function () {
-  score = 20;
-  secretNumber = Math.trunc(Math.random() * 20) + 1;
+    checkBtn.addEventListener('click', function() {
+      if (gameOver) return;
+      
+      const guess = Number(guessInput.value);
+      
+      // No input
+      if (!guess) {
+        displayMessage('⛔ No number!');
+        return;
+      }
+      
+      // Wrong guess
+      if (guess !== secretNumber) {
+        if (score > 1) {
+          displayMessage(guess > secretNumber ? '📈 Too high!' : '📉 Too low!');
+          score--;
+          scoreDisplay.textContent = score;
+        } else {
+          displayMessage('💥 You lost the game!');
+          scoreDisplay.textContent = '0';
+          gameOver = true;
+          number.textContent = secretNumber;
+          number.style.background = '#e74c3c';
+        }
+        return;
+      }
+      
+      // Correct guess
+      displayMessage('🎉 Correct Number!');
+      number.textContent = secretNumber;
+      number.style.background = '#2ecc71';
+      document.body.style.background = body.classList.contains('light-theme') ? '#d4f7d4' : '#1a472a';
+      
+      // Create confetti effect
+      createConfetti();
+      
+      // Highscore update
+      if (score > highscore) {
+        highscore = score;
+        highscoreDisplay.textContent = highscore;
+      }
+      
+      gameOver = true;
+    });
 
-  displayMessage('Start guessing...');
-  document.querySelector('.score').textContent = score;
-  document.querySelector('.number').textContent = '?';
-  document.querySelector('.guess').value = '';
+    againBtn.addEventListener('click', function() {
+      // Reset game state
+      score = 20;
+      secretNumber = Math.trunc(Math.random() * 20) + 1;
+      gameOver = false;
+      
+      // Reset displays
+      displayMessage('Start guessing...');
+      scoreDisplay.textContent = score;
+      number.textContent = '?';
+      guessInput.value = '';
+      
+      // Reset styles
+      number.style.background = '';
+      document.body.style.background = body.classList.contains('light-theme') ? '#f0f8ff' : '#1a1a2e';
+    });
 
-  document.querySelector('body').style.backgroundColor = '#222';
-  document.querySelector('.number').style.width = '240px';
-  document.querySelector('.guess').disabled = false;
-  document.querySelector('.check').disabled = false;
-});
+    // Allow pressing Enter to submit guess
+    guessInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        checkBtn.click();
+      }
+    });
+
+    // Focus on input when page loads
+    window.addEventListener('load', function() {
+      guessInput.focus();
+    });

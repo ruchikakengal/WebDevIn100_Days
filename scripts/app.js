@@ -2120,6 +2120,15 @@ class WebDev100Days {
             },
             {
                 originalDay: 168,
+                name: "AI Doc Studio",
+                description: "Summerize your Docs",
+                demoLink: "./public/Day-200/index.html",
+                category: "AI/ML",
+                technologies: ["HTML", "CSS", "Javascript", "Python"],
+                features: ["Summerizer","Txt","Doc","Pdf"]
+            },
+            {
+                originalDay: 169,
                 name: "Colour Blindness Simulator",
                 description:"Understand color blindness effects with real-time simulation",
                 demoLink: "./public/Day-197/index.html",
@@ -2127,7 +2136,34 @@ class WebDev100Days {
                 technologies: ["HTML", "CSS", "Javascript"],
                 features:["Simulation", "Interactive","Awareness"]
             },
+          {
+           originalDay: 170,
+               name: "Testimonial Carousel",
+               description: "An interactive testimonial carousel with auto-slide, navigation buttons, and a grid of student reviews.",
+               demoLink: "./public/TestimonialCarousel/index.html",
+               category: "components",
+               technologies: ["HTML", "CSS", "JavaScript"],
+               features: [
+                 "Auto-sliding testimonial carousel",
+                 "Previous/Next navigation buttons",
+                 "Interactive dots for quick navigation",
+                 "Dynamic testimonial grid with 12 student reviews",
+                 "Responsive design with hover effects",
+                 "Custom styled cards with profile photos and reviews"
+                         ]
+          },
 
+
+            {
+                originalDay: 171,
+                name: "Online Lie Detector",
+                description: "Detect truth or lie based on user inputs with interactive analysis",
+                demoLink: "./public/day171-online-lie-detector/project.html",
+                category: "games",
+                technologies: ["HTML", "CSS", "JavaScript"],
+                features: ["User interaction", "Fun project", "Basic simulation"]
+
+            }
         ];
 
         this.projects = projectsData.map((project, index) => ({

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Lie Detector 😅</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f590f4, #f1daf3);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Poppins", sans-serif;
+    }
+    .detector-card {
+      border-radius: 20px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+      background: white;
+      padding: 30px;
+      text-align: center;
+    }
+    .result {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 20px;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.6s ease;
+    }
+    .result.show {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    .truth {
+      color: green;
+      animation: bounce 1s infinite;
+    }
+    .lie {
+      color: red;
+      animation: shake 0.8s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="detector-card">
+          <h1 class="mb-4">😂 Online Lie Detector</h1>
+          <p class="text-muted">Speak or type a sentence, and let's see truth or lie</p>
+          
+         
+          <button id="speakBtn" class="btn btn-primary btn-lg mb-3 w-100">
+            🎤 Speak Now
+          </button>
+
+          <p class="fw-bold">OR</p>
+
+          <!-- Text Input -->
+          <div class="input-group mb-3">
+            <input type="text" id="textInput" class="form-control" placeholder="Type your sentence...">
+            <button id="checkBtn" class="btn btn-success">Check</button>
+          </div>
+          
+          <p id="spokenText" class="fw-bold"></p>
+          <div id="result" class="result"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const speakBtn = document.getElementById("speakBtn");
+    const checkBtn = document.getElementById("checkBtn");
+    const textInput = document.getElementById("textInput");
+    const spokenText = document.getElementById("spokenText");
+    const result = document.getElementById("result");
+
+    
+    function showResult(sentence) {
+      spokenText.textContent = `"${sentence}"`;
+      const outcomes = ["Truth ✅", "Lie ❌"];
+      const random = outcomes[Math.floor(Math.random() * outcomes.length)];
+      
+      result.className = "result show"; // reset
+      if (random.includes("Truth")) {
+        result.textContent = random;
+        result.classList.add("truth");
+      } else {
+        result.textContent = random;
+        result.classList.add("lie");
+      }
+    }
+
+    
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = SpeechRecognition ? new SpeechRecognition() : null;
+
+    if (recognition) {
+      recognition.lang = "en-US";
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.onresult = function(event) {
+        const text = event.results[0][0].transcript;
+        showResult(text);
+      };
+
+      recognition.onerror = function() {
+        spokenText.textContent = "Oops! Could not recognize speech.";
+      };
+
+      speakBtn.addEventListener("click", () => {
+        spokenText.textContent = "Listening...";
+        result.className = "result"; // hide result
+        recognition.start();
+      });
+    } else {
+      speakBtn.disabled = true;
+      speakBtn.textContent = "Speech not supported 😢";
+    }
+
+    
+    checkBtn.addEventListener("click", () => {
+      const text = textInput.value.trim();
+      if (text) {
+        showResult(text);
+      } else {
+        spokenText.textContent = "⚠️ Please type something first.";
+        result.className = "result"; // hide result
+      }
+    });
+
+  
+    textInput.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") checkBtn.click();
+    });
+  </script>
+</body>
+</html>
+

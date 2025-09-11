@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>AI Doc Studio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+  </div>
+
+  <!-- Particles -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 2V7.5L4.5 17H19.5L15 7.5V2H9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M6.5 17H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+        <span class="brand-text">AI Doc Studio</span>
+      </div>
+      <div class="nav-status">
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          <span class="status-text">Initializing...</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-text">Development Environment</span>
+          <div class="badge-glow"></div>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="title-line">Flask Development</span>
+          <span class="title-line gradient-text">AI Doc Summerizer</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Experience the future of Python web development with our premium Flask launcher
+        </p>
+
+        <div class="hero-actions">
+          <a href="http://127.0.0.1:5000" class="launch-button primary-button" rel="noopener noreferrer">
+            <span class="button-content">
+              <span class="button-text">Click Me</span>
+              <div class="button-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 17L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M7 7H17V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </span>
+            <div class="button-glow"></div>
+            <div class="button-ripple"></div>
+          </a>
+
+          <button class="secondary-button docs-button">
+            <span class="button-content">
+              <span class="button-text">View Docs</span>
+              <div class="button-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor"
+                    stroke-width="2" />
+                  <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" />
+                </svg>
+              </div>
+            </span>
+          </button>
+        </div>
+
+        <div class="connection-info">
+          <div class="info-item">
+            <div class="info-icon">🌐</div>
+            <span class="info-text">http://127.0.0.1:5000</span>
+          </div>
+          <div class="info-divider"></div>
+          <div class="info-item">
+            <div class="info-icon">⚡</div>
+            <span class="info-text">Hot Reload Enabled</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-controls">
+              <div class="control control-close"></div>
+              <div class="control control-minimize"></div>
+              <div class="control control-maximize"></div>
+            </div>
+            <div class="terminal-title">Flask Development Server</div>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line">
+              <span class="prompt">$</span>
+              <span class="command typing-animation">python app.py</span>
+            </div>
+            <div class="terminal-line output">
+              <span class="success">* Running on http://127.0.0.1:5000</span>
+            </div>
+            <div class="terminal-line output">
+              <span class="info">* Debug mode: on</span>
+            </div>
+            <div class="terminal-cursor"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="section-header">
+        <h2 class="section-title">Why Choose AI Doc Studio?</h2>
+        <p class="section-subtitle">Premium development experience with cutting-edge features</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon">
+            <div class="icon-bg"></div>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Lightning Fast</h3>
+          <p class="feature-description">Instant server startup with hot reload capabilities for rapid development
+            cycles</p>
+          <div class="feature-glow"></div>
+        </div>
+
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon">
+            <div class="icon-bg"></div>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2" />
+              <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="2" />
+              <path d="M21 15l-3.086-3.086a2 2 0 0 0-2.828 0L6 21" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Beautiful UI</h3>
+          <p class="feature-description">Stunning interface with smooth animations and modern design principles</p>
+          <div class="feature-glow"></div>
+        </div>
+
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon">
+            <div class="icon-bg"></div>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Secure & Reliable</h3>
+          <p class="feature-description">Built-in security features and robust error handling for production-ready apps
+          </p>
+          <div class="feature-glow"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section class="quick-start">
+      <div class="quick-start-content">
+        <div class="quick-start-text">
+          <h2 class="section-title">Get Started in Seconds</h2>
+          <p class="section-subtitle">Follow these simple steps to launch your Flask application</p>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Go to Project Folder</h4>
+                <code class="code-snippet">cd Day-200</code>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Install Dependencies</h4>
+                <code class="code-snippet">pip install -r requirements.txt</code>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Run Your App</h4>
+                <code class="code-snippet">python app.py</code>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Click the Button</h4>
+                <p>Access your app instantly</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-start-visual">
+          <div class="code-editor">
+            <div class="editor-header">
+              <div class="editor-tabs">
+                <div class="tab active" data-file="app">app.py</div>
+                <div class="tab" data-file="req">requirements.txt</div>
+              </div>
+            </div>
+
+            <!-- app.py -->
+            <div class="editor-body file-app active">
+              <div class="code-line"><span class="line-number">1</span><span class="code"><span
+                    class="keyword">from</span> <span class="module">flask</span> <span class="keyword">import</span>
+                  <span class="class">Flask</span></span></div>
+              <div class="code-line"><span class="line-number">2</span></div>
+              <div class="code-line"><span class="line-number">3</span><span class="code"><span
+                    class="variable">app</span> = <span class="class">Flask</span>(<span
+                    class="string">__name__</span>)</span></div>
+              <div class="code-line"><span class="line-number">4</span></div>
+              <div class="code-line"><span class="line-number">5</span><span class="code"><span
+                    class="decorator">@app.route</span>(<span class="string">'/'</span>)</span></div>
+              <div class="code-line"><span class="line-number">6</span><span class="code"><span
+                    class="keyword">def</span> <span class="function">hello</span>():</span></div>
+              <div class="code-line"><span class="line-number">7</span><span class="code"> <span
+                    class="keyword">return</span> <span class="string">'Hello, World!'</span></span></div>
+            </div>
+
+            <!-- requirements.txt -->
+            <div class="editor-body file-req">
+              <div class="code-line"><span class="line-number">1</span>
+                <span class="code"><span class="package">flask</span><span class="operator">&gt;=</span><span
+                    class="number">3.1.2</span></span>
+              </div>
+              <div class="code-line"><span class="line-number">2</span>
+                <span class="code"><span class="package">flask</span><span class="dash">-</span><span
+                    class="package">sqlalchemy</span><span class="operator">&gt;=</span><span
+                    class="number">3.1.1</span></span>
+              </div>
+              <div class="code-line"><span class="line-number">3</span>
+                <span class="code"><span class="package">gunicorn</span><span class="operator">&gt;=</span><span
+                    class="number">23.0.0</span></span>
+              </div>
+              <div class="code-line"><span class="line-number">4</span>
+                <span class="code"><span class="package">email</span><span class="dash">-</span><span
+                    class="package">validator</span><span class="operator">&gt;=</span><span
+                    class="number">2.3.0</span></span>
+              </div>
+              <div class="code-line"><span class="line-number">5</span>
+                <span class="code"><span class="package">psycopg2</span><span class="dash">-</span><span
+                    class="package">binary</span><span class="operator">&gt;=</span><span
+                    class="number">2.9.10</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 2V7.5L4.5 17H19.5L15 7.5V2H9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M6.5 17H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <span>AI Doc Studio</span>
+        </div>
+        <p class="footer-text">&copy; 2025 AI Doc Studio. Crafted with ❤️ for developers.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Switch active tab
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Switch editor body
+        document.querySelectorAll('.editor-body').forEach(body => body.classList.remove('active'));
+        document.querySelector('.file-' + tab.dataset.file).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+
+</html>

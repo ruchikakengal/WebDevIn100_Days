@@ -5,32 +5,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Guess My Number!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
-  <title>Guess My Number</title>
 </head>
 
 <body>
+  <button class="theme-toggle" id="theme-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+  
   <header>
     <h1>Guess My Number!</h1>
     <p class="between">(Between 1 and 20)</p>
     <button class="btn again">Again!</button>
     <div class="number">?</div>
   </header>
+  
   <main>
     <section class="left">
       <p class="guess-label">🎯 Enter your guess below</p>
-      <input type="number" class="guess" />
+      <input type="number" class="guess" min="1" max="20" />
       <button class="btn check">Check!</button>
+      <p class="hint">💡 Tip: Start with the middle number (10)</p>
     </section>
+    
     <section class="right">
       <p class="message">Start guessing...</p>
       <p class="label-score">💯 Score: <span class="score">20</span></p>
-      <p class="label-highscore">
-        🥇 Highscore: <span class="highscore">0</span>
-      </p>
+      <p class="label-highscore">🥇 Highscore: <span class="highscore">0</span></p>
     </section>
   </main>
-  <script src="script.js"></script>
+  
+  <footer>
+    <p>Guess My Number Game &copy; 2023 | Made with <i class="fas fa-heart" style="color: #e74c3c;"></i></p>
+  </footer>
+
+  <script src="script.js">
+    
+  </script>
 </body>
 
 </html>

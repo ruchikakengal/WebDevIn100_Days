@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Strength Visualizer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -12,14 +13,17 @@
         
         <div class="input-group">
             <input type="password" id="passwordInput" class="password-input" placeholder="Enter your password...">
-            <button class="toggle-password" id="togglePassword">👁️</button>
+            <button class="toggle-password" id="togglePassword">
+                <i class="fas fa-eye"></i>
+            </button>
         </div>
 
-        <div class="strength-bar">
-            <div class="strength-fill" id="strengthFill"></div>
+        <div class="strength-meter">
+            <div class="strength-bar">
+                <div class="strength-fill" id="strengthFill"></div>
+            </div>
+            <div class="strength-text" id="strengthText">Enter a password to check its strength</div>
         </div>
-
-        <div class="strength-text" id="strengthText">Enter a password to check its strength</div>
 
         <ul class="criteria-list" id="criteriaList">
             <li class="criteria-item" data-criteria="length">
@@ -87,7 +91,7 @@
         <!-- 🔼 END NEW CONTROLS -->
 
         <div class="tips">
-            <h3>💡 Password Tips</h3>
+            <h3><i class="fas fa-lightbulb"></i> Password Tips</h3>
             <ul>
                 <li>Use a mix of uppercase and lowercase letters</li>
                 <li>Include numbers and special characters</li>
@@ -98,7 +102,9 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js">
+        
+    </script>
 </body>
 </html>
 

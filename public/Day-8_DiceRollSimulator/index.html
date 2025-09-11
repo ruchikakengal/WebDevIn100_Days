@@ -4,18 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dice Roll Simulator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Dice Roll Simulator</h1>
-    <div class="dice" id="dice">
-        &#9860
+    <div class="container">
+        <header>
+            <h1>Dice Roll Simulator</h1>
+            <p class="subtitle">Click the dice or button to roll - track your results!</p>
+        </header>
+        
+        <div class="dice-container">
+            <div class="dice" id="dice">⚄</div>
+        </div>
+        
+        <div class="controls">
+            <button id="roll-button">
+                <i class="fas fa-dice"></i> Roll Dice
+            </button>
+            <button id="clear-button">
+                <i class="fas fa-trash"></i> Clear History
+            </button>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-title">Total Rolls</div>
+                <div class="stat-value" id="total-rolls">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-title">Current Roll</div>
+                <div class="stat-value" id="current-roll">-</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-title">Average</div>
+                <div class="stat-value" id="average-roll">0.0</div>
+            </div>
+        </div>
+        
+        <div class="history-container">
+            <div class="history-header">
+                <h2>Roll History</h2>
+                <span id="history-count">0 rolls</span>
+            </div>
+            <ul id="roll-history">
+                <li class="empty-history">No rolls yet. Start rolling!</li>
+            </ul>
+        </div>
     </div>
-    <button id="roll-button">Roll Dice</button>
-    <ul id="roll-history">
-        <li>Roll 1:  <span>&#9856</span></li>
-        <li>Roll 2:  <span>&#9860</span></li>
-    </ul>
+    
+    <footer>
+        <p>Dice Roll Simulator &copy; 2023 | Made with <i class="fas fa-heart" style="color: #FF416C;"></i></p>
+    </footer>
+
+    <script src="script.js">
+    
+    </script>
 </body>
 </html>
