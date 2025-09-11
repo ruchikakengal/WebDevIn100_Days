@@ -1,0 +1,138 @@
+:root {
+  --bg: #f1f2f6;
+  --text: #2d3436;
+  --box: #dfe6e9;
+  --primary: #00cec9;
+  --btn: #6c5ce7;
+  --win: #6c5ce7;
+  --lose: #d63031;
+  --draw: #0984e3;
+}
+
+body.dark {
+  --bg: #2d3436;
+  --text: #dfe6e9;
+  --box: #3d3d3d;
+  --primary: #81ecec;
+  --btn: #74b9ff;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  transition: background 0.4s ease, color 0.4s ease;
+  padding: 2rem;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.choice {
+  padding: 20px;
+  background-color: var(--box);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.choice img {
+  width: 100px;
+  height: 100px;
+}
+
+.choice:hover {
+  transform: scale(1.1);
+  background-color: var(--primary);
+}
+
+.score-board {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+.score p:first-child {
+  font-size: 2rem;
+  margin: 0;
+}
+
+#msg {
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  border-radius: 10px;
+  background-color: var(--box);
+  transition: all 0.3s ease-in-out;
+  width: fit-content;
+  animation-duration: 0.3s;
+}
+
+.pulse {
+  animation: pulseAnim 0.4s;
+}
+
+@keyframes pulseAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+button#toggle-theme {
+  margin-top: 1.5rem;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: var(--btn);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button#toggle-theme:hover {
+  background-color: var(--primary);
+}
+
+/* Existing CSS unchanged ... */
+
+button#reset-game {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #e17055;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button#reset-game:hover {
+  background-color: #d35400;
+}
+
+/* Background flash effect for winner and loser */
+.flash-win {
+  animation: flashWin 0.3s ease;
+}
+.flash-lose {
+  animation: flashLose 0.3s ease;
+}
+
+@keyframes flashWin {
+  0% { background-color: #55efc4; }
+  100% { background-color: var(--bg); }
+}
+@keyframes flashLose {
+  0% { background-color: #fab1a0; }
+  100% { background-color: var(--bg); }
+}
