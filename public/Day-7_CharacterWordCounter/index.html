@@ -3,25 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Live Text Counter</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Live Text Counter ✍️</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="wrapper">
+    <div class="header">
+      <h2><i class="fas fa-text-height"></i> Live Text Counter</h2>
+      <p>Real-time text statistics and analysis</p>
+    </div>
+
     <div class="box">
-      <h2>Live Text Counter ✍️</h2>
-
-      <textarea id="text-input" placeholder="Start typing here..."></textarea>
-
-      <div class="counts">
-        <p id="char-count">Characters: 0</p>
-        <p id="word-count">Words: 0</p>
+      <div class="text-input-container">
+        <textarea id="text-input" placeholder="Start typing here..."></textarea>
       </div>
 
-      <button id="clear-btn">Clear</button>
+      <div class="stats-container">
+        <div class="stat-box">
+          <div class="stat-title">Characters</div>
+          <div class="stat-value" id="char-count">0</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">Words</div>
+          <div class="stat-value" id="word-count">0</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">Sentences</div>
+          <div class="stat-value" id="sentence-count">0</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">Paragraphs</div>
+          <div class="stat-value" id="paragraph-count">0</div>
+        </div>
+      </div>
+
+      <div class="additional-stats">
+        <div id="reading-time">Reading time: 0 min</div>
+        <div id="character-density">Most used: -</div>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+      <div class="buttons">
+        <button id="clear-btn">
+          <i class="fas fa-trash"></i> Clear
+        </button>
+        <button id="copy-btn">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+        <button id="save-btn">
+          <i class="fas fa-save"></i> Save
+        </button>
+      </div>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js">
+  
+  </script>
 </body>
 </html>

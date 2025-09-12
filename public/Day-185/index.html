@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Gun War</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://public.codepenassets.com/js/prefixfree-1.0.7.min.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <div class="menu" v-if="displayStep === displaySteps.top">
+      <div class="label">GUN WAR</div>
+      <div class="label">Test your reflexes with this game. Just fight with the AI. Dodge its fire, or shoot it with all
+        your might.</div>
+      <div class="label">Press 'Space' key or check button to proceed.</div>
+    </div>
+    <div class="menu" v-if="displayStep === displaySteps.instructions">
+      <div class="label">INSTRUCTIONS</div>
+      <div class="link">LEFT ARROW KEY : MOVE to the LEFT direction.</div>
+      <div class="link">RIGHT ARROW KEY : MOVE to the RIGHT direction.</div>
+      <div class="link">SPACE BAR KEY : SHOOT the FIRE to the OPPONENT.</div>
+      <div class="link">You may also press these keys at the screen instead, to make an action.</div>
+      <div class="label">Press 'Space' key or check button to proceed.</div>
+    </div>
+    <div class="menu" v-if="displayStep === displaySteps.difficulty">
+      <div class="label">Select your opponent's difficulty</div>
+      <div class="label"></div>
+      <div class="link" v-for="difficulty, i in selectDifficulty" v-bind:class="{ selected : i === currentOption }">{{
+        difficulty }}</div>
+      <div class="label">Press 'Space' key or check button to select.</div>
+    </div>
+    <div class="menu" v-if="displayStep === displaySteps.score">
+      <div class="label">Select the winning score</div>
+      <div class="link" v-for="score, i in winningScore" v-bind:class="{ selected : i === currentOption }">{{ score }}
+        points</div>
+      <div class="label">Press 'Space' key or check button to select.</div>
+    </div>
+    <div class="menu" v-if="displayStep === displaySteps.start">
+      <div class="label">All set. You and your opponent will spawn into random place.</div>
+      <div class="label">Press 'Space' key or check button to start the game.</div>
+    </div>
+    <div class="screen" v-bind:style="screen" v-if="displayStep === displaySteps.play">
+      <div class="wall player" v-bind:style="wall.player"></div>
+      <div class="wall computer" v-bind:style="wall.computer"></div>
+      <div class="character player" v-bind:style="player">
+        <div class="head"></div>
+        <div class="body">
+          <div class="gun"></div>
+          <div class="handle"></div>
+          <div class="hand"></div>
+          <div class="arm"></div>
+        </div>
+        <div class="helmet"></div>
+      </div>
+      <div class="character computer" v-bind:style="computer">
+        <div class="body">
+          <div class="arm"></div>
+          <div class="handle"></div>
+          <div class="hand"></div>
+          <div class="gun"></div>
+        </div>
+        <div class="head">
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+          <div class="mouth"></div>
+        </div>
+        <div class="helmet"></div>
+      </div>
+      <div class="fire" v-bind:style="fire.style" v-for="fire in fires.Player" v-if="play === true"></div>
+      <div class="fire" v-bind:style="fire.style" v-for="fire in fires.Computer" v-if="play === true"></div>
+      <div class="score-board player">PLAYER {{ points.Player }}</div>
+      <div class="score-board computer">COMPUTER {{ points.Computer }}</div>
+    </div>
+    <div class="menu" v-if="displayStep === displaySteps.end">
+      <div class="label">GAME OVER</div>
+      <div class="label">{{ winMessage }} won the game!</div>
+      <div class="label">Press 'Space' key or check button to play again.</div>
+    </div>
+    <div class="control control-left control-select" v-bind:style="control" v-on:mouseup="mouseActionUp(keys.space)"
+      v-if="ending === false">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M17.55,11.2C17.32,10.9 17.05,10.64 16.79,10.38C16.14,9.78 15.39,9.35 14.76,8.72C13.3,7.26 13,4.85 13.91,3C13,3.23 12.16,3.75 11.46,4.32C8.92,6.4 7.92,10.07 9.12,13.22C9.16,13.32 9.2,13.42 9.2,13.55C9.2,13.77 9.05,13.97 8.85,14.05C8.63,14.15 8.39,14.09 8.21,13.93C8.15,13.88 8.11,13.83 8.06,13.76C6.96,12.33 6.78,10.28 7.53,8.64C5.89,10 5,12.3 5.14,14.47C5.18,14.97 5.24,15.47 5.41,15.97C5.55,16.57 5.81,17.17 6.13,17.7C7.17,19.43 9,20.67 10.97,20.92C13.07,21.19 15.32,20.8 16.93,19.32C18.73,17.66 19.38,15 18.43,12.72L18.3,12.46C18.1,12 17.83,11.59 17.5,11.21L17.55,11.2M14.45,17.5C14.17,17.74 13.72,18 13.37,18.1C12.27,18.5 11.17,17.94 10.5,17.28C11.69,17 12.39,16.12 12.59,15.23C12.76,14.43 12.45,13.77 12.32,13C12.2,12.26 12.22,11.63 12.5,10.94C12.67,11.32 12.87,11.7 13.1,12C13.86,13 15.05,13.44 15.3,14.8C15.34,14.94 15.36,15.08 15.36,15.23C15.39,16.05 15.04,16.95 14.44,17.5H14.45Z"
+          v-if="play === true"></path>
+        <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" v-if="play === false"></path>
+      </svg>
+    </div>
+    <div class="control control-left" v-bind:style="control"
+      v-on:mousedown="mouseActionDown((play === true) ? keys.left : keys.up)"
+      v-on:mouseup="mouseActionUp((play === true) ? keys.left : keys.up)"
+      v-on:mouseleave="mouseActionUp((play === true) ? keys.left : keys.up)"
+      v-on:touchstart="mouseActionDown((play === true) ? keys.left : null)"
+      v-on:touchend="mouseActionUp((play === true) ? keys.left : keys.up)" v-if="ending === false">
+      <svg viewBox="0 0 24 24">
+        <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" v-if="play === true"></path>
+        <path d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" v-if="play === false"></path>
+      </svg>
+    </div>
+    <div class="control control-right control-select" v-bind:style="control" v-on:mouseup="mouseActionUp(keys.space)"
+      v-if="ending === false">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M17.55,11.2C17.32,10.9 17.05,10.64 16.79,10.38C16.14,9.78 15.39,9.35 14.76,8.72C13.3,7.26 13,4.85 13.91,3C13,3.23 12.16,3.75 11.46,4.32C8.92,6.4 7.92,10.07 9.12,13.22C9.16,13.32 9.2,13.42 9.2,13.55C9.2,13.77 9.05,13.97 8.85,14.05C8.63,14.15 8.39,14.09 8.21,13.93C8.15,13.88 8.11,13.83 8.06,13.76C6.96,12.33 6.78,10.28 7.53,8.64C5.89,10 5,12.3 5.14,14.47C5.18,14.97 5.24,15.47 5.41,15.97C5.55,16.57 5.81,17.17 6.13,17.7C7.17,19.43 9,20.67 10.97,20.92C13.07,21.19 15.32,20.8 16.93,19.32C18.73,17.66 19.38,15 18.43,12.72L18.3,12.46C18.1,12 17.83,11.59 17.5,11.21L17.55,11.2M14.45,17.5C14.17,17.74 13.72,18 13.37,18.1C12.27,18.5 11.17,17.94 10.5,17.28C11.69,17 12.39,16.12 12.59,15.23C12.76,14.43 12.45,13.77 12.32,13C12.2,12.26 12.22,11.63 12.5,10.94C12.67,11.32 12.87,11.7 13.1,12C13.86,13 15.05,13.44 15.3,14.8C15.34,14.94 15.36,15.08 15.36,15.23C15.39,16.05 15.04,16.95 14.44,17.5H14.45Z"
+          v-if="play === true"></path>
+        <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" v-if="play === false"></path>
+      </svg>
+    </div>
+    <div class="control control-right" v-bind:style="control"
+      v-on:mousedown="mouseActionDown((play === true) ? keys.right : keys.down)"
+      v-on:mouseup="mouseActionUp((play === true) ? keys.right : keys.down)"
+      v-on:mouseleave="mouseActionUp((play === true) ? keys.right : keys.down)"
+      v-on:touchstart="mouseActionDown((play === true) ? keys.right : null)"
+      v-on:touchend="mouseActionUp((play === true) ? keys.right : keys.down)" v-if="ending === false">
+      <svg viewBox="0 0 24 24">
+        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" v-if="play === true"></path>
+        <path d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" v-if="play === false"></path>
+      </svg>
+    </div>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

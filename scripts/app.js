@@ -16,8 +16,10 @@ class WebDev100Days {
         this.setupScrollProgress();
         this.setupScrollToTop();
         this.setupMobileMenu();
+        this.setupVantaGlobe();
         await this.loadProjects();
         this.updateStatistics();
+        this.setupAnimatedCounters();
         this.renderTable();
     }
 
@@ -154,6 +156,218 @@ class WebDev100Days {
                     mobileNav.classList.remove('active');
                 }
             });
+        }
+    }
+
+    /**
+     * Setup animated counters with IntersectionObserver
+     * Animates numbers from 0 to target values when stats section becomes visible
+     */
+    setupAnimatedCounters() {
+        // Check if IntersectionObserver is supported
+        if (!('IntersectionObserver' in window)) {
+            // Fallback: animate immediately if IntersectionObserver not supported
+            this.animateCounters();
+            return;
+        }
+
+        // Create intersection observer to trigger animation when stats section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start animation when stats section is visible
+                    this.animateCounters();
+                    // Stop observing after animation starts to prevent re-triggering
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.3, // Trigger when 30% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // Start animation slightly before element is fully visible
+        });
+
+        // Observe the challenge stats section
+        const statsSection = document.querySelector('.challenge-stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        } else {
+            console.warn('Challenge stats section not found for counter animation');
+        }
+    }
+
+    /**
+     * Animate counter elements from 0 to their target values
+     * Uses smooth easing animation with configurable duration
+     */
+    animateCounters() {
+        const counters = document.querySelectorAll('.counter');
+        console.log(`Found ${counters.length} counter elements to animate`);
+        
+        counters.forEach((counter, index) => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds animation duration
+            const startTime = performance.now();
+            
+            console.log(`Counter ${index}: target=${target}`);
+            
+            // Skip animation for infinity symbol or invalid targets
+            if (isNaN(target) || target === Infinity) {
+                console.log(`Skipping counter ${index}: invalid target`);
+                return;
+            }
+
+            /**
+             * Animation frame function that updates counter value
+             * Uses easeOutCubic easing for smooth deceleration
+             */
+            const animate = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // EaseOutCubic easing function for smooth animation
+                const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+                const currentValue = Math.floor(easeOutCubic * target);
+                
+                counter.textContent = currentValue;
+                
+                // Continue animation if not complete
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    // Ensure final value is exactly the target
+                    counter.textContent = target;
+                    console.log(`Counter ${index} animation completed: ${target}`);
+                }
+            };
+            
+            // Start the animation
+            requestAnimationFrame(animate);
+        });
+    }
+
+    /**
+     * Setup Vanta.js Globe Background
+     * Creates an interactive 3D globe background that adapts to the site's color palette
+     * Includes fallback handling for WebGL failures and theme switching
+     */
+    setupVantaGlobe() {
+        // Only initialize on homepage
+        if (!window.location.pathname.endsWith('index.html') && window.location.pathname !== '/') {
+            return;
+        }
+
+        const vantaContainer = document.getElementById('vanta-bg');
+        if (!vantaContainer) {
+            console.warn('Vanta.js container not found');
+            return;
+        }
+
+        // Check if Vanta.js and Three.js are available
+        if (typeof VANTA === 'undefined' || typeof THREE === 'undefined') {
+            console.warn('Vanta.js or Three.js not loaded, using fallback background');
+            this.showFallbackBackground();
+            return;
+        }
+
+        try {
+            // Get current theme colors
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const primaryColor = isDark ? 0x6366f1 : 0x4f46e5; // Primary color from CSS variables
+            const secondaryColor = isDark ? 0x10b981 : 0x059669; // Secondary color from CSS variables
+
+            // Initialize Vanta.js Globe effect
+            this.vantaEffect = VANTA.GLOBE({
+                el: vantaContainer,
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: primaryColor,
+                color2: secondaryColor,
+                backgroundColor: isDark ? 0x0f172a : 0xf8fafc,
+                size: 1.20,
+                speed: 1.20
+            });
+
+            // Listen for theme changes to update globe colors
+            this.setupThemeChangeListener();
+
+        } catch (error) {
+            console.error('Failed to initialize Vanta.js globe:', error);
+            this.showFallbackBackground();
+        }
+    }
+
+    /**
+     * Setup theme change listener for Vanta.js globe
+     * Updates globe colors when user switches between light and dark themes
+     */
+    setupThemeChangeListener() {
+        // Create a MutationObserver to watch for theme changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+                    this.updateVantaTheme();
+                }
+            });
+        });
+
+        // Start observing the document element for theme changes
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+    }
+
+    /**
+     * Update Vanta.js globe colors based on current theme
+     * Destroys and recreates the effect with new colors
+     */
+    updateVantaTheme() {
+        if (!this.vantaEffect) return;
+
+        try {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const primaryColor = isDark ? 0x6366f1 : 0x4f46e5;
+            const secondaryColor = isDark ? 0x10b981 : 0x059669;
+
+            // Destroy existing effect
+            this.vantaEffect.destroy();
+
+            // Recreate with new colors
+            this.vantaEffect = VANTA.GLOBE({
+                el: document.getElementById('vanta-bg'),
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: primaryColor,
+                color2: secondaryColor,
+                backgroundColor: isDark ? 0x0f172a : 0xf8fafc,
+                size: 1.20,
+                speed: 1.20
+            });
+        } catch (error) {
+            console.error('Failed to update Vanta.js theme:', error);
+            this.showFallbackBackground();
+        }
+    }
+
+    /**
+     * Show fallback background when Vanta.js fails
+     * Ensures the site remains functional even if WebGL is not supported
+     */
+    showFallbackBackground() {
+        const vantaContainer = document.getElementById('vanta-bg');
+        if (vantaContainer) {
+            vantaContainer.style.opacity = '0';
+            vantaContainer.style.pointerEvents = 'none';
         }
     }
 
@@ -1742,48 +1956,84 @@ class WebDev100Days {
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Photography"]
             },
- 
-        {
-          originalDay: 164,
-          name: "Flip Tiles Puzzle",
-          description: "An advanced logic puzzle game where players must flip all tiles to the same color. Clicking a tile toggles its state along with adjacent tiles. The goal is achieved when the entire board is uniform in color.",
-          demoLink: "./public/Flip_Tiles_Puzzle/index.html",
-          category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-          features: [
-            "Interactive 5x5 puzzle grid",
-            "Stylish instructions before gameplay",
-            "Dark and light mode support",
-            "Responsive modern UI with animations",
-            "Reset and Start functionality",
-            "Win detection when all tiles match color",
-            "Hover effects and smooth transitions",
-            "Attractive gradients, shadows, and game-like polish"]},
-            {
-    originalDay: 167, 
-    name: "Parallax Demo",
-    description: "A smooth parallax scrolling effect demo using HTML, CSS, and JS",
-    demoLink: "./public/ParallaxScrollingDemo/index.html", 
-    category: "creativity", 
-    technologies: ["HTML", "CSS", "JavaScript"],
-    features: [
-        "Smooth scrolling effect",
-        "Multiple layers with depth",
-        "Responsive design",
-        "Interactive animations on scroll"
-    ]}
-          ,
-               {
-    originalDay: 168, 
-    name: "Typing-Speed-Test",
-    description: "A modern, interactive web app that measures typing speed, accuracy, and errors in real-time with customizable time intervals.",
-    demoLink: "./public/Typing-Speed-Test/index.html", 
-    category: "-Typing-Speed-Testing", 
-    technologies: ["HTML", "CSS", "JavaScript"],
-    features: [
-       "Random quotes, customizable timer, live WPM/CPM/accuracy tracking, and responsive modern UI."
-    ]}
- 
+             {
+        originalDay: 167,
+        name: "Recipe Finder",
+        description: "Find a Recipe using Recipe Finder with the help of API",
+        demoLink: "./public/Day-196/index.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "Javascript", "API"],
+        features: ["Recipe Finder"]
+    },
+    {
+        originalDay: 168,
+        name: "AI Doc Studio",
+        description: "Summarize your Docs",
+        demoLink: "./public/Day-200/index.html",
+        category: "AI/ML",
+        technologies: ["HTML", "CSS", "Javascript", "Python"],
+        features: ["Summarizer","Txt","Doc","Pdf"]
+    },
+    {
+        originalDay: 169,
+        name: "Colour Blindness Simulator",
+        description:"Understand color blindness effects with real-time simulation",
+        demoLink: "./public/Day-197/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "Javascript"],
+        features:["Simulation", "Interactive","Awareness"]
+    },
+    {
+        originalDay: 170,
+        name: "Testimonial Carousel",
+        description: "An interactive testimonial carousel with auto-slide, navigation buttons, and a grid of student reviews.",
+        demoLink: "./public/TestimonialCarousel/index.html",
+        category: "components",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Auto-sliding testimonial carousel",
+            "Previous/Next navigation buttons",
+            "Interactive dots for quick navigation",
+            "Dynamic testimonial grid with 12 student reviews",
+            "Responsive design with hover effects",
+            "Custom styled cards with profile photos and reviews"
+        ]
+    },
+    {
+        originalDay: 171,
+        name: "Online Lie Detector",
+        description: "Detect truth or lie based on user inputs with interactive analysis",
+        demoLink: "./public/day171-online-lie-detector/project.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["User interaction", "Fun project", "Basic simulation"]
+    },
+           {
+        originalDay: 172, 
+        name: "Parallax Demo",
+        description: "A smooth parallax scrolling effect demo using HTML, CSS, and JS",
+        demoLink: "./public/ParallaxScrollingDemo/index.html", 
+        category: "creativity", 
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Smooth scrolling effect",
+            "Multiple layers with depth",
+            "Responsive design",
+            "Interactive animations on scroll"
+        ]
+    },
+    {
+        originalDay: 173, 
+        name: "Typing-Speed-Test",
+        description: "A modern, interactive web app that measures typing speed, accuracy, and errors in real-time with customizable time intervals.",
+        demoLink: "./public/Typing-Speed-Test/index.html", 
+        category: "Typing-Speed-Testing", 
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Random quotes, customizable timer, live WPM/CPM/accuracy tracking, and responsive modern UI."
+        ]
+    },
+
         ];
 
         this.projects = projectsData.map((project, index) => ({
@@ -1803,20 +2053,20 @@ class WebDev100Days {
             this.projects.flatMap(project => project.technologies)
         )].length;
 
-        // Update stats
+        // Update stats with counter classes for animation
         statsContainer.innerHTML = `
       <h3 class="challenge-stats-title">Challenge Statistics</h3>
       <div class="stats-grid">
         <div class="stat-item">
-          <div class="stat-number">${this.projects.length}</div>
+          <div class="stat-number counter" data-target="${this.projects.length}">0</div>
           <div class="stat-label">Projects Completed</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">100</div>
+          <div class="stat-number counter" data-target="100">0</div>
           <div class="stat-label">Total Goal</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">${uniqueTechnologies}</div>
+          <div class="stat-number counter" data-target="${uniqueTechnologies}">0</div>
           <div class="stat-label">Technologies</div>
         </div>
         <div class="stat-item">

@@ -1,0 +1,264 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            transition: all 0.3s ease;
+        }
+
+        .title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 700;
+            font-size: 28px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+            border-radius: 2px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            outline: none;
+            padding-right: 50px;
+        }
+
+        .password-input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: #7f8c8d;
+            transition: color 0.3s ease;
+        }
+
+        .toggle-password:hover {
+            color: #3498db;
+        }
+
+        .strength-meter {
+            margin-bottom: 25px;
+        }
+
+        .strength-bar {
+            height: 12px;
+            background: #ecf0f1;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .strength-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 6px;
+            transition: all 0.5s ease;
+            background: linear-gradient(to right, #e74c3c, #f39c12, #2ecc71);
+        }
+
+        .strength-text {
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            color: #7f8c8d;
+            transition: color 0.3s ease;
+        }
+
+        .criteria-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .criteria-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .criteria-item.met {
+            background: rgba(46, 204, 113, 0.1);
+        }
+
+        .criteria-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .not-met {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .met {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .criteria-text {
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .score-number {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .score-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .tips {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .tips h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .tips h3 i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+
+        .tips ul {
+            list-style: none;
+        }
+
+        .tips li {
+            padding: 8px 0;
+            color: #34495e;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .tips li:last-child {
+            border-bottom: none;
+        }
+
+        .tips li::before {
+            content: '✓';
+            color: #2ecc71;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Password strength colors */
+        .very-weak { width: 20%; background: #e74c3c; }
+        .weak { width: 40%; background: #e67e22; }
+        .medium { width: 60%; background: #f1c40f; }
+        .strong { width: 80%; background: #2ecc71; }
+        .very-strong { width: 100%; background: #27ae60; }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .password-input {
+                font-size: 16px;
+                padding: 12px 15px;
+            }
+            
+            .score-number {
+                font-size: 36px;
+            }
+        }
+
+        
+        @keyframes pop {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .criteria-item.met {
+            animation: pop 0.3s ease;
+        }

@@ -1,0 +1,362 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:400,400i,700");
+body {
+  overflow: hidden;
+}
+
+#app {
+  font-family: Inconsolata, sans-serif;
+  font-size: 18px;
+  background-color: #000000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.score-board {
+  --edge-distance-x: 3.5vmin;
+  --edge-distance-y: 2.5vmin;
+  color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+}
+.score-board.player {
+  bottom: var(--edge-distance-y);
+  left: var(--edge-distance-x);
+}
+.score-board.computer {
+  top: var(--edge-distance-y);
+  right: var(--edge-distance-x);
+}
+
+.screen {
+  background-color: #59ad00;
+  background-image: url('data:image/svg+xml,%3Csvg width="100%" height="100%" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%232F2F2F" fill-opacity="0.2" fill-rule="evenodd"%3E%3Cpath d="M0 40L40 0H20L0 20M40 40V20L20 40"/%3E%3C/g%3E%3C/svg%3E');
+  background-size: 10%;
+  position: relative;
+  overflow: hidden;
+}
+
+.character {
+  --skin-color: #007041;
+  --cloth-color: #161616;
+  --gun-color: #afafaf;
+  display: flex;
+  position: absolute;
+}
+.character.player .helmet, .character.computer .helmet {
+  background-color: #ffef12;
+  width: 100%;
+  border-radius: 40% 40% 0 0/70% 70% 0 0;
+}
+.character.player .helmet:before, .character.computer .helmet:before {
+  content: "";
+  background-color: #ffcb1f;
+  width: 30%;
+  height: 80%;
+  bottom: 0;
+  left: 35%;
+}
+.character.player .helmet:after, .character.computer .helmet:after {
+  content: "";
+  background-color: #ffab0f;
+  width: 110%;
+  height: 30%;
+  bottom: 0%;
+  left: -5%;
+}
+.character.player .head, .character.computer .head {
+  background-color: var(--skin-color);
+  width: 90%;
+  height: 66.66667%;
+  overflow: hidden;
+  top: 10%;
+  left: 5%;
+  border-radius: 50%;
+}
+.character.player .body, .character.computer .body {
+  background-color: var(--cloth-color);
+  width: 100%;
+  height: 30%;
+  bottom: 0;
+  border-radius: 30% 30% 0 0/50% 50% 0 0;
+}
+.character.player .body .arm, .character.computer .body .arm {
+  background-color: var(--cloth-color);
+  width: 25%;
+  height: 70%;
+  top: 20%;
+  border-radius: 50%/30%;
+}
+.character.player .body .hand, .character.computer .body .hand {
+  background-color: var(--skin-color);
+  width: 25%;
+  height: 60%;
+  top: 10%;
+  border-radius: 40%;
+}
+.character.player .body .handle, .character.computer .body .handle {
+  background-color: var(--gun-color);
+  width: 10%;
+  height: 50%;
+  top: 40%;
+}
+.character.player .body .gun, .character.computer .body .gun {
+  background-color: var(--gun-color);
+  width: 35%;
+  height: 70%;
+  top: -20%;
+  border-radius: 50%;
+}
+.character.player .body .gun:before, .character.computer .body .gun:before {
+  content: "";
+  background-color: var(--gun-color);
+  width: 70%;
+  height: 100%;
+  top: 0%;
+}
+.character.player {
+  bottom: 0;
+}
+.character.player .helmet {
+  height: 60%;
+}
+.character.player .body .arm {
+  right: -5%;
+  transform-origin: top right;
+  transform: rotate(-35deg);
+}
+.character.player .body .hand {
+  right: -20%;
+}
+.character.player .body .handle {
+  right: -10%;
+}
+.character.player .body .gun {
+  right: -40%;
+}
+.character.player .body .gun:before {
+  right: 50%;
+  border-radius: 100% 0 0 100%/50% 0 0 50%;
+}
+.character.computer {
+  top: 0;
+}
+.character.computer .helmet {
+  height: 42%;
+}
+.character.computer .head .eye {
+  background-color: #ffffff;
+  width: 50%;
+  height: 50%;
+  top: 25%;
+  border-radius: 50%;
+}
+.character.computer .head .eye.left {
+  left: 0;
+}
+.character.computer .head .eye.right {
+  right: 0;
+}
+.character.computer .head .eye:after {
+  content: "";
+  background-color: #000000;
+  width: 50%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.character.computer .head .mouth {
+  background-color: #000000;
+  width: 50%;
+  height: 20%;
+  bottom: 5%;
+  left: 25%;
+  overflow: hidden;
+  border-radius: 50% 50% 0 0/100% 100% 0 0;
+}
+.character.computer .head .mouth:after {
+  content: "";
+  background-color: var(--skin-color);
+  width: 100%;
+  height: 50%;
+  border-radius: 50% 50% 0 0/100% 100% 0 0;
+  bottom: 0;
+}
+.character.computer .body:before {
+  content: "";
+  background-color: #ffffff;
+  width: 30%;
+  height: 100%;
+  top: 0;
+  left: 35%;
+}
+.character.computer .body:after {
+  content: "";
+  background-color: #a61e0f;
+  width: 20%;
+  height: 100%;
+  left: 40%;
+  top: 0;
+  border-radius: 50% 50% 0 0/100% 100% 0 0;
+}
+.character.computer .body .arm {
+  left: -5%;
+  transform-origin: top left;
+  transform: rotate(35deg);
+}
+.character.computer .body .hand {
+  left: -20%;
+}
+.character.computer .body .handle {
+  left: -10%;
+}
+.character.computer .body .gun {
+  left: -40%;
+}
+.character.computer .body .gun:before {
+  left: 50%;
+  border-radius: 0 100% 100% 0/0 50% 50% 0;
+}
+.character.computer .body .gun:after {
+  content: "";
+  background-color: #0f0f0f;
+  width: 70%;
+  height: 70%;
+  top: 15%;
+  left: 15%;
+  border-radius: 50%;
+}
+.character div, .character div:before, .character div:after {
+  position: absolute;
+}
+
+.fire {
+  background-image: radial-gradient(#e06c00 0 30%, #ffe019 60% 100%);
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 0.5vmin 0.5vmin #ffe019;
+  animation: fire 75ms linear infinite;
+}
+
+@keyframes fire {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.menu {
+  --text-color: #ffffff;
+  color: var(--text-color);
+  text-align: center;
+  background-color: #000000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.label {
+  width: 100%;
+  padding: 0.2em 0.4em;
+  box-sizing: border-box;
+}
+
+.link {
+  width: auto;
+  padding: 0.1em 0.4em;
+  position: relative;
+}
+.link.selected:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: solid 0.6em var(--text-color);
+  border-top: solid 0.4em transparent;
+  border-bottom: solid 0.4em transparent;
+  position: absolute;
+  left: -0.6em;
+  top: calc(50% - 0.4em);
+}
+
+.control {
+  border: solid 1px white;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0.5em;
+  opacity: 0.4;
+  transition: transform 150ms ease-out;
+}
+.control.control-left {
+  left: 0.5em;
+}
+.control.control-right {
+  right: 0.5em;
+}
+.control.control-select {
+  bottom: 1em;
+  transform: translateY(-100%);
+}
+.control svg {
+  width: 100%;
+  height: 100%;
+  fill: #ffffff;
+  vertical-align: top;
+}
+.control:active {
+  transform: scale(1.25);
+}
+.control:active.control-select {
+  transform: translateY(-100%) scale(1.25);
+}
+
+.wall {
+  background-color: #a1180b;
+  background-image: url('data:image/svg+xml,%3Csvg width="100%" height="100%" viewBox="0 0 42 44" xmlns="http://www.w3.org/2000/svg"%3E%3Cg id="Page-1" fill="none" fill-rule="evenodd"%3E%3Cg id="brick-wall" fill="%239C92AC" fill-opacity="0.6"%3E%3Cpath d="M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  width: 100%;
+  position: absolute;
+}
+.wall:before {
+  content: "";
+  background-color: #ffe852;
+  width: 100%;
+  position: absolute;
+  left: 0%;
+}
+.wall.player {
+  background-size: 10%;
+  height: 8.5vmin;
+}
+.wall.player:before {
+  height: 25%;
+  bottom: 100%;
+}
+.wall.computer {
+  background-size: 5%;
+  height: 10vmin;
+}
+.wall.computer:before {
+  height: 10%;
+  top: 0%;
+}
+.wall.computer:after {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  top: 100%;
+  left: 0%;
+}

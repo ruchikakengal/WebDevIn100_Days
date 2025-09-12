@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recipe Finder</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 id="heading">Recipe Finder</h1>
+    <p id="para">Type what to eat, get tasty recipes instantly!</p>
+
+    <div id="search-bar">
+      <input type="text" placeholder="Enter the recipe name" id="recipe-input"/>
+      <button id="search-recipe">Search Recipe</button>
+    </div>
+
+    <div id="recipe-display" class="hidden">
+      <h2 id="recipe-name"></h2>
+      <img id="recipe-img" src="" alt="Recipe Image"/>
+      <div id="ingredients"></div>
+      <div id="recipe"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>
