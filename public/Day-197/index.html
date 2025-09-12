@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Color Blindness Checker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="container">
+    <h1 id="heading">Color Blindness Checker</h1>
+    <p id="para">Get your blindness checked</p>
+
+    <p id="currentMode"><strong>Current Mode:</strong> Normal</p>
+
+    <nav>
+      <div class="vision-buttons">
+        <button onclick="applyVision('normal')" title="Normal vision">Normal</button>
+        <button onclick="applyVision('protanopia')" title="Red-blind vision">Protanopia</button>
+        <button onclick="applyVision('deuteranopia')" title="Green-blind vision">Deuteranopia</button>
+        <button onclick="applyVision('tritanopia')" title="Blue-blind vision">Tritanopia</button>
+        <button onclick="applyVision('achromatopsia')" title="Complete color blindness">Achromatopsia</button>
+        <button onclick="applyVision('reset')" title="Reset to original image">Reset</button>
+      </div>
+    </nav>
+
+    <div class="upload-section">
+      <label for="imageUpload" class="upload-label">Choose an image:</label>
+      <input type="file" id="imageUpload" accept="image/*" />
+      
+      <div id="drop-zone" class="drop-zone">
+        <p>Or drag & drop your image here</p>
+      </div>
+    </div>
+
+    <div class="toggle-section">
+      <label for="viewToggle"><strong>View:</strong></label>
+      <select id="viewToggle" onchange="toggleView(this.value)">
+        <option value="filtered">Filtered Image</option>
+        <option value="original">Original Image</option>
+        <option value="side-by-side">Side by Side</option>
+      </select>
+    </div>
+
+    <div class="preview-section">
+      <h3>Image Preview:</h3>
+
+      <img id="previewImage" src="#" alt="Filtered preview" style="display: none;" />
+
+      <img id="originalImage" src="#" alt="Original preview" style="display: none;" />
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

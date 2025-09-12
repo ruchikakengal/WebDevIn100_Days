@@ -1,0 +1,112 @@
+.card {
+    border: 1px solid var(--bs-border-color);
+    transition: box-shadow 0.15s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: var(--bs-gray-900);
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+/* File input styling */
+.form-control:focus {
+    border-color: var(--bs-info);
+    box-shadow: 0 0 0 0.2rem rgba(13, 202, 240, 0.25);
+}
+
+/* Progress bar */
+.progress {
+    height: 0.5rem;
+}
+
+/* Summary and QA text areas */
+#summaryText {
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Q&A items */
+.qa-item {
+    border-left: 3px solid var(--bs-warning);
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.qa-question {
+    font-weight: 600;
+    color: var(--bs-warning);
+    margin-bottom: 0.5rem;
+}
+
+.qa-answer {
+    background-color: var(--bs-gray-900);
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Button states */
+.btn:disabled {
+    opacity: 0.6;
+}
+
+/* Stats display */
+.h5 {
+    color: var(--bs-info);
+}
+
+/* Spinner adjustments */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Error alert */
+.alert-danger {
+    border-left: 4px solid var(--bs-danger);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    #summaryText {
+        min-height: 150px;
+    }
+}
+
+/* Animation for new content */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading states */
+.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}

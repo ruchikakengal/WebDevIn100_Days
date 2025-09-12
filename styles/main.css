@@ -1097,6 +1097,34 @@ body {
   color: var(--text-primary);
 }
 
+/* Vanta.js Globe Background Container */
+#vanta-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
+}
+
+/* Fallback background for when Vanta.js fails to load */
+#vanta-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--dark-bg-primary) 0%, var(--dark-bg-secondary) 100%);
+  z-index: -1;
+}
+
+[data-theme="light"] #vanta-bg::before {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
 .hero-bg {
   position: absolute;
   top: 0;
@@ -1606,6 +1634,39 @@ body {
   height: 1.25rem;
 }
 
+/* Challenge Card Hover Effect - Light/Dark Mode Aware */
+.challenge-card {
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Light mode hover effect for challenge cards */
+.challenge-card:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Dark mode hover effect for challenge cards */
+[data-theme="dark"] .challenge-card:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Ensure all child elements inherit the hover colors */
+.challenge-card:hover * {
+  color: inherit !important;
+}
+
+/* Smooth transition for all child elements */
+.challenge-card * {
+  transition: color 0.4s ease;
+}
+
 /* Responsive Design for Home Page */
 @media (max-width: 768px) {
   .hero-title {
@@ -1650,6 +1711,11 @@ body {
   .tech-cell,
   .features-cell {
     min-width: 120px;
+  }
+
+  /* Reduce Vanta.js opacity on mobile for better performance */
+  #vanta-bg {
+    opacity: 0.4;
   }
 }
 
