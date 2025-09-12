@@ -1772,7 +1772,17 @@ class WebDev100Days {
         "Responsive design",
         "Interactive animations on scroll"
     ]}
-          
+          ,
+               {
+    originalDay: 168, 
+    name: "Typing-Speed-Test",
+    description: "A modern, interactive web app that measures typing speed, accuracy, and errors in real-time with customizable time intervals.",
+    demoLink: "./public/Typing-Speed-Test/index.html", 
+    category: "-Typing-Speed-Testing", 
+    technologies: ["HTML", "CSS", "JavaScript"],
+    features: [
+       "Random quotes, customizable timer, live WPM/CPM/accuracy tracking, and responsive modern UI."
+    ]}
  
         ];
 
