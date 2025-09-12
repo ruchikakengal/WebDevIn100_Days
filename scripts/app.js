@@ -1956,61 +1956,84 @@ class WebDev100Days {
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Photography"]
             },
-            {
-                originalDay: 167,
-                name: "Recipe Finder",
-                description: "Find a Recipe using Recipe Finder with the help of API ",
-                demoLink: "./public/Day-196/index.html",
-                category: "utilities",
-                technologies: ["HTML", "CSS", "Javascript", "API"],
-                features: ["Recipe Finder"]
-            },
-            {
-                originalDay: 168,
-                name: "AI Doc Studio",
-                description: "Summerize your Docs",
-                demoLink: "./public/Day-200/index.html",
-                category: "AI/ML",
-                technologies: ["HTML", "CSS", "Javascript", "Python"],
-                features: ["Summerizer","Txt","Doc","Pdf"]
-            },
-            {
-                originalDay: 169,
-                name: "Colour Blindness Simulator",
-                description:"Understand color blindness effects with real-time simulation",
-                demoLink: "./public/Day-197/index.html",
-                category: "games",
-                technologies: ["HTML", "CSS", "Javascript"],
-                features:["Simulation", "Interactive","Awareness"]
-            },
-          {
-           originalDay: 170,
-               name: "Testimonial Carousel",
-               description: "An interactive testimonial carousel with auto-slide, navigation buttons, and a grid of student reviews.",
-               demoLink: "./public/TestimonialCarousel/index.html",
-               category: "components",
-               technologies: ["HTML", "CSS", "JavaScript"],
-               features: [
-                 "Auto-sliding testimonial carousel",
-                 "Previous/Next navigation buttons",
-                 "Interactive dots for quick navigation",
-                 "Dynamic testimonial grid with 12 student reviews",
-                 "Responsive design with hover effects",
-                 "Custom styled cards with profile photos and reviews"
-                         ]
-          },
+             {
+        originalDay: 167,
+        name: "Recipe Finder",
+        description: "Find a Recipe using Recipe Finder with the help of API",
+        demoLink: "./public/Day-196/index.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "Javascript", "API"],
+        features: ["Recipe Finder"]
+    },
+    {
+        originalDay: 168,
+        name: "AI Doc Studio",
+        description: "Summarize your Docs",
+        demoLink: "./public/Day-200/index.html",
+        category: "AI/ML",
+        technologies: ["HTML", "CSS", "Javascript", "Python"],
+        features: ["Summarizer","Txt","Doc","Pdf"]
+    },
+    {
+        originalDay: 169,
+        name: "Colour Blindness Simulator",
+        description:"Understand color blindness effects with real-time simulation",
+        demoLink: "./public/Day-197/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "Javascript"],
+        features:["Simulation", "Interactive","Awareness"]
+    },
+    {
+        originalDay: 170,
+        name: "Testimonial Carousel",
+        description: "An interactive testimonial carousel with auto-slide, navigation buttons, and a grid of student reviews.",
+        demoLink: "./public/TestimonialCarousel/index.html",
+        category: "components",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Auto-sliding testimonial carousel",
+            "Previous/Next navigation buttons",
+            "Interactive dots for quick navigation",
+            "Dynamic testimonial grid with 12 student reviews",
+            "Responsive design with hover effects",
+            "Custom styled cards with profile photos and reviews"
+        ]
+    },
+    {
+        originalDay: 171,
+        name: "Online Lie Detector",
+        description: "Detect truth or lie based on user inputs with interactive analysis",
+        demoLink: "./public/day171-online-lie-detector/project.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["User interaction", "Fun project", "Basic simulation"]
+    },
+           {
+        originalDay: 172, 
+        name: "Parallax Demo",
+        description: "A smooth parallax scrolling effect demo using HTML, CSS, and JS",
+        demoLink: "./public/ParallaxScrollingDemo/index.html", 
+        category: "creativity", 
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Smooth scrolling effect",
+            "Multiple layers with depth",
+            "Responsive design",
+            "Interactive animations on scroll"
+        ]
+    },
+    {
+        originalDay: 173, 
+        name: "Typing-Speed-Test",
+        description: "A modern, interactive web app that measures typing speed, accuracy, and errors in real-time with customizable time intervals.",
+        demoLink: "./public/Typing-Speed-Test/index.html", 
+        category: "Typing-Speed-Testing", 
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Random quotes, customizable timer, live WPM/CPM/accuracy tracking, and responsive modern UI."
+        ]
+    },
 
-
-            {
-                originalDay: 171,
-                name: "Online Lie Detector",
-                description: "Detect truth or lie based on user inputs with interactive analysis",
-                demoLink: "./public/day171-online-lie-detector/project.html",
-                category: "games",
-                technologies: ["HTML", "CSS", "JavaScript"],
-                features: ["User interaction", "Fun project", "Basic simulation"]
-
-            }
         ];
 
         this.projects = projectsData.map((project, index) => ({
