@@ -63,7 +63,10 @@
 
       <ul class="nav-links">
         <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#explore-categories" class="nav-link">All Projects</a></li>
+        <li><a href="webdev.html" class="nav-link">Web Dev</a></li>
+        <li><a href="ai-ml.html" class="nav-link">AI/ML</a></li>
+        <li><a href="modern-ui.html" class="nav-link">Modern UI</a></li>
         <li><a href="contributors.html" class="nav-link">Contributors</a></li>
       </ul>
 
@@ -86,7 +89,10 @@
     <div class="mobile-nav">
       <ul class="mobile-nav-links">
         <li><a href="#home" class="mobile-nav-link">Home</a></li>
-        <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+        <li><a href="#explore-categories" class="mobile-nav-link">All Projects</a></li>
+        <li><a href="webdev.html" class="mobile-nav-link">Web Dev</a></li>
+        <li><a href="ai-ml.html" class="mobile-nav-link">AI/ML</a></li>
+        <li><a href="modern-ui.html" class="mobile-nav-link">Modern UI</a></li>
         <li><a href="contributors.html" class="mobile-nav-link">Contributors</a></li>
       </ul>
     </div>
@@ -128,73 +134,112 @@
       </div>
     </div>
   </section>
-  <!-- Search Section -->
-  <section class="search-section">
+
+  <!-- Explore by Category Section -->
+  <section id="explore-categories" class="explore-categories-section">
     <div class="container">
-      <div class="search-container">
-        <div class="search-form">
-          <input type="text" id="searchInput" class="search-input"
-            placeholder="Search projects by name, description, or technology...">
-          <button id="searchButton" class="search-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8" />
-              <path d="m21 21-4.35-4.35" />
+      <div class="section-header">
+        <h2 class="section-title">Explore by Category</h2>
+        <p class="section-subtitle">
+          Discover projects organized by technology domains and find exactly what you're looking for.
+        </p>
+      </div>
+
+      
+      <div class="category-cards">
+        <!-- Web Development Card -->
+        <div class="category-card webdev-card">
+          <div class="category-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16,18 22,12 16,6"></polyline>
+              <polyline points="8,6 2,12 8,18"></polyline>
             </svg>
-          </button>
+          </div>
+          <h3 class="category-title">Web Development</h3>
+          <p class="category-description">
+            Classic web projects using HTML, CSS, and JavaScript. Perfect for learning fundamentals and building interactive applications.
+          </p>
+          <div class="category-stats">
+            <span class="stat-item">100+ Projects</span>
+            <span class="stat-item">All Skill Levels</span>
+          </div>
+          <a href="webdev.html" class="category-btn">
+            <span>Explore Web Dev</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- AI/ML Card -->
+        <div class="category-card aiml-card">
+          <div class="category-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <h3 class="category-title">AI/ML</h3>
+          <p class="category-description">
+            Advanced projects featuring artificial intelligence, machine learning concepts, and data visualization with modern APIs.
+          </p>
+          <div class="category-stats">
+            <span class="stat-item">10+ Projects</span>
+            <span class="stat-item">Advanced Level</span>
+          </div>
+          <a href="ai-ml.html" class="category-btn">
+            <span>Explore AI/ML</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
+        </div>
+
+      
+
+
+        <!-- Modern UI Card -->
+        <div class="category-card modernui-card">
+          <div class="category-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <rect x="9" y="9" width="6" height="6"></rect>
+              <path d="M9 1v6"></path>
+              <path d="M15 1v6"></path>
+              <path d="M9 17v6"></path>
+              <path d="M15 17v6"></path>
+              <path d="M1 9h6"></path>
+              <path d="M1 15h6"></path>
+              <path d="M17 9h6"></path>
+              <path d="M17 15h6"></path>
+            </svg>
+          </div>
+          <h3 class="category-title">Modern UI</h3>
+          <p class="category-description">
+            Cutting-edge user interfaces with modern design patterns, animations, and contemporary web technologies.
+          </p>
+          <div class="category-stats">
+            <span class="stat-item">20+ Projects</span>
+            <span class="stat-item">UI/UX Focus</span>
+          </div>
+          <a href="modern-ui.html" class="category-btn">
+            <span>Explore Modern UI</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="projects-section">
-    <div class="container">
-      <div class="projects-header">
-        <h2 class="projects-title">Featured Projects</h2>
-        <p class="projects-subtitle">
-          Explore our collection of web development projects, from beginner-friendly exercises to advanced applications.
-        </p>
-      </div>
-
-      <!-- Filter Tabs -->
-      <div class="filter-tabs">
-        <button class="filter-tab active" data-filter="all">All Projects</button>
-        <button class="filter-tab" data-filter="basic">Basic</button>
-        <button class="filter-tab" data-filter="games">Games</button>
-        <button class="filter-tab" data-filter="utilities">Utilities</button>
-        <button class="filter-tab" data-filter="advanced">Advanced</button>
-        <button class="filter-tab" data-filter="education">Education</button>
-        <button class="filter-tab" data-filter="productivity">Productivity</button>
-        <button class="filter-tab" data-filter="entertainment">Entertainment</button>
-        <button class="filter-tab" data-filter="creativity">Creativity</button>
-        <button class="filter-tab" data-filter="AI/ML">AI/ML</button>
-      </div>
-
-      <!-- Projects Table -->
-      <div class="projects-table-container">
-        <!-- Table will be dynamically generated here -->
-      </div>
-
-      <!-- Empty State -->
-      <div class="empty-state">
-        <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-        </svg>
-        <h3 class="empty-title">No projects found</h3>
-        <p class="empty-description">
-          Try adjusting your search criteria or browse different categories to discover our amazing projects.
-        </p>
-      </div>
-
-      <!-- Pagination -->
-      <div class="pagination">
-        <!-- Pagination will be dynamically generated here -->
-      </div>
-    </div>
-  </section>
+  <!-- Featured Projects section removed per requirements. Keep a minimal anchor for nav and host table container: -->
+  <!-- Projects list removed from homepage per requirements -->
+  <div id="projects"></div>
 
   <!-- About the Challenge Section -->
   <section id="about-challenge" class="about-challenge-section">
@@ -409,7 +454,7 @@
         <div class="footer-section">
           <h3 class="footer-title">Quick Links</h3>
           <ul class="footer-links">
-            <li><a href="#projects" class="footer-link">Browse Projects</a></li>
+            <li><a href="#explore-categories" class="footer-link">Browse Projects</a></li>
             <li><a href="#about-challenge" class="footer-link">About Challenge</a></li>
             <li><a href="contributors.html" class="footer-link">Contributors</a></li>
             <li><a href="https://github.com/ruchikakengal/100_Days_100_webprojects" class="footer-link">GitHub
@@ -435,6 +480,23 @@
 
   <!-- JavaScript -->
   <script src="./scripts/app.js"></script>
+  <script>
+    // Support nav/category clicks to filter homepage projects by domain
+    document.addEventListener('click', function(e){
+      const link = e.target.closest('a[data-domain]');
+      if (!link) return;
+      const domain = link.getAttribute('data-domain');
+      const section = document.getElementById('projects');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      if (window.app && Array.isArray(window.app.projects)) {
+        window.app.filteredProjects = window.app.projects.filter(function(p){ return p.domain === domain; });
+        window.app.currentPage = 1;
+        window.app.renderTable();
+      }
+    });
+  </script>
   <script src="chatbot.js"></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="./scripts/hero-animation.js"></script>
