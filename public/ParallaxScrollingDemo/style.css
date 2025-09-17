@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Header / Navbar */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 5%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #2a1f8f;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 28px;
+  color: white;
+}
+
+header nav {
+  display: flex;
+  gap: 20px;
+}
+
+header nav a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: 0.3s;
+  color: white;
+}
+
+header nav a.active,
+header nav a:hover {
+  background: #5247B9;
+}
+
+/* Hero */
+.home {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(to top, #D2E2FB 30%, #86A8DB);
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px; /* offset for fixed nav */
+}
+
+.home img {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.title {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 64px;
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/* Sections */
+section {
+  padding: 100px 20px;
+}
+
+.about {
+  background: #3B3291;
+  color: white;
+}
+
+.about h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* Services Section */
+.services {
+  background: linear-gradient(135deg, #6a5acd, #3b2ebf);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.services-intro {
+  font-size: 1rem;
+  margin-bottom: 40px;
+  color: #ddd;
+}
+
+.service-list {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.service-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 25px 20px;
+  width: 280px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.service-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.service-item p {
+  font-size: 0.95rem;
+  color: #eee;
+}
+
+/* Contact Section */
+.contact {
+  background: #f9f9f9;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.contact p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.contact form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.contact button {
+  background: #6a5acd;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.contact button:hover {
+  background: #5247B9;
+  transform: scale(1.05);
+}
+
+/* Scroll to top */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #5247B9;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  font-size: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  display: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 2000;
+}
+
+#scrollTopBtn:hover {
+  background: #3d2dbf;
+  transform: scale(1.1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* equal to header height */
+}
+
+/* Prevent horizontal scroll caused by parallax images */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure parallax images don’t stretch beyond viewport */
+.home img {
+  max-width: 100%;
+  height: auto;
+  left: 0;
+  right: 0;
+}

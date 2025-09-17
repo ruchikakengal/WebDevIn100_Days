@@ -1,53 +1,264 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title><b> WebDevIn_100Days Feedback</b></title>
+  <title>WebDevIn100Days Feedback</title>
   <!-- Favicon Setup -->
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
   <link rel="manifest" href="./site.webmanifest">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="Feedback_Form.css">
 </head>
 <body>
-  <section class="section">
-    <div class="container feedback-container">
-      <h2><b>WebDevIn_100Days Feedback Form</b></h2>
-      <form action="https://formsubmit.co/your-email@example.com" method="POST">
+  <div class="background-pattern"></div>
+  
+  <!-- Success Message Pop-up -->
+  <div class="success-message" id="successMessage">
+    <div class="success-content">
+      <div class="success-icon-check">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="success-text-content">
+        <h3 class="success-title">Thank you for your feedback!</h3>
+        <p class="success-text">Your response has been submitted successfully. Redirecting...</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="main-container">
+    <div class="feedback-card">
+      <!-- Header Section -->
+      <div class="form-header">
+        <div class="header-icon">
+          <i class="fas fa-comment-dots"></i>
+        </div>
+        <h1 class="form-title">Share Your Experience</h1>
+        <p class="form-subtitle">Help us improve WebDevIn100Days for future learners</p>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <!-- Form -->
+      <form action="https://formsubmit.co/your-email@example.com" method="POST" id="feedbackForm">
         
-        <label>Your Name</label>
-        <input type="text" name="name" placeholder="Enter your name" required>
+        <!-- Name Field -->
+        <div class="form-group">
+          <label class="form-label">
+            <i class="fas fa-user"></i>
+            Full Name
+          </label>
+          <div class="input-container">
+            <input type="text" name="name" placeholder="Enter your full name" required class="form-input">
+            <span class="input-focus-border"></span>
+          </div>
+        </div>
 
-        <label>How has this series improved your Web Dev skills?</label>
-        <textarea name="skill_feedback" placeholder="Your experience..." required></textarea>
+        <!-- Skills Improvement -->
+        <div class="form-group">
+          <label class="form-label">
+            <i class="fas fa-code"></i>
+            How has this series improved your Web Dev skills?
+          </label>
+          <div class="input-container">
+            <textarea name="skill_feedback" placeholder="Share your learning journey and skill improvements..." required class="form-textarea" rows="4"></textarea>
+            <span class="input-focus-border"></span>
+          </div>
+        </div>
 
-        <label>What did you feel about completing 100+ mini projects?</label>
-        <textarea name="project_feedback" placeholder="Was it helpful, overwhelming, exciting?" required></textarea>
+        <!-- Project Experience -->
+        <div class="form-group">
+          <label class="form-label">
+            <i class="fas fa-project-diagram"></i>
+            What did you feel about completing 100+ mini projects?
+          </label>
+          <div class="input-container">
+            <textarea name="project_feedback" placeholder="Was it helpful, overwhelming, exciting? Tell us about your experience..." required class="form-textarea" rows="4"></textarea>
+            <span class="input-focus-border"></span>
+          </div>
+        </div>
 
-        <label>Rate your overall experience (1–5)</label>
-        <select name="rating" required>
-          <option value="" disabled selected>Select rating</option>
-          <option>1 - Poor</option>
-          <option>2 - Fair</option>
-          <option>3 - Good</option>
-          <option>4 - Very Good</option>
-          <option>5 - Excellent</option>
-        </select>
+        <!-- Rating -->
+        <div class="form-group">
+          <label class="form-label">
+            <i class="fas fa-star"></i>
+            Rate your overall experience
+          </label>
+          <div class="rating-container">
+            <div class="star-rating" id="starRating">
+              <span class="star" data-rating="1">★</span>
+              <span class="star" data-rating="2">★</span>
+              <span class="star" data-rating="3">★</span>
+              <span class="star" data-rating="4">★</span>
+              <span class="star" data-rating="5">★</span>
+            </div>
+            <span class="rating-text" id="ratingText">Click to rate</span>
+            <input type="hidden" name="rating" id="ratingValue" required>
+          </div>
+        </div>
 
-        <label>Any suggestions or improvements?</label>
-        <textarea name="suggestions" placeholder="We value your suggestions..."></textarea>
+        <!-- Suggestions -->
+        <div class="form-group">
+          <label class="form-label">
+            <i class="fas fa-lightbulb"></i>
+            Any suggestions or improvements?
+          </label>
+          <div class="input-container">
+            <textarea name="suggestions" placeholder="Share your ideas to make this learning experience even better..." class="form-textarea" rows="3"></textarea>
+            <span class="input-focus-border"></span>
+          </div>
+        </div>
 
-        <button type="submit">Submit Feedback</button>
+        <!-- Submit Button -->
+        <div class="form-group">
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="btn-text">
+              <i class="fas fa-paper-plane"></i>
+              Submit Feedback
+            </span>
+            <div class="btn-loading">
+              <i class="fas fa-spinner fa-spin"></i>
+              Submitting...
+            </div>
+          </button>
+        </div>
 
-        <!-- Redirect to thank you page -->
+        <!-- Hidden Fields -->
         <input type="hidden" name="_next" value="thankyou.html">
         <input type="hidden" name="_captcha" value="false">
       </form>
     </div>
-  </section>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Form progress tracking
+    const form = document.getElementById('feedbackForm');
+    const progressBar = document.getElementById('progressBar');
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
+    
+    function updateProgress() {
+      let filledInputs = 0;
+      inputs.forEach(input => {
+        if (input.value.trim() !== '' || input.type === 'hidden') {
+          filledInputs++;
+        }
+      });
+      const progress = (filledInputs / inputs.length) * 100;
+      progressBar.style.width = progress + '%';
+    }
+
+    inputs.forEach(input => {
+      input.addEventListener('input', updateProgress);
+    });
+
+    // Star rating functionality
+    const stars = document.querySelectorAll('.star');
+    const ratingText = document.getElementById('ratingText');
+    const ratingValue = document.getElementById('ratingValue');
+    
+    const ratingTexts = {
+      1: 'Poor - Needs major improvements',
+      2: 'Fair - Could be better',
+      3: 'Good - Met expectations',
+      4: 'Very Good - Exceeded expectations',
+      5: 'Excellent - Outstanding experience!'
+    };
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const rating = star.getAttribute('data-rating');
+        ratingValue.value = rating;
+        ratingText.textContent = ratingTexts[rating];
+        
+        stars.forEach((s, index) => {
+          if (index < rating) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+        updateProgress();
+      });
+
+      star.addEventListener('mouseover', () => {
+        const rating = star.getAttribute('data-rating');
+        stars.forEach((s, index) => {
+          if (index < rating) {
+            s.classList.add('hover');
+          } else {
+            s.classList.remove('hover');
+          }
+        });
+      });
+    });
+
+    document.querySelector('.star-rating').addEventListener('mouseleave', () => {
+      stars.forEach(star => star.classList.remove('hover'));
+    });
+
+    // Form submission with pop-up success message
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent immediate submission
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const successMessage = document.getElementById('successMessage');
+      
+      // Show loading state
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+      
+      // Simulate form processing delay and show success message
+      setTimeout(() => {
+        // Show success message pop-up
+        successMessage.classList.add('show');
+        
+        // After showing success message, submit the form
+        setTimeout(() => {
+          // Create a temporary form to submit the data
+          const tempForm = document.createElement('form');
+          tempForm.action = form.action;
+          tempForm.method = form.method;
+          tempForm.style.display = 'none';
+          
+          // Copy all form data to temp form
+          const formData = new FormData(form);
+          formData.forEach((value, key) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = value;
+            tempForm.appendChild(input);
+          });
+          
+          // Submit the temp form
+          document.body.appendChild(tempForm);
+          tempForm.submit();
+        }, 2500); // Show success message for 2.5 seconds
+      }, 1000); // Show loading for 1 second
+    });
+
+    // Input focus animations
+    const formInputs = document.querySelectorAll('.form-input, .form-textarea');
+    formInputs.forEach(input => {
+      input.addEventListener('focus', () => {
+        input.parentElement.classList.add('focused');
+      });
+      
+      input.addEventListener('blur', () => {
+        if (input.value === '') {
+          input.parentElement.classList.remove('focused');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

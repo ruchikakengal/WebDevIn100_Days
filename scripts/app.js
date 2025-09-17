@@ -1,4 +1,4 @@
-class WebDev100Days {
+ class WebDev100Days {
     constructor() {
         this.projects = [];
         this.filteredProjects = [];
@@ -2009,6 +2009,27 @@ class WebDev100Days {
                 category: "games",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["User interaction", "Fun project", "Basic simulation"]
+
+            },
+                        {
+                originalDay: 172,          
+                name: "Typing-Speed-Test",
+                description: "Typing Speed Test having WPM, CPM accuracy and timing analysis.",
+                demoLink: "./public/Typing-Speed-Test/index.html",
+                category: "Test",
+                technologies: ["HTML", "CSS", "JavaScript"],
+                features: ["User interaction", "Fun project", "Basic simulation"]},
+                 
+            {
+                originalDay: 173,
+                name: "Parallax Demo  ",
+                description: "When you scroll down the page you will see a beautiful parallax ",
+                demoLink: "./public/ParallaxscrollingDemo/index.html",
+                category: "creativity",
+                technologies: ["HTML", "CSS", "JavaScript"],
+                features: [" It demonstrates how multiple background layers and scroll-based animations, this template uses <em>placeholder sections"]
+
+
 
             }
         ];

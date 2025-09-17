@@ -4,13 +4,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You</title>
+  <title>Thank You - WebDevIn100Days</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="Feedback_Form.css">
+  <style>
+    .thank-you-content {
+      text-align: center;
+      padding: 60px 40px;
+    }
+    
+    .success-icon {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+      animation: successPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes successPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .success-icon i {
+      font-size: 40px;
+      color: white;
+    }
+    
+    .thank-you-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .thank-you-message {
+      font-size: 18px;
+      color: #718096;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .btn-primary:hover {
+      box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+    }
+    
+    .btn-secondary:hover {
+      background: #667eea;
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .thank-you-content {
+        padding: 40px 24px;
+      }
+      
+      .thank-you-title {
+        font-size: 28px;
+      }
+      
+      .thank-you-message {
+        font-size: 16px;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="feedback-container" style="text-align:center;">
-    <h2>Thank You!</h2>
-    <p>Your response has been received successfully.</p>
+  <div class="background-pattern"></div>
+  <div class="main-container">
+    <div class="feedback-card">
+      <div class="thank-you-content">
+        <div class="success-icon">
+          <i class="fas fa-check"></i>
+        </div>
+        
+        <h1 class="thank-you-title">Thank You!</h1>
+        
+        <p class="thank-you-message">
+          Your feedback has been received successfully. We truly appreciate you taking the time to share your experience with WebDevIn100Days. Your insights help us improve and create better learning experiences for future developers.
+        </p>
+        
+        <div class="action-buttons">
+          <a href="index.html" class="btn btn-primary">
+            <i class="fas fa-home"></i>
+            Back to Home
+          </a>
+          <a href="Feedback.html" class="btn btn-secondary">
+            <i class="fas fa-plus"></i>
+            Submit Another
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>

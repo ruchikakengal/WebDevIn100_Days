@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Logo</h1>
+    <nav>
+      <a href="#" class="active" data-target="home">Home</a>
+      <a href="#" data-target="about">About</a>
+      <a href="#" data-target="services">Services</a>
+      <a href="#" data-target="contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Home / Hero -->
+  <section class="home">
+    <img src="assets/mount2.png" class="mount2">
+    <img src="assets/mount1.png" class="mount1">
+    <img src="assets/bush2.png" class="bush2">
+
+    <h1 class="title">Parallax</h1>
+
+    <img src="assets/bush1.png" class="bush1">
+    <img src="assets/leaf2.png" class="leaf2">
+    <img src="assets/leaf1.png" class="leaf1">
+  </section>
+
+  <!-- About -->
+ <section class="about">
+  <h1>About This Demo</h1>
+  <br>
+  <p>
+    This project is a <strong>Parallax Scrolling Demo Website</strong> built purely for learning and contribution purposes. 
+    It demonstrates how multiple background layers and scroll-based animations can be combined to create a dynamic, 
+    visually appealing experience.
+  </p>
+  <br>
+  <p>
+    Unlike a production-ready website, this template uses <em>placeholder sections</em> such as About, Services, and Contact. 
+    These are not functional business pages, but examples that show how a developer might structure and style them in 
+    a real-world scenario.
+  </p>
+  <br>
+  <p>
+    The purpose of this demo is to help developers, beginners, and open-source contributors understand:
+  </p>
+  <ul>
+    <li>✨ How parallax scrolling works with layered images.</li>
+    <li>🎨 How to style sections consistently across a single-page layout.</li>
+    <li>⚡ How to integrate smooth scrolling and interactive effects using JavaScript.</li>
+  </ul>
+  <br>
+  <p>
+    If you want to adapt this for an actual project, you can replace the placeholder text with real content, 
+    add more sections, or even integrate backend functionality for features like the contact form. 
+    This flexibility makes it a great <strong>starter template</strong> for creative web design.
+  </p>
+  <br>
+  <p>
+    Open-source projects like this one encourage collaboration and learning. Feel free to fork the repository, 
+    improve the design, or extend the functionality as part of your practice or contributions 🚀.
+  </p>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services">
+  <h2>Our Services</h2>
+  <p class="services-intro">These are demo services just to showcase design and layout ✨</p>
+  <div class="service-list">
+    <div class="service-item">
+      <h3>🌟 Parallax Design</h3>
+      <p>Smooth and visually engaging parallax scrolling effects.</p>
+    </div>
+    <div class="service-item">
+      <h3>⚡ Animations</h3>
+      <p>Scroll-triggered animations that bring content to life.</p>
+    </div>
+    <div class="service-item">
+      <h3>📱 Responsive Layout</h3>
+      <p>Works seamlessly across mobile, tablet, and desktop.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <p>Since this is a demo site, the form won’t send data. You can still try it out!</p>
+  <form>
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <textarea placeholder="Your Message" rows="4"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+  <!-- Scroll to top -->
+  <button id="scrollTopBtn">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

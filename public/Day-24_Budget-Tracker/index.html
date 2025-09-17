@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="favicon.png" rel="icon">
     <title>Budget Tracker</title>
     <style>
         * {
@@ -13,7 +14,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:url("pexels-photo-730564.jpeg");
             min-height: 100vh;
             padding: 20px;
         }
@@ -21,7 +22,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.79);
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
@@ -33,10 +34,7 @@
             color: #333;
             margin-bottom: 30px;
             font-size: 2.5rem;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #333;
         }
 
         .summary {
@@ -51,7 +49,7 @@
             padding: 25px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.658);
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -77,7 +75,7 @@
 
         .income { color: #10b981; }
         .expense { color: #ef4444; }
-        .balance { color: #6366f1; }
+        .balance { color: #c6f163; }
 
         .form-section {
             background: rgba(255, 255, 255, 0.7);
@@ -128,7 +126,7 @@
         }
 
         button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, black 0%, #434343 100%);
             color: white;
             border: none;
             padding: 12px 30px;
@@ -182,8 +180,11 @@
         .transaction-item {
             background: rgba(255, 255, 255, 0.9);
             padding: 15px;
+            margin-left: 10px;
+            margin-right: 10px;
             margin-bottom: 10px;
-            border-radius: 10px;
+            border-radius: 130px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -284,7 +285,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>💰 Budget Tracker</h1>
+        <h1>Budget Tracker</h1>
         
         <div class="summary">
             <div class="summary-card">
@@ -299,8 +300,10 @@
                 <h3>Balance</h3>
                 <div class="amount balance" id="balance">₹0.00</div>
             </div>
+           
         </div>
-
+        <div class="summary"> <h4><span id="comment"></span></h4></div>
+ 
         <div class="form-section">
             <h2>Add Transaction</h2>
             <form id="transactionForm">
@@ -364,6 +367,15 @@
             <div class="transaction-list" id="transactionList">
                 <div class="no-transactions">No transactions yet. Add your first transaction above!</div>
             </div>
+            <!-- <div class="summary-card" style="margin-top: 20px; text-align: center;">
+                <h1>Summary</h1>
+                
+                <br>
+                <div class="expense">
+                    Total Expense: <span id="total_expense">₹0.00</span>
+                    Total Income: <span id="total_income">₹0.00</span>
+                </div>
+            </div> -->
         </div>
     </div>
 
@@ -379,6 +391,7 @@
                 this.updateCategoryFilter();
                 this.updateSummary();
                 this.renderTransactions();
+                this.updateCost();
             }
 
             setupEventListeners() {
@@ -443,11 +456,26 @@
 
                 document.getElementById('totalIncome').textContent = `₹${income.toFixed(2)}`;
                 document.getElementById('totalExpenses').textContent = `₹${expenses.toFixed(2)}`;
+                
                 document.getElementById('balance').textContent = `₹${balance.toFixed(2)}`;
+                document.getElementById('total_income').textContent = `₹${income.toFixed(2)}`;
+                document.getElementById('total_expense').textContent = `₹${expenses.toFixed(2)}`;
+
+                if(income>expenses){
+                    document.getElementById('comment').textContent = 'Income is more than Expenses';
+                    
+                } else if(income<expenses){
+                    document.getElementById('comment').textContent = 'Expenses are more than Income';
+                    
+                }
+                else{
+                    document.getElementById('comment').textContent = 'Expenses are equal to  the Income';
+                }
                 
                 const balanceEl = document.getElementById('balance');
                 balanceEl.className = `amount ${balance >= 0 ? 'income' : 'expense'}`;
             }
+            
 
             renderTransactions() {
                 const typeFilter = document.getElementById('filterType').value;
