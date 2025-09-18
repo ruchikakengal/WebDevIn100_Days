@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BeatPulse Rhythm Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+    body, html {
+      margin: 0; padding: 0;
+      font-family: 'Orbitron', 'Arial', sans-serif;
+      background: radial-gradient(circle at 50% 10%, #0f2344 50%, #090a1c 120%);
+      overflow: hidden;
+      min-height: 100vh;
+    }
+    .overlay {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(22,30,56,0.97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+      flex-direction: column;
+      text-align: center;
+    }
+    .overlay-content {
+      color: #fff;
+      padding: 2em 3em;
+      border-radius: 18px;
+      background: linear-gradient(120deg, #283e5b 10%, #191b32 100%);
+      box-shadow: 0 0 40px #1583ff88, 0 0 8px #fff9;
+      animation: pulse-in 1s cubic-bezier(.5,1.5,.5,1) forwards;
+      user-select: none;
+    }
+    .glow {
+      text-shadow: 0 0 18px #26e0ff, 0 0 32px #31aaff;
+      font-size: 2.3em;
+      margin-bottom: 8px;
+    }
+    .glow-btn {
+      padding: 14px 38px;
+      font-size: 1.3em;
+      background: linear-gradient(90deg, #11cff0 80%, #1cc7ba 120%);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 18px #11cff0a0;
+      margin-top: 18px;
+      cursor: pointer;
+      transition: transform 0.18s;
+      animation: glowbg 1.2s infinite alternate;
+    }
+    .glow-btn:active {
+      transform: scale(0.95);
+    }
+    @keyframes glowbg {
+      0% { box-shadow: 0 0 18px #31ffea90, 0 2px 9px #31ffea40; }
+      100% { box-shadow: 0 0 38px #31ffea, 0 8px 16px #1583ff70; }
+    }
+    @keyframes pulse-in {
+      from { opacity: 0; transform: scale(.88);}
+      to { opacity: 1; transform: scale(1);}
+    }
+    .menu {
+      position: fixed;
+      left: 0; right: 0; top: 0; bottom: 0;
+      display: none;
+      z-index: 20;
+      background: rgba(24, 30, 61, 0.85);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      color: #cafaff;
+      padding: 20px;
+    }
+    .menu label {
+      font-size: 1.2em;
+      margin-right: 8px;
+    }
+    .menu select {
+      font-size: 1.1em;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: none;
+      background: #16213e;
+      color: #cafaff;
+      box-shadow: 0 0 10px #26e0ff99 inset;
+      cursor: pointer;
+    }
+    .top-info {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 22px;
+      color: #cafaff;
+      font-size: 1.2em;
+      text-shadow: 0 0 18px #26e0ff;
+      width: 90vw;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      user-select: none;
+      pointer-events: none;
+    }
+    #gameScreen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .lane-container {
+      display: flex;
+      flex-direction: row;
+      width: 90vw;
+      max-width: 600px;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 44px;
+      gap: 24px;
+      min-height: 360px;
+    }
+    .lane {
+      position: relative;
+      background: linear-gradient(180deg, #212b46 70%, #181a28 120%);
+      width: 60px;
+      min-width: 48px;
+      height: 330px;
+      border-radius: 15px;
+      border: 2px solid #20f6ffad;
+      box-shadow: 0 0 10px #20f6ff66, 0 5px 24px #12beb533;
+      overflow: hidden;
+    }
+    .glow-lane {
+      animation: laneGlow 1.8s infinite alternate;
+    }
+    @keyframes laneGlow {
+      0% { box-shadow: 0 0 10px #26e0ff66, 0 0 4px #31aaff;}
+      100% { box-shadow: 0 0 28px #82fffc99, 0 0 9px #13c0ff;}
+    }
+    .hit-bar {
+      width: 400px;
+      max-width: 90vw;
+      margin: 16px auto;
+      height: 12px;
+      background: linear-gradient(90deg, #1583ff 30%, #21ffe8 90%);
+      border-radius: 9px;
+      box-shadow: 0 0 20px #1583ff88, 0 2px 10px #1cc7ba44;
+      position: absolute;
+      left: 50%;
+      top: 325px;
+      transform: translateX(-50%);
+      z-index: 5;
+      pointer-events: none;
+    }
+    .note {
+      position: absolute;
+      width: 44px;
+      height: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, #32eafe 10%, #15afff 80%);
+      border-radius: 8px;
+      box-shadow: 0 0 18px #33e7fd90, 0 0 9px #15afffaa;
+      opacity: 0.94;
+      transition: box-shadow .2s, opacity .17s;
+      animation: noteDrop linear forwards;
+      pointer-events: none;
+    }
+    .note.hit {
+      background: linear-gradient(90deg, #3fffad 10%, #18f681 90%);
+      box-shadow: 0 0 24px #2ce942bb, 0 0 16px #11b946aa;
+      opacity: 0.7;
+      animation-play-state: paused;
+    }
+    .note.miss {
+      background: linear-gradient(90deg, #fa664d 10%, #ff1543 90%);
+      box-shadow: 0 0 10px #ff154366, 0 0 14px #fa664daa;
+      opacity: 0.6;
+      animation-play-state: paused;
+    }
+    @keyframes noteDrop {
+      0% { top: -24px;}
+      100% { top: 305px;}
+    }
+    .result {
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 2em;
+      text-shadow: 0 0 24px #31aaff, 0 0 18px #1cc7ba;
+      opacity: 0;
+      transition: opacity .35s;
+      pointer-events: none;
+      user-select: none;
+    }
+    .result.show {
+      opacity: 1;
+      animation: resultFadeOut 1.3s forwards;
+    }
+    @keyframes resultFadeOut {
+      0% { opacity: 1;}
+      80% { opacity: 1;}
+      100% { opacity: 0;}
+    }
+    /* Typed.js styles override */
+    #animated-hero-title {
+      font-size: 2.6em;
+      font-weight: 700;
+      color: #26e0ff;
+      text-shadow: 0 0 20px #31aaff, 0 0 32px #31aaff;
+      margin-bottom: 12px;
+      min-height: 3em;
+      user-select: none;
+    }
+    #animated-hero-subtitle {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #7fdfffcc;
+      text-shadow: 0 0 14px #15afffbb;
+      min-height: 3em;
+      user-select: none;
+      margin-bottom: 15px;
+    }
+    @media (max-width: 600px) {
+      .lane-container { gap: 5vw; }
+      .lane { width: 17vw; min-width: 40px; }
+      .hit-bar { width: 85vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated How To Play Overlay with Typed.js titles -->
+  <div id="introOverlay" class="overlay" role="dialog" aria-modal="true">
+    <div class="overlay-content" tabindex="0">
+      <h1 id="animated-hero-title" class="glow"></h1>
+      <p id="animated-hero-subtitle"></p>
+      <button id="startBtn" class="glow-btn">Start Game</button>
+    </div>
+  </div>
+
+  <!-- Difficulty & Song Selection Menu -->
+  <div id="menuScreen" class="menu" role="region" aria-label="Game menu">
+    <div>
+      <label for="difficulty">Difficulty:</label>
+      <select id="difficulty" aria-label="Select Difficulty">
+        <option value="easy" selected>Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+    <div>
+      <label for="song">Song:</label>
+      <select id="song" aria-label="Select Song">
+        <option value="beat.mp3" selected>Beat</option>
+        <option value="pulse.mp3">Pulse</option>
+      </select>
+    </div>
+    <button id="menuStartBtn" class="glow-btn">Play</button>
+  </div>
+
+  <!-- Main Game UI -->
+  <div id="gameScreen" role="main" aria-live="polite">
+    <audio id="bgMusic" src="" preload="auto" loop></audio>
+    <div class="top-info">
+      <div id="scoreBox">Score: <span id="score">0</span></div>
+      <div id="comboBox">Combo: <span id="combo">0</span></div>
+      <div id="highScoreBox">High Score: <span id="highScore">0</span></div>
+    </div>
+    <div class="lane-container" aria-label="Game lanes">
+      <div class="lane glow-lane" id="lane1"></div>
+      <div class="lane glow-lane" id="lane2"></div>
+      <div class="lane glow-lane" id="lane3"></div>
+      <div class="lane glow-lane" id="lane4"></div>
+    </div>
+    <div class="hit-bar"></div>
+    <div id="resultMsg" class="result" aria-live="assertive" aria-atomic="true"></div>
+  </div>
+
+  <!-- Typed.js CDN from jsDelivr -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <script>
+    // Typed.js animations on intro
+    document.addEventListener("DOMContentLoaded", function() {
+      const titleOptions = {
+        strings: ["BeatPulse Rhythm Game"],
+        typeSpeed: 80,
+        showCursor: true,
+        cursorChar: "|",
+        loop: false,
+        onComplete: () => {
+          document.getElementById('startBtn').style.opacity = '1';
+          document.getElementById('startBtn').style.pointerEvents = 'auto';
+        }
+      };
+      const typedTitle = new Typed('#animated-hero-title', titleOptions);
+
+      const subtitleOptions = {
+        strings: [
+          "Hit falling notes with D, F, J, K keys.",
+          "Choose difficulty and track.",
+          "Try to get the highest score!"
+        ],
+        typeSpeed: 40,
+        backSpeed: 20,
+        backDelay: 1500,
+        loop: true
+      };
+      const typedSubtitle = new Typed('#animated-hero-subtitle', subtitleOptions);
+
+      const startBtn = document.getElementById('startBtn');
+      startBtn.style.opacity = '0';
+      startBtn.style.pointerEvents = 'none';
+    });
+
+    const notePatterns = {
+      "beat.mp3": {
+        easy: [
+          { time: 800, lane: 1 }, { time: 1600, lane: 2 }, { time: 2200, lane: 3 }, { time: 3000, lane: 4 },
+          { time: 3600, lane: 1 }, { time: 4400, lane: 2 }, { time: 5200, lane: 3 }, { time: 6000, lane: 4 }
+        ],
+        medium: [
+          { time: 800, lane: 2 }, { time: 1300, lane: 1 }, { time: 2000, lane: 3 }, { time: 2500, lane: 4 },
+          { time: 3000, lane: 2 }, { time: 3500, lane: 1 }, { time: 4100, lane: 3 }, { time: 4900, lane: 4 },
+          { time: 5700, lane: 2 }, { time: 6300, lane: 1 }, { time: 6900, lane: 3 }, { time: 7600, lane: 4 }
+        ],
+        hard: [
+          { time: 500, lane: 3 }, { time: 800, lane: 2 }, { time: 1200, lane: 1 }, { time: 1500, lane: 4 },
+          { time: 1700, lane: 2 }, { time: 2200, lane: 3 }, { time: 2700, lane: 1 }, { time: 3200, lane: 4 },
+          { time: 3500, lane: 2 }, { time: 3800, lane: 1 }, { time: 4200, lane: 3 }, { time: 4500, lane: 4 },
+          { time: 4800, lane: 2 }, { time: 5100, lane: 1 }, { time: 5400, lane: 3 }, { time: 5800, lane: 4 },
+          { time: 6200, lane: 2 }, { time: 6700, lane: 1 }, { time: 7100, lane: 3 }, { time: 7700, lane: 4 }
+        ]
+      },
+      "pulse.mp3": {
+        easy: [
+          { time: 1200, lane: 4 }, { time: 2100, lane: 3 }, { time: 3000, lane: 2 }, { time: 3900, lane: 1 },
+          { time: 4600, lane: 4 }, { time: 5400, lane: 3 }, { time: 6200, lane: 2 }, { time: 6900, lane: 1 }
+        ],
+        medium: [
+          { time: 1100, lane: 2 }, { time: 1600, lane: 3 }, { time: 1900, lane: 1 }, { time: 2400, lane: 4 },
+          { time: 2900, lane: 2 }, { time: 3400, lane: 3 }, { time: 4300, lane: 1 }, { time: 4700, lane: 4 },
+          { time: 5100, lane: 2 }, { time: 5800, lane: 3 }, { time: 6300, lane: 1 }, { time: 7000, lane: 4 }
+        ],
+        hard: [
+          { time: 900, lane: 1 }, { time: 1600, lane: 2 }, { time: 2000, lane: 3 }, { time: 2600, lane: 4 },
+          { time: 3000, lane: 1 }, { time: 3400, lane: 3 }, { time: 3800, lane: 2 }, { time: 4400, lane: 4 },
+          { time: 4800, lane: 1 }, { time: 5200, lane: 3 }, { time: 5600, lane: 2 }, { time: 6000, lane: 4 },
+          { time: 6300, lane: 1 }, { time: 6700, lane: 3 }
+        ]
+      }
+    };
+
+    const laneKeys = ['d', 'f', 'j', 'k'];
+
+    let notes = [];
+    let score = 0, combo = 0, highScore = 0, misses = 0;
+    let gameStarted = false, pattern = [], songName = '';
+
+    const introOverlay = document.getElementById('introOverlay');
+    const startBtn = document.getElementById('startBtn');
+    const menuScreen = document.getElementById('menuScreen');
+    const menuStartBtn = document.getElementById('menuStartBtn');
+    const difficultySelect = document.getElementById('difficulty');
+    const songSelect = document.getElementById('song');
+    const gameScreen = document.getElementById('gameScreen');
+    const lanes = [
+      document.getElementById('lane1'),
+      document.getElementById('lane2'),
+      document.getElementById('lane3'),
+      document.getElementById('lane4')
+    ];
+    const scoreElem = document.getElementById('score');
+    const comboElem = document.getElementById('combo');
+    const highScoreElem = document.getElementById('highScore');
+    const bgMusic = document.getElementById('bgMusic');
+    const resultMsg = document.getElementById('resultMsg');
+
+    window.onload = () => {
+      introOverlay.style.display = "flex";
+      menuScreen.style.display = "none";
+      gameScreen.style.display = "none";
+      highScore = Number(localStorage.getItem('beatpulse-highscore')) || 0;
+      highScoreElem.textContent = highScore;
+    };
+
+    startBtn.onclick = () => {
+      introOverlay.style.display = "none";
+      menuScreen.style.display = "flex";
+
+      // Optional: You may add looping ambient menu music here
+    };
+
+    menuStartBtn.onclick = () => {
+      score = 0;
+      combo = 0;
+      misses = 0;
+      resultMsg.classList.remove('show');
+      scoreElem.textContent = score;
+      comboElem.textContent = combo;
+      songName = songSelect.value;
+      const difficulty = difficultySelect.value;
+      if (!songName || !notePatterns[songName]) {
+        alert("Selected song not found in patterns!");
+        return;
+      }
+      pattern = notePatterns[songName][difficulty];
+      if (!pattern) {
+        alert("No pattern for selected difficulty and song!");
+        return;
+      }
+      gameScreen.style.display = "flex";
+      menuScreen.style.display = "none";
+
+      startGame();
+    };
+
+    function startGame() {
+      lanes.forEach(lane => (lane.innerHTML = ''));
+      notes = [];
+
+      // Pause any background music
+      bgMusic.pause();
+
+      // Start main game music
+      bgMusic.src = songName;
+      bgMusic.currentTime = 0;
+      bgMusic.volume = 0.7;
+      bgMusic.loop = false;
+      bgMusic.play();
+
+      gameStarted = true;
+
+      // Play custom audio AFTER game music starts
+      const gameStartAudio = new Audio('audio.mp3');
+      gameStartAudio.volume = 0.6;
+      gameStartAudio.play().catch(e => {
+       
+        console.log("Game start audio play error:", e);
+      });
+
+      pattern.forEach(noteObj => {
+        setTimeout(() => spawnNote(noteObj.lane), noteObj.time);
+      });
+
+      setTimeout(endGame, (pattern[pattern.length - 1].time || 0) + 2500);
+    }
+
+    function spawnNote(laneNo) {
+      const note = document.createElement('div');
+      note.classList.add('note');
+      note.dataset.lane = laneNo;
+      notes.push({ elem: note, lane: laneNo, hit: false });
+      lanes[laneNo - 1].appendChild(note);
+      note.style.animationDuration = '2.5s';
+
+      setTimeout(() => {
+        if (!note.classList.contains('hit')) {
+          note.classList.add('miss');
+          showResult("Miss");
+          combo = 0;
+          score = Math.max(0, score - 100);
+          updateScore();
+        }
+        note.remove();
+      }, 2500);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (!gameStarted) return;
+      const idx = laneKeys.indexOf(e.key.toLowerCase());
+      if (idx === -1) return;
+      for (let n of notes) {
+        if (n.lane - 1 === idx && !n.hit) {
+          const noteRect = n.elem.getBoundingClientRect();
+          const barRect = document.querySelector('.hit-bar').getBoundingClientRect();
+          const distance = Math.abs(noteRect.top - barRect.top);
+          if (distance < 38) {
+            n.hit = true;
+            n.elem.classList.add('hit');
+            showResult("Perfect!");
+            combo++;
+            score += 350;
+            updateScore();
+            return;
+          } else if (distance < 58) {
+            n.hit = true;
+            n.elem.classList.add('hit');
+            showResult("Nice!");
+            combo++;
+            score += 115;
+            updateScore();
+            return;
+          }
+        }
+      }
+      showResult("Miss");
+      combo = 0;
+      score = Math.max(0, score - 100);
+      updateScore();
+    });
+
+    function showResult(msg) {
+      resultMsg.textContent = msg;
+      resultMsg.classList.add('show');
+      setTimeout(() => resultMsg.classList.remove('show'), 1000);
+    }
+
+    function updateScore() {
+      scoreElem.textContent = score;
+      comboElem.textContent = combo;
+      if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('beatpulse-highscore', highScore);
+        highScoreElem.textContent = highScore;
+      }
+    }
+
+    function endGame() {
+      gameStarted = false;
+      bgMusic.pause();
+      if (score > highScore) {
+        showResult("New High Score!");
+      } else {
+        showResult("Game Over!");
+      }
+      setTimeout(() => {
+        resultMsg.classList.remove('show');
+        menuScreen.style.display = "flex";
+        gameScreen.style.display = "none";
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
