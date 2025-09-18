@@ -1,6 +1,8 @@
 # WebDevIn100_Days🚀
 
+
 Welcome to **100_days_100_web_project** – a challenge-based repository to **learn** and **practice** web development by building **100+ mini projects** using **HTML, CSS, and JavaScript**. This journey goes from **basic** to **intermediate** level with fun and interactive web applications!
+
 
 ---
 ![Visitors](https://api.visitorbadge.io/api/visitors?path=ruchikakengal/WebDevIn100_days)
@@ -52,7 +54,6 @@ We are proud to be contributing as part of these amazing communities!
 ## 🌐 Live Website
 👉 Explore all the projects here:  
 🔗 [Visit Live Demo](https://webdevin100days.netlify.app)
-
 
 ---
 
@@ -155,7 +156,6 @@ git commit -m "Add Day-XX: Project Name"
 
 > See [CONTRIBUTORS.html](contributors.html) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for our guidelines.
 
-
 ---
 
 ## Show Your Support
@@ -183,3 +183,7 @@ If you like this project, please consider giving it a ⭐️ on [GitHub](https:/
 <img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 Thank You For Contributing to Our Project!
+
+
+
+

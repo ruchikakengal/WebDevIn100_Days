@@ -1,61 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Live Weather App</title>
-    <link rel="stylesheet" href="style.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-  </head>
-  <body>
-    <!-- Navigation Bar -->
-    <header class="navbar">
-      <h1>Find weather of your city</h1>
-      <div class="theme-toggle">
-        <input type="checkbox" id="theme-switch"/>
-        <label for="theme-switch" class="switch-label">
-          <i class="fa-solid fa-sun"></i>
-          <i class="fa-solid fa-moon"></i>
-          <span class="toggle-slider"></span>
-        </label>
-      </div>
-    </header>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
     <div class="container">
-      <div class="search-box">
-        <input type="text" placeholder="Enter your location"/>
-        <button><i class="fa-solid fa-magnifying-glass"></i></button>
-      </div>
+        <header class="navbar">
+            <h1>Weather Forecast</h1>
+            <div class="theme-toggle">
+                <input type="checkbox" id="theme-switch"/>
+                <label for="theme-switch" class="switch-label">
+                    <i class="fa-solid fa-sun"></i>
+                    <i class="fa-solid fa-moon"></i>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </header>
 
-      <div class="not-found">
-        <img src="images/404.svg" alt="404 Error"/>
-        <p>Oops! Invalid location :/</p>
-      </div>
-
-      <div class="weather-box">
-        <img src="" alt="Weather Icon"/>
-        <p class="temperature"></p>
-        <p class="description"></p>
-      </div>
-
-      <div class="weather-details">
-        <div class="humidity">
-          <i class="fa-solid fa-water"></i>
-          <div class="text">
-            <span></span>
-            <p>Humidity</p>
-          </div>
+        <div class="search-box">
+            <input type="text" placeholder="Enter your city name" />
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
-        <div class="wind">
-          <i class="fa-solid fa-wind"></i>
-          <div class="text">
-            <span></span>
-            <p>Wind Speed</p>
-          </div>
+
+        <div class="loading">
+            <div class="loading-spinner"></div>
         </div>
-      </div>
+
+        <div class="not-found">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/no-data-found-8853953-7262760.png" alt="404 Error"/>
+            <p>Oops! Location not found</p>
+        </div>
+
+        <div class="weather-box">
+            <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Weather Icon"/>
+            <p class="city-name">New York, US</p>
+            <p class="temperature">25<span>°C</span></p>
+            <p class="description">Clear sky</p>
+        </div>
+
+        <div class="weather-details">
+            <div class="humidity">
+                <i class="fa-solid fa-water"></i>
+                <div class="text">
+                    <span>65%</span>
+                    <p>Humidity</p>
+                </div>
+            </div>
+            <div class="wind">
+                <i class="fa-solid fa-wind"></i>
+                <div class="text">
+                    <span>10 km/h</span>
+                    <p>Wind Speed</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="forecast-container">
+            <h3 class="forecast-title">5-Day Forecast</h3>
+            <div class="forecast-cards">
+                <!-- Forecast cards will be inserted here by JavaScript -->
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <script src="script.js">
+      
+    </script>
+</body>
 </html>

@@ -4,25 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neon Brick Breaker</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="game-container">
-        <div class="game-info">
-            <span id="score">Score: 0</span>
-            <span id="level">Level: 1</span>
-            <span id="lives">Lives: 3</span>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        
+        <div class="game-stats">
+            <div class="score-board">Score: <span id="score">0</span></div>
+            <div class="level-display">Level: <span id="level">1</span></div>
+            <div class="score-board">Lives: <span id="lives">3</span></div>
         </div>
-        <ul class="power-up-timers" id="powerUpTimers"></ul>
-        <canvas id="gameCanvas" width="600" height="450"></canvas>
-        <div class="message-box" id="messageBox">
-            <p id="messageText"></p>
-            <button id="messageButton">OK</button>
+        
+        <div id="startScreen" class="overlay">
+            <h1 class="neon-text">NEON BRICK BREAKER</h1>
+            <div class="instructions">
+                <p>Break all the bricks without missing the ball with your paddle!</p>
+                <p>Use LEFT and RIGHT arrow keys or move the mouse to control the paddle.</p>
+            </div>
+            <button id="startButton" class="btn">Start Game</button>
+        </div>
+        
+        <div id="gameOverScreen" class="overlay hidden">
+            <h1 class="neon-text">GAME OVER</h1>
+            <p class="instructions">Your final score: <span id="finalScore">0</span></p>
+            <button id="restartButton" class="btn">Play Again</button>
+        </div>
+        
+        <div id="levelCompleteScreen" class="overlay hidden">
+            <h1 class="neon-text">LEVEL COMPLETE!</h1>
+            <p class="instructions">Get ready for the next level</p>
+            <button id="nextLevelButton" class="btn">Next Level</button>
         </div>
     </div>
-    
-    <script src="script.js"></script>
+
+    <script src="script.js">
+        
+    </script>
 </body>
 </html>

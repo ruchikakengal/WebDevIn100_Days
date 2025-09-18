@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Victoria Station Analog Clock</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Roboto+Serif:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-animated min-h-screen flex items-center justify-center select-none">
+  <button class="toggle-btn" onclick="toggleClockView()" data-view="digital">Switch to Digital</button>
+  <button class="mode-btn" onclick="toggleSettings()">
+    <i class="fas fa-cog"></i>
+  </button>
+
+  <div class="settings-panel" id="settingsPanel">
+    <div class="settings-header">
+      <h2 class="settings-title">Clock Settings</h2>
+      <button class="close-settings" onclick="toggleSettings()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="tab-container">
+      <div class="tab active" data-tab="general">General</div>
+      <div class="tab" data-tab="alarm">Alarm</div>
+      <div class="tab" data-tab="timer">Timer</div>
+      <div class="tab" data-tab="stopwatch">Stopwatch</div>
+    </div>
+
+    <div class="clock-mode active" id="generalTab">
+      <div class="setting-group">
+        <label class="setting-label">Theme</label>
+        <div class="theme-selector">
+          <div class="theme-option theme-classic active" data-theme="classic"></div>
+          <div class="theme-option theme-dark" data-theme="dark"></div>
+          <div class="theme-option theme-royal" data-theme="royal"></div>
+          <div class="theme-option theme-modern" data-theme="modern"></div>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">Timezone</label>
+        <select class="setting-select" id="timezoneSelect">
+          <option value="auto">Auto (Browser Time)</option>
+          <option value="UTC">UTC</option>
+          <option value="EST">Eastern Time (EST)</option>
+          <option value="CST">Central Time (CST)</option>
+          <option value="MST">Mountain Time (MST)</option>
+          <option value="PST">Pacific Time (PST)</option>
+          <option value="GMT">GMT</option>
+          <option value="CET">Central European Time (CET)</option>
+          <option value="IST">India Standard Time (IST)</option>
+          <option value="JST">Japan Standard Time (JST)</option>
+          <option value="AEST">Australian Eastern Time (AEST)</option>
+        </select>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">Clock Sound</label>
+        <select class="setting-select" id="soundSelect">
+          <option value="none">None</option>
+          <option value="tick">Tick</option>
+          <option value="chime">Chime</option>
+          <option value="bell">Bell</option>
+        </select>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">
+          <input type="checkbox" id="smoothSeconds" checked>
+          Smooth Second Hand
+        </label>
+      </div>
+    </div>
+
+    <div class="clock-mode" id="alarmTab">
+      <div class="setting-group">
+        <label class="setting-label">Set Alarm</label>
+        <input type="time" class="setting-input" id="alarmTime">
+        <button class="clock-btn w-full mt-2" onclick="setAlarm()">Set Alarm</button>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">Active Alarms</label>
+        <div class="alarm-list" id="alarmList">
+          <!-- Alarms will be added here dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <div class="clock-mode" id="timerTab">
+      <div class="setting-group">
+        <label class="setting-label">Timer Duration</label>
+        <input type="number" class="setting-input" id="timerHours" placeholder="Hours" min="0" max="23">
+        <input type="number" class="setting-input mt-2" id="timerMinutes" placeholder="Minutes" min="0" max="59">
+        <input type="number" class="setting-input mt-2" id="timerSeconds" placeholder="Seconds" min="0" max="59">
+        <button class="clock-btn w-full mt-2" onclick="startTimer()">Start Timer</button>
+      </div>
+
+      <div class="timer-display" id="timerDisplay">00:00:00</div>
+      <div class="timer-controls">
+        <button class="clock-btn" onclick="pauseTimer()">Pause</button>
+        <button class="clock-btn" onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
+
+    <div class="clock-mode" id="stopwatchTab">
+      <div class="stopwatch-display" id="stopwatchDisplay">00:00:00.00</div>
+      <div class="stopwatch-controls">
+        <button class="clock-btn" onclick="startStopwatch()">Start</button>
+        <button class="clock-btn" onclick="pauseStopwatch()">Pause</button>
+        <button class="clock-btn" onclick="resetStopwatch()">Reset</button>
+        <button class="clock-btn" onclick="lapStopwatch()">Lap</button>
+      </div>
+      <div class="laps-list mt-4" id="lapsList">
+        <!-- Laps will be added here dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <div class="notification" id="notification"></div>
+
+  <main class="glass glow-card px-10 py-10 flex flex-col items-center transition-all duration-500 relative">
+    <h1 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-8 tracking-wide dark:text-yellow-200">Analog Clock</h1>
+    <div class="digital-clock" id="digitalClock">
+      <div class="time" id="digitalTime">00:00:00</div>
+      <div class="period" id="period">AM</div>
+      <div class="digital-clock-footer">
+        <div class="digital-clock-date" id="date"></div>
+      </div>
+    </div>
+    <div class="analog-clock-container">
+      <div class="clock-face" id="analogClock">
+        <div class="victoria-text">VICTORIA</div>
+        <div class="station-text">STATION</div>
+        <div class="year-text">1747</div>
+        <div class="hand hour" id="hourHand"></div>
+        <div class="hand minute" id="minuteHand"></div>
+        <div class="hand second" id="secondHand"></div>
+        <div class="center-dot"></div>
+        <!-- Roman numerals -->
+        <script>
+          // Place numerals at correct hour positions, clockwise
+          const romanNumerals = [
+            'XII', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'
+          ];
+          for (let i = 0; i < 12; i++) {
+            // Place XII at top, then each next at +30deg steps
+            const angle = i * 30;
+            document.write(`<div class='roman' style='transform: translate(-50%,-50%) rotate(${angle}deg) translateY(-135px) rotate(${-angle}deg)'>${romanNumerals[i]}</div>`);
+          }
+          for (let i = 0; i < 60; i++) {
+            const tickClass = 'tick' + (i % 5 === 0 ? ' hour' : '');
+            document.write(`<div class='${tickClass}' style='transform: translate(-50%,-100%) rotate(${i * 6}deg)'></div>`);
+          }
+        </script>
+      </div>
+      <div class="analog-date" id="analogDate"></div>
+    </div>
+  </main>
+
+  <script src="script.js">
+   
+  </script>
+</body>
+</html>

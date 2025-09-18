@@ -1,0 +1,210 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffe0f0, #d0f0ff);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      transition: background 1s ease;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: #4d4d4d;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .quote-container {
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 100%;
+      position: relative;
+      transition: transform 0.4s ease;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease;
+    }
+
+    .fade-out {
+      animation: fadeOut 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+      }
+    }
+
+    .quote-text {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quote-author {
+      font-size: 1rem;
+      color: #888;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: #ff90b3;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #ff70a6;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    button.secondary {
+      background: #b0e0ff;
+    }
+
+    button.secondary:hover {
+      background: #87ceeb;
+    }
+
+    .loader {
+      display: none;
+      width: 24px;
+      height: 24px;
+      border: 3px solid rgba(255, 144, 179, 0.3);
+      border-radius: 50%;
+      border-top: 3px solid #ff90b3;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .progress-bar {
+      height: 5px;
+      width: 100%;
+      background: #f0f0f0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 15px;
+    }
+
+    .progress {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, #ff90b3, #b0e0ff);
+      border-radius: 10px;
+      animation: progressAnim 10s linear;
+    }
+
+    @keyframes progressAnim {
+      0% { width: 100%; }
+      100% { width: 0%; }
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    @media (max-width: 500px) {
+      .quote-container {
+        padding: 1.5rem;
+      }
+      
+      .quote-text {
+        font-size: 1.1rem;
+        min-height: 70px;
+      }
+      
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
