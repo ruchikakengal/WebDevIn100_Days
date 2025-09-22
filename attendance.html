@@ -10,45 +10,50 @@
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f4f6f9;
+      background: linear-gradient(135deg, #e0f7fa, #fce4ec);
       color: #333;
     }
 
     header {
-      background: #2c3e50;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
       color: #fff;
-      padding: 20px;
+      padding: 25px;
       text-align: center;
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      letter-spacing: 1.5px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
     }
 
     footer {
-      background: #2c3e50;
-      color: #ccc;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: #ddd;
       text-align: center;
-      padding: 15px;
-      font-size: 0.9rem;
+      padding: 18px;
+      font-size: 0.95rem;
       position: fixed;
       bottom: 0;
       width: 100%;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
     }
 
     main {
       max-width: 1000px;
-      margin: 30px auto 70px auto;
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      margin: 40px auto 90px auto;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       color: #2c3e50;
+      font-size: 1.8rem;
     }
 
     /* ===== Controls ===== */
@@ -56,81 +61,113 @@
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 20px;
     }
 
     input[type="text"], input[type="date"] {
-      padding: 10px;
+      padding: 12px;
       font-size: 1rem;
       border: 1px solid #ddd;
-      border-radius: 8px;
+      border-radius: 10px;
       outline: none;
       flex: 1;
       min-width: 200px;
+      transition: 0.3s;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"]:focus, input[type="date"]:focus {
+      border-color: #2980b9;
+      box-shadow: 0 0 8px rgba(41, 128, 185, 0.4);
     }
 
     button {
-      padding: 10px 18px;
+      padding: 12px 20px;
       font-size: 1rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       transition: 0.3s;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .add-btn {
-      background: #27ae60;
+      background: linear-gradient(135deg, #27ae60, #2ecc71);
       color: white;
     }
     .add-btn:hover {
-      background: #219150;
+      background: linear-gradient(135deg, #219150, #27ae60);
+      transform: scale(1.05);
     }
 
     .mark-all-btn {
-      background: #2980b9;
+      background: linear-gradient(135deg, #2980b9, #3498db);
       color: white;
     }
     .mark-all-btn:hover {
-      background: #216799;
+      background: linear-gradient(135deg, #216799, #2980b9);
+      transform: scale(1.05);
     }
 
     /* ===== Table ===== */
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 15px;
+      margin-top: 20px;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     th, td {
-      padding: 12px;
+      padding: 14px;
       text-align: center;
       border-bottom: 1px solid #eee;
     }
 
     th {
-      background: #34495e;
+      background: linear-gradient(135deg, #34495e, #2c3e50);
       color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    tr:nth-child(even) {
+      background: #f9f9f9;
     }
 
     tr:hover {
-      background: #f9f9f9;
+      background: #f1f7fd;
     }
 
     .present {
       background: #2ecc71;
       color: white;
-      padding: 5px 10px;
-      border-radius: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
       font-size: 0.9rem;
+      font-weight: bold;
     }
 
     .absent {
       background: #e74c3c;
       color: white;
-      padding: 5px 10px;
-      border-radius: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
       font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .toggle-btn {
+      background: #f39c12;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 8px;
+    }
+    .toggle-btn:hover {
+      background: #d68910;
     }
 
     /* ===== Responsive ===== */
@@ -149,7 +186,7 @@
   <header>📊 Attendance Tracker</header>
 
   <main>
-    <h2>Manage Daily Attendance</h2>
+    <h2>✨ Manage Daily Attendance ✨</h2>
 
     <div class="controls">
       <input type="text" id="studentName" placeholder="Enter student name">
@@ -171,7 +208,7 @@
     </table>
   </main>
 
-  <footer>© 2025 Attendance Tracker | Designed with ❤️</footer>
+  <footer>© 2025 Attendance Tracker | Designed with ❤️ & Creativity</footer>
 
   <script>
     let students = JSON.parse(localStorage.getItem("students")) || [];
@@ -190,7 +227,7 @@
             <td>${date || "Not Selected"}</td>
             <td><span class="${status.toLowerCase()}">${status}</span></td>
             <td>
-              <button onclick="toggleAttendance(${index}, '${date}')">Toggle</button>
+              <button class="toggle-btn" onclick="toggleAttendance(${index}, '${date}')">🔄 Toggle</button>
             </td>
           </tr>`;
       });
@@ -226,6 +263,5 @@
     document.getElementById("attendanceDate").addEventListener("change", renderTable);
     renderTable();
   </script>
-
 </body>
 </html>
