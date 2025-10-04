@@ -559,7 +559,7 @@
     originalDay: 21,
     name: "Gamified Habit Tracker",
     description: "A habit tracking web app with gamification features like streaks, badges, and mood-based insights.",
-    demoLink: "./public/Day-21_GamifiedHabitTracker/habit.html",
+    demoLink: "habit.html",
     category: "utilities",
     technologies: ["HTML", "CSS", "JavaScript"],
     features: ["Streak Tracking", "Mood Insights", "Badge Rewards", "Progress Visualization"]
