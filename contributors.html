@@ -158,6 +158,13 @@
       min-height: 80vh; /* Ensure enough height for proper centering */
     }
 
+    /* Fix: always visible regardless of theme or .loaded class */
+.cosmic-hero {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
     .hero-content {
       position: relative;
       z-index: 2;
@@ -1171,7 +1178,7 @@
       const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
       const mobileNav = document.querySelector('.mobile-nav');
       const themeToggle = document.querySelector('.theme-toggle');
-      
+
       // Mobile menu toggle
       if (mobileMenuBtn && mobileNav) {
         mobileMenuBtn.addEventListener('click', () => {
@@ -1181,7 +1188,7 @@
       }
       
       // Theme toggle functionality
-      if (themeToggle) {
+         if (themeToggle) {
         // Get current theme from localStorage or default to 'dark'
         const currentTheme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', currentTheme);
@@ -1222,8 +1229,8 @@
     
     // Update theme toggle icon
     function updateThemeIcon(theme) {
-      const themeToggle = document.querySelector('.theme-toggle');
-      if (!themeToggle) return;
+     // const themeToggle = document.querySelector('.theme-toggle');
+     // if (!themeToggle) return;
       
       const iconSvg = themeToggle.querySelector('svg');
       
@@ -1246,6 +1253,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       fetchContributors();
       initNavigation();
+      setTheme(getTheme());
       
       // Add cosmic loading effect
       setTimeout(() => {

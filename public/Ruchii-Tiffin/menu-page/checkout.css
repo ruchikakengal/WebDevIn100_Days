@@ -15,7 +15,7 @@
     transition: background 0.3s ease;
 }
 .cart-table tbody tr:hover {
-    background: #f9fafb; /* Tailwind gray-50 */
+    background: #ddebfa; /* Tailwind gray-50 */
 }
 .btn-anim {
     transition: all 0.3s ease;
@@ -60,6 +60,10 @@
     .cart-table tbody td img {
         max-width: 40px;
     }
+}
+.cart-table td{
+    color: #000000 !important;  
+    opacity: 1 !important;      
 }
 
 /* Dark Mode Styles (excluding navbar) */
@@ -106,7 +110,7 @@ color: #ffffff;
     border-bottom: 1px solid #444444; /* Darker gray border */
 }
 .dark-mode .cart-table tbody tr:hover {
-    background: #444444; /* Slightly lighter gray on hover */
+    background: #ddebfa; /* Slightly lighter gray on hover */
 }
 .dark-mode #total-price {
     color: #ffffff; /* White text for total */
@@ -134,4 +138,22 @@ color: #ffffff;
 /* Toggle Button Adjustments */
 .dark-mode .navbar-toggler-icon {
     color: #ffffff !important;
+  }
+
+  .nav-flex{
+    display:flex;
+    flex-direction: row;
+  }
+  .nav-item{
+    margin-left:10px;
+    margin-right:10px;
+  }
+  .signinbtn{
+    background-color: #f44336;
+    color: white !important;
+    padding: 5px 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 3px;
   }

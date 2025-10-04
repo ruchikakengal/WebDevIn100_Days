@@ -19,13 +19,12 @@
   <div class="container-fluid">
 
     <!-- Logo -->
-    <a class="navbar-brand text-black" href="../index.html">
-
+     <div class="nav-flex">
       <img src="../Utils/20240921_154411.png" alt="Ruchii Tiffin Logo" style="height: 40px; margin-right: 8px;">
-
-      Ruchii Tiffin
+    <a class="navbar-brand text-black" href="../index.html">
+    <b>Ruchii Tiffin</b>
     </a>
-
+    </div>
    <!-- Mobile Toggler -->
    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,18 +36,18 @@
       <ul class="navbar-nav ms-auto">
         <!-- Home Link -->
         <li class="nav-item">
-          <a class="nav-link mx-2" href="../index.html#home">Home</a>
+          <a class="nav-link mx-2" href="../index.html#home"><b>Home</b></a>
         </li>
 
         <!-- View Menu Link -->
         <li class="nav-item">
-          <a class="nav-link mx-2" href="../index.html#menu-section">View Menu</a>
+          <a class="nav-link mx-2" href="../index.html#menu-section"><b>View Menu</b></a>
         </li>
 
         <!-- Meal Plan Dropdown -->
         <li class="nav-item dropdown meal-plan">
           <a class="nav-link mx-2" href="#" id="mealPlanToggle" role="button" aria-expanded="false">
-            Meal Plans
+            <b>Meal Plans</b>
           </a>
           <ul class="dropdown-menu" id="mealPlanMenu">
             <li><a class="dropdown-item" href="../index.html#student-plan">Student Plan</a></li>
@@ -59,12 +58,12 @@
 
         <!-- About Link -->
         <li class="nav-item">
-          <a class="nav-link mx-2" href="../index.html#who-we-are">About</a>
+          <a class="nav-link mx-2" href="../index.html#who-we-are"><b>About</b></a>
         </li>
 
         <!-- Contact Us Link -->
         <li class="nav-item">
-          <a class="nav-link mx-2" href="../index.html#contact-us">Contact Us</a>
+          <a class="nav-link mx-2" href="../index.html#contact-us"><b>Contact Us</b></a>
         </li>
 
    
@@ -80,13 +79,13 @@
         <!-- Cart Icon in Navbar -->
       <li class="nav-item">
         <a href="../menu-page/checkout.html" id="cart-icon" class="nav-link mx-2">
-          <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">(0)</span>
+          <i class="fas fa-shopping-cart"></i> <b>Cart </b><span id="cart-count"><b>(0)</b></span>
         </a>
       </li>
 
         <!-- Sign In Link -->
         <li class="nav-item">
-          <a href="../signin.html" class="nav-link mx-2 signinbtn">Sign In </a>
+          <a href="../signin.html" class="nav-link mx-2 signinbtn"><button><b>Sign In </b></button></a>
         </li>
       </ul>
     </div>
@@ -201,6 +200,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="checkout.js"></script>
     <script src="../dark-mode.js"></script>
+    <script src="cart.js"> </script>
     <script>
         // Bootstrap dropdown initialization (for Meal Plans)
         const mealPlanToggle = document.getElementById("mealPlanToggle");

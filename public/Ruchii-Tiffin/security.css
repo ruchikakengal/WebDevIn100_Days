@@ -28,7 +28,7 @@ body.dark-mode {
 
 /* Overlay (Card) */
 .overlay {
-  background-color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.5);
   padding: 35px;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -39,13 +39,13 @@ body.dark-mode {
 }
 
 body.dark-mode .overlay {
-  background-color: rgba(40, 40, 40, 0.95); /* Darker overlay */
+  background-color:  rgba(255, 255, 255, 0.5); /* Darker overlay */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Stronger shadow */
 }
 
 /* Section */
 section {
-  margin-bottom: 20px;
+  padding-bottom: 10px;
   text-align: left;
   animation: fadeInUp 0.6s ease-out forwards;
   animation-delay: calc(0.1s * var(--section-order));
@@ -66,13 +66,14 @@ section:nth-child(9) { --section-order: 9; }
 h2 {
   font-weight: 700;
   margin-bottom: 12px;
-  color: #2c3e50;
+  color: #000000;
   font-size: 1.6rem;
   position: relative;
   transition: color 0.3s ease;
+  text-align: center;
 }
 
-body.dark-mode h2 {
+body.dark-mode h2, body.dark-mode h1{
   color: #ffffff; /* White headings in dark mode */
 }
 
@@ -93,15 +94,16 @@ h2:hover::after {
 }
 
 p {
-  color: #666 !important;
+  color: #000000 !important;
   line-height: 1.7;
   margin-bottom: 15px;
   font-size: 1.05rem;
   transition: color 0.3s ease;
+  text-align: center;
 }
 
 body.dark-mode p {
-  color: #d0d0d0 !important; /* Lighter gray for dark mode */
+  color: #000000 !important; /* Lighter gray for dark mode */
 }
 
 ul {
@@ -125,6 +127,10 @@ ul li {
 
 body.dark-mode ul li {
   color: #d0d0d0 !important;
+}
+a{
+  color:blue;
+  text-decoration:none;
 }
 
 /* Button */

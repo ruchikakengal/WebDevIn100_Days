@@ -2047,7 +2047,16 @@
               category: "creativity",
               technologies: ["HTML", "CSS", "JavaScript"],
               features: ["Multiple background layers", "Scroll-based animations", "Placeholder sections"]
-          }
+          },
+          {
+                originalDay: 175,
+                name: "Grand Piano",
+                description: "Interactive virtual piano with realistic keys, sound effects, and beautiful design. Click or use keyboard to play music!",
+                demoLink: "./public/Grand-Piano/index.html",
+                category: "entertainment",
+                technologies: ["HTML", "CSS", "JavaScript"],
+                features: ["Interactive Piano Keys", "Sound Effects", "Keyboard Support", "Realistic Design"]
+          },
 ];
 
 
