@@ -555,15 +555,6 @@
             },
 
 
-         {
-    originalDay: 21,
-    name: "Gamified Habit Tracker",
-    description: "A habit tracking web app with gamification features like streaks, badges, and mood-based insights.",
-    demoLink: "habit.html",
-    category: "utilities",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    features: ["Streak Tracking", "Mood Insights", "Badge Rewards", "Progress Visualization"]
-},
             {
                 originalDay: 21,
                 name: "Rock Paper Scissors",
@@ -754,6 +745,17 @@
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Multiple Time Zones", "Real-time Updates", "Custom Locations", "12/24 Hour Format"]
             },
+
+         
+         {
+    originalDay: 41,
+    name: "Gamified Habit Tracker",
+    description: "A habit tracking web app with gamification features like streaks, badges, and mood-based insights.",
+    demoLink: "habit.html",
+    category: "productivity",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    features: ["Streak Tracking", "Mood Insights", "Badge Rewards", "Progress Visualization"]
+},
             {
                 originalDay: 42,
                 name: "Notes Tracker",
