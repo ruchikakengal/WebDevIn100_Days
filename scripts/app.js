@@ -564,6 +564,16 @@
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Computer AI", "Score Tracking", "Animated Results"]
             },
+
+         {
+    originalDay: 21,
+    name: "Gamified Habit Tracker",
+    description: "A habit tracking web app with gamification features like streaks, badges, and mood-based insights.",
+    demoLink: "habit.html",
+    category: "utilities",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    features: ["Streak Tracking", "Mood Insights", "Badge Rewards", "Progress Visualization"]
+},
             {
                 originalDay: 22,
                 name: "Drawing App",
