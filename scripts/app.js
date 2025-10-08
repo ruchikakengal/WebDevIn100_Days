@@ -761,8 +761,8 @@
     originalDay: 41,
     name: "Gamified Habit Tracker",
     description: "A habit tracking web app with gamification features like streaks, badges, and mood-based insights.",
-    demoLink: "habit.html",
-    category: "productivity",
+    demoLink: "./public/Gamified Habit Tracker/habit.html",
+    category: "utilities",
     technologies: ["HTML", "CSS", "JavaScript"],
     features: ["Streak Tracking", "Mood Insights", "Badge Rewards", "Progress Visualization"]
 },
