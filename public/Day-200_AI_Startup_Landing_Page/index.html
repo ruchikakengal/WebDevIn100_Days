@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NovaAI — Smart Assistant for Teams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">NovaAI</a>
+      <nav class="nav" id="nav">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta small">Get Early Access</a>
+      </nav>
+      <button id="menuBtn" class="menu-btn" aria-label="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <h1>AI that helps teams ship faster.</h1>
+          <p class="lead">NovaAI summarizes meetings, drafts emails, generates code snippets, and automates routine tasks — so your team focuses on impact.</p>
+          <div class="hero-actions">
+            <a class="btn primary" id="getAccess">Get Early Access</a>
+            <a class="btn ghost" href="#features">Explore features</a>
+          </div>
+          <div class="trust">
+            <span class="chip">Trusted by</span>
+            <div class="logos">
+              <span>Acme</span><span>Orbit</span><span>ByteLab</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="device">
+            <div class="mockup">
+              <div class="mock-header">
+                <span>NovaAI • Workspace</span>
+              </div>
+              <div class="mock-body">
+                <div class="msg bot">Summary: Today's meeting action items: 1) finalize UI, 2) deploy to staging.</div>
+                <div class="msg user">Thanks! Can you draft the announcement?</div>
+                <div class="msg bot">Draft ready — copied to clipboard.</div>
+              </div>
+            </div>
+            <div class="floating-stats">
+              <div><strong>+40%</strong><span>faster delivery</span></div>
+              <div><strong>100k+</strong><span>monthly tasks</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section container features">
+      <h2 class="section-title">What NovaAI does</h2>
+      <div class="cards">
+        <article class="card">
+          <i class="material-icons">summarize</i>
+          <h3>Meeting Summaries</h3>
+          <p>Get concise action items, decisions and next steps instantly.</p>
+        </article>
+        <article class="card">
+          <i class="material-icons">code</i>
+          <h3>Code Assist</h3>
+          <p>Generate code snippets and tests for common tasks.</p>
+        </article>
+        <article class="card">
+          <i class="material-icons">mail</i>
+          <h3>Auto Emails</h3>
+          <p>Draft polished emails from bullet points in a click.</p>
+        </article>
+        <article class="card">
+          <i class="material-icons">bolt</i>
+          <h3>Workflows</h3>
+          <p>Automate repetitive tasks with simple rules.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pricing" class="section container pricing">
+      <h2 class="section-title">Pricing</h2>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Starter</h3>
+          <p class="price">Free</p>
+          <ul>
+            <li>Up to 3 users</li>
+            <li>Basic summaries</li>
+            <li>Email drafts</li>
+          </ul>
+          <a class="btn">Start for free</a>
+        </div>
+        <div class="price-card popular">
+          <h3>Team</h3>
+          <p class="price">₹799 / mo</p>
+          <ul>
+            <li>50 members</li>
+            <li>Premium summaries</li>
+            <li>Integrations</li>
+          </ul>
+          <a class="btn primary">Get Team</a>
+        </div>
+        <div class="price-card">
+          <h3>Enterprise</h3>
+          <p class="price">Contact</p>
+          <ul>
+            <li>Custom SLAs</li>
+            <li>On-prem options</li>
+            <li>Dedicated support</li>
+          </ul>
+          <a class="btn">Contact sales</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="container about-grid">
+        <div>
+          <h2>Built for modern teams</h2>
+          <p>We combine language models with domain-specific prompts and private workspace controls to ensure reliability and privacy.</p>
+          <a class="btn ghost" href="#contact">Contact us</a>
+        </div>
+        <div class="team">
+          <div class="member"><img src="https://via.placeholder.com/72" alt=""><div><strong>Riya Patel</strong><small>CEO</small></div></div>
+          <div class="member"><img src="https://via.placeholder.com/72" alt=""><div><strong>Arjun Rao</strong><small>CTO</small></div></div>
+          <div class="member"><img src="https://via.placeholder.com/72" alt=""><div><strong>Sam Kim</strong><small>Product</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact container">
+      <h2 class="section-title">Request early access</h2>
+      <form id="signupForm" class="contact-form">
+        <input type="text" id="name" placeholder="Your name" required />
+        <input type="email" id="email" placeholder="Your email" required />
+        <textarea id="msg" placeholder="Tell us about your team (optional)"></textarea>
+        <button class="btn primary" type="submit">Request access</button>
+      </form>
+      <p id="formMsg" class="form-msg" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <strong>NovaAI</strong> 2025</div>
+      <div class="foot-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
