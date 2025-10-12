@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Modo — Fashion Store UI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="store-header">
+    <div class="container header-row">
+      <div class="logo">Modo</div>
+      <div class="search">
+        <input id="searchInput" placeholder="Search products, e.g. 'jacket'" />
+      </div>
+      <div class="header-actions">
+        <button id="wishlistBtn" title="Wishlist" class="icon-btn">
+          <span class="material-icons">favorite_border</span>
+        </button>
+        <button id="cartBtn" title="Cart" class="icon-btn">
+          <span class="material-icons">shopping_cart</span>
+          <span id="cartCount" class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-collection fade-in">
+      <div class="hero-left">
+        <h1>New Season • Modern Essentials</h1>
+        <p>Handpicked pieces. Minimalistic design. Sustainable choices.</p>
+        <button class="btn primary explore-btn">Explore Collection</button>
+      </div>
+      <div class="hero-right">
+        <div class="filters">
+          <select id="categorySelect">
+            <option value="all">All</option>
+            <option value="tops">Tops</option>
+            <option value="bottoms">Bottoms</option>
+            <option value="shoes">Shoes</option>
+            <option value="accessories">Accessories</option>
+          </select>
+          <button id="sortBtn" class="btn">Sort: Popular</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-grid" id="productsGrid">
+      <!-- Products injected by JS -->
+    </section>
+
+    <div id="cartModal" class="cart-modal">
+      <div class="cart-panel slide-in">
+        <h3>Your Cart</h3>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-footer">
+          <div class="total">Total: <strong id="cartTotal">₹0</strong></div>
+          <button id="checkoutBtn" class="btn primary">Checkout</button>
+        </div>
+        <button id="closeCart" class="close">✕</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="store-footer fade-in">
+    <div class="container">© Modo • Minimal Fashion</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
