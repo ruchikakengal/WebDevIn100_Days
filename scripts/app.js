@@ -648,6 +648,8 @@
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Markdown Support", "Auto-save", "Export Notes"]
             },
+
+     
             {
                 originalDay: 29,
                 name: "Audio Visualizer",
@@ -730,6 +732,16 @@
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Multiplayer Support", "Animated Gameplay", "Classic Rules"]
             },
+
+         {
+    originalDay: 38,
+    name: "Resume Crafter",
+    description: "A Resume Creater website according to the data",
+    demoLink: "resumecraft.html",
+    category: "utilities",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    features: ["Interactive Resume Builder Form", "Live Preview Panel"]
+},
             {
                 originalDay: 38,
                 name: "Space Jumper Game",
