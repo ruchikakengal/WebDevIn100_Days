@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ResumeCraft — Build Your Resume</title>
+
+  <style>
+    :root {
+      --bg: #f0f4fa;
+      --card: #ffffffcc;
+      --accent: #007bff;
+      --muted: #6b7280;
+      --text: #0f172a;
+      --paper-width: 800px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", system-ui, sans-serif;
+      background: linear-gradient(135deg, #e6f0ff 0%, #f8fbff 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 40px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-size: 22px;
+      margin: 0;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+      font-weight: 600;
+    }
+
+    .wrap {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 24px;
+      padding: 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Sidebar */
+    .panel {
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      padding: 20px;
+      border: 1px solid rgba(0, 123, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .panel:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    select, input[type="color"] {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #e5e9f2;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .color-input {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"], textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #e0e6f0;
+      background: #fff;
+      font-size: 14px;
+      transition: border 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    textarea { resize: vertical; min-height: 70px; }
+
+    .btn {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover { transform: scale(1.03); }
+
+    .btn.primary { background: var(--accent); color: #fff; }
+    .btn.secondary { background: #f1f5fb; color: var(--accent); border: 1px solid rgba(0, 123, 255, 0.15); }
+
+    .small { font-size: 13px; }
+
+    /* Resume Preview */
+    .preview-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .paper {
+      width: var(--paper-width);
+      background: #fff;
+      border-radius: 10px;
+      padding: 28px;
+      box-shadow: 0 8px 30px rgba(0, 123, 255, 0.08);
+      border: 1px solid #e8f0ff;
+    }
+
+    .header-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .avatar {
+      width: 84px;
+      height: 84px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #00d2ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 26px;
+      color: #fff;
+    }
+
+    .name { font-size: 22px; font-weight: 700; color: var(--accent); }
+    .title { font-size: 14px; color: var(--muted); }
+    .meta { display: flex; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+
+    h3 {
+      font-size: 16px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .section-block { margin-bottom: 14px; }
+
+    ul { margin: 6px 0; padding-left: 20px; }
+
+    .skill-pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f5f8ff;
+      border: 1px solid #e1ebff;
+      font-size: 13px;
+      margin: 4px;
+    }
+
+    /* Template Variants */
+    .template-classic { font-family: Georgia, serif; }
+    .template-modern .name { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .wrap { grid-template-columns: 1fr; }
+      .paper { width: 100%; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .panel, header { display: none; }
+      .paper { box-shadow: none; border: none; width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>ResumeCraft</h1>
+  </header>
+
+  <div class="wrap">
+    <!-- Sidebar -->
+    <div class="panel" id="editor">
+      <div class="toolbar">
+        <select id="template-switch" title="Template">
+          <option value="modern">Modern</option>
+          <option value="classic">Classic</option>
+        </select>
+        <input id="accentColor" class="color-input" type="color" value="#007bff" title="Accent color" />
+        <button class="btn small secondary" id="add-experience">+ Experience</button>
+        <button class="btn small secondary" id="add-education">+ Education</button>
+      </div>
+
+      <div class="section">
+        <label>Full Name</label>
+        <input id="fullName" type="text" placeholder="John Doe" value="John Doe" />
+      </div>
+
+      <div class="section">
+        <label>Job Title</label>
+        <input id="jobTitle" type="text" placeholder="Frontend Developer" />
+      </div>
+
+      <div class="section">
+        <label>Location</label>
+        <input id="location" type="text" placeholder="Vadodara, India" />
+      </div>
+
+      <div class="section">
+        <label>Contact Info (comma separated)</label>
+        <input id="contact" type="text" placeholder="email, phone, website" />
+      </div>
+
+      <div class="section">
+        <label>About / Summary</label>
+        <textarea id="summary" placeholder="A passionate web developer who loves crafting clean, user-friendly designs."></textarea>
+      </div>
+
+      <div class="section" id="experience-list"><label>Experience</label></div>
+      <div class="section" id="education-list"><label>Education</label></div>
+
+      <div class="section">
+        <label>Skills (comma separated)</label>
+        <input id="skills" type="text" placeholder="HTML, CSS, JavaScript, React" />
+      </div>
+
+      <div class="section" style="text-align:center;margin-top:18px;">
+        <button class="btn primary" id="exportPDF">Export to PDF</button>
+      </div>
+    </div>
+
+    <!-- Resume Preview -->
+    <div class="preview-wrap">
+      <div class="paper template-modern" id="preview">
+        <div class="header-info">
+          <div class="avatar" id="avatar">JD</div>
+          <div>
+            <div class="name" id="p-name">John Doe</div>
+            <div class="title" id="p-title">Frontend Developer</div>
+            <div class="meta" id="p-meta"><span>john@example.com</span><span>+91 99999 88888</span><span>john.dev</span></div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>About</h3>
+          <div id="p-summary">A passionate web developer who loves crafting clean, user-friendly designs.</div>
+        </div>
+
+        <div class="section-block" id="p-experience"><h3>Experience</h3></div>
+        <div class="section-block" id="p-education"><h3>Education</h3></div>
+
+        <div class="section-block">
+          <h3>Skills</h3>
+          <div id="p-skills"><span class="skill-pill">HTML</span><span class="skill-pill">CSS</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const $ = s => document.querySelector(s);
+    const $$ = s => document.querySelectorAll(s);
+
+    const expList = $('#experience-list');
+    const eduList = $('#education-list');
+
+    function makeExpEditor() {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'section-block';
+      wrapper.innerHTML = `
+        <input type="text" placeholder="Job Title"/>
+        <input type="text" placeholder="Company"/>
+        <input type="text" placeholder="Year Range"/>
+        <textarea placeholder="Describe your work..."></textarea>
+      `;
+      expList.appendChild(wrapper);
+    }
+
+    function makeEduEditor() {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'section-block';
+      wrapper.innerHTML = `
+        <input type="text" placeholder="Degree"/>
+        <input type="text" placeholder="Institute"/>
+        <input type="text" placeholder="Year Range"/>
+      `;
+      eduList.appendChild(wrapper);
+    }
+
+    $('#add-experience').addEventListener('click', makeExpEditor);
+    $('#add-education').addEventListener('click', makeEduEditor);
+
+    $('#accentColor').addEventListener('input', e => {
+      document.documentElement.style.setProperty('--accent', e.target.value);
+    });
+
+    $('#exportPDF').addEventListener('click', () => window.print());
+  </script>
+</body>
+</html>
