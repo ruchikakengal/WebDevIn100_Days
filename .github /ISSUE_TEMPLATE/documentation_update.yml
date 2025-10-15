@@ -1,0 +1,36 @@
+name: "📑 Documentation Update"
+description: "Suggest changes or improvements to documentation"
+title: "[Docs] <short-title>"
+labels: ["documentation", "needs-triage"]
+assignees: []
+
+body:
+  - type: checkboxes
+    id: search
+    attributes:
+      label: "🔍 Have You Searched Existing Issues?"
+      options:
+        - label: "I have searched the existing issues to avoid duplicates"
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: "📝 What's wrong with the existing documentation?"
+      description: "Describe what needs to be fixed, added, or removed."
+
+  - type: textarea
+    id: material
+    attributes:
+      label: "📎 Supporting Material"
+      description: "Attach screenshots, videos, or links that help explain your update."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "🙌 Contributor Checklist"
+      options:
+        - label: "I have reviewed the existing documentation"
+        - label: "I agree to follow this project's Code of Conduct"
+        - label: "I am a GSSOC'25 contributor"
+        - label: "I want to work on this issue"

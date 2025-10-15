@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot Password</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: 
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 16px;
+      width: 350px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .container h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+      color: #444;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #e1e1e1;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      background: #ff4d4d;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #ff3333;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
+    .login-link {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .login-link a {
+      color: #666;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .login-link a:hover{
+     color: #ff4d4d;
+    }
+    .auth-box {
+            animation: slideIn 0.5s ease-out;
+    }
+    .logo {
+            width: 80px;
+            height: 80px;
+            background: #ff4d4d;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .logo svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-container">
+      <div class="logo">
+        <svg viewBox="0 0 24 24">
+          <path d="M12,3L4,9V21H20V9L12,3M12,7.5L16,10.5V11.5L12,8.5L8,11.5V10.5L12,7.5M6,19V12.5L12,9.5L18,12.5V19H6Z"/>
+        </svg>
+      </div>
+  </div>  
+    <h2>Reset Password</h2>
+    <form id="forgotForm">
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="input-group">
+        <label for="newPass">New Password</label>
+        <input type="password" id="newPass" required>
+      </div>
+      <div class="input-group">
+        <label for="confirmPass">Confirm Password</label>
+        <input type="password" id="confirmPass" required>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <div class="login-link">
+      <a href="signin.html">Back to Login</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("forgotForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let newPass = document.getElementById("newPass").value;
+      let confirmPass = document.getElementById("confirmPass").value;
+
+      if (newPass.length < 6) {
+        alert("Password must be at least 6 characters long!");
+        return;
+      }
+
+      if (newPass !== confirmPass) {
+        alert("Password Doesn't Match");
+        return;
+      }
+
+      if (newPass == confirmPass) {
+        alert("Password Successfully Changed");
+        window.location.href = "signin.html";
+      }
+
+    });
+  </script>
+</body>
+</html>

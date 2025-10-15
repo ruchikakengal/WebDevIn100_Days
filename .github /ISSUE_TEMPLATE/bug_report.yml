@@ -1,0 +1,55 @@
+name: "🐞 Bug Report"
+description: "Report a bug to help improve the project"
+title: "[BUG] "
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: checkboxes
+    id: search
+    attributes:
+      label: "🔍 Have You Searched Existing Issues?"
+      options:
+        - label: "I have searched the existing issues to avoid duplicates"
+          required: true
+
+  - type: textarea
+    id: describe_bug
+    attributes:
+      label: "🐞 Describe the Bug"
+      description: "What is happening and what should happen instead?"
+      placeholder: "Explain the bug in detail."
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "▶️ Steps to Reproduce"
+      description: "Step-by-step instructions to reproduce the bug"
+      placeholder: "1. Go to '...'\n2. Click on '...'\n3. Scroll to '...'\n4. See error"
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "✅ Expected Behavior"
+      description: "What should have happened?"
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "🖼️ Screenshots (If applicable)"
+      description: "Add screenshots to help explain the issue"
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "📘 Additional Context"
+      description: "Any other details that might help"
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "🙌 Contributor Checklist"
+      options:
+        - label: "I agree to follow this project's Code of Conduct"
+        - label: "I am a GSSOC'25 contributor"
+        - label: "I want to work on this issue"

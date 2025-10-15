@@ -1,0 +1,42 @@
+name: "🛠️ Custom Issue"
+description: "For requests or suggestions that don't fit into bug, feature, or docs"
+title: "[Custom] <short-title>"
+labels: ["custom", "needs-triage"]
+assignees: []
+
+body:
+  - type: checkboxes
+    id: search
+    attributes:
+      label: "🔍 Have You Searched Existing Issues?"
+      options:
+        - label: "I have searched the existing issues to avoid duplicates"
+          required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: "📝 Issue Summary"
+      description: "Provide a short summary of the custom issue"
+      placeholder: "Example: Enhancement suggestion for the search functionality."
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "🔍 Issue Description"
+      description: "Describe the issue or suggestion in detail. Include any relevant context."
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: "💡 Proposed Solution (Optional)"
+      description: "If you have any ideas or suggestions for solving this issue, describe them here."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "🙌 Contributor Checklist"
+      options:
+        - label: "I agree to follow this project's Code of Conduct"
+        - label: "I am a GSSOC'25 contributor"
+        - label: "I want to work on this issue"

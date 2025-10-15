@@ -157,3 +157,39 @@ color: #ffffff;
     border-radius: 5px;
     margin-top: 3px;
   }
+
+.footer-content p{
+    color:black;
+}
+
+.dark-mode .footer-content{
+    background-color: #000000;
+}
+.dark-mode .footer-content p,  .dark-mode .footer-content a{
+    color:white; 
+}
+
+.dark-mode .footer-content li{
+    color: white;
+}
+
+.dark-mode .footer-content h2{
+    color: white;
+}
+
+.dark-mode .footer-bottom{
+    background-color: #000000;
+    color:white;
+}
+
+.dark-mode .nav-link{
+    color: white;
+}
+
+.dark-mode .fas{
+    color: white;
+}
+
+.dark-mode .navbar-brand{
+    color:white;
+}
