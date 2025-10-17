@@ -1,267 +1,452 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Attendance Tracker</title>
-  <style>
-    /* ===== Global Styles ===== */
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #e0f7fa, #fce4ec);
-      color: #333;
-    }
-
-    header {
-      background: linear-gradient(135deg, #2c3e50, #34495e);
-      color: #fff;
-      padding: 25px;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-      letter-spacing: 1.5px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-    }
-
-    footer {
-      background: linear-gradient(135deg, #2c3e50, #34495e);
-      color: #ddd;
-      text-align: center;
-      padding: 18px;
-      font-size: 0.95rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 40px auto 90px auto;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #2c3e50;
-      font-size: 1.8rem;
-    }
-
-    /* ===== Controls ===== */
-    .controls {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    input[type="text"], input[type="date"] {
-      padding: 12px;
-      font-size: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      outline: none;
-      flex: 1;
-      min-width: 200px;
-      transition: 0.3s;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    input[type="text"]:focus, input[type="date"]:focus {
-      border-color: #2980b9;
-      box-shadow: 0 0 8px rgba(41, 128, 185, 0.4);
-    }
-
-    button {
-      padding: 12px 20px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: bold;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .add-btn {
-      background: linear-gradient(135deg, #27ae60, #2ecc71);
-      color: white;
-    }
-    .add-btn:hover {
-      background: linear-gradient(135deg, #219150, #27ae60);
-      transform: scale(1.05);
-    }
-
-    .mark-all-btn {
-      background: linear-gradient(135deg, #2980b9, #3498db);
-      color: white;
-    }
-    .mark-all-btn:hover {
-      background: linear-gradient(135deg, #216799, #2980b9);
-      transform: scale(1.05);
-    }
-
-    /* ===== Table ===== */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    th, td {
-      padding: 14px;
-      text-align: center;
-      border-bottom: 1px solid #eee;
-    }
-
-    th {
-      background: linear-gradient(135deg, #34495e, #2c3e50);
-      color: #fff;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    tr:nth-child(even) {
-      background: #f9f9f9;
-    }
-
-    tr:hover {
-      background: #f1f7fd;
-    }
-
-    .present {
-      background: #2ecc71;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: bold;
-    }
-
-    .absent {
-      background: #e74c3c;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: bold;
-    }
-
-    .toggle-btn {
-      background: #f39c12;
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 8px;
-    }
-    .toggle-btn:hover {
-      background: #d68910;
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-      .controls {
-        flex-direction: column;
-      }
-      table {
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Attendance Tracker Pro</title>
+<meta name="description" content="Attendance Tracker Pro — interactive, beautiful, local-first attendance manager."/>
+<style>
+  :root{
+    --bg1: #e6fcff; --bg2:#f6ebff; --card:#ffffff; --muted:#5b6b7a;
+    --accent1:#00c2ff; --accent2:#8b5cf6; --accent3:#2dd4bf;
+    --glass: rgba(255,255,255,0.7);
+    --radius:16px;
+    --shadow: 0 10px 30px rgba(18,38,63,0.08);
+    --maxw:1100px;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:#0b2233}
+  .wrap{max-width:var(--maxw);margin:28px auto;padding:20px;display:grid;grid-template-columns:360px 1fr;gap:20px;align-items:start}
+  /* header */
+  header{grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;background:linear-gradient(90deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5));box-shadow:var(--shadow);backdrop-filter: blur(6px)}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent2),var(--accent1));box-shadow:0 6px 18px rgba(139,92,246,0.18)}
+  .title{line-height:1}
+  .title h1{margin:0;font-size:20px}
+  .title p{margin:0;color:var(--muted);font-size:13px}
+  .header-actions{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .btn{border:0;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:white;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+  .ghost{background:transparent;border:1px solid rgba(11,34,48,0.06);padding:9px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+  .small{padding:8px 10px;border-radius:10px}
+  /* left column (controls & students) */
+  .panel{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+  .controls{display:flex;flex-direction:column;gap:10px}
+  label{font-size:13px;color:var(--muted)}
+  input[type="text"], input[type="date"], select{padding:10px;border-radius:10px;border:1px solid rgba(11,34,48,0.06);outline:none;font-size:14px}
+  .row{display:flex;gap:8px}
+  .row input{flex:1}
+  .student-list{margin-top:12px;display:flex;flex-direction:column;gap:8px;max-height:360px;overflow:auto;padding-right:6px}
+  .student-item{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;border:1px solid rgba(11,34,48,0.04)}
+  .avatar{width:44px;height:44;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent3),var(--accent1));color:white;font-weight:800}
+  .smeta{flex:1}
+  .smeta h4{margin:0;font-size:15px}
+  .smeta p{margin:0;color:var(--muted);font-size:12px}
+  .s-actions{display:flex;gap:8px}
+  .pill{padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(11,34,48,0.03),transparent);font-size:12px}
+  /* right column (dashboard) */
+  .dashboard{display:grid;grid-template-rows:auto auto 1fr;gap:12px}
+  .stats{display:flex;gap:12px}
+  .stat{flex:1;background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+  .big{font-size:22px;font-weight:800}
+  .progress{width:100%;height:12px;border-radius:10px;background:linear-gradient(90deg,rgba(11,34,48,0.03),transparent);overflow:hidden}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent3),var(--accent1));transition:width .6s cubic-bezier(.2,.9,.2,1)}
+  .controls-inline{display:flex;gap:8px;align-items:center}
+  /* table */
+  table{width:100%;border-collapse:collapse;background:transparent}
+  thead th{font-size:13px;color:var(--muted);text-align:left;padding:8px 6px}
+  tbody tr{border-bottom:1px dashed rgba(11,34,48,0.03)}
+  tbody td{padding:10px 6px}
+  .badge-present{background:#10b981;color:white;padding:6px 10px;border-radius:999px;font-weight:700}
+  .badge-absent{background:#ef4444;color:white;padding:6px 10px;border-radius:999px;font-weight:700}
+  /* modal */
+  .modal-back{position:fixed;inset:0;background:rgba(8,12,16,0.38);display:flex;align-items:center;justify-content:center;z-index:99}
+  .modal{width:520px;max-width:94%;background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+  .mini-legend{display:flex;gap:6px;align-items:center}
+  .legend-b{width:12px;height:12px;border-radius:3px}
+  /* search */
+  .search{display:flex;gap:8px;align-items:center}
+  .search input{flex:1}
+  /* toast */
+  .toast{position:fixed;right:20px;bottom:20px;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:white;padding:10px 14px;border-radius:12px;box-shadow:var(--shadow);z-index:999}
+  /* responsive */
+  @media (max-width:980px){ .wrap{grid-template-columns:1fr; padding:12px} .header-actions{margin-left:0; margin-top:10px} .student-list{max-height:220px} }
+</style>
 </head>
 <body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- SVG logo: circle + check + calendar -->
+          <svg width="46" height="46" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="lg1" x1="0" x2="1">
+                <stop stop-color="#8B5CF6" offset="0"/><stop stop-color="#00C2FF" offset="1"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="44" height="44" rx="10" fill="url(#lg1)" opacity="0.95"/>
+            <path d="M15 26l5 5 12-14" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="title">
+          <h1>Attendance Tracker Pro</h1>
+          <p>Smart • Local-first • Interactive</p>
+        </div>
+      </div>
 
-  <header>📊 Attendance Tracker</header>
+      <div class="header-actions">
+        <div class="search" style="min-width:260px">
+          <input id="q" type="text" placeholder="Search students or filter by status (present/absent)" oninput="render()" style="padding:9px;border-radius:10px;border:1px solid rgba(11,34,48,0.06)"/>
+        </div>
+        <button class="ghost small" id="themeToggle" title="Toggle theme" onclick="toast('Theme toggle is demo — light theme chosen')">🌤 Theme</button>
+        <button class="ghost small" id="notifyBtn" onclick="enableNotify()">🔔 Remind</button>
+        <button class="btn" onclick="exportData()">Export</button>
+      </div>
+    </header>
 
-  <main>
-    <h2>✨ Manage Daily Attendance ✨</h2>
+    <!-- left -->
+    <aside class="panel">
+      <div>
+        <label for="studentName">Add student</label>
+        <div class="row" style="margin-top:6px">
+          <input id="studentName" type="text" placeholder="Student name..." />
+          <button class="btn" onclick="addStudent()">Add</button>
+        </div>
+      </div>
 
-    <div class="controls">
-      <input type="text" id="studentName" placeholder="Enter student name">
-      <button class="add-btn" onclick="addStudent()">➕ Add Student</button>
-      <input type="date" id="attendanceDate">
-      <button class="mark-all-btn" onclick="markAllPresent()">✅ Mark All Present</button>
+      <div style="margin-top:12px">
+        <label for="datePicker">Attendance date</label>
+        <div class="row" style="margin-top:6px">
+          <input id="datePicker" type="date" />
+          <button class="ghost small" onclick="markAll()">Mark all present</button>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;display:flex;gap:8px;align-items:center;justify-content:space-between">
+        <div style="font-size:13px;color:var(--muted)">Students</div>
+        <div style="font-size:13px;color:var(--muted)"><span id="countTotal">0</span> total</div>
+      </div>
+
+      <div class="student-list" id="studentList" aria-live="polite"></div>
+
+      <div style="margin-top:12px;display:flex;gap:8px;justify-content:space-between">
+        <button class="ghost" onclick="importData()">Import JSON</button>
+        <button class="ghost" onclick="clearAll()">Clear All</button>
+      </div>
+    </aside>
+
+    <!-- right -->
+    <main class="dashboard">
+      <div class="stats">
+        <div class="stat">
+          <div style="font-size:13px;color:var(--muted)">Present</div>
+          <div class="big" id="presentCount">0</div>
+          <div style="width:100%;margin-top:8px" class="progress"><i id="presentBar" style="width:0%"></i></div>
+        </div>
+        <div class="stat">
+          <div style="font-size:13px;color:var(--muted)">Absent</div>
+          <div class="big" id="absentCount">0</div>
+          <div style="width:100%;margin-top:8px" class="progress"><i id="absentBar" style="width:0%;background:linear-gradient(90deg,#ff7a7a,#ef4444)"></i></div>
+        </div>
+      </div>
+
+      <div class="stat" style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:14px;color:var(--muted)">Attendance Register</div>
+          <div class="controls-inline">
+            <select id="viewMode" onchange="render()">
+              <option value="all">All students</option>
+              <option value="present">Only present</option>
+              <option value="absent">Only absent</option>
+            </select>
+            <button class="ghost small" onclick="todayQuick()">Today quick-mark</button>
+          </div>
+        </div>
+
+        <div style="overflow:auto">
+          <table id="regTable" aria-live="polite">
+            <thead><tr><th>Name</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="regBody"></tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <div class="stat" id="logPanel" style="min-height:160px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:14px;color:var(--muted)">Activity Log</div>
+          <div style="font-size:13px;color:var(--muted)"><span id="lastUpdated">—</span></div>
+        </div>
+        <div id="activity" style="margin-top:10px;color:var(--muted);font-size:14px">No actions yet.</div>
+      </div>
+    </main>
+  </div>
+
+  <!-- modal template -->
+  <div id="modalRoot" style="display:none"></div>
+
+  <div id="toastRoot" aria-live="polite"></div>
+
+<script>
+/* ====== Data model (localStorage) ====== */
+const LS = 'attendance_pro_v1';
+let state = { students: [], activity: [] }; // student: {id,name,attendance: { 'Mon Sep 14 2025':'Present' } }
+
+/* load/save */
+function load(){ const s = localStorage.getItem(LS); if(s) state = JSON.parse(s); }
+function save(){ localStorage.setItem(LS, JSON.stringify(state)); render(); }
+
+/* utilities */
+function formatDateInput(d){ if(!d) return ''; const dd = new Date(d); return dd.toDateString(); }
+function todayISO(){ const d = new Date(); const iso = d.toISOString().slice(0,10); return iso; }
+function shortId(){ return Math.random().toString(36).slice(2,9); }
+function toast(msg, time=2600){ const el=document.createElement('div'); el.className='toast'; el.textContent=msg; document.body.appendChild(el); setTimeout(()=>el.remove(), time); }
+
+/* Add / Edit / Delete */
+function addStudent(){
+  const name = document.getElementById('studentName').value.trim();
+  if(!name) return toast('Type a student name');
+  const obj = { id: shortId(), name, attendance: {} };
+  state.students.push(obj);
+  state.activity.unshift(`${new Date().toLocaleString()}: Added ${name}`);
+  document.getElementById('studentName').value='';
+  save();
+  toast('Student added');
+}
+
+function editStudent(id){
+  const s = state.students.find(x=>x.id===id);
+  const nv = prompt('Edit student name', s.name);
+  if(nv && nv.trim()){
+    s.name = nv.trim();
+    state.activity.unshift(`${new Date().toLocaleString()}: Renamed student to ${s.name}`);
+    save(); toast('Name updated');
+  }
+}
+
+function deleteStudent(id){
+  const s = state.students.find(x=>x.id===id);
+  if(!s) return;
+  if(!confirm(`Delete ${s.name}?`)) return;
+  state.students = state.students.filter(x=>x.id!==id);
+  state.activity.unshift(`${new Date().toLocaleString()}: Deleted ${s.name}`);
+  save(); toast('Deleted');
+}
+
+/* Attendance toggles */
+function getSelectedDate(){ const v = document.getElementById('datePicker').value; if(!v) return null; return formatDateInput(v); }
+
+function toggleAttendance(studentId){
+  const sel = getSelectedDate();
+  if(!sel) return toast('Select a date first');
+  const s = state.students.find(x=>x.id===studentId);
+  const current = s.attendance[sel];
+  s.attendance[sel] = current === 'Present' ? 'Absent' : 'Present';
+  state.activity.unshift(`${new Date().toLocaleString()}: ${s.name} → ${s.attendance[sel]} (${sel})`);
+  save();
+}
+
+/* mark all */
+function markAll(){
+  const sel = getSelectedDate();
+  if(!sel) return toast('Select a date first');
+  if(state.students.length===0) return toast('No students');
+  state.students.forEach(s => s.attendance[sel] = 'Present');
+  state.activity.unshift(`${new Date().toLocaleString()}: Marked all Present on ${sel}`);
+  save(); toast('All marked present');
+}
+
+/* quick today */
+function todayQuick(){
+  const iso = todayISO();
+  document.getElementById('datePicker').value = iso;
+  markAll();
+}
+
+/* render UI */
+function render(){
+  // header counts
+  const sel = getSelectedDate();
+  const total = state.students.length;
+  document.getElementById('countTotal').innerText = total;
+
+  // compute present/absent for selected date
+  let present = 0, absent = 0;
+  if(sel){
+    state.students.forEach(s => {
+      const v = s.attendance[sel] || 'Absent';
+      if(v === 'Present') present++; else absent++;
+    });
+  } else {
+    // when no date selected, show last date stats (or zeros)
+    present = absent = 0;
+  }
+
+  document.getElementById('presentCount').innerText = present;
+  document.getElementById('absentCount').innerText = absent;
+  const pPct = (total===0) ? 0 : Math.round((present/total)*100);
+  const aPct = (total===0) ? 0 : Math.round((absent/total)*100);
+  document.getElementById('presentBar').style.width = pPct + '%';
+  document.getElementById('absentBar').style.width = aPct + '%';
+
+  // student list (left)
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const listRoot = document.getElementById('studentList');
+  listRoot.innerHTML = '';
+  state.students.forEach(s=>{
+    if(q){
+      // filter by name or by status keywords
+      const nameMatches = s.name.toLowerCase().includes(q);
+      const stat = sel ? (s.attendance[sel] || 'Absent').toLowerCase() : '';
+      const statusMatches = stat.includes(q);
+      if(!nameMatches && !statusMatches) return;
+    }
+    const row = document.createElement('div'); row.className='student-item';
+    row.innerHTML = `
+      <div class="avatar">${escapeHtml(s.name.charAt(0) || 'S')}</div>
+      <div class="smeta">
+        <h4>${escapeHtml(s.name)}</h4>
+        <p>${sel ? (s.attendance[sel] || 'Absent') + ' • ' + (sel || 'No date') : 'Select a date to view status'}</p>
+      </div>
+      <div class="s-actions">
+        <button class="pill" onclick="openHistory('${s.id}')">History</button>
+        <button class="ghost small" onclick="editStudent('${s.id}')">Edit</button>
+        <button class="ghost small" onclick="deleteStudent('${s.id}')">Delete</button>
+        <button class="btn small" onclick="toggleAttendance('${s.id}')">${sel ? (s.attendance[sel] === 'Present' ? 'Mark Absent' : 'Mark Present') : 'Select date'}</button>
+      </div>`;
+    listRoot.appendChild(row);
+  });
+
+  // register table (right)
+  const viewMode = document.getElementById('viewMode').value;
+  const regBody = document.getElementById('regBody'); regBody.innerHTML = '';
+  state.students.forEach(s=>{
+    const status = sel ? (s.attendance[sel] || 'Absent') : '—';
+    if(viewMode === 'present' && status!=='Present') return;
+    if(viewMode === 'absent' && status!=='Absent') return;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${escapeHtml(s.name)}</td>
+                    <td>${sel || '—'}</td>
+                    <td>${status==='Present' ? '<span class="badge-present">Present</span>' : (status==='Absent' ? '<span class="badge-absent">Absent</span>' : '—')}</td>
+                    <td>
+                      <button class="ghost small" onclick="openHistory('${s.id}')">History</button>
+                      <button class="ghost small" onclick="editStudent('${s.id}')">Edit</button>
+                      <button class="ghost small" onclick="deleteStudent('${s.id}')">Delete</button>
+                    </td>`;
+    regBody.appendChild(tr);
+  });
+
+  // activity log
+  const act = document.getElementById('activity');
+  if(state.activity.length===0) act.innerText = 'No actions yet.';
+  else act.innerHTML = '<ul style="padding-left:18px;margin:8px 0 0 0;color:var(--muted)">' + state.activity.slice(0,8).map(x=>`<li>${escapeHtml(x)}</li>`).join('') + '</ul>';
+  document.getElementById('lastUpdated').innerText = state.activity.length ? new Date().toLocaleString() : '—';
+
+  // save local
+  localStorage.setItem(LS, JSON.stringify(state));
+}
+
+/* history modal */
+function openHistory(id){
+  const s = state.students.find(x=>x.id===id);
+  if(!s) return;
+  // prepare last 7 days
+  const days = [];
+  for(let i=6;i>=0;i--){ const d = new Date(); d.setDate(d.getDate()-i); days.push(d.toDateString()); }
+  const rows = days.map(d => {
+    const st = s.attendance[d] || 'Absent';
+    return `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(11,34,48,0.03)"><div>${d}</div><div style="font-weight:800">${st==='Present'?'<span style="color:#059669">✅</span>':'<span style="color:#ef4444">✖</span>'}</div></div>`;
+  }).join('');
+  const modal = document.createElement('div'); modal.className='modal-back';
+  modal.innerHTML = `<div class="modal">
+    <div style="display:flex;justify-content:space-between;align-items:center"><strong>${escapeHtml(s.name)} — Last 7 days</strong><button onclick="closeModal(this)" class="ghost small">Close</button></div>
+    <div style="margin-top:10px">${rows}</div>
+    <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+      <button class="btn small" onclick="markStudentAllHere('${s.id}')">Mark Present (all shown days)</button>
+      <button class="ghost small" onclick="closeModal(this)">Done</button>
     </div>
+  </div>`;
+  document.getElementById('modalRoot').style.display='block';
+  document.getElementById('modalRoot').appendChild(modal);
+}
+function closeModal(btn){
+  const mb = btn.closest('.modal-back');
+  if(mb) mb.remove();
+  document.getElementById('modalRoot').style.display = document.getElementById('modalRoot').children.length ? 'block' : 'none';
+}
+function markStudentAllHere(id){
+  const s = state.students.find(x=>x.id===id);
+  if(!s) return;
+  const days = [];
+  for(let i=6;i>=0;i--){ const d = new Date(); d.setDate(d.getDate()-i); days.push(d.toDateString()); }
+  days.forEach(d => s.attendance[d] = 'Present');
+  state.activity.unshift(`${new Date().toLocaleString()}: Marked ${s.name} Present for last 7 days`);
+  save(); toast('Marked present for last 7 days');
+  // close modal
+  document.getElementById('modalRoot').innerHTML=''; document.getElementById('modalRoot').style.display='none';
+}
 
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Date</th>
-          <th>Status</th>
-          <th>Toggle</th>
-        </tr>
-      </thead>
-      <tbody id="studentList"></tbody>
-    </table>
-  </main>
+/* import/export */
+function exportData(){
+  const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'attendance-data.json'; a.click();
+  URL.revokeObjectURL(url);
+  toast('Export started');
+}
+function importData(){
+  const txt = prompt('Paste JSON data here (or click Cancel)');
+  if(!txt) return;
+  try{
+    const obj = JSON.parse(txt);
+    if(!obj.students) return toast('Invalid data');
+    state = obj;
+    state.activity = state.activity || [];
+    state.students = state.students || [];
+    save(); toast('Imported data');
+  }catch(e){ toast('Invalid JSON'); }
+}
 
-  <footer>© 2025 Attendance Tracker | Designed with ❤️ & Creativity</footer>
+/* clear all */
+function clearAll(){
+  if(!confirm('Clear all data (this will remove students & attendance)?')) return;
+  state = { students: [], activity: [] };
+  save(); toast('Cleared');
+}
 
-  <script>
-    let students = JSON.parse(localStorage.getItem("students")) || [];
+/* notifications */
+async function enableNotify(){
+  if(!('Notification' in window)) return alert('Notifications unsupported');
+  const p = await Notification.requestPermission();
+  if(p === 'granted'){
+    state.activity.unshift(`${new Date().toLocaleString()}: Notifications enabled`);
+    save();
+    toast('Notifications enabled (will remind at 9am while page is open)');
+    // simple reminder: every 60min while open at 9-21 window, demo
+    setInterval(()=>{
+      const n = new Date();
+      const hours = n.getHours();
+      if(hours>=8 && hours<=20) new Notification('Attendance Reminder', { body: 'Don’t forget to mark attendance today!', icon: ''});
+    }, 1000*60*60); // hourly
+  } else toast('Permission denied');
+}
 
-    function renderTable() {
-      const date = document.getElementById("attendanceDate").value;
-      const tbody = document.getElementById("studentList");
-      tbody.innerHTML = "";
+/* helper: mark all present in modal history handled earlier */
 
-      students.forEach((student, index) => {
-        const status = student.attendance[date] || "Absent";
+/* helper: escape html */
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"})[c]); }
 
-        tbody.innerHTML += `
-          <tr>
-            <td>${student.name}</td>
-            <td>${date || "Not Selected"}</td>
-            <td><span class="${status.toLowerCase()}">${status}</span></td>
-            <td>
-              <button class="toggle-btn" onclick="toggleAttendance(${index}, '${date}')">🔄 Toggle</button>
-            </td>
-          </tr>`;
-      });
+/* init */
+load(); // ensure default date is today
+document.getElementById('datePicker').value = todayISO();
+render();
 
-      localStorage.setItem("students", JSON.stringify(students));
-    }
+/* wire keyboard add */
+document.getElementById('studentName').addEventListener('keypress', e => { if(e.key==='Enter') addStudent(); });
+document.getElementById('datePicker').addEventListener('change', render);
+document.getElementById('q').addEventListener('input', render);
 
-    function addStudent() {
-      const name = document.getElementById("studentName").value.trim();
-      if (name === "") return alert("Please enter a name.");
-      students.push({ name, attendance: {} });
-      document.getElementById("studentName").value = "";
-      renderTable();
-    }
-
-    function toggleAttendance(index, date) {
-      if (!date) return alert("Please select a date first.");
-      const student = students[index];
-      student.attendance[date] =
-        student.attendance[date] === "Present" ? "Absent" : "Present";
-      renderTable();
-    }
-
-    function markAllPresent() {
-      const date = document.getElementById("attendanceDate").value;
-      if (!date) return alert("Please select a date first.");
-      students.forEach(student => {
-        student.attendance[date] = "Present";
-      });
-      renderTable();
-    }
-
-    document.getElementById("attendanceDate").addEventListener("change", renderTable);
-    renderTable();
-  </script>
+</script>
 </body>
 </html>
