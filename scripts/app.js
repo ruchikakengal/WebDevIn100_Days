@@ -463,6 +463,16 @@
                 technologies: ["HTML", "CSS", "JavaScript", "Canvas"],
                 features: ["Neon Graphics", "Power-ups", "Score System"]
             },
+
+          {
+                originalDay: 11,
+                name: "Escape Grid Game",
+                description: "A browser-based puzzle game where players must escape a digital maze by solving logic challenges, decoding clues, and unlocking hidden paths.",
+                demoLink: "escapegridgame.html",
+                category: "games",
+                technologies: ["HTML", "CSS", "JavaScript", "Canvas"],
+                features: ["- Dynamic grid generation", "- Interactive puzzles", "Score System"]
+            },
             {
                 originalDay: 11,
                 name: "Weather App",
@@ -2017,6 +2027,17 @@
                 category: "AI/ML",
                 technologies: ["HTML", "CSS", "Javascript", "Python"],
                 features: ["Summerizer","Txt","Doc","Pdf"]
+            },
+
+
+           {
+                originalDay: 170,
+                name: "Meme Mayhem: The Ultimate Meme Battle Arena",
+                description: "A multiplayer meme showdown platform where users upload memes, vote in real-time battles, and climb the Meme Leaderboard.",
+                demoLink: "Meme.html",
+                category: "AI/ML",
+                technologies: ["HTML", "CSS", "Javascript"],
+                features: ["Meme of the Day","Dark mode toggle with meme-specific themes"]
             },
             {
                 originalDay: 169,

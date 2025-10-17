@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meme Mayhem — The Ultimate Meme Battle Arena</title>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#0b76ef; --muted:#9aa4b2; --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --neon: #00ffd1;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{background:linear-gradient(180deg,var(--bg),#071022);color:#e6eef8;padding:18px}
+
+    .app{max-width:1100px;margin:0 auto}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    h1{font-size:20px;margin:0}
+    header .controls{display:flex;gap:8px;align-items:center}
+
+    /* Upload area */
+    .upload{display:flex;gap:16px;margin-bottom:18px}
+    .dropzone{flex:1;border:2px dashed var(--glass);border-radius:12px;padding:18px;background:linear-gradient(180deg,var(--glass-2),transparent);min-height:120px;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer}
+    .dropzone.drag{border-color:var(--accent);transform:scale(1.01)}
+    .dropzone input{display:none}
+    .thumbs{width:320px;display:flex;flex-direction:column;gap:8px}
+    .thumb{background:var(--card);padding:8px;border-radius:10px;display:flex;align-items:center;gap:8px}
+    .thumb img{width:64px;height:64px;object-fit:cover;border-radius:8px}
+    .btn{background:linear-gradient(90deg,var(--accent),#0ea5ff);border:none;padding:8px 12px;border-radius:8px;color:#012;cursor:pointer}
+
+    /* Arena */
+    .arena{display:flex;gap:12px;margin-bottom:18px}
+    .card{flex:1;background:linear-gradient(180deg,var(--card),#05101a);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);min-height:320px;position:relative;overflow:hidden}
+    .meme-img{width:100%;height:240px;object-fit:cover;border-radius:8px}
+    .meta{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+    .vote-row{display:flex;gap:8px;margin-top:8px}
+    .vote-btn{flex:1;padding:10px;border-radius:10px;border:none;background:linear-gradient(180deg,#203547,#12222f);color:#fff;cursor:pointer}
+
+    .center-controls{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+    .timer{width:160px;height:32px;background:rgba(255,255,255,0.03);border-radius:20px;display:flex;align-items:center;padding:4px}
+    .progress{height:100%;background:linear-gradient(90deg,var(--neon),var(--accent));border-radius:16px;width:100%}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Leaderboard */
+    .bottom{display:flex;gap:12px}
+    .leaderboard{width:300px;padding:12px;border-radius:12px;background:linear-gradient(180deg,var(--card),#04121a)}
+    .lb-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,0.02)}
+
+    /* Carousel */
+    .carousel{height:140px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .carousel .m{flex:0 0 140px;height:100%;border-radius:10px;overflow:hidden;position:relative}
+    .carousel img{width:100%;height:100%;object-fit:cover}
+
+    /* Dark mode toggle */
+    .toggle{display:inline-flex;align-items:center;gap:6px}
+
+    /* small screens */
+    @media (max-width:900px){
+      .arena{flex-direction:column}
+      .thumbs{width:100%}
+      .leaderboard{width:100%}
+      .bottom{flex-direction:column}
+    }
+
+    /* Animations */
+    .glow{box-shadow:0 0 18px rgba(11,118,239,0.18)}
+    .battle-animate{animation:shake 0.8s ease-in-out}
+    @keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}100%{transform:translateX(0)}}
+
+    /* Konami easter egg banner */
+    .secret{position:fixed;left:50%;top:14px;transform:translateX(-50%);background:linear-gradient(90deg,#ffd700,#ff6a00);color:#04101a;padding:10px 18px;border-radius:14px;display:none;z-index:999}
+
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🛡️ Meme Mayhem — Ultimate Meme Battle Arena</h1>
+      <div class="controls">
+        <label class="toggle small"><input id="darkToggle" type="checkbox"> Dark Mode</label>
+        <button id="startBattle" class="btn">Start Battle</button>
+      </div>
+    </header>
+
+    <section class="carousel" id="memeOfDay"></section>
+
+    <section class="upload">
+      <label class="dropzone" id="dropzone">Drag & drop memes here or click to upload<br><small class="small">PNG/JPG/GIF — max 3 MB each</small>
+        <input id="fileInput" type="file" accept="image/*" multiple>
+      </label>
+
+      <div class="thumbs" id="thumbs"></div>
+    </section>
+
+    <section class="arena">
+      <div class="card" id="leftCard">
+        <div class="slot large" data-side="left">
+          <img class="meme-img" id="leftImg" src="https://picsum.photos/600/400?random=1" alt="Left Meme">
+        </div>
+        <div class="meta"><div><strong id="leftTitle">Left Challenger</strong><div class="small" id="leftScore">Score: 0</div></div></div>
+        <div class="vote-row"><button id="voteLeft" class="vote-btn">Vote Left</button></div>
+      </div>
+
+      <div class="center-controls">
+        <div class="timer small">Time: <span id="timerVal">—</span></div>
+        <div class="timer" style="width:220px"><div id="progressFill" class="progress" style="width:0%"></div></div>
+        <button id="nextBattle" class="btn">Next</button>
+      </div>
+
+      <div class="card" id="rightCard">
+        <div class="slot large" data-side="right">
+          <img class="meme-img" id="rightImg" src="https://picsum.photos/600/400?random=2" alt="Right Meme">
+        </div>
+        <div class="meta"><div><strong id="rightTitle">Right Challenger</strong><div class="small" id="rightScore">Score: 0</div></div></div>
+        <div class="vote-row"><button id="voteRight" class="vote-btn">Vote Right</button></div>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <div class="leaderboard" id="leaderboard">
+        <h3 style="margin-top:0">🏆 Leaderboard</h3>
+        <div id="lbList"></div>
+      </div>
+
+      <div style="flex:1;padding:12px;background:linear-gradient(180deg,var(--card),#04121a);border-radius:12px">
+        <h3 style="margin-top:0">How it works</h3>
+        <ol style="padding-left:18px">
+          <li>Upload memes using drag & drop or file picker.</li>
+          <li>Click "Start Battle" to begin timed 10-second rounds.</li>
+          <li>Vote for the meme you like. Votes update leaderboard (localStorage).</li>
+        </ol>
+
+        <h4>Meme Uploads</h4>
+        <p class="small">Uploaded images are stored locally in your browser's Storage (not sent anywhere). Use Firebase if you want persistent cloud storage and multi-user leaderboards.</p>
+      </div>
+    </section>
+
+    <div id="secretBanner" class="secret">✨ Konami Unlocked: Secret Theme Activated!</div>
+  </div>
+
+  <script>
+    // Basic app state
+    const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB
+    const drop = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const thumbs = document.getElementById('thumbs');
+    const memeOfDay = document.getElementById('memeOfDay');
+
+    // Arena elements
+    const leftImg = document.getElementById('leftImg');
+    const rightImg = document.getElementById('rightImg');
+    const voteLeft = document.getElementById('voteLeft');
+    const voteRight = document.getElementById('voteRight');
+    const leftScore = document.getElementById('leftScore');
+    const rightScore = document.getElementById('rightScore');
+    const startBattle = document.getElementById('startBattle');
+    const nextBattle = document.getElementById('nextBattle');
+    const timerVal = document.getElementById('timerVal');
+    const progressFill = document.getElementById('progressFill');
+
+    const lbList = document.getElementById('lbList');
+
+    let memes = []; // {id, src, name, votes}
+    let current = {left:null,right:null};
+    let timer = null; let timeRemaining = 0; const ROUND_TIME = 10;
+
+    // Load from localStorage
+    function loadMemes(){
+      const raw = localStorage.getItem('mm_memes');
+      if(raw){
+        try{memes = JSON.parse(raw)}catch(e){memes=[]}
+      }
+    }
+    function saveMemes(){ localStorage.setItem('mm_memes', JSON.stringify(memes)); }
+
+    function loadLeaderboard(){
+      const sorted = [...memes].sort((a,b)=> (b.votes||0) - (a.votes||0));
+      lbList.innerHTML = '';
+      sorted.slice(0,10).forEach((m,idx)=>{
+        const r = document.createElement('div'); r.className='lb-row';
+        r.innerHTML = `<div><strong>#${idx+1}</strong> ${escapeHtml(m.name||'untitled')}</div><div>${m.votes||0}</div>`;
+        lbList.appendChild(r);
+      });
+    }
+
+    function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+    function renderThumbs(){
+      thumbs.innerHTML='';
+      memes.forEach((m,i)=>{
+        const t = document.createElement('div'); t.className='thumb';
+        t.innerHTML = `<img src="${m.src}" alt="m"><div style="flex:1"><div style="font-size:13px">${escapeHtml(m.name||'untitled')}</div><div class="small">Votes: ${m.votes||0}</div></div><div style="display:flex;flex-direction:column;gap:6px"><button data-i="${i}" class="btn select">Use</button><button data-i="${i}" class="btn" style="background:transparent;color:var(--muted)" data-action="del">Del</button></div>`;
+        thumbs.appendChild(t);
+      });
+    }
+
+    // Upload handling
+    function handleFiles(files){
+      [...files].forEach(file=>{
+        if(!file.type.startsWith('image/')) return;
+        if(file.size>MAX_FILE_SIZE){ alert('File too large: '+file.name); return; }
+        const reader = new FileReader();
+        reader.onload = (e)=>{
+          memes.push({id:cryptoRandomId(),src:e.target.result,name:file.name,votes:0});
+          saveMemes(); renderThumbs(); renderCarousel(); loadLeaderboard();
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    drop.addEventListener('click',()=>fileInput.click());
+    drop.addEventListener('dragover',(e)=>{e.preventDefault();drop.classList.add('drag')});
+    drop.addEventListener('dragleave',()=>drop.classList.remove('drag'));
+    drop.addEventListener('drop',(e)=>{e.preventDefault();drop.classList.remove('drag');handleFiles(e.dataTransfer.files)});
+    fileInput.addEventListener('change',(e)=>handleFiles(e.target.files));
+
+    // Select and delete actions
+    thumbs.addEventListener('click',(e)=>{
+      const target = e.target;
+      if(target.matches('button.select')){
+        const i = Number(target.dataset.i);
+        pickCustomForSide(memes[i]);
+      }
+      if(target.dataset.action==='del'){
+        const i = Number(target.dataset.i);
+        if(confirm('Delete meme?')){memes.splice(i,1);saveMemes();renderThumbs();renderCarousel();loadLeaderboard()}
+      }
+    });
+
+    // Simple ID
+    function cryptoRandomId(){return Math.random().toString(36).slice(2,9)}
+
+    // Battle logic
+    function pickTwoRandom(){
+      if(memes.length<2) return null;
+      const copy = [...memes];
+      shuffle(copy);
+      return [copy[0],copy[1]];
+    }
+
+    function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}}
+
+    function startRound(){
+      if(memes.length<2){alert('Add at least 2 memes to start');return}
+      const pair = pickTwoRandom();
+      current.left = pair[0]; current.right = pair[1];
+      leftImg.src = current.left.src; rightImg.src = current.right.src;
+      document.getElementById('leftTitle').textContent = current.left.name; document.getElementById('rightTitle').textContent = current.right.name;
+      leftScore.textContent = 'Score: ' + (current.left.votes||0); rightScore.textContent = 'Score: ' + (current.right.votes||0);
+      animateBattle();
+      startTimer(ROUND_TIME);
+    }
+
+    function pickCustomForSide(meme){
+      // If both empty, place left then right
+      if(!current.left){ current.left = meme; leftImg.src=meme.src; document.getElementById('leftTitle').textContent = meme.name; return }
+      if(!current.right){ current.right = meme; rightImg.src=meme.src; document.getElementById('rightTitle').textContent = meme.name; return }
+      // Otherwise replace left
+      current.left = meme; leftImg.src=meme.src; document.getElementById('leftTitle').textContent = meme.name;
+    }
+
+    function animateBattle(){
+      leftImg.classList.add('battle-animate'); rightImg.classList.add('battle-animate');
+      setTimeout(()=>{leftImg.classList.remove('battle-animate'); rightImg.classList.remove('battle-animate')},900);
+    }
+
+    // Timer
+    function startTimer(seconds){
+      clearInterval(timer); timeRemaining = seconds; updateTimerUI(); progressFill.style.width = '100%';
+      timer = setInterval(()=>{
+        timeRemaining -= 0.1; if(timeRemaining<=0){endRound();} updateTimerUI();
+      },100);
+    }
+
+    function updateTimerUI(){
+      timerVal.textContent = Math.max(0, timeRemaining.toFixed(1)) + 's';
+      const pct = Math.max(0, (timeRemaining/ROUND_TIME)*100);
+      progressFill.style.width = pct+'%';
+    }
+
+    function endRound(){ clearInterval(timer); timer=null; timerVal.textContent='—'; progressFill.style.width='0%'; }
+
+    // Voting
+    voteLeft.addEventListener('click',()=>castVote('left'));
+    voteRight.addEventListener('click',()=>castVote('right'));
+
+    function castVote(side){
+      if(!current.left || !current.right){alert('Start a battle first');return}
+      const winner = side === 'left' ? current.left : current.right;
+      winner.votes = (winner.votes||0) + 1;
+      saveMemes(); loadLeaderboard(); renderThumbs();
+      // flash winner
+      const el = side==='left' ? document.getElementById('leftCard') : document.getElementById('rightCard');
+      el.classList.add('glow'); setTimeout(()=>el.classList.remove('glow'),800);
+    }
+
+    // Next battle
+    nextBattle.addEventListener('click',()=>startRound());
+    startBattle.addEventListener('click',()=>startRound());
+
+    // Carousel render (Meme of the Day)
+    function renderCarousel(){
+      memeOfDay.innerHTML='';
+      const sample = memes.slice(0,6);
+      sample.forEach(m=>{
+        const d = document.createElement('div'); d.className='m'; d.innerHTML = `<img src="${m.src}" alt="m">`;
+        memeOfDay.appendChild(d);
+      });
+    }
+
+    // Load initial demo memes if empty
+    function seedDemo(){
+      if(memes.length===0){
+        memes.push({id:'d1',src:'https://picsum.photos/seed/picsum1/800/520',name:'Demo Meme 1',votes:3});
+        memes.push({id:'d2',src:'https://picsum.photos/seed/picsum2/800/520',name:'Demo Meme 2',votes:1});
+        memes.push({id:'d3',src:'https://picsum.photos/seed/picsum3/800/520',name:'Demo Meme 3',votes:0});
+        saveMemes();
+      }
+    }
+
+    // Dark mode toggle (small, flips accent)
+    document.getElementById('darkToggle').addEventListener('change',(e)=>{
+      if(e.target.checked){document.documentElement.style.setProperty('--bg','#f6f8fb');document.documentElement.style.setProperty('--card','#ffffff');document.body.style.color='#0b1220'}else{document.documentElement.style.setProperty('--bg','#0f1724');document.documentElement.style.setProperty('--card','#0b1220');document.body.style.color='#e6eef8'}
+    });
+
+    // Konami easter egg
+    const konami = [38,38,40,40,37,39,37,39,66,65]; let kpos=0;
+    window.addEventListener('keydown',(e)=>{
+      if(e.keyCode===konami[kpos]){ kpos++; if(kpos===konami.length){showSecret(); kpos=0}} else kpos=0;
+    });
+    function showSecret(){ const b = document.getElementById('secretBanner'); b.style.display='block'; setTimeout(()=>b.style.display='none',4200); document.body.style.transition='background 0.6s'; document.body.style.background='linear-gradient(180deg,#fff7cc,#ffe6d5)'; }
+
+    // Utils
+    function init(){ loadMemes(); seedDemo(); renderThumbs(); renderCarousel(); loadLeaderboard(); }
+    init();
+
+    // Helpful: allow double-click on image to open in new tab
+    document.addEventListener('dblclick',(e)=>{ if(e.target.tagName==='IMG' && e.target.src) window.open(e.target.src, '_blank') });
+
+    // Quick save before unload
+    window.addEventListener('beforeunload',()=>{ saveMemes(); });
+  </script>
+</body>
+</html>
