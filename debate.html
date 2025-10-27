@@ -1,0 +1,493 @@
+<!--
+Debatable — AI-Powered Argument Arena
+Single-file HTML/CSS/JS (save as debatable.html)
+Features:
+- Topic input
+- Two simulated AI personas arguing for/against
+- Voting system with live results
+- Comment section per side
+- Debate history saved to localStorage (optional Firebase hooks commented)
+- Persona customization, timed debates, and themes
+
+How to use:
+1. Save this file as debatable.html
+2. Open in a browser. No server needed (unless using Firebase)
+3. (Optional) Hook up Firebase by replacing the commented section with your config and enabling the related functions
+
+Enjoy! — Generated for Shreya Parikh
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Debatable — AI-Powered Argument Arena</title>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#7c3aed; --muted:#94a3b8; --glass:rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue'; background:linear-gradient(180deg,#020617 0%, #071229 100%);color:#e6eef8;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:28px}
+    .app{width:1100px;max-width:98%;}
+
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo .mark{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    .controls{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6);}
+    .wide{flex:1}
+
+    .input-row{display:flex;gap:8px}
+    input[type=text]{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);color:inherit}
+    button{background:var(--accent);border:none;padding:10px 14px;border-radius:10px;color:white;cursor:pointer}
+    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+
+    .main-grid{display:grid;grid-template-columns:1fr 320px;gap:16px}
+    .arena{display:grid;grid-template-rows:auto 1fr;gap:12px}
+    .panel-row{display:flex;gap:12px}
+
+    .side{flex:1;padding:14px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);position:relative;overflow:hidden}
+    .side .meta{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .avatar{width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-size:20px}
+    .persona-name{font-weight:700}
+    .bubble{background:rgba(255,255,255,0.05);padding:12px;border-radius:12px;margin-bottom:10px;position:relative;animation:floatIn 320ms ease both}
+    .bubble::after{content:'';position:absolute;width:12px;height:12px;background:inherit;transform:rotate(45deg);bottom:-6px}
+    .left .bubble{border-bottom-left-radius:4px}
+    .left .bubble::after{left:18px}
+    .right .bubble{border-bottom-right-radius:4px}
+    .right .bubble::after{right:18px}
+
+    @keyframes floatIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+    .vote-row{display:flex;gap:8px;align-items:center;margin-top:8px}
+    .vote-btn{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;gap:10px;justify-content:center;background:transparent;cursor:pointer}
+    .bar{height:10px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;margin-top:8px}
+    .bar > i{display:block;height:100%;width:50%;background:linear-gradient(90deg,var(--accent),(#06b6d4));}
+
+    .controls-compact{display:flex;gap:8px;flex-wrap:wrap}
+
+    .comments{margin-top:8px}
+    .comments textarea{width:100%;min-height:64px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .comment{padding:8px;border-radius:8px;margin-top:8px;background:rgba(0,0,0,0.18)}
+
+    .sidebar{display:flex;flex-direction:column;gap:12px}
+    .history-list{max-height:420px;overflow:auto;padding:6px;display:flex;flex-direction:column;gap:8px}
+    .history-item{padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);cursor:pointer}
+    .mini{font-size:12px;color:var(--muted)}
+
+    footer{margin-top:14px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* Themes */
+    .theme-meme .avatar{background:linear-gradient(90deg,#f97316,#f43f5e)}
+    .theme-court .avatar{background:linear-gradient(90deg,#60a5fa,#7c3aed)}
+
+    /* Responsive */
+    @media(max-width:920px){
+      .main-grid{grid-template-columns:1fr}
+      .sidebar{order:2}
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">
+        <div class="mark">D</div>
+        <div>
+          <h1>Debatable — AI-Powered Argument Arena</h1>
+          <p class="lead">Type a topic and watch two personas argue. Vote, comment, save history.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="controls card">
+      <div class="input-row wide">
+        <input id="topicInput" placeholder="Enter debate topic (e.g. 'Should homework be banned?')" type="text">
+        <button id="startBtn">Debate!</button>
+        <button id="randomBtn" class="ghost">Surprise topic</button>
+      </div>
+
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center;justify-content:space-between">
+        <div class="controls-compact">
+          <label class="mini">Theme</label>
+          <select id="themeSelect">
+            <option value="default">Default (academic)</option>
+            <option value="meme">Meme</option>
+            <option value="court">Courtroom</option>
+          </select>
+
+          <label class="mini">Timed Debate</label>
+          <input type="checkbox" id="timedToggle">
+          <input id="timerInput" type="number" value="60" style="width:84px" min="10"> sec
+
+          <button id="customizeBtn" class="ghost">Customize Personas</button>
+        </div>
+
+        <div>
+          <button id="saveBtn" class="ghost">Save Debate</button>
+          <button id="clearHistory" class="ghost">Clear History</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-grid">
+      <div class="arena card">
+        <div class="panel-row">
+          <div class="side left" id="proSide">
+            <div class="meta">
+              <div class="avatar" id="proAvatar">🧠</div>
+              <div>
+                <div class="persona-name" id="proName">Professor Logic</div>
+                <div class="mini">For</div>
+              </div>
+            </div>
+            <div id="proContent"></div>
+            <div class="vote-row">
+              <button class="vote-btn" id="votePro">Vote For</button>
+              <div style="width:140px;text-align:center" id="proCount">0</div>
+            </div>
+            <div class="bar" aria-hidden><i id="proBar" style="width:50%"></i></div>
+
+            <div class="comments">
+              <textarea id="proComment" placeholder="Add a rebuttal or support for Pro..."></textarea>
+              <button id="addProComment" class="ghost" style="margin-top:6px">Add Comment</button>
+              <div id="proCommentsList"></div>
+            </div>
+          </div>
+
+          <div class="side right" id="conSide">
+            <div class="meta">
+              <div class="avatar" id="conAvatar">💥</div>
+              <div>
+                <div class="persona-name" id="conName">Rebel Riya</div>
+                <div class="mini">Against</div>
+              </div>
+            </div>
+            <div id="conContent"></div>
+            <div class="vote-row">
+              <button class="vote-btn" id="voteCon">Vote Against</button>
+              <div style="width:140px;text-align:center" id="conCount">0</div>
+            </div>
+            <div class="bar" aria-hidden><i id="conBar" style="width:50%"></i></div>
+
+            <div class="comments">
+              <textarea id="conComment" placeholder="Add a rebuttal or support for Con..."></textarea>
+              <button id="addConComment" class="ghost" style="margin-top:6px">Add Comment</button>
+              <div id="conCommentsList"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:8px">
+          <div>
+            <small class="mini">Status:</small> <span id="status">Ready</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <div class="mini">Timer:</div> <div id="countdown">--</div>
+            <button id="joinBtn" class="ghost">Join the Debate</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar card">
+        <div>
+          <strong>Debate History</strong>
+          <div class="history-list" id="historyList"></div>
+        </div>
+
+        <div>
+          <strong>Persona Customization</strong>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            <input id="proInputName" placeholder="Pro persona name" value="Professor Logic">
+            <input id="conInputName" placeholder="Con persona name" value="Rebel Riya">
+            <input id="proAvatarInput" placeholder="Pro avatar (emoji)" value="🧠">
+            <input id="conAvatarInput" placeholder="Con avatar (emoji)" value="💥">
+            <button id="applyPersona" class="ghost">Apply</button>
+          </div>
+        </div>
+
+        <div>
+          <strong>Saved Data</strong>
+          <div class="mini" style="margin-top:6px">LocalStorage usage: debates/history, lastDebate</div>
+          <div style="display:flex;gap:8px;margin-top:6px">
+            <button id="exportBtn" class="ghost">Export JSON</button>
+            <button id="importBtn" class="ghost">Import JSON</button>
+            <input id="importInput" type="file" accept="application/json" style="display:none"/>
+          </div>
+        </div>
+
+        <div style="margin-top:10px">
+          <strong>Quick Tips</strong>
+          <ul class="mini" style="margin:6px 0 0 18px;color:var(--muted)">
+            <li>Use "Customize Personas" to change tone and name</li>
+            <li>Enable Timed Debate to auto-close after timer</li>
+            <li>Save debate to history and click items to reload</li>
+          </ul>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer>
+      By Shreya Parikh — Debatable prototype • Local-only by default (Firebase hooks commented)
+    </footer>
+  </div>
+
+  <script>
+    // -------------------- Utilities & Storage --------------------
+    const qs = s => document.querySelector(s);
+    const qsa = s => document.querySelectorAll(s);
+
+    const STORAGE_KEY = 'debatable_history_v1';
+
+    function loadHistory(){
+      try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }catch(e){return []}
+    }
+    function saveHistory(h){ localStorage.setItem(STORAGE_KEY, JSON.stringify(h)); }
+
+    // -------------------- Simple Persona-based Generator --------------------
+    const personaTemplates = {
+      pro: [
+        "%TOPIC% strengthens community because it encourages critical thinking and shared responsibility.",
+        "From an evidence-based view, %TOPIC% can reduce unnecessary burden and increase efficiency.",
+        "Looking at long-term outcomes, %TOPIC% empowers people to focus on deeper learning rather than rote tasks."
+      ],
+      con: [
+        "%TOPIC% undermines structure and can reduce necessary discipline for growth.",
+        "Practical considerations show %TOPIC% may widen inequalities because support systems differ.",
+        "Historically, removing %TOPIC% has lead to poorer skills development in some contexts."
+      ],
+      rebuttals: [
+        "That said, it's important to consider nuance — blanket %TOPIC% may not fit all cases.",
+        "A balanced approach to %TOPIC% might involve phased changes and safeguards.",
+        "We should weigh both short-term comforts and long-term consequences when discussing %TOPIC%."
+      ]
+    };
+
+    function synthesize(persona, topic, toneLevel=1){
+      // simple synthesis: pick a template and add small variations.
+      let templates = personaTemplates[persona];
+      let txt = templates[Math.floor(Math.random()*templates.length)];
+      txt = txt.replace(/%TOPIC%/g, topic);
+      // add a couple of short clauses
+      if(Math.random()>0.5) txt += ' ' + personaTemplates.rebuttals[Math.floor(Math.random()*personaTemplates.rebuttals.length)];
+      if(toneLevel>1) txt = txt.toUpperCase();
+      return txt;
+    }
+
+    // -------------------- DOM wiring --------------------
+    const topicInput = qs('#topicInput');
+    const startBtn = qs('#startBtn');
+    const randomBtn = qs('#randomBtn');
+    const proContent = qs('#proContent');
+    const conContent = qs('#conContent');
+    const proNameEl = qs('#proName');
+    const conNameEl = qs('#conName');
+    const proAvatarEl = qs('#proAvatar');
+    const conAvatarEl = qs('#conAvatar');
+    const votePro = qs('#votePro');
+    const voteCon = qs('#voteCon');
+    const proCountEl = qs('#proCount');
+    const conCountEl = qs('#conCount');
+    const proBar = qs('#proBar');
+    const conBar = qs('#conBar');
+    const statusEl = qs('#status');
+    const historyList = qs('#historyList');
+    const saveBtn = qs('#saveBtn');
+    const clearHistory = qs('#clearHistory');
+    const themeSelect = qs('#themeSelect');
+    const timedToggle = qs('#timedToggle');
+    const timerInput = qs('#timerInput');
+    const countdownEl = qs('#countdown');
+    const joinBtn = qs('#joinBtn');
+
+    const proCommentInput = qs('#proComment');
+    const conCommentInput = qs('#conComment');
+    const addProComment = qs('#addProComment');
+    const addConComment = qs('#addConComment');
+    const proCommentsList = qs('#proCommentsList');
+    const conCommentsList = qs('#conCommentsList');
+
+    const customizeBtn = qs('#customizeBtn');
+    const applyPersona = qs('#applyPersona');
+    const proInputName = qs('#proInputName');
+    const conInputName = qs('#conInputName');
+    const proAvatarInput = qs('#proAvatarInput');
+    const conAvatarInput = qs('#conAvatarInput');
+
+    const exportBtn = qs('#exportBtn');
+    const importBtn = qs('#importBtn');
+    const importInput = qs('#importInput');
+
+    let currentDebate = null; // {topic, proText, conText, proVotes, conVotes, proComments[], conComments[], ts}
+    let timerHandle = null;
+
+    // -------------------- Rendering --------------------
+    function renderDebate(d){
+      if(!d) return;
+      proContent.innerHTML = '';
+      conContent.innerHTML = '';
+      appendBubble(proContent, d.proText);
+      appendBubble(conContent, d.conText);
+      proCountEl.textContent = d.proVotes || 0;
+      conCountEl.textContent = d.conVotes || 0;
+      updateBars(d.proVotes || 0, d.conVotes || 0);
+      renderComments(proCommentsList, d.proComments || []);
+      renderComments(conCommentsList, d.conComments || []);
+      statusEl.textContent = 'Active';
+      currentDebate = d;
+    }
+
+    function appendBubble(container, text){
+      const b = document.createElement('div');
+      b.className = 'bubble';
+      b.textContent = text;
+      container.appendChild(b);
+    }
+
+    function updateBars(p,c){
+      const total = (p||0)+(c||0);
+      const pPct = total? Math.round((p/total)*100) : 50;
+      const cPct = 100 - pPct;
+      proBar.style.width = pPct + '%';
+      conBar.style.width = cPct + '%';
+    }
+
+    function renderComments(container, list){
+      container.innerHTML = '';
+      list.forEach(it=>{
+        const el = document.createElement('div');
+        el.className = 'comment';
+        el.innerHTML = `<div style="font-weight:700">${it.name||'Guest'}</div><div class="mini">${new Date(it.ts).toLocaleString()}</div><div style="margin-top:6px">${escapeHtml(it.text)}</div>`;
+        container.appendChild(el);
+      });
+    }
+
+    function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    // -------------------- Actions --------------------
+    startBtn.addEventListener('click', ()=>{
+      const topic = (topicInput.value||'').trim();
+      if(!topic){ alert('Please enter a topic'); return; }
+      startDebate(topic);
+    });
+
+    randomBtn.addEventListener('click', ()=>{
+      const examples = ['Should homework be banned?','Is remote work better than office work?','Should voting be compulsory?','Are electric vehicles the future?','Should social media be regulated?'];
+      topicInput.value = examples[Math.floor(Math.random()*examples.length)];
+    });
+
+    function startDebate(topic){
+      const proText = synthesize('pro', topic);
+      const conText = synthesize('con', topic);
+      const d = {topic, proText, conText, proVotes:0, conVotes:0, proComments:[], conComments:[], ts:Date.now()};
+      renderDebate(d);
+      if(timedToggle.checked){ startTimer(parseInt(timerInput.value||60)); }
+    }
+
+    votePro.addEventListener('click', ()=>{ if(!currentDebate) return; currentDebate.proVotes++; proCountEl.textContent=currentDebate.proVotes; updateBars(currentDebate.proVotes,currentDebate.conVotes); });
+    voteCon.addEventListener('click', ()=>{ if(!currentDebate) return; currentDebate.conVotes++; conCountEl.textContent=currentDebate.conVotes; updateBars(currentDebate.proVotes,currentDebate.conVotes); });
+
+    addProComment.addEventListener('click', ()=>{
+      if(!currentDebate) return alert('Start a debate first');
+      const txt = proCommentInput.value.trim(); if(!txt) return;
+      const entry = {name:'Guest',text:txt,ts:Date.now()}; currentDebate.proComments.push(entry); renderComments(proCommentsList,currentDebate.proComments); proCommentInput.value='';
+    });
+    addConComment.addEventListener('click', ()=>{
+      if(!currentDebate) return alert('Start a debate first');
+      const txt = conCommentInput.value.trim(); if(!txt) return;
+      const entry = {name:'Guest',text:txt,ts:Date.now()}; currentDebate.conComments.push(entry); renderComments(conCommentsList,currentDebate.conComments); conCommentInput.value='';
+    });
+
+    saveBtn.addEventListener('click', ()=>{
+      if(!currentDebate) return alert('No active debate to save');
+      const h = loadHistory();
+      h.unshift(currentDebate);
+      if(h.length>200) h.pop();
+      saveHistory(h);
+      refreshHistory();
+      alert('Debate saved to history');
+    });
+
+    function refreshHistory(){
+      const h = loadHistory();
+      historyList.innerHTML = '';
+      h.forEach((it,idx)=>{
+        const el = document.createElement('div');
+        el.className = 'history-item';
+        el.innerHTML = `<div style="font-weight:700">${escapeHtml(it.topic)}</div><div class="mini">${new Date(it.ts).toLocaleString()}</div>`;
+        el.addEventListener('click', ()=>{ renderDebate(it); });
+        historyList.appendChild(el);
+      });
+    }
+
+    clearHistory.addEventListener('click', ()=>{ if(confirm('Clear saved history?')){ localStorage.removeItem(STORAGE_KEY); refreshHistory(); } });
+
+    // -------------------- Timer --------------------
+    function startTimer(sec){ clearTimer(); let remaining = sec; countdownEl.textContent = remaining + 's'; timerHandle = setInterval(()=>{ remaining--; countdownEl.textContent = remaining + 's'; if(remaining<=0){ clearTimer(); finishDebate(); } },1000); }
+    function clearTimer(){ if(timerHandle) clearInterval(timerHandle); timerHandle=null; countdownEl.textContent='--'; }
+
+    function finishDebate(){ statusEl.textContent = 'Finished'; alert('Debate finished!'); }
+
+    // -------------------- Persona customization --------------------
+    customizeBtn.addEventListener('click', ()=>{
+      // show the sidebar inputs by focusing
+      proInputName.focus();
+    });
+    applyPersona.addEventListener('click', ()=>{
+      const pn = proInputName.value.trim()||'Professor Logic';
+      const cn = conInputName.value.trim()||'Rebel Riya';
+      const pa = proAvatarInput.value.trim()||'🧠';
+      const ca = conAvatarInput.value.trim()||'💥';
+      proNameEl.textContent = pn; conNameEl.textContent = cn; proAvatarEl.textContent = pa; conAvatarEl.textContent = ca;
+    });
+
+    // -------------------- Join Debate (user participation) --------------------
+    joinBtn.addEventListener('click', ()=>{
+      if(!currentDebate) return alert('No active debate to join');
+      const side = prompt('Which side do you join? type "pro" or "con"').toLowerCase();
+      if(side!=='pro' && side!=='con') return alert('Invalid side');
+      const text = prompt('Write your short argument (a sentence or two)');
+      if(!text) return;
+      if(side==='pro'){ currentDebate.proComments.push({name:'You', text, ts:Date.now()}); renderComments(proCommentsList,currentDebate.proComments); }
+      else{ currentDebate.conComments.push({name:'You', text, ts:Date.now()}); renderComments(conCommentsList,currentDebate.conComments); }
+    });
+
+    // -------------------- Export / Import --------------------
+    exportBtn.addEventListener('click', ()=>{
+      const data = JSON.stringify(loadHistory(), null, 2);
+      const blob = new Blob([data],{type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'debatable-history.json'; a.click(); URL.revokeObjectURL(url);
+    });
+    importBtn.addEventListener('click', ()=>importInput.click());
+    importInput.addEventListener('change', (e)=>{
+      const f = e.target.files[0]; if(!f) return; const r = new FileReader();
+      r.onload = ()=>{ try{ const data = JSON.parse(r.result); saveHistory(data); refreshHistory(); alert('Imported successfully'); }catch(err){alert('Invalid JSON') } };
+      r.readAsText(f);
+    });
+
+    // -------------------- Init --------------------
+    (function init(){
+      refreshHistory();
+      // initial persona
+      applyPersona.click();
+      // sample default debate
+      topicInput.value = 'Should homework be banned?';
+      startDebate(topicInput.value);
+    })();
+
+    // -------------------- Optional: Firebase hooks (commented) --------------------
+    /*
+    // To use Firebase storage for debates/votes, include Firebase scripts and put your config here:
+    // 1) <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app-compat.js"></script>
+  
+
+
+  </script>
+</body>
+</html>

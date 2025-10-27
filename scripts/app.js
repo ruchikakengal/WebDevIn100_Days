@@ -466,6 +466,15 @@
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Real-time Counting", "Statistics", "Word Analysis"]
             },
+ ParikhShreya-patch-6
+           {
+                originalDay: 8,
+                name: "Debatable — The AI-Powered Argument Arena",
+                description: "A web app where users enter any topic and watch two AI personas argue for and against it, while the audience votes and joins the debate in real time",
+                demoLink: "./public/Day-7_CharacterWordCounter/index.html",
+                category: "utilities",
+                technologies: ["HTML", "CSS", "JavaScript"],
+                features: ["Interactive AI personas", "live voting", "user comments"]
 
          {
                 originalDay: 8,
@@ -474,7 +483,7 @@
                 demoLink: "skill.html",
                 category: "utilities",
                 technologies: ["HTML", "CSS", "JavaScript"],
-                features: ["🎯 Role-based Course Recommendations", "🧩 Mock Test Simulator", "📈 Progress Dashboard"]
+                features: ["🎯 Role-based Course Recommendations", "🧩 Mock Test Simulator", "📈 Progress Dashboard"] main
             },
             {
                 originalDay: 8,
