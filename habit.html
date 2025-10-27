@@ -1,310 +1,229 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PulsePlay — Gamified Habit Tracker + AI Mood Insights</title>
-  <style>
-    /* Reset + base */
-    :root{
-      --bg:#0f1724; --card:#0b1220; --accent:#6ee7b7; --muted:#94a3b8; --glass: rgba(255,255,255,0.03);
-      --glass-2: rgba(255,255,255,0.02);
-      font-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;}
-    body{
-      margin:0; font-family:var(--font-sans,Segoe UI,Roboto,Arial); background:linear-gradient(180deg,#071021 0%, #071628 50%, #081226 100%); color:#e6eef8; -webkit-font-smoothing:antialiased; padding:28px;
-    }
-    .wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:start}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PulsePlay - Gamified Habit Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== Reset & Global ===== */
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif;}
+  body { background:#f0f4f8; color:#333; transition:0.3s; min-height:100vh; display:flex; flex-direction:column;}
+  a{text-decoration:none;color:inherit;}
 
-    header{grid-column:1 / -1;display:flex;align-items:center;gap:16px}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#042024;box-shadow:0 6px 20px rgba(6,8,15,0.6)}
-    h1{margin:0;font-size:20px}
-    p.lead{margin:0;color:var(--muted)}
+  /* ===== Dark Mode ===== */
+  body.dark { background:#121212; color:#eee;}
+  body.dark header, body.dark footer, body.dark .stat-card, body.dark .habit-form, body.dark .habit-card {background:#1e1e1e;color:#eee;}
+  body.dark .habit-form button {background:#bb86fc;}
+  body.dark .habit-form button:hover {background:#8f94fb;}
+  body.dark .toggle-dark {background:#333;color:#fff;}
 
-    /* Left column: tracker */
-    .panel{background:linear-gradient(180deg,var(--card), rgba(11,18,32,0.8)); border-radius:16px;padding:16px;box-shadow:0 6px 30px rgba(2,6,23,0.6);}
-    .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-    .btn{background:var(--accent);border:none;color:#042024;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
-    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:8px 10px;border-radius:10px}
+  /* ===== Header ===== */
+  header{
+    background: linear-gradient(to right,#8f94fb,#4e54c8);
+    padding:2rem; color:#fff; text-align:center; box-shadow:0 4px 6px rgba(0,0,0,0.1);
+  }
+  header h1{font-size:2.5rem;margin-bottom:0.5rem;}
+  header p{font-size:1.2rem;margin-bottom:1rem;}
+  .hero-button{
+    background:#fff;color:#4e54c8;padding:0.7rem 1.5rem;border:none;border-radius:25px;font-size:1rem;cursor:pointer;transition:0.3s;
+  }
+  .hero-button:hover{background:#f3f3f3;}
 
-    .habit-list{display:grid;gap:12px}
-    .habit{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid var(--glass);}
-    .habit-left{flex:1}
-    .habit h3{margin:0;font-size:16px}
-    .meta{font-size:12px;color:var(--muted);margin-top:6px}
-    progress{width:100%;height:10px;border-radius:10px;background:#001219}
-    .actions{display:flex;gap:8px}
+  /* ===== Toggle ===== */
+  .toggle-dark{
+    position:fixed;top:1rem;right:1rem;padding:0.5rem 1rem;background:#fff;border-radius:20px;cursor:pointer;font-weight:bold;
+    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    z-index:1000;
+  }
 
-    /* Right column: Dashboard */
-    .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .stat{padding:10px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);border:1px solid var(--glass);min-height:72px}
-    .stat h4{margin:0;font-size:13px}
-    .big{font-size:22px;font-weight:700;margin-top:6px}
+  /* ===== Main ===== */
+  main{flex:1; display:flex; flex-direction:column; align-items:center; padding:2rem; gap:2rem;}
 
-    /* Mood box*/
-    .mood{margin-top:12px;padding:12px;border-radius:12px;background:linear-gradient(180deg,var(--glass),var(--glass-2));border:1px solid rgba(255,255,255,0.04)}
-    textarea{width:100%;min-height:70px;border-radius:8px;padding:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);color:inherit}
+  /* ===== Stats ===== */
+  .stats{display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; margin-bottom:2rem;}
+  .stat-card{
+    background:#fff;padding:1rem 2rem;border-radius:15px;box-shadow:0 6px 15px rgba(0,0,0,0.05); text-align:center; flex:1;
+    min-width:120px; transition:transform 0.3s;
+  }
+  .stat-card:hover{transform:translateY(-5px);}
+  .stat-card h3{font-size:1.5rem;color:#4e54c8;}
+  .stat-card p{font-size:0.9rem;color:#666;}
 
-    /* Add habit form */
-    .add-row{display:flex;gap:8px;margin-top:10px}
-    input[type=text]{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
+  /* ===== Habit Form ===== */
+  .habit-form{
+    background:#fff;padding:2rem;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.1); max-width:400px; width:100%;
+    transition:transform 0.3s;
+  }
+  .habit-form:hover{transform:translateY(-5px);}
+  .habit-form h2{text-align:center;margin-bottom:1rem;}
+  .habit-form input, .habit-form select{
+    width:100%; padding:0.7rem; margin-bottom:1rem; border-radius:8px; border:1px solid #ccc; font-size:1rem;
+  }
+  .habit-form button{
+    width:100%; padding:0.7rem; background:#4e54c8; color:#fff; font-size:1rem; border:none; border-radius:8px; cursor:pointer; transition:0.3s;
+  }
+  .habit-form button:hover{background:#8f94fb;}
 
-    footer{grid-column:1 / -1;margin-top:12px;color:var(--muted);font-size:13px;text-align:center}
+  /* ===== Habit List ===== */
+  .habit-list{width:100%; max-width:700px; display:flex; flex-direction:column; gap:1rem;}
+  .habit-card{
+    background:#fff;padding:1rem 1.5rem;border-radius:12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 6px 15px rgba(0,0,0,0.05);
+    transition:transform 0.2s;
+  }
+  .habit-card:hover{transform:scale(1.02);}
+  .habit-info h3{margin-bottom:0.3rem;}
+  .habit-info p{font-size:0.9rem;color:#666;}
+  .progress-bar{height:10px;background:#ddd;border-radius:5px;overflow:hidden;margin-top:0.5rem;}
+  .progress-bar div{height:100%;width:0;background:#4e54c8;transition:width 0.3s;}
+  .habit-actions button{background:transparent;border:none;cursor:pointer;margin-left:0.5rem;font-size:1.2rem;}
+  .habit-actions button.complete{color:#28a745;}
+  .habit-actions button.delete{color:#dc3545;}
+  .habit-actions button.reset{color:#ff9800;}
 
-    /* small helpers */
-    .pill{padding:4px 8px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:12px}
-    .levelbar{height:10px;background:linear-gradient(90deg,#042024 0%, rgba(255,255,255,0.02) 100%);border-radius:10px;overflow:hidden}
-    .levelbar > i{display:block;height:100%;width:20%;background:linear-gradient(90deg,var(--accent),#60a5fa)}
+  /* ===== Leaderboard / Badges ===== */
+  .leaderboard{
+    margin-top:3rem; text-align:center; max-width:700px; width:100%;
+  }
+  .leaderboard h2{margin-bottom:1rem; color:#4e54c8;}
+  .badge{
+    display:inline-block; background:linear-gradient(to right,#8f94fb,#4e54c8); color:#fff; padding:0.5rem 1rem; border-radius:25px;
+    margin:0.3rem; font-size:0.9rem;
+  }
 
-    /* responsive */
-    @media (max-width:980px){.wrap{grid-template-columns:1fr;}} 
+  /* ===== Footer ===== */
+  footer{text-align:center;padding:1rem;background:#4e54c8;color:#fff;font-size:0.9rem;margin-top:auto;}
 
-    /* fun confetti canvas overlay */
-    #confetti{position:fixed;left:0;top:0;pointer-events:none;width:100%;height:100%;z-index:999}
-  </style>
+  /* ===== Confetti ===== */
+  .confetti-piece{position:absolute;width:10px;height:10px;opacity:0.8;animation:fall 2s linear forwards;}
+  @keyframes fall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(500px) rotate(360deg);}}
+</style>
 </head>
 <body>
-  <canvas id="confetti"></canvas>
-  <div class="wrap">
-    <header>
-      <div class="logo">PP</div>
-      <div>
-        <h1>PulsePlay</h1>
-        <p class="lead">Gamified habit tracker + AI mood insights — earn XP, keep streaks, feel better.</p>
-      </div>
-      <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
-        <button class="ghost" id="resetBtn">Reset Day</button>
-        <button class="btn" id="addExample">+ Quick Add</button>
-      </div>
-    </header>
 
-    <!-- left: tracker -->
-    <section class="panel">
-      <div class="topbar">
-        <div>
-          <h2 style="margin:0">Your Habits</h2>
-          <div class="meta">Tap the check to complete today — earn XP & build streaks!</div>
-        </div>
-        <div class="pill">Level <span id="levelNum">1</span></div>
-      </div>
+<header>
+  <h1>PulsePlay</h1>
+  <p>Gamified Habit Tracker to Level Up Your Life!</p>
+  <button class="hero-button" onclick="document.querySelector('.habit-form').scrollIntoView({behavior:'smooth'})">Start Tracking →</button>
+</header>
 
-      <div class="add-row">
-        <input id="habitInput" type="text" placeholder="New habit (e.g. 20 pushups)" />
-        <button class="btn" id="addHabit">Add</button>
-      </div>
+<div class="toggle-dark" onclick="toggleDarkMode()">🌙</div>
 
-      <div style="margin-top:12px" class="habit-list" id="habitList"></div>
+<main>
 
-      <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center">
-        <div class="meta">XP: <strong id="xpCount">0</strong> • Streaks tracked locally</div>
-        <div><button class="ghost" id="exportBtn">Export</button></div>
-      </div>
-    </section>
-
-    <!-- right: dashboard + mood -->
-    <aside class="panel">
-      <div class="stats">
-        <div class="stat">
-          <h4>XP</h4>
-          <div class="big" id="xpBig">0</div>
-        </div>
-        <div class="stat">
-          <h4>Longest Streak</h4>
-          <div class="big" id="bestStreak">0</div>
-        </div>
-      </div>
-
-      <div style="margin-top:12px" class="stat">
-        <h4>Today Progress</h4>
-        <div style="margin-top:8px" class="levelbar"><i id="progressFill" style="width:0%"></i></div>
-      </div>
-
-      <div class="mood">
-        <h4 style="margin-top:0">Mood Pulse — AI Mood Insights</h4>
-        <div class="meta">Type a few lines about how you feel. The tracker uses a small local "AI" (sentiment heuristic) to give insights and micro-actions.</div>
-        <textarea id="moodInput" placeholder="I'm tired, I've been procrastinating..." ></textarea>
-        <div style="display:flex;gap:8px;margin-top:8px"><button id="analyze" class="btn">Analyze Mood</button><button id="clearMood" class="ghost">Clear</button></div>
-        <div id="moodResult" style="margin-top:10px"></div>
-      </div>
-
-      <div style="margin-top:12px" class="stat">
-        <h4>Weekly Snapshot</h4>
-        <div class="meta" style="margin-top:6px">Quick summary of XP gain and streaks this week (local only)</div>
-        <div style="margin-top:8px;font-size:14px" id="weeklySummary">No data yet.</div>
-      </div>
-    </aside>
-
-    <footer>Made with ♥ — PulsePlay. Save data is local to your browser. Want cloud sync? I can add Firebase next!</footer>
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card"><h3 id="points">0</h3><p>Points</p></div>
+    <div class="stat-card"><h3 id="level">1</h3><p>Level</p></div>
+    <div class="stat-card"><h3 id="streak">0</h3><p>Daily Streak</p></div>
+    <div class="stat-card"><h3 id="completed">0</h3><p>Completed Habits</p></div>
   </div>
 
-  <script>
-    /* ========== Data model (localStorage) ========== */
-    const LS_KEY = 'pulseplay_v1';
-    let state = {
-      xp: 0,
-      level: 1,
-      habits: [],
-      bestStreak: 0,
-      weekly: [] // simple array of daily xp
-    };
+  <!-- Habit Form -->
+  <div class="habit-form">
+    <h2>Add New Habit</h2>
+    <input type="text" id="habitName" placeholder="Habit name">
+    <input type="number" id="habitGoal" placeholder="Goal (days)">
+    <select id="habitCategory">
+      <option value="Health">Health</option>
+      <option value="Learning">Learning</option>
+      <option value="Productivity">Productivity</option>
+      <option value="Other">Other</option>
+    </select>
+    <button onclick="addHabit()">Add Habit</button>
+  </div>
 
-    function save(){localStorage.setItem(LS_KEY, JSON.stringify(state));}
-    function load(){const s = localStorage.getItem(LS_KEY); if(s) state = JSON.parse(s);}
+  <!-- Habit List -->
+  <div class="habit-list" id="habitList"></div>
 
-    /* ========== Utilities ========== */
-    function xpToLevel(xp){return Math.floor(1 + Math.log10(Math.max(1,xp))/0.3);} // playful mapping
-    function levelXpCap(level){return Math.round(50 * Math.pow(1.5, level-1));}
+  <!-- Leaderboard / Badges -->
+  <div class="leaderboard">
+    <h2>Achievements & Badges</h2>
+    <span class="badge">Starter</span>
+    <span class="badge">Consistency Hero</span>
+    <span class="badge">Level Up!</span>
+    <span class="badge">Streak Master</span>
+  </div>
 
-    /* ========== Habit management ========== */
-    function addHabit(title){ if(!title) return; const h={id:Date.now(),title,streak:0,lastDone:null,progress:0}; state.habits.push(h); save(); render(); }
+</main>
 
-    function markDone(id){ const h = state.habits.find(x=>x.id==id); if(!h) return; const today = new Date().toDateString();
-      if(h.lastDone !== today){
-        // increment streak
-        const yesterday = new Date(Date.now() - 86400000).toDateString();
-        if(h.lastDone === yesterday) h.streak += 1; else h.streak = 1;
-        h.lastDone = today;
-        // xp: base 10 + streak bonus
-        const earned = 10 + Math.min(50, Math.floor(h.streak * 3));
-        state.xp += earned;
-        state.weekly.push({date: today, xp: earned});
-        state.bestStreak = Math.max(state.bestStreak, h.streak);
-        h.progress = Math.min(100, h.progress + 100);
-        // confetti
-        launchConfetti();
-        save(); render();
-      }
-    }
+<footer>
+  &copy; 2025 PulsePlay | Made with ❤️ by Shreya
+</footer>
 
-    function resetDay(){ // manual reset for demo: decrement daily progress but keep streaks
-      state.habits.forEach(h=>{h.progress = 0});
-      save(); render();
-    }
-    function removeHabit(id){ state.habits = state.habits.filter(h=>h.id!=id); save(); render(); }
+<script>
+  let habits = [];
+  let points = 0;
+  let level = 1;
+  let streak = 0;
+  let completedHabits = 0;
+  const quotes = ["Keep going!","Every small step counts!","Consistency is key!","Habit today, success tomorrow!","You're unstoppable!"];
 
-    /* ========== Rendering ========== */
-    function render(){
-      // header stats
-      document.getElementById('xpCount').innerText = state.xp;
-      document.getElementById('xpBig').innerText = state.xp;
-      state.level = xpToLevel(state.xp);
-      document.getElementById('levelNum').innerText = state.level;
-      document.getElementById('bestStreak').innerText = state.bestStreak;
+  function toggleDarkMode(){document.body.classList.toggle('dark');}
 
-      // progress fill (percentage of next level)
-      const cap = levelXpCap(state.level);
-      const percent = Math.min(100, Math.round((state.xp / cap) * 100));
-      document.getElementById('progressFill').style.width = percent+"%";
+  function addHabit(){
+    const name = document.getElementById('habitName').value;
+    const goal = parseInt(document.getElementById('habitGoal').value);
+    const category = document.getElementById('habitCategory').value;
+    if(!name||!goal){alert('Please enter habit and goal');return;}
+    habits.push({name, goal, progress:0, category});
+    document.getElementById('habitName').value=''; document.getElementById('habitGoal').value='';
+    renderHabits();
+  }
 
-      // habit list
-      const list = document.getElementById('habitList'); list.innerHTML='';
-      if(state.habits.length===0){ list.innerHTML = '<div class="meta">No habits yet — add one to get started!</div>'; }
-      for(const h of state.habits){
-        const el = document.createElement('div'); el.className='habit';
-        el.innerHTML = `
-          <div style="width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#05121a,#063142);display:flex;align-items:center;justify-content:center;font-weight:700">${h.title.charAt(0).toUpperCase()}</div>
-          <div class="habit-left">
-            <h3>${h.title}</h3>
-            <div class="meta">Streak: <strong>${h.streak}</strong> • Last: ${h.lastDone ? h.lastDone : 'never'}</div>
-            <div style="margin-top:8px"><progress value="${h.progress}" max="100"></progress></div>
-          </div>
-          <div class="actions">
-            <button class="btn" data-do="${h.id}">Done</button>
-            <button class="ghost" data-rm="${h.id}">Remove</button>
-          </div>
-        `;
-        list.appendChild(el);
-      }
-
-      // weekly summary simple
-      const ws = document.getElementById('weeklySummary');
-      if(state.weekly.length===0) ws.innerText = 'No XP activity yet.';
-      else {
-        const sum = state.weekly.reduce((a,b)=>a+b.xp,0);
-        ws.innerText = `XP this week: ${sum} • Entries: ${state.weekly.length}`;
-      }
-    }
-
-    /* ========== Mood "AI" analyser (local heuristic) ========== */
-    const NEG = ['tired','sad','angry','stressed','anxious','procrastinate','lonely','depressed','frustrat','exhaust'];
-    const POS = ['happy','good','great','energized','motivated','calm','relaxed','productive','excited','awesome'];
-
-    function analyzeMood(text){
-      text = (text||'').toLowerCase();
-      let score = 0; // negative lowers, positive raises
-      for(const w of NEG) if(text.includes(w)) score -= 1;
-      for(const w of POS) if(text.includes(w)) score += 1;
-      // check exclamation/emoji
-      if(/[!]{2,}/.test(text)) score += 1;
-      if(/[\u{1F600}-\u{1F64F}]/u.test(text)) score += 1; // emoji boost
-
-      // construct insight
-      let mood='Neutral';
-      if(score <= -2) mood='Low'; else if(score===-1) mood='Down'; else if(score===0) mood='Neutral'; else if(score<=2) mood='Good'; else mood='High';
-
-      const microActions = [];
-      if(mood==='Low' || mood==='Down'){
-        microActions.push('Try a 2‑minute breathing break.');
-        microActions.push('Do a tiny win — one pushup or a 5‑minute tidy.');
-        microActions.push('Write 3 quick wins you achieved today.');
-      } else if(mood==='Good' || mood==='High'){
-        microActions.push('Lock in one meaningful task for 25 minutes (Pomodoro).');
-        microActions.push('Share this win with a friend or note it down.');
-      } else {
-        microActions.push('If unsure, do a 5‑minute walk and re-check your mood.');
-      }
-
-      // playful "AI" label
-      const insight = `Mood: ${mood} (score ${score}). Suggested micro-actions: ${microActions.join(' ')} `;
-      return {score,mood,insight,microActions};
-    }
-
-    /* ========== Confetti (simple) ========== */
-    function launchConfetti(){
-      const c = document.getElementById('confetti'); const ctx = c.getContext('2d');
-      c.width = window.innerWidth; c.height = window.innerHeight;
-      const pieces = [];
-      for(let i=0;i<60;i++){ pieces.push({x:Math.random()*c.width,y:-20,vy:2+Math.random()*4,life:100,rot:Math.random()*6, size:4+Math.random()*8, color:['#6ee7b7','#60a5fa','#fbcfe8','#ffd166'][Math.floor(Math.random()*4)]}); }
-      let t=0;
-      function draw(){ ctx.clearRect(0,0,c.width,c.height); for(const p of pieces){ p.x += Math.sin(t/10+p.rot)*1.5; p.y += p.vy; p.vy += 0.05; p.life -=1; ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot); ctx.fillStyle = p.color; ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size); ctx.restore(); }
-        t++; if(pieces.some(p=>p.life>0 && p.y < c.height+50)) requestAnimationFrame(draw); else ctx.clearRect(0,0,c.width,c.height);
-      }
-      draw();
-    }
-
-    /* ========== Events */
-    document.getElementById('addHabit').addEventListener('click', ()=>{ const v = document.getElementById('habitInput').value.trim(); addHabit(v); document.getElementById('habitInput').value=''; });
-    document.getElementById('habitList').addEventListener('click', (e)=>{
-      const doId = e.target.dataset.do; const rm = e.target.dataset.rm; if(doId) markDone(doId); if(rm) removeHabit(rm);
+  function renderHabits(){
+    const list=document.getElementById('habitList'); list.innerHTML='';
+    habits.forEach((habit,index)=>{
+      const card=document.createElement('div'); card.className='habit-card';
+      card.innerHTML=`
+        <div class="habit-info">
+          <h3>${habit.name} <small>(${habit.category})</small></h3>
+          <p>Progress: ${habit.progress} / ${habit.goal} days</p>
+          <div class="progress-bar"><div style="width:${(habit.progress/habit.goal)*100}%"></div></div>
+        </div>
+        <div class="habit-actions">
+          <button class="complete" onclick="completeHabit(${index})">✔️</button>
+          <button class="reset" onclick="resetHabit(${index})">🔄</button>
+          <button class="delete" onclick="deleteHabit(${index})">🗑️</button>
+        </div>`;
+      list.appendChild(card);
     });
-    document.getElementById('resetBtn').addEventListener('click', ()=>{ if(confirm('Reset today\'s progress? (streaks will remain)')){ resetDay(); }});
-    document.getElementById('exportBtn').addEventListener('click', ()=>{ navigator.clipboard.writeText(JSON.stringify(state, null,2)); alert('Copied your data to clipboard (JSON)'); });
-    document.getElementById('addExample').addEventListener('click', ()=>{ addHabit('Read 20 pages'); addHabit('Meditate 5m'); addHabit('Walk 15m'); });
+    updateStats();
+  }
 
-    document.getElementById('analyze').addEventListener('click', ()=>{
-      const text = document.getElementById('moodInput').value; const out = analyzeMood(text);
-      const target = document.getElementById('moodResult');
-      target.innerHTML = `<div style="font-weight:700;margin-bottom:6px">${out.mood} — Score ${out.score}</div><div class="meta">${out.insight}</div>`;
-    });
-    document.getElementById('clearMood').addEventListener('click', ()=>{ document.getElementById('moodInput').value=''; document.getElementById('moodResult').innerHTML=''; });
+  function completeHabit(index){
+    const habit = habits[index];
+    if(habit.progress < habit.goal){
+      habit.progress++; points+=10; streak++; 
+      if(points>=level*100) level++;
+      if(habit.progress===habit.goal) completedHabits++;
+      showConfetti();
+      alert(`${quotes[Math.floor(Math.random()*quotes.length)]} (+10 points)`);
+    } else alert(`Habit "${habit.name}" already completed!`);
+    renderHabits();
+  }
 
-    // quick load
-    load(); render();
+  function resetHabit(index){habits[index].progress=0; renderHabits();}
+  function deleteHabit(index){if(confirm(`Delete "${habits[index].name}"?`)){habits.splice(index,1); renderHabits();}}
 
-    // keyboard: enter adds habit
-    document.getElementById('habitInput').addEventListener('keypress',(e)=>{ if(e.key==='Enter'){ document.getElementById('addHabit').click(); }});
+  function updateStats(){
+    document.getElementById('points').innerText=points;
+    document.getElementById('level').innerText=level;
+    document.getElementById('streak').innerText=streak;
+    document.getElementById('completed').innerText=completedHabits;
+  }
 
-    // sample auto-save & weekly compaction (keep last 7 unique days)
-    setInterval(()=>{ save(); // compact weekly
-      const days = {};
-      for(const e of state.weekly) days[e.date] = (days[e.date]||0)+e.xp;
-      state.weekly = Object.entries(days).map(([date,xp])=>({date,xp})).slice(-7);
-    },5000);
+  function showConfetti(){
+    for(let i=0;i<30;i++){
+      const confetti=document.createElement('div');
+      confetti.className='confetti-piece';
+      confetti.style.left=Math.random()*window.innerWidth+'px';
+      confetti.style.background=`hsl(${Math.random()*360},100%,50%)`;
+      document.body.appendChild(confetti);
+      setTimeout(()=>confetti.remove(),2000);
+    }
+  }
+</script>
 
-    // resize confetti canvas when window changes
-    window.addEventListener('resize', ()=>{ const c=document.getElementById('confetti'); c.width=window.innerWidth; c.height=window.innerHeight; });
-  </script>
 </body>
 </html>

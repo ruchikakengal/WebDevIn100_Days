@@ -391,6 +391,26 @@
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Real-time Updates", "Multiple Formats", "Theme Options"]
             },
+
+         {
+                originalDay: 2,
+                name: "Emoji architact",
+                description: "Let users build custom emoji combos using Unicode characters, drag-and-drop positioning, and styling. ",
+                demoLink: "emoji.html",
+                category: "utilities",
+                technologies: ["HTML", "CSS", "JavaScript"],
+                features: ["Drag-and-drop UI", "Canvas or SVG rendering", "Fun, technical, and unique"]
+            },
+
+                     {
+                originalDay: 2,
+                name: "Time Traveler",
+                description: "An interactive timeline of web history (or any topic), where users scroll through decades and see animated events, code snippets, and trivia.",
+                demoLink: "time.html",
+                category: "utilities",
+                technologies: ["HTML", "CSS", "JavaScript"],
+                features: ["Real-time Updates", "Dynamic content loading"]
+            },
             {
                 originalDay: 3,
                 name: "ASCII Art Generator",
@@ -408,6 +428,16 @@
                 category: "utilities",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Strength Analysis", "Visual Feedback", "Security Tips"]
+            },
+
+           {
+                originalDay: 5,
+                name: "Health Checkup Appointement",
+                description: "A Website Built For Doctors , Patients, and Admin.",
+                demoLink: "patient.html",
+                category: "utilities",
+                technologies: ["HTML", "CSS", "JavaScript"],
+                features: [" Appointment Booking System", "Dashboard", "Chatbot Assistant 🤖"]
             },
             {
                 originalDay: 5,
@@ -436,7 +466,7 @@
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Real-time Counting", "Statistics", "Word Analysis"]
             },
-
+ ParikhShreya-patch-6
            {
                 originalDay: 8,
                 name: "Debatable — The AI-Powered Argument Arena",
@@ -445,6 +475,15 @@
                 category: "utilities",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Interactive AI personas", "live voting", "user comments"]
+
+         {
+                originalDay: 8,
+                name: "SkillSprint",
+                description: "🚀 SkillSprint is an interactive, role-based placement prep website that helps students train smart with tailored courses, resources, and mock tests — all built using pure frontend technologies.",
+                demoLink: "skill.html",
+                category: "utilities",
+                technologies: ["HTML", "CSS", "JavaScript"],
+                features: ["🎯 Role-based Course Recommendations", "🧩 Mock Test Simulator", "📈 Progress Dashboard"] main
             },
             {
                 originalDay: 8,
@@ -746,6 +785,16 @@
                 technologies: ["HTML", "CSS", "JavaScript", "Canvas"],
                 features: ["Physics Engine", "Score System", "Responsive Controls", "Space Theme"]
             },
+
+               {
+    originalDay: 38,
+    name: "ResumeCraft Websie",
+    description: "A Resumecraft website for students, professionals,etc.",
+    demoLink: "resumecraft.html",
+    category: "utilities",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    features: ["Clean Two-Panel Layout", "Responsive Design", "Print-Friendly Resume View"]
+},
             {
                 originalDay: 39,
                 name: "Space War Game",

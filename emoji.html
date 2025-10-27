@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji Architect 💡 Unicode Builder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #2e2e4c, #1c1c2b);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(0,0,0,0.5);
+      border-bottom: 2px solid #ffde59;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #ffde59;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: #ddd;
+      font-size: 1.1rem;
+    }
+
+    /* Layout */
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    /* Controls */
+    #controls {
+      flex: 1 1 350px;
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    #controls h2 {
+      color: #ffde59;
+      text-align: center;
+    }
+
+    #controls input, #controls button, #controls label {
+      display: block;
+      width: 100%;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #controls input[type="text"], #controls input[type="number"], #controls input[type="color"] {
+      padding: 0.6rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    #controls button {
+      background: #ffde59;
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: 600;
+      padding: 0.7rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+    }
+
+    #controls button:hover {
+      background: #ffd700;
+      transform: scale(1.05);
+    }
+
+    /* Canvas */
+    #canvasContainer {
+      flex: 2 1 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    canvas {
+      border: 2px solid #ffde59;
+      border-radius: 12px;
+      background: #1c1c2b;
+      cursor: grab;
+    }
+
+    /* AI Suggestion Panel */
+    #aiSuggestions {
+      margin-top: 1.5rem;
+      background: rgba(255,255,255,0.05);
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    #aiSuggestions h3 {
+      color: #ffde59;
+    }
+
+    #suggestedEmojis {
+      font-size: 2rem;
+      margin-top: 0.5rem;
+      cursor: pointer;
+    }
+
+    #suggestedEmojis span {
+      margin: 0 0.4rem;
+      transition: transform 0.2s;
+    }
+
+    #suggestedEmojis span:hover {
+      transform: scale(1.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0,0,0,0.4);
+      color: #ccc;
+      font-size: 0.9rem;
+      border-top: 1px solid #444;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Emoji Architect 💡</h1>
+    <p>Build custom emoji combos, style them, and export your masterpiece!</p>
+  </header>
+
+  <main>
+    <!-- Controls Panel -->
+    <section id="controls">
+      <h2>🎨 Emoji Controls</h2>
+      <input type="text" id="emojiInput" placeholder="Enter emoji or Unicode character...">
+      <button id="addEmojiBtn">Add Emoji</button>
+
+      <label for="fontSize">Font Size:</label>
+      <input type="number" id="fontSize" min="16" max="200" value="50">
+
+      <label for="colorPicker">Color:</label>
+      <input type="color" id="colorPicker" value="#ffffff">
+
+      <button id="undoBtn">Undo</button>
+      <button id="redoBtn">Redo</button>
+      <button id="clearBtn">Clear Canvas</button>
+      <button id="exportBtn">Export as PNG</button>
+
+      <!-- AI Suggestions -->
+      <div id="aiSuggestions">
+        <h3>🤖 AI Emoji Suggestions</h3>
+        <p>Click an emoji combo to add it instantly!</p>
+        <div id="suggestedEmojis">✨🌸🔥</div>
+      </div>
+    </section>
+
+    <!-- Canvas Section -->
+    <section id="canvasContainer">
+      <canvas id="emojiCanvas" width="800" height="600"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created by <strong>Shreya Parikh</strong> | Emoji Architect © 2025</p>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('emojiCanvas');
+    const ctx = canvas.getContext('2d');
+    const emojiInput = document.getElementById('emojiInput');
+    const addEmojiBtn = document.getElementById('addEmojiBtn');
+    const fontSizeInput = document.getElementById('fontSize');
+    const colorPicker = document.getElementById('colorPicker');
+    const undoBtn = document.getElementById('undoBtn');
+    const redoBtn = document.getElementById('redoBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const exportBtn = document.getElementById('exportBtn');
+    const suggestedEmojis = document.getElementById('suggestedEmojis');
+
+    let emojis = [];
+    let undoStack = [];
+    let redoStack = [];
+    let dragging = null;
+    let offsetX = 0, offsetY = 0;
+
+    // ===== Core Logic =====
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      emojis.forEach(e => {
+        ctx.font = `${e.size}px Arial`;
+        ctx.fillStyle = e.color;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(e.text, e.x, e.y);
+      });
+    }
+
+    function addEmoji(emoji) {
+      if (!emoji) return;
+      const size = parseInt(fontSizeInput.value);
+      const color = colorPicker.value;
+      const newEmoji = { text: emoji, x: canvas.width / 2, y: canvas.height / 2, size, color };
+      emojis.push(newEmoji);
+      undoStack.push(JSON.stringify(emojis));
+      redoStack = [];
+      render();
+      updateAISuggestions();
+    }
+
+    addEmojiBtn.addEventListener('click', () => {
+      addEmoji(emojiInput.value.trim());
+      emojiInput.value = "";
+    });
+
+    // Drag & Drop
+    canvas.addEventListener('mousedown', e => {
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+
+      for (let i = emojis.length - 1; i >= 0; i--) {
+        const em = emojis[i];
+        const textWidth = ctx.measureText(em.text).width;
+        const textHeight = em.size;
+        if (mx > em.x - textWidth/2 && mx < em.x + textWidth/2 && my > em.y - textHeight/2 && my < em.y + textHeight/2) {
+          dragging = em;
+          offsetX = mx - em.x;
+          offsetY = my - em.y;
+          canvas.style.cursor = 'grabbing';
+          break;
+        }
+      }
+    });
+
+    canvas.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      const rect = canvas.getBoundingClientRect();
+      dragging.x = e.clientX - rect.left - offsetX;
+      dragging.y = e.clientY - rect.top - offsetY;
+      render();
+    });
+
+    canvas.addEventListener('mouseup', () => {
+      if (dragging) undoStack.push(JSON.stringify(emojis));
+      dragging = null;
+      canvas.style.cursor = 'grab';
+    });
+
+    // Undo / Redo
+    undoBtn.addEventListener('click', () => {
+      if (undoStack.length > 1) {
+        redoStack.push(undoStack.pop());
+        emojis = JSON.parse(undoStack[undoStack.length - 1]);
+        render();
+      }
+    });
+
+    redoBtn.addEventListener('click', () => {
+      if (redoStack.length > 0) {
+        const redoState = redoStack.pop();
+        undoStack.push(redoState);
+        emojis = JSON.parse(redoState);
+        render();
+      }
+    });
+
+    // Clear Canvas
+    clearBtn.addEventListener('click', () => {
+      emojis = [];
+      undoStack = [];
+      redoStack = [];
+      render();
+      updateAISuggestions();
+    });
+
+    // Export PNG
+    exportBtn.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = 'emoji-art.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+
+    // ===== AI Suggestions (Simulated Smart Recommendations) =====
+    const aiCombos = [
+      ["🔥💪", "🚀🌟", "😎✨"],
+      ["🌸🍃", "🌈☀️", "💫🌙"],
+      ["🍔🍟", "☕🍰", "🍕🥤"],
+      ["🐶🐾", "🐱💤", "🦋🌼"],
+      ["🎮💻", "🎧🎵", "📱💬"]
+    ];
+
+    function updateAISuggestions() {
+      const randomSet = aiCombos[Math.floor(Math.random() * aiCombos.length)];
+      suggestedEmojis.innerHTML = randomSet.map(c => `<span>${c}</span>`).join('');
+    }
+
+    suggestedEmojis.addEventListener('click', e => {
+      if (e.target.tagName === 'SPAN') addEmoji(e.target.textContent);
+    });
+
+    updateAISuggestions();
+  </script>
+</body>
+</html>

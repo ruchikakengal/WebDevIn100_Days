@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SkillSprint v2 — Train Smart. Get Hired.</title>
+  <meta name="description" content="SkillSprint v2 — professional frontend training portal with role-based recommendations, resource library, mock tests, local auth, animated progress, and polished UI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1:#0b1220; --bg-2:#071326; --card:#0f1724; --muted:#9fb0cc;
+      --accent:#60a5fa; --accent-2:#7c3aed; --glass:rgba(255,255,255,0.04);
+      --success:#34d399; --danger:#fb7185; --radius:14px; --maxw:1200px; --glass-2:rgba(255,255,255,0.02);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg-2) 0%,var(--bg-1) 100%);color:#e7f0fb}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:20px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#042}
+    .brand h1{font-size:18px;margin:0}
+    nav{display:flex;gap:10px;align-items:center}
+    .nav-btn{background:transparent;border:1px solid var(--glass-2);padding:8px 12px;border-radius:10px;cursor:pointer;color:var(--muted)}
+    .primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#042;border:none}
+
+    /* Layout */
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:20px}
+    main{min-height:60vh}
+
+    /* Hero */
+    .hero{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:22px;border-radius:16px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .hero-left{max-width:720px}
+    .tag{font-size:28px;line-height:1.05;margin:0}
+    .tag .accent{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{color:var(--muted);margin:10px 0}
+    .cta{display:flex;gap:12px}
+
+    /* Panels */
+    .panel{background:linear-gradient(180deg,var(--card),rgba(8,18,30,0.6));padding:14px;border-radius:12px;border:1px solid var(--glass-2)}
+
+    /* Roles */
+    .roles{display:flex;gap:10px;flex-wrap:wrap}
+    .role{padding:10px 14px;border-radius:12px;border:1px solid var(--glass-2);cursor:pointer}
+    .role.active{background:linear-gradient(90deg,rgba(96,165,250,0.08),rgba(124,58,237,0.06));border-color:var(--accent)}
+
+    /* Course grid */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
+    .course{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid var(--glass-2);cursor:pointer;transition:transform .22s,box-shadow .22s}
+    .course:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(2,6,23,0.6)}
+    .course h4{margin:0 0 8px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{font-size:12px;padding:6px 8px;border-radius:999px;border:1px solid var(--glass);color:var(--muted)}
+
+    /* Resource list */
+    .resource-list{display:flex;flex-direction:column;gap:10px}
+    .res{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;border:1px solid var(--glass-2)}
+
+    /* Dashboard */
+    .dashboard{display:flex;flex-direction:column;gap:12px}
+    .stat{display:flex;justify-content:space-between;align-items:center}
+    .bar{height:12px;background:var(--glass-2);border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.65);display:flex;align-items:center;justify-content:center;z-index:1200}
+    .modal{width:92%;max-width:820px;background:linear-gradient(180deg,#061323 0%,#081827 100%);padding:18px;border-radius:12px;border:1px solid var(--glass-2)}
+
+    /* Quiz */
+    .options{display:flex;flex-direction:column;gap:10px}
+    .option{padding:12px;border-radius:10px;border:1px solid var(--glass-2);cursor:pointer}
+    .option.selected{border-color:var(--accent);background:linear-gradient(90deg,rgba(96,165,250,0.06),transparent)}
+
+    /* Footer */
+    footer{color:var(--muted);text-align:center;margin-top:18px}
+
+    /* Responsive */
+    @media (max-width:1000px){.grid{grid-template-columns:1fr}.hero{flex-direction:column;align-items:flex-start}.roles{gap:8px}}
+
+    /* micro animations */
+    .fade{animation:fade .5s ease both}
+    @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    /* forms */
+    input,select,button{font-family:inherit}
+    .input{background:transparent;border:1px solid var(--glass-2);padding:10px;border-radius:8px;color:inherit}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">SS</div>
+        <div>
+          <h1>SkillSprint v2</h1>
+          <div style="font-size:12px;color:var(--muted)">Train Smart. Get Hired.</div>
+        </div>
+      </div>
+
+      <nav>
+        <button id="authBtn" class="nav-btn">Log in</button>
+        <button id="saveBtn" class="nav-btn">Save</button>
+        <button id="resetBtn" class="nav-btn">Reset</button>
+      </nav>
+    </header>
+
+    <section class="hero panel fade">
+      <div class="hero-left">
+        <h2 class="tag">Train <span class="accent">Smart</span>. Get <span class="accent">Hired</span>.</h2>
+        <p>SkillSprint v2 is a polished, single-file frontend training portal with role-based course recommendations, a rich resource library, timed mock tests, local authentication, and animated progress visualizations — ideal for showcasing in your portfolio.</p>
+        <div class="cta" style="margin-top:12px">
+          <button id="quickStart" class="nav-btn primary">Quick Start</button>
+          <button id="takeTour" class="nav-btn">Take a Tour</button>
+        </div>
+      </div>
+      <div style="width:320px">
+        <div class="panel" style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-size:12px;color:var(--muted)">Current Role</div>
+              <strong id="currentRole">Software Developer</strong>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:12px;color:var(--muted)">Modules</div>
+              <strong id="modulesCount">0/10</strong>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:8px;align-items:center">
+            <div style="flex:1">
+              <div class="bar"><i id="progressBar"></i></div>
+            </div>
+            <div style="min-width:68px;text-align:right;color:var(--muted)" id="progressPct">0%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid" style="margin-top:16px">
+      <main>
+        <section class="panel" aria-labelledby="coursesHeading">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h3 id="coursesHeading" style="margin:0">Recommended Courses</h3>
+            <div style="display:flex;gap:8px;align-items:center">
+              <div style="font-size:12px;color:var(--muted)">Role:</div>
+              <div class="roles" id="roleList"></div>
+            </div>
+          </div>
+
+          <div class="cards" id="courseGrid"></div>
+        </section>
+
+        <section class="panel" style="margin-top:14px">
+          <h4 style="margin:0 0 10px">Resource Library</h4>
+          <div class="resource-list" id="resourceList"></div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="panel dashboard">
+          <h4 style="margin:0">Progress Dashboard</h4>
+          <div class="stat"><div>Best Score</div><div><strong id="bestScore">—</strong></div></div>
+          <div class="stat"><div>Badges</div><div id="badgeWrap" style="display:flex;gap:8px"></div></div>
+          <canvas id="progressChart" width="320" height="180" style="border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent)"></canvas>
+
+          <div style="margin-top:8px;display:flex;gap:8px">
+            <button id="startTest" class="nav-btn primary">Start Mock Test</button>
+            <button id="viewReport" class="nav-btn">View Report</button>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="panel">
+          <h4 style="margin:0 0 8px">Quick Actions</h4>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button id="incModule" class="nav-btn">Complete Module</button>
+            <button id="clearBadges" class="nav-btn">Clear Badges</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <small>SkillSprint v2 — single-file polished frontend demo. Built for portfolio & open-source contributions.</small>
+    </footer>
+  </div>
+
+  <div id="modalRoot" aria-live="polite"></div>
+
+  <script>
+    // ===== Data =====
+    const ROLES = [
+      {id:'dev',label:'Software Developer'},
+      {id:'analyst',label:'Data Analyst'},
+      {id:'designer',label:'Product Designer'},
+      {id:'qa',label:'QA Engineer'}
+    ];
+
+    const COURSES = {
+      dev:[{title:'DSA Masterclass',desc:'Problem solving with implementations' ,tags:['Algorithms','Coding']},{title:'Web Fundamentals',desc:'HTML, CSS, JS & Browser APIs',tags:['Frontend','JavaScript']},{title:'System Design',desc:'Scaling & architecture',tags:['Design','Scalability']}],
+      analyst:[{title:'SQL for Analysts',desc:'Practical SQL for analytics',tags:['SQL','Analytics']},{title:'Statistics for Product',desc:'Applied statistics & A/B testing',tags:['Stats','Experiment']},{title:'Reporting with Python',desc:'Pandas & viz',tags:['Python','Visualization']}],
+      designer:[{title:'UX Foundations',desc:'User research & journeys',tags:['UX','Research']},{title:'Figma UI Kit',desc:'Design systems & prototyping',tags:['Figma','Prototyping']},{title:'Portfolio Crafting',desc:'Showcase projects',tags:['Portfolio','Career']}],
+      qa:[{title:'Manual Testing',desc:'Test plans & reporting',tags:['Manual','Process']},{title:'Automation JS',desc:'Puppeteer & scripting',tags:['Automation','Scripting']},{title:'CI/CD Tests',desc:'Integration & pipelines',tags:['CI/CD','Practices']}]
+    };
+
+    const RESOURCES = [
+      {title:'Aptitude Pack (sample)',type:'Aptitude',note:'30 practice Qs'},
+      {title:'Top 200 DSA Problems',type:'Coding',note:'Curated list'},
+      {title:'Behavioral Interview Guide',type:'Communication',note:'STAR templates'}
+    ];
+
+    const QUIZ_BANK = [
+      {q:'Binary search time complexity?',choices:['O(n)','O(log n)','O(n log n)','O(1)'],a:1},
+      {q:'Semantic nav tag in HTML?',choices:['<div>','<nav>','<section>','<span>'],a:1},
+      {q:'SQL filter clause?',choices:['WHERE','GROUP BY','ORDER BY','SELECT'],a:0},
+      {q:'Array method that maps?',choices:['map','forEach','filter','reduce'],a:0}
+    ];
+
+    // ===== State & Storage =====
+    const KEY = 'skillsprintv2';
+    const defaultState = {selectedRole:'dev',modulesCompleted:0,bestScore:null,badges:[],lastReport:null,user:null};
+
+    let state = load();
+    function load(){try{return {...defaultState, ...JSON.parse(localStorage.getItem(KEY) || '{}')} }catch(e){return {...defaultState}}}
+    function persist(){localStorage.setItem(KEY, JSON.stringify(state))}
+
+    // ===== Root elements =====
+    const roleList = document.getElementById('roleList');
+    const courseGrid = document.getElementById('courseGrid');
+    const resourceList = document.getElementById('resourceList');
+
+    // ===== Renderers =====
+    function renderRoles(){ roleList.innerHTML=''; ROLES.forEach(r=>{ const el=document.createElement('button'); el.className='role input role'+(r.id===state.selectedRole? ' active':''); el.textContent=r.label; el.onclick=()=>{ state.selectedRole=r.id; persist(); update(); }; roleList.appendChild(el); }); document.getElementById('currentRole').textContent = ROLES.find(x=>x.id===state.selectedRole).label; }
+
+    function renderCourses(){ courseGrid.innerHTML=''; (COURSES[state.selectedRole]||[]).forEach(c=>{ const el=document.createElement('article'); el.className='course'; el.tabIndex=0; el.innerHTML = `<h4>${c.title}</h4><p style="color:var(--muted);margin:6px 0">${c.desc}</p>`; const tagWrap=document.createElement('div'); tagWrap.className='tags'; c.tags.forEach(t=>{const s=document.createElement('span');s.className='chip';s.textContent=t;tagWrap.appendChild(s)}); el.appendChild(tagWrap); el.onclick=()=>{ state.modulesCompleted = Math.min(10, state.modulesCompleted+1); if(state.modulesCompleted>=5 && !state.badges.includes('Learner')) state.badges.push('Learner'); persist(); update(); flash(`${c.title} — module completed`); }; courseGrid.appendChild(el); }) }
+
+    function renderResources(){ resourceList.innerHTML=''; RESOURCES.forEach(r=>{ const el=document.createElement('div'); el.className='res'; el.innerHTML = `<div><strong>${r.title}</strong><div style="font-size:12px;color:var(--muted)">${r.type} • ${r.note}</div></div><div><button class='nav-btn' onclick="openResource('${r.title.replace(/'/g,"\\'")}')">Open</button></div>`; resourceList.appendChild(el); }) }
+
+    function renderDashboard(){ document.getElementById('modulesCount').textContent = `${state.modulesCompleted}/10`; const pct = Math.round((state.modulesCompleted/10)*100); document.getElementById('progressPct').textContent = pct + '%'; document.getElementById('progressBar').style.width = pct + '%'; document.getElementById('bestScore').textContent = state.bestScore===null? '—' : state.bestScore + '%'; const bw = document.getElementById('badgeWrap'); bw.innerHTML=''; state.badges.forEach(b=>{ const el=document.createElement('div'); el.className='chip'; el.textContent=b; bw.appendChild(el) }); drawChart(); }
+
+    // ===== Modal & Helpers =====
+    const modalRoot = document.getElementById('modalRoot');
+    function openModal(title,html){ modalRoot.innerHTML = `<div class="modal-backdrop" role='dialog' aria-modal='true'><div class="modal"><div style='display:flex;justify-content:space-between;align-items:center;margin-bottom:12px'><h3 style='margin:0'>${title}</h3><button id='closeModal' class='nav-btn'>Close</button></div><div>${html}</div></div></div>`; document.getElementById('closeModal').onclick = closeModal; }
+    function closeModal(){ modalRoot.innerHTML=''; }
+    function flash(msg){ const el=document.createElement('div'); Object.assign(el.style,{position:'fixed',left:'50%',transform:'translateX(-50%)',bottom:'28px',padding:'10px 14px',borderRadius:'10px',background:'linear-gradient(90deg,var(--accent),var(--accent-2))',color:'#042',zIndex:1300}); el.textContent = msg; document.body.appendChild(el); setTimeout(()=>el.style.opacity=0,2400); setTimeout(()=>el.remove(),3000); }
+
+    function openResource(title){ openModal(`Resource — ${title}`,`<p style='color:var(--muted)'>This is a simulated viewer for <strong>${title}</strong>. Replace with actual links or PDFs for production.</p><p><small>Tip: practice daily for 30–60 minutes.</small></p>`); }
+
+    // ===== Mock Test =====
+    function startTest(){ const questions = shuffle(QUIZ_BANK).slice(0,4).map((q,i)=>({...q,id:i})); let idx=0,answers=[]; let timer=60; let timerId;
+      function renderQ(){ const q=questions[idx]; openModal('Mock Test', `<div style='display:flex;justify-content:space-between;align-items:center'><div><strong>Q${idx+1}.</strong> ${q.q}</div><div style='color:var(--muted)'>Time: <span id='tleft'>${timer}s</span></div></div><div style='margin-top:12px' id='opts'>${q.choices.map((c,i)=>`<div class='option' data-i='${i}'>${c}</div>`).join('')}</div><div style='display:flex;justify-content:space-between;margin-top:12px'><button id='prev' class='nav-btn'>Prev</button><div><button id='quit' class='nav-btn'>Quit</button><button id='next' class='nav-btn primary'>${idx===questions.length-1?'Submit':'Next'}</button></div></div>`);
+        document.querySelectorAll('.option').forEach(o=>o.onclick=()=>{document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected')); o.classList.add('selected'); answers[idx]=parseInt(o.dataset.i)});
+        document.getElementById('prev').onclick = ()=>{ if(idx>0){ idx--; timer=60; renderQ() } };
+        document.getElementById('quit').onclick = ()=>{ if(confirm('Quit test?')) closeModal(); };
+        document.getElementById('next').onclick = ()=>{ if(idx===questions.length-1){ finish(); } else { idx++; timer=60; renderQ() } };
+        if(timerId) clearInterval(timerId); timerId = setInterval(()=>{ timer--; const el=document.getElementById('tleft'); if(el) el.textContent = timer+'s'; if(timer<=0){ clearInterval(timerId); finish(); } },1000);
+      }
+      function finish(){ // score
+        const score = questions.reduce((acc,q,i)=> acc + ((answers[i]===q.a)?1:0),0); const pct = Math.round((score/questions.length)*100);
+        state.bestScore = state.bestScore===null? pct: Math.max(state.bestScore,pct); state.lastReport = {date:new Date().toISOString(),score:pct,correct:score,total:questions.length}; if(pct>=80 && !state.badges.includes('Top Scorer')) state.badges.push('Top Scorer'); persist(); update(); closeModal(); openModal('Report',`<p style='color:var(--muted)'>Score: <strong>${pct}%</strong> (${score}/${questions.length})</p><p><small>Saved to dashboard.</small></p>`);
+      }
+      renderQ(); }
+
+    // ===== Chart =====
+    function drawChart(){ const c=document.getElementById('progressChart'); const ctx=c.getContext('2d'); ctx.clearRect(0,0,c.width,c.height); // simple bars: modules, bestScore
+      const modules = state.modulesCompleted; const best = state.bestScore===null?0:state.bestScore/10; const barW=80; const gap=30; const startX=30; const baseY=c.height-30; // modules
+      ctx.fillStyle = 'rgba(255,255,255,0.06)'; ctx.fillRect(0,0,c.width,c.height);
+      // axis labels
+      ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.font = '12px Inter'; ctx.fillText('Modules', startX, baseY+18); ctx.fillText('Best', startX+barW+gap, baseY+18);
+      // bars
+      ctx.fillStyle='rgba(96,165,250,0.9)'; ctx.fillRect(startX, baseY - (modules/10)*(c.height-80), barW, (modules/10)*(c.height-80));
+      ctx.fillStyle='rgba(124,58,237,0.9)'; ctx.fillRect(startX+barW+gap, baseY - best*(c.height-80), barW, best*(c.height-80));
+      // values
+      ctx.fillStyle='rgba(255,255,255,0.9)'; ctx.fillText(modules + '/10', startX+8, baseY - (modules/10)*(c.height-80) - 8); ctx.fillText((state.bestScore===null? '—': state.bestScore+'%'), startX+barW+gap+8, baseY - best*(c.height-80) - 8);
+    }
+
+    // ===== Utilities =====
+    function shuffle(a){ return a.slice().sort(()=>Math.random()-0.5) }
+
+    // ===== Events & Init =====
+    document.getElementById('quickStart').onclick = ()=>{ flash('Quick start: recommending courses...'); document.querySelectorAll('.course')[0]?.focus(); }
+    document.getElementById('takeTour').onclick = ()=>{ openModal('Tour',`<ol><li>Select a role from the top-right.</li><li>Open a course to mark a module complete.</li><li>Start mock test to save a report.</li></ol>`); }
+    document.getElementById('startTest').onclick = startTest;
+    document.getElementById('viewReport').onclick = ()=>{ if(!state.lastReport) return openModal('Report','<p style="color:var(--muted)">No tests taken yet.</p>'); openModal('Last Test',`<p style='color:var(--muted)'>Date: <strong>${new Date(state.lastReport.date).toLocaleString()}</strong></p><p style='color:var(--muted)'>Score: <strong>${state.lastReport.score}%</strong> (${state.lastReport.correct}/${state.lastReport.total})</p>`); };
+
+    document.getElementById('incModule').onclick = ()=>{ state.modulesCompleted = Math.min(10, state.modulesCompleted+1); if(state.modulesCompleted>=5 && !state.badges.includes('Learner')) state.badges.push('Learner'); persist(); update(); flash('Module completed') };
+    document.getElementById('clearBadges').onclick = ()=>{ state.badges = []; persist(); update(); flash('Badges cleared') };
+    document.getElementById('saveBtn').onclick = ()=>{ persist(); flash('Progress saved') };
+    document.getElementById('resetBtn').onclick = ()=>{ if(confirm('Reset all saved data?')){ state = {...defaultState}; persist(); update(); flash('Progress reset') } };
+
+    // ===== Simple Local Auth (mock) =====
+    document.getElementById('authBtn').onclick = ()=>{ if(state.user){ // logout
+        if(confirm('Logout?')){ state.user=null; persist(); update(); flash('Logged out') }
+      } else {
+        openModal('Login',`<div style='display:flex;flex-direction:column;gap:8px'><input id='nameInput' placeholder='Your name' class='input' /><input id='emailInput' placeholder='Email' class='input' /><div style='display:flex;gap:8px'><button id='doLogin' class='nav-btn primary'>Login</button><button id='cancelLogin' class='nav-btn'>Cancel</button></div></div>`);
+        document.getElementById('cancelLogin').onclick = closeModal;
+        document.getElementById('doLogin').onclick = ()=>{ const name=document.getElementById('nameInput').value.trim()||'Student'; const email=document.getElementById('emailInput').value.trim()||'student@example.com'; state.user = {name,email}; persist(); update(); closeModal(); flash('Welcome, '+name) };
+      } };
+
+    function update(){ renderRoles(); renderCourses(); renderResources(); renderDashboard(); document.getElementById('authBtn').textContent = state.user? `Logout (${state.user.name.split(' ')[0]})` : 'Log in'; document.getElementById('modulesCount').textContent = `${state.modulesCompleted}/10`; document.getElementById('currentRole').textContent = ROLES.find(r=>r.id===state.selectedRole).label }
+
+    // init
+    update();
+    window.addEventListener('resize', drawChart);
+  </script>
+</body>
+</html>

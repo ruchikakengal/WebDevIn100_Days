@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Time Traveler + Emoji Architect — Creative Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#0b1020; --bg2:#131924; --card:#0f1724;
+    --accent:#ffde59; --muted:#9aa4b2; --glass: rgba(255,255,255,0.04);
+    --success:#3ad29f;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:radial-gradient(circle at 10% 10%, #132034 0%, #07101a 40%, #05060a 100%);font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+  header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid rgba(255,255,255,0.02);backdrop-filter: blur(6px);}
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#f9b03f);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0b0b0b}
+  h1{margin:0;font-size:1.05rem;color:var(--accent)}
+  nav{display:flex;gap:10px;align-items:center}
+  .nav-btn{background:transparent;border:0;padding:8px 12px;border-radius:8px;color:#dfe7ef;cursor:pointer;font-weight:600}
+  .nav-btn.active{background:rgba(255,222,89,0.08);box-shadow:0 4px 18px rgba(255,222,89,0.06);color:var(--accent)}
+  .controls-bar{display:flex;gap:8px;align-items:center}
+  .icon-btn{background:var(--glass);border:0;padding:8px;border-radius:8px;color:var(--muted);cursor:pointer}
+  .container{max-width:1200px;margin:22px auto;padding:0 22px;display:grid;grid-template-columns:360px 1fr;gap:20px}
+  /* Left column (tools) */
+  .panel{background:linear-gradient(180deg,var(--card),rgba(0,0,0,0.12));border-radius:12px;padding:16px;color:#e6eef8;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+  .panel h2{margin:0 0 10px 0;color:var(--accent);font-size:1rem}
+  .row{display:flex;gap:8px;align-items:center}
+  input[type="text"], input[type="number"], select, textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#dbe7ff}
+  button.primary{background:var(--accent);border:0;color:#0b0b0b;padding:10px 12px;border-radius:8px;font-weight:700;cursor:pointer}
+  button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted);padding:8px;border-radius:8px;cursor:pointer}
+  small.muted{color:var(--muted);display:block;margin-top:6px}
+  /* Canvas area */
+  .work-area{display:flex;flex-direction:column;gap:12px}
+  .canvas-wrap{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+  canvas#emojiCanvas{border-radius:12px;border:2px solid rgba(255,222,89,0.08);background:linear-gradient(180deg,#071426,#091728);width:100%;max-width:880px;height:auto;display:block}
+  /* timeline explorer */
+  .timeline{background:linear-gradient(180deg,#071426,#04121a);padding:16px;border-radius:12px;color:#dfe7ef}
+  .timeline-strip{display:flex;gap:12px;overflow-x:auto;padding:12px 6px}
+  .event-card{min-width:220px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);cursor:pointer;transition:transform .28s,box-shadow .28s}
+  .event-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+  .event-year{font-weight:700;color:var(--accent);font-size:1.05rem}
+  .event-title{margin:6px 0 8px 0;font-weight:600}
+  .event-desc{color:var(--muted);font-size:0.92rem;min-height:36px}
+  /* detail modal */
+  .modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);min-width:320px;max-width:900px;background:#071427;padding:18px;border-radius:12px;box-shadow:0 40px 80px rgba(2,6,23,.8);z-index:60;border:1px solid rgba(255,255,255,0.03)}
+  .modal pre{background:#071827;padding:12px;border-radius:8px;overflow:auto;font-size:13px;color:#dff1ff}
+  .close-x{position:absolute;right:12px;top:12px;background:transparent;border:0;color:#cfe6ff;cursor:pointer}
+  /* AI suggestions mini */
+  .ai-box{margin-top:10px;padding:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:8px}
+  .ai-suggestion{display:inline-block;padding:8px 10px;margin:6px;border-radius:8px;background:rgba(255,222,89,0.06);cursor:pointer;color:var(--accent);font-weight:700}
+  /* layers list */
+  .layers{max-height:220px;overflow:auto;margin-top:10px}
+  .layer-item{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);margin-bottom:8px}
+  .layer-item .actions button{margin-left:6px}
+  /* timeline list */
+  .filters{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+  .chip{padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);cursor:pointer;color:var(--muted)}
+  .chip.active{background:rgba(255,222,89,0.08);color:var(--accent)}
+  /* footer */
+  footer{margin-top:28px;text-align:center;color:var(--muted);padding:18px 0}
+  /* small screens */
+  @media(max-width:980px){.container{grid-template-columns:1fr;max-width:96%;padding:0 16px}.canvas-wrap{flex-direction:column}}
+  /* subtle animations */
+  .glow{box-shadow:0 6px 30px rgba(255,222,89,0.06);}
+  /* easter egg indicator */
+  #easter{display:none;position:fixed;left:10px;bottom:10px;background:linear-gradient(90deg,#ffde59,#f9b03f);color:#08101a;padding:10px;border-radius:8px;font-weight:700;z-index:70}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">TA</div>
+    <div>
+      <h1>Time Traveler — Creative Suite</h1>
+      <div style="font-size:12px;color:var(--muted)">Emoji Architect + Web Timeline Explorer</div>
+    </div>
+  </div>
+
+  <nav>
+    <button class="nav-btn active" data-tab="emojiTab">Emoji Architect</button>
+    <button class="nav-btn" data-tab="timelineTab">Time Traveler</button>
+  </nav>
+
+  <div class="controls-bar">
+    <button class="icon-btn" id="toggleTheme" title="Toggle theme">🌓</button>
+    <button class="icon-btn" id="helpBtn" title="Help">❔</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Left column: tools shared between apps -->
+  <aside class="panel" id="leftPanel">
+    <h2>Quick Tools</h2>
+
+    <div style="margin-top:10px">
+      <label>Project name</label>
+      <input id="projectName" type="text" placeholder="Untitled project">
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="primary" id="saveProject">Save</button>
+        <button class="ghost" id="loadProject">Load</button>
+        <button class="ghost" id="exportJSON">Export JSON</button>
+      </div>
+      <small class="muted">Projects saved to your browser (LocalStorage).</small>
+    </div>
+
+    <hr style="margin:14px 0;border:0;border-top:1px solid rgba(255,255,255,0.02)">
+
+    <!-- Emoji controls -->
+    <div id="emojiControls" class="panel-inner">
+      <h2>Emoji Architect</h2>
+      <label>Emoji / Unicode</label>
+      <input id="emojiInput" placeholder="e.g. 😎 or U+1F60E">
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <input id="fontSize" type="number" min="16" max="300" value="60" style="width:110px">
+        <input id="colorPicker" type="color" value="#ffffff" style="width:60px">
+        <button class="primary" id="addEmojiBtn">Add</button>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button class="ghost" id="undoBtn">Undo</button>
+        <button class="ghost" id="redoBtn">Redo</button>
+        <button class="ghost" id="clearBtn">Clear</button>
+      </div>
+
+      <div class="ai-box">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700;color:var(--accent)">AI Suggestions</div>
+          <button class="ghost" id="refreshAi">Refresh</button>
+        </div>
+        <div id="aiSuggestions" style="margin-top:8px"></div>
+        <small class="muted">Click to insert combos. Swap to a real AI by editing a single function.</small>
+      </div>
+
+      <div style="margin-top:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700;color:var(--accent)">Layers</div>
+          <div style="font-size:12px;color:var(--muted)">Drag to reorder (todo)</div>
+        </div>
+        <div class="layers" id="layersList"></div>
+      </div>
+
+      <div style="margin-top:10px">
+        <button class="primary" id="copyBtn">Copy PNG</button>
+        <button class="primary" id="exportBtn">Export PNG</button>
+      </div>
+    </div>
+
+    <hr style="margin:14px 0;border:0;border-top:1px solid rgba(255,255,255,0.02)">
+
+    <!-- Timeline controls -->
+    <div id="timelineControls" class="panel-inner">
+      <h2>Time Traveler</h2>
+      <div class="filters">
+        <div class="chip active" data-filter="all">All</div>
+        <div class="chip" data-filter="web">Web</div>
+        <div class="chip" data-filter="lang">Languages</div>
+        <div class="chip" data-filter="tools">Tools</div>
+      </div>
+
+      <label>Search events</label>
+      <input id="searchEvents" placeholder="Search e.g. '1995', 'CSS'">
+
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="primary" id="bookmarkAll">Bookmark All</button>
+        <button class="ghost" id="exportTimeline">Export</button>
+      </div>
+
+      <small class="muted">Click an event in the timeline to view details and code samples.</small>
+    </div>
+  </aside>
+
+  <!-- Right column: main working area -->
+  <section class="work-area">
+
+    <!-- Emoji Architect Tab -->
+    <div id="emojiTab" class="panel work-panel">
+      <h2 style="margin-top:0;color:var(--accent)">Emoji Architect — Unicode Builder</h2>
+
+      <div class="canvas-wrap">
+        <div style="flex:1;min-width:300px">
+          <canvas id="emojiCanvas" width="880" height="560"></canvas>
+          <div style="display:flex;gap:10px;margin-top:8px;align-items:center">
+            <label style="color:var(--muted)">Snap grid</label>
+            <input type="checkbox" id="snapGrid" checked>
+            <label style="color:var(--muted)">Show grid</label>
+            <input type="checkbox" id="showGrid">
+            <label style="color:var(--muted)">Grid size</label>
+            <input id="gridSize" type="number" value="20" min="4" max="200" style="width:80px">
+            <label style="color:var(--muted)">Canvas W×H</label>
+            <input id="canvasW" type="number" value="880" style="width:80px">
+            <input id="canvasH" type="number" value="560" style="width:80px">
+            <button class="ghost" id="resizeCanvas">Resize</button>
+          </div>
+        </div>
+
+        <aside style="width:320px">
+          <div class="panel" style="padding:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="font-weight:700;color:var(--accent)">Preview / Info</div>
+              <div style="color:var(--muted)">Layers: <span id="layerCount">0</span></div>
+            </div>
+            <div style="margin-top:10px">
+              <div style="font-size:14px;color:var(--muted)">Select a layer to edit size & color</div>
+              <input id="selectedSize" type="number" value="60" style="margin-top:8px">
+              <input id="selectedColor" type="color" value="#ffffff" style="margin-top:8px">
+              <div style="display:flex;gap:8px;margin-top:8px">
+                <button class="ghost" id="bringForward">Bring Forward</button>
+                <button class="ghost" id="sendBack">Send Back</button>
+                <button class="ghost" id="deleteLayer">Delete</button>
+              </div>
+              <small class="muted">Tip: double-click a placed emoji to select it.</small>
+            </div>
+          </div>
+
+          <div class="panel" style="margin-top:12px;padding:10px">
+            <div style="font-weight:700;color:var(--accent)">Project Preview</div>
+            <div style="margin-top:8px;color:var(--muted)">Quick actions:</div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button class="primary" id="saveSnapshot">Save Snapshot</button>
+              <button class="ghost" id="clearSnapshots">Clear Snaps</button>
+            </div>
+            <div id="snapshots" style="margin-top:8px;max-height:120px;overflow:auto"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Timeline Tab -->
+    <div id="timelineTab" class="panel work-panel" style="display:none">
+      <h2 style="margin-top:0;color:var(--accent)">Time Traveler — Web Timeline Explorer</h2>
+
+      <div class="timeline">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">Interactive Timeline</div>
+          <div style="color:var(--muted)">Scroll → explore decades</div>
+        </div>
+
+        <div class="timeline-strip" id="timelineStrip" aria-live="polite"></div>
+
+        <div style="margin-top:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <input id="timelineFilterSearch" placeholder="Filter by keyword or year" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#dbe7ff">
+          <button class="primary" id="loadMore">Load more</button>
+          <button class="ghost" id="toggleEaster">Toggle Easter Egg</button>
+        </div>
+
+        <div style="margin-top:16px" id="timelineDetailPlaceholder">
+          <small class="muted">Click an event card to open details (code samples, trivia, copy button)</small>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- modal container -->
+<div id="modalRoot" style="display:none"></div>
+
+<div id="easter">⏳ Time Warp Active</div>
+
+<footer>
+  <div>Built with ❤️ by <strong>Shreya Parikh</strong> • Demo app • Local only</div>
+</footer>
+
+<script>
+/* ============================
+   Shared Utilities & Storage
+   ============================ */
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const storageKey = 'TA_Projects_v1';
+function saveToLocal(key,obj){localStorage.setItem(key,JSON.stringify(obj))}
+function loadFromLocal(key){try{return JSON.parse(localStorage.getItem(key))}catch(e){return null}}
+
+/* ============================
+   Tabs & Theme
+   ============================ */
+const tabs = $$('.nav-btn');
+tabs.forEach(b=>{
+  b.addEventListener('click',()=>{
+    tabs.forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    const tab = b.dataset.tab;
+    $$('#emojiTab,#timelineTab').forEach(el=>el.style.display = (el.id===tab ? 'block' : 'none'));
+  });
+});
+$('#toggleTheme').addEventListener('click',()=>{
+  document.documentElement.classList.toggle('dark');
+  // trivial visual — can expand
+});
+
+/* ============================
+   EMOJI ARCHITECT
+   ============================ */
+const canvas = $('#emojiCanvas');
+const ctx = canvas.getContext('2d', {alpha:true});
+let emojis = []; // {id,text,x,y,size,color,selected}
+let undoStack = [];
+let redoStack = [];
+let dragging = null;
+let selectedId = null;
+let showGrid = false;
+let snapGrid = true;
+
+function setCanvasSize(w,h){
+  canvas.width = w; canvas.height = h;
+  render();
+}
+setCanvasSize(parseInt($('#canvasW').value), parseInt($('#canvasH').value));
+
+function pushState(){
+  undoStack.push(JSON.stringify(emojis));
+  if(undoStack.length>80) undoStack.shift();
+  redoStack = [];
+}
+
+function render(){
+  // background grid
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  if($('#showGrid').checked){
+    const g = parseInt($('#gridSize').value) || 20;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+    ctx.lineWidth = 1;
+    for(let x=0;x<canvas.width;x+=g){
+      ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,canvas.height); ctx.stroke();
+    }
+    for(let y=0;y<canvas.height;y+=g){
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(canvas.width,y); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  // draw emojis in order
+  emojis.forEach(e=>{
+    ctx.font = `${e.size}px "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = e.color || '#fff';
+    ctx.fillText(e.text, e.x, e.y);
+    if(e.id === selectedId){
+      // selection halo
+      ctx.strokeStyle = 'rgba(255,222,89,0.9)';
+      ctx.lineWidth = 2;
+      const w = ctx.measureText(e.text).width;
+      ctx.strokeRect(e.x - w/2 - 6, e.y - e.size/2 - 6, w + 12, e.size + 12);
+    }
+  });
+  updateLayersUI();
+  $('#layerCount').textContent = emojis.length;
+}
+
+function addEmojiToBoard(text,x=null,y=null,size=null,color=null){
+  if(!text) return;
+  const id = 'e'+Date.now()+Math.random().toString(36).slice(2,6);
+  const newE = {
+    id, text,
+    x: x===null ? canvas.width/2 : x,
+    y: y===null ? canvas.height/2 : y,
+    size: size || parseInt($('#fontSize').value) || 60,
+    color: color || $('#colorPicker').value || '#fff'
+  };
+  emojis.push(newE);
+  pushState();
+  render();
+}
+
+/* Controls binding */
+$('#addEmojiBtn').addEventListener('click', ()=> {
+  const raw = $('#emojiInput').value.trim();
+  if(!raw) return alert('Enter an emoji or Unicode');
+  // simple unicode converter if user passes U+xxxxx
+  const uni = raw.match(/^U\+([0-9A-Fa-f]+)/);
+  const text = uni ? String.fromCodePoint(parseInt(uni[1],16)) : raw;
+  addEmojiToBoard(text);
+  $('#emojiInput').value='';
+  updateAISuggestions();
+});
+
+/* mouse interactions */
+canvas.addEventListener('mousedown', e=>{
+  const r = canvas.getBoundingClientRect();
+  const mx = e.clientX - r.left, my = e.clientY - r.top;
+  // loop from topmost (end)
+  for(let i=emojis.length-1;i>=0;i--){
+    const em = emojis[i];
+    ctx.font = `${em.size}px serif`;
+    const w = ctx.measureText(em.text).width, h = em.size;
+    if(mx > em.x - w/2 && mx < em.x + w/2 && my > em.y - h/2 && my < em.y + h/2){
+      dragging = em;
+      selectedId = em.id;
+      $('#selectedSize').value = em.size;
+      $('#selectedColor').value = em.color;
+      offsetDragX = mx - em.x; offsetDragY = my - em.y;
+      canvas.style.cursor = 'grabbing';
+      return;
+    }
+  }
+  // clicked empty space: deselect
+  selectedId = null; render();
+});
+let offsetDragX=0, offsetDragY=0;
+canvas.addEventListener('mousemove', e=>{
+  if(!dragging) return;
+  const r = canvas.getBoundingClientRect();
+  let nx = e.clientX - r.left - offsetDragX;
+  let ny = e.clientY - r.top - offsetDragY;
+  if($('#snapGrid').checked){
+    const g = parseInt($('#gridSize').value) || 20;
+    nx = Math.round(nx/g)*g; ny = Math.round(ny/g)*g;
+  }
+  dragging.x = Math.max(0, Math.min(canvas.width, nx));
+  dragging.y = Math.max(0, Math.min(canvas.height, ny));
+  render();
+});
+window.addEventListener('mouseup', ()=>{
+  if(dragging) pushState();
+  dragging = null; canvas.style.cursor='grab';
+});
+
+/* double click to select */
+canvas.addEventListener('dblclick', e=>{
+  const r = canvas.getBoundingClientRect();
+  const mx = e.clientX - r.left, my = e.clientY - r.top;
+  for(let i=emojis.length-1;i>=0;i--){
+    const em = emojis[i];
+    ctx.font = `${em.size}px serif`;
+    const w = ctx.measureText(em.text).width, h = em.size;
+    if(mx > em.x - w/2 && mx < em.x + w/2 && my > em.y - h/2 && my < em.y + h/2){
+      selectedId = em.id;
+      $('#selectedSize').value = em.size;
+      $('#selectedColor').value = em.color;
+      render();
+      return;
+    }
+  }
+});
+
+/* layer actions */
+function updateLayersUI(){
+  const out = $('#layersList'); out.innerHTML = '';
+  emojis.slice().reverse().forEach(e=>{
+    const d = document.createElement('div'); d.className='layer-item';
+    d.innerHTML = `<div>${e.text} <small style="color:var(--muted);margin-left:8px">${Math.round(e.x)},${Math.round(e.y)}</small></div>
+      <div class="actions">
+        <button class="ghost" data-id="${e.id}" data-action="select">Select</button>
+        <button class="ghost" data-id="${e.id}" data-action="up">↑</button>
+        <button class="ghost" data-id="${e.id}" data-action="down">↓</button>
+        <button class="ghost" data-id="${e.id}" data-action="del">✕</button>
+      </div>`;
+    out.appendChild(d);
+  });
+  // bind layer actions
+  $$('#layersList .ghost').forEach(btn=>{
+    btn.onclick = () => {
+      const id = btn.dataset.id; const act = btn.dataset.action;
+      const idx = emojis.findIndex(x=>x.id===id);
+      if(idx===-1) return;
+      if(act==='select'){ selectedId = id; $('#selectedSize').value = emojis[idx].size; $('#selectedColor').value = emojis[idx].color; render(); }
+      if(act==='up' && idx<emojis.length-1){ [emojis[idx],emojis[idx+1]]=[emojis[idx+1],emojis[idx]]; pushState(); render(); }
+      if(act==='down' && idx>0){ [emojis[idx],emojis[idx-1]]=[emojis[idx-1],emojis[idx]]; pushState(); render(); }
+      if(act==='del'){ emojis.splice(idx,1); pushState(); render(); }
+    };
+  });
+}
+
+/* layer edit controls */
+$('#selectedSize').addEventListener('change', ()=>{
+  if(!selectedId) return alert('Select a layer first');
+  const idx = emojis.findIndex(e=>e.id===selectedId); if(idx===-1) return;
+  emojis[idx].size = parseInt($('#selectedSize').value);
+  pushState(); render();
+});
+$('#selectedColor').addEventListener('change', ()=>{
+  if(!selectedId) return alert('Select a layer first');
+  const idx = emojis.findIndex(e=>e.id===selectedId); if(idx===-1) return;
+  emojis[idx].color = $('#selectedColor').value; pushState(); render();
+});
+$('#bringForward').addEventListener('click', ()=>{
+  if(!selectedId) return;
+  const i = emojis.findIndex(e=>e.id===selectedId); if(i<0) return;
+  if(i<emojis.length-1){ [emojis[i],emojis[i+1]]=[emojis[i+1],emojis[i]]; pushState(); render(); }
+});
+$('#sendBack').addEventListener('click', ()=>{
+  if(!selectedId) return;
+  const i = emojis.findIndex(e=>e.id===selectedId); if(i>0){ [emojis[i],emojis[i-1]]=[emojis[i-1],emojis[i]]; pushState(); render(); }
+});
+$('#deleteLayer').addEventListener('click', ()=>{
+  if(!selectedId) return;
+  const i = emojis.findIndex(e=>e.id===selectedId); if(i>-1){ emojis.splice(i,1); selectedId=null; pushState(); render(); }
+});
+
+/* resize canvas */
+$('#resizeCanvas').addEventListener('click', ()=>{
+  const w = parseInt($('#canvasW').value) || 880, h = parseInt($('#canvasH').value) || 560;
+  setCanvasSize(w,h);
+});
+
+/* undo/redo */
+$('#undoBtn').addEventListener('click', ()=>{ if(undoStack.length>1){redoStack.push(undoStack.pop()); emojis = JSON.parse(undoStack[undoStack.length-1]); render();}});
+$('#redoBtn').addEventListener('click', ()=>{ if(redoStack.length>0){ const s = redoStack.pop(); undoStack.push(s); emojis = JSON.parse(s); render(); }});
+$('#clearBtn').addEventListener('click', ()=>{ emojis=[]; pushState(); render(); updateAISuggestions(); });
+
+/* export / copy */
+$('#exportBtn').addEventListener('click', ()=> {
+  const link = document.createElement('a'); link.download = ($('#projectName').value || 'emoji-art') + '.png'; link.href = canvas.toDataURL(); link.click();
+});
+$('#copyBtn').addEventListener('click', async ()=>{
+  try{
+    const blob = await new Promise(resolve => canvas.toBlob(resolve));
+    await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+    alert('Image copied to clipboard');
+  }catch(e){ alert('Copy failed: '+e.message) }
+});
+
+/* snapshots (mini save) */
+$('#saveSnapshot').addEventListener('click', ()=>{
+  const snaps = loadFromLocal('TA_Snapshots') || [];
+  snaps.push({time:Date.now(), emojis});
+  saveToLocal('TA_Snapshots',snaps);
+  renderSnapshots();
+});
+function renderSnapshots(){
+  const snaps = loadFromLocal('TA_Snapshots')||[];
+  const container = $('#snapshots'); container.innerHTML='';
+  snaps.slice().reverse().forEach((s,i)=>{
+    const btn = document.createElement('button'); btn.className='ghost'; btn.style.display='block'; btn.style.width='100%';
+    const d = new Date(s.time).toLocaleString();
+    btn.textContent = `Snap: ${d}`;
+    btn.onclick = ()=>{ emojis = JSON.parse(JSON.stringify(s.emojis)); pushState(); render(); };
+    container.appendChild(btn);
+  });
+}
+$('#clearSnapshots').addEventListener('click', ()=>{ localStorage.removeItem('TA_Snapshots'); renderSnapshots();});
+renderSnapshots();
+
+/* project save/load/export */
+$('#saveProject').addEventListener('click', ()=>{
+  const projects = loadFromLocal(storageKey) || {};
+  const name = $('#projectName').value || 'Untitled';
+  projects[name] = {emojis, meta:{saved:Date.now()}};
+  saveToLocal(storageKey, projects);
+  alert('Saved project: '+name);
+});
+$('#loadProject').addEventListener('click', ()=>{
+  const projects = loadFromLocal(storageKey) || {};
+  const names = Object.keys(projects);
+  if(!names.length) return alert('No projects saved');
+  const name = prompt('Enter project name to load:\n' + names.join('\n'));
+  if(!name || !projects[name]) return alert('Project not found');
+  emojis = JSON.parse(JSON.stringify(projects[name].emojis));
+  pushState(); render();
+});
+$('#exportJSON').addEventListener('click', ()=>{
+  const data = {emojis, meta:{exported:Date.now()}};
+  const a = document.createElement('a'); a.href = 'data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(data,null,2));
+  a.download = 'emoji-project.json'; a.click();
+});
+
+/* initialize undo stack */
+pushState(); render();
+
+/* ============================
+   AI SUGGESTIONS (mock -> easy to swap with real API)
+   ============================ */
+const aiSeedCombos = [
+  ['😎','🔥','💻'],
+  ['🌸','☕','📚'],
+  ['🤖','💡','🎨'],
+  ['🎯','🚀','💰'],
+  ['🍕','🎉','🎮'],
+  ['🐶','🍦','🌊'],
+  ['🧠','📈','⚙️'],
+  ['🪐','👨‍🚀','🛰️']
+];
+
+function updateAISuggestions(){
+  const out = $('#aiSuggestions'); out.innerHTML='';
+  // smartly recommend based on recent emojis (simple heuristic)
+  const recent = emojis.slice(-3).map(e=>e.text).join('');
+  // randomize + include ones based on recent
+  const pool = aiSeedCombos.slice();
+  // if user has emoji chars, try to create variants
+  if(recent) pool.unshift([recent[0]||'✨', '🌟', '🚀']);
+  const chosen = pool.sort(()=>Math.random()-0.5).slice(0,6);
+  chosen.forEach(carr=>{
+    const btn = document.createElement('div'); btn.className='ai-suggestion'; btn.textContent = carr.join('');
+    btn.onclick = ()=>{ carr.forEach(ch=> addEmojiToBoard(ch, Math.random()*canvas.width, Math.random()*canvas.height, 60, '#fff')); };
+    out.appendChild(btn);
+  });
+}
+$('#refreshAi').addEventListener('click', updateAISuggestions);
+updateAISuggestions();
+
+/* ============================
+   TIMELINE — data + rendering + interactions
+   ============================ */
+/* sample timeline data (embedded) — replace / extend as needed or load remotely */
+let timelineData = [
+  {year:1991, category:'web', title:'WWW invented', desc:'Tim Berners-Lee introduces World Wide Web', code:null, trivia:'First website info: info.cern.ch', hidden:false},
+  {year:1993, category:'web', title:'Mosaic released', desc:'First popular web browser Mosaic', code:null, trivia:'Major step for web usage growth', hidden:false},
+  {year:1994, category:'lang', title:'Java appears', desc:'Java announced by Sun', code:'// Hello world in Java\npublic class Hello{ public static void main(String[] a){ System.out.println(\"Hello\"); }}', hidden:false},
+  {year:1995, category:'web', title:'Javascript born', desc:'Brendan Eich creates JavaScript (Mocha)', code:'// JS hello\nconsole.log(\"Hello, world!\");', hidden:false},
+  {year:1996, category:'tools', title:'CSS introduced', desc:'Håkon Wium Lie proposes CSS', code:'/* CSS example */\nbody{font-family:Inter, sans-serif}', hidden:false},
+  {year:2001, category:'web', title:'Wikipedia', desc:'Wikipedia launches and changes knowledge sharing', code:null, hidden:false},
+  {year:2004, category:'tools', title:'AJAX era', desc:'AJAX popularized, making web dynamic', code:'fetch(\"/api\").then(r=>r.json()).then(console.log);', hidden:false},
+  {year:2008, category:'tools', title:'Chrome released', desc:'Google Chrome debuts', code:null, hidden:false},
+  {year:2010, category:'lang', title:'Node.js', desc:'JavaScript on server via Node.js', code:'const http = require(\"http\");', hidden:false},
+  {year:2014, category:'tools', title:'React (later rise)', desc:'React popularized component approach', code:'function App(){ return <div>Hello</div> }', hidden:false},
+  {year:2020, category:'web', title:'WebAssembly', desc:'WebAssembly expands performance', code:'(binary wasm)', hidden:true, trivia:'Hidden fact: first public wasm demos were around 2017.'}
+];
+
+const timelineStrip = $('#timelineStrip');
+function renderTimeline(data){
+  timelineStrip.innerHTML = '';
+  data.forEach((ev, i)=>{
+    const el = document.createElement('div'); el.className='event-card'; el.tabIndex = 0;
+    el.innerHTML = `<div class="event-year">${ev.year}</div><div class="event-title">${ev.title}</div><div class="event-desc">${ev.desc}</div>`;
+    el.addEventListener('click', ()=> openTimelineDetail(ev));
+    el.addEventListener('keydown', e=>{ if(e.key==='Enter') openTimelineDetail(ev); });
+    timelineStrip.appendChild(el);
+    // subtle animation on appear
+    el.style.opacity = 0; setTimeout(()=> el.style.transition='opacity .6s ease, transform .6s', 10); setTimeout(()=> el.style.opacity=1, 50 + i*80);
+  });
+}
+renderTimeline(timelineData);
+
+/* dynamic loading: load more (simulate) */
+$('#loadMore').addEventListener('click', ()=>{
+  const more = [
+    {year:2021,category:'tools',title:'Edge tooling',desc:'New build tooling',code:null,hidden:false},
+    {year:2022,category:'web',title:'More AI on web',desc:'AI powered features on web pages',code:null,hidden:false}
+  ];
+  timelineData = timelineData.concat(more);
+  renderTimeline(timelineData);
+});
+
+/* filtering + search */
+$$('.chip').forEach(ch => ch.addEventListener('click', ()=>{
+  $$('.chip').forEach(x=>x.classList.remove('active'));
+  ch.classList.add('active');
+  const f = ch.dataset.filter;
+  if(f==='all') renderTimeline(timelineData);
+  else renderTimeline(timelineData.filter(d=>d.category===f));
+}));
+$('#timelineFilterSearch').addEventListener('input', e=>{
+  const q = e.target.value.toLowerCase();
+  renderTimeline(timelineData.filter(d=> (d.title+''+d.desc+''+d.year).toLowerCase().includes(q) ));
+});
+
+/* detail modal */
+function openTimelineDetail(ev){
+  const root = $('#modalRoot'); root.innerHTML = '';
+  const modal = document.createElement('div'); modal.className='modal';
+  const close = document.createElement('button'); close.className='close-x'; close.textContent='✕'; close.addEventListener('click', ()=> root.style.display='none');
+  modal.appendChild(close);
+  const html = `<h3 style="color:var(--accent)">${ev.title} <small style="color:var(--muted);font-weight:600">(${ev.year})</small></h3>
+    <p style="color:var(--muted)">${ev.desc}</p>
+    ${ev.code ? '<div style="margin-top:8px"><strong>Code sample</strong><pre id="detailCode">'+escapeHtml(ev.code)+'</pre><div style="display:flex;gap:8px;margin-top:8px"><button class="primary" id="copyCode">Copy code</button></div></div>' : ''}
+    <div style="margin-top:10px;color:var(--muted)"><strong>Trivia:</strong> ${ev.trivia || '—'}</div>
+    <div style="margin-top:10px;display:flex;gap:8px"><button class="primary" id="bookmarkBtn">Bookmark</button><button class="ghost" id="shareBtn">Copy link</button></div>`;
+  modal.insertAdjacentHTML('beforeend', html);
+  root.appendChild(modal); root.style.display='block';
+  // bind copy / bookmark / share
+  if(ev.code){
+    $('#copyCode').addEventListener('click', async ()=>{
+      try{ await navigator.clipboard.writeText(ev.code); alert('Code copied'); } catch(e){ alert('Copy failed'); }
+    });
+  }
+  $('#bookmarkBtn').addEventListener('click', ()=>{
+    const b = loadFromLocal('TA_bookmarks') || [];
+    b.push(ev); saveToLocal('TA_bookmarks', b); alert('Bookmarked');
+  });
+  $('#shareBtn').addEventListener('click', ()=>{
+    const payload = location.href.split('#')[0] + `#event-${ev.year}-${ev.title.replace(/\s+/g,'-')}`;
+    navigator.clipboard.writeText(payload).then(()=>alert('Link copied'));
+  });
+}
+
+/* escape html for code display */
+function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* search inside timeline strip quick filter */
+$('#searchEvents').addEventListener('input', e=>{
+  const q = e.target.value.toLowerCase();
+  renderTimeline(timelineData.filter(d => (d.title+''+d.desc+'').toLowerCase().includes(q)));
+});
+
+/* timeline easter egg (Konami code) */
+let konamiPos = 0;
+const konami = [38,38,40,40,37,39,37,39,66,65];
+window.addEventListener('keydown', e=>{
+  if(e.keyCode === konami[konamiPos]) konamiPos++; else konamiPos = 0;
+  if(konamiPos === konami.length){ triggerEaster(); konamiPos=0; }
+});
+function triggerEaster(){
+  const b = $('#easter'); b.style.display='block'; b.classList.add('glow');
+  setTimeout(()=>{ b.style.display='none'; b.classList.remove('glow')}, 7000);
+}
+
+/* toggle easter manual */
+$('#toggleEaster').addEventListener('click', ()=> triggerEaster());
+
+/* scroll-triggered animations: make timeline elements animate when in viewport */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){ en.target.style.transform='translateY(0)'; en.target.style.opacity=1; }
+    else { en.target.style.transform='translateY(20px)'; en.target.style.opacity=0.6; }
+  });
+}, {threshold:0.3});
+function observeTimelineCards(){
+  $$('.event-card').forEach(card=>{
+    observer.observe(card);
+    card.style.transform='translateY(20px)'; card.style.opacity = 0.6;
+  });
+}
+setTimeout(observeTimelineCards,500);
+
+/* search for timeline detail via URL hash */
+if(location.hash.startsWith('#event-')){
+  // try to open matching event
+  const parts = decodeURIComponent(location.hash.slice(7)).split('-');
+  const maybeYear = parseInt(parts[0]);
+  const match = timelineData.find(t => t.year === maybeYear);
+  if(match) setTimeout(()=>openTimelineDetail(match), 600);
+}
+
+/* ============================
+   Extras & small UX
+   ============================ */
+$('#helpBtn').addEventListener('click', ()=> alert('Time Traveler + Emoji Architect\n\n- Use the left panel to add emojis and manage layers\n- Switch to "Time Traveler" tab to explore timeline events\n- AI suggestions are mocked but easy to replace with an API\n- Save your project to the browser using Save / Load\n\nEnjoy!'));
+
+/* keyboard shortcuts */
+window.addEventListener('keydown', e=>{
+  if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's'){ e.preventDefault(); $('#saveProject').click(); }
+});
+
+/* bookmark all timeline items */
+$('#bookmarkAll').addEventListener('click', ()=>{
+  saveToLocal('TA_bookmarks', timelineData);
+  alert('All timeline items bookmarked locally');
+});
+
+/* export timeline */
+$('#exportTimeline').addEventListener('click', ()=>{
+  const a = document.createElement('a'); a.href = 'data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(timelineData, null, 2)); a.download = 'timeline.json'; a.click();
+});
+
+/* load more timeline on scroll right edge (simulate dynamic loading) */
+timelineStrip.addEventListener('scroll', ()=>{
+  if(timelineStrip.scrollWidth - timelineStrip.clientWidth - timelineStrip.scrollLeft < 30){
+    // near end
+    $('#loadMore').click();
+  }
+});
+
+/* initial small animation for header logo */
+document.querySelector('.logo').animate([{transform:'scale(.9)'},{transform:'scale(1)'}],{duration:800, easing:'cubic-bezier(.2,.9,.3,1)'})
+
+/* initialize simple easter/hint UI */
+if(Math.random()<0.05) triggerEaster(); // random chance to surprise user
+
+/* Accessibility: focus outlines for keyboard nav */
+document.addEventListener('keyup', (e)=>{ if(e.key==='Tab') document.body.style.outline='none'; });
+
+/* finally: initial render updates */
+render(); renderTimeline(timelineData); observeTimelineCards();
+
+</script>
+</body>
+</html>

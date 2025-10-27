@@ -1,112 +1,401 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CarePlus • Patient</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HealthCheck — Appointment & Chat</title>
+  <meta name="description" content="Professional Health Checkup Appointment app with booking, doctor profiles, patient dashboard and chatbot."/>
+  <style>
+    /* ====== Basic Reset ====== */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;line-height:1.4;color:#0f172a;background:#f6f7fb}
+    a{color:inherit;text-decoration:none}
+
+    /* ====== Layout ====== */
+    .container{max-width:1100px;margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#0ea5e9,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
+    h1{font-size:20px}
+
+    /* ====== Grid ====== */
+    .main-grid{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:18px}
+
+    /* ====== Card ====== */
+    .card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 6px 20px rgba(12,15,28,0.06)}
+
+    /* ====== Search / Filters ====== */
+    .inline{display:flex;gap:10px;align-items:center}
+    .search{flex:1;display:flex;gap:8px}
+    .search input{flex:1;padding:10px;border-radius:10px;border:1px solid #e6e9ef}
+    button.primary{background:#0ea5e9;color:#fff;padding:9px 12px;border-radius:10px;border:0;cursor:pointer}
+    button.ghost{background:transparent;padding:8px;border-radius:10px;border:1px solid #e6e9ef;cursor:pointer}
+
+    /* ====== Doctor list ====== */
+    .doctor{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;border:1px solid #f0f2f7}
+    .avatar{width:64px;height:64px;border-radius:12px;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-weight:700;color:#4338ca}
+    .doctor-info{flex:1}
+    .specialty{font-size:13px;color:#475569}
+    .rating{font-size:13px;color:#f59e0b}
+
+    /* ====== Appointment form ====== */
+    .form-row{display:flex;gap:8px;align-items:center;margin-top:8px}
+    label{font-size:13px;color:#344054}
+    input,select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ef}
+
+    /* ====== Dashboard widgets ====== */
+    .widgets{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .stat{display:flex;flex-direction:column;gap:6px}
+    .stat .num{font-size:20px;font-weight:700}
+    .upcoming-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+
+    /* ====== Chatbot ====== */
+    .chat-toggle{position:fixed;right:22px;bottom:22px}
+    .chat-btn{width:56px;height:56px;border-radius:999px;background:#0ea5e9;border:0;color:#fff;font-size:22px;cursor:pointer;box-shadow:0 8px 26px rgba(14,165,233,0.25)}
+    .chat-window{position:fixed;right:22px;bottom:90px;width:360px;max-width:calc(100% - 48px);background:#fff;border-radius:12px;box-shadow:0 10px 34px rgba(2,6,23,0.12);overflow:hidden;display:flex;flex-direction:column}
+    .chat-header{padding:12px;background:linear-gradient(90deg,#0ea5e9,#7c3aed);color:#fff;display:flex;align-items:center;gap:10px}
+    .chat-body{padding:12px;height:320px;overflow:auto;background:#f8fafc;display:flex;flex-direction:column;gap:10px}
+    .msg{max-width:78%;padding:10px;border-radius:10px}
+    .msg.user{align-self:flex-end;background:#0ea5e9;color:#fff;border-bottom-right-radius:2px}
+    .msg.bot{align-self:flex-start;background:#fff;border:1px solid #e6e9ef}
+    .chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid #f0f2f7}
+    .chat-input input{flex:1;padding:10px;border-radius:10px;border:1px solid #e6e9ef}
+
+    /* ====== Responsive ====== */
+    @media (max-width:900px){.main-grid{grid-template-columns:1fr}.widgets{grid-template-columns:1fr}.chat-window{right:12px;left:12px;width:auto}}
+
+    /* Small helper */
+    .muted{color:#64748b}
+    .pill{background:#eef2ff;color:#0ea5e9;padding:6px 8px;border-radius:999px;font-weight:600;font-size:12px}
+    .tiny{font-size:12px;color:#64748b}
+    .mt12{margin-top:12px}
+  </style>
 </head>
 <body>
-  <header class="nav nav--solid">
-    <div class="brand"><i class="ri-heart-pulse-fill"></i> CarePlus</div>
-    <nav class="links">
-      <a href="#doctors">Doctors</a>
-      <a href="#myapps">My Appointments</a>
-      <button class="btn btn--ghost" id="logout"><i class="ri-logout-box-r-line"></i> Logout</button>
-    </nav>
-  </header>
-
-  <main class="container">
-    <section class="welcome card glass">
-      <h2>Welcome, <span id="pname"></span></h2>
-      <p class="muted">Browse doctors and book your health checkups in a few clicks.</p>
-      <div class="grid3 stats">
-        <div class="stat"><span id="statPending">0</span><small>Pending</small></div>
-        <div class="stat"><span id="statApproved">0</span><small>Approved</small></div>
-        <div class="stat"><span id="statTotal">0</span><small>Total</small></div>
-      </div>
-    </section>
-
-    <!-- Doctors -->
-    <section id="doctors" class="card">
-      <div class="section__head">
-        <h3><i class="ri-stethoscope-line"></i> Doctors</h3>
-        <div class="filters">
-          <input type="search" id="searchDoc" placeholder="Search name/specialty/location…" />
-          <select id="specFilter">
-            <option value="">All specialties</option>
-          </select>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">HC</div>
+        <div>
+          <h1>HealthCheck — Book Health Checkups</h1>
+          <div class="tiny">Fast, secure & friendly appointments</div>
         </div>
       </div>
-      <div id="docList" class="cards"></div>
-    </section>
+      <div class="inline">
+        <div class="tiny muted">Signed in as <strong id="user-name">Guest</strong></div>
+        <button class="ghost" id="sign-btn">Sign In</button>
+        <button class="primary" id="new-appoint">New Appointment</button>
+      </div>
+    </header>
 
-    <!-- My Appointments -->
-    <section id="myapps" class="card">
-      <div class="section__head">
-        <h3><i class="ri-calendar-2-line"></i> My Appointments</h3>
-      </div>
-      <div class="tablewrap">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Doctor</th><th>Specialty</th><th>Date</th><th>Time</th><th>Status</th><th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="myAppsBody"></tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+    <main class="main-grid">
+      <!-- LEFT: Search + Doctors + Booking -->
+      <section>
+        <div class="card">
+          <div class="inline">
+            <div class="search">
+              <input id="search" placeholder="Search doctors, specialties or keywords (e.g. full body)" />
+              <button class="ghost" id="filter-btn">Filters</button>
+            </div>
+            <button class="primary" id="explore-btn">Explore Packages</button>
+          </div>
 
-  <!-- Book Modal -->
-  <dialog id="bookModal" class="modal">
-    <form method="dialog" class="modal__content">
-      <h3><i class="ri-calendar-event-line"></i> Book Appointment</h3>
-      <div class="field">
-        <label>Doctor</label>
-        <input id="bm_doctor" type="text" readonly>
-      </div>
-      <div class="grid2">
-        <div class="field">
-          <label>Date</label>
-          <input id="bm_date" type="date" required>
+          <div class="mt12">
+            <h3>Available Doctors & Health Packages</h3>
+            <div id="doctor-list" class="mt12" aria-live="polite"></div>
+          </div>
         </div>
-        <div class="field">
-          <label>Time</label>
-          <select id="bm_time" required></select>
+
+        <div class="card mt12">
+          <h3>How it works</h3>
+          <ol style="margin-top:8px;padding-left:18px;">
+            <li>Search or select a doctor/package.</li>
+            <li>Choose date & time and fill patient details.</li>
+            <li>Confirm booking — we store it locally (demo).</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- RIGHT: Dashboard & Quick Book -->
+      <aside>
+        <div class="card">
+          <h3>Your Dashboard</h3>
+          <div class="widgets mt12">
+            <div class="stat card">
+              <div class="tiny muted">Upcoming</div>
+              <div class="num" id="upcoming-count">0</div>
+            </div>
+            <div class="stat card">
+              <div class="tiny muted">Completed</div>
+              <div class="num" id="completed-count">0</div>
+            </div>
+          </div>
+
+          <div class="mt12">
+            <div class="tiny muted">Quick Book</div>
+            <div class="mt12">
+              <label class="tiny">Select Package</label>
+              <select id="quick-package"><option value="Basic Health Check">Basic Health Check</option><option>Advanced Heart Screen</option><option>Diabetic Panel</option></select>
+              <div class="form-row mt12">
+                <input id="quick-name" placeholder="Patient name" />
+              </div>
+              <div class="form-row mt12">
+                <input id="quick-date" type="date" />
+              </div>
+              <div class="form-row mt12">
+                <button class="primary" id="quick-book">Book Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt12">
+          <h3>Upcoming Appointments</h3>
+          <div id="upcoming-list" class="upcoming-list"></div>
+        </div>
+
+        <div class="card mt12">
+          <h3>Notifications</h3>
+          <div id="notifications" class="tiny muted mt12">No notifications</div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Booking Modal (hidden initially) -->
+    <div id="booking-modal" aria-hidden="true" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:60">
+      <div style="width:92%;max-width:760px;">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3 id="modal-title">Book Appointment</h3>
+            <button id="close-modal" class="ghost">Close</button>
+          </div>
+
+          <form id="booking-form">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+              <div>
+                <label>Patient name</label>
+                <input id="patient-name" required />
+              </div>
+              <div>
+                <label>Contact (phone or email)</label>
+                <input id="patient-contact" required />
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+              <div>
+                <label>Select doctor / package</label>
+                <select id="select-doctor"></select>
+              </div>
+              <div>
+                <label>Date</label>
+                <input id="appoint-date" type="date" required />
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+              <div>
+                <label>Time slot</label>
+                <select id="time-slot">
+                  <option>09:00 AM</option>
+                  <option>10:00 AM</option>
+                  <option>11:00 AM</option>
+                  <option>02:00 PM</option>
+                  <option>03:00 PM</option>
+                </select>
+              </div>
+              <div>
+                <label>Notes (optional)</label>
+                <input id="notes" />
+              </div>
+            </div>
+
+            <div class="mt12" style="display:flex;gap:8px;justify-content:flex-end">
+              <button type="submit" class="primary">Confirm Appointment</button>
+              <button type="button" id="cancel-book" class="ghost">Cancel</button>
+            </div>
+          </form>
         </div>
       </div>
-      <div class="field">
-        <label>Reason / Notes</label>
-        <textarea id="bm_reason" rows="3" placeholder="e.g., Full body checkup"></textarea>
-      </div>
-      <menu class="modal__actions">
-        <button class="btn btn--ghost" value="cancel">Cancel</button>
-        <button class="btn btn--primary" id="bm_submit" value="default">Confirm Booking</button>
-      </menu>
-      <input type="hidden" id="bm_doctorId">
-    </form>
-  </dialog>
+    </div>
 
-  <div id="toast"></div>
-  <script src="app.js"></script>
+  </div>
+
+  <!-- Chatbot UI -->
+  <div class="chat-toggle">
+    <button id="open-chat" class="chat-btn" aria-label="Open chat">💬</button>
+  </div>
+  <div id="chat-window" class="chat-window" style="display:none">
+    <div class="chat-header">
+      <div style="font-weight:700">HealthCare Bot</div>
+      <div class="tiny" style="margin-left:auto;opacity:0.9">Ask about bookings, prep & tests</div>
+    </div>
+    <div class="chat-body" id="chat-body" role="log" aria-live="polite"></div>
+    <div class="chat-input">
+      <input id="chat-input" placeholder="Hi! Ask about appointments or testing prep..." />
+      <button id="chat-send" class="primary">Send</button>
+    </div>
+  </div>
+
   <script>
-    protectPatient();
-    const patient = JSON.parse(localStorage.getItem('cp_currentPatient') || '{}');
-    document.getElementById('pname').textContent = patient.name || 'Guest';
+    // ====== Demo data ======
+    const sampleDoctors = [
+      {id:'d1',name:'Dr. Asha Patel',specialty:'General Physician',rating:4.7,package:'Basic Health Check'},
+      {id:'d2',name:'Dr. Karan Mehta',specialty:'Cardiologist',rating:4.9,package:'Advanced Heart Screen'},
+      {id:'d3',name:'Dr. Sunita Rao',specialty:'Endocrinologist',rating:4.6,package:'Diabetic Panel'},
+      {id:'d4',name:'Wellness Lab',specialty:'Diagnostic Center',rating:4.5,package:'Full Body Check'},
+    ];
 
-    // Stats + lists
-    renderDoctorsForPatient();
-    renderPatientAppointments();
+    // ====== Utility functions ======
+    const $ = (sel) => document.querySelector(sel);
+    const create = (tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text)el.textContent=text;return el}
 
-    // Filters
-    document.getElementById('searchDoc').addEventListener('input', renderDoctorsForPatient);
-    document.getElementById('specFilter').addEventListener('change', renderDoctorsForPatient);
+    // ====== Persistence (localStorage) ======
+    function loadState(){
+      const s = localStorage.getItem('hc_state');
+      return s ? JSON.parse(s) : {user:{name:'Guest'},appointments:[]};
+    }
+    function saveState(s){ localStorage.setItem('hc_state',JSON.stringify(s)); }
+    let state = loadState();
 
-    // Book modal handlers are wired in app.js via delegation
-    document.getElementById('logout').onclick = () => { localStorage.removeItem('cp_currentPatient'); location.href='index.html'; };
+    // ====== Render functions ======
+    function renderDoctors(filter=''){
+      const list = $('#doctor-list'); list.innerHTML='';
+      const q = filter.trim().toLowerCase();
+      const items = sampleDoctors.filter(d=>!q || (d.name+d.specialty+d.package).toLowerCase().includes(q));
+      items.forEach(d=>{
+        const box = create('div','doctor');
+        const av = create('div','avatar',d.name.split(' ').map(x=>x[0]).slice(0,2).join(''));
+        const info = create('div','doctor-info');
+        const title = create('div','',''); title.innerHTML = `<strong>${d.name}</strong> <div class="tiny muted">${d.specialty}</div>`;
+        const meta = create('div','specialty',`${d.package} • ${d.rating} ★`);
+        const actions = create('div');
+        const btn = create('button','primary','Book'); btn.onclick=()=>openBookingModal(d);
+        actions.appendChild(btn);
+        info.appendChild(title); info.appendChild(meta);
+        box.appendChild(av); box.appendChild(info); box.appendChild(actions);
+        list.appendChild(box);
+      });
+      if(items.length===0) list.innerHTML='<div class="tiny muted">No doctors or packages match your search.</div>';
+    }
+
+    function renderDashboard(){
+      const upcoming = state.appointments.filter(a=>new Date(a.date) >= new Date());
+      $('#upcoming-count').textContent = upcoming.length;
+      $('#completed-count').textContent = state.appointments.filter(a=>new Date(a.date) < new Date()).length;
+
+      const ul = $('#upcoming-list'); ul.innerHTML='';
+      if(upcoming.length===0) ul.innerHTML='<div class="tiny muted">No upcoming appointments</div>';
+      upcoming.slice(0,6).forEach(a=>{
+        const el = create('div','doctor');
+        el.innerHTML = `<div style="flex:1"><strong>${a.patient}</strong><div class="tiny muted">${a.doctorName} • ${a.package}</div></div><div class="tiny">${formatDate(a.date)} ${a.time}</div>`;
+        ul.appendChild(el);
+      });
+
+      const notif = $('#notifications');
+      notif.textContent = (upcoming.length>0) ? `You have ${upcoming.length} upcoming appointment(s)` : 'No notifications';
+    }
+
+    function formatDate(d){ const dt = new Date(d); return dt.toLocaleDateString(); }
+
+    // ====== Booking Modal logic ======
+    const bookingModal = $('#booking-modal');
+    function openBookingModal(doctor){
+      bookingModal.style.display='flex'; bookingModal.setAttribute('aria-hidden','false');
+      $('#modal-title').textContent = `Book: ${doctor.name} — ${doctor.package}`;
+      const sel = $('#select-doctor'); sel.innerHTML='';
+      sampleDoctors.forEach(d=>{const opt=document.createElement('option');opt.value=d.id;opt.textContent=`${d.name} — ${d.package}`;sel.appendChild(opt)});
+      // pre-fill
+      $('#appoint-date').value = todayISO();
+      $('#patient-name').value = state.user.name==='Guest' ? '' : state.user.name;
+    }
+    function closeBookingModal(){ bookingModal.style.display='none'; bookingModal.setAttribute('aria-hidden','true'); }
+
+    $('#close-modal').addEventListener('click',closeBookingModal);
+    $('#cancel-book').addEventListener('click',closeBookingModal);
+
+    $('#booking-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const patient = $('#patient-name').value.trim();
+      const contact = $('#patient-contact').value.trim();
+      const docId = $('#select-doctor').value;
+      const date = $('#appoint-date').value;
+      const time = $('#time-slot').value;
+      const notes = $('#notes').value.trim();
+      if(!patient||!contact||!date){ alert('Please fill required fields.'); return; }
+      const doc = sampleDoctors.find(d=>d.id===docId) || sampleDoctors[0];
+      const appt = {id:'a'+Date.now(),patient,contact,doctorId:doc.id,doctorName:doc.name,package:doc.package,date,time,notes,created:Date.now()};
+      state.appointments.push(appt); saveState(state); renderDashboard(); renderNotifications(); closeBookingModal();
+      alert('Appointment confirmed — ' + formatDate(date) + ' ' + time);
+    });
+
+    // quick book
+    $('#quick-book').addEventListener('click', ()=>{
+      const patient = $('#quick-name').value.trim() || (state.user.name==='Guest'? 'Guest': state.user.name);
+      const pkg = $('#quick-package').value;
+      const date = $('#quick-date').value || todayISO();
+      if(!patient){ alert('Enter patient name'); return; }
+      const appt = {id:'a'+Date.now(),patient,contact:'',doctorId:'lab',doctorName:'HealthCheck Lab',package:pkg,date,time:'09:00 AM',notes:'Quick book',created:Date.now()};
+      state.appointments.push(appt); saveState(state); renderDashboard(); renderNotifications(); alert('Booked: '+pkg+' on '+formatDate(date));
+    });
+
+    function renderNotifications(){
+      const n = $('#notifications'); const upcoming = state.appointments.filter(a=>new Date(a.date) >= new Date()); n.textContent = upcoming.length>0 ? `You have ${upcoming.length} upcoming appointment(s)` : 'No notifications';
+    }
+
+    // ====== Search ======
+    $('#search').addEventListener('input', (e)=> renderDoctors(e.target.value));
+
+    // ====== Chatbot (simple rule-based for demo) ======
+    const chatWindow = $('#chat-window');
+    $('#open-chat').addEventListener('click', ()=>{ chatWindow.style.display = chatWindow.style.display==='none' ? 'flex' : 'none'; });
+    function botReply(text){
+      const body = $('#chat-body'); const el = create('div','msg bot',text); body.appendChild(el); body.scrollTop = body.scrollHeight;
+    }
+    function userMsg(text){ const body = $('#chat-body'); const el = create('div','msg user',text); body.appendChild(el); body.scrollTop = body.scrollHeight; }
+
+    $('#chat-send').addEventListener('click', ()=>{
+      const v = $('#chat-input').value.trim(); if(!v) return; userMsg(v); $('#chat-input').value=''; setTimeout(()=>{ respondToChat(v); }, 600);
+    });
+    function respondToChat(q){
+      const lc = q.toLowerCase();
+      if(/book|appointment|schedule/.test(lc)) return botReply('You can book via the Book button on any doctor card, or use Quick Book on the right. Want me to open the booking modal? Type "open booking".');
+      if(/open booking/.test(lc)) { openBookingModal(sampleDoctors[0]); return botReply('Opening booking modal...'); }
+      if(/prepar|fast|fasting/.test(lc)) return botReply('For most blood tests, fasting for 8–12 hours is recommended. Drink water only unless told otherwise.');
+      if(/price|cost|fee/.test(lc)) return botReply('Prices depend on package; Basic starts at ₹499, Advanced packages vary. This demo uses placeholder prices.');
+      if(/hello|hi|hey/.test(lc)) return botReply('Hi! I can help with booking, test prep and FAQs. What would you like?');
+      if(/cancel|delete/.test(lc)) return botReply('To cancel an appointment open the dashboard and click the appointment then press cancel (this demo stores appointments locally).');
+      // fallback
+      botReply("Sorry, I didn't understand. Try asking about bookings, fasting, prices, or say 'open booking'.");
+    }
+
+    // Allow Enter key in chat input
+    $('#chat-input').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); $('#chat-send').click(); } });
+
+    // ====== Sign In (demo) ======
+    $('#sign-btn').addEventListener('click', ()=>{
+      const name = prompt('Enter your name to sign in (demo):','')||'Guest'; state.user.name = name; saveState(state); $('#user-name').textContent = name; alert('Signed in as '+name);
+    });
+
+    // ====== Utilities ======
+    function todayISO(){ const d=new Date(); d.setMinutes(d.getMinutes()-d.getTimezoneOffset()); return d.toISOString().slice(0,10); }
+
+    // initial render
+    document.addEventListener('DOMContentLoaded', ()=>{
+      // show user
+      $('#user-name').textContent = state.user.name || 'Guest';
+      renderDoctors(); renderDashboard(); renderNotifications();
+    });
+
+    // New appointment quick button
+    $('#new-appoint').addEventListener('click', ()=> openBookingModal(sampleDoctors[0]));
+
+    // basic accessibility: close modal when clicking outside
+    bookingModal.addEventListener('click', (e)=>{ if(e.target===bookingModal) closeBookingModal(); });
+
+    // Expose for debugging (dev only)
+    window._hc_state = state;
+
   </script>
 </body>
 </html>
