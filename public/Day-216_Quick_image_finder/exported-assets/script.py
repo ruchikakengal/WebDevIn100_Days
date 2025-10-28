@@ -1,0 +1,72 @@
+
+# Create the HTML file for the Quick Image Finder project
+html_content = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Image Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Quick Image Finder</h1>
+            <p class="subtitle">Search for high-quality images instantly</p>
+        </header>
+
+        <div class="search-section">
+            <form id="search-form">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    placeholder="Search for images (e.g., mountains, nature, technology)" 
+                    required
+                >
+                <button type="submit" id="search-btn">Search</button>
+            </form>
+        </div>
+
+        <div id="results-section" class="results-section hidden">
+            <div class="result-info">
+                <p id="result-text"></p>
+                <div class="navigation-buttons">
+                    <button id="prev-btn" class="nav-btn" disabled>← Previous</button>
+                    <span id="image-counter">1 / 10</span>
+                    <button id="next-btn" class="nav-btn">Next →</button>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img id="result-image" src="" alt="Search Result">
+                <div class="image-details">
+                    <p id="photographer-name"></p>
+                    <a id="image-link" href="" target="_blank">View on Unsplash</a>
+                </div>
+            </div>
+
+            <button id="show-more-btn">Load More Results</button>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Searching for images...</p>
+        </div>
+
+        <div id="error-message" class="error-message hidden"></div>
+
+        <footer>
+            <p>Powered by <a href="https://unsplash.com" target="_blank">Unsplash API</a></p>
+            <p class="api-note">⚠️ Please add your Unsplash API key in script.js to use this app</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>"""
+
+# Save HTML file
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("✓ index.html created successfully")
