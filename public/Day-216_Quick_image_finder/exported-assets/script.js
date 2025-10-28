@@ -1,7 +1,7 @@
 // ⚠️ IMPORTANT: Replace 'YOUR_UNSPLASH_ACCESS_KEY' with your actual Unsplash API key
 // Get your free API key from: https://unsplash.com/developers
 
-const API_KEY = 'ZctjphDp66bzNjCO0WNer58GaAXtUAecVUSwfcD2SBo';
+const API_KEY = 'Paste Your api key here of unsplash';//Due to privacy issue you have to use your own images 
 const API_URL = 'https://api.unsplash.com/search/photos';
 
 // DOM Elements
