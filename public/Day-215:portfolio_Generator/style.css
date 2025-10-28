@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 15px;
+}
+
+.container {
+  width: 100%;
+  max-width: 850px;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.tagline {
+  font-size: 1rem;
+  margin-bottom: 25px;
+  color: #e0e0e0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.section {
+  text-align: left;
+}
+
+.section h2 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 8px;
+  border-left: 4px solid #ffcb2b;
+  padding-left: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  margin-top: 8px;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  transition: background 0.3s;
+}
+
+input:focus, textarea:focus {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px;
+  transition: 0.3s;
+}
+
+.generate-btn {
+  background: #ffcb2b;
+  color: #333;
+}
+
+.generate-btn:hover {
+  background: #ffd84d;
+  transform: scale(1.05);
+}
+
+.download-btn {
+  margin-top: 20px;
+  background: #00c6ff;
+  color: #fff;
+}
+
+.download-btn:hover {
+  background: #35d1ff;
+  transform: scale(1.05);
+}
+
+.preview {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 30px;
+  text-align: left;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  color: #f0f0f0;
+}
+
+a {
+  color: #ffcb2b;
+  text-decoration: none;
+}
+
+.fade-in {
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+}

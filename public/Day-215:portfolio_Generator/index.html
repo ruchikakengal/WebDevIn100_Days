@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="hero">
+    <div class="container glass-card">
+      <h1>💼 Portfolio Builder</h1>
+      <p class="tagline">Create your personal portfolio in minutes!</p>
+
+      <form id="portfolioForm" class="fade-in">
+        <div class="section">
+          <h2>👤 Personal Info</h2>
+          <input type="text" id="name" placeholder="Full Name" required>
+          <input type="email" id="email" placeholder="Email" required>
+          <input type="text" id="linkedin" placeholder="LinkedIn URL">
+          <input type="text" id="github" placeholder="GitHub URL">
+        </div>
+
+        <div class="section">
+          <h2>🎓 Education</h2>
+          <textarea id="education" placeholder="E.g. B.Tech in CSE from XYZ University (2023–2027)" required></textarea>
+        </div>
+
+        <div class="section">
+          <h2>🧠 Skills</h2>
+          <input type="text" id="skills" placeholder="E.g. HTML, CSS, Python, C++" required>
+        </div>
+
+        <div class="section">
+          <h2>🚀 Projects</h2>
+          <textarea id="projects" placeholder="List your projects with brief description"></textarea>
+        </div>
+
+        <div class="section">
+          <h2>💬 About You</h2>
+          <textarea id="about" placeholder="A short bio about yourself"></textarea>
+        </div>
+
+        <button type="button" class="generate-btn" onclick="generatePortfolio()">✨ Generate Portfolio</button>
+      </form>
+
+      <div id="portfolioPreview" class="preview hidden">
+        <h2>Your Portfolio</h2>
+        <div id="output"></div>
+        <button class="download-btn" onclick="window.print()">📄 Save / Print Portfolio</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Made with ❤️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
