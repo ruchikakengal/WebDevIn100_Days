@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hangman Game</title>
+
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top, #141e30, #243b55);
+  color: #fff;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 950px;
+  width: 100%;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+/* LEFT SIDE - Hangman */
+.hangman-area { flex: 1 1 300px; display: flex; flex-direction: column; align-items: center; }
+.hangman { width: 200px; height: 240px; position: relative; margin-top: 10px; }
+.hangman-part { display: none; position: absolute; background: #fff; border-radius: 2px; transition: all 0.3s ease; box-shadow: 0 0 10px rgba(255,255,255,0.4); }
+.pole { width: 6px; height: 200px; left: 15px; bottom: 0; background: #ccc; }
+.beam { width: 110px; height: 6px; left: 15px; top: 0; background: #ccc; }
+.rope { width: 2px; height: 25px; left: 120px; top: 5px; background: #eee; }
+.head { width: 40px; height: 40px; border-radius: 50%; border: 4px solid #fff; left: 100px; top: 30px; animation: bounce-in 0.4s ease; }
+.body { width: 4px; height: 50px; left: 118px; top: 70px; }
+.arm-left { width: 35px; height: 4px; left: 85px; top: 85px; transform: rotate(-25deg); }
+.arm-right { width: 35px; height: 4px; left: 118px; top: 85px; transform: rotate(25deg); }
+.leg-left { width: 35px; height: 4px; left: 90px; top: 125px; transform: rotate(25deg); }
+.leg-right { width: 35px; height: 4px; left: 118px; top: 125px; transform: rotate(-25deg); }
+
+@keyframes bounce-in { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.reaction { font-size: 2rem; margin-top: 15px; height: 50px; transition: 0.3s ease; }
+
+/* RIGHT SIDE */
+.controls-area { flex: 1 1 400px; display: flex; flex-direction: column; justify-content: center; }
+h1 { text-align: center; margin-bottom: 10px; letter-spacing: 2px; }
+.info { text-align: center; margin-bottom: 10px; }
+#timer { color: #00ffff; font-weight: bold; }
+#word { text-align: center; font-size: 2rem; letter-spacing: 10px; margin: 15px 0; }
+#letters { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.letter-btn { width: 40px; height: 40px; background: #00adb5; color: #fff; border: none; border-radius: 10px; font-size: 1rem; cursor: pointer; box-shadow: 0 0 10px rgba(0,255,255,0.4); animation: glowPulse 1.5s infinite alternate; }
+@keyframes glowPulse { 0% { box-shadow: 0 0 5px #00f2ff; } 100% { box-shadow: 0 0 20px #00f2ff; } }
+.letter-btn:disabled { background: #555; color: #999; box-shadow: none; }
+.controls { margin-top: 20px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px; }
+button { padding: 10px 18px; border: none; border-radius: 10px; background: #0077b6; color: white; cursor: pointer; font-weight: 500; transition: all 0.3s ease; }
+button:hover { background: #00b4d8; transform: scale(1.05); }
+.message { text-align: center; font-size: 1.5rem; margin-top: 15px; animation: fadeIn 0.6s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 700px) { .game-wrapper { flex-direction: column; align-items: center; } }
+</style>
+</head>
+<body>
+
+<div class="game-wrapper">
+  <div class="hangman-area">
+    <h2>🪓 Hangman</h2>
+    <div class="hangman">
+      <div class="hangman-part pole"></div>
+      <div class="hangman-part beam"></div>
+      <div class="hangman-part rope"></div>
+      <div class="hangman-part head"></div>
+      <div class="hangman-part body"></div>
+      <div class="hangman-part arm-left"></div>
+      <div class="hangman-part arm-right"></div>
+      <div class="hangman-part leg-left"></div>
+      <div class="hangman-part leg-right"></div>
+    </div>
+    <div class="reaction" id="reaction"></div>
+  </div>
+
+  <div class="controls-area">
+    <h1>🎯 Hangman Challenge</h1>
+    <div class="info">
+      <div>Score: <span id="score">0</span> | Time: <span id="timer">60</span>s</div>
+      <div>Difficulty:
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="word"></div>
+    <div id="letters"></div>
+    <div class="controls">
+      <button id="start">Start</button>
+      <button id="hint">Hint 💡</button>
+      <button id="pause">Pause</button>
+      <button id="reset">Reset</button>
+    </div>
+    <div class="message" id="message"></div>
+  </div>
+</div>
+
+<!-- Sounds -->
+<audio id="click-sound" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3"></audio>
+<audio id="wrong-sound" src="https://assets.mixkit.co/active_storage/sfx/2018/2018-preview.mp3"></audio>
+<audio id="win-sound" src="https://assets.mixkit.co/active_storage/sfx/429/429-preview.mp3"></audio>
+<audio id="lose-sound" src="https://www.soundjay.com/button/sounds/button-10.mp3"></audio>
+
+<script>
+const wordEl = document.getElementById("word");
+const lettersEl = document.getElementById("letters");
+const hangmanParts = document.querySelectorAll(".hangman-part");
+const scoreEl = document.getElementById("score");
+const reactionEl = document.getElementById("reaction");
+const messageEl = document.getElementById("message");
+const difficultyEl = document.getElementById("difficulty");
+const timerEl = document.getElementById("timer");
+
+const clickSound = document.getElementById("click-sound");
+const wrongSound = document.getElementById("wrong-sound");
+const winSound = document.getElementById("win-sound");
+const loseSound = document.getElementById("lose-sound");
+
+let words = {
+  easy: ["apple","ball","cat","dog","sun","rain","milk"],
+  medium: ["planet","coding","yellow","purple","school","window"],
+  hard: ["javascript","hangman","university","difficult","computer","challenge"]
+};
+
+let selectedWord = "";
+let guessed = [];
+let wrongGuesses = 0;
+let score = 0;
+let playing = false;
+let timer = 60;
+let timerInterval;
+
+function playSound(sound){ sound.currentTime=0; sound.play(); }
+
+function startGame(){
+  playing = true;
+  wrongGuesses=0; guessed=[]; reactionEl.textContent=""; messageEl.textContent="";
+  hangmanParts.forEach(p=>p.style.display="none"); clearInterval(timerInterval);
+  timer=60; timerEl.textContent=timer; startTimer();
+  const diff = difficultyEl.value;
+  const wordList = words[diff];
+  selectedWord = wordList[Math.floor(Math.random()*wordList.length)];
+  displayWord(); generateButtons();
+}
+
+function startTimer(){
+  timerInterval = setInterval(()=>{
+    if(playing){ timer--; timerEl.textContent=timer;
+      if(timer<=0){ playSound(loseSound); endGame(false); }
+    }
+  },1000);
+}
+
+function displayWord(){
+  wordEl.innerHTML = selectedWord.split("").map(l=>guessed.includes(l)?l:"_").join(" ");
+}
+
+function generateButtons(){
+  lettersEl.innerHTML="";
+  for(let i=65;i<=90;i++){
+    const btn = document.createElement("button");
+    btn.classList.add("letter-btn"); btn.textContent=String.fromCharCode(i);
+    btn.addEventListener("click",()=>handleGuess(btn.textContent.toLowerCase(),btn));
+    lettersEl.appendChild(btn);
+  }
+}
+
+function handleGuess(letter,btn){
+  if(!playing) return; btn.disabled=true; playSound(clickSound);
+  if(selectedWord.includes(letter)){
+    guessed.push(letter); displayWord();
+    if(!wordEl.textContent.includes("_")){
+      playSound(winSound); score+=10; scoreEl.textContent=score; endGame(true);
+    }
+  } else {
+    hangmanParts[wrongGuesses].style.display="block"; wrongGuesses++;
+    playSound(wrongSound);
+    if(wrongGuesses===hangmanParts.length){ playSound(loseSound); endGame(false); }
+  }
+}
+
+function endGame(won){
+  playing=false; clearInterval(timerInterval);
+  if(won){ reactionEl.textContent="😄"; messageEl.innerHTML=`<b>Awesome!</b> Word: <span style="color:#00ffb3">${selectedWord.toUpperCase()}</span>`; }
+  else{ reactionEl.textContent="😭"; messageEl.innerHTML=`You lost! Word was <span style="color:#ff6b6b">${selectedWord.toUpperCase()}</span>`; }
+}
+
+function giveHint(){
+  if(!playing) return;
+  const remaining = selectedWord.split("").filter(l=>!guessed.includes(l));
+  if(remaining.length>0){ const hintLetter = remaining[Math.floor(Math.random()*remaining.length)];
+    guessed.push(hintLetter); displayWord(); playSound(clickSound);
+  }
+}
+
+document.getElementById("start").addEventListener("click",startGame);
+document.getElementById("hint").addEventListener("click",giveHint);
+document.getElementById("reset").addEventListener("click",()=>{
+  score=0; scoreEl.textContent=score; startGame();
+});
+document.getElementById("pause").addEventListener("click",()=>{
+  playing=!playing;
+  messageEl.textContent = playing ? "▶️ Game Resumed" : "⏸️ Game Paused";
+});
+</script>
+</body>
+</html>
