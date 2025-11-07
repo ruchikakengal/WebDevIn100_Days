@@ -6,20 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WebDevIn_100Days</title>
 
-  <!-- Favicon Setup -->
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32"
     href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
   <link rel="icon" type="image/png" sizes="16x16"
     href="https://i.pinimg.com/736x/1c/54/f7/1c54f7b06d7723c21afc5035bf88a5ef.jpg">
   <link rel="manifest" href="./site.webmanifest">
-  <!-- SEO Meta Tags -->
   <meta name="description"
     content="100 Days of Web Development — A journey through 100 fun and interactive HTML, CSS, and JS projects. Perfect for beginners to intermediate developers.">
   <meta name="keywords" content="web development, HTML, CSS, JavaScript, projects, learning, coding, frontend">
   <meta name="author" content="WebDevIn_100Days Team">
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="WebDevIn_100Days - 100 Days of Web Development Projects">
   <meta property="og:description"
@@ -27,32 +24,44 @@
   <meta property="og:image" content="https://i.imgur.com/3cztaa9.png">
   <meta property="og:url" content="https://your-site.com">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="WebDevIn_100Days - 100 Days of Web Development Projects">
   <meta name="twitter:description"
     content="Build 100 unique frontend projects while learning HTML, CSS, and JavaScript.">
   <meta name="twitter:image" content="https://i.imgur.com/3cztaa9.png">
 
-  <!-- Theme Color -->
   <meta name="theme-color" content="#6366f1">
 
-  <!-- CSS Styles -->
   <link rel="stylesheet" href="./styles/main.css">
   <link rel="stylesheet" href="chatbot.css">
 
-  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    .hero-section .hero-actions {
+      display: flex;
+      justify-content: center; /* Keeps the buttons centered */
+      gap: 1rem; /* Adds horizontal space between buttons in the same row */
+      margin-top: 1rem; /* Adds vertical space between the two rows of buttons */
+    }
+  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+  <style>
+    .hero-section .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
 </head>
 
 <body>
-  <!-- Scroll Progress Bar -->
   <div class="scroll-progress">
     <div class="scroll-progress-bar"></div>
   </div>
 
-  <!-- Modern Navigation -->
   <nav class="modern-nav">
     <div class="nav-container">
       <a href="index.html" class="nav-brand">
@@ -66,6 +75,7 @@
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="about.html" class="nav-link">About Us</a></li>
         <li><a href="contributors.html" class="nav-link">Contributors</a></li>
+
       </ul>
 
       <div class="nav-actions">
@@ -83,7 +93,6 @@
       </div>
     </div>
 
-    <!-- Mobile Navigation -->
     <div class="mobile-nav">
       <ul class="mobile-nav-links">
         <li><a href="#home" class="mobile-nav-link">Home</a></li>
@@ -94,10 +103,8 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <section id="home" class="hero-section">
     <div class="hero-bg"></div>
-    <!-- Vanta.js Globe Background Container -->
     <div id="vanta-bg"></div>
     <div class="container">
       <div class="hero-content animate-fade-in">
@@ -123,15 +130,26 @@
             Meet Contributors
           </a>
         </div>
-        <br>
         <div class="hero-actions">
-          <a href="Feedback.html" class="btn btn-primary feedback-btn">Share Your Feedback</a>
+          <a href="Feedback.html" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Share Feedback
+          </a>
+          <a href="tts.html" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+            Try Text to Speech
+          </a>
         </div>
       </div>
     </div>
   </section>
-  <!-- Search Section -->
   <section class="search-section">
+
     <div class="container">
       <div class="search-container">
         <div class="search-form">
@@ -149,7 +167,6 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
   <section id="projects" class="projects-section">
     <div class="container">
       <div class="projects-header">
@@ -159,7 +176,6 @@
         </p>
       </div>
 
-      <!-- Filter Tabs -->
       <div class="filter-tabs">
         <button class="filter-tab active" data-filter="all">All Projects</button>
         <button class="filter-tab" data-filter="basic">Basic</button>
@@ -173,12 +189,9 @@
         <button class="filter-tab" data-filter="AI/ML">AI/ML</button>
       </div>
 
-      <!-- Projects Table -->
       <div class="projects-table-container">
-        <!-- Table will be dynamically generated here -->
-      </div>
+        </div>
 
-      <!-- Empty State -->
       <div class="empty-state">
         <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
           stroke="currentColor">
@@ -191,14 +204,11 @@
         </p>
       </div>
 
-      <!-- Pagination -->
       <div class="pagination">
-        <!-- Pagination will be dynamically generated here -->
-      </div>
+        </div>
     </div>
   </section>
 
-  <!-- About the Challenge Section -->
   <section id="about-challenge" class="about-challenge-section">
     <div class="container">
       <div class="about-challenge-header">
@@ -206,7 +216,6 @@
       </div>
 
       <div class="challenge-cards">
-        <!-- Our Mission Card -->
         <div class="challenge-card">
           <div class="challenge-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -221,7 +230,6 @@
           </p>
         </div>
 
-        <!-- Skill Development Card -->
         <div class="challenge-card">
           <div class="challenge-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -235,7 +243,6 @@
           </p>
         </div>
 
-        <!-- Community Card -->
         <div class="challenge-card">
           <div class="challenge-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -251,19 +258,15 @@
         </div>
       </div>
 
-      <!-- Challenge Statistics -->
       <div class="challenge-stats">
         <h3 class="challenge-stats-title">Challenge Statistics</h3>
         <div class="stats-grid">
-          <!-- Stats will be dynamically generated with counter animation -->
-        </div>
+          </div>
       </div>
     </div>
   </section>
 
-  <!-- Chatbot Widget -->
   <div id="chatbot-container">
-    <!-- Floating Chat Icon -->
     <div id="chat-icon" class="chat-icon" aria-label="Open chat" role="button" tabindex="0">
       <div class="icon-container">
         <svg class="chat-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -278,9 +281,7 @@
       </div>
     </div>
 
-    <!-- Chat Window -->
     <div id="chat-window" class="chat-window" aria-hidden="true">
-      <!-- Chat Header -->
       <div class="chat-header">
         <div class="chat-title">
           <div class="bot-avatar">
@@ -300,7 +301,6 @@
         </button>
       </div>
 
-      <!-- Chat Messages Container -->
       <div id="chat-messages" class="chat-messages">
         <div class="welcome-section">
           <div class="welcome-avatar">
@@ -348,7 +348,6 @@
           </button>
         </div>
       </div>
-      <!-- Chat Input -->
       <div class="chat-input-container">
         <div class="input-wrapper">
           <input type="text" id="chat-input" placeholder="Type your message..." maxlength="500"
@@ -364,19 +363,15 @@
     </div>
   </div>
 
-  <!-- Scroll to Top Button -->
   <button class="scroll-top" title="Back to top">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
     </svg>
   </button>
 
-  <!-- Footer -->
   <footer class="modern-footer">
     <div class="footer-container">
-      <!-- Footer Main Content -->
       <div class="footer-main">
-        <!-- 100 Days Challenge Section -->
         <div class="footer-challenge">
           <h3 class="footer-title">100 Days Challenge</h3>
           <p class="footer-description">
@@ -407,7 +402,6 @@
           </div>
         </div>
 
-        <!-- Quick Links Section -->
         <div class="footer-section">
           <h3 class="footer-title">Quick Links</h3>
           <ul class="footer-links">
@@ -419,7 +413,6 @@
           </ul>
         </div>
 
-        <!-- Technologies Section -->
         <div class="footer-section">
           <h3 class="footer-title">Technologies</h3>
           <div class="tech-badges">
@@ -435,13 +428,11 @@
       </div>
   </footer>
 
-  <!-- JavaScript -->
   <script src="./scripts/app.js"></script>
   <script src="chatbot.js"></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="./scripts/hero-animation.js"></script>
 
-  <!-- Vanta.js for Globe Background -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
 <script>

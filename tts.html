@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 0;
+            color: #0d6efd;
+            display: flex; /* Aligns icon and text */
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem; /* Adds space between text and icon */
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            resize: vertical;
+            margin-bottom: 1.5rem;
+            box-sizing: border-box;
+        }
+        .button-group {
+            display: flex;
+            gap: 1rem;
+        }
+        button {
+            flex-grow: 1;
+            padding: 12px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        #speakButton {
+            background-color: #0d6efd;
+            color: white;
+        }
+        #speakButton:hover {
+            background-color: #0b5ed7;
+        }
+        #cancelButton {
+            background-color: #6c757d;
+            color: white;
+        }
+        #cancelButton:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Text to Speech 🎤</h1>
+        <textarea id="textToSpeak" placeholder="Type or paste your text here..."></textarea>
+        
+        <div class="button-group">
+            <button id="speakButton">Speak 🗣️</button>
+            <button id="cancelButton">Cancel & Close ❌</button>
+        </div>
+    </div>
+
+    <script src="tts.js"></script>
+</body>
+</html>
