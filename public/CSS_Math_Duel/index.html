@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Math Duel - Two-Player Speed Math Race</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>🧮 CSS Math Duel</h1>
+            <p>Two-Player Speed Math Race</p>
+            <div class="header-decoration">
+                <div class="decoration-line"></div>
+                <div class="decoration-dot"></div>
+                <div class="decoration-line"></div>
+            </div>
+        </header>
+
+        <div class="game-controls">
+            <button id="startBtn" class="btn btn-primary">Start Game</button>
+            <button id="restartBtn" class="btn btn-secondary" style="display: none;">Restart</button>
+            <div class="game-status">
+                <span id="gameStatus">Ready to race!</span>
+            </div>
+        </div>
+
+        <div class="race-track-container">
+            <div class="race-track">
+                <div class="finish-line">🏁</div>
+                
+                <!-- Player 1 Section -->
+                <div class="player-section" id="player1-section">
+                    <div class="player-info">
+                        <h3>Player 1 🧍‍♂️</h3>
+                        <div class="score">Score: <span id="score1">0</span></div>
+                    </div>
+                    
+                    <div class="player-track">
+                        <div class="avatar" id="avatar1">🧍‍♂️</div>
+                        <div class="track-progress"></div>
+                    </div>
+                    
+                    <div class="question-section">
+                        <div class="question" id="question1">?</div>
+                        <input type="number" id="answer1" placeholder="Your answer" disabled>
+                        <div class="feedback" id="feedback1"></div>
+                    </div>
+                </div>
+
+                <!-- Player 2 Section -->
+                <div class="player-section" id="player2-section">
+                    <div class="player-info">
+                        <h3>Player 2 🧍‍♀️</h3>
+                        <div class="score">Score: <span id="score2">0</span></div>
+                    </div>
+                    
+                    <div class="player-track">
+                        <div class="avatar" id="avatar2">🧍‍♀️</div>
+                        <div class="track-progress"></div>
+                    </div>
+                    
+                    <div class="question-section">
+                        <div class="question" id="question2">?</div>
+                        <input type="number" id="answer2" placeholder="Your answer" disabled>
+                        <div class="feedback" id="feedback2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="winner-modal" id="winnerModal">
+            <div class="modal-content">
+                <h2 id="winnerText">🎉 Winner!</h2>
+                <p id="winnerDetails"></p>
+                <button id="playAgainBtn" class="btn btn-primary">Play Again</button>
+            </div>
+        </div>
+
+        <div class="confetti-container" id="confettiContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
