@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lagunitas </title>
+  <meta name="description" content="Interactive single-file clone of a brewery site with working internal links, shop, beer pages and contact form (demo)." />
+  <style>
+    :root{--brand:#0b3b2e;--accent:#e9b44c;--muted:#6b6b6b;--bg:#fffdf9;--card:#fff;font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+    *{box-sizing:border-box}html,body{height:100%;margin:0;background:linear-gradient(180deg,#fffdf9 0%,#f7faf6 100%);color:#111}
+    a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));border-bottom:1px solid rgba(0,0,0,0.05);z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:6px;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav ul{display:flex;gap:16px;align-items:center;margin:0;padding:0;list-style:none}
+    .cta{background:var(--brand);color:white;padding:8px 12px;border-radius:8px;font-weight:600}
+    .mobile-toggle{display:none;border:0;background:transparent;font-size:18px}
+
+    /* hero */
+    .hero{padding:48px 0;display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center}
+    .hero h1{font-size:40px;margin:0 0 12px;line-height:1.02}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .actions{display:flex;gap:12px}
+
+    /* cards */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:28px 0}
+    .card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,0.06);display:flex;gap:12px;align-items:center}
+    .pill{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.6);font-size:12px;color:var(--muted)}
+
+    /* sections */
+    section{padding:18px 0}
+    footer{border-top:1px solid rgba(0,0,0,0.05);padding:28px 0;margin-top:28px;color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){nav ul{display:none}.mobile-toggle{display:block}.grid{grid-template-columns:1fr}.logo{width:36px;height:36px}}
+
+    /* drawer */
+    .nav-open{position:fixed;inset:0;background:rgba(0,0,0,0.35);display:flex;align-items:flex-start;justify-content:flex-end}
+    .drawer{width:260px;background:white;height:100%;padding:20px}
+
+    /* small helpers */
+    .hidden{display:none}
+    .muted{color:var(--muted)}
+    .button{padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+    .outline{background:white;border:1px solid rgba(0,0,0,0.06)}
+
+    /* modal/shop */
+    .modal-back{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center}
+    .modal{background:white;padding:18px;border-radius:12px;max-width:720px;width:94%;box-shadow:0 12px 40px rgba(0,0,0,0.25)}
+
+    /* beer detail */
+    .beer-detail{display:grid;grid-template-columns:1fr 360px;gap:20px}
+    @media (max-width:980px){.beer-detail{grid-template-columns:1fr}}
+
+    /* nav active */
+    .nav a.active{font-weight:700}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">LG</div>
+        <div>
+          <div style="font-weight:700">Lagunitas</div>
+        </div>
+      </div>
+      <nav>
+        <button class="mobile-toggle" aria-label="open menu">☰</button>
+        <ul>
+          <li><a href="#/" data-link>Home</a></li>
+          <li><a href="#/beers" data-link>Beers</a></li>
+          <li><a href="#/our-pub" data-link>Our Pub</a></li>
+          <li><a href="#/shop" data-link>Shop</a></li>
+          <li><a href="#/about" data-link>About</a></li>
+          <li><a class="cta" href="#/shop" data-link>Find Beer</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="app">
+    <!-- Views will be injected here by JS routing -->
+  </main>
+
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+      <div>
+        <strong>Lagunitas</strong>
+      </div>
+      <div class="muted">Follow: <a href="https://instagram.com" target="_blank">Instagram</a> • <a href="https://twitter.com" target="_blank">Twitter</a></div>
+    </div>
+  </footer>
+
+  <!-- Templates -->
+  <template id="home-tpl">
+    <section class="hero">
+      <div>
+        <h1>Bold, hoppy beer<br/>made for good times</h1>
+        <p class="muted">Classic small-batch ales and a big personality. Browse our beers, visit the taproom or shop bottles online (demo).</p>
+        <div class="actions">
+          <a class="cta button" href="#/shop" data-link>Shop Now</a>
+          <a class="button outline" href="#/beers" data-link>Our Beers</a>
+        </div>
+        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+          <span class="pill">Small Batch</span>
+          <span class="pill">Hoppy</span>
+          <span class="pill">Family-Owned</span>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop&s=4a3f6f1b4d3a6b4a9f2d9f5b6a8b8cde" alt="beer" class="beer-img"/>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+          <div>
+            <div style="font-weight:700">IPA Experiment No. 7</div>
+            <div style="font-size:13px;color:var(--muted)">6.5% ABV • 12 fl oz</div>
+          </div>
+          <div class="price">$7</div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="featured">
+      <h2 style="margin:8px 0 12px">Featured Beers</h2>
+      <div class="grid" id="featured-grid"></div>
+    </section>
+  </template>
+
+  <template id="beers-tpl">
+    <section>
+      <h2 style="margin:8px 0 12px">Our Beers</h2>
+      <div class="muted" style="margin-bottom:12px">Click a beer to open its detail page.</div>
+      <div class="grid" id="beers-grid"></div>
+    </section>
+  </template>
+
+  <template id="beer-detail-tpl">
+    <section>
+      <a href="#/beers" data-link>&larr; Back to beers</a>
+      <div class="beer-detail" style="margin-top:12px">
+        <div>
+          <img id="beer-img" src="" alt="" style="border-radius:12px;max-height:420px;object-fit:cover">
+          <h2 id="beer-title" style="margin-top:12px"></h2>
+          <p id="beer-desc" class="muted"></p>
+          <div style="margin-top:12px"><strong>ABV:</strong> <span id="beer-abv"></span> • <strong>Size:</strong> <span id="beer-size"></span></div>
+        </div>
+        <aside style="background:var(--card);padding:14px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.04)">
+          <div style="font-weight:700;font-size:20px">Buy</div>
+          <div style="margin-top:8px;font-weight:700" id="beer-price"></div>
+          <div style="margin-top:12px"><button id="add-to-cart" class="button cta">Add to cart</button></div>
+        </aside>
+      </div>
+    </section>
+  </template>
+
+  <template id="shop-tpl">
+    <section>
+      <h2 style="margin:8px 0 12px">Shop</h2>
+      <div class="muted" style="margin-bottom:12px">This is a demo shop. Add items to a temporary cart (stored in memory).</div>
+      <div style="display:flex;gap:18px;align-items:center;margin-bottom:12px">
+        <input id="search" placeholder="Search beers..." style="padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);flex:1">
+        <button id="view-cart" class="button outline">View Cart (<span id="cart-count">0</span>)</button>
+      </div>
+      <div class="grid" id="shop-grid"></div>
+    </section>
+  </template>
+
+  <template id="our-pub-tpl">
+    <section id="our-pub">
+      <h2 style="margin:8px 0 12px">Our Pub</h2>
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <div style="flex:1;min-width:240px;background:var(--card);padding:14px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.04)">
+          <strong>Lagunitas Taproom</strong>
+          <div class="muted" style="margin-top:8px">123 Mockingbird Lane<br/>Petaluma, CA</div>
+          <div style="margin-top:10px"><span style="background:var(--accent);padding:6px 8px;border-radius:8px;font-weight:700;color:var(--brand)">Open</span> • <span style="font-weight:700">11:00 AM — 10:00 PM</span></div>
+        </div>
+        <div style="flex:1;min-width:240px;background:var(--card);padding:14px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.04)">
+          <strong>Contact & Info</strong>
+          <div class="muted" style="margin-top:8px">Phone: (555) 555-5555<br/>Email: <a href="mailto:hello@lagunitas.example">hello@lagunitas.example</a></div>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <template id="about-tpl">
+    <section id="about">
+      <h2 style="margin:8px 0 12px">About</h2>
+      <p class="muted">Lagunitas clone — built for learning. This demo site reproduces common patterns (navigation, product pages, shop UI) without real payments or backend.</p>
+      <h3 style="margin-top:14px">Contribute</h3>
+      <p class="muted">This project is ideal for practicing front-end skills. Fork the code, add styles or integrate a backend.</p>
+    </section>
+  </template>
+
+  <!-- Cart modal template -->
+  <template id="cart-tpl">
+    <div class="modal-back">
+      <div class="modal">
+        <h3>Your Cart</h3>
+        <div id="cart-items" style="margin-top:12px"></div>
+        <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+          <button id="close-cart" class="button outline">Close</button>
+          <button id="checkout" class="button cta">Checkout (demo)</button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    /* --- Data (sample beers) --- */
+    const BEERS = [
+      {id:'ipa-citra',title:'IPA — Citra',price:6,abv:'6.5%',size:'12 fl oz',tag:'Hazy',desc:'Bursting citrus hop profile with a smooth finish.',img:'https://images.unsplash.com/photo-1519933038800-5f1b0b6c7cda?auto=format&fit=crop&w=800&q=60'},
+      {id:'brown-ale',title:'Brown Ale',price:5,abv:'5.8%',size:'12 fl oz',tag:'Nutty',desc:'Toasty malt character, great for evenings.',img:'https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=800&q=60'},
+      {id:'seasonal-lager',title:'Seasonal Lager',price:4,abv:'4.8%',size:'12 fl oz',tag:'Crisp',desc:'A clean lager perfect for sunny days.',img:'https://images.unsplash.com/photo-1514512364185-9d4c3e5b5f8b?auto=format&fit=crop&w=800&q=60'},
+      {id:'pale-ale',title:'Pale Ale',price:5,abv:'5.0%',size:'12 fl oz',tag:'Balanced',desc:'Easy drinking with floral notes.',img:'https://images.unsplash.com/photo-1524594154908-0c5b6b3d6f9d?auto=format&fit=crop&w=800&q=60'},
+      {id:'stout',title:'Stout',price:6,abv:'7.0%',size:'12 fl oz',tag:'Roasty',desc:'Rich chocolate and coffee notes.',img:'https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=800&q=60'},
+      {id:'sour',title:'Sour',price:7,abv:'5.2%',size:'12 fl oz',tag:'Tangy',desc:'Bright fruit-forward acidity.',img:'https://images.unsplash.com/photo-1516035069371-29a1b160b5f2?auto=format&fit=crop&w=800&q=60'}
+    ];
+
+    /* --- Simple in-memory cart --- */
+    const CART = [];
+
+    /* --- Utilities --- */
+    function $(s,el=document){return el.querySelector(s)}
+    function $all(s,el=document){return Array.from(el.querySelectorAll(s))}
+
+    /* --- Router --- */
+    function setActiveNav(path){ $all('nav a').forEach(a=>{ if(a.getAttribute('href')===('#'+path)) a.classList.add('active'); else a.classList.remove('active'); }); }
+
+    function renderRoute(){
+      const hash = location.hash.replace('#','') || '/';
+      const app = document.getElementById('app');
+      setActiveNav(hash);
+      if(hash === '/' || hash === ''){
+        renderHome();
+      } else if(hash.startsWith('/beers')){
+        const parts = hash.split('/');
+        if(parts.length===3 && parts[2]) renderBeerDetail(parts[2]); else renderBeers();
+      } else if(hash.startsWith('/shop')){ renderShop(); }
+      else if(hash.startsWith('/our-pub')){ renderTemplate('our-pub-tpl'); }
+      else if(hash.startsWith('/about')){ renderTemplate('about-tpl'); }
+      else renderHome();
+    }
+
+    function renderTemplate(id){
+      const tpl = document.getElementById(id);
+      document.getElementById('app').innerHTML = tpl.innerHTML;
+      attachLinkHandlers();
+    }
+
+    /* --- Home --- */
+    function renderHome(){
+      renderTemplate('home-tpl');
+      const featuredGrid = $('#featured-grid');
+      featuredGrid.innerHTML = '';
+      BEERS.slice(0,3).forEach(b=> featuredGrid.appendChild(beerCard(b)));
+      attachLinkHandlers();
+    }
+
+    /* --- Beers list --- */
+    function renderBeers(){
+      renderTemplate('beers-tpl');
+      const grid = $('#beers-grid');
+      grid.innerHTML = '';
+      BEERS.forEach(b=> grid.appendChild(beerCard(b)));
+      attachLinkHandlers();
+    }
+
+    function beerCard(b){
+      const art = document.createElement('article'); art.className='card';
+      art.innerHTML = `
+        <img src="${b.img}" alt="${b.title}" style="width:96px;height:96px;object-fit:cover;border-radius:8px">
+        <div class="meta">
+          <div style="display:flex;justify-content:space-between;align-items:center"><strong>${b.title}</strong><span class="pill">${b.tag}</span></div>
+          <div style="font-size:14px;color:var(--muted);margin-top:8px">${b.desc}</div>
+          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+            <div style="font-weight:700">$${b.price}</div>
+            <div style="display:flex;gap:8px">
+              <button data-id="${b.id}" class="button outline view">View</button>
+              <button data-id="${b.id}" class="button cta add">Add</button>
+            </div>
+          </div>
+        </div>
+      `;
+      return art;
+    }
+
+    /* --- Beer detail --- */
+    function renderBeerDetail(id){
+      const beer = BEERS.find(x=>x.id===id);
+      if(!beer){ renderBeers(); return; }
+      renderTemplate('beer-detail-tpl');
+      $('#beer-img').src = beer.img;
+      $('#beer-title').textContent = beer.title;
+      $('#beer-desc').textContent = beer.desc;
+      $('#beer-abv').textContent = beer.abv;
+      $('#beer-size').textContent = beer.size;
+      $('#beer-price').textContent = `$${beer.price}`;
+      $('#add-to-cart').addEventListener('click', ()=>{ addToCart(beer.id); alert('Added to cart (demo)'); updateCartCount(); });
+      attachLinkHandlers();
+    }
+
+    /* --- Shop --- */
+    function renderShop(){
+      renderTemplate('shop-tpl');
+      const grid = $('#shop-grid'); grid.innerHTML = '';
+      BEERS.forEach(b=> grid.appendChild(shopCard(b)));
+      $('#search').addEventListener('input', (e)=>{ const q=e.target.value.toLowerCase(); grid.innerHTML=''; BEERS.filter(b=>b.title.toLowerCase().includes(q)||b.tag.toLowerCase().includes(q)).forEach(b=>grid.appendChild(shopCard(b))); });
+      $('#view-cart').addEventListener('click', ()=>openCart());
+      attachLinkHandlers(); updateCartCount();
+    }
+
+    function shopCard(b){
+      const art = document.createElement('article'); art.className='card';
+      art.innerHTML = `
+        <img src="${b.img}" alt="${b.title}" style="width:96px;height:96px;object-fit:cover;border-radius:8px">
+        <div class="meta">
+          <div style="display:flex;justify-content:space-between;align-items:center"><strong>${b.title}</strong><span class="pill">${b.tag}</span></div>
+          <div style="font-size:14px;color:var(--muted);margin-top:8px">${b.desc}</div>
+          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+            <div style="font-weight:700">$${b.price}</div>
+            <div style="display:flex;gap:8px">
+              <button data-id="${b.id}" class="button outline view">View</button>
+              <button data-id="${b.id}" class="button cta add">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      `;
+      return art;
+    }
+
+    /* --- Cart functions --- */
+    function addToCart(id){ const item = BEERS.find(b=>b.id===id); if(!item) return; const found = CART.find(c=>c.id===id); if(found) found.qty++; else CART.push({id:item.id,title:item.title,price:item.price,qty:1}); }
+    function updateCartCount(){ $('#cart-count').textContent = CART.reduce((s,i)=>s+i.qty,0); }
+    function openCart(){
+      const tpl = document.getElementById('cart-tpl'); document.body.insertAdjacentHTML('beforeend', tpl.innerHTML);
+      renderCartItems();
+      $('#close-cart').addEventListener('click', ()=>{ document.querySelector('.modal-back').remove(); });
+      $('#checkout').addEventListener('click', ()=>{ alert('Checkout is a demo — no payments.'); document.querySelector('.modal-back').remove(); });
+    }
+    function renderCartItems(){ const container = $('#cart-items'); if(!container) return; container.innerHTML=''; if(CART.length===0) { container.innerHTML='<div class="muted">Cart is empty.</div>'; return; } CART.forEach(i=>{ const d = document.createElement('div'); d.style.display='flex'; d.style.justifyContent='space-between'; d.style.marginBottom='8px'; d.innerHTML=`<div>${i.title} x ${i.qty}</div><div>$${i.price * i.qty}</div>`; container.appendChild(d); }); }
+
+    /* --- Event delegation for buttons inside lists --- */
+    function attachListHandlers(root=document){
+      root.querySelectorAll('.add').forEach(btn=>{ btn.addEventListener('click', (e)=>{ addToCart(e.target.dataset.id); updateCartCount(); alert('Added to cart (demo)'); }); });
+      root.querySelectorAll('.view').forEach(btn=>{ btn.addEventListener('click', (e)=>{ const id=e.target.dataset.id; location.hash = `/beers/${id}`; }); });
+    }
+
+    /* --- Link handler to use hash-routing without reload --- */
+    function attachLinkHandlers(){
+      $all('a[data-link]').forEach(a=>{ a.addEventListener('click', (e)=>{ e.preventDefault(); const href=a.getAttribute('href'); location.hash = href.replace('#',''); }); });
+      attachListHandlers(document);
+    }
+
+    /* --- Mobile drawer toggle --- */
+    const toggle = document.querySelector('.mobile-toggle');
+    const drawer = document.createElement('div'); drawer.id='drawer'; document.body.appendChild(drawer);
+    toggle.addEventListener('click', ()=>{
+      if(drawer.innerHTML){ drawer.innerHTML=''; } else {
+        drawer.innerHTML = `
+          <div class="nav-open">
+            <div class="drawer">
+              <button id=\"close\">Close</button>
+              <nav style=\"margin-top:14px;display:flex;flex-direction:column;gap:12px\">
+                <a href=\"#/\" data-link>Home</a>
+                <a href=\"#/beers\" data-link>Beers</a>
+                <a href=\"#/our-pub\" data-link>Our Pub</a>
+                <a href=\"#/shop\" data-link>Shop</a>
+                <a href=\"#/about\" data-link>About</a>
+                <a class=\"cta button\" href=\"#/shop\" data-link>Find Beer</a>
+              </nav>
+            </div>
+          </div>
+        `;
+        document.getElementById('close').addEventListener('click', ()=>{ drawer.innerHTML=''; attachLinkHandlers(); });
+        attachLinkHandlers();
+      }
+    });
+
+    /* --- Wire up routing and initial render --- */
+    window.addEventListener('hashchange', renderRoute);
+    window.addEventListener('load', ()=>{ renderRoute(); });
+
+    /* expose attachListHandlers to newly injected templates */
+    const observer = new MutationObserver(()=>{ attachListHandlers(document); });
+    observer.observe(document.getElementById('app'), {childList:true, subtree:true});
+  </script>
+</body>
+</html>
