@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Virtual Classroom — Demo</title>
+  <meta name="description" content="Virtual Classroom Website — Home, Courses, Live Classes, Assignments, Login/Signup. Modern responsive UI built with HTML/CSS/JS." />
+  <style>
+    /* ------------------------
+       Reset & base
+       ------------------------ */
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#6ee7b7; /* mint */
+      --accent-2:#60a5fa;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:14px;
+      --max-width:1100px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#071126 0%, #071724 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      padding:28px 20px;
+      display:flex;
+      justify-content:center;
+      font-size:16px;
+    }
+    .container{max-width:var(--max-width);width:100%}
+
+    /* ------------------------
+       Header / Nav
+       ------------------------ */
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#052022}
+    .brand h1{font-size:18px;margin:0}
+    nav{display:flex;gap:12px;align-items:center}
+    .nav-link{background:transparent;padding:8px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:600}
+    .nav-link.active, .nav-link:hover{color:var(--accent);} 
+    .cta{padding:8px 12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#052022;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+
+    /* ------------------------
+       Hero
+       ------------------------ */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:center;margin-bottom:20px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:26px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+    .hero h2{margin:0 0 10px 0;font-size:28px}
+    .hero p{margin:0 0 18px 0;color:var(--muted)}
+    .search{display:flex;gap:8px}
+    .search input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid var(--glass);background:transparent;color:inherit}
+    .search button{padding:10px 12px;border-radius:10px;border:none;background:var(--accent);color:#052022;font-weight:700;cursor:pointer}
+
+    /* right preview */
+    .preview{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+    .stats{display:flex;gap:14px;justify-content:space-between}
+    .stat{flex:1;padding:12px;border-radius:10px;background:var(--glass-2);text-align:center}
+    .stat h3{margin:0;font-size:18px}
+    .stat p{margin:6px 0 0 0;color:var(--muted)}
+
+    /* ------------------------
+       Sections grid
+       ------------------------ */
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:20px}
+    main{min-height:420px}
+    .card{background:var(--card);padding:18px;border-radius:12px;margin-bottom:18px}
+
+    /* Courses list */
+    .courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+    .course{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid var(--glass)}
+    .course h4{margin:0 0 6px 0}
+    .course p{margin:0;color:var(--muted);font-size:14px}
+    .course .meta{display:flex;gap:8px;margin-top:10px;align-items:center}
+    .chip{padding:6px 8px;border-radius:999px;background:var(--glass);font-size:13px}
+    .btn-sm{padding:8px 10px;border-radius:10px;border:none;background:transparent;color:var(--accent-2);font-weight:700;cursor:pointer}
+
+    /* Live classes */
+    .video-wrap{border-radius:10px;overflow:hidden;background:black}
+    .video-wrap video{width:100%;height:220px;object-fit:cover;display:block}
+    .live-list{display:flex;flex-direction:column;gap:10px}
+    .live-item{display:flex;gap:10px;align-items:center}
+    .live-item img{width:56px;height:40px;object-fit:cover;border-radius:8px}
+
+    /* Assignments */
+    .assignments-list{display:flex;flex-direction:column;gap:12px}
+    .assignment{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:10px;background:var(--glass)}
+
+    /* Sidebar */
+    aside{position:sticky;top:28px}
+    .profile{display:flex;gap:12px;align-items:center}
+    .avatar{width:56px;height:56px;border-radius:12px;background:linear-gradient(120deg,#94f2d4,#7fb7ff);display:flex;align-items:center;justify-content:center;color:#052022;font-weight:800}
+    .progress{margin-top:14px}
+    .progress-bar{height:12px;background:var(--glass);border-radius:999px;overflow:hidden}
+    .progress-bar > i{display:block;height:100%;width:55%;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+    /* Footer nav small screens */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr}
+      aside{position:static}
+      nav{display:none}
+      header{gap:12px}
+      .mobile-nav{display:flex;gap:6px}
+      .preview{order:2}
+    }
+
+    /* Login/Signup modal */
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;z-index:50;backdrop-filter:blur(4px);padding:22px}
+    .modal-card{width:480px;max-width:95%;background:linear-gradient(180deg,#081428,#071224);padding:20px;border-radius:12px}
+    .form-row{display:flex;gap:8px}
+    .form-row input{flex:1;padding:10px;border-radius:8px;border:1px solid var(--glass);background:transparent;color:inherit}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Tiny helpers */
+    .muted{color:var(--muted)}
+    .hide{display:none}
+    a{text-decoration:none;color:inherit}
+    footer{color:var(--muted);text-align:center;margin-top:22px}
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <header>
+      <div class="brand">
+        <div class="logo">VC</div>
+        <div>
+          <h1>Virtual Classroom</h1>
+          <div class="small muted">Interactive online learning</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a class="nav-link active" href="#" data-section="home">Home</a>
+        <a class="nav-link" href="#" data-section="courses">Courses</a>
+        <a class="nav-link" href="#" data-section="live">Live Classes</a>
+        <a class="nav-link" href="#" data-section="assignments">Assignments</a>
+        <button class="cta" id="openLogin">Login / Signup</button>
+      </nav>
+
+      <div class="mobile-nav" style="display:none">
+        <button id="mobileMenu" class="cta">Menu</button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card">
+        <h2>Teach, Learn, Grow — anywhere</h2>
+        <p>Virtual Classroom is a demo platform where teachers can run live classes, share assignments, and students can join courses and submit work.</p>
+
+        <div class="search">
+          <input id="searchInput" placeholder="Search courses, teachers, or topics" />
+          <button id="searchBtn">Search</button>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn-sm" onclick="goTo('courses')">Browse Courses</button>
+          <button class="btn-sm" onclick="goTo('live')">Join Live</button>
+          <div style="flex:1"></div>
+        </div>
+      </div>
+
+      <div class="preview">
+        <div class="stats">
+          <div class="stat"><h3>1.2k+</h3><p>Students</p></div>
+          <div class="stat"><h3>28</h3><p>Live Classes</p></div>
+          <div class="stat"><h3>52</h3><p>Courses</p></div>
+        </div>
+
+        <div style="margin-top:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="small muted">Next Live</div>
+            <div class="small muted">Starts in 1h 20m</div>
+          </div>
+          <div class="video-wrap" style="margin-top:10px">
+            <!-- Placeholder sample video. Replace with live-stream embed if available -->
+            <video muted autoplay loop playsinline>
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN GRID -->
+    <div class="grid">
+      <main>
+        <!-- HOME SECTION -->
+        <section id="home" class="card section">
+          <h3>Featured Courses</h3>
+          <div class="courses" id="coursesGrid">
+            <!-- JS will populate courses -->
+          </div>
+        </section>
+
+        <!-- COURSES SECTION -->
+        <section id="courses" class="card section hide">
+          <h3>All Courses</h3>
+          <div id="allCourses" class="courses"></div>
+        </section>
+
+        <!-- LIVE CLASSES -->
+        <section id="live" class="card section hide">
+          <h3>Live Classes</h3>
+          <div class="live-list" id="liveList">
+            <!-- JS populated live list -->
+          </div>
+        </section>
+
+        <!-- ASSIGNMENTS -->
+        <section id="assignments" class="card section hide">
+          <h3>Assignments</h3>
+          <div class="assignments-list" id="assignList"></div>
+        </section>
+
+      </main>
+
+      <aside>
+        <div class="card profile">
+          <div class="avatar">DY</div>
+          <div>
+            <div style="font-weight:700">Welcome, Guest</div>
+            <div class="small muted">Join a class or login to get personalized content</div>
+          </div>
+        </div>
+
+        <div class="card progress">
+          <div style="display:flex;justify-content:space-between;align-items:center"><div class="small muted">Course Progress</div><div class="small muted">55%</div></div>
+          <div class="progress-bar" style="margin-top:8px" aria-hidden="true"><i></i></div>
+        </div>
+
+        <div class="card">
+          <h4>Quick Links</h4>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            <a href="#" onclick="goTo('courses')" class="nav-link">Browse Courses</a>
+            <a href="#" onclick="goTo('live')" class="nav-link">Join Live</a>
+            <a href="#" onclick="goTo('assignments')" class="nav-link">My Assignments</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>About</h4>
+          <p class="small muted">A demo virtual classroom UI built with plain HTML/CSS/JS. Perfect as a portfolio project or starter template.</p>
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn-sm" href="#">Demo</a>
+            <a class="btn-sm" href="#">GitHub</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      Made with ♥ for demo — change texts, links and assets for your project.
+    </footer>
+
+    <!-- LOGIN / SIGNUP MODAL -->
+    <div id="modal" class="modal hide" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-card">
+        <h3 id="modalTitle">Login or Sign up</h3>
+        <p class="small muted">Use the quick demo accounts below or sign up to try features.</p>
+
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <input id="email" type="email" placeholder="Email" />
+          <input id="name" type="text" placeholder="Full name (signup)" />
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <input id="password" type="password" placeholder="Password" />
+          <input id="role" placeholder="Role (student/teacher)" />
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end">
+          <button class="btn-sm" id="closeModal">Cancel</button>
+          <button class="cta" id="submitAuth">Continue</button>
+        </div>
+
+        <div style="margin-top:12px" class="small muted">Demo accounts: <strong>teacher@demo / pass</strong> or <strong>student@demo / pass</strong></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // ----------------------
+    // Small SPA-ish navigation
+    // ----------------------
+    const sections = Array.from(document.querySelectorAll('.section'))
+    const navLinks = Array.from(document.querySelectorAll('.nav-link'))
+
+    function showSection(id){
+      sections.forEach(s => s.id === id ? s.classList.remove('hide') : s.classList.add('hide'))
+      navLinks.forEach(a => a.dataset.section === id ? a.classList.add('active') : a.classList.remove('active'))
+      // nice scroll to top of container for smaller screens
+      window.scrollTo({top:0,behavior:'smooth'})
+    }
+
+    function goTo(id){ showSection(id) }
+
+    navLinks.forEach(a => a.addEventListener('click', e => { e.preventDefault(); showSection(a.dataset.section) }))
+
+    // ----------------------
+    // Demo data + render
+    // ----------------------
+    const demoCourses = [
+      {id:1,title:'Intro to Web Dev',desc:'HTML, CSS, JS basics for beginners',level:'Beginner',students:240},
+      {id:2,title:'Advanced JavaScript',desc:'Closures, Async, Patterns',level:'Advanced',students:130},
+      {id:3,title:'Data Structures',desc:'Arrays, Trees, Graphs explained',level:'Intermediate',students:410},
+      {id:4,title:'UI/UX Essentials',desc:'Designing intuitive interfaces',level:'Beginner',students:98},
+      {id:5,title:'Machine Learning 101',desc:'Intro to supervised learning',level:'Intermediate',students:76},
+      {id:6,title:'Public Speaking for Teachers',desc:'Deliver better live lessons',level:'Beginner',students:55}
+    ]
+
+    const featured = document.getElementById('coursesGrid')
+    const allCourses = document.getElementById('allCourses')
+
+    function renderCourses(){
+      const makeCourseCard = (c) => {
+        const div = document.createElement('div')
+        div.className = 'course'
+        div.innerHTML = `
+          <h4>${escapeHtml(c.title)}</h4>
+          <p>${escapeHtml(c.desc)}</p>
+          <div class="meta">
+            <span class="chip">${escapeHtml(c.level)}</span>
+            <span class="muted">${c.students} students</span>
+            <button class="btn-sm" onclick="openCourse(${c.id})">Open</button>
+          </div>
+        `
+        return div
+      }
+
+      featured.innerHTML = ''
+      allCourses.innerHTML = ''
+      demoCourses.slice(0,4).forEach(c => featured.appendChild(makeCourseCard(c)))
+      demoCourses.forEach(c => allCourses.appendChild(makeCourseCard(c)))
+    }
+
+    // simple escape
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, (m)=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m])) }
+
+    function openCourse(id){
+      const c = demoCourses.find(x => x.id === id)
+      if(!c) return alert('Course not found')
+      alert(`Open course: ${c.title}\n\nDescription: ${c.desc}`)
+    }
+
+    // ----------------------
+    // Live classes demo list
+    // ----------------------
+    const liveList = document.getElementById('liveList')
+    function renderLive(){
+      const live = [
+        {id:'L1',title:'Live: JavaScript Q&A',thumb:'https://picsum.photos/120/80?random=11',when:'Today, 4:00 PM'},
+        {id:'L2',title:'Live: Intro to HTML',thumb:'https://picsum.photos/120/80?random=12',when:'Tomorrow, 10:00 AM'},
+        {id:'L3',title:'Live: AI Basics',thumb:'https://picsum.photos/120/80?random=13',when:'Oct 21, 2:00 PM'}
+      ]
+      liveList.innerHTML = ''
+      live.forEach(l=>{
+        const item = document.createElement('div');item.className='live-item'
+        item.innerHTML = `<img src="${l.thumb}" alt="${l.title}"/><div style="flex:1"><strong>${escapeHtml(l.title)}</strong><div class='small muted'>${l.when}</div></div><button class='btn-sm' onclick="joinLive('${l.id}')">Join</button>`
+        liveList.appendChild(item)
+      })
+    }
+    function joinLive(id){ alert('Joining live class: '+id) }
+
+    // ----------------------
+    // Assignments demo
+    // ----------------------
+    const assignList = document.getElementById('assignList')
+    function renderAssignments(){
+      const assignments=[
+        {id:101,title:'Build a Portfolio',due:'Oct 20, 2025',status:'Pending'},
+        {id:102,title:'JS Closures Worksheet',due:'Oct 18, 2025',status:'Submitted'},
+        {id:103,title:'Design Critique',due:'Oct 25, 2025',status:'Pending'}
+      ]
+      assignList.innerHTML=''
+      assignments.forEach(a=>{
+        const el = document.createElement('div');el.className='assignment'
+        el.innerHTML = `<div><strong>${escapeHtml(a.title)}</strong><div class='small muted'>Due: ${a.due}</div></div><div><button class='btn-sm' onclick="viewAssign(${a.id})">View</button></div>`
+        assignList.appendChild(el)
+      })
+    }
+    function viewAssign(id){ alert('Open assignment '+id) }
+
+    // ----------------------
+    // Modal logic
+    // ----------------------
+    const modal = document.getElementById('modal')
+    document.getElementById('openLogin').addEventListener('click',()=>modal.classList.remove('hide'))
+    document.getElementById('closeModal').addEventListener('click',()=>modal.classList.add('hide'))
+    document.getElementById('submitAuth').addEventListener('click',()=>{
+      const email = document.getElementById('email').value
+      const pw = document.getElementById('password').value
+      const role = document.getElementById('role').value || 'student'
+      if(!email || !pw) return alert('Please provide email + password (demo)')
+      modal.classList.add('hide')
+      // demo: set welcome
+      document.querySelector('.profile .avatar').textContent = email.charAt(0).toUpperCase()||'U'
+      document.querySelector('.profile div strong')?.remove?.()
+      document.querySelector('.profile div div')?.remove?.()
+      document.querySelector('.profile').querySelector('div').innerHTML = `<div style="font-weight:700">${email.split('@')[0]}</div><div class='small muted'>Role: ${role}</div>`
+      alert('Logged in (demo). In a real app, authenticate with a backend.')
+    })
+
+    // ----------------------
+    // Search
+    // ----------------------
+    document.getElementById('searchBtn').addEventListener('click',()=>{
+      const q = document.getElementById('searchInput').value.trim().toLowerCase()
+      if(!q) return alert('Type a keyword to search')
+      const results = demoCourses.filter(c => (c.title+c.desc).toLowerCase().includes(q))
+      if(results.length===0) return alert('No courses found for "'+q+'"')
+      // show results in courses section
+      allCourses.innerHTML = ''
+      results.forEach(c => allCourses.appendChild((function(){const d=document.createElement('div');d.className='course';d.innerHTML=`<h4>${escapeHtml(c.title)}</h4><p>${escapeHtml(c.desc)}</p><div class="meta"><span class="chip">${escapeHtml(c.level)}</span><span class="muted">${c.students} students</span><button class="btn-sm" onclick="openCourse(${c.id})">Open</button></div>`;return d})()))
+      showSection('courses')
+    })
+
+    // ----------------------
+    // Init
+    // ----------------------
+    renderCourses();renderLive();renderAssignments();
+
+    // default show home
+    showSection('home')
+  </script>
+
+  <!-- 
+    Notes:
+    - This is a single-file demo meant for prototyping and portfolio use.
+    - Replace demo video and image links with real assets.
+    - For production: split into components, add routing, and connect to a backend for auth/live streaming/storage.
+    - Demo repo / demo link: Add your GitHub and demo site URLs here.
+  -->
+</body>
+</html>
