@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⏱️ Reflex Tester - Reaction Time Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>⏱️ Reflex Tester</h1>
+      <p class="subtitle">How fast are your reflexes?</p>
+    </header>
+    <main>
+      <div id="game-area" class="game-area">
+        <div id="message" class="message">Tap "Start Test" to begin!</div>
+        <button id="start-btn" class="start-btn">Start Test</button>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <span>Last:</span> <span id="last-time">–</span> ms
+        </div>
+        <div class="stat">
+          <span>Average (5):</span> <span id="avg-time">–</span> ms
+        </div>
+        <div class="stat">
+          <span>Best:</span> <span id="best-time">–</span> ms
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>🎯 Reflex Tester &copy; 2024</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html> 
