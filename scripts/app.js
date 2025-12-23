@@ -2091,6 +2091,22 @@
                  "Custom styled cards with profile photos and reviews"
                          ]
           },
+          {
+           originalDay: 170, 
+           name: "Meme Generator",
+           description: "A fun web app that fetches and displays wholesome memes from an API. Users can generate a new meme at the click of a button, complete with title, image, and author info.",
+           demoLink: "./public/MemeGenerator/index.html",
+           category: "projects",
+           technologies: ["HTML", "CSS", "JavaScript", "Fetch API"],
+           features: [
+               "Fetches memes from the 'wholesomememes' subreddit via API",
+               "Displays meme title, image, and author dynamically",
+               "Loading effect while fetching a new meme",
+               "Click button to generate a new random meme",
+               "Responsive design with hover and shadow effects",
+               "Smooth transitions for image and text changes"
+                ]
+           },
 
 
             {
