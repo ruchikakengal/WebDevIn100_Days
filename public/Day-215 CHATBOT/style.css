@@ -1,0 +1,132 @@
+body{
+     font-family: 'Lato', sans-serif;
+     justify-content: center;
+     align-items: center;
+     display: flex;
+     margin:0;
+     padding: 0;
+     height: 100vh;
+     color: darkgray;
+     background-color: white;
+
+}
+
+.chat-container{
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(28, 28, 215, 0.868);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+.chat-header{
+    background-color: white;
+    color: royalblue;
+    padding: 15px;
+    text-align: center;
+}
+
+.chat-header h1{
+    margin: 0;
+    font-size: 1.5rem;
+    color: darkgray;
+
+}
+
+.chat-message{
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.messages{
+    display: flex;
+    align-items: 5px;
+    margin-bottom: 15px;
+}
+
+.message-content{
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 70%;
+}
+
+.user-message{
+    flex-direction: row-reverse;
+}
+
+.user-message .message-content{
+    background-color: white;
+    margin-right: 10px
+}
+
+.bot-message .message-content{
+    background-color: white;
+    margin-left: 10px;
+}
+
+.download.png{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chat-input-container{
+    display: flex;
+    padding: 15px;
+    background-color: white;
+}
+
+#user-input{
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #4a4a4a;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: white;
+    color: teal;
+    outline: none;
+}
+
+#send-button{
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+}
+
+#send-button:hover{
+    background-color: #3a7bc8;
+}
+
+#send-button:disabled{
+    background-color: #2a5a8a;
+    cursor: not-allowed;
+}
+
+@media(max-width: 480px) {
+    .chat-container{
+        height: 100vh;
+        border-radius: 0;
+    }
+}
+
+/* SCROLLBAR Syles*/
+
+ ::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #4a4a4a;
+    border-radius: 4px;
+    
+}
+ ::-webkit-scrollbar-thumb:hover{
+    background-color: #5a5a5a;
+}
