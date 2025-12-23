@@ -2075,8 +2075,8 @@
                 technologies: ["HTML", "CSS", "Javascript"],
                 features:["Simulation", "Interactive","Awareness"]
             },
-          {
-           originalDay: 170,
+            {
+               originalDay: 170,
                name: "Testimonial Carousel",
                description: "An interactive testimonial carousel with auto-slide, navigation buttons, and a grid of student reviews.",
                demoLink: "./public/TestimonialCarousel/index.html",
@@ -2090,7 +2090,7 @@
                  "Responsive design with hover effects",
                  "Custom styled cards with profile photos and reviews"
                          ]
-          },
+            },
 
 
             {
@@ -2103,7 +2103,12 @@
                 features: ["User interaction", "Fun project", "Basic simulation"]
 
             },
+
+        
+            
+
            {
+
                originalDay: 172,
                name: "Typing-Speed-Test",
                description: "Typing Speed Test having WPM, CPM accuracy and timing analysis.",
@@ -2111,17 +2116,21 @@
                category: "Test",
                technologies: ["HTML", "CSS", "JavaScript"],
                features: ["User interaction", "Fun project", "Basic simulation"]
-           },
+
+            },
+            {
+               originalDay: 173,
+               name: "BeatPulse",
+               description: "BeatPulse rhythm game",
+               demoLink: "./public/BeatPulse/index.html",
+               category: "games",
+               technologies: ["HTML", "CSS", "JavaScript"],
+               features: ["BeatPulse", "Fun project", "Music"]
+            },
+           
+        
           {
-              originalDay: 173,
-              name: "BeatPulse",
-              description: "BeatPulse rhythm game",
-              demoLink: "./public/BeatPulse/index.html",
-              category: "games",
-              technologies: ["HTML", "CSS", "JavaScript"],
-              features: ["BeatPulse", "Fun project", "Music"]
-          },
-          {
+
               originalDay: 174,
               name: "Parallax Demo",
               description: "When you scroll down the page you will see a beautiful parallax.",
@@ -2129,8 +2138,10 @@
               category: "creativity",
               technologies: ["HTML", "CSS", "JavaScript"],
               features: ["Multiple background layers", "Scroll-based animations", "Placeholder sections"]
-          },
-          {
+
+
+            },
+            {
                 originalDay: 175,
                 name: "Grand Piano",
                 description: "Interactive virtual piano with realistic keys, sound effects, and beautiful design. Click or use keyboard to play music!",
@@ -2138,8 +2149,18 @@
                 category: "entertainment",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 features: ["Interactive Piano Keys", "Sound Effects", "Keyboard Support", "Realistic Design"]
-          },
-];
+            },
+            {
+                originalDay: 176,
+                name: "Mood-Based Music Suggestion",
+                description: "Suggests songs based on your current mood with a simple UI",
+                demoLink: "./public/day175-mood-based-music-suggestion/MusicSuggestion.html",
+                category: "entertainment",
+                technologies: ["HTML", "CSS", "JavaScript"],
+                features: ["Mood input", "Song suggestions", "Responsive design"]
+            } 
+        ];
+
 
 
         this.projects = projectsData.map((project, index) => ({

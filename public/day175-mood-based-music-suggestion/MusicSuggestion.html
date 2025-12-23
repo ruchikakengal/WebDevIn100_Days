@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mood-Based Music Suggestion</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(to right, #f629b2, #f691d8);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 1s ease-in-out;
+    }
+
+    .container { margin-top: 50px; }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 15px;
+      color: #fff;
+      transition: transform 0.3s, background 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-custom {
+      background: #fc3ca9;
+      border: none;
+      border-radius: 20px;
+      color: #fff;
+      padding: 10px 20px;
+    }
+
+    .btn-custom:hover { background: #fa56b3; }
+
+    .share-btns button {
+      margin-right: 5px;
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 10px;
+      background: rgba(0,0,0,0.3);
+    }
+
+    /* Background animation per mood */
+    .happy-bg { background: linear-gradient(135deg, #f9d423, #ff4e50); }
+    .sad-bg { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+    .energetic-bg { background: linear-gradient(135deg, #ff512f, #dd2476); }
+    .relaxed-bg { background: linear-gradient(135deg, #56ccf2, #2f80ed); }
+    .romantic-bg { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
+    .angry-bg { background: linear-gradient(135deg, #cb2d3e, #ef473a); }
+    .motivated-bg { background: linear-gradient(135deg, #11998e, #38ef7d); }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+    <h1 class="mb-4">🎵 Mood-Based Music Suggestion</h1>
+    <p class="lead">Enter your current mood and get a playlist!</p>
+
+    <!-- Input Section -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-6">
+        <input type="text" id="moodInput" class="form-control form-control-lg" placeholder="Type your mood (e.g., Happy, Sad, Energetic)">
+      </div>
+      <div class="col-md-2 mt-2 mt-md-0">
+        <button class="btn btn-custom btn-lg w-100" onclick="suggestSongs()">Get Songs</button>
+      </div>
+    </div>
+
+    <!-- Suggestions -->
+    <div id="songList" class="row justify-content-center"></div>
+  </div>
+
+  <script>
+    // Songs with YouTube links
+    const moodSongs = {
+      happy: [
+        { name: "London Thumakda - Queen", url: "https://youtu.be/udra3Mfw2oo?si=i6ftLVKGJ-gG_OXk" },
+        { name: "Badtameez Dil – Yeh Jawaani Hai Deewani", url: "https://youtu.be/II2EO3Nw4m0?si=0c5zsXQXUkybR9ZF" },
+        { name: "Dil Chahta Hai - Dil Chahta Hai", url: "https://youtu.be/HoDgYV1NzAI?si=zDNTRXaaiAbanNi9" }
+      ],
+      sad: [
+        { name: "Channa Mereya – Ae Dil Hai Mushkil", url: "https://youtu.be/284Ov7ysmfA?si=pfBLZoiEKrWR0f4x" },
+        { name: "Agar Tum Saath Ho – Tamasha", url: "https://youtu.be/xRb8hxwN5zc?si=4QqAIr2n2LMLDhH4" },
+        { name: "Tujhe Bhula Diya – Anjaana Anjaani", url: "https://youtu.be/Gh5wHtqW9Ek?si=inGNAFxnpjkPl9J2" }
+      ],
+      energetic: [
+        { name: "Malhari – Bajirao Mastani", url: "https://youtu.be/sRlA7JWTj04?si=oie7PJwyUTL0yBOY" },
+        { name: "Zinda – Bhaag Milkha Bhaag", url: "https://youtu.be/Ax0G_P2dSBw?si=CXSkCvdve8X9hBDx" },
+        { name: "Jai Ho – Slumdog Millionaire", url: "https://youtu.be/uinBpHT-AxM?si=Y8w2aG8IXBzlGAb1" }
+      ],
+      relaxed: [
+        { name: "Tum Hi Ho – Aashiqui 2", url: "https://youtu.be/Umqb9KENgmk?si=vRWvHT2aNueOWvAO" },
+        { name: "Khairiyat – Chhichhore", url: "https://youtu.be/hoNb6HuNmU0?si=yBH8Uh6h-IiMRGcF" },
+        { name: "Raabta – Agent Vinod", url: "https://youtu.be/zlt38OOqwDc?si=MWanhEidXXS__giE" }
+      ],
+      romantic: [
+        { name: "Tera Ban Jaunga – Kabir Singh", url: "https://youtu.be/Qdz5n1Xe5Qo?si=4Y-VRmQoNWDurUO_" },
+        { name: "Janam Janam – Dilwale", url: "https://youtu.be/cgmhimjsczk?si=mNMB5SmBYQW7CGC9" },
+        { name: "Jeene Laga Hoon – Ramaiya Vastawaiya", url: "https://youtu.be/qpIdoaaPa6U?si=uSd3iYVDXbgKaKqC" }
+      ],
+      angry: [
+        { name: "Aarambh Hai Prachand - Gulaal", url: "https://youtu.be/5xiN1AGEVSQ?si=FWublE1-6f_gxdh1" },
+        { name: "Mera Intkam Dekhegi - Shaadi Mein Zaroor Aana", url: "https://youtu.be/BiVyN2ftrrs?si=1ZPWFjVY-EX6y9Ak" },
+        { name: "Bande Hain Hum Uske – Dhoom 3", url: "https://youtu.be/v4zQ_YJfSn8?si=TGbBJDfb-McHcaKG" }
+      ],
+      motivated: [
+        { name: "Chak De India – Chak De! India", url: "https://youtu.be/bnqLzCsffwY?si=2RdtJED-_vCYEQno" },
+        { name: "Kar Har Maidaan Fateh – Sanju", url: "https://youtu.be/9iIX4PBplAY?si=De-4AN4Ki4xzOfmh" },
+        { name: "Aashayein – Iqbal", url: "https://youtu.be/bmyv0nRkDmc?si=bJnjj6qRcF1dzmfq" }
+      ]
+    };
+
+    // Change background based on mood
+    function changeBackground(mood) {
+      document.body.className = ""; // reset
+      if (["happy", "sad", "energetic", "relaxed", "romantic", "angry", "motivated"].includes(mood)) {
+        document.body.classList.add(mood + "-bg");
+      }
+    }
+
+    // Shuffle songs
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    // Social sharing function
+    function shareSong(name, url, platform) {
+      const text = encodeURIComponent(`🎵 I'm listening to "${name}" - check it out! ${url}`);
+      let shareUrl = "";
+
+      if (platform === "whatsapp") {
+        shareUrl = `https://wa.me/?text=${text}`;
+      } else if (platform === "twitter") {
+        shareUrl = `https://twitter.com/intent/tweet?text=${text}`;
+      }
+
+      window.open(shareUrl, "_blank");
+    }
+
+    // Suggest songs
+    function suggestSongs() {
+      const moodInput = document.getElementById("moodInput").value.trim().toLowerCase();
+      const songs = moodSongs[moodInput];
+      const songListDiv = document.getElementById("songList");
+      songListDiv.innerHTML = "";
+
+      if (songs) {
+        changeBackground(moodInput);
+
+        const shuffledSongs = shuffle([...songs]);
+
+        shuffledSongs.forEach(song => {
+          let col = document.createElement("div");
+          col.className = "col-md-4 mb-3";
+          col.innerHTML = `
+            <div class="card p-3 h-100">
+              <h5>${song.name}</h5>
+              <div class="mt-2">
+                <button class="btn btn-sm btn-light" onclick="window.open('${song.url}','_blank')">▶ Play</button>
+              </div>
+              <div class="share-btns mt-2">
+                <button class="btn btn-sm btn-success" onclick="shareSong('${song.name}','${song.url}','whatsapp')">WhatsApp</button>
+                <button class="btn btn-sm btn-info" onclick="shareSong('${song.name}','${song.url}','twitter')">Twitter</button>
+              </div>
+            </div>`;
+          songListDiv.appendChild(col);
+        });
+      } else {
+        songListDiv.innerHTML = `
+          <div class="col-md-8">
+            <div class="alert alert-warning">😕 Sorry, no playlist found for that mood. Try: Happy, Sad, Energetic, Relaxed, Romantic, Angry, Motivated.</div>
+          </div>`;
+      }
+    }
+  </script>
+</body>
+</html>
