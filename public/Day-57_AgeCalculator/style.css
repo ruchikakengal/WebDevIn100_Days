@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #101820, #1c1c2e);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px 32px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.container h2 {
+    font-size: 28px;
+    margin-bottom: 24px;
+    font-weight: 600;
+    color: #f0f0f0;
+}
+
+.label {
+    text-align: left;
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #d4d4d4;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    margin: 10px 0 25px;
+    transition: background 0.3s ease;
+}
+
+input[type="date"]:hover,
+input[type="date"]:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+button {
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    padding: 14px 28px;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(75, 108, 183, 0.3);
+}
+
+#result {
+    margin-top: 30px;
+    font-size: 17px;
+    color: #e6e6e6;
+    background-color: rgba(255, 255, 255, 0.07);
+    padding: 14px;
+    border-radius: 12px;
+    line-height: 1.6;
+}

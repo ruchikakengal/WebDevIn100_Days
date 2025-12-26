@@ -2371,9 +2371,10 @@
 }
 
 let app;
-document.addEventListener('DOMContentLoaded', () => {
-    app = new WebDev100Days();
+document.addEventListener("DOMContentLoaded", () => {
+  app = new WebDev100Days();
 });
+
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = WebDev100Days;
