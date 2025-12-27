@@ -1,0 +1,252 @@
+
+        /* CSS Variables for colors and theming */
+        :root {
+            --color-yellow: #f59e0b; /* Corresponds to yellow-500 */
+            --color-yellow-dark: #d97706; /* Corresponds to yellow-600 */
+            --color-bg-work: #111827; /* Corresponds to gray-900 */
+            --color-bg-short-break: #1e3a8a; /* Corresponds to blue-900 */
+            --color-bg-long-break: #7f1d1d; /* Corresponds to red-900 */
+            --color-card: rgba(31, 41, 55, 0.7); /* Corresponds to bg-gray-800 bg-opacity-70 */
+            --color-card-border: #374151; /* Corresponds to border-gray-700 */
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #9ca3af; /* Corresponds to gray-400 */
+            --color-text-dark: #111827; /* Corresponds to text-gray-900 */
+            --color-element-bg: #1f2937; /* Corresponds to gray-800 */
+            --color-element-bg-hover: #374151; /* Corresponds to gray-600 */
+            --color-input-bg: #111827; /* Corresponds to bg-gray-900 */
+        }
+
+        /* General Body Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg-work);
+            color: var(--color-text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: background-color 0.5s ease;
+        }
+
+        /* Main Container and Card */
+        .container {
+            width: 100%;
+            max-width: 28rem; /* 448px */
+            margin: auto;
+            padding: 1rem;
+        }
+
+        .timer-card {
+            background-color: var(--color-card);
+            border-radius: 1rem; /* 16px */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 2rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--color-card-border);
+        }
+
+        /* Mode Tabs */
+        .mode-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem; /* 24px */
+            background-color: var(--color-input-bg);
+            border-radius: 9999px;
+            padding: 0.25rem; /* 4px */
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem; /* 14px */
+            font-weight: 600;
+            border-radius: 9999px;
+            transition: color 0.3s, background-color 0.3s;
+            border: none;
+            background-color: transparent;
+            color: var(--color-text-primary);
+            cursor: pointer;
+        }
+
+        .mode-btn.active {
+            background-color: var(--color-yellow);
+            color: var(--color-text-dark);
+        }
+
+        /* Timer Display */
+        .timer-display-container {
+            text-align: center;
+            margin-bottom: 1.5rem; /* 24px */
+        }
+
+        #timer-display {
+            font-size: 5rem; /* 80px */
+            font-weight: 700;
+            letter-spacing: -0.05em;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem; /* 16px */
+            margin-bottom: 1.5rem; /* 24px */
+        }
+
+        .control-btn {
+            padding: 0.75rem; /* 12px */
+            background-color: var(--color-element-bg-hover);
+            border-radius: 9999px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+        .control-btn:hover {
+            background-color: #4b5563; /* gray-600 */
+        }
+        .control-btn svg {
+             width: 24px;
+             height: 24px;
+        }
+
+        #start-pause-btn {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            background-color: var(--color-yellow);
+            color: var(--color-text-dark);
+            border-radius: 9999px;
+            transition: background-color 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: none;
+            cursor: pointer;
+        }
+        #start-pause-btn:hover {
+            background-color: var(--color-yellow-dark);
+        }
+
+        /* Session Indicators */
+        .session-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem; /* 12px */
+        }
+        .session-label {
+            font-size: 0.875rem; /* 14px */
+            color: var(--color-text-secondary);
+        }
+        #session-indicators {
+            display: flex;
+            gap: 0.5rem; /* 8px */
+        }
+        .indicator-dot {
+            width: 0.75rem; /* 12px */
+            height: 0.75rem; /* 12px */
+            border-radius: 9999px;
+            background-color: var(--color-element-bg-hover);
+            transition: background-color 0.3s;
+        }
+        .indicator-dot.filled {
+            background-color: var(--color-yellow);
+        }
+
+        /* Settings Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal.hidden {
+            display: none;
+        }
+        .modal-content {
+            background-color: var(--color-element-bg);
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            width: 91.666667%; /* 11/12 */
+            max-width: 24rem; /* 384px */
+            padding: 1.5rem; /* 24px */
+            border: 1px solid var(--color-card-border);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        #close-modal-btn {
+            color: var(--color-text-secondary);
+            font-size: 1.5rem;
+            line-height: 1;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        #close-modal-btn:hover {
+            color: var(--color-text-primary);
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .modal-body label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #d1d5db; /* gray-300 */
+            margin-bottom: 0.25rem;
+        }
+        .modal-body input {
+            width: 100%;
+            background-color: var(--color-input-bg);
+            border: 1px solid var(--color-card-border);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            color: var(--color-text-primary);
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+        }
+        .modal-body input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--color-yellow);
+        }
+        .modal-footer {
+            margin-top: 1.5rem;
+            text-align: right;
+        }
+        #save-settings-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: var(--color-yellow);
+            color: var(--color-text-dark);
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        #save-settings-btn:hover {
+            background-color: var(--color-yellow-dark);
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            #timer-display {
+                font-size: 6rem; /* 96px */
+            }
+            .mode-btn {
+                font-size: 1rem; /* 16px */
+            }
+        }
