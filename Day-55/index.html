@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Split Bill App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Split Bill</h1>
+
+    <label>Bill Amount (₹):</label>
+    <input type="number" id="bill" placeholder="Enter bill amount" />
+
+    <label>Tip Percentage (%):</label>
+    <input type="number" id="tip" placeholder="e.g. 10" />
+
+    <label>Number of People:</label>
+    <input type="number" id="people" placeholder="Enter number of people" />
+
+    <button onclick="calculateSplit()">Calculate</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
